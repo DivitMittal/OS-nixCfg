@@ -1,0 +1,15 @@
+/* Vivaldi UI Customizations*/
+#header {
+    display:none !important;
+}
+
+/*Hide Add Bookmark Button*/
+.UrlBar-AddressField .button-toolbar.create-bookmark {
+    display: none !important;
+}
+
+/* Hide Shield Icon */
+.UrlBar-AddressField .ContentBlocker-Control {
+    display: none !important;
+}
+

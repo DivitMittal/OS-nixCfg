@@ -1,0 +1,24 @@
+/*
+*"userContent.css" is a custom CSS file that can be used to specify CSS style rules for Floorp's intenal site using "chrome" privileges.
+*For instance, if you want to apply CSS at "about:newtab" and "about:home", you can use the following CSS rule:
+*
+************************************************************************
+*@-moz-document url-prefix("about:newtab"), url-prefix("about:home") { *
+*                                                                      *
+*Write your css                                                    *
+*                                                                      *
+*}                                                                     *
+************************************************************************
+*
+NOTE: You can use the userContent.css file without change preferences (about:config)
+*/
+
+
+@charset "UTF-8";
+/* Please write your custom CSS under this line*/
+:root {
+    --ctp-text: #cdd6f4;
+    --ctp-bg: #1e1e2e;
+    --ctp-green: #a6e3a1;
+}
+

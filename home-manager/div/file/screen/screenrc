@@ -1,0 +1,68 @@
+# GNU Screen run commands configuration
+# the following two lines give a two-line status, with the current window highlighted
+hardstatus alwayslastline
+hardstatus string '%{= kG}[%{G}%H%? %1`%?%{g}][%= %{= kw}%-w%{+b yk} %n*%t%?(%u)%? %{-}%+w %=%{g}][%{B}%m/%d %{W}%C%A%{g}]'
+
+# huge scrollback buffer
+defscrollback 5000
+
+# no welcome message
+startup_message off
+
+# 256 colors
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce on
+term screen-256color
+
+# mouse tracking allows to switch region focus by clicking
+mousetrack on
+
+# default windows
+screen -t shell  1 fish
+select 0
+bind c screen 1 # window numbering starts at 1 not 0
+bind 0 select 10
+
+# get rid of silly xoff stuff
+bind s split
+
+# layouts
+layout autosave on
+layout new one
+select 1
+layout new two
+select 1
+split
+resize -v +8
+focus down
+select 4
+focus up
+layout new three
+select 1
+split
+resize -v +7
+focus down
+select 3
+split -v
+resize -h +10
+focus right
+select 4
+focus up
+
+layout attach one
+layout select one
+
+# navigating regions with Ctrl-arrows
+bindkey "^[[1;5D" focus left
+bindkey "^[[1;5C" focus right
+bindkey "^[[1;5A" focus up
+bindkey "^[[1;5B" focus down
+
+# quickly switch between regions using tab and arrows
+bind -c rsz \t    eval "focus"       "command -c rsz" # Tab
+bind -c rsz -k kl eval "focus left"  "command -c rsz" # Left
+bind -c rsz -k kr eval "focus right" "command -c rsz" # Right
+bind -c rsz -k ku eval "focus up"    "command -c rsz" # Up
+bind -c rsz -k kd eval "focus down"  "command -c rsz" # Down
+

@@ -1,0 +1,31 @@
+AlDente.app
+Bartender 5.app
+Floorp.app
+Google Chrome Dev.app
+Hammerspoon.app
+Homerow.app
+JetBrains Toolbox.app
+Karabiner-Elements.app
+Karabiner-EventViewer.app
+LocalSend.app
+Menu Bar Dock.app
+Microsoft Excel.app
+Microsoft OneNote.app
+Microsoft Word.app
+Obsidian.app
+OneDrive.app
+PDF Expert.app
+Raycast.app
+Safari.app
+Spaceman.app
+Spotify.app
+Syntax Highlight.app
+Thunderbird.app
+Tor Browser.app
+Utilities
+Visual Studio Code.app
+Vivaldi.app
+Wacom Tablet.localized
+WezTerm.app
+Xcode-15.2.0.app
+gSwitch.app

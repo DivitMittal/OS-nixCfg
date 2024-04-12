@@ -1,0 +1,32 @@
+AlDente.app
+AltTab.app
+Bartender 5.app
+Floorp.app
+Hammerspoon.app
+Homerow.app
+JetBrains Toolbox.app
+Menu Bar Dock.app
+Menuwhere.app
+Microsoft Excel.app
+Microsoft OneNote.app
+Microsoft Teams (work or school).app
+Notion.app
+ONLYOFFICE.app
+Obsidian.app
+OneDrive.app
+PDF Expert.app
+Raycast.app
+Safari.app
+Spaceman.app
+Spotify.app
+Syntax Highlight.app
+Thunderbird.app
+Todoist.app
+Tor Browser.app
+Utilities
+Visual Studio Code.app
+Vivaldi.app
+Wacom Tablet.localized
+WezTerm.app
+Xcode-15.2.0.app
+gSwitch.app

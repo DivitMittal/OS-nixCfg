@@ -1,0 +1,53 @@
+Battery {
+	Turn off - optimized battery charging
+	Turn off - automatic graphics switching
+}
+
+Display {
+	Scaling - more space
+	Automatic brightness - ON
+	True Tone - OFF
+}
+
+Accessibility {
+   	Display {
+		change pointer appearance
+		increase text size to 13pt.
+		increase contrast
+		shake mouse pointer to locate - OFF
+
+	}
+	Pointer Control - 3 finger drag & increase general speed
+}
+
+Appearance {
+	Sidebar icon size - medium
+	Show scroll bars - When scrolling
+	Allow wallpaper tinting in windows - OFF
+	Click in the scroll bar to - Jump to that spot that's clicked
+    Highlight color - red
+}
+
+Siri & Spotlight {
+    Ask Siri - OFF
+}
+
+Control Centre {
+
+}
+
+Desktop & Dock {
+	Click wallpaper to reveal desktop - Only in SM
+	Widget Style - monochrome
+	Use iPhone widgets - OFF
+	Prefer tabs when opening documents - Always
+	Hot Corners - setup accordingly
+}
+
+Keyboard {
+	set keyboard layout to Unicode Hex Input
+	set press fn/globe key to do nothing
+	remove keyboard bindings except for screenshots
+	customize touchbar
+}
+
