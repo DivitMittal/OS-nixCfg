@@ -30,6 +30,7 @@
   colima lima docker # Virtualization & Containerization
   weechat # IRC
   duti blueutil # macOS utils
+  tmux
   ## custom scripts
   (pkgs.writeShellScriptBin "my-hello" ''echo "Hello, ${config.home.username}!"'')
  ];
@@ -61,7 +62,7 @@
  home.file = {
    # ".local/bin/doom".source = .config/emacs/bin/doom;
    # ".local/bin/floorp".source = /Application/Floorp.app/Contents/MacOS/floorp;
-   "${config.xdg.configHome}/screen/screenrc".source = ./file/screenrc;
+   "${config.xdg.configHome}/screen/screenrc".source = ./file/screen/screenrc;
 
    # ".gradle/gradle.properties".text = ''
    #   org.gradle.console=verbose
@@ -276,10 +277,6 @@
   };
 
   newsboat = {
-   enable = true;
-  };
-
-  tmux = {
    enable = true;
   };
 
