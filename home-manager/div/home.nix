@@ -298,7 +298,7 @@
 
   gh = {
    enable = true;
-   extension = with pkgs;[ gh-eco gh-dash ];
+   extensions = with pkgs;[ gh-eco gh-dash ];
    gitCredentialHelper = {
     enable = true;
     hosts = [ "https://github.com" "https://gist.github.com" ];
