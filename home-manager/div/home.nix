@@ -42,6 +42,8 @@
  ];
 
  home.sessionVariables = {
+  EDITOR          = "nvim"              ; VISUAL         = "nvim";
+  PAGER           = "less"              ; LESS           = "--RAW-CONTROL-CHARS --mouse -C --tilde --tabs=2 -W --status-column -i"; LESSHISTFILE = "-";
   LESSOPEN = "|${pkgs.lesspipe}/bin/lesspipe.sh %s"; LESSCOLORIZER = "bat";
   SCREENRC = "$HOME/.config/screen/screenrc";
  };

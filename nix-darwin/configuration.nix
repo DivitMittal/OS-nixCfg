@@ -43,7 +43,7 @@
   environment.systemPackages = with pkgs;[
     bashInteractive zsh dash fish  # shells
     ed gnused nano vim # editors
-    bc binutils diffutils findutils inetutils gnugrep gawk which gzip gnupatch screen gnutar indent gnumake wget (lib.hiPrio gcc) # GNU
+    bc binutils diffutils findutils inetutils gnugrep gawk groff which gzip gnupatch screen gnutar indent gnumake wget (lib.hiPrio gcc) # GNU
     (uutils-coreutils.override {prefix = "";}) # GNU-alt
     curl git less ruby ## Other
   ];
@@ -63,8 +63,6 @@
   environment.variables = {
     XDG_CONFIG_HOME = "$HOME/.config"     ; XDG_CACHE_HOME = "$HOME/.cache";
     XDG_STATE_HOME  = "$HOME/.local/state"; XDG_DATA_HOME  = "$HOME/.local/share";
-    EDITOR          = "nvim"              ; VISUAL         = "nvim";
-    PAGER           = "less"              ; LESS           = "--RAW-CONTROL-CHARS --mouse -C --tilde --tabs=2 -W --status-column -i"; LESSHISTFILE = "-";
     LANG                  = "en_US.UTF-8";
     ARCHFLAGS             = "-arch x86_64";
     HOMEBREW_NO_ENV_HINTS = "1";
@@ -87,7 +85,6 @@
 
     bash = {
       enable               = true;
-      # enableCompletion     = false;
       interactiveShellInit = ''
         # [ -z "$PS1" ] && return                                             # exit if running non-interactively (handled by nix-darwin)
         PS1='%F{cyan}%~%f %# '
@@ -112,9 +109,9 @@
       promptInit = "PS1='%F{cyan}%~%f %# '";
       interactiveShellInit = ''
         [[ "$(locale LC_CTYPE)" == "UTF-8" ]] && setopt COMBINING_CHARS   # UTF-8 with combining characters
-        disable log                                                       # avoid conflict with /usr/bin/log
         setopt BEEP                                                       # beep on error
 
+        disable log                                                       # avoid conflict with /usr/bin/log
         unalias run-help                                                  # Remove the default of run-help being aliased to man
         autoload run-help                                                 # Use zsh's run-help, which will display information for zsh builtins.
 
@@ -158,7 +155,7 @@
       shell       = pkgs.fish;
       packages    = with pkgs;[
         nixfmt-rfc-style # Nix goodies
-        groff
+        babelfish
       ];
     };
   };
@@ -167,39 +164,12 @@
     yabai = {
       enable = true;
       enableScriptingAddition = true;
-      config = {
-        mouse_follows_focus          = "off";
-        focus_follows_mouse          = "off";
-        window_origin_display        = "default";
-        window_placement             = "second_child";
-        window_zoom_persist          = "off";
-        window_shadow                = "off";
-        window_animation_duration    = 0.0;
-        window_opacity_duration      = 0.0;
-        active_window_opacity        = 1.0;
-        normal_window_opacity        = 1.0;
-        window_opacity               = "off";
-        insert_feedback_color        = "0xffd75f5f";
-        split_ratio                  = 0.50;
-        split_type                   = "auto";
-        auto_balance                 = "off";
-        top_padding                  = 8;
-        bottom_padding               = 8;
-        left_padding                 = 8;
-        right_padding                = 8;
-        window_gap                   = 8;
-        layout                       = "float";
-        mouse_modifier               = "fn";
-        mouse_action1                = "move";
-        mouse_action2                = "resize";
-        mouse_drop_action            = "swap";
-        external_bar                 = "off:0:0";
-      };
-      extraConfig = import ./services/yabai.nix;
+      config = import ./services/yabai.nix { configType = "config"; };
+      extraConfig = import ./services/yabai.nix { configType = "extraConfig"; };
     };
     skhd = {
       enable = true;
-      skhdconfig = import ./services/skhd.nix;
+      skhdConfig = import ./services/skhd.nix;
     };
   };
 
