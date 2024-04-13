@@ -4,6 +4,19 @@
   environment.darwinConfig = "$HOME/sync-darwin/nix-darwin/flake.nix";
   services.nix-daemon.enable = true;  # Auto upgrade nix package and the daemon service.
 
+  time.timeZone = "Asia/Calcutta";
+
+  networking = {
+    computerName         = "L1";
+    hostName             = "div-mbp";
+    knownNetworkServices = ["Wi-Fi"];
+    dns                  = ["1.1.1.1" "1.0.0.1" "2606:4700:4700::1111" "2606:4700:4700::1001"];
+  };
+
+  security.pam.enableSudoTouchIdAuth = true;
+
+  system.defaults.CustomUserPreferences = import ./system/macOS_defaults.nix;
+
   system = {
     configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null; # Set Git commit hash for darwin-version.
     checks = {
@@ -21,6 +34,7 @@
       auto-optimise-store = true;
     };
   };
+
   nixpkgs = {
     hostPlatform = "x86_64-darwin";
     config = {
@@ -28,25 +42,17 @@
     };
   };
 
-  time.timeZone = "Asia/Calcutta";
-
-  networking = {
-    computerName         = "L1";
-    knownNetworkServices = ["Wi-Fi"];
-    hostName             = "div-mbp";
-    dns                  = ["1.1.1.1" "1.0.0.1" "2606:4700:4700::1111" "2606:4700:4700::1001"];
+  environment = {
+    systemPackages = with pkgs;[
+      nixfmt-rfc-style # Nix goodies
+      bashInteractive zsh dash fish babelfish # shells
+      ed gnused nano vim # editors
+      bc binutils diffutils findutils inetutils gnugrep gawk groff which gzip gnupatch screen gnutar indent gnumake wget (lib.hiPrio gcc) # GNU
+      (uutils-coreutils.override {prefix = "";}) # GNU-alt
+      curl git less ## Other
+    ];
+    extraOutputsToInstall = [ "doc" "info" "devdoc" ];
   };
-
-  security.pam.enableSudoTouchIdAuth = true;
-  system.defaults.CustomUserPreferences = import ./system/macOS_defaults.nix;
-
-  environment.systemPackages = with pkgs;[
-    bashInteractive zsh dash fish  # shells
-    ed gnused nano vim # editors
-    bc binutils diffutils findutils inetutils gnugrep gawk groff which gzip gnupatch screen gnutar indent gnumake wget (lib.hiPrio gcc) # GNU
-    (uutils-coreutils.override {prefix = "";}) # GNU-alt
-    curl git less ruby ## Other
-  ];
 
   documentation = {
     enable      = true;
@@ -58,11 +64,14 @@
     fonts          = with pkgs;[(nerdfonts.override {fonts = ["CascadiaCode"];})];
   };
 
-  environment.shells = with pkgs;[bashInteractive zsh dash fish];
+  environment = {
+    shells = with pkgs;[bashInteractive zsh dash fish];
+    loginShell = "${pkgs.zsh}";
+  };
 
   environment.variables = {
-    XDG_CONFIG_HOME = "$HOME/.config"     ; XDG_CACHE_HOME = "$HOME/.cache";
-    XDG_STATE_HOME  = "$HOME/.local/state"; XDG_DATA_HOME  = "$HOME/.local/share";
+    XDG_CONFIG_HOME       = "$HOME/.config"     ; XDG_CACHE_HOME = "$HOME/.cache";
+    XDG_STATE_HOME        = "$HOME/.local/state"; XDG_DATA_HOME  = "$HOME/.local/share";
     LANG                  = "en_US.UTF-8";
     ARCHFLAGS             = "-arch x86_64";
     HOMEBREW_NO_ENV_HINTS = "1";
@@ -77,6 +86,19 @@
     ed       = "ed -v -p ':'";
     showpath = ''echo $PATH | sed "s/ /\n/g"'';
     showid   = ''id | sed "s/ /\n/g"'';
+  };
+
+  users = {
+    users.div = {
+      description = "Divit Mittal";
+      home        = "/Users/div";
+      shell       = pkgs.fish;
+      packages    = with pkgs;[
+       # macOS utils
+      ruby duti blueutil
+      yabai skhd kanata-with-cmd
+      ];
+    };
   };
 
   programs = {
@@ -100,7 +122,7 @@
     };
 
     zsh = {
-      enable                   = true;
+      enable                  = true;
       # enableSyntaxHighlighting = true;
       # enableCompletion         = true;
       # enableFzfCompletion      = true;
@@ -148,23 +170,12 @@
     };
   };
 
-  users = {
-    users.div = {
-      description = "Divit Mittal";
-      home        = "/Users/div";
-      shell       = pkgs.fish;
-      packages    = with pkgs;[
-        nixfmt-rfc-style # Nix goodies
-        babelfish
-      ];
-    };
-  };
-
   services = {
+## TODO add kanata to sudoers.d
     yabai = {
       enable = true;
       enableScriptingAddition = true;
-      config = import ./services/yabai.nix { configType = "config"; };
+      config      = import ./services/yabai.nix { configType = "config"; };
       extraConfig = import ./services/yabai.nix { configType = "extraConfig"; };
     };
     skhd = {
@@ -172,6 +183,15 @@
       skhdConfig = import ./services/skhd.nix;
     };
   };
+
+  # environment.etc."sudoers.d/kanata".source = pkgs.runCommand "sudoers-kanata" {}
+  # ''
+  #       YABAI_BIN="${kanata-with-cmd}/bin/yabai"
+  #       SHASUM=$(sha256sum "$YABAI_BIN" | cut -d' ' -f1)
+  #       cat <<EOF >"$out"
+  #       %admin ALL=(root) NOPASSWD: sha256:$SHASUM $YABAI_BIN --load-sa
+  #       EOF
+  # ''
 
   homebrew = import ./homebrew.nix;
 }

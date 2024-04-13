@@ -5,6 +5,7 @@
    package     = pkgs.nix;
    checkConfig = true;
  };
+
  nixpkgs = {
    config = {
      allowBroken = true; allowUnfree = true; allowUnsupportedSystem = true; allowInsecure = true;
@@ -20,54 +21,52 @@
 
  home.packages = with pkgs;[
   ## Terminal Environment
-  grc (fastfetch.overrideAttrs { preBuild = lib.optionalString stdenv.isDarwin "export MACOSX_DEPLOYMENT_TARGET=14.0";})
+  tmux grc
+  (fastfetch.overrideAttrs { preBuild = lib.optionalString stdenv.isDarwin "export MACOSX_DEPLOYMENT_TARGET=14.0";})
   fd duf dust hexyl ouch ov # Modern altenatives
   bitwarden-cli rclone # CLI tools
   android-tools  # Developer tools
   pipx spicetify-cli # plugin/package/module managers
   nmap speedtest-go bandwhich # networking tools
   pandoc poppler chafa imagemagick ffmpeg # file/data format
-  colima lima docker # Virtualization & Containerization
+  colima docker # Virtualization & Containerization
   weechat # IRC
-  duti blueutil # macOS utils
-  tmux
   ## custom scripts
   (pkgs.writeShellScriptBin "my-hello" ''echo "Hello, ${config.home.username}!"'')
  ];
 
  home.sessionPath = [
-  "$HOME/.local/bin"
-  # "$HOME/.config/emacs/bin"
-  # "/Application/Floorp.app/Contents/MacOS"
-  "/System/Library/PrivateFrameworks/Apple80211.framework/Resources" #Airport Utility
+  "${config.home.homeDirectory}/.local/bin"
  ];
 
  home.sessionVariables = {
-  EDITOR          = "nvim"              ; VISUAL         = "nvim";
-  PAGER           = "less"              ; LESS           = "--RAW-CONTROL-CHARS --mouse -C --tilde --tabs=2 -W --status-column -i"; LESSHISTFILE = "-";
+  EDITOR   = "nvim"; VISUAL = "nvim";
+  PAGER    = "less"; LESS   = "--RAW-CONTROL-CHARS --mouse -C --tilde --tabs=2 -W --status-column -i"; LESSHISTFILE = "-";
   LESSOPEN = "|${pkgs.lesspipe}/bin/lesspipe.sh %s"; LESSCOLORIZER = "bat";
-  SCREENRC = "$HOME/.config/screen/screenrc";
+  SCREENRC = "${config.home.homeDirectory}/.config/screen/screenrc";
  };
 
  home.shellAliases  = {
-   man               = "batman";
-   cat               = "bat --paging=never";
-   cleanup-DS        = "sudo find . -type f -name '*.DS_Store' -ls -delete";
-   empty-trash       = "bash -c 'sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sudo rm -rfv /private/tmp/*.log'";
-   pip-uninstall-all = "pip freeze | cut -d '@' -f1 | xargs pip uninstall -y";
-   lt                = "eza --tree --level=2 $eza_params";
-   ll                = "eza -albhHigUuS -m@ $eza_params | ov -H1";
+  man               = "batman";
+  cat               = "bat --paging=never";
+  cleanup-DS        = "sudo find . -type f -name '*.DS_Store' -ls -delete";
+  empty-trash       = "bash -c 'sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sudo rm -rfv /private/tmp/*.log'";
+  pip-uninstall-all = "pip freeze | cut -d '@' -f1 | xargs pip uninstall -y";
+  lt                = "eza --tree --level=2 $eza_params";
+  ll                = "eza -albhHigUuS -m@ $eza_params | ov -H1";
  };
 
  home.file = {
-   # ".local/bin/doom".source = .config/emacs/bin/doom;
-   # ".local/bin/floorp".source = /Application/Floorp.app/Contents/MacOS/floorp;
+   # binaries in .local
+   ".local/bin/doom".source = /.${config.xdg.configHome}/emacs/bin/doom;
+   ".local/bin/floorp".source = /Applications/Floorp.app/Contents/MacOS/floorp;
+   ".local/bin/airport".source = /System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport;
+
+   # config files in .config
    "${config.xdg.configHome}/screen/screenrc".source = ./file/screen/screenrc;
 
-   # ".gradle/gradle.properties".text = ''
-   #   org.gradle.console=verbose
-   #   org.gradle.daemon.idletimeout=3600000
-   # '';
+   # programs
+   "${config.xdg.configHome}/ov/config.yaml".source  = ./file/ov/config.yaml; # TODO: add this as program module to nix-community/home-manager
  };
 
  editorconfig = {
@@ -236,11 +235,6 @@
    };
   };
 
-  yazi = {
-   enable = true;
-   enableFishIntegration = true;
-   enableZshIntegration = true;
-  };
 
   zellij = {
    enable = true;
@@ -287,11 +281,9 @@
 
   emacs = {
    enable = true;
+   package = pkgs.emacs-nox;
   };
 
-  neovim = {
-   enable = true;
-  };
 
   gh = {
    enable = true;
@@ -301,21 +293,12 @@
     hosts = [ "https://github.com" "https://gist.github.com" ];
    };
    settings = {
-    # What protocol to use when performing git operations. Supported values: ssh, https
-    git_protocol= "https";
-    # When to interactively prompt. This is a global config that cannot be overridden by hostname. Supported values= enabled, disabled
-    prompt= "enabled";
-    # A pager program to send command output to, e.g. "less". Set the value to "cat" to disable the pager.
+    git_protocol= "ssh";
+    prompt= "enabled";  # interactivity in gh
     pager= "less";
-    # Aliases allow you to create nicknames for gh commands
     aliases = {
      co = "pr checkout";
     };
-    # The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
-    # http_unix_socket =
-    # What web browser gh should use when opening URLs. If blank, will refer to environment.
-    # browser =
-    # version = "1"
    };
   };
 
@@ -356,10 +339,34 @@
    };
   };
 
+ #### TODO
   navi = {
    enable = true;
    enableFishIntegration = true; enableZshIntegration = true;
   };
 
+  # managed by nix-darwin
+  wezterm = {
+   enable = false;
+   enableZshIntegration = true;
+   extraConfig = builtins.readFile ./programs/wezterm/wezterm.lua;
+  };
  };
+
+ programs.neovim = {
+  enable = true;
+ };
+ home.file."${config.xdg.configHome}/nvim/lua/custom" = { source = ./programs/nvim-nvchad/custom; recursive = true; };
+
+ programs.yazi = {
+   enable = true;
+   enableFishIntegration = true; enableZshIntegration = true;
+   keymap = builtins.fromTOML (builtins.readFile ./programs/yazi/keymap.toml);
+   settings = builtins.fromTOML (builtins.readFile ./programs/yazi/yazi.toml);
+   theme = builtins.fromTOML (builtins.readFile ./programs/yazi/theme.toml);
+   # extraLuaConfig = builtins.readFile ./programs/yazi/init.lua;
+  };
+ home.file."${config.xdg.configHome}/yazi/init.lua".source = ./programs/yazi/init.lua; # TODO: add this as program module to nix-community/home-manager
+ home.file."${config.xdg.configHome}/yazi/plugins" = {source = ./programs/yazi/plugins; recursive = true; }; # TODO: add this as program module to nix-community/home-manager
+
 }

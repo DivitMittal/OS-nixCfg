@@ -1,0 +1,37 @@
+:root {
+    --bg: rgba(0, 0, 0, 0.92);
+    --fg: #14C800;
+    --font: "CaskaydiaCove Nerd Font Mono";
+
+    --tridactyl-bg: var(--bg);
+    --tridactyl-fg: var(--fg);
+    --tridactyl-font-size: 16px;
+
+    /* Header */
+    --tridactyl-header-first-bg: #333;
+    --tridactyl-header-second-bg: #222;
+    --tridactyl-header-third-bg: #111;
+
+    /* Hints */
+    --tridactyl-hintspan-fg: var(--fg);
+    --tridactyl-hintspan-bg: var(--bg);
+    --tridactyl-hintspan-font-family: var(--font);
+
+    --tridactyl-hint-active-fg: #333;
+    --tridactyl-hint-active-bg: rgba(20, 200, 0, 0.75);
+    --tridactyl-hint-active-outline: 1px solid #000;
+
+    --tridactyl-hint-bg: rgba(13, 31, 54, 0.25);
+    --tridactyl-hint-outline: 1px solid var(--tridactyl-hintspan-bg);
+
+    /* Command-line */
+    --tridactyl-cmdl-bg: var(--bg);
+    --tridactyl-cmdl-fg: var(--fg);
+    --tridactyl-cmdl-font-family: var(--font);
+    --tridactyl-cmdl-font-size: 18px;
+
+    /* Completions Table */
+    --tridactyl-cmplt-font-family: var(--font);
+    --tridactyl-cmplt-font-size: 14px;
+}
+

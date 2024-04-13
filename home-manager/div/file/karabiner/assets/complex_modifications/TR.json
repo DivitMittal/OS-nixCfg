@@ -1,0 +1,1367 @@
+{
+    "title": "TR Layer",
+    "rules": [
+        {
+            "description": "TR+ [TR Layer](Wide ANSI)",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "comma",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "1"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "comma",
+                        "modifiers": {
+                            "mandatory": ["fn"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "f1"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "m",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "0"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "m",
+                        "modifiers": {
+                            "mandatory": ["fn"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "f10"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "period",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "2"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "period",
+                        "modifiers": {
+                            "mandatory": ["fn"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "f2"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "slash",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "3"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "slash",
+                        "modifiers": {
+                            "mandatory": ["fn"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "f3"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "k",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "4"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "k",
+                        "modifiers": {
+                            "mandatory": ["fn"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "f4"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "l",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "5"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "l",
+                        "modifiers": {
+                            "mandatory": ["fn"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "f5"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "semicolon",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "6"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "semicolon",
+                        "modifiers": {
+                            "mandatory": ["fn"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "f6"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "i",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "7"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "i",
+                        "modifiers": {
+                            "mandatory": ["fn"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "f7"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "o",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "8"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "o",
+                        "modifiers": {
+                            "mandatory": ["fn"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "f8"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "p",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "9"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "p",
+                        "modifiers": {
+                            "mandatory": ["fn"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "f9"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "quote",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift",
+                                "right_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "hyphen"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "open_bracket",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "equal_sign",
+                            "modifiers": ["shift"]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "j",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "keypad_asterisk"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "j",
+                        "modifiers": {
+                            "mandatory": ["fn"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "f11"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "close_bracket",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "equal_sign"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "f",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "9",
+                            "modifiers": ["shift"]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "f",
+                        "modifiers": {
+                            "mandatory": ["shift"],
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "0",
+                            "modifiers": ["shift"]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "g",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "open_bracket"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "g",
+                        "modifiers": {
+                            "mandatory": ["shift"],
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "close_bracket"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "d",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "open_bracket",
+                            "modifiers": ["shift"]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "d",
+                        "modifiers": {
+                            "mandatory": ["shift"],
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "close_bracket",
+                            "modifiers": ["shift"]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "c",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "fn",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "period",
+                            "modifiers": ["shift"]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "x",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "fn",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "comma",
+                            "modifiers": ["shift"]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "u",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "5",
+                            "modifiers": ["shift"]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "u",
+                        "modifiers": {
+                            "mandatory": ["fn"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "f12"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "q",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "1",
+                            "modifiers": ["shift"]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "s",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "backslash",
+                            "modifiers": ["shift"]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "w",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "2",
+                            "modifiers": ["shift"]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "a",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "7",
+                            "modifiers": ["shift"]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "w",
+                        "modifiers": {
+                            "mandatory": ["shift"],
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "grave_accent_and_tilde",
+                            "modifiers": ["shift"]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "e",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "3",
+                            "modifiers": ["shift"]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "r",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "4",
+                            "modifiers": ["shift"]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "q",
+                        "modifiers": {
+                            "mandatory": ["shift"],
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "grave_accent_and_tilde"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "e",
+                        "modifiers": {
+                            "mandatory": ["shift"],
+                            "optional": [
+                                "caps_lock",
+                                "left_option",
+                                "left_command",
+                                "left_control",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "6",
+                            "modifiers": ["shift"]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 0
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

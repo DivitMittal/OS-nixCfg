@@ -1,0 +1,826 @@
+{
+    "title": "TLTR Layer",
+    "rules": [
+        {
+            "description": "TL+TR+ [TLTR Layer](Wide ANSI)",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "l",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "mouse_key": {
+                                "y": 1536
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TLTR_scroll",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "o",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "mouse_key": {
+                                "y": -1536
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TLTR_scroll",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "k",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "mouse_key": {
+                                "x": -1536
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TLTR_scroll",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "semicolon",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "mouse_key": {
+                                "x": 1536
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TLTR_scroll",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "d",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "mouse_key": {
+                                "speed_multiplier": 2.25
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "a",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "mouse_key": {
+                                "speed_multiplier": 0.5
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "s",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "set_variable": {
+                                "name": "TLTR_scroll",
+                                "value": 1
+                            }
+                        }
+                    ],
+                    "to_after_key_up": [
+                        {
+                            "set_variable": {
+                                "name": "TLTR_scroll",
+                                "value": 0
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "l",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "mouse_key": {
+                                "vertical_wheel": 32
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TLTR_scroll",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "o",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "mouse_key": {
+                                "vertical_wheel": -32
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TLTR_scroll",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "k",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "mouse_key": {
+                                "horizontal_wheel": 32
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TLTR_scroll",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "semicolon",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "mouse_key": {
+                                "horizontal_wheel": -32
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TLTR_scroll",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "f",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "pointing_button": "button1"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "g",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "pointing_button": "button2"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "r"
+                    },
+                    "to": [
+                        {
+                            "key_code": "volume_increment"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "r",
+                        "modifiers": {
+                            "mandatory": ["shift"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "osascript -e 'set volume output volume 100 --100%'"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "c"
+                    },
+                    "to": [
+                        {
+                            "key_code": "volume_decrement"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "c",
+                        "modifiers": {
+                            "mandatory": ["shift"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "osascript -e 'set volume output muted true'"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "w"
+                    },
+                    "to": [
+                        {
+                            "key_code": "display_brightness_increment"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "w",
+                        "modifiers": {
+                            "mandatory": ["shift"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "display_brightness_increment"
+                        },
+                        {
+                            "key_code": "display_brightness_increment"
+                        },
+                        {
+                            "key_code": "display_brightness_increment"
+                        },
+                        {
+                            "key_code": "display_brightness_increment"
+                        },
+                        {
+                            "key_code": "display_brightness_increment"
+                        },
+                        {
+                            "key_code": "display_brightness_increment"
+                        },
+                        {
+                            "key_code": "display_brightness_increment"
+                        },
+                        {
+                            "key_code": "display_brightness_increment"
+                        },
+                        {
+                            "key_code": "display_brightness_increment"
+                        },
+                        {
+                            "key_code": "display_brightness_increment"
+                        },
+                        {
+                            "key_code": "display_brightness_increment"
+                        },
+                        {
+                            "key_code": "display_brightness_increment"
+                        },
+                        {
+                            "key_code": "display_brightness_increment"
+                        },
+                        {
+                            "key_code": "display_brightness_increment"
+                        },
+                        {
+                            "key_code": "display_brightness_increment"
+                        },
+                        {
+                            "key_code": "display_brightness_increment"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "z"
+                    },
+                    "to": [
+                        {
+                            "key_code": "display_brightness_decrement"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "z",
+                        "modifiers": {
+                            "mandatory": ["shift"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "display_brightness_decrement"
+                        },
+                        {
+                            "key_code": "display_brightness_decrement"
+                        },
+                        {
+                            "key_code": "display_brightness_decrement"
+                        },
+                        {
+                            "key_code": "display_brightness_decrement"
+                        },
+                        {
+                            "key_code": "display_brightness_decrement"
+                        },
+                        {
+                            "key_code": "display_brightness_decrement"
+                        },
+                        {
+                            "key_code": "display_brightness_decrement"
+                        },
+                        {
+                            "key_code": "display_brightness_decrement"
+                        },
+                        {
+                            "key_code": "display_brightness_decrement"
+                        },
+                        {
+                            "key_code": "display_brightness_decrement"
+                        },
+                        {
+                            "key_code": "display_brightness_decrement"
+                        },
+                        {
+                            "key_code": "display_brightness_decrement"
+                        },
+                        {
+                            "key_code": "display_brightness_decrement"
+                        },
+                        {
+                            "key_code": "display_brightness_decrement"
+                        },
+                        {
+                            "key_code": "display_brightness_decrement"
+                        },
+                        {
+                            "key_code": "display_brightness_decrement"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "q"
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -a ScreenSaverEngine"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "q",
+                        "modifiers": {
+                            "mandatory": ["shift"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "pmset sleepnow"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "e"
+                    },
+                    "to": [
+                        {
+                            "key_code": "play_or_pause"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "x"
+                    },
+                    "to": [
+                        {
+                            "key_code": "fastforward"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "x",
+                        "modifiers": {
+                            "mandatory": ["shift"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "rewind"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "TL_layer",
+                            "value": 1
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "TR_layer",
+                            "value": 1
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
