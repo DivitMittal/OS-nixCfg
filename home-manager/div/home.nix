@@ -95,14 +95,14 @@
   fish = {
    enable = true;
    shellAliases = {
-    ff = ''fastfetch --logo-type iterm --logo $HOME/Sync-macOS/assets/a-12.png \
+    ff = ''fastfetch --logo-type iterm --logo ${../../assets/a-12.png} \
            --pipe false --title-color-user magenta --title-color-at blue --title-color-host red \
            --structure Title:OS:Kernel:Uptime:Display:Terminal:CPU:CPUUsage:GPU:Memory:Swap:LocalIP \
            --gpu-temp true --cpu-temp true --cpu-format "{1} @ {#4;35}{8}{#}" --gpu-format "{2} @ {#4;35}{4}{#}"'';
 
 
     ## package-managers ultimate aliases
-    pipx-ultimate = "pipx upgrade-all; pipx list --short 1> ~/Sync-macOS/etc/ref-txts/pipx_list.txt";
+    pipx-ultimate = "pipx upgrade-all; pipx list --short 1> ${}/etc/ref-txts/pipx_list.txt";
     gem-ultimate  = "sudo -v; and gem update; gem cleanup";
     brew-ultimate = "brew update; and brew upgrade; and brew autoremove; and brew cleanup -s --prune=0; and rm -rf (brew --cache)";
     ## other ultimate aliases
@@ -214,7 +214,7 @@
    defaultCommand        = "fd --hidden";
    defaultOptions        = [
     "--multi" "--cycle" "--border" "--height 50%"
-    "--bind='space:toggle'" "--bind='tab:down'" "--bind='btab:up'"
+    "--bind='right:select'" "--bind='left:deselect'" "--bind='tab:down'" "--bind='btab:up'"
     "--no-scrollbar" "--marker='*'" "--preview-window=wrap"
    ];
   };
@@ -366,7 +366,6 @@
    theme = builtins.fromTOML (builtins.readFile ./programs/yazi/theme.toml);
    # extraLuaConfig = builtins.readFile ./programs/yazi/init.lua;
   };
- home.file."${config.xdg.configHome}/yazi/init.lua".source = ./programs/yazi/init.lua; # TODO: add this as program module to nix-community/home-manager
- home.file."${config.xdg.configHome}/yazi/plugins" = {source = ./programs/yazi/plugins; recursive = true; }; # TODO: add this as program module to nix-community/home-manager
-
+ home.file."${config.xdg.configHome}/yazi/init.lua".source = ./programs/yazi/init.lua; # TODO: add to nix-community/home-manager
+ home.file."${config.xdg.configHome}/yazi/plugins" = {source = ./programs/yazi/plugins; recursive = true; }; # TODO: add to nix-community/home-manager
 }
