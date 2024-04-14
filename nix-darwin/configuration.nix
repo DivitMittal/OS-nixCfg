@@ -13,10 +13,6 @@
     dns                  = ["1.1.1.1" "1.0.0.1" "2606:4700:4700::1111" "2606:4700:4700::1001"];
   };
 
-  security.pam.enableSudoTouchIdAuth = true;
-
-  system.defaults.CustomUserPreferences = import ./system/macOS_defaults.nix;
-
   system = {
     configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null; # Set Git commit hash for darwin-version.
     checks = {
@@ -44,12 +40,12 @@
 
   environment = {
     systemPackages = with pkgs;[
-      nixfmt-rfc-style # Nix goodies
-      bashInteractive zsh dash fish babelfish # shells
-      ed gnused nano vim # editors
+      nixfmt-rfc-style                                                                                                                    # Nix goodies
+      bashInteractive zsh dash fish babelfish                                                                                             # shells
+      ed gnused nano vim                                                                                                                  # editors
       bc binutils diffutils findutils inetutils gnugrep gawk groff which gzip gnupatch screen gnutar indent gnumake wget (lib.hiPrio gcc) # GNU
-      (uutils-coreutils.override {prefix = "";}) # GNU-alt
-      curl git less ## Other
+      (uutils-coreutils.override {prefix = "";})                                                                                          # GNU-alt
+      curl git less                                                                                                                       ## Other
     ];
     extraOutputsToInstall = [ "doc" "info" "devdoc" ];
   };
@@ -72,20 +68,14 @@
   environment.variables = {
     XDG_CONFIG_HOME       = "$HOME/.config"     ; XDG_CACHE_HOME = "$HOME/.cache";
     XDG_STATE_HOME        = "$HOME/.local/state"; XDG_DATA_HOME  = "$HOME/.local/share";
-    LANG                  = "en_US.UTF-8";
-    ARCHFLAGS             = "-arch x86_64";
-    HOMEBREW_NO_ENV_HINTS = "1";
+    LANG                  = "en_US.UTF-8"       ; ARCHFLAGS      = "-arch x86_64";
   };
 
   environment.shellAliases = {
-    dt       = "env cd $HOME/Desktop/";
-    dl       = "env cd $HOME/Downloads";
-    ls       = "env ls -aF";
-    ll       = "env ls -alHbhigUuS";
-    v        = "vim";
-    ed       = "ed -v -p ':'";
-    showpath = ''echo $PATH | sed "s/ /\n/g"'';
-    showid   = ''id | sed "s/ /\n/g"'';
+    dt       = "env cd $HOME/Desktop/"        ; dl       = "env cd $HOME/Downloads";
+    ls       = "env ls -aF"                   ; ll       = "env ls -alHbhigUuS"    ;
+    v        = "vim"                          ; ed       = "ed -v -p ':'"          ;
+    showpath = ''echo $PATH | sed "s/ /\n/g"''; showid   = ''id | sed "s/ /\n/g"'' ;
   };
 
   users = {
@@ -96,7 +86,7 @@
       packages    = with pkgs;[
        # macOS utils
       ruby duti blueutil
-      yabai skhd kanata-with-cmd
+      yabai skhd
       ];
     };
   };
@@ -109,7 +99,6 @@
       enable               = true;
       interactiveShellInit = ''
         # [ -z "$PS1" ] && return                                             # exit if running non-interactively (handled by nix-darwin)
-        # PS1='%F{cyan}%~%f %# '
         if [ "`id -u`" -eq 0 ]; then
           PS1="\[\033[m\]|\[\033[1;35m\]\t\[\033[m\]|\[\e[1;31m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\W]> \[\e[0m\]"
         else
@@ -128,11 +117,6 @@
 
     zsh = {
       enable                  = true;
-      # enableSyntaxHighlighting = true;
-      # enableCompletion         = true;
-      # enableFzfCompletion      = true;
-      # enableFzfGit             = true;
-      # enableFzfHistory         = true;
       promptInit = "PS1='%F{cyan}%~%f %# '";
       interactiveShellInit = ''
         [[ "$(locale LC_CTYPE)" == "UTF-8" ]] && setopt COMBINING_CHARS   # UTF-8 with combining characters
@@ -198,5 +182,8 @@
     EOF
   '';
 
-  homebrew = import ./homebrew.nix;
+  imports = [
+    ./homebrew.nix
+    ./macOS_defaults.nix
+  ];
 }
