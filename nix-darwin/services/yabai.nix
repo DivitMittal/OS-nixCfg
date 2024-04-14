@@ -71,5 +71,5 @@ else
   yabai -m rule --add app="^Calculator$" sticky=on
 
   # Kanata daemon
-  sudo $HOME/.local/bin/kanata --cfg /Users/div/Sync-macOS/home/.config/kanata/custom.kbd 1> /dev/null 2> /private/tmp/rs.kanata.err.log
+  sudo ${./kanata/bin/kanata} --cfg ${./kanata/cfg/tltr.kbd} 1> /dev/null 2> /private/tmp/rs.kanata.err.log
 ''

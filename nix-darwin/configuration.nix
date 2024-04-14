@@ -109,8 +109,13 @@
       enable               = true;
       interactiveShellInit = ''
         # [ -z "$PS1" ] && return                                             # exit if running non-interactively (handled by nix-darwin)
-        PS1='%F{cyan}%~%f %# '
-        # set -o vi                                                           # vi keybindings
+        # PS1='%F{cyan}%~%f %# '
+        if [ "`id -u`" -eq 0 ]; then
+          PS1="\[\033[m\]|\[\033[1;35m\]\t\[\033[m\]|\[\e[1;31m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\W]> \[\e[0m\]"
+        else
+          PS1="\[\033[m\]|\[\033[1;35m\]\t\[\033[m\]|\[\e[1m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\W]> \[\e[0m\]"
+        fi
+        set -o vi                                                           # vi keybindings
 
         export BASH_SILENCE_DEPRECATION_WARNING=1
         export BADOTDIR="$HOME/.config/bash"
@@ -184,14 +189,14 @@
     };
   };
 
-  # environment.etc."sudoers.d/kanata".source = pkgs.runCommand "sudoers-kanata" {}
-  # ''
-  #       YABAI_BIN="${kanata-with-cmd}/bin/yabai"
-  #       SHASUM=$(sha256sum "$YABAI_BIN" | cut -d' ' -f1)
-  #       cat <<EOF >"$out"
-  #       %admin ALL=(root) NOPASSWD: sha256:$SHASUM $YABAI_BIN --load-sa
-  #       EOF
-  # ''
+  environment.etc."sudoers.d/kanata".source = pkgs.runCommand "sudoers-kanata" {}
+  ''
+    KANATA_BIN="${./services/kanata/bin/kanata}"
+    SHASUM=$(sha256sum "$KANATA_BIN" | cut -d' ' -f1)
+    cat <<EOF >"$out"
+    %admin ALL=(root) NOPASSWD: sha256:$SHASUM $KANATA_BIN --cfg ${./services/kanata/cfg/tltr.kbd} 1> /dev/null 2> /private/tmp/rs.kanata.err.log
+    EOF
+  '';
 
   homebrew = import ./homebrew.nix;
 }

@@ -43,7 +43,7 @@
   EDITOR   = "nvim"; VISUAL = "nvim";
   PAGER    = "less"; LESS   = "--RAW-CONTROL-CHARS --mouse -C --tilde --tabs=2 -W --status-column -i"; LESSHISTFILE = "-";
   LESSOPEN = "|${pkgs.lesspipe}/bin/lesspipe.sh %s"; LESSCOLORIZER = "bat";
-  SCREENRC = "${config.home.homeDirectory}/.config/screen/screenrc";
+  SCREENRC = "${config.xdg.configHome}/screen/screenrc";
  };
 
  home.shellAliases  = {
@@ -52,8 +52,8 @@
   cleanup-DS        = "sudo find . -type f -name '*.DS_Store' -ls -delete";
   empty-trash       = "bash -c 'sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sudo rm -rfv /private/tmp/*.log'";
   pip-uninstall-all = "pip freeze | cut -d '@' -f1 | xargs pip uninstall -y";
-  lt                = "eza --tree --level=2 $eza_params";
-  ll                = "eza -albhHigUuS -m@ $eza_params | ov -H1";
+  lt                = "eza --tree --level=2";
+  ll                = "eza -albhHigUuS -m@ | ov -H1";
  };
 
  home.file = {
@@ -63,7 +63,7 @@
    ".local/bin/airport".source = /System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport;
 
    # config files in .config
-   "${config.xdg.configHome}/screen/screenrc".source = ./file/screen/screenrc;
+   "${config.home.sessionVariables.SCREENRC}".source = ./file/screen/screenrc;
 
    # programs
    "${config.xdg.configHome}/ov/config.yaml".source  = ./file/ov/config.yaml; # TODO: add this as program module to nix-community/home-manager
@@ -102,11 +102,11 @@
 
 
     ## package-managers ultimate aliases
-    pipx-ultimate = "pipx upgrade-all; pipx list --short 1> ${}/etc/ref-txts/pipx_list.txt";
+    pipx-ultimate = "pipx upgrade-all; pipx list --short 1> ${../..}/etc/ref-txts/pipx_list.txt";
     gem-ultimate  = "sudo -v; and gem update; gem cleanup";
     brew-ultimate = "brew update; and brew upgrade; and brew autoremove; and brew cleanup -s --prune=0; and rm -rf (brew --cache)";
     ## other ultimate aliases
-    apps-backup   = "env ls /Applications/ 1> $HOME/Sync-macOS/etc/ref-txts/apps_(date +%b%y).txt";
+    apps-backup   = "env ls /Applications/ 1> ${../..}/etc/ref-txts/apps_(date +%b%y).txt";
     mac-ultimate  = "sudo -v;and brew-ultimate; apps-backup";
    };
 
@@ -141,8 +141,8 @@
     # nix
     fish_add_path --move --prepend /nix/var/nix/profiles/default/bin
     fish_add_path --move --prepend /run/current-system/sw/bin
-    fish_add_path --move --prepend /etc/profiles/per-user/div/bin
-    fish_add_path --move --prepend $HOME/.nix-profile/bin
+    fish_add_path --move --prepend /etc/profiles/per-user/${config.home.username}/bin
+    fish_add_path --move --prepend ${config.home.profileDirectory}/bin
 
     # pyenv
     pyenv init - | source
@@ -155,8 +155,7 @@
    dotDir = ".config/zsh";
    history = {
     extended              = false; # save timestamps as well
-    expireDuplicatesFirst = true;
-    ignoreAllDups         = true;
+    expireDuplicatesFirst = true; ignoreAllDups         = true;
     path                  = "$ZDOTDIR/.zsh_history";
    };
 
@@ -366,6 +365,6 @@
    theme = builtins.fromTOML (builtins.readFile ./programs/yazi/theme.toml);
    # extraLuaConfig = builtins.readFile ./programs/yazi/init.lua;
   };
- home.file."${config.xdg.configHome}/yazi/init.lua".source = ./programs/yazi/init.lua; # TODO: add to nix-community/home-manager
+ home.file."${config.xdg.configHome}/yazi/init.lua".source = ./programs/yazi/init.lua;                       # TODO: add to nix-community/home-manager
  home.file."${config.xdg.configHome}/yazi/plugins" = {source = ./programs/yazi/plugins; recursive = true; }; # TODO: add to nix-community/home-manager
 }
