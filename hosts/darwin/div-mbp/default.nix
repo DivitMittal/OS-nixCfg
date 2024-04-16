@@ -30,7 +30,7 @@
 
   imports = [
     ./../common
-    ./mac.nix
+    ./macOS.nix
     ./programs/shells.nix
     ./services/yabai.nix
     ./services/skhd.nix

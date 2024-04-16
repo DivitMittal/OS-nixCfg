@@ -34,21 +34,21 @@
     enable = true;
     enableScriptingAddition = true;
     config = {
-      mouse_follows_focus       = "off"; focus_follows_mouse     = "off";
+      mouse_follows_focus       = "off"; focus_follows_mouse = "off";
       window_origin_display     = "default";
       window_placement          = "second_child";
       window_zoom_persist       = "off";
       window_shadow             = "off";
       window_animation_duration = 0.0;
-      window_opacity            = "off"; window_opacity_duration = 0.0; active_window_opacity = 1.0; normal_window_opacity  = 1.0;
+      window_opacity            = "off"; window_opacity_duration = 0.0; active_window_opacity = 1.0; normal_window_opacity = 1.0;
       insert_feedback_color     = "0xffd75f5f";
-      split_ratio               = 0.50; split_type               = "auto";
+      split_ratio               = 0.50; split_type  = "auto";
       auto_balance              = "off";
-      top_padding               = 8; bottom_padding              = 8;
-      left_padding              = 8; right_padding               = 8;
+      top_padding               = 8; bottom_padding = 8;
+      left_padding              = 8; right_padding = 8;
       window_gap                = 8;
       layout                    = "float";
-      mouse_modifier            = "fn"; mouse_action1            = "move"; mouse_action2      = "resize"; mouse_drop_action = "swap";
+      mouse_modifier            = "fn"; mouse_action1 = "move"; mouse_action2 = "resize"; mouse_drop_action = "swap";
       external_bar              = "off:0:0";
     };
     extraConfig = ''
@@ -83,7 +83,7 @@
     SHASUM=$(sha256sum "$KANATA_BIN" | cut -d' ' -f1)
 
     cat <<EOF >"$out"
-    %admin ALL=(root) NOPASSWD: sha256:$SHASUM $KANATA_BIN --cfg ${./kanata/cfg/tltr.kbd} 1> /dev/null 2> $KANATA_LOG
+    div ALL=(root) NOPASSWD: sha256:$SHASUM $KANATA_BIN --cfg ${./kanata/cfg/tltr.kbd} 1> /dev/null 2> $KANATA_LOG
     EOF
   '';
 }

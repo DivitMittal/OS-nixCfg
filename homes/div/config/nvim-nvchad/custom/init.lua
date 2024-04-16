@@ -106,13 +106,13 @@ autocmd("VimResized", {
 })
 
 -- Auto save views
-autocmd("BufWinLeave", {
+autocmd("BufLeave", {
   pattern = "?*",
   group = augroup("remember_folds", {clear = true}),
   callback = function() cmd([[silent! mkview]]) end,
 })
 
-autocmd("BufWinEnter", {
+autocmd("BufEnter", {
   pattern = "?*",
   group = augroup("remember_folds", {clear = true}),
   callback = function() cmd([[silent! loadview]]) end,

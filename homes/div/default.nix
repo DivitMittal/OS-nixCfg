@@ -30,8 +30,8 @@
 
   home.file = {
     # binaries in .local
-    ".local/bin/doom".source = /.${config.xdg.configHome}/emacs/bin/doom;
+    # ".local/bin/doom".source = /.${config.xdg.configHome}/emacs/bin/doom;
     ".local/bin/floorp".source = /Applications/Floorp.app/Contents/MacOS/floorp;
-    ".local/bin/airport".source = /System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport;
+    # ".local/bin/airport".source = /System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport;
   };
 }
