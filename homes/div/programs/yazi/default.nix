@@ -3,7 +3,7 @@
 {
   # TODO: add to nix-community/home-manager
   programs.yazi = {
-    enable = true;
+    enable = false;
     enableFishIntegration = false; enableZshIntegration = false;
     settings = ./yazi.nix;
     keymap = ./keymap.nix;
