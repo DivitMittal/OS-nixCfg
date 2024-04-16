@@ -1,0 +1,94 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => IdeaVim RC
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Adds relative numbers
+set number
+set relativenumber
+
+" Smart IdeaVim Features
+set idearefactormode=keep
+set ideastatusicon
+set ideajoin
+set ideavimsupport
+set ideamarks
+
+" Shows mode of editing at the bottom of the screen
+set showmode
+
+" Turn off annoying bells
+set visualbell
+
+" Copy to system clipboard as well
+set clipboard = clipboard + "unnamedplus"
+
+" Ignore case when searching
+set ignorecase
+
+" When searching try to be smart about cases
+set smartcase
+
+" Highlight search results
+set hlsearch
+
+" Makes regex search for characters typed as far as you type
+set incsearch
+
+let mapleader=" "
+
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Editing mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Remap VIM 0 to first non-blank character
+nmap 0 ^
+
+"" Map \r to the Reformat Code action
+nmap <leader>r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+nmap <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+nmap <leader>b <Action>(ToggleLineBreakpoint)
+
+" Terminal
+nmap <leader>ht <Action>(ActivateTerminalToolWindow)<cr>
+
+" Adjustments for Colemak layout
+nmap U :undo <cr>
+nmap u <Nop>
+nmap R :redo <cr>
+
+" Clear highlighting in search results
+nmap // :nohlsearch <cr>
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Installed from JetBrains Plugins store
+set sneak
+set multicursor
+set which-key
+set notimeout
+" Installed from remote repo
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'machakann/vim-highlightedyank'
+Plug 'michaeljsmith/vim-indent-object'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins Mappings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <CR> :action KJumpAction.Char2<cr>
+
