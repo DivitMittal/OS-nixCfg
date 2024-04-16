@@ -4,7 +4,7 @@
   # TODO: add to nix-community/home-manager
   programs.yazi = {
     enable = true;
-    enableFishIntegration = false; enableZshIntegration = false;
+    enableFishIntegration = false; enableZshIntegration = false; enableBashIntegration = false;
     settings = import ./yazi.nix;
     keymap = import ./keymap.nix;
     theme = import ./theme.nix;

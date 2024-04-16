@@ -13,7 +13,7 @@
   programs = {
     fzf = {
       enable                = true;
-      enableFishIntegration = false;
+      enableFishIntegration = false; enableBashIntegration = false; enableZshIntegration = false;
       defaultCommand        = "fd --hidden";
       defaultOptions        = [
         "--multi" "--cycle" "--border" "--height 50%"
@@ -24,7 +24,7 @@
 
     eza = {
       enable                = true;
-      enableFishIntegration = true; enableZshIntegration  = true;
+      enableFishIntegration = true; enableZshIntegration  = true; enableBashIntegration = false;
       extraOptions  = ["--all" "--classify" "--icons=always" "--group-directories-first" "--color=always" "--color-scale" "--color-scale-mode=gradient" "--hyperlink"];
     };
 
@@ -39,18 +39,18 @@
 
     zellij = {
       enable = true;
-      enableFishIntegration = false; enableZshIntegration = false;
+      enableFishIntegration = false; enableZshIntegration = false; enableBashIntegration = false;
     };
 
     zoxide = {
       enable                = true;
-      enableFishIntegration = true; enableZshIntegration  = true;
+      enableFishIntegration = true; enableZshIntegration  = true; enableBashIntegration = false;
       options               = ["--cmd cd"];
     };
 
     thefuck = {
       enable = true;
-      enableFishIntegration = true; enableZshIntegration = true;
+      enableFishIntegration = true; enableZshIntegration = true; enableBashIntegration = false;
     };
 
     newsboat = {

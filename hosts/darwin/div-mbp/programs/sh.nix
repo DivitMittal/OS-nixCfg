@@ -29,8 +29,6 @@
         set -o vi                                                             # vi keybindings
 
         export BASH_SILENCE_DEPRECATION_WARNING=1
-        export BADOTDIR="$HOME/.config/bash"
-        export HISTFILE=''${BADOTDIR:-$HOME}/.bash_history
 
         # shopt -s checkwinsize                                               # check window size after every command       (handled by nix-darwin)
         # [ -r "/etc/bashrc_$TERM_PROGRAM" ] && . "/etc/bashrc_$TERM_PROGRAM" # source a specific bashrc for Apple Terminal (handled by nix-darwin)

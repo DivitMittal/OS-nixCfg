@@ -69,8 +69,8 @@
       fish_add_path --move --prepend ${config.home.profileDirectory}/bin
 
       # pyenv
-      pyenv init - | source
-      pyenv virtualenv-init - | source
+      # pyenv init - | source
+      # pyenv virtualenv-init - | source
     '';
 
     plugins = [

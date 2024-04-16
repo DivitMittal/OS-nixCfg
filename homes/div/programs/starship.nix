@@ -1,7 +1,7 @@
 {
   programs.starship = {
     enable                = true;
-    enableFishIntegration = true; enableZshIntegration  = false;
+    enableFishIntegration = true; enableZshIntegration  = false; enableBashIntegration = false;
     settings              = {
       format = ''
         [╭─sys─-➜❯](bold blue) $sudo$username$hostname$shell$status$cmd_duration$docker_context
