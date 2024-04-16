@@ -31,7 +31,7 @@
   imports = [
     ./../common
     ./mac.nix
-    ./programs/sh.nix
+    ./programs/shells.nix
     ./services/yabai.nix
     ./services/skhd.nix
     ./homebrew.nix
