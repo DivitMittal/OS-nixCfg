@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.fish = {
@@ -15,6 +15,7 @@
           rm -f -- "$tmp"
         '';
       };
+      cht = { body = ''curl -ssL "https://cheat.sh/$argv''; };
     };
 
     shellAliases = {
@@ -25,11 +26,11 @@
 
 
       ## package-managers ultimate aliases
-      pipx-ultimate = "pipx upgrade-all; pipx list --short 1> ${./../../misc}/ref-txts/pipx_list.txt";
+      pipx-ultimate = "pipx upgrade-all; pipx list --short 1> ${config.home.homeDirectory}/sync-darwin/homes/${config.home.username}/misc/ref-txts/pipx_list.txt";
       gem-ultimate  = "sudo -v; and gem update; gem cleanup";
       brew-ultimate = "brew update; and brew upgrade; and brew autoremove; and brew cleanup -s --prune=0; and rm -rf (brew --cache)";
       ## other ultimate aliases
-      apps-backup   = "env ls /Applications/ 1> ${./../../misc}/apps/apps_(date +%b%y).txt";
+      apps-backup   = "env ls /Applications/ 1> ${config.home.homeDirectory}/sync-darwin/homes/${config.home.username}/misc/apps/apps_(date +%b%y).txt";
       mac-ultimate  = "sudo -v;and brew-ultimate; apps-backup";
     };
 
@@ -71,5 +72,34 @@
       pyenv init - | source
       pyenv virtualenv-init - | source
     '';
+
+    plugins = [
+      {
+        name = "fisher";
+        src = pkgs.fetchFromGitHub {
+          owner = "jorgebucaran";
+          repo = "fisher";
+          rev = "4.4.4";
+          hash = "sha256-e8gIaVbuUzTwKtuMPNXBT5STeddYqQegduWBtURLT3M=";
+        };
+      }
+    ];
+  };
+
+  home.file = {
+    fishPlugins = {
+      text = ''
+        jorgebucaran/autopair.fish
+        nickeb96/puffer-fish
+        markcial/upto
+        patrickf1/fzf.fish
+        lengyijun/fc-fish
+        edc/bass
+        oh-my-fish/plugin-wttr
+        oh-my-fish/plugin-osx
+        divitmittal/fifc@bugfix
+      '';
+      target = "${config.xdg.configHome}/fish/fish_plugins";
+    };
   };
 }

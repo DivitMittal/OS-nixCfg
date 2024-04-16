@@ -3,11 +3,11 @@
 {
   # TODO: add to nix-community/home-manager
   programs.yazi = {
-    enable = false;
+    enable = true;
     enableFishIntegration = false; enableZshIntegration = false;
-    settings = ./yazi.nix;
-    keymap = ./keymap.nix;
-    theme = ./theme.nix;
+    settings = import ./yazi.nix;
+    keymap = import ./keymap.nix;
+    theme = import ./theme.nix;
     # extraLuaConfig = builtins.readFile ./init.lua;
   };
   home.file = {

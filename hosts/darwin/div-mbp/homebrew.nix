@@ -27,7 +27,7 @@
       # "hammerspoon"
     ];
     brews = [
-      "cliclick" "pyenv-virtualenv"
+      "cliclick"
     ];
     # masApps = {};
   };
