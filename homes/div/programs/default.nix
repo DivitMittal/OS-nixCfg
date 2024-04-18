@@ -3,11 +3,13 @@
 {
   imports = [
     ./shells
+    ./git
+    ./yazi
     ./btop.nix
     ./atuin.nix
     ./starship.nix
-    ./git
-    ./yazi
+    ./vim.nix
+    ./firefox.nix
   ];
 
   programs = {

@@ -13,7 +13,7 @@
     };
     casks = [
       ### Internet Browsers
-      "floorp" "vivaldi"
+      "floorp" "vivaldi" "firefox"
       ### Development Environment
       "visual-studio-code" "jetbrains-toolbox"
       ### Microsoft
