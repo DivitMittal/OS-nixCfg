@@ -12,19 +12,12 @@
       extraFlags = ["--verbose"];
     };
     casks = [
-      ### Internet Browsers
-      "floorp" "vivaldi" "firefox"
-      ### Development Environment
-      "visual-studio-code" "jetbrains-toolbox"
-      ### Microsoft
-      "onedrive" "microsoft-auto-update" "microsoft-onenote"
-      ### Notes & ToDo
-      "obsidian" "notion" "todoist"
-      ### Desktop Environment
-      "raycast" "alt-tab" "spaceman" "syntax-highlight"
-
-      "thunderbird" "wezterm" "gswitch" "spotify" "onlyoffice"
-      # "hammerspoon"
+      "floorp" "vivaldi" "firefox" # Internet Browsers
+      "obsidian" "notion" # Notes & ToDo
+      "visual-studio-code" "jetbrains-toolbox" # Development Environment
+      "onedrive" "microsoft-auto-update" "microsoft-onenote" # Microsoft
+      "raycast" "alt-tab" "spaceman" "syntax-highlight" "gswitch" #"hammerspoon" # macOS DE
+      "thunderbird" "wezterm"  "spotify" "onlyoffice"
     ];
     brews = [
       "cliclick"

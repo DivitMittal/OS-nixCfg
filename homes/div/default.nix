@@ -18,7 +18,7 @@
       tmux grc neovim
       fd duf dust hexyl ouch ov # Modern altenatives
       bitwarden-cli rclone # CLI tools
-      cargo conda android-tools  # Developer tools
+      cargo micromamba android-tools  # Developer tools
       pipx spicetify-cli # plugin/package/module managers
       nmap speedtest-go bandwhich # networking tools
       pandoc poppler chafa imagemagick ffmpeg # file/data format

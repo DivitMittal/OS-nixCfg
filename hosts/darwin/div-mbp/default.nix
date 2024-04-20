@@ -10,7 +10,9 @@
 
   fonts = {
     fontDir.enable = true;
-    fonts          = with pkgs;[(nerdfonts.override {fonts = ["CascadiaCode"];})];
+    fonts          = with pkgs;[
+      (nerdfonts.override {fonts = ["CascadiaCode"];})
+    ];
   };
 
   users = {
