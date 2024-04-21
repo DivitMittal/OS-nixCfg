@@ -1,6 +1,7 @@
 {
   security.pam.enableSudoTouchIdAuth = true;
-  system.defaults.CustomUserPreferences = {
+
+  system.defaults = {
     dock = {
       ### Dock
       autohide        = true;
@@ -19,8 +20,8 @@
       AppleShowAllFiles              = true; AppleShowAllExtensions = true;
       ShowPathbar                    = true; ShowStatusBar          = false; _FXShowPosixPathInTitle = true;
       FXEnableExtensionChangeWarning = false;
-      FXDefaultSearchScope           = "SCcf";
-      FXPreferredViewStyle           = "icnv";
+      FXDefaultSearchScope           = "SCcf"; # SCcf - Scope current folder
+      FXPreferredViewStyle           = "icnv"; # icnv - icnv
     };
 
     loginwindow = {
@@ -64,5 +65,58 @@
 
     LaunchServices.LSQuarantine = false;
     SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
+  };
+
+  system.defaults.CustomUserPreferences = {
+    NSGlobalDomain = {
+      # Add a context menu item for showing the Web Inspector in web views
+      WebKitDeveloperExtras = true;
+    };
+    "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = true;
+    "com.apple.ImageCapture".disableHotPlug = true; # Auto
+    "com.apple.commerce".AutoUpdate = true;
+    "com.apple.AdLib" = {
+        allowApplePersonalizedAdvertising = false;
+    };
+    "com.apple.desktopservices" = {
+      # Avoid creating .DS_Store files on network or USB volumes
+      DSDontWriteNetworkStores = true;
+      DSDontWriteUSBStores = true;
+    };
+    "com.apple.screensaver" = {
+      askForPassword = 1;
+      askForPasswordDelay = 0;
+    };
+    "com.apple.Safari" = {
+      UniversalSearchEnabled = false;  # Privacy: don’t send search queries to Apple
+      SuppressSearchSuggestions = true;
+      WebKitTabToLinksPreferenceKey = true; # Press Tab to highlight each item on a web page
+      ShowFullURLInSmartSearchField = true;
+      AutoOpenSafeDownloads = false;  # Prevent Safari from opening ‘safe’ files automatically after downloading
+      ShowFavoritesBar = false;
+      IncludeInternalDebugMenu = true;
+      IncludeDevelopMenu = true;
+      WebKitDeveloperExtrasEnabledPreferenceKey = true;
+      WebContinuousSpellCheckingEnabled = false;
+      WebAutomaticSpellingCorrectionEnabled = false;
+      AutoFillFromAddressBook = false;
+      AutoFillCreditCardData = false;
+      AutoFillMiscellaneousForms = false;
+      WarnAboutFraudulentWebsites = true;
+      WebKitJavaEnabled = false;
+      WebKitJavaScriptCanOpenWindowsAutomatically = false;
+      "com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks" = true;
+      "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
+      "com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled" = false;
+      "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled" = false;
+      "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles" = false;
+      "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically" = false;
+    };
+    "com.apple.screencapture" = {
+      location = "~/Pictures/Screenshots/";
+      type = "png";
+    };
+    "com.apple.TextEdit".RichText = false;
+    "com.apple.HIToolbox".AppleFnUsageType = 0;
   };
 }

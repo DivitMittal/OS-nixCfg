@@ -71,6 +71,9 @@
       # pyenv
       # pyenv init - | source
       # pyenv virtualenv-init - | source
+
+      # micromamba
+      micromamba shell init --shell fish --root-prefix=~/.local/share/micromamba
     '';
 
     plugins = [

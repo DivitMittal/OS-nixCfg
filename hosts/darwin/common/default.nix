@@ -28,7 +28,6 @@
     stateVersion = 4;                                                        # $ darwin-rebuild changelog
   };
 
-
   environment = {
     systemPackages = builtins.attrValues {
       inherit(pkgs)
@@ -56,4 +55,9 @@
     nix-index.enable = true;
     man.enable       = true; info.enable      = true;
   };
+
+  system.activationScripts.postUserActivation.text = ''
+    # Following line should allow us to avoid a logout/login cycle
+    /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+  '';
 }
