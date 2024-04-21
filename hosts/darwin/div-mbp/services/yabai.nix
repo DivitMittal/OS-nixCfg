@@ -30,7 +30,7 @@
 { pkgs, ... }:
 
 let
-  kantaBin = ./kanata/bin/kanata;
+  kanataBin = ./kanata/bin/kanata;
   kanataCfg = ./kanata/cfg/tltr.kbd;
 in
 {
