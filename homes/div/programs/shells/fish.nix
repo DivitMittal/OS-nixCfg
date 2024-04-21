@@ -72,8 +72,12 @@
       # pyenv init - | source
       # pyenv virtualenv-init - | source
 
-      # micromamba
-      micromamba shell init --shell fish --root-prefix=~/.local/share/micromamba
+      # >>> mamba initialize >>>
+      # !! Contents within this block are managed by 'mamba init' !!
+      set -gx MAMBA_EXE "/Users/div/.nix-profile/bin/micromamba"
+      set -gx MAMBA_ROOT_PREFIX "/Users/div/.local/share/micromamba/"
+      $MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
+      # <<< mamba initialize <<<
     '';
 
     plugins = [

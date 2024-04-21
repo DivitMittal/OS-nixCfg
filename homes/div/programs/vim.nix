@@ -184,7 +184,7 @@ _:
       " => Text, tab and indent related
       """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
       " Use spaces instead of tabs
-      "set expandtab
+      set expandtab
 
       " Be smart when using tabs
       set smarttab
@@ -250,8 +250,11 @@ _:
       catch
       endtry
 
-      " Return to last edit position when opening files (You want this!)
-      au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+      augroup LastPosition
+        autocmd!
+        " Return to last edit position when opening files (You want this!)
+        autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+      augroup END
 
 
       """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -270,9 +273,10 @@ _:
           call setreg('/', old_query)
       endfun
 
-      if has("autocmd")
-          autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
-      endif
+      augroup CleanName
+        autocmd!
+        autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+      augroup END
 
 
       """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

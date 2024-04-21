@@ -38,7 +38,6 @@ Desktop&Dock {
 
 Keyboard {
 	keyboard-layout          "Unicode Hex Input"
-	fn-globe                 "do nothing"
 	keyboard-bindings-except "remove bindings for screenshots"
 	customize-touchbar       "custom"
 }

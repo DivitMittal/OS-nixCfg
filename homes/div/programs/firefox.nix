@@ -4,11 +4,58 @@
   programs.firefox = {
     enable = true;
     package = null;
+
     nativeMessagingHosts = with pkgs;[ tridactyl-native ];
+
     profiles = {
       custom-default = {
         id = 0;
         isDefault = true;
+
+        bookmarks = [];
+
+        containers = {
+          second = {
+            color = "blue";
+            icon = "tree";
+            id = 1;
+          };
+          finance = {
+            color = "green";
+            icon = "dollar";
+            id = 2;
+          };
+        };
+
+        search = {
+          default = "Google";
+          privateDefault = "Google";
+          engines = {
+            "Nix Packages" = {
+              urls = [{
+                template = "https://search.nixos.org/packages";
+                params = [
+                  { name = "type"; value = "packages"; }
+                  { name = "query"; value = "{searchTerms}"; }
+                ];
+              }];
+
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@np" ];
+            };
+
+            "NixOS Wiki" = {
+              urls = [{ template = "https://wiki.nixos.org/index.php?search={searchTerms}"; }];
+              iconUpdateURL = "https://wiki.nixos.org/favicon.png";
+              updateInterval = 24 * 60 * 60 * 1000; # every day
+              definedAliases = [ "@nw" ];
+            };
+
+            "Bing".metaData.hidden = true;
+            "Google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
+          };
+        };
+
         userChrome = ''
           @charset "UTF-8";
           /* ---------------------------   STATUS PANEL ------------------------ */
@@ -137,8 +184,6 @@
         extraConfig = ''
           /****************************************************************************
           * Betterfox                                                                *
-          * "Ad meliora"                                                             *
-          * version: esr115.4                                                        *
           * url: https://github.com/yokoffing/Betterfox                              *
           ****************************************************************************/
 
@@ -151,14 +196,18 @@
           user_pref("layout.css.grid-template-masonry-value.enabled", true);
           user_pref("dom.enable_web_task_scheduling", true);
           user_pref("layout.css.has-selector.enabled", true);
+          user_pref("dom.security.sanitizer.enabled", true);
 
-          /** GFX ***/
+          /* GFX **/
           user_pref("gfx.canvas.accelerated.cache-items", 4096);
           user_pref("gfx.canvas.accelerated.cache-size", 512);
           user_pref("gfx.content.skia-font-cache-size", 20);
 
           /* BROWSER CACHE **/
           user_pref("browser.cache.disk.enable", false);
+
+          /* DISK CACHE */
+          user_pref("browser.cache.jsbc_compression_level", 3);
 
           /* MEDIA CACHE */
           user_pref("media.memory_cache_max_size", 65536);
@@ -171,14 +220,19 @@
           /* NETWORK */
           user_pref("network.buffer.cache.size", 262144);
           user_pref("network.buffer.cache.count", 128);
+
           user_pref("network.http.max-connections", 1800);
           user_pref("network.http.max-persistent-connections-per-server", 10);
           user_pref("network.http.max-urgent-start-excessive-connections-per-host", 5);
-          user_pref("network.websocket.max-connections", 400);
           user_pref("network.http.pacing.requests.enabled", false);
+
+          user_pref("network.websocket.max-connections", 400);
+
           user_pref("network.dnsCacheEntries", 10000);
           user_pref("network.dnsCacheExpiration", 86400);
           user_pref("network.dns.max_high_priority_threads", 8);
+          user_pref("network.dns.disablePrefetch", true);
+
           user_pref("network.ssl_tokens_cache_capacity", 20480);
 
           /* SPECULATIVE CONNECTIONS */
@@ -186,6 +240,7 @@
           user_pref("network.early-hints.preconnect.enabled", true);
           user_pref("network.predictor.enabled", false);
           user_pref("network.predictor.enable-prefetch", false);
+          user_pref("network.prefetch-next", false);
 
           /****************************************************************************
           * SECTION: SECUREFOX                                                       *
@@ -357,18 +412,6 @@
           user_pref("browser.bookmarks.openInTabClosesMenu", false);
           user_pref("browser.menu.showViewImageInfo", true);
           user_pref("findbar.highlightAll", true);
-
-          /****************************************************************************
-          * SECTION: SMOOTHFOX                                                       *
-          ****************************************************************************/
-          // visit https://github.com/yokoffing/Betterfox/blob/main/Smoothfox.js
-          // Enter your scrolling prefs below this line:
-
-          /****************************************************************************
-          * START: MY OVERRIDES                                                      *
-          ****************************************************************************/
-          // Enter your personal prefs below this line:
-          //user_pref("gfx.canvas.accelerated", true); // enable if using a dedicated GPU on WINDOWS
 
           /****************************************************************************
           * END: BETTERFOX                                                           *

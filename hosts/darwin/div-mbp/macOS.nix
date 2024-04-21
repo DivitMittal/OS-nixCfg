@@ -117,6 +117,7 @@
       type = "png";
     };
     "com.apple.TextEdit".RichText = false;
-    "com.apple.HIToolbox".AppleFnUsageType = 0;
+    "com.apple.HIToolbox".AppleFnUsageType = 0; # fn key does nothing
+    "com.apple.appleseed.FeedbackAssistant".Autogather = false;
   };
 }
