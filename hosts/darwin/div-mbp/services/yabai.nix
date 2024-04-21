@@ -29,6 +29,10 @@
 ##############################################################################
 { pkgs, ... }:
 
+let
+  kantaBin = ./kanata/bin/kanata;
+  kanataCfg = ./kanata/cfg/tltr.kbd;
+in
 {
   services.yabai = {
     enable = true;
@@ -73,17 +77,11 @@
       yabai -m rule --add app="^Calculator$" sticky=on
 
       # Kanata daemon
-      sudo ${./kanata/bin/kanata} --cfg ${./kanata/cfg/tltr.kbd} 1> /dev/null 2> /private/tmp/rs.kanata.err.log
+      sudo ${kanataBin} --cfg ${kanataCfg} 1> /dev/null 2> /tmp/rs.kanata.err.log
     '';
   };
 
-  environment.etc."sudoers.d/kanata".source = pkgs.runCommand "sudoers-kanata" {} ''
-    KANATA_BIN="${./kanata/bin/kanata}"
-    KANATA_LOG="/tmp/rs.kanata.err.log"
-    SHASUM=$(sha256sum "$KANATA_BIN" | cut -d' ' -f1)
-
-    cat <<EOF >"$out"
-    ALL ALL=(root) NOPASSWD: sha256:$SHASUM $KANATA_BIN --cfg ${./kanata/cfg/tltr.kbd} 1> /dev/null 2> $KANATA_LOG
-    EOF
+  security.sudo.extraConfig = ''
+    ALL ALL=(root) NOPASSWD: ${kanataBin}
   '';
 }
