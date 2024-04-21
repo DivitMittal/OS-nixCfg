@@ -12,8 +12,9 @@
   outputs = { nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
+      pkgs = import nixpkgs { inherit system; };
+    in
+    {
       homeConfigurations = {
         "div" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;

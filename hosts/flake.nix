@@ -10,15 +10,19 @@
   };
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, ... }:
-  {
-    darwinConfigurations = {
-      "div-mbp" = nix-darwin.lib.darwinSystem {
-        system  = "x86_64-darwin";
-        modules = [ ./darwin/div-mbp ];
-        specialArgs = {inherit inputs;};
+    let
+      system = "x86_64-darwin";
+      pkgs = import nixpkgs { inherit system; };
+    in
+    {
+      darwinConfigurations = {
+        "div-mbp" = nix-darwin.lib.darwinSystem {
+          system  = "x86_64-darwin";
+          modules = [ ./darwin/div-mbp ];
+          specialArgs = { inherit inputs; };
+        };
       };
-    };
 
-    darwinPackages = self.darwinConfigurations."div-mbp".pkgs; # Expose the package set, including overlays, for convenience.
-  };
+      darwinPackages = self.darwinConfigurations."div-mbp".pkgs; # Expose the package set, including overlays, for convenience.
+    };
 }

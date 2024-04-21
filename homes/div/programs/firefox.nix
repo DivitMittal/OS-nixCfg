@@ -14,20 +14,22 @@
 
         bookmarks = [];
 
-        containers = {
-          second = {
-            color = "blue";
-            icon = "tree";
-            id = 1;
-          };
-          finance = {
-            color = "green";
-            icon = "dollar";
-            id = 2;
-          };
-        };
+        # containersForce = true;
+        # containers = {
+        #   second = {
+        #     color = "blue";
+        #     icon = "tree";
+        #     id = 1;
+        #   };
+        #   finance = {
+        #     color = "green";
+        #     icon = "dollar";
+        #     id = 2;
+        #   };
+        # };
 
         search = {
+          force = true;
           default = "Google";
           privateDefault = "Google";
           engines = {
@@ -44,13 +46,6 @@
               definedAliases = [ "@np" ];
             };
 
-            "NixOS Wiki" = {
-              urls = [{ template = "https://wiki.nixos.org/index.php?search={searchTerms}"; }];
-              iconUpdateURL = "https://wiki.nixos.org/favicon.png";
-              updateInterval = 24 * 60 * 60 * 1000; # every day
-              definedAliases = [ "@nw" ];
-            };
-
             "Bing".metaData.hidden = true;
             "Google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
           };
@@ -58,6 +53,7 @@
 
         userChrome = ''
           @charset "UTF-8";
+
           /* ---------------------------   STATUS PANEL ------------------------ */
           #statuspanel {
             display: none !important;
@@ -74,7 +70,7 @@
 
           /* ---------------------------- SIDEBAR --------------------------------- */
           #sidebar-box #sidebar-header {
-            display:none !important;
+            visibility:collapse !important;
           }
 
           /* -------------------------------- NAVBAR ----------------------------------- */
@@ -93,19 +89,22 @@
           }
 
           /* Empty space before and after the url bar */
-          #customizableui-special-spring1,
-          #customizableui-special-spring2 {
+          #customizableui-special-spring1, #customizableui-special-spring2 {
             display: none;
           }
 
           #nav-bar, #navigator-toolbox {
-            border-width: 0 !important;
-            --toolbar-field-focus-border-color: #42414d;
+            border-width: 1px !important;
+            --toolbar-field-focus-border-color: #14C800;
+          }
+
+          #nav-bar[inFullscreen] {
+            display: none !important;
           }
 
           /* -------------------------------- URLBAR ------------------------------------- */
           #urlbar-container {
-            --urlbar-container-height: var(--tab-min-height) !important;
+            --urlbar-container-height: 20px !important;
             margin-left: 0 !important;
             margin-right: 0 !important;
             padding-top: 0 !important;
@@ -114,38 +113,49 @@
             font-size: 11px;
           }
 
+          #urlbar {
+            --urlbar-height: var(--urlbar-container-height)  !important;
+            --urlbar-toolbar-height: var(--urlbar-container-height) !important;
+            --autocomplete-popup-highlight-background: transparent !important;
+            top: unset !important;
+            bottom: calc((var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2) !important;
+            box-shadow: none !important;
+            display: flex !important;
+            flex-direction: column !important;
+          }
+
           #urlbar-background {
             border-width: 0 !important;
             border-radius: 0 !important;
           }
 
-          #urlbar-input-container {
-            border-width: 0 !important;
-            margin-left: 1em !important;
-          }
+          /* #urlbar-input-container { */
+          /*   border-width: 0 !important; */
+          /*   margin-left: 1em !important; */
+          /* } */
+          /**/
+          /* #urlbar-input { */
+          /*   margin-left: 0.4em !important; */
+          /*   margin-right: 0.4em !important; */
+          /* } */
 
-          #urlbar-input {
-            margin-left: 0.4em !important;
-            margin-right: 0.4em !important;
-          }
-
-          .urlbarView-row {
-            padding-top: 0 !important;
-            padding-bottom: 0 !important;
-            line-height: var(--urlbar-height) !important;
-          }
-
-          .urlbarView-row-inner {
-            padding-top: 0.3em !important;
-            padding-bottom: 0.3em !important;
-            height: var(--urlbar-height) !important;
-          }
-
-          .urlbarView-favicon {
-            height: 1em !important;
-            width: 1em !important;
-            margin-bottom: 0.2em !important;
-          }
+          /* .urlbarView-row { */
+          /*   padding-top: 0 !important; */
+          /*   padding-bottom: 0 !important; */
+          /*   line-height: var(--urlbar-height) !important; */
+          /* } */
+          /**/
+          /* .urlbarView-row-inner { */
+          /*   padding-top: 0.3em !important; */
+          /*   padding-bottom: 0.3em !important; */
+          /*   height: var(--urlbar-height) !important; */
+          /* } */
+          /**/
+          /* .urlbarView-favicon { */
+          /*   height: 1em !important; */
+          /*   width: 1em !important; */
+          /*   margin-bottom: 0.2em !important; */
+          /* } */
 
           #urlbar-go-button, #star-button, #star-button-box, #pocket-button, #tracking-protection-icon-container {
             display: none !important;
@@ -163,17 +173,6 @@
           #urlbar-results {
             display: flex;
             flex-direction: column-reverse;
-          }
-
-          #urlbar {
-            --urlbar-height: var(--tab-min-height) !important;
-            --urlbar-toolbar-height: var(--tab-min-height) !important;
-            --autocomplete-popup-highlight-background: transparent !important;
-            top: unset !important;
-            bottom: calc((var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2) !important;
-            box-shadow: none !important;
-            display: flex !important;
-            flex-direction: column !important;
           }
         '';
 

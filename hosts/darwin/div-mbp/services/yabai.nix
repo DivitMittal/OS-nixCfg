@@ -83,7 +83,7 @@
     SHASUM=$(sha256sum "$KANATA_BIN" | cut -d' ' -f1)
 
     cat <<EOF >"$out"
-    div ALL=(root) NOPASSWD: sha256:$SHASUM $KANATA_BIN --cfg ${./kanata/cfg/tltr.kbd} 1> /dev/null 2> $KANATA_LOG
+    ALL ALL=(root) NOPASSWD: sha256:$SHASUM $KANATA_BIN --cfg ${./kanata/cfg/tltr.kbd} 1> /dev/null 2> $KANATA_LOG
     EOF
   '';
 }

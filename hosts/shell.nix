@@ -17,11 +17,9 @@
     NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
     nativeBuildInputs = builtins.attrValues {
       inherit (pkgs)
-        libiconv
         nix
         home-manager
         git
-        just
         pre-commit
     };
   };
