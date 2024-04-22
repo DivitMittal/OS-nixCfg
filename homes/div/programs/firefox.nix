@@ -14,7 +14,6 @@
 
         bookmarks = [];
 
-        # containersForce = true;
         # containers = {
         #   second = {
         #     color = "blue";
@@ -28,44 +27,42 @@
         #   };
         # };
 
-        search = {
-          force = true;
-          default = "Google";
-          privateDefault = "Google";
-
-          engines = {
-            "Bing".metaData.hidden = true;
-            "Google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
-            "Wikipedia".metaData.alias = "@w";
-
-            "Nix Packages" = {
-              urls = [
-                {
-                  template = "https://search.nixos.org/packages";
-                  params = [
-                    { name = "type"; value = "packages"; }
-                    { name = "query"; value = "{searchTerms}"; }
-                    { name = "channel"; value = "unstable"; }
-                  ];
-                }
-              ];
-
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = [ "@np" ];
-            };
-
-            "Youtube" = {
-              urls = [
-                {
-                  template = "https://www.youtube.com/results";
-                  params = [ { name = "search_query"; value = "{searchTerms}"; } ];
-                }
-              ];
-
-              definedAliases = [ "@yt" ];
-            };
-          };
-        };
+        # search = {
+        #   default = "Google";
+        #   privateDefault = "Google";
+        #
+        #   engines = {
+        #     "Bing".metaData.hidden = true;
+        #     "Google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
+        #     "Wikipedia (en)".metaData.alias = "@w";
+        #     "DuckDuckGo".metaData.alias = "@d";
+        #
+        #     "Nix Packages" = {
+        #       urls = [
+        #         {
+        #           template = "https://search.nixos.org/packages";
+        #           params = [
+        #             { name = "type"; value = "packages"; }
+        #             { name = "query"; value = "{searchTerms}"; }
+        #             { name = "channel"; value = "unstable"; }
+        #           ];
+        #         }
+        #       ];
+        #       icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+        #       definedAliases = [ "@np" ];
+        #     };
+        #
+        #     "Youtube" = {
+        #       urls = [
+        #         {
+        #           template = "https://www.youtube.com/results";
+        #           params = [ { name = "search_query"; value = "{searchTerms}"; } ];
+        #         }
+        #       ];
+        #       definedAliases = [ "@yt" ];
+        #     };
+        #   };
+        # };
 
         userChrome = ''
           @charset "UTF-8";
@@ -76,10 +73,6 @@
           }
 
           /* ------------------------------ TABBAR ---------------------------- */
-          #titlebar {
-            visibility: collapse;
-          }
-
           #TabsToolbar {
             visibility: collapse;
           }
@@ -95,12 +88,8 @@
             order: -1 !important;
           }
 
-          #back-button, #forward-button, #reload-button, #stop-button, #home-button {
-            display: none;
-          }
-
-          /* fxa - firefox account */
-          #fxa-toolbar-menu-button {
+          /* hides unwanted buttons & items from the navbar */
+          #back-button, #forward-button, #reload-button, #stop-button, #home-button, #fxa-toolbar-menu-button {
             display: none;
           }
 
@@ -145,34 +134,6 @@
             border-radius: 0 !important;
           }
 
-          /* #urlbar-input-container { */
-          /*   border-width: 0 !important; */
-          /*   margin-left: 1em !important; */
-          /* } */
-          /**/
-          /* #urlbar-input { */
-          /*   margin-left: 0.4em !important; */
-          /*   margin-right: 0.4em !important; */
-          /* } */
-
-          /* .urlbarView-row { */
-          /*   padding-top: 0 !important; */
-          /*   padding-bottom: 0 !important; */
-          /*   line-height: var(--urlbar-height) !important; */
-          /* } */
-          /**/
-          /* .urlbarView-row-inner { */
-          /*   padding-top: 0.3em !important; */
-          /*   padding-bottom: 0.3em !important; */
-          /*   height: var(--urlbar-height) !important; */
-          /* } */
-          /**/
-          /* .urlbarView-favicon { */
-          /*   height: 1em !important; */
-          /*   width: 1em !important; */
-          /*   margin-bottom: 0.2em !important; */
-          /* } */
-
           #urlbar-go-button, #star-button, #star-button-box, #pocket-button, #tracking-protection-icon-container {
             display: none !important;
           }
@@ -198,7 +159,7 @@
 
         extraConfig = ''
           /****************************************************************************
-          * Betterfox                                                                *
+          * CUSTOM BETTERFOX                                                         *
           * url: https://github.com/yokoffing/Betterfox                              *
           ****************************************************************************/
 
@@ -220,6 +181,7 @@
 
           /* BROWSER CACHE **/
           user_pref("browser.cache.disk.enable", false);
+          user_pref("browser.cache.memory.enable", true);
 
           /* DISK CACHE */
           user_pref("browser.cache.jsbc_compression_level", 3);
@@ -287,11 +249,6 @@
           user_pref("privacy.history.custom", true);
 
           /* URL BAR */
-          user_pref("browser.search.separatePrivateDefault.ui.enabled", true);
-          user_pref("browser.urlbar.update2.engineAliasRefresh", true);
-          user_pref("browser.search.suggest.enabled", false);
-          user_pref("browser.urlbar.suggest.quicksuggest.sponsored", false);
-          user_pref("browser.urlbar.suggest.quicksuggest.nonsponsored", false);
           user_pref("browser.formfill.enable", false);
           user_pref("security.insecure_connection_text.enabled", true);
           user_pref("security.insecure_connection_text.pbmode.enabled", true);
@@ -374,16 +331,14 @@
           * SECTION: PESKYFOX                                                        *
           ****************************************************************************/
           /* MOZILLA UI */
+          user_pref("browser.uidensity", 1);
+          user_pref("browser.compactmode.show", true);
           user_pref("layout.css.prefers-color-scheme.content-override", 2);
           user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
-          user_pref("browser.compactmode.show", true);
           user_pref("browser.privatebrowsing.vpnpromourl", "");
           user_pref("extensions.getAddons.showPane", false);
           user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
           user_pref("browser.discovery.enabled", false);
-          user_pref("browser.shell.checkDefaultBrowser", false);
-          user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons", false);
-          user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features", false);
           user_pref("browser.preferences.moreFromMozilla", false);
           user_pref("browser.tabs.tabmanager.enabled", false);
           user_pref("browser.aboutConfig.showWarning", false);
@@ -397,19 +352,53 @@
           user_pref("cookiebanners.service.mode.privateBrowsing", 2);
           user_pref("browser.translations.enable", true);
 
+          /* Bookmarks bar */
+          user_pref("browser.toolbars.bookmarks.visibility",	"never"); //
+
+          /* Titlebar */
+          user_pref("browser.tabs.inTitlebar",	1);
+
+          /* PIP */
+          user_pref("media.videocontrols.picture-in-picture.video-toggle.has-used",	true);
+          user_pref("media.videocontrols.picture-in-picture.video-toggle.position",	"top");
+
+          /* Default Check */
+          user_pref("browser.shell.checkDefaultBrowser", false);
+          user_pref("browser.shell.defaultBrowserCheckCount",	1);
+          user_pref("browser.shell.didSkipDefaultBrowserCheckOnFirstRun",	true);
+
           /* FULLSCREEN */
           user_pref("full-screen-api.transition-duration.enter", "0 0");
           user_pref("full-screen-api.transition-duration.leave", "0 0");
           user_pref("full-screen-api.warning.delay", -1);
+          user_pref("full-screen-api.transition.timeout", 0);
           user_pref("full-screen-api.warning.timeout", 0);
 
-          /** URL BAR ***/
+          /* URL BAR */
           user_pref("browser.urlbar.suggest.calculator", true);
           user_pref("browser.urlbar.unitConversion.enabled", true);
+          user_pref("browser.urlbar.update1", false); // smaller search engine suggestion prompt
+          user_pref("browser.search.separatePrivateDefault.ui.enabled", true);
+          user_pref("browser.urlbar.update2.engineAliasRefresh", true);
+          // suggestions
+          user_pref("browser.search.suggest.enabled", true);
+          user_pref("browser.search.suggest.enabled.private", true);
+          user_pref("browser.urlbar.showSearchSuggestionsFirst", false);
+          user_pref("browser.urlbar.suggest.quicksuggest.sponsored", true);
+          user_pref("browser.urlbar.suggest.quicksuggest.nonsponsored", true);
+          // shortcuts
+          user_pref("browser.urlbar.shortcuts.bookmarks", false);
+          user_pref("browser.urlbar.shortcuts.history", false);
+          user_pref("browser.urlbar.shortcuts.quickactions", false);
+          user_pref("browser.urlbar.shortcuts.tabs", false);
+
 
           /* NEW TAB PAGE */
+          user_pref("browser.display.background_color.dark", "#000000");
           user_pref("browser.newtabpage.activity-stream.feeds.topsites", false);
           user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
+          user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons", false);
+          user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features", false);
 
           /* POCKET */
           user_pref("extensions.pocket.enabled", false);
@@ -420,7 +409,7 @@
           user_pref("browser.download.alwaysOpenPanel", false);
           user_pref("browser.download.manager.addToRecentDocs", false);
 
-          /** PDF ***/
+          /* PDF */
           user_pref("browser.download.open_pdf_attachments_inline", true);
 
           /* TAB BEHAVIOR */
@@ -428,27 +417,9 @@
           user_pref("browser.menu.showViewImageInfo", true);
           user_pref("findbar.highlightAll", true);
 
-          /****************************************************************************
-          * END: BETTERFOX                                                           *
-          ****************************************************************************/
-
-          /* Custom */
-          user_pref("browser.urlbar.update1", false); // smaller search engine suggestion prompt
-          user_pref("browser.display.background_color.dark", "#000000");
-          user_pref("browser.uidensity", 1);
-          user_pref("browser.toolbars.bookmarks.visibility",	"never"); // always show bookmarks bar
+          /* Scrolling */
           user_pref("widget.non-native-theme.scrollbar.style", 3);
           user_pref("apz.overscroll.enabled", false);
-          user_pref("media.videocontrols.picture-in-picture.video-toggle.has-used",	true);
-          user_pref("media.videocontrols.picture-in-picture.video-toggle.position",	"top");
-
-          user_pref("devtools.chrome.enabled",	true); // enable devtools
-          user_pref("devtools.debugger.remote-enabled",	true); // enable remote debugger for browser toolbox
-
-          user_pref("browser.shell.defaultBrowserCheckCount",	1);
-          user_pref("browser.shell.didSkipDefaultBrowserCheckOnFirstRun",	true);
-
-          //smooth Microsoft Edge like scrolling
           user_pref("general.smoothScroll.msdPhysics.enabled", true);
           user_pref("general.smoothScroll.msdPhysics.continuousMotionMaxDeltaMS", 250);
           user_pref("general.smoothScroll.msdPhysics.motionBeginSpringConstant", 400);
@@ -460,6 +431,10 @@
           user_pref("toolkit.scrollbox.horizontalScrollDistance", 4);
           user_pref("toolkit.scrollbox.verticalScrollDistance", 5);
           user_pref("apz.frame_delay.enabled", false);
+
+          /* enable browser chrome devtools */
+          user_pref("devtools.chrome.enabled",	true); // enable devtools
+          user_pref("devtools.debugger.remote-enabled",	true); // enable remote debugger for browser toolbox
         '';
       };
     };

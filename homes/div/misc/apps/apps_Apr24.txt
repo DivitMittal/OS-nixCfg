@@ -1,7 +1,7 @@
 AlDente.app
 AltTab.app
 Bartender 5.app
-Floorp.app
+Firefox.app
 Homerow.app
 JetBrains Toolbox.app
 Menu Bar Dock.app
@@ -20,9 +20,7 @@ Spaceman.app
 Spotify.app
 Syntax Highlight.app
 Thunderbird.app
-Todoist.app
 Utilities
 Visual Studio Code.app
-Vivaldi.app
 WezTerm.app
 gSwitch.app
