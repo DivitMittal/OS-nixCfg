@@ -12,7 +12,7 @@
       extraFlags = ["--verbose"];
     };
     casks = [
-      "floorp" "vivaldi" "firefox" # Internet Browsers
+      "firefox" # Internet Browsers
       "obsidian" "notion" # Notes & ToDo
       "visual-studio-code" "jetbrains-toolbox" # Development Environment
       "onedrive" "microsoft-auto-update" "microsoft-onenote" # Microsoft
@@ -22,6 +22,5 @@
     brews = [
       "cliclick"
     ];
-    # masApps = {};
   };
 }

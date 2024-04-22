@@ -32,22 +32,38 @@
           force = true;
           default = "Google";
           privateDefault = "Google";
+
           engines = {
+            "Bing".metaData.hidden = true;
+            "Google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
+            "Wikipedia".metaData.alias = "@w";
+
             "Nix Packages" = {
-              urls = [{
-                template = "https://search.nixos.org/packages";
-                params = [
-                  { name = "type"; value = "packages"; }
-                  { name = "query"; value = "{searchTerms}"; }
-                ];
-              }];
+              urls = [
+                {
+                  template = "https://search.nixos.org/packages";
+                  params = [
+                    { name = "type"; value = "packages"; }
+                    { name = "query"; value = "{searchTerms}"; }
+                    { name = "channel"; value = "unstable"; }
+                  ];
+                }
+              ];
 
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@np" ];
             };
 
-            "Bing".metaData.hidden = true;
-            "Google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
+            "Youtube" = {
+              urls = [
+                {
+                  template = "https://www.youtube.com/results";
+                  params = [ { name = "search_query"; value = "{searchTerms}"; } ];
+                }
+              ];
+
+              definedAliases = [ "@yt" ];
+            };
           };
         };
 
@@ -59,7 +75,7 @@
             display: none !important;
           }
 
-          /* ---------------------------- TABBAR ---------------------------- */
+          /* ------------------------------ TABBAR ---------------------------- */
           #titlebar {
             visibility: collapse;
           }
@@ -68,12 +84,12 @@
             visibility: collapse;
           }
 
-          /* ---------------------------- SIDEBAR --------------------------------- */
+          /* ----------------------------- SIDEBAR ----------------------------- */
           #sidebar-box #sidebar-header {
             visibility:collapse !important;
           }
 
-          /* -------------------------------- NAVBAR ----------------------------------- */
+          /* ------------------------------ NAVBAR ------------------------------ */
           /* Makes browser window first element sends the NAVBAR down */
           #browser {
             order: -1 !important;
@@ -102,7 +118,7 @@
             display: none !important;
           }
 
-          /* -------------------------------- URLBAR ------------------------------------- */
+          /* ------------------------------ URLBAR ------------------------------ */
           #urlbar-container {
             --urlbar-container-height: 20px !important;
             margin-left: 0 !important;
@@ -415,6 +431,35 @@
           /****************************************************************************
           * END: BETTERFOX                                                           *
           ****************************************************************************/
+
+          /* Custom */
+          user_pref("browser.urlbar.update1", false); // smaller search engine suggestion prompt
+          user_pref("browser.display.background_color.dark", "#000000");
+          user_pref("browser.uidensity", 1);
+          user_pref("browser.toolbars.bookmarks.visibility",	"never"); // always show bookmarks bar
+          user_pref("widget.non-native-theme.scrollbar.style", 3);
+          user_pref("apz.overscroll.enabled", false);
+          user_pref("media.videocontrols.picture-in-picture.video-toggle.has-used",	true);
+          user_pref("media.videocontrols.picture-in-picture.video-toggle.position",	"top");
+
+          user_pref("devtools.chrome.enabled",	true); // enable devtools
+          user_pref("devtools.debugger.remote-enabled",	true); // enable remote debugger for browser toolbox
+
+          user_pref("browser.shell.defaultBrowserCheckCount",	1);
+          user_pref("browser.shell.didSkipDefaultBrowserCheckOnFirstRun",	true);
+
+          //smooth Microsoft Edge like scrolling
+          user_pref("general.smoothScroll.msdPhysics.enabled", true);
+          user_pref("general.smoothScroll.msdPhysics.continuousMotionMaxDeltaMS", 250);
+          user_pref("general.smoothScroll.msdPhysics.motionBeginSpringConstant", 400);
+          user_pref("general.smoothScroll.msdPhysics.regularSpringConstant", 400);
+          user_pref("general.smoothScroll.msdPhysics.slowdownMinDeltaMS", 120);
+          user_pref("general.smoothScroll.msdPhysics.slowdownMinDeltaRatio",  0.4);
+          user_pref("general.smoothScroll.msdPhysics.slowdownSpringConstant", 5000);
+          user_pref("mousewheel.min_line_scroll_amount", 22);
+          user_pref("toolkit.scrollbox.horizontalScrollDistance", 4);
+          user_pref("toolkit.scrollbox.verticalScrollDistance", 5);
+          user_pref("apz.frame_delay.enabled", false);
         '';
       };
     };
