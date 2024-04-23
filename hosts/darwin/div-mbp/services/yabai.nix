@@ -36,7 +36,10 @@ in
 {
   services.yabai = {
     enable = true;
+    package = pkgs.yabai;
+
     enableScriptingAddition = true;
+
     config = {
       mouse_follows_focus       = "off"; focus_follows_mouse = "off";
       window_origin_display     = "default";
@@ -55,6 +58,7 @@ in
       mouse_modifier            = "fn"; mouse_action1 = "move"; mouse_action2 = "resize"; mouse_drop_action = "swap";
       external_bar              = "off:0:0";
     };
+
     extraConfig = ''
       yabai -m rule --add app="^System Settings$" manage=off
       yabai -m rule --add app="^Raycast$" manage=off

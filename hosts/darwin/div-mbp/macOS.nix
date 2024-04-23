@@ -69,8 +69,7 @@
 
   system.defaults.CustomUserPreferences = {
     NSGlobalDomain = {
-      # Add a context menu item for showing the Web Inspector in web views
-      WebKitDeveloperExtras = true;
+      WebKitDeveloperExtras = true;       # Add a context menu item for showing the Web Inspector in web views
     };
     "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = true;
     "com.apple.ImageCapture".disableHotPlug = true; # Auto

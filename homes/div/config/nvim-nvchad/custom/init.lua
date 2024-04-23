@@ -108,12 +108,12 @@ autocmd("VimResized", {
 -- Auto save views
 autocmd("BufLeave", {
   pattern = "?*",
-  group = augroup("remember_folds", {clear = true}),
+  group = augroup("remember_folds", {clear = false}),
   callback = function() cmd([[silent! mkview]]) end,
 })
 
 autocmd("BufEnter", {
   pattern = "?*",
-  group = augroup("remember_folds", {clear = true}),
+  group = augroup("remember_folds", { clear = false}),
   callback = function() cmd([[silent! loadview]]) end,
 })

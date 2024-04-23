@@ -12,10 +12,10 @@
       extraFlags = ["--verbose"];
     };
     casks = [
-      "firefox" # Internet Browsers
-      "obsidian" "notion" # Notes & ToDo
-      "visual-studio-code" "jetbrains-toolbox" # Development Environment
-      "onedrive" "microsoft-auto-update" "microsoft-onenote" # Microsoft
+      "firefox"                                                   # Internet Browsers
+      "obsidian" "notion"                                         # Notes & ToDo
+      "visual-studio-code" "jetbrains-toolbox"                    # Development Environment
+      "onedrive" "microsoft-auto-update" "microsoft-onenote"      # Microsoft
       "raycast" "alt-tab" "spaceman" "syntax-highlight" "gswitch" #"hammerspoon" # macOS DE
       "thunderbird" "wezterm"  "spotify" "onlyoffice"
     ];

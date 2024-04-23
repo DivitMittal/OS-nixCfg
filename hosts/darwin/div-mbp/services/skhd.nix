@@ -91,7 +91,7 @@
 #               prepend '\' at the end of the previous line.
 #
 #               an EOL character signifies the end of the bind.
-_:
+{ pkgs, ... }:
 
 let
   cfg = ''
@@ -201,6 +201,7 @@ in
 {
   services.skhd = {
     enable = true;
+    package = pkgs.skhd;
     skhdConfig = cfg;
   };
 }

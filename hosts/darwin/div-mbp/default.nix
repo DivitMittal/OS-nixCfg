@@ -18,13 +18,11 @@
   users = {
     users.div = {
       description = "Divit Mittal";
-      home        = "${if pkgs.stdenvNoCC.isDarwin then "/Users" else "/home"}/div";
+      home        = "/Users/div";
       shell       = pkgs.fish;
       packages    = builtins.attrValues {
         inherit(pkgs)
-          # macOS utils
-          ruby duti blueutil
-          yabai skhd jq;
+          duti blueutil jq;
         coreutils = pkgs.uutils-coreutils.override {prefix = "";};
       };
     };
@@ -32,10 +30,9 @@
 
   imports = [
     ./../common
+    ./services
     ./macOS.nix
     ./programs/shells.nix
-    ./services/yabai.nix
-    ./services/skhd.nix
     ./homebrew.nix
   ];
 }

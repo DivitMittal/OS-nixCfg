@@ -67,7 +67,7 @@
         userChrome = ''
           @charset "UTF-8";
 
-          /* ---------------------------   STATUS PANEL ------------------------ */
+          /* --------------------------- STATUS PANEL ------------------------ */
           #statuspanel {
             display: none !important;
           }
@@ -107,7 +107,7 @@
             display: none !important;
           }
 
-          /* ------------------------------ URLBAR ------------------------------ */
+          /* ---------------------------- URLBAR ------------------------------ */
           #urlbar-container {
             --urlbar-container-height: 20px !important;
             margin-left: 0 !important;
@@ -174,12 +174,12 @@
           user_pref("layout.css.has-selector.enabled", true);
           user_pref("dom.security.sanitizer.enabled", true);
 
-          /* GFX **/
+          /* GFX */
           user_pref("gfx.canvas.accelerated.cache-items", 4096);
           user_pref("gfx.canvas.accelerated.cache-size", 512);
           user_pref("gfx.content.skia-font-cache-size", 20);
 
-          /* BROWSER CACHE **/
+          /* BROWSER CACHE */
           user_pref("browser.cache.disk.enable", false);
           user_pref("browser.cache.memory.enable", true);
 
