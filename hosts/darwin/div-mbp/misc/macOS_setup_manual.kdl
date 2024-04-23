@@ -1,12 +1,12 @@
 Battery {
-	optimized-battery-charging   "OFF"
-	automatic-graphics-switching "OFF"
+  optimized-battery-charging   "OFF"
+  automatic-graphics-switching "OFF"
 }
 
 Display {
-	scaling              "more space"
-	automatic-brightness "ON"
-	true-tone            "OFF"
+  scaling              "more space"
+  automatic-brightness "ON"
+  true-tone            "OFF"
 }
 
 Accessibility {
@@ -19,10 +19,10 @@ Accessibility {
 }
 
 Appearance {
-	sidebar-icon-size                  "medium"
-	show-scroll-bars                   "when-scrolling"
-	allow-wallpaper-tinting-in-windows "OFF"
-	click-in-the-scroll-bar-to         "Jump to that spot that's clicked"
+  sidebar-icon-size                  "medium"
+  show-scroll-bars                   "when-scrolling"
+  allow-wallpaper-tinting-in-windows "OFF"
+  click-in-the-scroll-bar-to         "Jump to that spot that's clicked"
   highlight-color                    "red"
 }
 
@@ -31,13 +31,13 @@ Siri&Spotlight {
 }
 
 Desktop&Dock {
-	click-wallpaper-to-reveal-desktop "Only in SM"
-	widget-style                      "monochrome"
-	use-iphone-widgets                "OFF"
+  click-wallpaper-to-reveal-desktop "Only in SM"
+  widget-style                      "monochrome"
+  use-iphone-widgets                "OFF"
 }
 
 Keyboard {
-	keyboard-layout          "Unicode Hex Input"
-	keyboard-bindings-except "remove bindings for screenshots"
-	customize-touchbar       "custom"
+  keyboard-layout          "Unicode Hex Input"
+  keyboard-bindings-except "remove bindings for screenshots"
+  customize-touchbar       "custom"
 }

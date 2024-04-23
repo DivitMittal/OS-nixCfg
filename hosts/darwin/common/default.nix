@@ -23,21 +23,23 @@
 
   networking = {
     knownNetworkServices = ["Wi-Fi"];
-    dns                  = ["1.1.1.1" "1.0.0.1" "2606:4700:4700::1111" "2606:4700:4700::1001"];
+    dns = [
+          "1.1.1.1"              "1.0.0.1"
+    "2606:4700:4700::1111" "2606:4700:4700::1001"
+    ];
   };
 
   environment = {
     systemPackages = builtins.attrValues {
       inherit(pkgs)
-      binutils indent gnumake ruby;
+        binutils indent gnumake ruby;
       gcc = lib.hiPrio pkgs.gcc;
     };
   };
 
-  environment.loginShell = "${pkgs.zsh}";
+  environment.loginShell = "${pkgs.zsh} -l";
 
   system.activationScripts.postUserActivation.text = ''
-    # Following line should allow us to avoid a logout/login cycle
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
   '';
 }

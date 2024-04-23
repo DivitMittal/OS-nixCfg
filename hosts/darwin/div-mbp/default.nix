@@ -32,7 +32,6 @@
     ./../common
     ./services
     ./macOS.nix
-    ./programs/shells.nix
     ./homebrew.nix
   ];
 }
