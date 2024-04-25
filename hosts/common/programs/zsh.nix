@@ -1,6 +1,6 @@
 _:
 {
-  zsh = {
+  programs.zsh = {
     enable = true;
 
     promptInit = "PS1='%F{cyan}%~%f %# '";

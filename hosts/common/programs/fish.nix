@@ -1,6 +1,6 @@
 _:
 {
-  fish = {
+  programs.fish = {
     enable = true;
     vendor = {
       config.enable = true;

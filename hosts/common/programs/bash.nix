@@ -1,6 +1,6 @@
 _:
 {
-  bash = {
+  programs.bash = {
     enable = true;
 
     interactiveShellInit = ''
