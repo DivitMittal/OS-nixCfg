@@ -23,7 +23,6 @@
       packages    = builtins.attrValues {
         inherit(pkgs)
           duti blueutil jq;
-        coreutils = pkgs.uutils-coreutils.override {prefix = "";};
       };
     };
   };

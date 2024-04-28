@@ -8,7 +8,7 @@
     ./programs
   ];
 
-  time.timeZone = "Asia/Kolkata";
+  time.timeZone = "Asia/Calcutta";
 
   environment = {
     systemPackages = builtins.attrValues {
@@ -18,6 +18,7 @@
         bc diffutils findutils inetutils gnugrep gawk groff which gzip gnupatch gnutar wget  # GNU
         ed gnused vim                                                                        # editors
         curl git less;                                                                       # Other
+      coreutils = pkgs.uutils-coreutils.override {prefix = "";};
     };
 
     extraOutputsToInstall = [ "dev" "info" "devdoc" ];

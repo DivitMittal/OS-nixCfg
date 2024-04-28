@@ -32,7 +32,7 @@
   environment = {
     systemPackages = builtins.attrValues {
       inherit(pkgs)
-        binutils indent gnumake ruby;
+        binutils indent gnumake;
       gcc = lib.hiPrio pkgs.gcc;
     };
   };
