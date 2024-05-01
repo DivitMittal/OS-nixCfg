@@ -6,12 +6,12 @@
     settings = {
       "experimental-features" = ["nix-command" "flakes"];
       "use-xdg-base-directories" = lib.mkDefault true;
-      auto-optimise-store = lib.mkDefault true;
       warn-dirty = lib.mkDefault false;
       trusted-users = ["root" "div"];
+      auto-optimise-store = lib.mkDefault false;
     };
     gc = {
-      automatic = lib.mkDefault true;
+      automatic = lib.mkDefault false;
       options = "--delete-older-than 1d";
     };
   };
