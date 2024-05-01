@@ -197,7 +197,6 @@ let
     # cmd + ctrl + alt - c      : hs -c "AddSpace()"; sleep 0.2; cliclick kd:ctrl kp:esc ku:ctrl
   '';
 in
-
 {
   services.skhd = {
     enable = true;
