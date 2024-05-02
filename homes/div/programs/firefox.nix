@@ -64,6 +64,9 @@
         #   };
         # };
 
+        # userContent = ''
+        # '';
+
         userChrome = ''
           @charset "UTF-8";
 
@@ -153,10 +156,6 @@
           }
         '';
 
-        # userContent = ''
-        #
-        # '';
-
         extraConfig = ''
           /****************************************************************************
           * CUSTOM BETTERFOX                                                         *
@@ -223,7 +222,7 @@
           * SECTION: SECUREFOX                                                       *
           ****************************************************************************/
           /* TRACKING PROTECTION */
-          // user_pref("browser.contentblocking.category", "strict");
+          //user_pref("browser.contentblocking.category", "strict");
           user_pref("urlclassifier.trackingSkipURLs", "*.reddit.com, *.twitter.com, *.twimg.com, *.tiktok.com");
           user_pref("urlclassifier.features.socialtracking.skipURLs", "*.instagram.com, *.twitter.com, *.twimg.com");
           user_pref("network.cookie.sameSite.noneRequiresSecure", true);
@@ -358,7 +357,7 @@
           /* Titlebar */
           user_pref("browser.tabs.inTitlebar",	1);
 
-          /* PIP */
+          /* pip */
           user_pref("media.videocontrols.picture-in-picture.video-toggle.has-used",	true);
           user_pref("media.videocontrols.picture-in-picture.video-toggle.position",	"top");
 
