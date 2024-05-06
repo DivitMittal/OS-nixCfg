@@ -2,7 +2,7 @@
 
 {
   nix = {
-    package  = lib.mkDefault pkgs.nixVersions.unstable;
+    package  = lib.mkDefault pkgs.nixVersions.latest;
     settings = {
       "experimental-features" = ["nix-command" "flakes"];
       "use-xdg-base-directories" = lib.mkDefault true;

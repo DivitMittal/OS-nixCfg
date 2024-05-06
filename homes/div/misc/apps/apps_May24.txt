@@ -9,7 +9,6 @@ Menuwhere.app
 Microsoft OneNote.app
 Mission Control Plus.app
 Nix Apps
-Notion.app
 ONLYOFFICE.app
 Obsidian.app
 OneDrive.app
@@ -21,6 +20,6 @@ Spotify.app
 Syntax Highlight.app
 Thunderbird.app
 Utilities
-Visual Studio Code.app
+Wacom Tablet.localized
 WezTerm.app
 gSwitch.app

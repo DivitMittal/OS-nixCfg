@@ -17,12 +17,13 @@
       tmux grc neovim                         # terminal Environment
       fd duf dust hexyl ouch ov               # Modern altenatives
       bitwarden-cli rclone                    # CLI tools
-      cargo micromamba android-tools          # Developer tools
+      cargo micromamba mosh android-tools     # Developer tools
       pipx spicetify-cli                      # plugin/package/module managers
       nmap speedtest-go bandwhich             # networking tools
       pandoc poppler chafa imagemagick ffmpeg # file/data format
       colima docker                           # Virtualization & Containerization
-      weechat;                                # IRC
+      weechat                                # IRC
+      ;
 
     fastfetch = pkgs.fastfetch.overrideAttrs { preBuild = lib.optionalString pkgs.stdenv.isDarwin "export MACOSX_DEPLOYMENT_TARGET=14.0";};
   };

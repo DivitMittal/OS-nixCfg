@@ -18,7 +18,22 @@ _:
       clean-U    = "clean -d -x -f";
     };
 
-    delta = { enable = true; };
+    delta = {
+      enable = true;
+
+      options = {
+
+        features = "decorations";
+
+        decorations = {
+          commit-decoration-style = "bold yellow box ul";
+          file-decoration-style = "none";
+          file-style = "bold yellow ul";
+        };
+
+        whitespace-error-style = "22 reverse";
+      };
+    };
 
     extraConfig = {
       core = {

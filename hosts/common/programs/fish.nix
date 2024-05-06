@@ -3,6 +3,7 @@ _:
 {
   programs.fish = {
     enable = true;
+
     vendor = {
       config.enable = true;
       completions.enable = true;

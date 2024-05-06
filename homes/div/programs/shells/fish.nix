@@ -24,7 +24,6 @@
               --structure Title:OS:Kernel:Uptime:Display:Terminal:CPU:CPUUsage:GPU:Memory:Swap:LocalIP \
               --gpu-temp true --cpu-temp true --cpu-format "{1} @ {#4;35}{8}{#}" --gpu-format "{2} @ {#4;35}{4}{#}"'';
 
-
       ## package-managers ultimate aliases
       pipx-ultimate = "pipx upgrade-all; pipx list --short 1> ${config.home.homeDirectory}/sync-darwin/homes/${config.home.username}/misc/ref-txts/pipx_list.txt";
       gem-ultimate  = "sudo -v; and gem update; gem cleanup";

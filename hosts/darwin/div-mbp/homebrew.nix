@@ -15,11 +15,12 @@ _:
     };
     casks = [
       "firefox"                                                   # Internet Browsers
-      "obsidian" "notion"                                         # Notes & ToDo
       "visual-studio-code" "jetbrains-toolbox"                    # Development Environment
       "onedrive" "microsoft-auto-update" "microsoft-onenote"      # Microsoft
-      "raycast" "alt-tab" "spaceman" "syntax-highlight" "gswitch" #"hammerspoon" # macOS DE
-      "thunderbird" "wezterm" "spotify" "onlyoffice" "wacom-tablet"
+      "raycast" "alt-tab" "spaceman" "syntax-highlight" "gswitch" # macOS DE
+      #"hammerspoon"
+      "obsidian" "thunderbird"
+      "wezterm" "spotify" "onlyoffice" "wacom-tablet"
     ];
     brews = [
       "cliclick"

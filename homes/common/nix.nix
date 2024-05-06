@@ -2,7 +2,7 @@
 
 {
   nix = {
-    package = lib.mkDefault pkgs.nixVersions.unstable;
+    package = lib.mkDefault pkgs.nixVersions.latest;
     checkConfig = lib.mkDefault true;
     settings = {
       warn-dirty = lib.mkDefault false;

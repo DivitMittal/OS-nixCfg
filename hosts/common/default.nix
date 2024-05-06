@@ -15,8 +15,8 @@
       inherit(pkgs)
         nixfmt-rfc-style                                                                     # Nix goodies
         bashInteractive zsh dash fish babelfish                                              # shells
-        bc diffutils findutils inetutils gnugrep gawk groff which gzip gnupatch gnutar wget  # GNU
-        ed gnused vim                                                                        # editors
+        bc diffutils findutils gnugrep inetutils groff which gzip gnupatch gnutar wget       # GNU
+        ed gnused vim gawk                                                                   # editors
         curl git less;                                                                       # Other
       coreutils = pkgs.uutils-coreutils.override {prefix = "";};
     };

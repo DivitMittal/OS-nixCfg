@@ -24,6 +24,7 @@
 
   editorconfig = {
    enable = lib.mkDefault true;
+
    # top-most editorconfig
    settings = {
     "*" = {
