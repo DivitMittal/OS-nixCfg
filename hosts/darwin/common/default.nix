@@ -3,11 +3,8 @@
 {
   imports = [
     ./../../common
+    ./shells.nix
   ];
-
-  nix.settings = {
-	  "use-xdg-base-directories" = false;
-  };
 
   nixpkgs.hostPlatform = "x86_64-darwin";
 
@@ -36,8 +33,6 @@
       gcc = lib.hiPrio pkgs.gcc;
     };
   };
-
-  environment.loginShell = "${pkgs.zsh} -l";
 
   system.activationScripts.postUserActivation.text = ''
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u

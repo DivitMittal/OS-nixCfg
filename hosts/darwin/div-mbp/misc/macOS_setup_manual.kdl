@@ -15,7 +15,7 @@ Accessibility {
     text-size                     "13pt"
     contrast                      "increase"
     shake-mouse-pointer-to-locate "OFF"
-	}
+  }
 }
 
 Appearance {

@@ -15,8 +15,6 @@
   home.shellAliases  = {
     man               = "batman";
     cat               = "bat --paging=never";
-    cleanup-DS        = "sudo find . -type f -name '*.DS_Store' -ls -delete";
-    empty-trash       = "bash -c 'sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sudo rm -rfv /private/tmp/*.log'";
     pip-uninstall-all = "pip freeze | cut -d '@' -f1 | xargs pip uninstall -y";
     lt                = "eza --tree --level=2 | ov -H1";
     ll                = "eza -albhHigUuS -m@ | ov -H1";

@@ -2,9 +2,11 @@ _:
 
 {
   programs.starship = {
-    enable                = true;
+    enable = true;
+
     enableFishIntegration = true; enableZshIntegration  = false; enableBashIntegration = false;
-    settings              = {
+
+    settings = {
       format = ''
         [╭─sys─-➜❯](bold blue) $sudo$username$hostname$shell$status$cmd_duration$docker_context
         [┣─pwd─-➜❯](bold red) $directory$git_branch$git_commit$git_status

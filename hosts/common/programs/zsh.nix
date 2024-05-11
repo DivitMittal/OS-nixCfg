@@ -20,8 +20,6 @@ _:
       [[ -n ''${key[End]} ]]    && bindkey "''${key[End]}" end-of-line
       [[ -n ''${key[Up]} ]]     && bindkey "''${key[Up]}" up-line-or-search
       [[ -n ''${key[Down]} ]]   && bindkey "''${key[Down]}" down-line-or-search
-
-      [ -r "/etc/zshrc_$TERM_PROGRAM" ] && . "/etc/zshrc_$TERM_PROGRAM" # Useful support for interacting with Terminal.app or other terminal programs
     '';
   };
 }

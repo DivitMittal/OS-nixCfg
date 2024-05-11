@@ -2,22 +2,22 @@
   description = "hosts flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixOS/nixpkgs/nixpkgs-unstable" ;
     nix-darwin  = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, ... }:
+  outputs = { self, nix-darwin, nixpkgs, ... }@inputs:
+
     let
       system = "x86_64-darwin";
-      pkgs = import nixpkgs { inherit system; };
     in
     {
       darwinConfigurations = {
         "div-mbp" = nix-darwin.lib.darwinSystem {
-          system  = "x86_64-darwin";
+          inherit system;
           modules = [ ./darwin/div-mbp ];
           specialArgs = { inherit inputs; };
         };

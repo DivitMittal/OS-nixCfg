@@ -5,9 +5,8 @@
     package  = lib.mkDefault pkgs.nixVersions.latest;
     settings = {
       "experimental-features" = ["nix-command" "flakes"];
-      "use-xdg-base-directories" = lib.mkDefault true;
+      "use-xdg-base-directories" = lib.mkDefault false;
       warn-dirty = lib.mkDefault false;
-      trusted-users = ["root" "div"];
       auto-optimise-store = lib.mkDefault false;
     };
     gc = {

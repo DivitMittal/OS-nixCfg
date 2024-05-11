@@ -1,4 +1,4 @@
-_:
+{ pkgs, ... }:
 
 {
   environment.variables = {
@@ -14,7 +14,7 @@ _:
   environment.shellAliases = {
     ls       = "env ls -aF";
     ll       = "env ls -alHbhigUuS";
-    ed       = "ed -v -p ':'";
+    ed       = "${pkgs.ed} -v -p ':'";
     showpath = ''echo $PATH | sed "s/ /\n/g"'';
     showid   = ''id | sed "s/ /\n/g"'' ;
   };

@@ -72,7 +72,6 @@
       # pyenv virtualenv-init - | source
 
       # >>> mamba initialize >>>
-      # !! Contents within this block are managed by 'mamba init' !!
       set -gx MAMBA_EXE "/Users/div/.nix-profile/bin/micromamba"
       set -gx MAMBA_ROOT_PREFIX "/Users/div/.local/share/micromamba/"
       $MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
@@ -93,7 +92,7 @@
   };
 
   home.file = {
-    fishPlugins = {
+    fisherPlugins = {
       text = ''
         jorgebucaran/autopair.fish
         nickeb96/puffer-fish
