@@ -34,9 +34,12 @@ _:
     '';
 
     enableCompletion = true;
+
     syntaxHighlighting = { enable = true; };
+
     autosuggestion = {
       enable    = true;
+
       highlight = "fg = #ff00ff,bg = cyan,bold,underline";
     };
 
@@ -44,6 +47,7 @@ _:
 
     zsh-abbr = {
       enable = true;
+
       abbreviations = {
         ".2"  = "cd ../..";
         ".3"  = "cd ../../..";
@@ -58,9 +62,14 @@ _:
 
     antidote = {
       enable  = true;
+
       plugins = [
-        "ohmyzsh/ohmyzsh" "ohmyzsh/ohmyzsh path:plugins/macos" "ohmyzsh/ohmyzsh path:plugins/git"
-        "hlissner/zsh-autopair" "jeffreytse/zsh-vi-mode" "Aloxaf/fzf-tab"
+        "ohmyzsh/ohmyzsh"
+        "ohmyzsh/ohmyzsh path:plugins/macos"
+        "ohmyzsh/ohmyzsh path:plugins/git"
+        "hlissner/zsh-autopair"
+        "jeffreytse/zsh-vi-mode"
+        "Aloxaf/fzf-tab"
       ];
     };
   };

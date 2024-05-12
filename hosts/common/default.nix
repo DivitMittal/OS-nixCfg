@@ -2,10 +2,8 @@
 
 {
   imports = [
-    ./nix.nix
-    ./nixpkgs.nix
+    ./nixCfg.nix
     ./shells.nix
-    ./programs
   ];
 
   time.timeZone = "Asia/Calcutta";

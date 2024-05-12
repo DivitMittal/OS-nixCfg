@@ -2,8 +2,7 @@
 
 {
   imports = [
-    ./nix.nix
-    ./nixpkgs.nix
+    ./nixCfg.nix
   ];
 
   home = {
