@@ -7,12 +7,14 @@ _:
 
   homebrew = {
     enable = true;
+
     global.autoUpdate = false;
     onActivation = {
       autoUpdate = true;
       cleanup    = "uninstall";
       extraFlags = ["--verbose"];
     };
+
     casks = [
       "firefox"                                                   # Internet Browsers
       "visual-studio-code" "jetbrains-toolbox"                    # Development Environment
@@ -22,6 +24,7 @@ _:
       "obsidian" "thunderbird"
       "wezterm" "spotify" "onlyoffice" "wacom-tablet"
     ];
+
     brews = [
       "cliclick"
     ];

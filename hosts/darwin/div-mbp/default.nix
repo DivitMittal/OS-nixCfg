@@ -1,6 +1,10 @@
 { lib, pkgs, ... }:
 
 {
+  nix.settings = {
+    trusted-users = ["root" "div"];
+  };
+
   environment.darwinConfig = "$HOME/sync-darwin/hosts/darwin/div-mbp/default.nix";
 
   networking = {
@@ -15,10 +19,6 @@
     ];
   };
 
-  nix.settings = {
-    trusted-users = ["root" "div"];
-  };
-
   users = {
     users.div = {
       description = "Divit Mittal";
@@ -27,7 +27,6 @@
       packages    = builtins.attrValues {
         inherit(pkgs)
           duti blueutil jq;
-        fastfetch = pkgs.fastfetch.overrideAttrs { preBuild = lib.optionalString pkgs.stdenv.isDarwin "export MACOSX_DEPLOYMENT_TARGET=14.0";};
       };
     };
   };

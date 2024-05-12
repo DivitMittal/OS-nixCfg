@@ -15,9 +15,9 @@
   home.shellAliases  = {
     man               = "batman";
     cat               = "bat --paging=never";
-    pip-uninstall-all = "pip freeze | cut -d '@' -f1 | xargs pip uninstall -y";
-    lt                = "eza --tree --level=2 | ov -H1";
     ll                = "eza -albhHigUuS -m@ | ov -H1";
+    lt                = "eza --tree --level=2 | ov -H1";
+    pip-uninstall-all = "pip freeze | cut -d '@' -f1 | xargs pip uninstall -y";
   };
 
   imports = [
