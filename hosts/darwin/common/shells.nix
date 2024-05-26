@@ -12,12 +12,16 @@
     bash.interactiveShellInit = lib.mkAfter ''
       export BASH_SILENCE_DEPRECATION_WARNING=1
 
-      [ -x /usr/libexec/path_helper ] && eval `/usr/libexec/path_helper -s` # load paths from /etc/paths & /etc/paths.d/ into the path
-      # [ -r "/etc/bashrc_$TERM_PROGRAM" ] && . "/etc/bashrc_$TERM_PROGRAM" # source a specific bashrc for Apple Terminal (handled by nix-darwin)
+      ## load paths from /etc/paths & /etc/paths.d/ into the path
+      [ -x /usr/libexec/path_helper ] && eval `/usr/libexec/path_helper -s`
+
+      ## source a specific bashrc for Apple Terminal (handled by nix-darwin)
+      # [ -r "/etc/bashrc_$TERM_PROGRAM" ] && . "/etc/bashrc_$TERM_PROGRAM"
     '';
 
     zsh.interactiveShellInit = lib.mkAfter ''
-      [ -r "/etc/zshrc_$TERM_PROGRAM" ] && . "/etc/zshrc_$TERM_PROGRAM" # Useful support for interacting with Terminal.app or other terminal programs
+      # Useful support for interacting with Terminal.app or other terminal programs
+      [ -r "/etc/zshrc_$TERM_PROGRAM" ] && . "/etc/zshrc_$TERM_PROGRAM"
     '';
   };
 }

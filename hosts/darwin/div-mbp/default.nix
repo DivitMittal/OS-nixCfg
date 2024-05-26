@@ -1,6 +1,13 @@
 { lib, pkgs, ... }:
 
 {
+  imports = [
+    ./../common
+    ./services
+    ./macOS.nix
+    ./homebrew.nix
+  ];
+
   nix.settings = {
     trusted-users = ["root" "div"];
   };
@@ -26,15 +33,9 @@
       shell       = pkgs.fish;
       packages    = builtins.attrValues {
         inherit(pkgs)
-          duti blueutil jq;
+          duti blueutil
+          localsend;
       };
     };
   };
-
-  imports = [
-    ./../common
-    ./services
-    ./macOS.nix
-    ./homebrew.nix
-  ];
 }

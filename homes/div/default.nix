@@ -22,6 +22,9 @@
       colima docker                           # Virtualization & Containerization
       nmap speedtest-go bandwhich             # networking tools
       pandoc poppler chafa imagemagick ffmpeg # file/data format
+      w3m
       ;
+
+      pnpm = pkgs.nodePackages_latest.pnpm;
   };
 }

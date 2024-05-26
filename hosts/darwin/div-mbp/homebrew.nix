@@ -20,7 +20,8 @@ _:
       "visual-studio-code" "jetbrains-toolbox"                    # Development Environment
       "onedrive" "microsoft-auto-update" "microsoft-onenote"      # Microsoft
       "raycast" "alt-tab" "spaceman" "syntax-highlight" "gswitch" # macOS DE
-      #"hammerspoon"
+      "hammerspoon"
+      "whatsapp"
       "obsidian" "thunderbird"
       "wezterm" "spotify" "onlyoffice" "wacom-tablet"
     ];
