@@ -11,9 +11,10 @@
     stateVersion          = lib.mkDefault "23.11";
   };
 
+  xdg.enable = true;
+
   home.packages = builtins.attrValues {
     my-hello  = pkgs.writeShellScriptBin "my-hello" ''echo "Hello, ${config.home.username}!"'';
-    fastfetch = pkgs.fastfetch.overrideAttrs { preBuild = lib.optionalString pkgs.stdenv.isDarwin "export MACOSX_DEPLOYMENT_TARGET=14.0";};
   };
 
   programs = {

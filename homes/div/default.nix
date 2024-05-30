@@ -16,15 +16,21 @@
     inherit(pkgs)
       tmux grc neovim                         # terminal Environment
       fd duf dust hexyl ouch ov               # Modern altenatives
-      bitwarden-cli rclone weechat            # CLI tools
-      pipx spicetify-cli cargo micromamba     # plugin/package/module managers
-      mosh android-tools                      # Developer tools
-      colima docker                           # Virtualization & Containerization
-      nmap speedtest-go bandwhich             # networking tools
-      pandoc poppler chafa imagemagick ffmpeg # file/data format
-      w3m
+      # CLI tools
+      bitwarden-cli rclone weechat
+      # plugin/package/module managers
+      pipx spicetify-cli cargo micromamba
+      # developer tools
+      android-tools colima docker
+      # networking tools
+      nmap speedtest-go bandwhich
+      # file/data format
+      w3m pandoc poppler chafa imagemagick ffmpeg
+      # to be learned to use
+      mosh
       ;
 
       pnpm = pkgs.nodePackages_latest.pnpm;
+      fastfetch = pkgs.fastfetch.overrideAttrs { preBuild = lib.optionalString pkgs.stdenv.isDarwin "export MACOSX_DEPLOYMENT_TARGET=14.0";};
   };
 }

@@ -5,6 +5,7 @@
     ./shells
     ./git
     ./yazi
+    ./email.nix
     ./btop.nix
     ./atuin.nix
     ./starship.nix
@@ -107,23 +108,6 @@
       settings = {
         display = { compact = false; use_pager = true; };
         updates = { auto_update = false; };
-      };
-    };
-
-    himalaya = {
-      enable = true;
-    };
-  };
-
-  accounts.email.accounts =   {
-    primaryGoogle = {
-      address = "mittaldivit@gmail.com";
-      primary = true;
-      realName = "Divit Mittal";
-      himalaya =  {
-        enable = true;
-        settings = {
-        };
       };
     };
   };
