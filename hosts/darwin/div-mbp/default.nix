@@ -12,7 +12,7 @@
     trusted-users = ["root" "div"];
   };
 
-  environment.darwinConfig = "$HOME/sync-darwin/hosts/darwin/div-mbp/default.nix";
+  environment.darwinConfig = "$HOME/OS-nixCfg/hosts/darwin/div-mbp/default.nix";
 
   networking = {
     computerName = "L1";
@@ -33,8 +33,7 @@
       shell       = pkgs.fish;
       packages    = builtins.attrValues {
         inherit(pkgs)
-          duti blueutil
-          localsend;
+          duti blueutil;
       };
     };
   };

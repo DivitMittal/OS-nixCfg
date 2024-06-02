@@ -1,4 +1,4 @@
-_:
+{ config, ... }:
 
 {
   programs = {
@@ -386,30 +386,30 @@ _:
       aerc.enable = true;
     };
 
-    # mujOutlook = {
-    #   address = "divit.229309249@muj.manipal.edu";
-    #   realName = "Divit Mittal";
-    #
-    #   # authorization
-    #   userName = "divit.229309249@muj.manipal.edu";
-    #   passwordCommand = "bw get item ec3cdb98-4fc8-454a-973f-af110006ea14 | jq -r '.fields | .[] | select(.name | startswith(\"App Password 1\")) | .value'";
-    #   imap = {
-    #     host = "outlook.office365.com";
-    #     port = 993;
-    #     tls.enable  = true;
-    #   };
-    #   smtp = {
-    #     host = "smtp-mail.outlook.com";
-    #     port = 587;
-    #     tls.enable = true;
-    #   };
-    #
-    #   # client sub-modules
-    #   aerc = {
-    #     enable = true;
-    #     imapAuth = "xoauth2";
-    #     smtpAuth = "xoauth2";
-    #   };
-    # };
+    mujOutlook = {
+      address = "divit.229309249@muj.manipal.edu";
+      realName = "Divit Mittal";
+
+      # authorization
+      userName = "divit.229309249@muj.manipal.edu";
+      passwordCommand = "${./mutt_oauth2.py} ${config.home.homeDirectory}/OS-nixCfg/secrets/email/refresh_token.gpg";
+      imap = {
+        host = "outlook.office365.com";
+        port = 993;
+        tls.enable  = true;
+      };
+      smtp = {
+        host = "smtp-mail.outlook.com";
+        port = 587;
+        tls.enable = true;
+      };
+
+      # client sub-modules
+      aerc = {
+        enable = true;
+        imapAuth = "xoauth2";
+        smtpAuth = "xoauth2";
+      };
+    };
   };
 }

@@ -3,7 +3,7 @@
 {
   imports = [
     ./../common
-    ./ssh
+    ./ssh.nix
   ];
 
   # nix.package  = lib.mkDefault pkgs.nixVersions.latest;

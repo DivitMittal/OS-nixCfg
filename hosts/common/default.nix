@@ -15,7 +15,7 @@
         bashInteractive zsh dash fish babelfish                                              # shells
         bc diffutils findutils gnugrep inetutils groff which gzip gnupatch gnutar wget       # GNU
         gnused vim gawk                                                                      # editors
-        curl git less;                                                                       # Other
+        curl git less gnupg;                                                                       # Other
       coreutils = pkgs.uutils-coreutils.override {prefix = "";};
     };
 
