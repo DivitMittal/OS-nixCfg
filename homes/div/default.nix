@@ -21,7 +21,7 @@
       # plugin/package/module managers
       pipx spicetify-cli cargo micromamba
       # developer tools
-      android-tools colima docker
+      android-tools colima docker jdk
       # networking tools
       nmap speedtest-go bandwhich
       # file/data format
