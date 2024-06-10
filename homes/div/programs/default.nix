@@ -5,7 +5,7 @@
     ./shells
     ./git
     ./yazi
-    ./email
+    ./email.nix
     ./btop.nix
     ./atuin.nix
     ./starship.nix

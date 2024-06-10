@@ -35,7 +35,7 @@ _:
       AppleMetricUnits       = 1; AppleMeasurementUnits = "Centimeters"; AppleTemperatureUnit = "Celsius";
       AppleWindowTabbingMode = "always";
       ### UI
-      _HIHideMenuBar      = true;
+      _HIHideMenuBar      = false;
       AppleInterfaceStyle = "Dark"; AppleInterfaceStyleSwitchesAutomatically = false;
       AppleShowScrollBars = "WhenScrolling";
       AppleFontSmoothing = 2;

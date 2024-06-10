@@ -2,6 +2,11 @@
 
 {
   home.file = {
+    aerc = {
+      enable = true;
+      source = config.lib.file.mkOutOfStoreSymlink ~/OS-nixCfg/secrets/email/aerc/accounts.conf;
+      target = "${config.xdg.configHome}/aerc/accounts.conf";
+    };
     wezterm = {
       source = ./wezterm/wezterm.lua;
       target = "${config.xdg.configHome}/wezterm/wezterm.lua";
