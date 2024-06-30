@@ -1,13 +1,25 @@
-{ config, ...}:
+  { config, ...}:
 
 {
   home.file = {
+    # impure symlink
     aerc = {
       enable = true;
-      source = config.lib.file.mkOutOfStoreSymlink ~/OS-nixCfg/secrets/email/aerc/accounts.conf;
+      source = ~/OS-nixCfg/secrets/email/aerc/accounts.conf;
       target = "${config.xdg.configHome}/aerc/accounts.conf";
     };
+    spicetify = {
+      source = ./spicetify/config-xpui.ini;
+      target = "${config.xdg.configHome}/spicetify/config-xpui.ini";
+    };
+
+    hammerspoon = {
+      enable = false;
+      source = ./hammerspoon/init.lua;
+      target = "${config.xdg.configHome}/hammerspoon/init.lua";
+    };
     wezterm = {
+      enable = true;
       source = ./wezterm/wezterm.lua;
       target = "${config.xdg.configHome}/wezterm/wezterm.lua";
     };
@@ -44,11 +56,6 @@
       target = "${config.xdg.configHome}/tridactyl";
       recursive = true;
     };
-    spicetify = {
-      source = ./spicetify/config-xpui.ini;
-      target = "${config.xdg.configHome}/spicetify/config-xpui.ini";
-    };
-    # TODO: add these as program modules to nix-community/home-manager
     ov = {
       source = ./ov/config.yaml;
       target = "${config.xdg.configHome}/ov/config.yaml";
