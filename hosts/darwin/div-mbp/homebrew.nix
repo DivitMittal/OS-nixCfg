@@ -21,7 +21,7 @@ _:
       "onedrive" "microsoft-auto-update" "microsoft-onenote"      # Microsoft
       "raycast" "alt-tab" "spaceman" "syntax-highlight" "gswitch" # macOS DE
       # "hammerspoon"
-      "whatsapp"
+      "whatsapp" "telegram"
       "obsidian"
       "wezterm" "spotify" "onlyoffice" "wacom-tablet"
     ];
