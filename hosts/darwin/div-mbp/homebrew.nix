@@ -29,5 +29,9 @@ _:
     brews = [
       "cliclick"
     ];
+
+    masApps = {
+      "Texty" = 1538996043;
+    };
   };
 }
