@@ -1,0 +1,28 @@
+AlDente.app
+AltTab.app
+Bartender 5.app
+CrossOver.app
+Firefox.app
+Homerow.app
+JetBrains Toolbox.app
+Menu Bar Dock.app
+Menuwhere.app
+Microsoft OneNote.app
+Mission Control Plus.app
+Nix Apps
+ONLYOFFICE.app
+Obsidian.app
+OneDrive.app
+PDF Expert.app
+Raycast.app
+Safari.app
+Spaceman.app
+Spotify.app
+Syntax Highlight.app
+Utilities
+Visual Studio Code.app
+Wacom Tablet.localized
+WezTerm.app
+WhatsApp.app
+gSwitch.app
+iStat Menus.app

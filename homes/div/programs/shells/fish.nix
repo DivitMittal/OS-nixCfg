@@ -25,11 +25,11 @@
               --gpu-temp true --cpu-temp true --cpu-format "{1} @ {#4;35}{8}{#}" --gpu-format "{2} @ {#4;35}{4}{#}"'';
 
       ## package-managers ultimate aliases
-      pipx-ultimate = "pipx upgrade-all; pipx list --short 1> ${config.home.homeDirectory}/sync-darwin/homes/${config.home.username}/misc/ref-txts/pipx_list.txt";
+      pipx-ultimate = "pipx upgrade-all; pipx list --short 1> ${config.home.homeDirectory}/OS-nixCfg/homes/${config.home.username}/misc/ref-txts/pipx_list.txt";
       gem-ultimate  = "sudo -v; and gem update; gem cleanup";
       brew-ultimate = "brew update; and brew upgrade; and brew autoremove; and brew cleanup -s --prune=0; and rm -rf (brew --cache)";
       ## other ultimate aliases
-      apps-backup   = "env ls /Applications/ 1> ${config.home.homeDirectory}/sync-darwin/homes/${config.home.username}/misc/apps/apps_(date +%b%y).txt";
+      apps-backup   = "env ls /Applications/ 1> ${config.home.homeDirectory}/OS-nixCfg/homes/${config.home.username}/misc/apps/apps_(date +%b%y).txt";
       mac-ultimate  = "sudo -v;and brew-ultimate; apps-backup";
     };
 
