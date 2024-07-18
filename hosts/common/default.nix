@@ -21,17 +21,4 @@
 
     extraOutputsToInstall = [ "dev" "info" "devdoc" ];
   };
-
-  documentation = {
-    enable      = true;
-    doc.enable  = true;
-    info.enable = true;
-    man.enable  = true;
-  };
-
-  programs = {
-    nix-index.enable = true;
-    man.enable       = true;
-    info.enable      = true;
-  };
 }
