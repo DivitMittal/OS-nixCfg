@@ -148,11 +148,11 @@ local plugins = {
     cond = not isVSCode,
     event = "BufEnter",
     config = function()
-      require('guess-indent').setup({ auto_cmd = false, })
-      autocmd("VimEnter", {
-          group = augroup("GuessIndent", { clear = true }),
-          command = "autocmd FileType * :silent lua require('guess-indent').set_from_buffer(true)"
-      })
+      require('guess-indent').setup({ auto_cmd = true, })
+      -- autocmd("VimEnter", {
+      --     group = augroup("GuessIndent", { clear = true }),
+      --     command = "autocmd FileType * :silent lua require('guess-indent').set_from_buffer(true)"
+      -- })
     end,
   },
 
