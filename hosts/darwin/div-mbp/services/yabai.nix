@@ -30,7 +30,7 @@
 { pkgs, ... }:
 
 let
-  kanataBin = ./kanata/bin/kanata;
+  kanataBin = ./kanata/bin/kanata_1.7.0;
   kanataCfg = ./kanata/cfg/tltr.kbd;
 in
 {
@@ -41,22 +41,22 @@ in
     enableScriptingAddition = true;
 
     config = {
-      mouse_follows_focus       = "off"; focus_follows_mouse = "off";
-      window_origin_display     = "default";
+      mouse_follows_focus       = "off"         ; focus_follows_mouse = "off"  ;
+      window_origin_display     = "default"     ;
       window_placement          = "second_child";
-      window_zoom_persist       = "off";
-      window_shadow             = "off";
-      window_animation_duration = 0.0;
-      window_opacity            = "off"; window_opacity_duration = 0.0; active_window_opacity = 1.0; normal_window_opacity = 1.0;
-      insert_feedback_color     = "0xffd75f5f";
-      split_ratio               = 0.50; split_type  = "auto";
-      auto_balance              = "off";
-      top_padding               = 8; bottom_padding = 8;
-      left_padding              = 8; right_padding = 8;
-      window_gap                = 8;
-      layout                    = "float";
-      mouse_modifier            = "fn"; mouse_action1 = "move"; mouse_action2 = "resize"; mouse_drop_action = "swap";
-      external_bar              = "off:0:0";
+      window_zoom_persist       = "off"         ;
+      window_shadow             = "off"         ;
+      window_animation_duration = 0.0           ;
+      window_opacity            = "off"         ; window_opacity_duration = 0.0; active_window_opacity = 1.0; normal_window_opacity = 1.0;
+      insert_feedback_color     = "0xffd75f5f"  ;
+      split_ratio               = 0.50          ; split_type  = "auto"         ;
+      auto_balance              = "off"         ;
+      top_padding               = 8             ; bottom_padding = 8           ;
+      left_padding              = 8             ; right_padding = 8            ;
+      window_gap                = 8             ;
+      layout                    = "float"       ;
+      mouse_modifier            = "fn"          ; mouse_action1 = "move"       ; mouse_action2 = "resize"   ; mouse_drop_action = "swap" ;
+      external_bar              = "off:0:0"     ;
     };
 
     extraConfig = ''

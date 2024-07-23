@@ -23,7 +23,7 @@ _:
       # "hammerspoon"
       "whatsapp" "telegram"
       "obsidian"
-      "wezterm" "spotify" "onlyoffice" "wacom-tablet"
+      "wezterm" "spotify" "onlyoffice" "wacom-tablet" "mpv"
     ];
 
     brews = [

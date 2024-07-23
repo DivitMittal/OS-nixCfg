@@ -1,9 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [
-    ./../../common
-  ];
 
   environment.packages = builtins.attrValues {
     inherit(pkgs)
@@ -17,6 +14,8 @@
     fastfetch
     openssh;
   };
+
+  time.timeZone =
 
   environment.etcBackupExtension = ".bak";
 
