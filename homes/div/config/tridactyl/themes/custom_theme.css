@@ -1,11 +1,11 @@
 :root {
-    --bg: rgba(0, 0, 0, 0.90);
+    --bg: rgba(0, 0, 0, 1);
     --fg: #14C800;
     --font: "CaskaydiaCove Nerd Font Mono";
 
     --tridactyl-bg: var(--bg);
     --tridactyl-fg: var(--fg);
-    --tridactyl-font-size: 16px;
+    --tridactyl-font-size: 18px;
 
     /* Header */
     --tridactyl-header-first-bg: #333;
@@ -32,5 +32,5 @@
 
     /* Completions Table */
     --tridactyl-cmplt-font-family: var(--font);
-    --tridactyl-cmplt-font-size: 16px;
+    --tridactyl-cmplt-font-size: 18px;
 }

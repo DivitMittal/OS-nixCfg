@@ -10,6 +10,8 @@ Menuwhere.app
 Microsoft OneNote.app
 Mission Control Plus.app
 Nix Apps
+Notion Calendar.app
+Notion Enhanced.app
 ONLYOFFICE.app
 Obsidian.app
 OneDrive.app
@@ -28,3 +30,4 @@ WezTerm.app
 WhatsApp.app
 gSwitch.app
 iStat Menus.app
+mpv.app

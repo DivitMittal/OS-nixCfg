@@ -3,25 +3,9 @@
 " Must have native script for Tridactyl installed
 " --------------------------------------------------------------------
 
-set newtab about:blank
-
 bind f hint
 bind F hint -b
 bind gf hint -qb
-
-bind N back
-bind I forward
-unbind d
-
-bind U undo
-
-" scrolling
-bind u scrollline -1
-bind e scrollline 1
-bind n scrollpx -25
-bind i scrollpx 25
-
-bind gd tabdetach
 
 set hintdelay 0
 " hint chars for Colemak-mod-DH keyboard layout
@@ -30,12 +14,24 @@ set hintuppercase false
 set hintautoselect true
 set hintfiltermode simple
 
+bind gd tabdetach
+
+" accomodating colemak-mod-DH
+bind N back
+bind I forward
+unbind d
+bind U undo
+
+" scrolling accomodating colemak-mod-DH
+bind u scrollline -1
+bind e scrollline 1
+bind n scrollpx -25
+bind i scrollpx 25
 " Sets nvim(editor) inside(terminal emulator) as preferred editor
-set editorcmd /usr/local/bin/wezterm -e '/usr/local/bin/nvim'
+set editorcmd /usr/bin/env wezterm -e '/usr/bin/env nvim'
 
 " Inject Google Translate
 command translate js let googleTranslateCallback = document.createElement('script'); googleTranslateCallback.innerHTML = "function googleTranslateElementInit(){ new google.translate.TranslateElement(); }"; document.body.insertBefore(googleTranslateCallback, document.body.firstChild); let googleTranslateScript = document.createElement('script'); googleTranslateScript.charset="UTF-8"; googleTranslateScript.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit&tl=&sl=&hl="; document.body.insertBefore(googleTranslateScript, document.body.firstChild);
 
 " Suspend / "discard" all tabs - handy for stretching out battery life
 command discardall jsb browser.tabs.query({}).then(ts => browser.tabs.discard(ts.map(t=>t.id)))
-

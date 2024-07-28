@@ -64,11 +64,18 @@
         #   };
         # };
 
-        # userContent = ''
-        # '';
+        userContent = ''
+          /* makes sures that Tridactyl new tab is a blank page */
+          @-moz-document regexp("moz-extension://.*/static/newtab.html") {
+            body {
+              display: none !important;
+            }
+          }
+        '';
 
         userChrome = ''
           @charset "UTF-8";
+
 
           /* --------------------------- STATUS PANEL ------------------------ */
           #statuspanel {
@@ -87,9 +94,9 @@
 
           /* ------------------------------ NAVBAR ------------------------------ */
           /* Makes browser window first element sends the NAVBAR down */
-          #browser {
-            order: -1 !important;
-          }
+          /* #browser { */
+          /*    order: -1 !important; */
+          /*  } */
 
           /* hides unwanted buttons & items from the navbar */
           #back-button, #forward-button, #reload-button, #stop-button, #home-button, #fxa-toolbar-menu-button {
@@ -101,18 +108,47 @@
             display: none;
           }
 
-          #nav-bar, #navigator-toolbox {
-            border-width: 1px !important;
+          #nav-bar {
+            --navbar-margin: -32px;
             --toolbar-field-focus-border-color: #14C800;
+
+            border-width: 1px !important;
+            margin-top: var(--navbar-margin);
+            margin-bottom: 0;
+            z-index: -100;
+            transition: all 0.1s ease !important;
+            opacity: 0;
           }
 
+          #navigator-toolbox:focus-within > #nav-bar,
+          #navigator-toolbox:hover > #nav-bar {
+            margin-top: 0;
+            margin-bottom: var(--navbar-margin);
+            z-index: 100;
+            opacity: 1;
+          }
+
+          /* hides navbar for sure when in fullscreen */
           #nav-bar[inFullscreen] {
             display: none !important;
           }
 
+          /* Disable auto-hiding when in 'customize' mode */
+          :root[customizing] #navigator-toolbox{
+            position: relative !important;
+            opacity: 1 !important;
+            margin-top: 0px;
+          }
+
           /* ---------------------------- URLBAR ------------------------------ */
+
+          #urlbar-go-button, #star-button, #star-button-box, #pocket-button, #tracking-protection-icon-container {
+            display: none !important;
+          }
+
           #urlbar-container {
             --urlbar-container-height: 20px !important;
+
             margin-left: 0 !important;
             margin-right: 0 !important;
             padding-top: 0 !important;
@@ -125,8 +161,9 @@
             --urlbar-height: var(--urlbar-container-height)  !important;
             --urlbar-toolbar-height: var(--urlbar-container-height) !important;
             --autocomplete-popup-highlight-background: transparent !important;
-            top: unset !important;
-            bottom: calc((var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2) !important;
+
+            top: 0px !important;
+            bottom: unset !important;
             box-shadow: none !important;
             display: flex !important;
             flex-direction: column !important;
@@ -136,30 +173,12 @@
             border-width: 0 !important;
             border-radius: 0 !important;
           }
-
-          #urlbar-go-button, #star-button, #star-button-box, #pocket-button, #tracking-protection-icon-container {
-            display: none !important;
-          }
-
-          #urlbar-input-container {
-            order: 2;
-          }
-
-          #urlbar > .urlbarView {
-            order: 1;
-            border-bottom: 1px solid #666;
-          }
-
-          #urlbar-results {
-            display: flex;
-            flex-direction: column-reverse;
-          }
         '';
 
         extraConfig = ''
           /****************************************************************************
           * CUSTOM BETTERFOX                                                         *
-          * url: https://github.com/yokoffing/Betterfox                              *
+          * inspiration url: https://github.com/yokoffing/Betterfox                              *
           ****************************************************************************/
 
           /****************************************************************************
@@ -399,10 +418,10 @@
           user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons", false);
           user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features", false);
 
-          /* POCKET */
+          /* Pocket */
           user_pref("extensions.pocket.enabled", false);
 
-          /* DOWNLOADS */
+          /* Downloads */
           user_pref("browser.download.useDownloadDir", false);
           user_pref("browser.download.always_ask_before_handling_new_types", true);
           user_pref("browser.download.alwaysOpenPanel", false);
@@ -431,7 +450,7 @@
           user_pref("toolkit.scrollbox.verticalScrollDistance", 5);
           user_pref("apz.frame_delay.enabled", false);
 
-          /* enable browser chrome devtools */
+          /* Enable browser chrome devtools */
           user_pref("devtools.chrome.enabled",	true); // enable devtools
           user_pref("devtools.debugger.remote-enabled",	true); // enable remote debugger for browser toolbox
         '';
