@@ -4,6 +4,18 @@
   process-unmapped-keys no    ;; Enable processing of keys that are not in defsrc.
   block-unmapped-keys no      ;; Disable all keys not mapped in defsrc.(process-unmapped-keys must be enabled)
   rapid-event-delay 5
+  log-layer-changes no        ;; logging has some processing overhead. Doesn't log only layer changes.
+)
+
+(defvar
+  tap-timeout   100
+  hold-timeout  200
+  one-shot-timeout 300
+
+  ;; shortened vars
+  tt $tap-timeout
+  ht $hold-timeout
+  ost $one-shot-timeout
 )
 
 ;; the reduced ANSI 60% layout (39-key layout)
@@ -21,19 +33,8 @@
                                                                         ano S-comm anc S-. que S-/
 )
 
-(defvar
-  tap-timeout   100
-  hold-timeout  200
-  one-shot-timeout 300
-
-  ;; shortened vars
-  tt $tap-timeout
-  ht $hold-timeout
-  ost $one-shot-timeout
-)
-
-(deftemplate shift-fork (key when-shifted-key)
-  (fork $key (unshift $when-shifted-key) (lsft rsft))
+(deftemplate shift-fork (key key-when-shifted)
+  (fork $key (unshift $key-when-shifted) (lsft rsft))
 )
 
 (deftemplate shift-fork-alias (key when-shifted-alias)
@@ -123,9 +124,9 @@
 
 ;; TL (Thumb Left) layer (modifiers & navigation)
 (deflayer TL
-  _   esc   @sWin   XX     XX    XX      @pguf   @btb  up   tab   @cw     XX
-  _   @sAlt @sCtl  @sSft  @sMet  XX      @pgdf  left  down  rght  rpt-any  _
-  _    @sFn  XX    @sHyp   XX    XX        XX    XX   bspc   del   XX      _
+  _   esc   @sWin   XX     XX    XX      rpt-any @btb  up   tab   @pguf     XX
+  _   @sAlt @sCtl  @sSft  @sMet  XX       @cw    left  down  rght  @pgdf    _
+  _    @sFn  XX    @sHyp   XX    XX        XX     XX   bspc   del   XX      _
                 _  _                 _                _  _
 )
 
@@ -168,8 +169,8 @@
 
 (defalias
   ;; Screen saver and sleep
-  ssc (cmd /usr/local/bin/dash -c "/usr/bin/open -a ScreenSaverEngine")
-  zzc (cmd /usr/local/bin/dash -c "/usr/bin/pmset sleepnow")
+  ssc (cmd /usr/bin/env dash -c "/usr/bin/open -a ScreenSaverEngine")
+  zzc (cmd /usr/bin/env dash -c "/usr/bin/pmset sleepnow")
   scref (template-expand shift-fork-alias @ssc @zzc)
 
   ;; volume and media controls
@@ -191,4 +192,3 @@
   _  brdown @medif @voldf  XX   XX            XX   XX   XX   XX  XX   _
           XX XX                      lrld                  XX XX
 )
-

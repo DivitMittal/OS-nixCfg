@@ -16,14 +16,15 @@ _:
     };
 
     casks = [
-      "firefox"                                                   # Internet Browsers
-      "visual-studio-code" "jetbrains-toolbox"                    # Development Environment
-      "onedrive" "microsoft-auto-update" "microsoft-onenote"      # Microsoft
-      "raycast" "alt-tab" "spaceman" "syntax-highlight" "gswitch" # macOS DE
+      "firefox"                                                               # Internet Browsers
+      "visual-studio-code" "jetbrains-toolbox"                                # Development Environment
+      "onedrive" "microsoft-auto-update" "microsoft-onenote" "onlyoffice"     # Microsoft & Office Suite Alt
+      "raycast" "alt-tab" "spaceman" "syntax-highlight" "gswitch"             # macOS specific
       # "hammerspoon"
-      "whatsapp" "telegram"
-      "obsidian"
-      "wezterm" "spotify" "onlyoffice" "wacom-tablet" "mpv"
+      "whatsapp" "telegram"                                                   # Messaging
+      "obsidian" "notion-enhanced" "notion-calendar"                          # Notes
+      "spotify" "mpv"                                                         # Multimedia
+      "wezterm" "wacom-tablet"
     ];
 
     brews = [
