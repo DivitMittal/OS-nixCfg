@@ -22,7 +22,7 @@ _:
       "raycast" "alt-tab" "spaceman" "syntax-highlight" "gswitch"             # macOS specific
       # "hammerspoon"
       "whatsapp" "telegram"                                                   # Messaging
-      "obsidian" "notion-enhanced" "notion-calendar"                          # Notes
+      "obsidian" "notion-calendar" "notion"                                   # Notes
       "spotify" "mpv"                                                         # Multimedia
       "wezterm" "wacom-tablet"
     ];
@@ -33,6 +33,10 @@ _:
 
     masApps = {
       "Texty" = 1538996043;
+      # Safari Extensions
+      "Ghostery" = -2085073091; # Ad-blocker
+      "SuperAgent" = 1568262835; # Cookie Annoyances handler
+      "Vimkey" = 1585682577;
     };
   };
 }
