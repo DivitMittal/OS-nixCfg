@@ -1,0 +1,9 @@
+plugins:
+	yazi-rs/plugins#max-preview
+	yazi-rs/plugins#full-border
+	yazi-rs/plugins#diff
+	yazi-rs/plugins#chmod
+	yazi-rs/plugins#smart-filter
+	AnirudhG07/rich-preview
+	ndtoan96/ouch
+flavors:

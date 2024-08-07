@@ -23,9 +23,7 @@
     theme = import ./theme.nix;
     initLua = ./init.lua;
     plugins = {
-      ouch = ./plugins/ouch.yazi;
       smart-enter = ./plugins/smart-enter.yazi;
-      rich-preview = ./plugins/rich-preview.yazi;
     };
   };
 }

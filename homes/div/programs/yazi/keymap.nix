@@ -172,11 +172,11 @@
       { desc = "Enter the child directory, or open the file"; on = [ "<Right>" ]; run = "plugin --sync smart-enter"         ; }
       { desc = "Open shell here"                            ; on = [ "<C-s>" ]  ; run = "shell \"$SHELL\" --block --confirm"; }
       { desc = "diff selected file with hovered file"       ; on = [ "<C-d>"]   ; run = "plugin diff"                       ; }
-      { desc = "chmod on selected files"                    ; on = [ "c","m"]   ; run = "plugin chmod"                      ; }
+      { desc = "chmod on selected files"                    ; on = [ "c" "m"]   ; run = "plugin chmod"                      ; }
       { desc = "Maximize or restore preview"                ; on = [ "T" ]      ; run = "plugin --sync max-preview"         ; }
       { desc = "Smart filter"                               ; on = [ "/" ]      ; run = "plugin smart-filter"               ; }
     ];
-    keymap = [
+    append_keymap = [
       { desc = "Cancel selection"        ; on = [ "<C-q>" ]   ; run = "close"         ; }
       { desc = "Cancel selection"        ; on = [ "<Esc>" ]   ; run = "close"         ; }
       { desc = "Submit the selection"    ; on = [ "<Enter>" ] ; run = "close --submit"; }
