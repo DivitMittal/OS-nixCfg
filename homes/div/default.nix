@@ -34,7 +34,7 @@
       # networking tools
       nmap speedtest-go bandwhich
       # file/data format
-      w3m pandoc poppler chafa imagemagick ffmpeg
+      w3m pandoc poppler chafa imagemagick ffmpeg rich-cli
 
       # learning to use
       mosh

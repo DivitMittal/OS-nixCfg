@@ -5,16 +5,6 @@
     enable = true;
 
     functions = {
-      ya = {
-        body = ''
-          set tmp (mktemp -t "yazi-cwd.XXXXX")
-          yazi $argv --cwd-file="$tmp"
-          if set cwd (env cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-            builtin cd -- "$cwd"
-          end
-          rm -f -- "$tmp"
-        '';
-      };
       cht = { body = ''curl -ssL "https://cheat.sh/$argv''; };
     };
 
@@ -37,11 +27,11 @@
       nv    = { expansion = "nvim"; position     = "anywhere";};
       ".2"  = { expansion = "cd ../.."; position = "anywhere";};
       ".3"  = { expansion = "cd ../../.."; position = "anywhere";};
-      gits  = { expansion = "git status"; position = "command";};
-      gitph = { expansion = "git push"; position = "command";};
-      gitpl = { expansion = "git pull"; position = "command";};
-      gitf  = { expansion = "git fetch"; position = "command";};
-      gitc  = { expansion = "git commit"; position = "command";};
+      gs  = { expansion = "git status"; position = "command";};
+      gph = { expansion = "git push"; position = "command";};
+      gpl = { expansion = "git pull"; position = "command";};
+      gf  = { expansion = "git fetch"; position = "command";};
+      gc  = { expansion = "git commit"; position = "command";};
     };
 
     interactiveShellInit = ''
@@ -66,10 +56,6 @@
       fish_add_path --move --prepend /run/current-system/sw/bin
       fish_add_path --move --prepend /etc/profiles/per-user/${config.home.username}/bin
       fish_add_path --move --prepend ${config.home.profileDirectory}/bin
-
-      # pyenv
-      # pyenv init - | source
-      # pyenv virtualenv-init - | source
 
       # >>> mamba initialize >>>
       set -gx MAMBA_EXE "/Users/div/.nix-profile/bin/micromamba"
