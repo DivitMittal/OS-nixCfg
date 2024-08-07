@@ -24,7 +24,6 @@
     };
 
     shellAbbrs = {
-      nv    = { expansion = "nvim"       ; position = "anywhere";};
       ".2"  = { expansion = "cd ../.."   ; position = "anywhere";};
       ".3"  = { expansion = "cd ../../.."; position = "anywhere";};
     };

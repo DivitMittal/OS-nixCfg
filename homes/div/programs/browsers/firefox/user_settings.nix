@@ -1,3 +1,5 @@
+_:
+
 {
   "content.notify.interval" = 100000; # in microseconds
   "layout.css.grid-template-masonry-value.enabled" = true;

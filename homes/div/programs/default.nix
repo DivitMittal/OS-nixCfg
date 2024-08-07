@@ -3,7 +3,7 @@
 {
   imports = [
     ./shells
-    ./web-browsers/firefox
+    ./browsers/firefox
     ./git
     ./yazi
     ./email.nix
@@ -11,6 +11,7 @@
     ./atuin.nix
     ./starship.nix
     ./vim.nix
+    ./wezterm.nix
   ];
 
   programs = {

@@ -3,6 +3,7 @@
 {
   imports = [
     ./screen
+    ./nvim
   ];
 
   home.file = {
@@ -16,21 +17,10 @@
       source = ./spicetify/config-xpui.ini;
       target = "${config.xdg.configHome}/spicetify/config-xpui.ini";
     };
-
     hammerspoon = {
       enable = false;
       source = ./hammerspoon/init.lua;
       target = "${config.xdg.configHome}/hammerspoon/init.lua";
-    };
-    wezterm = {
-      enable = true;
-      source = ./wezterm/wezterm.lua;
-      target = "${config.xdg.configHome}/wezterm/wezterm.lua";
-    };
-    nvim-nvchad = {
-      source = ./nvim-nvchad/custom;
-      target = "${config.xdg.configHome}/nvim/lua/custom";
-      recursive = true;
     };
     ideavim = {
       source = ./ideavim/ideavimrc;

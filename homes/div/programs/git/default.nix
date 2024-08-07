@@ -6,7 +6,7 @@ _:
       gph = { expansion = "git push"; position = "command";};
       gpl = { expansion = "git pull"; position = "command";};
       gf  = { expansion = "git fetch"; position = "command";};
-      gc  = { expansion = "git commit"; position = "command";};
+      gc  = { expansion = "git commit -m \"\""; position = "command";};
       ga  = { expansion = "git add"; position = "command";};
   };
 
@@ -15,7 +15,7 @@ _:
     gph = "git push";
     gpl = "git pull";
     gf  = "git fetch";
-    gc  = "git commit";
+    gc  = "git commit -m \"\"";
     ga  = "git add";
   };
 
@@ -61,19 +61,13 @@ _:
         excludesfile = "~/.config/git/ignore";
       };
 
-      push = { default       = "simple"; followTags    = true; };
-
+      push  = { default       = "simple"; followTags = true; };
       init  = { defaultBranch = "master"; };
-
       fetch = { prune         = true; };
-
       grep  = { lineNumber    = true; };
-
       help  = { autocorrect   = "1"; };
-
       merge = { conflictstyle = "diff3"; };
-
-      color = { ui = "auto"; };
+      color = { ui            = "auto"; };
     };
   };
 }
