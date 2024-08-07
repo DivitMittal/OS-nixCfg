@@ -24,14 +24,9 @@
     };
 
     shellAbbrs = {
-      nv    = { expansion = "nvim"; position     = "anywhere";};
-      ".2"  = { expansion = "cd ../.."; position = "anywhere";};
+      nv    = { expansion = "nvim"       ; position = "anywhere";};
+      ".2"  = { expansion = "cd ../.."   ; position = "anywhere";};
       ".3"  = { expansion = "cd ../../.."; position = "anywhere";};
-      gs  = { expansion = "git status"; position = "command";};
-      gph = { expansion = "git push"; position = "command";};
-      gpl = { expansion = "git pull"; position = "command";};
-      gf  = { expansion = "git fetch"; position = "command";};
-      gc  = { expansion = "git commit"; position = "command";};
     };
 
     interactiveShellInit = ''
@@ -57,20 +52,17 @@
       fish_add_path --move --prepend /etc/profiles/per-user/${config.home.username}/bin
       fish_add_path --move --prepend ${config.home.profileDirectory}/bin
 
-      # >>> mamba initialize >>>
+      # mamba initialize
       set -gx MAMBA_EXE "/Users/div/.nix-profile/bin/micromamba"
       set -gx MAMBA_ROOT_PREFIX "/Users/div/.local/share/micromamba/"
       $MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
-      # <<< mamba initialize <<<
     '';
 
     plugins = [
       {
         name = "fisher";
         src = pkgs.fetchFromGitHub {
-          owner = "jorgebucaran";
-          repo = "fisher";
-          rev = "4.4.4";
+          owner = "jorgebucaran"; repo = "fisher"; rev = "4.4.4";
           hash = "sha256-e8gIaVbuUzTwKtuMPNXBT5STeddYqQegduWBtURLT3M=";
         };
       }

@@ -34,7 +34,7 @@ _:
     masApps = {
       "Texty" = 1538996043;
       # Safari Extensions
-      "Ghostery" = -2085073091; # Ad-blocker
+      "Ghostery" = 6504861501; # Ad-blocker
       "SuperAgent" = 1568262835; # Cookie Annoyances handler
       "Vimkey" = 1585682577;
     };

@@ -174,7 +174,7 @@
       { desc = "diff selected file with hovered file"       ; on = [ "<C-d>"]   ; run = "plugin diff"                       ; }
       { desc = "chmod on selected files"                    ; on = [ "c" "m"]   ; run = "plugin chmod"                      ; }
       { desc = "Maximize or restore preview"                ; on = [ "T" ]      ; run = "plugin --sync max-preview"         ; }
-      { desc = "Smart filter"                               ; on = [ "/" ]      ; run = "plugin smart-filter"               ; }
+      { desc = "Smart filter"                               ; on = [ "F" ]      ; run = "plugin smart-filter"               ; }
     ];
     append_keymap = [
       { desc = "Cancel selection"        ; on = [ "<C-q>" ]   ; run = "close"         ; }

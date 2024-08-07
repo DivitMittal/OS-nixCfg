@@ -74,7 +74,6 @@
 
   plugin = {
     preloaders = [
-      # { cond = "!mime"          ; multi = true ; name = "*"; prio = "high"; run = "mime"; }
       { mime = "image/vnd.djvu" ; run = "noop" ; }
       { mime = "image/*"        ; run = "image"; }
       { mime = "video/*"        ; run = "video"; }

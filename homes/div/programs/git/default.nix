@@ -1,6 +1,24 @@
 _:
 
 {
+  programs.fish.shellAbbrs = {
+      gs  = { expansion = "git status"; position = "command";};
+      gph = { expansion = "git push"; position = "command";};
+      gpl = { expansion = "git pull"; position = "command";};
+      gf  = { expansion = "git fetch"; position = "command";};
+      gc  = { expansion = "git commit"; position = "command";};
+      ga  = { expansion = "git add"; position = "command";};
+  };
+
+  programs.zsh.zsh-abbr.abbreviations = {
+    gs  = "git status";
+    gph = "git push";
+    gpl = "git pull";
+    gf  = "git fetch";
+    gc  = "git commit";
+    ga  = "git add";
+  };
+
   programs.git = {
     enable = true;
 

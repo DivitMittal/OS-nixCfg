@@ -1,6 +1,10 @@
-  { config, ...}:
+{ config, ...}:
 
 {
+  imports = [
+    ./screen
+  ];
+
   home.file = {
     # impure symlink
     aerc = {
@@ -22,10 +26,6 @@
       enable = true;
       source = ./wezterm/wezterm.lua;
       target = "${config.xdg.configHome}/wezterm/wezterm.lua";
-    };
-    screen = {
-      source = ./screen/screenrc;
-      target = "${config.home.sessionVariables.SCREENRC}";
     };
     nvim-nvchad = {
       source = ./nvim-nvchad/custom;

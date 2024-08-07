@@ -3,6 +3,7 @@ AltTab.app
 Bartender 5.app
 CrossOver.app
 Firefox.app
+Ghostery Privacy Ad Blocker.app
 Homerow.app
 JetBrains Toolbox.app
 Menu Bar Dock.app
@@ -11,7 +12,7 @@ Microsoft OneNote.app
 Mission Control Plus.app
 Nix Apps
 Notion Calendar.app
-Notion Enhanced.app
+Notion.app
 ONLYOFFICE.app
 Obsidian.app
 OneDrive.app
@@ -20,10 +21,12 @@ Raycast.app
 Safari.app
 Spaceman.app
 Spotify.app
+Super Agent.app
 Syntax Highlight.app
 Telegram.app
 Texty.app
 Utilities
+Vimkey.app
 Visual Studio Code.app
 Wacom Tablet.localized
 WezTerm.app

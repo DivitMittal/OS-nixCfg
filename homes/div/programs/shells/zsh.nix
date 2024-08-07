@@ -51,11 +51,6 @@ _:
       abbreviations = {
         ".2"  = "cd ../..";
         ".3"  = "cd ../../..";
-        gits  = "git status";
-        gitph = "git push";
-        gitpl = "git pull";
-        gitf  = "git fet ch";
-        gitc  = "git commit";
         nv    = "nvim";
       };
     };

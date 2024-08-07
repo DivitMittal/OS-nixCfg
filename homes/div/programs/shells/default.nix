@@ -1,6 +1,12 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./fish.nix
+    ./zsh.nix
+    ./bash.nix
+  ];
+
   home.sessionPath = [
     "${config.home.homeDirectory}/.local/bin"
   ];
@@ -19,10 +25,4 @@
     lt                = "eza --tree --level=2 | ov -H1";
     pip-uninstall-all = "pip freeze | cut -d '@' -f1 | xargs pip uninstall -y";
   };
-
-  imports = [
-    ./fish.nix
-    ./zsh.nix
-    ./bash.nix
-  ];
 }
