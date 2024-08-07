@@ -1,6 +1,0 @@
-[submodule "homes/div/programs/yazi/plugins/rich-preview.yazi"]
-	path = homes/div/programs/yazi/plugins/rich-preview.yazi
-	url = https://github.com/AnirudhG07/rich-preview.yazi.git
-[submodule "homes/div/programs/yazi/plugins/ouch.yazi"]
-	path = homes/div/programs/yazi/plugins/ouch.yazi
-	url = https://github.com/ndtoan96/ouch.yazi.git
