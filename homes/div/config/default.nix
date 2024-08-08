@@ -10,7 +10,7 @@
     # impure symlink
     aerc = {
       enable = true;
-      source = ~/OS-nixCfg/secrets/email/aerc/accounts.conf;
+      source = "${config.xdg.configHome}"+/OS-nixCfg/secrets/email/aerc/accounts.conf;
       target = "${config.xdg.configHome}/aerc/accounts.conf";
     };
     spicetify = {
@@ -49,10 +49,6 @@
     ov = {
       source = ./ov/config.yaml;
       target = "${config.xdg.configHome}/ov/config.yaml";
-    };
-    zellij = {
-      source = ./zellij/config.kdl;
-      target = "${config.xdg.configHome}/zellij/config.kdl";
     };
   };
 }

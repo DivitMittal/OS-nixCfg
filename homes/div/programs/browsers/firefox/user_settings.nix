@@ -5,16 +5,17 @@
   "dom.enable_web_task_scheduling" = true;
 
   # GFX
-  "gfx.canvas.accelerated.cache-items" = 4096;
-  "gfx.canvas.accelerated.cache-size" = 512;
-  "gfx.content.skia-font-cache-size" = 20;
+  "gfx.canvas.accelerated.cache-items" = 8192;
+  "gfx.canvas.accelerated.cache-size" = 1024;
+  "gfx.content.skia-font-cache-size" = 40;
 
   # BROWSER CACHE
   "browser.cache.disk.enable" = false;
   "browser.cache.memory.enable" = true;
+  "browser.cache.memory.capacity" = -1; # default: -1; auto-detect memory capacity
 
   # DISK CACHE
-  "browser.cache.jsbc_compression_level" = 3;
+  "browser.cache.jsbc_compression_level" = 1; # default: 0; varies from 0-9 adjusting the level of compression
 
   # MEDIA CACHE
   "media.memory_cache_max_size" = 65536;

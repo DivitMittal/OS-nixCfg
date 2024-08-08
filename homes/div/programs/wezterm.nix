@@ -1,9 +1,9 @@
-_:
+{ pkgs, ... }:
 
 {
   programs.wezterm = {
     enable = true;
-    package = null;
+    package = pkgs.hello;
 
     enableBashIntegration = false; enableZshIntegration = false;
 

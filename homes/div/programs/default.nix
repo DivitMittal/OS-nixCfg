@@ -6,7 +6,7 @@
     ./browsers/firefox
     ./git
     ./yazi
-    ./email.nix
+    ./aerc.nix
     ./btop.nix
     ./atuin.nix
     ./starship.nix
