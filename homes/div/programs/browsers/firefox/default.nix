@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   # imports = [
@@ -76,122 +76,16 @@
         };
 
         settings = import ./user_settings.nix;
-
-        userContent = ''
-          @charset "UTF-8";
-
-          /* makes sures that tridactyl's new-tab is a blank page */
-          @-moz-document regexp("moz-extension://.*/static/newtab.html") {
-            body {
-              display: none !important;
-            }
-          }
-        '';
-
-        userChrome = ''
-          @charset "UTF-8";
-
-          /* --------------------------- STATUS PANEL ------------------------ */
-          /* hide statuspanel */
-          #statuspanel {
-            display: none !important;
-          }
-
-          /* ------------------------------ TABBAR ---------------------------- */
-          /* hide tabtoolbar */
-          #TabsToolbar {
-            visibility: collapse;
-          }
-
-          /* ----------------------------- SIDEBAR ----------------------------- */
-          /* hide sidebar header  */
-          #sidebar-box #sidebar-header {
-            visibility:collapse !important;
-          }
-
-          /* Sideberry */
-          /* normal website page right margin for collapsing sidebar */
-          #main-window #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929-sidebar-action"]:not([hidden])~#appcontent {
-            margin-right: 20px;
-          }
-
-          /* in-fullscreen right-margin for collapsing sidebar */
-          #main-window[inFullscreen][inDOMFullscreen] #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929-sidebar-action"]:not([hidden])~#appcontent {
-            margin-right: 0 !important;
-          }
-
-          /* ------------------------------ NAVBAR ----------------------------- */
-          /* Makes browser window first element sends the NAVBAR down */
-          /* #browser { */
-          /*    order: -1 !important; */
-          /*  } */
-
-          /* hides unwanted buttons & items from the navbar */
-          #back-button, #forward-button, #reload-button, #stop-button, #home-button, #fxa-toolbar-menu-button {
-            display: none;
-          }
-
-          /* Empty space before and after the url bar */
-          #customizableui-special-spring1, #customizableui-special-spring2 {
-            display: none;
-          }
-
-          #nav-bar {
-            --navbar-margin: -20px;
-            --toolbar-field-focus-border-color: #14C800;
-
-            border-width: 1px !important;
-            margin-top: var(--navbar-margin);
-            margin-bottom: 0;
-            transition: all 0.1s ease !important;
-          }
-
-          #navigator-toolbox:focus-within > #nav-bar,
-          #navigator-toolbox:hover > #nav-bar {
-            margin-top: 0;
-            margin-bottom: var(--navbar-margin);
-            z-index: 5;
-          }
-
-          /* hides navbar for sure when in fullscreen */
-          #nav-bar[inFullscreen] {
-            display: none !important;
-          }
-
-          /* Disable auto-hiding when in 'customize' mode */
-          :root[customizing] #navigator-toolbox{
-            position: relative !important;
-            margin-top: 0px;
-          }
-
-          /* ---------------------------- URLBAR ------------------------------ */
-          #urlbar-go-button, #star-button, #star-button-box, #pocket-button, #tracking-protection-icon-container {
-            display: none !important;
-          }
-
-          #urlbar-container {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding-top: 0 !important;
-            padding-bottom: 0 !important;
-            font-family: "CaskaydiaCove Nerd Font";
-            font-size: 15px;
-          }
-
-          #urlbar {
-            top: 0px !important;
-            bottom: unset !important;
-            box-shadow: none !important;
-            display: flex !important;
-            flex-direction: column !important;
-          }
-
-          #urlbar-background {
-            border-width: 0 !important;
-            border-radius: 0 !important;
-          }
+        userContent = builtins.readFile ./chrome/CSS/userContent.css;
+        userChrome = builtins.readFile ./chrome/CSS/userChrome.css;
         '';
       };
     };
   };
+
+  home.file.userChromeJS = {
+    source = ./chrome/JS;
+    target = /. builtins.toPath "${config.home.homeDirectory}/Library/Application Support/Firefox/Profiles/custom-default/chrome/JS"
+    recursive = true;
+  }
 }

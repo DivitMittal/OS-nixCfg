@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+/* makes sures that tridactyl's new-tab is a blank page */
+@-moz-document regexp("moz-extension://.*/static/newtab.html") {
+  body {
+    display: none !important;
+  }
+}

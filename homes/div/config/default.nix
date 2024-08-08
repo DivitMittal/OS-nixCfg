@@ -7,12 +7,19 @@
   ];
 
   home.file = {
-    # impure symlink
+    # impure symlinks
     aerc = {
       enable = true;
-      source = "${config.xdg.configHome}"+/OS-nixCfg/secrets/email/aerc/accounts.conf;
+      source = /. + builtins.toPath "${config.home.homeDirectory}/OS-nixCfg/secrets/email/aerc/accounts.conf";
       target = "${config.xdg.configHome}/aerc/accounts.conf";
     };
+    rclone = {
+      enable = true;
+      source = /. + builtins.toPath"${config.home.homeDirectory}/OS-nixCfg/secrets/rclone/rclone.conf";
+      target = "${config.xdg.configHome}/rclone/rclone.conf";
+    };
+
+    # pure symlinks
     spicetify = {
       source = ./spicetify/config-xpui.ini;
       target = "${config.xdg.configHome}/spicetify/config-xpui.ini";
