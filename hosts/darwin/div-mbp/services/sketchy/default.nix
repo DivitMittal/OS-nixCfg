@@ -3,6 +3,6 @@
 {
   services.sketchybar = {
     enable = false;
-    extraPackages = with pkgs;[ jq lua ];
+    extraPackages = with pkgs;[ lua ];
   };
 }

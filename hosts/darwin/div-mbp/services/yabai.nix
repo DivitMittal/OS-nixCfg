@@ -60,25 +60,25 @@ in
     };
 
     extraConfig = ''
-      yabai -m rule --add app="^System Settings$" manage=off
-      yabai -m rule --add app="^Raycast$" manage=off
-      yabai -m rule --add app="^JetBrains Toolbox$" manage=off
-      yabai -m rule --add app="^Karabiner-Elements$" manage=off
-      yabai -m rule --add app="^Karabiner-EventViewer$" manage=off
+      yabai -m rule --add app="^System Settings$"             manage=off
+      yabai -m rule --add app="^Raycast$"                     manage=off
+      yabai -m rule --add app="^JetBrains Toolbox$"           manage=off
+      yabai -m rule --add app="^Karabiner-Elements$"          manage=off
+      yabai -m rule --add app="^Karabiner-EventViewer$"       manage=off
       yabai -m rule --add app="^Karabiner-NotificatonWindow$" manage=off
 
       # Transparent apps
-      yabai -m rule --add app="^Code$" opacity=0.97
-      yabai -m rule --add app="^IntelliJ IDEA$" opacity=0.97
-      yabai -m rule --add app="^CLion$" opacity=0.97
-      yabai -m rule --add app="^DataSpell$" opacity=0.97
-      yabai -m rule --add app="^DataGrip$" opacity=0.97
-      yabai -m rule --add app="^WebStorm$" opacity=0.97
-      yabai -m rule --add app="^Notion$" opacity=0.97
-      yabai -m rule --add app="^Obsidian$" opacity=0.97
-      yabai -m rule --add app="^Finder$" opacity=0.97
+      yabai -m rule --add app="^Code$"        opacity=0.97
+      yabai -m rule --add app="^IntelliJ      IDEA$" opacity=0.97
+      yabai -m rule --add app="^CLion$"       opacity=0.97
+      yabai -m rule --add app="^DataSpell$"   opacity=0.97
+      yabai -m rule --add app="^DataGrip$"    opacity=0.97
+      yabai -m rule --add app="^WebStorm$"    opacity=0.97
+      yabai -m rule --add app="^Notion$"      opacity=0.97
+      yabai -m rule --add app="^Obsidian$"    opacity=0.97
+      yabai -m rule --add app="^Finder$"      opacity=0.97
       yabai -m rule --add app="^Thunderbird$" opacity=0.97
-      yabai -m rule --add app="^Calculator$" sticky=on
+      yabai -m rule --add app="^Calculator$"  sticky=on
 
       # Kanata daemon
       sudo ${kanataBin} --cfg ${kanataCfg} 1> /dev/null 2> /tmp/rs.kanata.err.log

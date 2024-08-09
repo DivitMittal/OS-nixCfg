@@ -4,7 +4,7 @@
   imports = [
     ./../common
     ./services
-    ./macOS.nix
+    ./macOS_pref.nix
     ./homebrew.nix
   ];
 

@@ -1,9 +1,15 @@
 { config, lib, pkgs, ... }:
 
 {
-  # imports = [
-  #   ./macOS_profile_hack.nix
-  # ];
+  imports = [
+    ./macOS_profile_hack.nix
+  ];
+
+  home.file.userChromeJS = {
+    source = ./chrome/JS;
+    target = "${config.home.homeDirectory}/Library/Application Support/Firefox/Profiles/custom-default/chrome/JS";
+    recursive = true;
+  };
 
   programs.firefox = {
     enable = true;
@@ -78,14 +84,7 @@
         settings = import ./user_settings.nix;
         userContent = builtins.readFile ./chrome/CSS/userContent.css;
         userChrome = builtins.readFile ./chrome/CSS/userChrome.css;
-        '';
       };
     };
   };
-
-  home.file.userChromeJS = {
-    source = ./chrome/JS;
-    target = /. builtins.toPath "${config.home.homeDirectory}/Library/Application Support/Firefox/Profiles/custom-default/chrome/JS"
-    recursive = true;
-  }
 }
