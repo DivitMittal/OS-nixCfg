@@ -1,8 +1,10 @@
-_:
+{ pkgs, ... }:
 
 {
   programs.btop = {
     enable = true;
+    package = pkgs.btop;
+
     settings = {
       #* Name of a btop++/bpytop/bashtop formatted ".theme" file, "Default" and "TTY" for builtin themes.;
       #* Themes should be placed in "../share/btop/themes" relative to binary or "$HOME/.config/btop/themes";

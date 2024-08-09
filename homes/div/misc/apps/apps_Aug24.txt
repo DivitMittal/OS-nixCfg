@@ -33,4 +33,3 @@ WezTerm.app
 WhatsApp.app
 gSwitch.app
 iStat Menus.app
-mpv.app

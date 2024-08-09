@@ -3,7 +3,7 @@
 {
   home = {
     username      = "div";
-    homeDirectory = "/Users/div";
+    homeDirectory = "/Users/${config.home.username}";
   };
 
   imports = [
@@ -14,11 +14,10 @@
 
   home.packages = builtins.attrValues {
     inherit(pkgs)
-      tmux grc neovim                         # terminal Environment
-      fd duf dust hexyl ouch ov               # Modern altenatives
+      duf dust hexyl ouch ov   # Modern altenatives
 
       # CLI tools
-      bitwarden-cli rclone weechat
+      grc bitwarden-cli rclone weechat
 
       # plugin/package/module managers
       spicetify-cli

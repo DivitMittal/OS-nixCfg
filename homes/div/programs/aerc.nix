@@ -1,8 +1,9 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 
 {
   programs.aerc = {
     enable = true;
+    package = pkgs.aerc;
 
     extraConfig = {
       general = {
@@ -35,7 +36,7 @@
 
       openers = {
         "x-scheme-handler/irc" = "weechat";
-        "text/plain"           = "nvim";
+        "text/plain"           = "${config.home.sessionVariables.VISUAL}";
       };
     };
 
@@ -118,7 +119,7 @@
       pt               = :patch term<Enter>
       ps               = :patch switch <Tab>
 
-      [messages:folder = Drafts]
+      [messages:folder=Drafts]
       <Enter>          = :recall<Enter>
 
       [view]

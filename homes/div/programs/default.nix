@@ -2,21 +2,27 @@
 
 {
   imports = [
-    ./shells
-    ./browsers/firefox
+    ./browsers
+    ./editors
     ./git
+    ./multiplexers
+    ./shells
+    ./wezterm
     ./yazi
     ./aerc.nix
-    ./btop.nix
     ./atuin.nix
+    ./bat.nix
+    ./btop.nix
+    ./eza.nix
+    ./less.nix
     ./starship.nix
-    ./vim.nix
-    ./wezterm.nix
   ];
 
   programs = {
     fzf = {
-      enable                = true;
+      enable = true;
+      package = pkgs.fzf;
+
       enableFishIntegration = false; enableBashIntegration = false; enableZshIntegration = false;
       defaultCommand        = "fd --hidden";
       defaultOptions        = [
@@ -26,34 +32,26 @@
       ];
     };
 
-    eza = {
-      enable                = true;
-      enableFishIntegration = true; enableZshIntegration  = true; enableBashIntegration = false;
-      extraOptions  = ["--all" "--classify" "--icons=always" "--group-directories-first" "--color=always" "--color-scale" "--color-scale-mode=gradient" "--hyperlink"];
-    };
-
-    bat = {
-      enable        = true;
-      extraPackages = with pkgs.bat-extras; [ batman ];
-      config = {
-        pager      = "less";
-        map-syntax = ["*.ino:C++" ".ignore:Git Ignore" "*.jenkinsfile:Groovy" "*.props:Java Properties"];
-      };
-    };
-
-    zellij = {
+    fd = {
       enable = true;
-      enableFishIntegration = false; enableZshIntegration = false; enableBashIntegration = false;
+      package = pkgs.fd;
+
+      hidden = true;
+      ignores = [ ".git/" ];
     };
 
     zoxide = {
-      enable                = true;
+      enable = true;
+      package = pkgs.zoxide;
+
       enableFishIntegration = true; enableZshIntegration  = true; enableBashIntegration = false;
-      options               = ["--cmd cd"];
+      options = ["--cmd cd"];
     };
 
     thefuck = {
       enable = true;
+      package = pkgs.thefuck;
+
       enableFishIntegration = true; enableZshIntegration = true; enableBashIntegration = false;
     };
 
@@ -63,17 +61,16 @@
 
     ripgrep = {
       enable = true;
-      arguments = [ "--max-columns-preview" "--colors=line:style:bold" ];
-    };
+      package = pkgs.ripgrep;
 
-    emacs = {
-      enable = true;
-      package = pkgs.emacs-nox;
+      arguments = [ "--max-columns-preview" "--colors=line:style:bold" ];
     };
 
     gh = {
       enable = true;
+      package = pkgs.gh;
       extensions = with pkgs;[ gh-eco gh-dash ];
+
       gitCredentialHelper = {
         enable = true;
         hosts = [ "https://github.com" "https://gist.github.com" ];
@@ -90,6 +87,7 @@
 
     aria2  = {
       enable = true;
+
       settings = {
         # listen-port = 60000;
         # dht-listen-port = 60000;
@@ -101,15 +99,26 @@
 
     jq = {
       enable = true;
+      package = pkgs.jq;
+
       colors = { null = "1;30"; false = "0;31"; true = "0;32"; numbers = "0;36"; strings = "0;33"; arrays = "1;35"; objects = "1;37"; };
     };
 
     tealdeer = {
       enable = true;
+
       settings = {
         display = { compact = false; use_pager = true; };
-        updates = { auto_update = false; };
+        updates = { auto_update = true; auto_update_interval_hours = 240; };
       };
+    };
+
+    # Disabled
+    zellij = {
+      enable = false;
+      package = pkgs.zellij;
+
+      enableFishIntegration = false; enableZshIntegration = false; enableBashIntegration = false;
     };
   };
 }

@@ -1,8 +1,10 @@
-_:
+{ pkgs, ... }:
 
 {
   programs.atuin = {
-    enable                = true;
+    enable = true;
+    package = pkgs.atuin;
+
     enableFishIntegration = true; enableZshIntegration  = true; enableBashIntegration = false;
     settings              = {
       ## where to store your database, default is your system data directory

@@ -5,6 +5,12 @@
     ./macOS_profile_hack.nix
   ];
 
+  home.file.tridactyl = {
+    source = ./tridactyl;
+    target = "${config.xdg.configHome}/tridactyl";
+    recursive = true;
+  };
+
   home.file.userChromeJS = {
     source = ./chrome/JS;
     target = "${config.home.homeDirectory}/Library/Application Support/Firefox/Profiles/custom-default/chrome/JS";

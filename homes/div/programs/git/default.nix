@@ -1,13 +1,13 @@
-_:
+{ pkgs, ... }:
 
 {
   programs.fish.shellAbbrs = {
-      gs  = { expansion = "git status"; position = "command";};
-      gph = { expansion = "git push"; position = "command";};
-      gpl = { expansion = "git pull"; position = "command";};
-      gf  = { expansion = "git fetch"; position = "command";};
-      gc  = { expansion = "git commit -m \"\""; position = "command";};
-      ga  = { expansion = "git add"; position = "command";};
+    gs  = { expansion = "git status"; position = "command";};
+    gph = { expansion = "git push"; position = "command";};
+    gpl = { expansion = "git pull"; position = "command";};
+    gf  = { expansion = "git fetch"; position = "command";};
+    gc  = { expansion = "git commit -m \"\""; position = "command";};
+    ga  = { expansion = "git add"; position = "command";};
   };
 
   programs.zsh.zsh-abbr.abbreviations = {
@@ -21,6 +21,7 @@ _:
 
   programs.git = {
     enable = true;
+    package = pkgs.gitFull;
 
     userName   = "Divit Mittal";
     userEmail  = "64.69.76.69.74.m@gmail.com";

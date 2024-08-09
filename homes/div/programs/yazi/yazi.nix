@@ -19,7 +19,7 @@
 
   manager = {
     linemode = "none";
-    ratio = [ 1 4 3 ];
+    ratio = [ 1 3 3 ];
     show_hidden = true;
     show_symlink = false;
     sort_by = "alphabetical";
