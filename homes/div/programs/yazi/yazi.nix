@@ -12,9 +12,11 @@
     shell_offset = [ 0 2 50 3 ]    ; shell_origin = "top-center"    ; shell_title = [ "Shell:" "Shell (block):" ]                    ;
     trash_offset = [ 0 2 50 3 ]    ; trash_origin = "top-center"    ; trash_title = "move {n} selected file{s} to trash? (y/n)"      ;
   };
+
   log = {
     enabled = false;
   };
+
   manager = {
     linemode = "none";
     ratio = [ 1 4 3 ];
@@ -25,50 +27,55 @@
     sort_reverse = false;
     sort_sensitive = false;
   };
+
   open = {
     rules = [
-      { name = "*/"                         ; use = [ "edit" "open" "reveal" ]; }
-      { mime = "text/*"                     ; use = [ "edit" "reveal" ]       ; }
-      { mime = "image/*"                    ; use = [ "open" "reveal" ]       ; }
-      { mime = "video/*"                    ; use = [ "play" "reveal" ]       ; }
-      { mime = "audio/*"                    ; use = [ "play" "reveal" ]       ; }
-      { mime = "inode/x-empty"              ; use = [ "edit" "reveal" ]       ; }
-      { mime = "application/json"           ; use = [ "edit" "reveal" ]       ; }
-      { mime = "*/javascript"               ; use = [ "edit" "reveal" ]       ; }
-      { mime = "application/zip"            ; use = [ "extract" "reveal" ]    ; }
-      { mime = "application/gzip"           ; use = [ "extract" "reveal" ]    ; }
-      { mime = "application/x-tar"          ; use = [ "extract" "reveal" ]    ; }
-      { mime = "application/x-bzip"         ; use = [ "extract" "reveal" ]    ; }
-      { mime = "application/x-bzip2"        ; use = [ "extract" "reveal" ]    ; }
-      { mime = "application/x-7z-compressed"; use = [ "extract" "reveal" ]    ; }
-      { mime = "application/x-rar"          ; use = [ "extract" "reveal" ]    ; }
-      { mime = "application/xz"             ; use = [ "extract" "reveal" ]    ; }
-      { mime = "*"                          ; use = [ "open" "reveal" ]       ; }
+      { name = "*/"                         ; use = [ "edit" "edit1" "open" "reveal" ]; }
+      { mime = "text/*"                     ; use = [ "edit" "edit1" "open" "reveal" ]; }
+      { mime = "application/json"           ; use = [ "edit" "edit1" "reveal" ]       ; }
+      { mime = "*/javascript"               ; use = [ "edit" "edit1" "reveal" ]       ; }
+      { mime = "image/*"                    ; use = [ "open" "reveal" ]               ; }
+      { mime = "video/*"                    ; use = [ "play" "reveal" ]               ; }
+      { mime = "audio/*"                    ; use = [ "play" "reveal" ]               ; }
+      { mime = "inode/x-empty"              ; use = [ "edit" "reveal" ]               ; }
+      { mime = "application/zip"            ; use = [ "extract" "reveal" ]            ; }
+      { mime = "application/gzip"           ; use = [ "extract" "reveal" ]            ; }
+      { mime = "application/x-tar"          ; use = [ "extract" "reveal" ]            ; }
+      { mime = "application/x-bzip"         ; use = [ "extract" "reveal" ]            ; }
+      { mime = "application/x-bzip2"        ; use = [ "extract" "reveal" ]            ; }
+      { mime = "application/x-7z-compressed"; use = [ "extract" "reveal" ]            ; }
+      { mime = "application/x-rar"          ; use = [ "extract" "reveal" ]            ; }
+      { mime = "application/xz"             ; use = [ "extract" "reveal" ]            ; }
+      { mime = "*"                          ; use = [ "open" "reveal" ]               ; }
     ];
   };
+
   opener = {
     edit = [
-      { block = true   ; for = "unix" ; run = "$EDITOR \"$@\""; }
-      { for = "windows"; orphan = true; run = "code \"%*\""   ; }
+      { desc = "Edit via $EDITOR"; for = "unix"   ; run = "$EDITOR \"$@\""  ; block = true ;}
+      { desc = "Edit via $EDITOR"; for = "windows"; run = "$EDITOR \"%*\""  ; orphan = true;}
     ];
-    extract = [
-      { desc = "extract here"; for = "unix"; run = "unar \"$1\""; }
-      { desc = "extract here"; for = "windows"; run = "unar \"%1\""; }
+    edit1 = [
+      { desc = "Edit via VSCode"; for = "unix"   ; run = "code \"$@\""; block = true  ;}
+      { desc = "Edit via VSCode"; for = "windows"; run = "code \"%*\""; orphan = true ;}
     ];
     open = [
-      { desc = "Open"; for = "linux"  ; run = "xdg-open \"$@\""; }
-      { desc = "Open"; for = "macos"  ; run = "open \"$@\""    ; }
-      { desc = "Open"; for = "windows"; orphan = true          ; run = "start \"\" \"%1\""; }
+      { desc = "Default Open"; for = "linux"  ; run = "xdg-open \"$@\""  ; }
+      { desc = "Default Open"; for = "macos"  ; run = "open \"$@\""      ; }
+      { desc = "Default Open"; for = "windows"; run = "start \"\" \"%1\"";  orphan = true;}
+    ];
+    extract = [
+      { desc = "extract here"; for = "unix"   ; run = "ouch d \"$1\""; }
+      { desc = "extract here"; for = "windows"; run = "unar \"%1\""  ; }
     ];
     play = [
-      { for = "unix"   ; orphan = true           ; run = "mpv \"$@\""; }
-      { for = "windows"; orphan = true           ; run = "mpv \"%1\""; }
-      { block = true   ; desc = "Show media info"; for = "unix"      ; run = "mediainfo \"$1\"; echo \"Press enter to exit\"; read"; }
+      { desc = "play via mpv"   ; for = "unix"   ; run = "mpv \"$@\""     ; orphan = true;}
+      { desc = "play via mpv"   ; for = "windows"; run = "mpv \"%1\""     ; orphan = true;}
+      { desc = "Show media info"; for = "unix"   ; run = "mediainfo \"$1\"; echo \"Press enter to exit\"; read"; block = true;}
     ];
     reveal = [
-      { desc = "Reveal"; for = "macos"     ; run = "open -R \"$1\""; }
-      { desc = "Reveal"; for = "windows"   ; orphan = true         ; run = "explorer /select, \"%1\""; }
-      { block = true   ; desc = "Show EXIF"; for = "unix"          ; run = "exiftool \"$1\"          ; echo \"Press enter to exit\"; read"; }
+      { desc = "Reveal in Finder"  ; for = "macos"     ; run = "open -R \"$1\""          ;}
+      { desc = "Reveal in Explorer"; for = "windows"   ; run = "explorer /select, \"%1\""; orphan = true;}
     ];
   };
 

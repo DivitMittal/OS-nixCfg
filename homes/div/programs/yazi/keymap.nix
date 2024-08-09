@@ -101,7 +101,6 @@
       { desc = "Open the selected files"                                      ; on = [ "o" ]           ; run = "open"                                               ; }
       { desc = "Open the selected files interactively"                        ; on = [ "O" ]           ; run = "open --interactive"                                 ; }
       { desc = "Open the selected files"                                      ; on = [ "<Enter>" ]     ; run = "open"                                               ; }
-      { desc = "Open the selected files interactively"                        ; on = [ "<C-Enter>" ]   ; run = "open --interactive"                                 ; }
       { desc = "Copy the selected files"                                      ; on = [ "y" ]           ; run = [ "yank" "escape --visual --select" ]                ; }
       { desc = "Cancel the yank status of files"                              ; on = [ "Y" ]           ; run = [ "unyank" "escape --visual --select" ]              ; }
       { desc = "Cut the selected files"                                       ; on = [ "x" ]           ; run = [ "yank --cut" "escape --visual --select" ]          ; }

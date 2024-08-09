@@ -4,18 +4,18 @@
 // @description    dynamically collapses sidebar if the sidebarcommand is sideberry
 // ==/UserScript==
 
-const extendSidebarBox = (sidebarBox, sidebar) => {
-  sidebarBox.style.width = '250px';
-  sidebar.style.width = '250px';
+const extendSidebarBox = (sidebarBox) => {
+  sidebarBox.style.width = '350px';
 };
 
 const resetSidebarBox = (sidebarBox) => {
   sidebarBox.style.position = 'absolute';
   sidebarBox.style.right ='0px';
+  sidebarBox.style.height = '100vh';
   sidebarBox.style.width = '30px';
   sidebarBox.style.zIndex = '1';
   sidebarBox.style.minWidth = 'unset';
-  sidebarBox.style.transition = 'all 0.2s ease-in-out';
+  sidebarBox.style.transition = 'all 0.05s ease-in-out';
 };
 
 const handleSidebar = (sidebarBox) => {
@@ -24,23 +24,17 @@ const handleSidebar = (sidebarBox) => {
     return;
   }
 
-  sidebarBox.style.height = '100vh';
+  resetSidebarBox(sidebarBox);
 
-  const sidebar = sidebarBox.querySelector('#sidebar');
-  if (!sidebar) {
-    console.log("Sidebar not found inside the sidebar box");
-    return;
-  }
-
-  sidebarBox.addEventListener('mouseenter', () => extendSidebarBox(sidebarBox, sidebar));
+  // Mouse activation
+  sidebarBox.addEventListener('mouseenter', () => extendSidebarBox(sidebarBox));
   sidebarBox.addEventListener('mouseleave', () => resetSidebarBox(sidebarBox));
-  sidebarBox.addEventListener('focusin', () => extendSidebarBox(sidebarBox, sidebar));
-  sidebarBox.addEventListener('focusout', () => resetSidebarBox(sidebarBox));
 
+  // Keyboard activation
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Control') {
       setTimeout(() => {
-          extendSidebarBox(sidebarBox, sidebar);
+          extendSidebarBox(sidebarBox);
       }, 25);
     }
   });
@@ -48,7 +42,7 @@ const handleSidebar = (sidebarBox) => {
   window.addEventListener('keyup', (e) => {
     if (e.key === 'Control') {
       setTimeout(() => {
-          resetSidebarBox(sidebarBox, sidebar);
+          resetSidebarBox(sidebarBox);
       }, 25);
     }
   });
