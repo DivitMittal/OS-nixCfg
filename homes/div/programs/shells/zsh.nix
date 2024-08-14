@@ -1,21 +1,22 @@
-_:
+{ pkgs, config, ... }:
 
 {
   programs.zsh = {
     enable = true;
+    package = pkgs.zsh;
 
     dotDir = ".config/zsh";
     history = {
       extended              = false; # save timestamps as well
       expireDuplicatesFirst = true; ignoreAllDups = true;
       path                  = "$ZDOTDIR/.zsh_history";
-      share = true;
+      share                 = true;
     };
     defaultKeymap = null;
 
     profileExtra = ''
       # Place for hosting Git repos
-      export GIT_HOSTING='git@github.com:DivitMittal'
+      export GIT_HOSTING='git@github.com:${config.programs.git.userName}'
 
       # Don't check mail when opening terminal.
       unset MAILCHECK
@@ -35,7 +36,7 @@ _:
 
     enableCompletion = true;
 
-    syntaxHighlighting = { enable = true; };
+    syntaxHighlighting.enable = true;
 
     autosuggestion = {
       enable    = true;

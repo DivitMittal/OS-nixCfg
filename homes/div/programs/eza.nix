@@ -7,6 +7,7 @@
 
     enableFishIntegration = true; enableZshIntegration = true; enableBashIntegration = false;
 
+    # creates shell aliases for ls & la
     extraOptions = ["--all" "--classify" "--icons=always" "--group-directories-first" "--color=always" "--color-scale" "--color-scale-mode=gradient" "--hyperlink"];
   };
 

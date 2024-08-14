@@ -51,15 +51,12 @@
 
   border-width: 1px !important;
   margin-top: var(--navbar-margin);
-  margin-bottom: 0;
   transition: all 0.1s ease !important;
 }
 
 #navigator-toolbox:focus-within > #nav-bar,
 #navigator-toolbox:hover > #nav-bar {
   margin-top: 0;
-  margin-bottom: var(--navbar-margin);
-  z-index: 5;
 }
 
 /* hides navbar for sure when in fullscreen */

@@ -6,12 +6,12 @@
 
     variables = {
       XDG_CONFIG_HOME = "$HOME/.config";
-      XDG_CACHE_HOME = "$HOME/.cache";
-      XDG_STATE_HOME = "$HOME/.local/state";
-      XDG_DATA_HOME = "$HOME/.local/share";
-      LANG = "en_US.UTF-8";
-      EDITOR = "vim";
-      VISUAL = "vim";
+      XDG_CACHE_HOME  = "$HOME/.cache";
+      XDG_STATE_HOME  = "$HOME/.local/state";
+      XDG_DATA_HOME   = "$HOME/.local/share";
+      LANG            = "en_US.UTF-8";
+      EDITOR          = "vim";
+      VISUAL          = "vim";
     };
 
     shellAliases = {
@@ -68,7 +68,7 @@
       enable = true;
 
       vendor = {
-        config.enable = true;
+        config.enable      = true;
         completions.enable = true;
         functions.enable   = true;
       };

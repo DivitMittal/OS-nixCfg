@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   programs.fish.shellAbbrs = {
@@ -23,7 +23,7 @@
     enable = true;
     package = pkgs.gitFull;
 
-    userName   = "Divit Mittal";
+    userName   = "DivitMittal";
     userEmail  = "64.69.76.69.74.m@gmail.com";
 
     attributes = import ./attributes.nix;
@@ -39,15 +39,15 @@
 
     delta = {
       enable = true;
+      package = pkgs.delta;
 
       options = {
-
-        features = "decorations";
-
-        decorations = {
+        features = "custom-delta";
+        custom-delta = {
           commit-decoration-style = "bold yellow box ul";
           file-decoration-style = "none";
           file-style = "bold yellow ul";
+          paging = "always";
         };
 
         whitespace-error-style = "22 reverse";
@@ -56,19 +56,34 @@
 
     extraConfig = {
       core = {
-        editor       = "nvim";
         autocrlf     = "input";
         ignorecase   = false;
-        excludesfile = "~/.config/git/ignore";
+        editor       = "${config.home.sessionVariables.VISUAL}";
+        excludesfile = "${config.xdg.configHome}/git/ignore";
       };
 
-      push  = { default       = "simple"; followTags = true; };
-      init  = { defaultBranch = "master"; };
-      fetch = { prune         = true; };
-      grep  = { lineNumber    = true; };
-      help  = { autocorrect   = "1"; };
-      merge = { conflictstyle = "diff3"; };
-      color = { ui            = "auto"; };
+      push = {
+        default = "simple";
+        followTags = true;
+      };
+      init = {
+        defaultBranch = "master";
+      };
+      fetch = {
+        prune = true;
+      };
+      grep = {
+        lineNumber = true;
+      };
+      help = {
+        autocorrect = "1";
+      };
+      merge = {
+        conflictstyle = "diff3";
+      };
+      color = {
+        ui = "auto";
+      };
     };
   };
 }

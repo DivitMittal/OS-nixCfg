@@ -26,7 +26,6 @@
       android-tools colima docker
 
       jdk # Java
-      pipx micromamba # Python
       cargo # Rust
       bun # Javascript
 

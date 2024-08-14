@@ -1,8 +1,9 @@
-_:
+{ pkgs, ... }:
 
 {
   programs.starship = {
     enable = true;
+    package = pkgs.starship;
 
     enableFishIntegration = true; enableZshIntegration  = false; enableBashIntegration = false;
 

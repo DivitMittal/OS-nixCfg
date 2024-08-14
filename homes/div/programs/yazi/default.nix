@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 
 {
   programs.fish.functions = {
@@ -16,6 +16,8 @@
 
   programs.yazi = {
     enable = true;
+    package = pkgs.yazi;
+
     enableFishIntegration = false; enableZshIntegration = false; enableBashIntegration = false;
 
     settings = import ./yazi.nix;

@@ -13,7 +13,7 @@
     # All login sessions
     profileExtra = ''
       # Place for hosting Git repos
-      export GIT_HOSTING='git@github.com:DivitMittal'
+      export GIT_HOSTING='git@github.com:${config.programs.git.userName}'
 
       # Don't check mail when opening terminal.
       unset MAILCHECK

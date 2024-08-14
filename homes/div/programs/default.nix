@@ -9,6 +9,7 @@
     ./shells
     ./wezterm
     ./yazi
+    ./python
     ./aerc.nix
     ./atuin.nix
     ./bat.nix
@@ -19,6 +20,20 @@
   ];
 
   programs = {
+    mpv = {
+      enable = true;
+      package = pkgs.hello;
+
+      config = {
+        "n" = "seek -10";
+        "i" = "seek +10";
+      };
+
+      # scripts = [
+      #   pkgs.mpvScripts.mpv-cheatsheet
+      # ];
+    };
+
     fzf = {
       enable = true;
       package = pkgs.fzf;
@@ -36,7 +51,7 @@
       enable = true;
       package = pkgs.fd;
 
-      hidden = true;
+      hidden = true; # Creates shell alias
       ignores = [ ".git/" ];
     };
 
