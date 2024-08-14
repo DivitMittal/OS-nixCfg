@@ -17,11 +17,7 @@
     my-hello  = pkgs.writeShellScriptBin "my-hello" ''echo "Hello, ${config.home.username}!"'';
   };
 
-  programs = {
-    home-manager = {
-      enable = true;
-    };
-  };
+  programs.home-manager.enable = true;
 
   editorconfig = {
    enable = lib.mkDefault true;

@@ -19,11 +19,7 @@
     hostName     = "div-mbp";
   };
 
-  fonts = {
-    packages = with pkgs;[
-      (nerdfonts.override { fonts = ["CascadiaCode"]; })
-    ];
-  };
+  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = ["CascadiaCode"]; }) ];
 
   users = {
     users.div = {

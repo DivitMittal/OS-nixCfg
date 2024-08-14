@@ -26,11 +26,11 @@
     ];
   };
 
-  environment = {
-    systemPackages = builtins.attrValues {
-      inherit(pkgs)
-        binutils indent gnumake;
-    };
+  environment.systemPackages = builtins.attrValues {
+    inherit(pkgs)
+      binutils gnumake
+      gnused gawk groff indent
+      less;
   };
 
   system.activationScripts.postUserActivation.text = ''

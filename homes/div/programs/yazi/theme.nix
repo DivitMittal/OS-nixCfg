@@ -15,6 +15,7 @@
       { fg = "#524f67"; name = "*/"; }
     ];
   };
+
   help = {
     desc = { fg = "#9399b2"; };
     footer = { bg = "#e0def4"; fg = "#2A273F"; };
@@ -22,12 +23,14 @@
     on = { fg = "#eb6f92"; };
     run = { fg = "#9ccfd8"; };
   };
+
   input = {
     border = { fg = "#524f67"; };
     selected = { reversed = true; };
     title = { };
     value = { };
   };
+
   manager = {
     border_style = { fg = "#524f67"; };
     border_symbol = "│";
@@ -44,11 +47,13 @@
     tab_inactive = { bg = "#2A273F"; fg = "#e0def4"; };
     tab_width = 1;
   };
+
   select = {
     active = { fg = "#eb6f92"; };
     border = { fg = "#524f67"; };
     inactive = { };
   };
+
   status = {
     mode_normal = { bg = "#ebbcba"; bold = true; fg = "#191724"; };
     mode_select = { bg = "#9ccfd8"; bold = true; fg = "#e0def4"; };
@@ -65,11 +70,13 @@
     separator_open = "";
     separator_style = { bg = "#2A273F"; fg = "#2A273F"; };
   };
+
   tasks = {
     border = { fg = "#524f67"; };
     hovered = { underline = true; };
     title = { };
   };
+
   which = {
     cand = { fg = "#9ccfd8"; };
     desc = { fg = "#eb6f92"; };

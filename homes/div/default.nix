@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   home = {
@@ -8,26 +8,20 @@
 
   imports = [
     ./../common
-    ./programs
     ./config
+    ./programs
   ];
 
   home.packages = builtins.attrValues {
     inherit(pkgs)
-      duf dust hexyl ouch ov   # Modern altenatives
+      # Modern altenatives
+      duf dust hexyl ouch
 
       # CLI tools
-      grc bitwarden-cli rclone weechat
-
-      # plugin/package/module managers
-      spicetify-cli
+      grc bitwarden-cli rclone
 
       # developer tools
       android-tools colima docker
-
-      jdk # Java
-      cargo # Rust
-      bun # Javascript
 
       # networking tools
       nmap speedtest-go bandwhich
@@ -37,11 +31,5 @@
       # learning to use
       mosh
       ;
-
-      # Javascript NodeJS
-      nodejs = pkgs.nodejs_22;
-      pnpm = pkgs.nodePackages_latest.pnpm;
-
-      fastfetch = pkgs.fastfetch.overrideAttrs { preBuild = lib.optionalString pkgs.stdenv.isDarwin "export MACOSX_DEPLOYMENT_TARGET=14.0";};
   };
 }

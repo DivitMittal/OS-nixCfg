@@ -7,7 +7,7 @@
   };
 
   home.file.tmux = {
-    source = ./tmux;
+    source = ./conf;
     target = "${config.xdg.configHome}/tmux";
     recursive = true;
   };

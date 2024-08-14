@@ -201,6 +201,7 @@ in
   services.skhd = {
     enable = true;
     package = pkgs.skhd;
+
     skhdConfig = cfg;
   };
 }

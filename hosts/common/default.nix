@@ -8,30 +8,26 @@
 
   time.timeZone = "Asia/Calcutta";
 
-  environment = {
-    systemPackages = builtins.attrValues {
-      inherit(pkgs)
-        nixfmt-rfc-style                                                                     # Nix goodies
-        bashInteractive zsh dash fish babelfish                                              # shells
-        bc diffutils findutils gnugrep inetutils groff which gzip gnupatch gnutar wget       # GNU
-        gnused vim gawk                                                                      # editors
-        curl git less gnupg;                                                                 # Other
-      coreutils = pkgs.uutils-coreutils.override {prefix = "";};
-    };
-
-    extraOutputsToInstall = [ "dev" "info" "devdoc" ];
+  environment.systemPackages = builtins.attrValues {
+    inherit(pkgs)
+      nixfmt-rfc-style                                                                  # Nix goodies
+      bc diffutils findutils gnugrep inetutils which gzip gnutar wget gnupatch gnupg    # GNU
+      vim
+      curl git;                                                                         # Other
+    coreutils = pkgs.uutils-coreutils.override {prefix = "";};
   };
 
   documentation = {
     enable      = true;
+
     doc.enable  = true;
     info.enable = true;
     man.enable  = true;
   };
+  environment.extraOutputsToInstall = [ "dev" "info" "devdoc" ];
 
   programs = {
-    nix-index.enable = true;
-    man.enable       = true;
-    info.enable      = true;
+    man.enable  = true;
+    info.enable = true;
   };
 }

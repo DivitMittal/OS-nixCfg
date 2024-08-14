@@ -5,16 +5,20 @@
     ./browsers
     ./editors
     ./git
+    ./languages
     ./multiplexers
+    ./ov
     ./shells
+    ./spicetify
+    ./weechat
     ./wezterm
     ./yazi
-    ./python
     ./aerc.nix
     ./atuin.nix
     ./bat.nix
     ./btop.nix
     ./eza.nix
+    ./fastfetch.nix
     ./less.nix
     ./starship.nix
   ];
@@ -39,11 +43,21 @@
       package = pkgs.fzf;
 
       enableFishIntegration = false; enableBashIntegration = false; enableZshIntegration = false;
+
       defaultCommand        = "fd --hidden";
+
       defaultOptions        = [
-        "--multi" "--cycle" "--border" "--height 50%"
-        "--bind='right:select'" "--bind='left:deselect'" "--bind='tab:down'" "--bind='btab:up'"
-        "--no-scrollbar" "--marker='*'" "--preview-window=wrap"
+        "--multi"
+        "--cycle"
+        "--border"
+        "--height 50%"
+        "--bind='right:select'"
+        "--bind='left:deselect'"
+        "--bind='tab:down'"
+        "--bind='btab:up'"
+        "--no-scrollbar"
+        "--marker='*'"
+        "--preview-window=wrap"
       ];
     };
 
@@ -116,15 +130,28 @@
       enable = true;
       package = pkgs.jq;
 
-      colors = { null = "1;30"; false = "0;31"; true = "0;32"; numbers = "0;36"; strings = "0;33"; arrays = "1;35"; objects = "1;37"; };
+      colors = {
+        null = "1;30";
+        false = "0;31";
+        true = "0;32";
+        numbers = "0;36";
+        strings = "0;33";
+        arrays = "1;35";
+        objects = "1;37"; };
     };
 
     tealdeer = {
       enable = true;
 
       settings = {
-        display = { compact = false; use_pager = true; };
-        updates = { auto_update = true; auto_update_interval_hours = 240; };
+        display = {
+          compact = false;
+          use_pager = true;
+        };
+        updates = {
+          auto_update = true;
+          auto_update_interval_hours = 240;
+        };
       };
     };
 

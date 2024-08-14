@@ -23,7 +23,7 @@ _:
       # "hammerspoon"
       "whatsapp" "telegram"                                                   # Messaging
       "obsidian" "notion-calendar" "notion"                                   # Notes
-      "spotify" "mpv"                                                         # Multimedia
+      "spotify" "stolendata-mpv"                                                        # Multimedia
       "wezterm" "wacom-tablet"
     ];
 

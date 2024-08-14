@@ -6,9 +6,19 @@
     package = pkgs.eza;
 
     enableFishIntegration = true; enableZshIntegration = true; enableBashIntegration = false;
+    git = true;
 
     # creates shell aliases for ls & la
-    extraOptions = ["--all" "--classify" "--icons=always" "--group-directories-first" "--color=always" "--color-scale" "--color-scale-mode=gradient" "--hyperlink"];
+    extraOptions = [
+      "--all"
+      "--classify"
+      "--icons=always"
+      "--group-directories-first"
+      "--hyperlink"
+      "--color=always"
+      "--color-scale"
+      "--color-scale-mode=gradient"
+    ];
   };
 
   home.shellAliases = {
