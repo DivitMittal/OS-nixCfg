@@ -18,6 +18,7 @@
   outputs = { self, nixpkgs, nix-darwin, nix-on-droid, ... }@inputs:
 
   {
+    # nix-darwin
     darwinConfigurations = {
       "div-mbp" = nix-darwin.lib.darwinSystem {
         system = "x86_64-darwin";
@@ -27,9 +28,10 @@
     };
     darwinPackages = self.darwinConfigurations."div-mbp".pkgs; # Expose the package set, including overlays, for convenience.
 
+    # nix-on-droid
     nixOnDroidConfigurations = {
       default = nix-on-droid.lib.nixOnDroidConfiguration {
-          modules = [ ./droid/m1 ];
+        modules = [ ./droid/m1 ];
       };
     };
   };

@@ -5,7 +5,7 @@
     enable = true;
     package = pkgs.atuin;
 
-    enableFishIntegration = true; enableZshIntegration  = true; enableBashIntegration = false;
+    enableFishIntegration = true; enableZshIntegration  = false; enableBashIntegration = false;
     settings              = {
       ## where to store your database, default is your system data directory
       ## linux/mac: ~/.local/share/atuin/history.db

@@ -5,17 +5,13 @@
     ./nixCfg.nix
   ];
 
-  home = {
-    preferXdgDirectories  = lib.mkDefault true;
-    extraOutputsToInstall = ["doc" "info" "devdoc"];
-    stateVersion          = lib.mkDefault "23.11";
-  };
-
   xdg.enable = true;
+  home.preferXdgDirectories  = lib.mkDefault true;
 
   home.packages = builtins.attrValues {
     my-hello  = pkgs.writeShellScriptBin "my-hello" ''echo "Hello, ${config.home.username}!"'';
   };
+  home.extraOutputsToInstall = [ "doc" "info" "devdoc" ];
 
   programs.home-manager.enable = true;
 
@@ -36,4 +32,6 @@
     };
    };
   };
+
+  home.stateVersion = lib.mkDefault "23.11";
 }

@@ -32,7 +32,7 @@ const handleSidebar = (sidebarBox) => {
 
   // Keyboard activation
   window.addEventListener('keydown', (e) => {
-    if (e.key === 'Alt') {
+    if (e.key === 'Control') {
       setTimeout(() => {
           extendSidebarBox(sidebarBox);
       }, 25);
@@ -40,7 +40,7 @@ const handleSidebar = (sidebarBox) => {
   });
 
   window.addEventListener('keyup', (e) => {
-    if (e.key === 'Alt') {
+    if (e.key === 'Control') {
       setTimeout(() => {
           resetSidebarBox(sidebarBox);
       }, 25);

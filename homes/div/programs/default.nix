@@ -4,6 +4,7 @@
   imports = [
     ./browsers
     ./editors
+    ./fastfetch
     ./git
     ./languages
     ./multiplexers
@@ -17,9 +18,10 @@
     ./atuin.nix
     ./bat.nix
     ./btop.nix
+    ./bw.nix
     ./eza.nix
-    ./fastfetch.nix
     ./less.nix
+    ./rclone.nix
     ./starship.nix
   ];
 
@@ -32,21 +34,21 @@
         "n" = "seek -10";
         "i" = "seek +10";
       };
+    };
 
-      # scripts = [
-      #   pkgs.mpvScripts.mpv-cheatsheet
-      # ];
+    newsboat = {
+      enable = true;
     };
 
     fzf = {
       enable = true;
       package = pkgs.fzf;
 
-      enableFishIntegration = false; enableBashIntegration = false; enableZshIntegration = false;
+      enableFishIntegration = false; enableZshIntegration = false; enableBashIntegration = false;
 
-      defaultCommand        = "fd --hidden";
+      defaultCommand = "fd --hidden";
 
-      defaultOptions        = [
+      defaultOptions = [
         "--multi"
         "--cycle"
         "--border"
@@ -65,7 +67,7 @@
       enable = true;
       package = pkgs.fd;
 
-      hidden = true; # Creates shell alias
+      hidden = true; # creates shell alias
       ignores = [ ".git/" ];
     };
 
@@ -84,34 +86,11 @@
       enableFishIntegration = true; enableZshIntegration = true; enableBashIntegration = false;
     };
 
-    newsboat = {
-      enable = true;
-    };
-
     ripgrep = {
       enable = true;
       package = pkgs.ripgrep;
 
-      arguments = [ "--max-columns-preview" "--colors=line:style:bold" ];
-    };
-
-    gh = {
-      enable = true;
-      package = pkgs.gh;
-      extensions = with pkgs;[ gh-eco gh-dash ];
-
-      gitCredentialHelper = {
-        enable = true;
-        hosts = [ "https://github.com" "https://gist.github.com" ];
-      };
-      settings = {
-        git_protocol= "ssh";
-        prompt= "enabled";  # interactivity in gh
-        pager= "less";
-        aliases = {
-          co = "pr checkout";
-        };
-      };
+      arguments = [ "-i" "--max-columns-preview" "--colors=line:style:bold" ];
     };
 
     aria2  = {
@@ -153,14 +132,6 @@
           auto_update_interval_hours = 240;
         };
       };
-    };
-
-    # Disabled
-    zellij = {
-      enable = false;
-      package = pkgs.zellij;
-
-      enableFishIntegration = false; enableZshIntegration = false; enableBashIntegration = false;
     };
   };
 }

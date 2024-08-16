@@ -10,10 +10,10 @@
     };
 
     shellAliases = {
-      ff = ''fastfetch --logo-type iterm --logo ${./assets/a-12.png} \
-              --pipe false --title-color-user magenta --title-color-at blue --title-color-host red \
-              --structure Title:OS:Kernel:Uptime:Display:Terminal:CPU:CPUUsage:GPU:Memory:Swap:LocalIP \
-              --gpu-temp true --cpu-temp true --cpu-format "{1} @ {#4;35}{8}{#}" --gpu-format "{2} @ {#4;35}{4}{#}"'';
+      # ff = ''fastfetch --logo-type iterm --logo ${./assets/a-12.png} \
+      #         --pipe false --title-color-user magenta --title-color-at blue --title-color-host red \
+      #         --structure Title:OS:Kernel:Uptime:Display:Terminal:CPU:CPUUsage:GPU:Memory:Swap:LocalIP \
+      #         --gpu-temp true --cpu-temp true --cpu-format "{1} @ {#4;35}{8}{#}" --gpu-format "{2} @ {#4;35}{4}{#}"'';
 
       # package-managers
       gem-ultimate  = "sudo -v; gem cleanup; and gem update; and gem cleanup";
@@ -39,7 +39,7 @@
       set -gx fifc_fd_opts --hidden
       set -gx fifc_eza_opts --all
 
-      type -q fastfetch; and test "$TERM_PROGRAM" = "WezTerm"; and ff    # Run Fastfetch - fetch system info
+      # type -q fastfetch; and test "$TERM_PROGRAM" = "WezTerm"; and ff    # Run Fastfetch - fetch system info
     '';
 
     shellInitLast = ''

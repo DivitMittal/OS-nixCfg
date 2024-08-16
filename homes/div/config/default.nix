@@ -1,10 +1,6 @@
 { config, pkgs, ...}:
 
 {
-  imports = [
-    ./impure_links.nix
-  ];
-
   home.file = {
     ideavim = {
       enable = true;
