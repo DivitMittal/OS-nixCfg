@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 
 let
-  nerdfonts = nerdfonts.override = {
+  nerdfonts = pkgs.nerdfonts.override {
     fonts = [ "CascadiaCode" ];
   };
 in
@@ -24,7 +24,7 @@ in
     hostName     = "div-mbp";
   };
 
-  fonts.packages = with pkgs; [ nerdfonts ];
+  fonts.packages = [ nerdfonts ];
 
   users.users.div = {
     description = "Divit Mittal";

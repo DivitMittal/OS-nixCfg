@@ -71,14 +71,18 @@ _:
 
 
   system.defaults.CustomUserPreferences = {
+
     NSGlobalDomain = {
       WebKitDeveloperExtras = true;       # Add a context menu item for showing the Web Inspector in web views
+      AppleLocale = "en_US@currency=USD";
+      AppleLanguages = [ "en" ];
     };
+
     "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = true;
     "com.apple.ImageCapture".disableHotPlug = true; # Auto
     "com.apple.commerce".AutoUpdate = true;
     "com.apple.AdLib" = {
-        allowApplePersonalizedAdvertising = false;
+      allowApplePersonalizedAdvertising = false;
     };
     "com.apple.desktopservices" = {
       # Avoid creating .DS_Store files on network or USB volumes

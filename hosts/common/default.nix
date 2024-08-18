@@ -1,7 +1,9 @@
 { pkgs, ... }:
 
 let
-  coreutils = uutils-coreutils.override { prefix = ""; };
+  coreutils = pkgs.uutils-coreutils.override {
+    prefix = "";
+  };
 in
 {
   imports = [
