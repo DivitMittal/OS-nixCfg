@@ -99,17 +99,17 @@
 # cmd + ctrl + alt or TL + w         : window manager key (meant for window manipulation)
 # fn or TL + x                       : function key
 
-############## Application specific keyboard shortcuts (not part of skhdrc; for reference purposes) implemented via Raycast
-# hyper - space : raycast launch
-# hyper - p     : raycast command palatte generated from the menu bar's menu
-# hyper - w     : raycast list windows
+############## Application specific keyboard shortcuts (not part of skhdrc; for reference purposes)
 # hyper - f     : homerow hints
 # hyper - /     : homerow search
 # hyper - r     : homerow scroll
 # hyper - h     : bartender hidden menu bar items
 # ctrl + esc    : spaceman refresh current spaces info
 
-############# Launcher stuff onto the screen ##################
+############# Launching stuff onto the screen (implemented via raycast)
+# hyper - space             : open -a "raycast"
+# hyper - p                 : raycast command palatte generated from the menu bar's menu
+# hyper - w                 : raycast list windows
 # hyper - return            : open -a "wezterm"
 # hyper - l                 : open -a "launchpad"
 # hyper - e                 : open -a "Finder"
@@ -152,8 +152,7 @@ cmd + ctrl + alt - p      : yabai -m window --toggle sticky --toggle topmost --t
 cmd + ctrl + alt - down  : yabai -m window --focus "$(yabai -m query --windows | jq -re "sort_by(.display, .space, .frame.x, .frame.y, .id) | map(select(.\"is-visible\" == true and .role != \"AXUnknown\")) | reverse | nth(index(map(select(.\"has-focus\" == true))) - 1).id")"
 cmd + ctrl + alt - up    : yabai -m window --focus "$(yabai -m query --windows | jq -re "sort_by(.display, .space, .frame.x, .frame.y, .id) | map(select(.\"is-visible\" == true and .role != \"AXUnknown\")) | nth(index(map(select(.\"has-focus\" == true))) - 1).id")"
 
-### fill window
-## floating window management (must have implemented a numpad layout layer)
+### fill window (implemented via Raycast)
 # cmd + ctrl + alt - 7     : yabai -m window --grid 2:2:0:0:1:1
 # cmd + ctrl + alt - 9     : yabai -m window --grid 2:2:1:0:1:1
 # cmd + ctrl + alt - 1     : yabai -m window --grid 2:2:0:1:1:1
@@ -164,11 +163,11 @@ cmd + ctrl + alt - up    : yabai -m window --focus "$(yabai -m query --windows |
 # cmd + ctrl + alt - 2     : yabai -m window --grid 2:1:0:1:1:1
 # cmd + ctrl + alt - 5     : yabai -m window --grid 1:1:0:0:1:1
 
-### Window size
+### Window size (implementd via Raycast)
 # decrease window size 0x1B <-> '-'
-cmd + ctrl + alt - 0x1B         : yabai -m window --resize top_left:+50:+50; yabai -m window --resize bottom_right:-50:-50; yabai -m window --resize top_right:-50:+50; yabai -m window --resize bottom_left:+50:-50
+# cmd + ctrl + alt - 0x1B         : yabai -m window --resize top_left:+50:+50; yabai -m window --resize bottom_right:-50:-50; yabai -m window --resize top_right:-50:+50; yabai -m window --resize bottom_left:+50:-50
 # increase window size 0x18 <-> '=' & shift+0x18 <-> '+'
-cmd + ctrl + shift + alt - 0x18 : yabai -m window --resize top_left:-50:-50; yabai -m window --resize bottom_right:+50:+50; yabai -m window --resize top_right:+50:-50; yabai -m window --resize bottom_left:-50:+50
+# cmd + ctrl + shift + alt - 0x18 : yabai -m window --resize top_left:-50:-50; yabai -m window --resize bottom_right:+50:+50; yabai -m window --resize top_right:+50:-50; yabai -m window --resize bottom_left:-50:+50
 
 ### Send window to virtual desktop/space
 cmd + ctrl + alt - tab          : yabai -m window --space next
@@ -180,7 +179,7 @@ cmd + ctrl + shift + alt - tab  : yabai -m window --space prev
 # cmd + ctrl + alt - right  : id="$(yabai -m query --spaces --display | jq 'sort_by(.index) | reverse | .[map(."has-focus") | index(true) - 1].index')" && yabai -m space --focus "''${id}"; sleep 0.2; cliclick kd:ctrl kp:esc ku:ctrl
 # cmd + ctrl + alt - left   : id="$(yabai -m query --spaces --display | jq 'sort_by(.index) | .[map(."has-focus") | index(true) - 1].index')" && yabai -m space --focus "''${id}"; sleep 0.2; cliclick kd:ctrl kp:esc ku:ctrl
 
-### switch spaces without cycling
+### switch spaces without cycling (dependent on scripting-addition)
 cmd + ctrl + alt - right  : yabai -m space --focus next; sleep 0.2; cliclick kd:ctrl kp:esc ku:ctrl
 cmd + ctrl + alt - left   : yabai -m space --focus prev; sleep 0.2; cliclick kd:ctrl kp:esc ku:ctrl
 
@@ -189,7 +188,7 @@ cmd + ctrl + alt - left   : yabai -m space --focus prev; sleep 0.2; cliclick kd:
 # cmd + ctrl + alt - left   : hs -c "GoPrevSpace()"; sleep 0.2; cliclick kd:ctrl kp:esc ku:ctrl
 
 ########## create & delete current space
-### Yabai implementation
+### Yabai implementation (dependent on scripting-addition)
 cmd + ctrl + alt - c      : yabai -m space --create; sleep 0.2; cliclick kd:ctrl kp:esc ku:ctrl
 cmd + ctrl + alt - d      : yabai -m space --destroy; sleep 0.2; cliclick kd:ctrl kp:esc ku:ctrl
 
