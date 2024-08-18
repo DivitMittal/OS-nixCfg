@@ -86,7 +86,7 @@
         followTags = true;
       };
       init = {
-        defaultBranch = "master";
+        defaultBranch = "main";
       };
       fetch = {
         prune = true;

@@ -1,5 +1,8 @@
 { pkgs, ... }:
 
+let
+  coreutils = uutils-coreutils.override { prefix = ""; };
+in
 {
   imports = [
     ./nixCfg.nix
@@ -8,13 +11,12 @@
 
   time.timeZone = "Asia/Calcutta";
 
+  # packages common to all hosts & to be installed in OS-level nix profile
   environment.systemPackages = builtins.attrValues {
     inherit(pkgs)
       nixfmt-rfc-style                                                                  # Nix goodies
       bc diffutils findutils gnugrep inetutils which gzip gnutar wget gnupatch gnupg    # GNU
-      vim
-      curl git;                                                                         # Other
-    coreutils = pkgs.uutils-coreutils.override {prefix = "";};
+      curl git coreutils;                                                           # Other
   };
 
   documentation = {

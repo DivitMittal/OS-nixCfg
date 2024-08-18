@@ -8,7 +8,7 @@
     enableFishIntegration = true; enableZshIntegration = true; enableBashIntegration = false;
     git = true;
 
-    # creates shell aliases for ls & la
+    # creates shell alias for ls
     extraOptions = [
       "--all"
       "--classify"

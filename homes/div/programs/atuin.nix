@@ -6,7 +6,8 @@
     package = pkgs.atuin;
 
     enableFishIntegration = true; enableZshIntegration  = false; enableBashIntegration = false;
-    settings              = {
+
+    settings = {
       ## where to store your database, default is your system data directory
       ## linux/mac: ~/.local/share/atuin/history.db
       ## windows: %USERPROFILE%/.local/share/atuin/history.db
@@ -139,7 +140,11 @@
       ## Cursor style in each keymap mode.  If specified, the cursor style is changed
       ## in entering the cursor shape.  Available values are "default" and
       ## "{blink,steady}-{block,underilne,bar}".
-      keymap_cursor = { emacs = "steady-bar"; vim_insert = "steady-bar"; vim_normal = "steady-block"; };
+      keymap_cursor = {
+        emacs = "steady-bar";
+        vim_insert = "steady-bar";
+        vim_normal = "steady-block";
+      };
 
       # network_connect_timeout = 5
       # network_timeout = 5

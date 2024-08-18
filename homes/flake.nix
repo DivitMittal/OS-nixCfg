@@ -12,16 +12,14 @@
 
   outputs = { nixpkgs, home-manager, ... }@inputs:
 
-    let
-      system = "x86_64-darwin";
-      pkgs = import nixpkgs { inherit system; };
-    in
-    {
-      homeConfigurations = {
-        "div" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./div ];
-        };
-      };
+  let
+    system = "x86_64-darwin";
+    pkgs = import nixpkgs { inherit system; };
+  in
+  {
+    homeConfigurations."div" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [ ./div ];
     };
+  };
 }

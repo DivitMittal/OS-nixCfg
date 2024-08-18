@@ -8,6 +8,13 @@
       target = "${config.xdg.configHome}/ideavim/ideavimrc";
     };
 
+    raycast = {
+      enable = true;
+      source = ./raycast/scripts;
+      target = "${config.xdg.configHome}/raycast/scripts";
+      recursive = true;
+    };
+
     # disabled
     hammerspoon = {
       enable = false;

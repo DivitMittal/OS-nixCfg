@@ -12,7 +12,7 @@ _:
       static-only     = true; show-recents = false; show-process-indicators = false; showhidden = true;
       tilesize        = 20; magnification  = true; largesize                = 64; minimize-to-application = false; mineffect = "genie";
       ### Spaces
-      mru-spaces      = false;
+      mru-spaces      = false; # most-recently used spaces ordering
       ### Hot-Corners
       wvous-bl-corner = 1; wvous-br-corner = 1; wvous-tl-corner = 10; wvous-tr-corner = 13;
     };
@@ -68,6 +68,7 @@ _:
     LaunchServices.LSQuarantine = false;
     SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
   };
+
 
   system.defaults.CustomUserPreferences = {
     NSGlobalDomain = {

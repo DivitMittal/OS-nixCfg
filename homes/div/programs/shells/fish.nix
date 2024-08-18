@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
+let
+  eza_opts = lib.strings.concatStringsSep " " config.programs.eza.extraOptions;
+in
 {
   programs.fish = {
     enable = true;
@@ -18,7 +21,7 @@
       # package-managers
       gem-ultimate  = "sudo -v; gem cleanup; and gem update; and gem cleanup";
       brew-ultimate = "brew update; and brew upgrade; and brew autoremove; and brew cleanup -s --prune=0; and rm -rf (brew --cache)";
-      apps-backup   = "env ls /Applications/ 1> ${config.home.homeDirectory}/OS-nixCfg/homes/${config.home.username}/misc/apps/apps_(date +%b%y).txt";
+      apps-backup   = "env ls /Applications/ 1> ${config.home.homeDirectory}/OS-nixCfg/homes/${config.home.username}/etc/apps/apps_(date +%b%y).txt";
     };
 
     shellAbbrs = {
@@ -29,7 +32,7 @@
     interactiveShellInit = ''
       # PatrickF1/fzf.fish plugin
       set -gx fzf_fd_opts --hidden
-      set -gx fzf_preview_dir_cmd eza --all --color=always --icons=always --classify --group-directories-first --group --hyperlink --color-scale --color-scale-mode=gradient
+      set -gx fzf_preview_dir_cmd eza
       set -gx fzf_diff_highlighter delta --paging=never --width=20
       set -gx fzf_preview_file_cmd bat --style=numbers
       fzf_configure_bindings --variables=\ev --processes=\ep --git_status=\es --git_log=\el --history=\er --directory=\ef
