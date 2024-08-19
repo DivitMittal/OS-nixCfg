@@ -153,6 +153,7 @@ cmd + ctrl + alt - down  : yabai -m window --focus "$(yabai -m query --windows |
 cmd + ctrl + alt - up    : yabai -m window --focus "$(yabai -m query --windows | jq -re "sort_by(.display, .space, .frame.x, .frame.y, .id) | map(select(.\"is-visible\" == true and .role != \"AXUnknown\")) | nth(index(map(select(.\"has-focus\" == true))) - 1).id")"
 
 ### fill window (implemented via Raycast)
+# cmd + ctrl + alt - 0     : Raycast maximize
 # cmd + ctrl + alt - 7     : yabai -m window --grid 2:2:0:0:1:1
 # cmd + ctrl + alt - 9     : yabai -m window --grid 2:2:1:0:1:1
 # cmd + ctrl + alt - 1     : yabai -m window --grid 2:2:0:1:1:1

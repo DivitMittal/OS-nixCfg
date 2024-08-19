@@ -3,6 +3,8 @@
 " Must have native script for Tridactyl installed
 " --------------------------------------------------------------------
 
+set smoothscroll true
+
 bind f hint
 bind F hint -b
 bind gf hint -qb

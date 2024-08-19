@@ -19,12 +19,12 @@
       unset MAILCHECK # Don't check mail when opening terminal
     '';
 
-    enableCompletion = false;
+    enableCompletion = true;
 
-    syntaxHighlighting.enable = false;
+    syntaxHighlighting.enable = true;
 
     autosuggestion = {
-      enable    = false;
+      enable    = true;
 
       highlight = "fg = #ff00ff,bg = cyan,bold,underline";
     };
@@ -35,8 +35,8 @@
       enable = true;
 
       abbreviations = {
-        ".2"  = "cd ../..";
-        ".3"  = "cd ../../..";
+        ".2"  = "../..";
+        ".3"  = "../../..";
       };
     };
 

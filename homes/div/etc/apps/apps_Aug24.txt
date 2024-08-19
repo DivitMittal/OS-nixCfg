@@ -7,9 +7,7 @@ Ghostery Privacy Ad Blocker.app
 Homerow.app
 JetBrains Toolbox.app
 Menu Bar Dock.app
-Menuwhere.app
 Microsoft OneNote.app
-Mission Control Plus.app
 Nix Apps
 Notion Calendar.app
 Notion.app
@@ -33,3 +31,4 @@ WezTerm.app
 WhatsApp.app
 gSwitch.app
 iStat Menus.app
+mpv.app

@@ -28,15 +28,17 @@ in
     bash = {
       enable = true;
 
+      enableCompletion = false;
+
       interactiveShellInit = ''
         # Exit if running non-interactively (handled by nix-darwin)
         # [ -z "$PS1" ] && return
 
         # Prompt
         if [ "`id -u`" -eq 0 ]; then # ckeck for root user
-          PS1="\[\033[m\]|\[\033[1;35m\]\t\[\033[m\]|\[\e[1;31m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\W]> \[\e[0m\]"
+          PS1="\[\e[1;31m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\w]> \[\e[0m\]"
         else
-          PS1="\[\033[m\]|\[\033[1;35m\]\t\[\033[m\]|\[\e[1m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\W]> \[\e[0m\]"
+          PS1="\[\e[1m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\w]> \[\e[0m\]"
         fi
 
         # vi keybindings
@@ -49,6 +51,10 @@ in
 
     zsh = {
       enable = true;
+
+      enableBashCompletion = false;
+      enableCompletion = false; enableGlobalCompInit=false;
+      enableSyntaxHighlighting = false;
 
       promptInit = "PS1='%F{cyan}%~%f %# '";
 

@@ -28,16 +28,36 @@
   programs = {
     mpv = {
       enable = true;
-      package = pkgs.hello;
+      package = pkgs.hello; # Installed via Homebrew instead
 
-      config = {
+      bindings = {
         "n" = "seek -10";
         "i" = "seek +10";
+      };
+
+      config = {
+        force-window = true;
       };
     };
 
     newsboat = {
       enable = true;
+
+      autoReload = true;
+      browser = "open";
+
+      urls = [
+        {
+          tags = [ "tech" ];
+          title = "TechCrunch";
+          url = "http://feeds.feedburner.com/TechCrunch/";
+        }
+        {
+          tags = [ "fin" ];
+          title = "WSJ";
+          url = "https://feeds.a.dj.com/rss/RSSMarketsMain.xml";
+        }
+      ];
     };
 
     fzf = {

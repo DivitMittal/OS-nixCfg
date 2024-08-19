@@ -20,8 +20,8 @@ in
     };
 
     shellAbbrs = {
-      ".2"  = { expansion = "cd ../.."   ; position = "anywhere";};
-      ".3"  = { expansion = "cd ../../.."; position = "anywhere";};
+      ".2"  = { expansion = "../.."   ; position = "anywhere";};
+      ".3"  = { expansion = "../../.."; position = "anywhere";};
     };
 
     interactiveShellInit = ''
