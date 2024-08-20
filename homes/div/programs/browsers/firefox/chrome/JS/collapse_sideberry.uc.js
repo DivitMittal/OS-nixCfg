@@ -2,6 +2,7 @@
 // @name           collapse_sideberry
 // @version        0.0.1
 // @description    dynamically collapses sidebar if the sidebarcommand is sideberry
+// @autor          DivitMittal
 // ==/UserScript==
 
 const extendSidebarBox = (sidebarBox) => {

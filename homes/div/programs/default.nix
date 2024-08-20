@@ -8,7 +8,7 @@
     ./git
     ./languages
     ./multiplexers
-    ./ov
+    ./pagers
     ./shells
     ./spicetify
     ./weechat
@@ -20,7 +20,6 @@
     ./btop.nix
     ./bw.nix
     ./eza.nix
-    ./less.nix
     ./rclone.nix
     ./starship.nix
   ];

@@ -24,7 +24,9 @@ in
         hideCursor = true;
         separator = " -➜❯ ";
         brightColor = true;
-        constants =  [ "───────────────────────────" ];
+        constants =  [
+          "───────────────────----────────"
+        ];
         color = {
           keys = "light_magenta";
           separator = "light_white";
@@ -55,7 +57,7 @@ in
       modules = [
         {
           type = "Custom";
-          format = "┌{$1} {#1}System Information{#} {$1}┐";
+          format = "┌{$1} info {$1}┐";
         }
         {
           type = "OS";
@@ -67,6 +69,7 @@ in
         }
         {
           type = "Display";
+          key = "Resolution";
           keyColor = "light_blue";
         }
         {
@@ -75,6 +78,7 @@ in
         }
         {
           type = "TerminalFont";
+          key = "Font";
           keyColor = "light_green";
         }
         {
@@ -95,6 +99,7 @@ in
         }
         {
           type = "Memory";
+          key = "RAM";
           keyColor = "light_yellow";
         }
         {
@@ -107,7 +112,7 @@ in
         }
         {
           type = "Custom";
-          format = "└{$1}────────────────────{$1}┘";
+          format = "└{$1}─────{$1}┘";
         }
       ];
     };

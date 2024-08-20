@@ -1,4 +1,6 @@
 {
+  log.enabled = false;
+
   input = {
     cd_offset = [ 0 2 50 3 ]       ; cd_origin = "top-center"       ; cd_title = "Change directory:"                                 ;
     create_offset = [ 0 2 50 3 ]   ; create_origin = "top-center"   ; create_title = "Create:"                                       ;
@@ -11,10 +13,6 @@
     search_offset = [ 0 2 50 3 ]   ; search_origin = "top-center"   ; search_title = "Search via {n}:"                               ;
     shell_offset = [ 0 2 50 3 ]    ; shell_origin = "top-center"    ; shell_title = [ "Shell:" "Shell (block):" ]                    ;
     trash_offset = [ 0 2 50 3 ]    ; trash_origin = "top-center"    ; trash_title = "move {n} selected file{s} to trash? (y/n)"      ;
-  };
-
-  log = {
-    enabled = false;
   };
 
   manager = {

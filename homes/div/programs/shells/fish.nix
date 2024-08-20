@@ -3,6 +3,7 @@
 let
   eza_opts = lib.strings.concatStringsSep " " config.programs.eza.extraOptions;
   fd_opts = "--hidden";
+  delta_opts = "--paging=never";
 in
 {
   programs.fish = {
@@ -28,8 +29,8 @@ in
       # PatrickF1/fzf.fish plugin
       set -gx fzf_fd_opts ${fd_opts}
       set -gx fzf_preview_dir_cmd eza ${eza_opts}
-      set -gx fzf_diff_highlighter delta --paging=never --width=20
-      set -gx fzf_preview_file_cmd bat --style=numbers
+      set -gx fzf_preview_file_cmd bat
+      set -gx fzf_diff_highlighter delta ${delta_opts}
       fzf_configure_bindings --variables=\ev --processes=\ep --git_status=\es --git_log=\el --history=\er --directory=\ef
 
       # fifc plugin

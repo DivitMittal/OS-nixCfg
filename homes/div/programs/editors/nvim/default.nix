@@ -1,20 +1,20 @@
 { pkgs, config, ... }:
 
 {
+  home.sessionVariables.VISUAL = "nvim";
+
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-unwrapped;
 
-    defaultEditor = true;
+    defaultEditor = true; # Sets the EDITOR sessionVariable
   };
 
   programs.fish.shellAbbrs.nv = { expansion = "nvim"; position = "command"; };
   programs.zsh.zsh-abbr.abbreviations.nv = "nvim";
 
-  home.sessionVariables.VISUAL = "nvim";
-
   home.file.NvChad = {
-    source = ./custom;
+    source = ./nvchad-custom;
     target = "${config.xdg.configHome}/nvim/lua/custom";
     recursive = true;
   };
