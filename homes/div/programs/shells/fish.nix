@@ -1,10 +1,5 @@
 { config, pkgs, lib, ... }:
 
-let
-  eza_opts = lib.strings.concatStringsSep " " config.programs.eza.extraOptions;
-  fd_opts = "--hidden";
-  delta_opts = "--paging=never";
-in
 {
   programs.fish = {
     enable = true;
@@ -12,6 +7,18 @@ in
 
     functions = {
       cht = { body = ''curl -ssL "https://cheat.sh/$argv''; };
+
+      hisaab = {
+        body = ''
+          function hisaab -d "calculates hisaab sum"
+            if test (count $argv) -eq 1
+              echo $argv | sed -E 's/\(([A-Za-z&])*\)//g' | bc -q
+            else
+              echo "please provide me with a valid input"
+            end
+          end
+        '';
+      };
     };
 
     shellAliases = {
@@ -24,20 +31,6 @@ in
       ".2"  = { expansion = "../.."   ; position = "anywhere";};
       ".3"  = { expansion = "../../.."; position = "anywhere";};
     };
-
-    interactiveShellInit = ''
-      # PatrickF1/fzf.fish plugin
-      set -gx fzf_fd_opts ${fd_opts}
-      set -gx fzf_preview_dir_cmd eza ${eza_opts}
-      set -gx fzf_preview_file_cmd bat
-      set -gx fzf_diff_highlighter delta ${delta_opts}
-      fzf_configure_bindings --variables=\ev --processes=\ep --git_status=\es --git_log=\el --history=\er --directory=\ef
-
-      # fifc plugin
-      set -gx fifc_editor ${config.home.sessionVariables.VISUAL}
-      set -gx fifc_fd_opts ${fd_opts}
-      set -gx fifc_eza_opts ${eza_opts}
-    '';
 
     plugins = [
       {
@@ -53,17 +46,15 @@ in
   };
 
   home.file.fisherPlugins = {
+    enable = true;
+
     text = ''
       jorgebucaran/autopair.fish
       nickeb96/puffer-fish
       markcial/upto
-      patrickf1/fzf.fish
       lengyijun/fc-fish
       edc/bass
-      oh-my-fish/plugin-wttr
-      oh-my-fish/plugin-osx
-      divitmittal/fifc@bugfix
-    '';
+      oh-my-fish/plugin-osx'';
     target = "${config.xdg.configHome}/fish/fish_plugins";
   };
 }

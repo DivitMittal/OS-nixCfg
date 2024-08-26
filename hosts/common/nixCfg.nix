@@ -13,7 +13,7 @@
 
     gc = {
       automatic = lib.mkDefault false;
-      options   = "--delete-older-than 1d";
+      options   = "--delete-old";
     };
   };
 

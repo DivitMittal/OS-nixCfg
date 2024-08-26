@@ -20,7 +20,7 @@ in
     shellAliases = {
       ls       = "env ls -aF";
       ll       = "env ls -alHbhigUuS";
-      ed       = "${pkgs.ed} -v -p ':'";
+      ed       = "${pkgs.ed}/bin/ed -v -p ':'";
     };
   };
 

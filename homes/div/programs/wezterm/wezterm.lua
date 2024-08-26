@@ -1,7 +1,7 @@
 local w = require 'wezterm';
 local act = w.action;
 
--------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
 -- Tab title string
 local function basename(s)
   return string.gsub(s, "(.*[/\\])(.*)", "%2")
@@ -14,14 +14,12 @@ w.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
   local progress = basename(pane.foreground_process_name)
   local text = index .. ": " .. title .. " [" .. progress .. "]"
   return {
-    {
-      Text = text
-    }
+    { Text = text }
   }
 end)
 
-----------------------------------------------------------------------------------------------------
--- Pane navigation and resizing b/w wezterm and vim/nvim (smart-splits.nvim plugin required)
+---------------------------------------------------------------------------------
+-- Pane navigation and resizing b/w wezterm & vim/nvim (smart-splits.nvim plugin required)
 local function is_vim(pane)
   -- this is set by the smart-splits.nvim plugin, and unset on ExitPre in Neovim
   return pane:get_user_vars().IS_NVIM == 'true'
@@ -65,7 +63,7 @@ local function split_nav(resize_or_move, key)
 end
 
 
----------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
 -- config
 local config = {
   term = "xterm-256color",
@@ -81,10 +79,12 @@ local config = {
     "liga=1"
   },
 
+  -- appearance
   window_close_confirmation = "NeverPrompt",
   colors = {
     foreground    = 'silver',
     background    = 'black',
+    --cursor
     cursor_bg     = 'red',
     cursor_fg     = 'silver',
     cursor_border = 'silver'
@@ -103,6 +103,8 @@ local config = {
   window_background_opacity = 0.90,
   window_decorations = "RESIZE",
   enable_scroll_bar = false,
+
+  -- hyperlink
   hyperlink_rules = {
     {
       regex  = "\\b\\w+://[\\w.-]+\\.[a-z]{2,15}\\S*\\b",
@@ -126,12 +128,12 @@ local config = {
     }
   },
 
+  -- Keybindings
   leader = {
     mods = 'CTRL',
     key = 'r',
     timeout_milliseconds = 1000
   },
-  -- Keybindings
   keys = {
     -- Send Ctrl+r to the terminal when pressing LEADER, LEADER
     {
@@ -199,5 +201,5 @@ local config = {
   }
 }
 
--------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
 return config

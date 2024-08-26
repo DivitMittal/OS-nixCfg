@@ -52,7 +52,6 @@
 
         "hlissner/zsh-autopair"
         "jeffreytse/zsh-vi-mode"
-        "Aloxaf/fzf-tab"
       ];
     };
   };

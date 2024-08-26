@@ -1,10 +1,5 @@
 { pkgs, ... }:
 
-let
-  coreutils = pkgs.uutils-coreutils.override {
-    prefix = "";
-  };
-in
 {
   imports = [
     ./nixCfg.nix
@@ -18,7 +13,7 @@ in
     inherit(pkgs)
       nixfmt-rfc-style                                                                  # Nix goodies
       bc diffutils findutils gnugrep inetutils which gzip gnutar wget gnupatch gnupg    # GNU
-      curl git coreutils;                                                           # Other
+      curl git uutils-coreutils-noprefix;                                               # Other
   };
 
   documentation = {

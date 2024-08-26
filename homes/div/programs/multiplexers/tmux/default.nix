@@ -2,7 +2,7 @@
 
 {
   programs.tmux = {
-    enable = true;
+    enable = false;
     package = pkgs.tmux;
   };
 

@@ -20,6 +20,7 @@
     ./btop.nix
     ./bw.nix
     ./eza.nix
+    ./fzf.nix
     ./rclone.nix
     ./starship.nix
   ];
@@ -56,29 +57,6 @@
           title = "WSJ";
           url = "https://feeds.a.dj.com/rss/RSSMarketsMain.xml";
         }
-      ];
-    };
-
-    fzf = {
-      enable = true;
-      package = pkgs.fzf;
-
-      enableFishIntegration = false; enableZshIntegration = false; enableBashIntegration = false;
-
-      defaultCommand = "fd --hidden";
-
-      defaultOptions = [
-        "--multi"
-        "--cycle"
-        "--border"
-        "--height 50%"
-        "--bind='right:select'"
-        "--bind='left:deselect'"
-        "--bind='tab:down'"
-        "--bind='btab:up'"
-        "--no-scrollbar"
-        "--marker='*'"
-        "--preview-window=wrap"
       ];
     };
 
