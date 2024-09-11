@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixOS/nixpkgs/nixpkgs-unstable" ;
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
 
     nix-darwin  = {
       url = "github:LnL7/nix-darwin";
@@ -15,19 +16,39 @@
     };
   };
 
-  outputs = { self, nixpkgs, nix-darwin, nix-on-droid, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-darwin, nix-darwin, nix-on-droid, ... }@inputs:
+  let
+    system  = "x86_64-darwin";
+    pkgs = import nixpkgs { inherit system; };
+    pkgs-darwin  = import nixpkgs-darwin { inherit system; };
+  in
   {
     # nix-darwin
-    darwinConfigurations."div-mbp" = nix-darwin.lib.darwinSystem {
-      system = "x86_64-darwin";
-      modules = [ ./darwin/div-mbp ];
-      specialArgs = { inherit inputs; };
+    darwinConfigurations = {
+      "div-mbp" = nix-darwin.lib.darwinSystem {
+        inherit system;
+        inherit inputs;
+        inherit pkgs;
+
+        specialArgs = {
+          inherit pkgs-darwin;
+        };
+
+        modules = [
+          ./darwin/div-mbp
+        ];
+      };
     };
-    darwinPackages = self.darwinConfigurations."div-mbp".pkgs; # Expose the package set, including overlays, for convenience.
 
     # nix-on-droid
-    nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
-      modules = [ ./droid/m1 ];
+    nixOnDroidConfigurations = {
+      default = nix-on-droid.lib.nixOnDroidConfiguration {
+        inherit pkgs;
+
+        modules = [
+          ./droid/m1
+        ];
+      };
     };
   };
 }

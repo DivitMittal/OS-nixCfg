@@ -8,6 +8,12 @@
       target = "${config.xdg.configHome}/ideavim/ideavimrc";
     };
 
+    wezterm = {
+      enable = true;
+      source = ./wezterm/wezterm.lua;
+      target = "${config.xdg.configHome}/wezterm/wezterm.lua";
+    };
+
     raycast = {
       enable = true;
       source = ./raycast/scripts;

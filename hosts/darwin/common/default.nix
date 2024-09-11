@@ -2,19 +2,18 @@
 
 {
   imports = [
-    ./../../common
     ./shells.nix
+    ./nixCfg.nix
   ];
 
-  nixpkgs.hostPlatform = "x86_64-darwin";
-
-  services.nix-daemon.enable = true;  # Auto upgrade nix package and the daemon service.
-
-  system.checks = {
-    verifyBuildUsers = true;
-    verifyNixChannels = true;
-    verifyNixPath = true;
+  environment.systemPackages = builtins.attrValues {
+    inherit(pkgs)
+      bc diffutils findutils gnugrep inetutils gnused gawk which gzip gnutar wget gnupatch gnupg binutils gnumake groff indent # GNU
+      zip unzip curl vim git uutils-coreutils-noprefix
+    ;
   };
+
+  time.timeZone = "Asia/Calcutta";
 
   networking = {
     knownNetworkServices = [ "Wi-Fi" ];
@@ -26,12 +25,19 @@
     ];
   };
 
-  # Packages common to all macOS hosts & installed in nix-darwin profile
-  environment.systemPackages = builtins.attrValues {
-    inherit(pkgs)
-      binutils gnumake gnused gawk groff indent     # GNU
-      less;
+  documentation = {
+    enable      = true;
+
+    info.enable = true;
+    man.enable  = true;
+
+    doc.enable  = false;
   };
+  environment.extraOutputsToInstall = [ "info" ]; # "dev" "devdoc"
+
+  programs.man.enable  = true;
+  programs.info.enable = true;
+
 
   system.activationScripts.postUserActivation.text = ''
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u

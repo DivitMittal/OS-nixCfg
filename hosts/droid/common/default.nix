@@ -1,18 +1,14 @@
 { config, lib, pkgs, ... }:
 
 {
-
   environment.packages = builtins.attrValues {
     inherit(pkgs)
-    # vim
-    # diffutils findutils
-    utillinux tzdata hostname
-    # man
-    # gnugrep
-    # gnupg
-    #gnused #gnutar #bzip2 #gzip #xz #zip #unzip
-    fastfetch
-    openssh;
+      bc diffutils findutils gnugrep inetutils gnused gawk which gzip gnutar wget gnupatch gnupg # GNU
+      curl vim git uutils-coreutils-noprefix;                                                    # Other
+      utillinux tzdata hostname
+      fastfetch
+      openssh
+    ;
   };
 
   time.timeZone =

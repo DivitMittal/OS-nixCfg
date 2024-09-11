@@ -78,12 +78,15 @@ _:
       AppleLanguages = [ "en" ];
     };
 
+    "com.apple.finder" = {
+      _FXSortFoldersFirst = true;
+      NewWindowTargetPath = "PfHm";       # Home - PfHm; Desktop - PfDe; Documents - PfDo
+    };
+
     "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = true;
     "com.apple.ImageCapture".disableHotPlug = true; # Auto
     "com.apple.commerce".AutoUpdate = true;
-    "com.apple.AdLib" = {
-      allowApplePersonalizedAdvertising = false;
-    };
+    "com.apple.AdLib".allowApplePersonalizedAdvertising = false;
     "com.apple.desktopservices" = {
       # Avoid creating .DS_Store files on network or USB volumes
       DSDontWriteNetworkStores = true;
@@ -126,4 +129,28 @@ _:
     "com.apple.HIToolbox".AppleFnUsageType = 0; # fn key does nothing
     "com.apple.appleseed.FeedbackAssistant".Autogather = false;
   };
+
+
+  system.activationScripts.pmset.text = ''
+    sudo chflags nohidden /Volumes
+
+    sudo chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
+
+    # Sleep the display in minutes
+    sudo pmset -a displaysleep 10
+
+    # Machine sleep while charging in minutes
+    sudo pmset -c sleep 30
+
+    # Set machine sleep on battery in minutes
+    sudo pmset -b sleep 15
+
+    # Wake from sleep when opening lid; disabled(0)
+    # sudo pmset lidwake 0
+
+    # Seconds after which the screen saver shows up
+    defaults -currentHost write com.apple.screensaver idleTime 300
+
+    mkdir /Users/div/Desktop/b
+  '';
 }

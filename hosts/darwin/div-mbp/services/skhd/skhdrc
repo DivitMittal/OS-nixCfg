@@ -4,11 +4,11 @@
 ################### Dependencies
 # skhd
 # yabai
-# dash
 # jq
-# spaceman
-# hammerspoon
 # cliclick
+# dash (optional)
+# spaceman (optional)
+# hammerspoon (optional)
 
 ################### Modify the launchctl plist (improved performance)
 # plist xml can be found at "skhd --install-service"

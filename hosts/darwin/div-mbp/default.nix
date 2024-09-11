@@ -2,11 +2,12 @@
 
 let
   nerdfonts = pkgs.nerdfonts.override {
-    fonts = [ "CascadiaCode" ];
+    fonts = [
+      "CascadiaCode"
+    ];
   };
 in
 {
-
   imports = [
     ./../common
     ./macOS-defaults
@@ -23,20 +24,22 @@ in
 
     networking = {
       computerName = "L1";
-      hostName     = "div-mbp";
+      hostName = "div-mbp";
     };
 
     fonts.packages = [ nerdfonts ];
 
     users.users.div = {
       description = "Divit Mittal";
-      home        = "/Users/div";
-      shell       = pkgs.fish;
+      home = "/Users/div";
+      shell = pkgs.fish;
 
       # Packages common to only instances of div-mbp & not all macOS hosts & installed in nix-darwin profile
       packages = builtins.attrValues {
         inherit(pkgs)
-          duti blueutil;
+          duti
+          blueutil
+        ;
       };
     };
   };

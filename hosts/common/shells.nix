@@ -1,26 +1,23 @@
 { pkgs, config, ... }:
 
-let
-  preferredEditor = pkgs.vim;
-in
 {
   environment = {
-    variables = {
+    variables = rec {
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_CACHE_HOME  = "$HOME/.cache";
       XDG_STATE_HOME  = "$HOME/.local/state";
       XDG_DATA_HOME   = "$HOME/.local/share";
       LANG            = "en_US.UTF-8";
-      VISUAL          = "${preferredEditor}";
-      EDITOR          = "${preferredEditor}";
+      VISUAL          = "vim";
+      EDITOR          = "${VISUAL}";
     };
 
     shells = with pkgs; [ bashInteractive zsh dash fish ];
 
     shellAliases = {
-      ls       = "env ls -aF";
-      ll       = "env ls -alHbhigUuS";
-      ed       = "${pkgs.ed}/bin/ed -v -p ':'";
+      ls = "env ls -aF";
+      ll = "env ls -alHbhigUuS";
+      ed = "${pkgs.ed}/bin/ed -v -p ':'";
     };
   };
 
@@ -89,6 +86,7 @@ in
       shellInit = ''
         set -g fish_greeting
       '';
+
       interactiveShellInit = ''
         set -g fish_vi_force_cursor 1
         set -g fish_cursor_default block

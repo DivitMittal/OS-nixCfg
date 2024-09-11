@@ -13,7 +13,9 @@
 
   home.file.userChromeJS = {
     source = ./chrome/JS;
-    target = "${config.home.homeDirectory}/Library/Application Support/Firefox/Profiles/custom-default/chrome/JS";
+    target = if pkgs.stdenvNoCC.isDarwin then
+      "${config.home.homeDirectory}/Library/Application Support/Firefox/Profiles/custom-default/chrome/JS" else
+      "${config.home.homeDirctory}/.mozilla/firefox/custom-default/chrome/JS";
     recursive = true;
   };
 

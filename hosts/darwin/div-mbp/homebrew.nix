@@ -33,8 +33,8 @@ _:
       "Texty" = 1538996043;
 
       # Safari Extensions
-      "Ghostery" = 6504861501; # Ad-blocker
-      "SuperAgent" = 1568262835; # Cookie Annoyances handler
+      "Ghostery" = 6504861501;
+      "SuperAgent" = 1568262835;
       "Vimkey" = 1585682577;
     };
   };
