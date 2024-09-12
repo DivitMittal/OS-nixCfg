@@ -8,6 +8,5 @@
     package = pkgs.skhd;
 
     skhdConfig = builtins.readFile ./skhdrc;
-
   };
 }

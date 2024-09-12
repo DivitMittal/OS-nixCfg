@@ -1,6 +1,8 @@
 { pkgs, config, ... }:
 
 {
+  environment.shells = with pkgs; [ bashInteractive zsh dash fish ];
+
   environment = {
     variables = rec {
       XDG_CONFIG_HOME = "$HOME/.config";
@@ -11,8 +13,6 @@
       VISUAL          = "vim";
       EDITOR          = "${VISUAL}";
     };
-
-    shells = with pkgs; [ bashInteractive zsh dash fish ];
 
     shellAliases = {
       ls = "env ls -aF";

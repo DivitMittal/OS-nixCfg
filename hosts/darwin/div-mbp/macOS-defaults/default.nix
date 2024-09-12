@@ -71,7 +71,6 @@ _:
 
 
   system.defaults.CustomUserPreferences = {
-
     NSGlobalDomain = {
       WebKitDeveloperExtras = true;       # Add a context menu item for showing the Web Inspector in web views
       AppleLocale = "en_US@currency=USD";
@@ -131,7 +130,7 @@ _:
   };
 
 
-  system.activationScripts.pmset.text = ''
+  system.activationScripts.postUserActivation.text = ''
     sudo chflags nohidden /Volumes
 
     sudo chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
@@ -151,6 +150,6 @@ _:
     # Seconds after which the screen saver shows up
     defaults -currentHost write com.apple.screensaver idleTime 300
 
-    mkdir /Users/div/Desktop/b
+    mkdir ~/Desktop/b
   '';
 }

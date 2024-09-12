@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 {
-  config = lib.mkIf pkgs.stdenvNoCC.isDarwin {
+  config = lib.mkIf pkgs.stdenvNoCC.hostPlatform.isDarwin {
     # Prevent profile load failures.
     # See <https://github.com/nix-community/home-manager/issues/3323#issuecomment-1280055087>
     launchd.agents.FirefoxEnv = {

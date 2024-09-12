@@ -2,14 +2,14 @@
 
 {
   home.packages = builtins.attrValues {
-    pipx = if pkgs.stdenvNoCC.isDarwin then pkgs-darwin.pipx else pkgs.pipx;
+    pipx = if pkgs.stdenvNoCC.hostPlatform.isDarwin then pkgs-darwin.pipx else pkgs.pipx;
     micromamba = pkgs.micromamba;
   };
 
   # pip
   programs.fish.shellAliases = {
     pip-uninstall-all = "pip freeze | cut -d '@' -f1 | xargs pip uninstall -y";
-    pipx-ultimate     = "pipx upgrade-all; pipx list --short 1> ${config.paths.homeCfg}/programs/development/python/pipx_bak.txt";
+    pipx-ultimate     = "pipx upgrade-all; pipx list --short 1> ${config.paths.homeCfg}/programs/development/python/pipx.bak.txt";
   };
 
   # micromamba
@@ -24,5 +24,4 @@
     set -gx MAMBA_ROOT_PREFIX "${config.home.homeDirectory}/.local/share/micromamba/"
     $MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
   '';
-
 }

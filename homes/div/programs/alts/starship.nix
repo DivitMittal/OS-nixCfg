@@ -28,8 +28,9 @@
         "$conda"
         "$package"
       ];
+
       add_newline     = true;
-      command_timeout = 800;
+      command_timeout = 425;
       scan_timeout    = 50; # scaning files in the current directory
 
       character = {

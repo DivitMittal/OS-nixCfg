@@ -20,7 +20,7 @@ in
       trusted-users = [ "root" "div" ];
     };
 
-    environment.darwinConfig = "$HOME/OS-nixCfg/hosts/darwin/div-mbp/default.nix";
+    environment.darwinConfig = "$HOME/OS-nixCfg/hosts/darwin/div-mbp";
 
     networking = {
       computerName = "L1";

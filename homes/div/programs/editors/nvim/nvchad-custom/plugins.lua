@@ -60,7 +60,7 @@ return {
   {
     "NvChad/nvim-colorizer.lua",
     enabled = true,
-    cond = not isVSCode,
+    cond =  not isVSCode,
   },
 
   -- nvim-nvchad ui library
@@ -202,11 +202,11 @@ return {
     event = "VeryLazy",
     opts = {},
     keys = {
-      { "<cr>", mode = { "n", "x", "o" }, function() require("flash").jump()       end, desc = "flash" },
-      { "s",    mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "flash  treesitter" },
-      { "r",    mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "treesitter search" },
-      -- { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "toggle flash search" },
-      -- { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+      { mode = { "n", "x", "o" }, "<cr>", function() require("flash").jump() end, desc = "flash" },
+      { mode = { "n", "x", "o" }, "s"   , function() require("flash").treesitter() end, desc = "flash  treesitter" },
+      { mode = { "o", "x" }     , "r"   , function() require("flash").treesitter_search() end, desc = "treesitter search" },
+      -- { mode = { "c" }, "<c-s>", function() require("flash").toggle() end, desc = "toggle flash search" },
+      -- { mode = "o"    , "r"    , function() require("flash").remote() end, desc = "Remote Flash" },
     },
     config = function()
       require('flash').setup({

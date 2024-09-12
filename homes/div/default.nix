@@ -9,6 +9,6 @@
 
   home = rec {
     username = "div";
-    homeDirectory = "/Users/${username}";
+    homeDirectory = if pkgs.stdenvNoCC.hostPlatform.isDarwin then "/Users/${username}" else "/home/${username}";
   };
 }
