@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   programs.starship = {
@@ -8,12 +8,26 @@
     enableFishIntegration = true; enableZshIntegration  = false; enableBashIntegration = false;
 
     settings = {
-      format = ''
-        [╭─sys─-➜❯](bold blue) $sudo$username$hostname$shell$status$cmd_duration$docker_context
-        [┣─pwd─-➜❯](bold red) $directory$git_branch$git_commit$git_status
-        [╰─cmd─➜❯](bold green)$character
-      '';
-      right_format    = "$nix_shell$lua$rust$java$kotlin$dart$python$golang$swift$nodejs$php$conda$package";
+      format = lib.concatStrings [
+        "[╭─sys─-➜❯](bold blue) " "$sudo" "$username" "$hostname" "$shell" "\${custom.yazi}" "$status" "$custom" "$cmd_duration" "$docker_context" "\n"
+        "[┣─pwd─-➜❯](bold red) "  "$directory" "$git_branch" "$git_commit" "$git_status" "\n"
+        "[╰─cmd─➜❯](bold green) " "$character"
+      ];
+      right_format = lib.concatStrings [
+        "$nix_shell"
+        "$lua"
+        "$rust"
+        "$java"
+        "$kotlin"
+        "$dart"
+        "$python"
+        "$golang"
+        "$swift"
+        "$nodejs"
+        "$php"
+        "$conda"
+        "$package"
+      ];
       add_newline     = true;
       command_timeout = 800;
       scan_timeout    = 50; # scaning files in the current directory
@@ -120,6 +134,13 @@
         unknown_msg = "[unknown shell](bold yellow)";
       };
 
+      custom.yazi = {
+        disabled    = false;
+        description = "Indicate the shell was launched by `yazi`";
+        symbol      = "[Y] ";
+        when        = ''test -n "$YAZI_LEVEL"'';
+      };
+
       ## Disabled
       battery = {
         disabled           = true;
@@ -139,14 +160,12 @@
 
       docker_context = { disabled = true; };
 
-      custom = {
-        docker = {
-          disabled    = true;
-          description = "Shows a  docker symbol if the current directory has Dockerfile or docker-compose.yml files";
-          files       = [ "Dockerfile" "docker-compose.yml" "docker-compose.yaml" ];
-          format      = "with $symbol ";
-          symbol      = "🐳";
-        };
+      custom.docker = {
+        disabled    = true;
+        description = "Shows a  docker symbol if the current directory has Dockerfile or docker-compose.yml files";
+        files       = [ "Dockerfile" "docker-compose.yml" "docker-compose.yaml" ];
+        format      = "with $symbol ";
+        symbol      = "🐳";
       };
 
       conda = {

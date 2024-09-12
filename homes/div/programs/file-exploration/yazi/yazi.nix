@@ -71,15 +71,19 @@
 
     previewers = [
       { name = "*/"                         ; run = "folder" ; sync = true; }
+
       { mime = "text/*"                     ; run = "code"   ; }
       { mime = "*/xml"                      ; run = "code"   ; }
       { mime = "*/javascript"               ; run = "code"   ; }
       { mime = "*/x-wine-extension-ini"     ; run = "code"   ; }
+
       { mime = "application/json"           ; run = "json"   ; }
+
       { mime = "image/vnd.djvu"             ; run = "noop"   ; }
       { mime = "image/*"                    ; run = "image"  ; }
       { mime = "video/*"                    ; run = "video"  ; }
       { mime = "application/pdf"            ; run = "pdf"    ; }
+
       { mime = "application/zip"            ; run = "archive"; }
       { mime = "application/gzip"           ; run = "archive"; }
       { mime = "application/x-tar"          ; run = "archive"; }
@@ -88,20 +92,25 @@
       { mime = "application/x-7z-compressed"; run = "archive"; }
       { mime = "application/x-rar"          ; run = "archive"; }
       { mime = "application/xz"             ; run = "archive"; }
-      { name = "*"                          ; run = "file"   ; }
+
+      { mime = "*"                          ; run = "hexyl"  ; }
     ];
 
     prepend_previewers = [
-      { mime = "text/html"                  ; run = "w3m"         ; }
       { mime = "application/*zip"           ; run = "ouch"        ; }
       { mime = "application/x-tar"          ; run = "ouch"        ; }
       { mime = "application/x-bzip2"        ; run = "ouch"        ; }
       { mime = "application/x-7z-compressed"; run = "ouch"        ; }
       { mime = "application/x-rar"          ; run = "ouch"        ; }
       { mime = "application/x-xz"           ; run = "ouch"        ; }
+
       { mime = "*.csv"                      ; run = "rich-preview"; }
       { mime = "*.md"                       ; run = "rich-preview"; }
       { mime = "*.ipynb"                    ; run = "rich-preview"; }
+    ];
+
+    append_previewers = [
+      { name = "*"                          ; run = "file"   ; }
     ];
   };
 
@@ -140,5 +149,12 @@
     macro_workers = 25;
     micro_workers = 10;
     suppress_preload = false;
+  };
+
+  plugin = {
+    prepend_fetchers = [
+      { id = "git"; name = "*" ; run = "git"; }
+      { id = "git"; name = "*/"; run = "git"; }
+    ];
   };
 }

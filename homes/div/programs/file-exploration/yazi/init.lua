@@ -1,4 +1,5 @@
-require("full-border"):setup() -- ya pack -a yazi-rs/plugins#full-border
+require("full-border"):setup()
+require("git"):setup()
 
 -- Add symlink target to the status bar
 function Status:name()
