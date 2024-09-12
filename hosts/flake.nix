@@ -17,21 +17,17 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-darwin, nix-darwin, nix-on-droid, ... }@inputs:
-  let
-    system  = "x86_64-darwin";
-    pkgs = import nixpkgs { inherit system; };
-    pkgs-darwin  = import nixpkgs-darwin { inherit system; };
-  in
+
   {
-    # nix-darwin
     darwinConfigurations = {
-      "div-mbp" = nix-darwin.lib.darwinSystem {
-        inherit system;
+      "div-mbp" = nix-darwin.lib.darwinSystem rec {
         inherit inputs;
-        inherit pkgs;
+
+        system = "x86_64-darwin";
+        pkgs = import nixpkgs { inherit system; };
 
         specialArgs = {
-          inherit pkgs-darwin;
+          pkgs-darwin  = import nixpkgs-darwin { inherit system; };
         };
 
         modules = [
@@ -40,10 +36,9 @@
       };
     };
 
-    # nix-on-droid
     nixOnDroidConfigurations = {
       default = nix-on-droid.lib.nixOnDroidConfiguration {
-        inherit pkgs;
+        pkgs = import nixpkgs { system = "aarch64-linux"; };
 
         modules = [
           ./droid/m1

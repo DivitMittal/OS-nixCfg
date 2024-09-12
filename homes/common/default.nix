@@ -15,14 +15,13 @@
       type = lib.types.str;
       description = "Path to secrets";
     };
-
   };
 
   config = {
     programs.home-manager.enable = true;
 
     xdg.enable = true;
-    home.preferXdgDirectories = lib.mkDefault true;
+    home.preferXdgDirectories = true;
 
     paths.homeCfg = "${config.home.homeDirectory}/OS-nixCfg/homes/${config.home.username}";
     paths.secrets = "${config.home.homeDirectory}/OS-nixCfg/secrets";
@@ -33,6 +32,6 @@
 
     home.extraOutputsToInstall = [ "info" ]; # "doc" "devdoc"
 
-    home.stateVersion = lib.mkDefault "23.11";
+    home.stateVersion = "23.11";
   };
 }

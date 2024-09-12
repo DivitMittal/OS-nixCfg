@@ -44,5 +44,5 @@
   '';
 
   system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null; # Set Git commit hash for darwin-version.
-  system.stateVersion = 4;
+  system.stateVersion = 5;
 }

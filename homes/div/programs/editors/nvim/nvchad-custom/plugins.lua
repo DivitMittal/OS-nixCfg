@@ -1,10 +1,6 @@
-local overrides = require("custom.configs.overrides")
-local autocmd   = vim.api.nvim_create_autocmd
-local augroup   = vim.api.nvim_create_augroup
-local isVSCode  = vim.g.vscode
+local isVSCode = vim.g.vscode
 
----@type NvPluginSpec[]
-local plugins = {
+return {
   -- ----------------------------------------------------------- --
   --                   Default Plugins
   -- ----------------------------------------------------------- --
@@ -13,16 +9,22 @@ local plugins = {
     "neovim/nvim-lspconfig",
     enabled = true,
     cond = not isVSCode,
-    dependencies = {
-      {
-        "jose-elias-alvarez/null-ls.nvim",  -- format & linting
-        config = function() require "custom.configs.null-ls" end,
+    config = function()
+      require "configs.lspconfig"
+    end,
+  },
+
+  -- formatter
+  {
+    "stevearc/conform.nvim",
+    -- event = 'BufWritePre', -- uncomment for format on save
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        css = { "prettier" },
+        html = { "prettier" },
       },
     },
-    config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
-    end, -- Override to setup mason-lspconfig
   },
 
   -- package manager for LSP, DAP servers, linters & formatters
@@ -30,7 +32,6 @@ local plugins = {
     "williamboman/mason.nvim",
     enabled = true,
     cond = not isVSCode,
-    opts = overrides.mason,
   },
 
   -- treesitter syntax highlighting
@@ -38,7 +39,7 @@ local plugins = {
     "nvim-treesitter/nvim-treesitter",
     enabled = true,
     cond = not isVSCode,
-    opts = overrides.treesitter,
+    opts = require "configs.treesitter"
   },
 
   -- library of lua functions
@@ -48,14 +49,14 @@ local plugins = {
     cond = not isVSCode,
   },
 
-  -- programmatic color scheme definition
+  -- color scheme definition
   {
     "NvChad/base46",
     enabled = true,
     cond = not isVSCode,
   },
 
-  -- programmatic text bg & fg colorizer
+  -- color-text bg & fg colorizer
   {
     "NvChad/nvim-colorizer.lua",
     enabled = true,
@@ -65,13 +66,6 @@ local plugins = {
   -- nvim-nvchad ui library
   {
     "NvChad/ui",
-    enabled = true,
-    cond = not isVSCode,
-  },
-
-  -- nvim terminal plugin
-  {
-    "zbirenbaum/nvterm",
     enabled = true,
     cond = not isVSCode,
   },
@@ -97,13 +91,6 @@ local plugins = {
     cond = not isVSCode,
   },
 
-  -- comment using gc & gcc
-  {
-    "numToStr/Comment.nvim",
-    enabled = true,
-    cond = not isVSCode,
-  },
-
   -- fuzzy find/search/view a lot of stuff
   {
     "nvim-telescope/telescope.nvim",
@@ -123,7 +110,20 @@ local plugins = {
     "nvim-tree/nvim-tree.lua",
     enabled = true,
     cond = not isVSCode,
-    opts = overrides.nvimtree,
+    opts = {
+      git = {
+        enable = true,
+      },
+
+      renderer = {
+        highlight_git = true,
+        icons = {
+          show = {
+            git = true,
+          },
+        },
+      },
+    },
   },
 
   -- completions with snippets, autopairing, etc.
@@ -131,7 +131,12 @@ local plugins = {
     "hrsh7th/nvim-cmp",
     enabled = true,
     cond = not isVSCode,
-    opts = overrides.nvimcmp,
+    opts = {
+      mapping = {
+        ["<Up>"] = require("cmp").mapping.select_prev_item(),
+        ["<Down>"] = require("cmp").mapping.select_next_item(),
+      },
+    },
   },
 
   -- ----------------------------------------------------------- --
@@ -149,10 +154,6 @@ local plugins = {
     event = "BufEnter",
     config = function()
       require('guess-indent').setup({ auto_cmd = true, })
-      -- autocmd("VimEnter", {
-      --     group = augroup("GuessIndent", { clear = true }),
-      --     command = "autocmd FileType * :silent lua require('guess-indent').set_from_buffer(true)"
-      -- })
     end,
   },
 
@@ -176,20 +177,6 @@ local plugins = {
           },
           options = { reindent_linewise = true, },
       })
-
-      -- if( not isVSCode ) then
-      --   -- nvim starter/dashboard
-      --   local starter = require('mini.starter')
-      --   starter.setup({
-      --   header = 'D!',
-      --   footer = '',
-      --   content_hooks = {
-      --       starter.gen_hook.adding_bullet(),
-      --       starter.gen_hook.indexing('all', { 'Builtin actions' }),
-      --       starter.gen_hook.padding(3, 2),
-      --     },
-      --   })
-      -- end
     end,
   },
 
@@ -199,11 +186,10 @@ local plugins = {
     enabled = true,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     cond = not isVSCode,
-    opts = {},
     event = "VeryLazy",
     cmd = "Oil",
     keys = {
-      { "-", mode = {"n"}, "<cmd>Oil<CR>", desc = "Open parent directory" },
+      { mode = {"n"}, "-", "<cmd>Oil<CR>", desc = "Open parent directory" },
     },
     config = function() require('oil').setup() end,
   },
@@ -216,10 +202,10 @@ local plugins = {
     event = "VeryLazy",
     opts = {},
     keys = {
-      { "<CR>", mode = { "n", "x", "o" }, function() require("flash").jump()       end, desc = "Flash" },
-      { "S",    mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash  Treesitter" },
-      { "R",    mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      -- { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      { "<cr>", mode = { "n", "x", "o" }, function() require("flash").jump()       end, desc = "flash" },
+      { "s",    mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "flash  treesitter" },
+      { "r",    mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "treesitter search" },
+      -- { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "toggle flash search" },
       -- { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
     },
     config = function()
@@ -241,9 +227,10 @@ local plugins = {
     cond = not isVSCode,
     event = "VeryLazy",
     dependencies = { 'smoka7/hydra.nvim', },
-    opts = {},
     cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
-    keys = { { mode = { 'v', 'n' }, '<Leader>mc', '<cmd>MCstart<cr>', desc = 'selected word under the cursor and listen for actions', }, },
+    keys = {
+      { mode = { 'v', 'n' }, '<Leader>mc', '<cmd>MCstart<cr>', desc = 'selected word under the cursor and listen for actions', },
+    },
   },
 
   -- manoeuvre around splits b/w multiplexers & nvim-splits
@@ -272,5 +259,3 @@ local plugins = {
     event = "VeryLazy"
   },
 }
-
-return plugins

@@ -1,12 +1,7 @@
 { pkgs, pkgs-darwin, lib, ... }:
 
-# let
-#   fastfetch_macOS = pkgs.fastfetch.overrideAttrs {
-#     preBuild = lib.optionalString pkgs.stdenv.isDarwin "export MACOSX_DEPLOYMENT_TARGET=14.0";
-#   };
-# in
 {
-  programs.fish.shellInitLast = ''
+  programs.fish.loginShellInit = lib.mkAfter ''
     test "$TERM_PROGRAM" = "WezTerm"; and fastfetch
   '';
 
@@ -21,7 +16,7 @@
       };
       display = {
         pipe = false;
-        hideCursor = true;
+        hideCursor = false;
         separator = " -➜❯ ";
         brightColor = true;
         constants =  [

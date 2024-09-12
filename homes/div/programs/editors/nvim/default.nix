@@ -15,7 +15,7 @@
 
   home.file.NvChad = {
     source = ./nvchad-custom;
-    target = "${config.xdg.configHome}/nvim/lua/custom";
+    target = "${config.xdg.configHome}/nvim/lua";
     recursive = true;
   };
 }

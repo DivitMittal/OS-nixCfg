@@ -1,29 +1,25 @@
--- ────────────────❰ Leader Mapping ❱─────────────── --
-local g = vim.g     -- global vim variable
-
--- g.mapleader = ' '      -- default nvim leader is '\' & default NvChad leader is ' '
-g.maplocalleader = "|"
+require "nvchad.options"
 
 -- ────────────────❰ Settings ❱─────────────── --
-local set = vim.opt  -- global options
+local set = vim.opt      -- global options
 
 set.termguicolors = true -- Enable GUI colors for the terminal to get truecolor
 set.list = true          -- show whitespace
 set.listchars = {
-    nbsp = "␣",
-    extends = "»",
-    precedes = "«",
-    tab = "|-",
-    trail = "•",
-    space = "·",
-    eol = "ꜜ",
+  nbsp = "␣",
+  extends = "»",
+  precedes = "«",
+  tab = "|-",
+  trail = "•",
+  space = "·",
+  eol = "ꜜ",
 }
 
 set.fillchars = {
-    diff = "∙",
-    eob = " ", -- NOBREAK SPACE (U+00A0, UTF-8: C2 A0) to suppress ~ at EndOfBuffer
-    fold = "·",
-    vert = " ", -- remove ugly vertical lines on window division
+  diff = "∙",
+  eob = " ", -- NOBREAK SPACE (U+00A0, UTF-8: C2 A0) to suppress ~ at EndOfBuffer
+  fold = "·",
+  vert = " ", -- remove ugly vertical lines on window division
 }
 
 set.wrap              = true        -- automatically wrap on load
@@ -63,7 +59,7 @@ set.shiftround        = true                           -- round shiftwidth to th
 set.smartindent       = true                -- indent the current line according to the previous line
 set.autoindent        = true                -- maintain indent of current line
 
-set.shell             = "/usr/bin/env fish" -- shell to use for `!`, `:!`, `system()` etc.
+set.shell             = "/usr/bin/env zsh" -- shell to use for `!`, `:!`, `system()` etc.
 
 set.splitbelow        = true                -- open horizontal splits below current window
 set.splitright        = true                -- open vertical splits to the right of the current window

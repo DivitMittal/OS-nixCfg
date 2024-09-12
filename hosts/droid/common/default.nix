@@ -1,19 +1,26 @@
 { config, lib, pkgs, ... }:
 
 {
-  environment.packages = builtins.attrValues {
-    inherit(pkgs)
-      bc diffutils findutils gnugrep inetutils gnused gawk which gzip gnutar wget gnupatch gnupg # GNU
-      curl vim git uutils-coreutils-noprefix;                                                    # Other
-      utillinux tzdata hostname
-      fastfetch
-      openssh
-    ;
+  options = {
+    paths.secrets = lib.mkOption {
+      type = lib.types.str;
+      description = "Path to secrets";
+    };
   };
 
-  time.timeZone =
+  config = {
+    environment.packages = builtins.attrValues {
+      inherit(pkgs)
+        bc diffutils findutils gnugrep inetutils gnused gawk which gzip gnutar wget gnupatch gnupg # GNU
+        curl vim git uutils-coreutils-noprefix
+        utillinux tzdata hostname openssh
+      ;
+    };
 
-  environment.etcBackupExtension = ".bak";
+    time.timeZone = "Asia/Calcutta";
 
-  system.stateVersion = "24.05";
+    environment.etcBackupExtension = ".bak";
+
+    system.stateVersion = "24.05";
+  };
 }
