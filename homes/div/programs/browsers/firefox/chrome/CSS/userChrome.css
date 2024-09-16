@@ -33,7 +33,7 @@
 /* Makes browser window first element sends the NAVBAR down */
 /* #browser { */
 /*    order: -1 !important; */
-/*  } */
+/* } */
 
 /* hides unwanted buttons & items from the navbar */
 #back-button, #forward-button, #reload-button, #stop-button, #home-button, #fxa-toolbar-menu-button {

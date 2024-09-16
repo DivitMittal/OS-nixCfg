@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 
 {
-  home.sessionVariables.VISUAL = "nvim";
+  home.packages = with pkgs; [ lua luajitPackages.luarocks ];
 
   programs.neovim = {
     enable = true;
@@ -9,6 +9,7 @@
 
     defaultEditor = true; # Sets the EDITOR sessionVariable
   };
+  home.sessionVariables.VISUAL = "nvim";
 
   programs.fish.shellAbbrs.nv = { expansion = "nvim"; position = "command"; };
   programs.zsh.zsh-abbr.abbreviations.nv = "nvim";

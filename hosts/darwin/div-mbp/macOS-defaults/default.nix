@@ -129,26 +129,19 @@ _:
     "com.apple.appleseed.FeedbackAssistant".Autogather = false;
   };
 
-
   system.activationScripts.postUserActivation.text = ''
+    # Unhide
     sudo chflags nohidden /Volumes
+    sudo chflags nohidden ~/Library
 
-    sudo chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
-
-    # Sleep the display in minutes
-    sudo pmset -a displaysleep 10
-
-    # Machine sleep while charging in minutes
-    sudo pmset -c sleep 30
-
-    # Set machine sleep on battery in minutes
-    sudo pmset -b sleep 15
-
+    # Sleep (in minutes)
+    sudo pmset -a displaysleep 10 # Display sleep
+    sudo pmset -b sleep 15        # Machine sleep (battery)
+    sudo pmset -c sleep 30        # Machine sleep (charging)
+    # Screensaver (in seconds)
+    defaults -currentHost write com.apple.screensaver idleTime 300
     # Wake from sleep when opening lid; disabled(0)
     # sudo pmset lidwake 0
-
-    # Seconds after which the screen saver shows up
-    defaults -currentHost write com.apple.screensaver idleTime 300
 
     mkdir ~/Desktop/b
   '';

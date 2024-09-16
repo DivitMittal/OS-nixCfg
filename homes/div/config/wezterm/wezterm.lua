@@ -67,6 +67,7 @@ end
 -- config
 local config = {
   term = "xterm-256color",
+  enable_kitty_graphics = true,
 
   -- font
   font = w.font("CaskaydiaCove NFM"),

@@ -32,6 +32,17 @@ return {
     },
   },
 
+  cheatsheet = {
+    theme = "grid",
+  },
+
+  term = {
+    winopts = {
+      number = true,
+      relativenumber = true,
+    }
+  },
+
   lsp = {
     signature = true,
   },
@@ -42,12 +53,14 @@ return {
       -- lua stuff
       "lua-language-server",
       "stylua",
+
       -- web dev stuff
       "css-lsp",
       "html-lsp",
       "typescript-language-server",
       "deno",
       "prettier",
+
       -- c/cpp stuff
       "clangd",
       "clang-format",

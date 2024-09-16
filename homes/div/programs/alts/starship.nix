@@ -138,7 +138,7 @@
       custom.yazi = {
         disabled    = false;
         description = "Indicate the shell was launched by `yazi`";
-        symbol      = "[Y] ";
+        symbol      = "on Y ";
         when        = ''test -n "$YAZI_LEVEL"'';
       };
 

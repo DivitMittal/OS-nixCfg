@@ -30,7 +30,7 @@
 { pkgs, ... }:
 
 let
-  kanataBin = ./kanata/bin/kanata_1.7.0;
+  kanataBin = ./kanata/bin/kanata_macos_cmd_allowed_x86_64;
   kanataCfg = ./kanata/cfg/tltr.kbd;
 in
 {
