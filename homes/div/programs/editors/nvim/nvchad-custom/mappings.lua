@@ -1,8 +1,8 @@
 require "nvchad.mappings"
 
-local map  = vim.keymap.set
+local map = vim.keymap.set
 local noremap = { noremap = true, silent = true }
-local silent  = { silent  = true }
+local silent = { silent  = true }
 
 map('n', '0', '^', noremap)                   -- start of line
 map('n', ';', ':', { nowait = true })         -- command mode

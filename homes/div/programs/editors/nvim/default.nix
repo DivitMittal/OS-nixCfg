@@ -1,8 +1,6 @@
 { pkgs, config, ... }:
 
 {
-  home.packages = with pkgs; [ lua luajitPackages.luarocks ];
-
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-unwrapped;
@@ -15,6 +13,7 @@
   programs.zsh.zsh-abbr.abbreviations.nv = "nvim";
 
   home.file.NvChad = {
+    enable = true;
     source = ./nvchad-custom;
     target = "${config.xdg.configHome}/nvim/lua";
     recursive = true;

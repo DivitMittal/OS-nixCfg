@@ -1,4 +1,4 @@
-local isVSCode = vim.g.vscode
+local isVSCode = vim.g.vscode -- set by vscode neovim extension
 
 return {
   -- ----------------------------------------------------------- --
