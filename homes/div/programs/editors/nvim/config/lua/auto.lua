@@ -22,7 +22,7 @@ local augroup = vim.api.nvim_create_augroup
 autocmd("VimResized", {
   group = augroup("pane_resize", {clear = true}),
   pattern = "*",
-  callback = function () vim.cmd('tabdo wincmd =') end,
+  callback = function() vim.cmd('tabdo wincmd =') end,
 })
 
 autocmd("TextYankPost", {

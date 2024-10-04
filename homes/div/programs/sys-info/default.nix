@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./fastfetch
+    ./fastfetch.nix
     ./btop.nix
   ];
 

@@ -1,0 +1,3 @@
+return {
+  python = { 'flake8' },
+}

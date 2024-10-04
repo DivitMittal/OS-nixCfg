@@ -1,6 +1,12 @@
 { pkgs, config, ... }:
 
 {
+  home.file.oauth2 = {
+    enable = true;
+    source = ./mutt_oauth2.py;
+    target = "${config.paths.binHome}/oauth2";
+  };
+
   # impure link
   home.file.aerc = {
     enable = true;
@@ -53,15 +59,15 @@
 
       <C-p>            = :prev-tab<Enter>
       <C-n>            = :next-tab<Enter>
-      <C-t>            = :term<Enter>
+      !                = :term<Enter>
       ?                = :help keys<Enter>
       <C-c>            = :prompt 'Quit?' quit<Enter>
       <C-z>            = :suspend<Enter>
 
       [messages]
       <Down>           = :next<Enter>
+      e                = :next<Enter>
       <C-d>            = :next 50%<Enter>
-      <C-f>            = :next 100%<Enter>
       <PgDn>           = :next 100%<Enter>
 
       <Up>             = :prev<Enter>
@@ -203,7 +209,6 @@
       [terminal]
       $noinherit       = true
       $ex              = <C-x>
-
       <C-p>            = :prev-tab<Enter>
       <C-n>            = :next-tab<Enter>
     '';

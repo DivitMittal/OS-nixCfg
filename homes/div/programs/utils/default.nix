@@ -2,12 +2,16 @@
 
 {
   imports = [
+    ./email
     ./spicetify
     ./weechat
-    ./aerc.nix
     ./bw.nix
     ./rclone.nix
   ];
+
+  home.packages = builtins.attrValues {
+    aichat = pkgs.aichat;
+  };
 
   programs.thefuck = {
     enable = true;

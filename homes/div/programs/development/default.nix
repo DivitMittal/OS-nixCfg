@@ -29,13 +29,20 @@
       # containerization
       docker
 
+      # cloud-platforms-cli
+      google-cloud-sdk
+
       # java
       jdk gradle
 
-      # cloud-platforms-cli
-      google-cloud-sdk
+      # rust
+      cargo
+
+      # lua
+      lua
     ;
 
     colima = pkgs-darwin.colima;
+    luarocks = pkgs.luajitPackages.luarocks;
   };
 }

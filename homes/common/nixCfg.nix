@@ -1,21 +1,24 @@
 { lib, pkgs, ... }:
 
+let
+  inherit(lib) mkDefault;
+in
 {
   nix = {
-    package = lib.mkDefault pkgs.nixVersions.latest;
+    package = mkDefault pkgs.nixVersions.latest;
 
-    checkConfig = lib.mkDefault true;
+    checkConfig = mkDefault true;
     settings = {
-      warn-dirty = lib.mkDefault true;
+      warn-dirty = mkDefault true;
     };
   };
 
   nixpkgs = {
     config = {
-      allowBroken = lib.mkDefault true;
-      allowUnfree = lib.mkDefault true;
-      allowUnsupportedSystem = lib.mkDefault true;
-      allowInsecure = lib.mkDefault true;
+      allowBroken = mkDefault true;
+      allowUnfree = mkDefault true;
+      allowUnsupportedSystem = mkDefault true;
+      allowInsecure = mkDefault true;
     };
   };
 }

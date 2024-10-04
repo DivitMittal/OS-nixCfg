@@ -1,4 +1,4 @@
-{ pkgs, pkgs-darwin, lib, ... }:
+{ config, pkgs, pkgs-darwin, lib, ... }:
 
 {
   programs.fish.loginShellInit = lib.mkAfter ''
@@ -12,7 +12,10 @@
     settings = {
       logo = {
         type = "iterm";
-        source = "${./a-12.png}";
+        source = /. + builtins.toPath "${config.home.homeDirectory}/OS-nixCfg/assets/a-12.png";
+        height = 20;
+        width = 40;
+        preserveAspectRatio = true; #iterm only
       };
       display = {
         pipe = false;

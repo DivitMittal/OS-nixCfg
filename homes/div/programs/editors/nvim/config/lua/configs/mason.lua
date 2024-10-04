@@ -34,5 +34,5 @@ return {
   'yaml-language-server', -- lsp(yaml)
   'taplo', -- lsp (toml)
   'xmlformatter', -- formatter (xml)
-  'latex_ls', -- lsp (latex, md)
+  'ltex-ls', -- lsp (latex, md)
 }

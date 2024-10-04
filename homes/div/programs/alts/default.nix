@@ -15,5 +15,6 @@
 
     # learning to use
     mosh
+    age
   ];
 }

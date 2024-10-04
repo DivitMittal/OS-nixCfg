@@ -3,5 +3,6 @@ _:
 {
   imports = [
     ./git
+    ./mercurial
   ];
 }

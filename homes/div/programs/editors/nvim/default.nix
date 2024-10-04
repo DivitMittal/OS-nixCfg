@@ -12,10 +12,10 @@
   programs.fish.shellAbbrs.nv = { expansion = "nvim"; position = "command"; };
   programs.zsh.zsh-abbr.abbreviations.nv = "nvim";
 
-  home.file.NvChad = {
+  home.file.nvimConfig = {
     enable = true;
-    source = ./nvchad-custom;
-    target = "${config.xdg.configHome}/nvim/lua";
+    source = ./config;
+    target = "${config.xdg.configHome}/nvim";
     recursive = true;
   };
 }

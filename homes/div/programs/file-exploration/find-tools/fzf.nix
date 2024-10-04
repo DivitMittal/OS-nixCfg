@@ -44,7 +44,8 @@ in
     # fifc plugin
     set -gx fifc_editor ${config.home.sessionVariables.VISUAL}
     set -gx fifc_fd_opts ${fd_opts}
-    set -gx fifc_eza_opts ${eza_opts}'';
+    set -gx fifc_eza_opts ${eza_opts}
+  '';
 
   home.file.fisherPlugins.text = lib.mkAfter (builtins.concatStringsSep "\n" fishFzfPlugins);
 
