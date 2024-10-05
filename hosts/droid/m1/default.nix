@@ -18,6 +18,6 @@ in
       cursor = "#FF0000";
     };
 
-     font =  "${nerdfonts}/share/fonts/truetype/NerdFonts/CaskaydiaCoveNerdFontMono-Regular.ttf";
+    font =  "${nerdfonts}/share/fonts/truetype/NerdFonts/CaskaydiaCoveNerdFontMono-Regular.ttf";
   };
 }

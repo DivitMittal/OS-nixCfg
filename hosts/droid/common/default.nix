@@ -1,9 +1,19 @@
 { config, lib, pkgs, ... }:
 
+let
+  inherit(lib) mkOption types;
+in
 {
   options = {
-    paths.secrets = lib.mkOption {
-      type = lib.types.str;
+    paths.repo = mkOption {
+      type = types.str;
+      default = "${config.home.homeDirectory}/OS-nixCfg";
+      description = "Path to the main repo containing nix-on-droid & other nix configs";
+    };
+
+    paths.secrets = mkOption {
+      type = types.str;
+      default = "${config.paths.repo}/secrets";
       description = "Path to secrets";
     };
   };

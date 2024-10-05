@@ -3,7 +3,7 @@
 let
   sshdTmpDirectory = "${config.user.home}/.sshd-tmp";
   sshdDirectory = "${config.user.home}/.sshd";
-  pathToPubKey = "${config.user.home}/OS-nixCfg/secrets/ssh/nix-on-droid/ssh_rsa.pub";
+  pathToPubKey = "${config.paths.secrets}/ssh/nix-on-droid/ssh_rsa.pub";
   port = 8022;
 in
 {
