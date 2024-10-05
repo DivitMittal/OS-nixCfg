@@ -5,6 +5,7 @@
     ./fish.nix
     ./zsh.nix
     ./bash.nix
+    ./extra.nix
   ];
 
   home.sessionPath = [

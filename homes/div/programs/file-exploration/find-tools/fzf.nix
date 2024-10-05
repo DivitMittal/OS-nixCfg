@@ -1,12 +1,14 @@
 { pkgs, lib, config, ... }:
 
 let
+  inherit(lib) mkAfter;
   eza_opts = builtins.concatStringsSep " " config.programs.eza.extraOptions;
   fd_opts = "--hidden";
   delta_opts = "--paging=never";
   fishFzfPlugins = [
     "patrickf1/fzf.fish"
-    "gazorby/fifc" #divitmittal/fifc@bugfix
+    "gazorby/fifc"
+    #divitmittal/fifc@bugfix
   ];
 in
 {
@@ -47,7 +49,6 @@ in
     set -gx fifc_eza_opts ${eza_opts}
   '';
 
-  home.file.fisherPlugins.text = lib.mkAfter (builtins.concatStringsSep "\n" fishFzfPlugins);
-
+  home.file.fisherPlugins.text = mkAfter (builtins.concatStringsSep "\n" fishFzfPlugins);
   programs.zsh.antidote.plugins = [ "Aloxaf/fzf-tab" ];
 }

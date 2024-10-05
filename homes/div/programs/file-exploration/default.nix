@@ -10,7 +10,7 @@
 
   home.packages = builtins.attrValues {
     inherit (pkgs)
-      chafa imagemagick ffmpeg                   # media
+      chafa imagemagick ffmpeg exif              # media
       pandoc tectonic-unwrapped poppler rich-cli # documents
       w3m                                        # web
       ouch                                       # archives
@@ -29,7 +29,8 @@
       numbers = "0;36";
       strings = "0;33";
       arrays = "1;35";
-      objects = "1;37"; };
+      objects = "1;37";
+    };
   };
 
   programs.mpv = {

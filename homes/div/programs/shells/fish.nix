@@ -17,13 +17,11 @@
           echo "Please provide a valid input"
         end
       '';
-
     };
 
     shellAliases = {
-      gem-ultimate  = "sudo -v; gem cleanup; and gem update; and gem cleanup";
       brew-ultimate = "brew update; and brew upgrade; and brew autoremove; and brew cleanup -s --prune=0; and rm -rf (brew --cache)";
-      apps-backup   = "env ls /Applications/ 1> ${config.paths.darwinCfg}/div-mbp/etc/apps/apps_(date +%b%y).txt";
+      apps-backup   = "env ls /Applications/ 1> ${config.paths.darwinCfg}/div-mbp/apps/bak/apps_(date +%b%y).txt";
     };
 
     shellAbbrs = {
@@ -53,7 +51,8 @@
       markcial/upto
       lengyijun/fc-fish
       edc/bass
-      oh-my-fish/plugin-osx'';
+      oh-my-fish/plugin-osx
+    '';
     target = "${config.xdg.configHome}/fish/fish_plugins";
   };
 }

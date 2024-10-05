@@ -12,7 +12,7 @@
     settings = {
       logo = {
         type = "iterm";
-        source = /. + builtins.toPath "${config.home.homeDirectory}/OS-nixCfg/assets/a-12.png";
+        source = (/. + "${config.paths.repo}/assets/a-12.png");
         height = 20;
         width = 40;
         preserveAspectRatio = true; #iterm only

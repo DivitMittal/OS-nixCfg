@@ -10,7 +10,7 @@
   # impure link
   home.file.aerc = {
     enable = true;
-    source = /. + (builtins.toPath "${config.paths.secrets}/email/aerc/accounts.conf");
+    source = (/. + "${config.paths.secrets}/email/aerc/accounts.conf");
     target = "${config.xdg.configHome}/aerc/accounts.conf";
   };
 

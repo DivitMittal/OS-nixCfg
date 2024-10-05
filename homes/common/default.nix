@@ -18,7 +18,7 @@ in
     paths.repo = mkOption {
       type = types.str;
       default = "${config.home.homeDirectory}/OS-nixCfg";
-      description = "Path to the main repo containing home-manager & other nix configurations";
+      description = "Path to the main repo containing home-manager & other nix configs";
     };
 
     paths.secrets = mkOption {

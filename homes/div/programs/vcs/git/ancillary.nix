@@ -26,8 +26,9 @@
 
     settings = {
       git.paging = {
+        useConfig = false;
         colorArg = "always";
-        useConfig = true;
+        pager = "delta --dark --paging=never";
       };
     };
   };

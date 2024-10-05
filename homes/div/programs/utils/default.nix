@@ -11,6 +11,7 @@
 
   home.packages = builtins.attrValues {
     aichat = pkgs.aichat;
+    ttyper = pkgs.ttyper;
   };
 
   programs.thefuck = {
