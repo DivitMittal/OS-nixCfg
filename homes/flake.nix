@@ -22,6 +22,7 @@
       "div" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
+          username = "div";
           inherit pkgs-darwin;
         };
 

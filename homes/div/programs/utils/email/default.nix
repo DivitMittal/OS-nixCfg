@@ -43,7 +43,8 @@
         "text/calendar"           = "calendar";
         "message/delivery-status" = "colorize";
         "message/rfc822"          = "colorize";
-        "text/html"               = "html | colorize";
+        # "text/html"               = "html | colorize";
+        "text/html"               = "${config.home.homeDirectory}/Downloads/carbonyl/carbonyl";
         "application/x-sh"        = "bat -fP -l sh";
       };
 
@@ -59,31 +60,27 @@
 
       <C-p>            = :prev-tab<Enter>
       <C-n>            = :next-tab<Enter>
-      !                = :term<Enter>
-      ?                = :help keys<Enter>
       <C-c>            = :prompt 'Quit?' quit<Enter>
       <C-z>            = :suspend<Enter>
+      !                = :term<Enter>
+      ?                = :help keys<Enter>
 
       [messages]
+      g                = :select 0<Enter>
+      G                = :select -1<Enter>
+
       <Down>           = :next<Enter>
-      e                = :next<Enter>
       <C-d>            = :next 50%<Enter>
       <PgDn>           = :next 100%<Enter>
 
       <Up>             = :prev<Enter>
       <C-u>            = :prev 50%<Enter>
-      <C-b>            = :prev 100%<Enter>
-      g                = :select 0<Enter>
-      G                = :select -1<Enter>
+      <PgUp>           = :prev 100%<Enter>
 
       E                = :next-folder<Enter>
-      <C-Down>         = :next-folder<Enter>
       U                = :prev-folder<Enter>
-      <C-Up>           = :prev-folder<Enter>
       C                = :collapse-folder<Enter>
-      <C-Left>         = :collapse-folder<Enter>
       O                = :expand-folder<Enter>
-      <C-Right>        = :expand-folder<Enter>
 
       v                = :mark -t<Enter>
       <Space>          = :mark -t<Enter>:next<Enter>

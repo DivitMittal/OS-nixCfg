@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, username, pkgs, ... }:
 
 {
   imports = [
@@ -7,8 +7,8 @@
     ./programs
   ];
 
-  home = rec {
-    username = "div";
+  home = {
+    username = "${username}";
     homeDirectory = if pkgs.stdenvNoCC.hostPlatform.isDarwin then "/Users/${username}" else "/home/${username}";
   };
 }

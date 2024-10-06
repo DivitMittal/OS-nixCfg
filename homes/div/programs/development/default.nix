@@ -32,12 +32,12 @@
       # cloud-platforms-cli
       google-cloud-sdk
 
+      ## Programming Languages
+      tree-sitter
       # java
       jdk gradle
-
       # rust
       cargo
-
       # lua
       lua
     ;
