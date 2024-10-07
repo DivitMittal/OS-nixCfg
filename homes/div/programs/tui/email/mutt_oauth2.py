@@ -65,6 +65,7 @@ registrations = {
     "microsoft": {
         "authorize_endpoint": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
         "devicecode_endpoint": "https://login.microsoftonline.com/common/oauth2/v2.0/devicecode",
+        'token_endpoint': 'https://login.microsoftonline.com/common/oauth2/v2.0/token',
         "redirect_uri": "https://login.microsoftonline.com/common/oauth2/nativeclient",
         "tenant": "common",
         "imap_endpoint": "outlook.office365.com",
@@ -76,8 +77,14 @@ registrations = {
             "https://outlook.office.com/POP.AccessAsUser.All "
             "https://outlook.office.com/SMTP.Send"
         ),
-        "client_id": "08162f7c-0fd2-4200-a84a-f25a4db0b584",
-        "client_secret": "TxRBilcHdC6WGBee]fs?QR:SJ8nI[g82",
+
+        # "client_id": "08162f7c-0fd2-4200-a84a-f25a4db0b584",
+        # "client_secret": "TxRBilcHdC6WGBee]fs?QR:SJ8nI[g82",
+        "client_id": "9e5f94bc-e8a4-4e73-b8be-63364c29d753",
+        "client_secret": None,
+        "flow": "redirect",
+        "flow_redirect_uri_port_fixed": None,
+        "refresh_needs_authorize": None,
     },
 }
 

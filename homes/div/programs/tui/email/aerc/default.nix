@@ -1,4 +1,5 @@
-{}:
+{ config, pkgs, ... }:
+
 {
   # impure link
   home.file.aerc = {
