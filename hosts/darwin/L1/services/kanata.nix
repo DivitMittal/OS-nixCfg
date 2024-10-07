@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ username, config, lib, ... }:
 
 let
   inherit(lib) mkOption mkIf;
@@ -14,13 +14,31 @@ in
 
     services.kanata.binary = mkOption {
       type = types.path;
-      default = (/. + "${config.users.users.div.home}/.local/bin/kanata");
+      default = /Users/${username}/.local/bin/kanata;
       description = "Path to the default kanata binary";
+    };
+
+    services.kanata.cfg = mkOption {
+      type = types.path;
+      default = /Users/${username}/.config/kanata/kanata.kbd;
+      description = "Path to the default config";
     };
   };
 
   config = mkIf (cfg.enable) {
-    # launchd.agents =
+    launchd.user.agents.kanata = {
+      environment.SHELL = "/bin/dash";
+      serviceConfig = {
+        ProgramArguments = [ "sudo" "${cfg.binary}" "--cfg" "${cfg.cfg}" ];
+        StandardOutPath = /tmp/org.nixos.kanata.out.log;
+        StandardErrorPath = /tmp/org.nixos.kanata.err.log;
+        ProcessType = "Interactive";
+        RunAtLoad = true;
+        KeepAlive.SuccessfulExit = false;
+        KeepAlive.Crashed = true;
+        Nice = -19;
+      };
+    };
 
     security.sudo.extraConfig = ''
       ALL ALL=(root) NOPASSWD: ${cfg.binary}
