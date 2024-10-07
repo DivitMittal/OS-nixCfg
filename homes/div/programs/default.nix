@@ -2,15 +2,14 @@ _:
 
 {
   imports = [
-    ./alts
     ./browsers
+    ./cli
     ./development
     ./editors
     ./file-exploration
     ./multiplexers
     ./shells
-    ./sys-info
-    ./utils
+    ./tui
     ./vcs
   ];
 }

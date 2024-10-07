@@ -42,7 +42,7 @@
       lua
     ;
 
-    colima = pkgs-darwin.colima;
+    colima = if pkgs.stdenvNoCC.hostPlatform.isDarwin then pkgs-darwin.colima else null;
     luarocks = pkgs.luajitPackages.luarocks;
   };
 }

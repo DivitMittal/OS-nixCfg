@@ -1,14 +1,14 @@
-{ config, lib, pkgs, ... }:
+{ username, config, lib, pkgs, ... }:
 
 let
-  inherit(lib) mkOption types;
+  inherit(lib) mkOption;
 in
 {
   imports = [
     ./nixCfg.nix
   ];
 
-  options = {
+  options = let inherit(lib) types; in {
     paths.binHome = mkOption {
       type = types.str;
       default = "${config.home.homeDirectory}/.local/bin";
@@ -27,9 +27,9 @@ in
       description = "Path to secrets";
     };
 
-    paths.homeCfg = mkOption {
+    paths.currentHomeCfg = mkOption {
       type = types.str;
-      default = "${config.paths.repo}/homes/${config.home.username}";
+      default = "${config.paths.repo}/homes/${username}";
       description = "Path to current-user home-manager module";
     };
 

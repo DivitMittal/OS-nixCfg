@@ -9,7 +9,7 @@
   # pip
   programs.fish.shellAliases = {
     pip-uninstall-all = "pip freeze | cut -d '@' -f1 | xargs pip uninstall -y";
-    pipx-ultimate     = "pipx upgrade-all; pipx list --short 1> ${config.paths.homeCfg}/programs/development/python/pipx.bak.txt";
+    pipx-ultimate     = "pipx upgrade-all; pipx list --short 1> ${config.paths.currentHomeCfg}/programs/development/python/pipx.bak.txt";
   };
 
   # micromamba

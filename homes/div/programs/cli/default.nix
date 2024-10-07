@@ -2,17 +2,29 @@
 
 {
   imports = [
-    ./email
     ./spicetify
-    ./weechat
-    ./bw.nix
+    ./atuin.nix
+    ./eza.nix
+    ./fastfetch.nix
+    ./privacy.nix
     ./rclone.nix
+    ./ssh.nix
+    ./starship.nix
   ];
 
-  home.packages = builtins.attrValues {
-    aichat = pkgs.aichat;
-    ttyper = pkgs.ttyper;
-  };
+  home.packages = with pkgs; [
+    duf
+    dust
+    grc
+
+    # AI
+    aichat
+
+    # networking
+    nmap speedtest-go
+    # learning to use
+    mosh
+  ];
 
   programs.thefuck = {
     enable = true;
@@ -46,25 +58,5 @@
         auto_update_interval_hours = 240;
       };
     };
-  };
-
-  programs.newsboat = {
-    enable = true;
-
-    autoReload = true;
-    browser = "open";
-
-    urls = [
-      {
-        tags = [ "tech" ];
-        title = "TechCrunch";
-        url = "http://feeds.feedburner.com/TechCrunch/";
-      }
-      {
-        tags = [ "fin" ];
-        title = "WSJ";
-        url = "https://feeds.a.dj.com/rss/RSSMarketsMain.xml";
-      }
-    ];
   };
 }

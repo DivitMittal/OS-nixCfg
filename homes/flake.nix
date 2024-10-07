@@ -13,21 +13,22 @@
 
   outputs = { nixpkgs, nixpkgs-darwin, home-manager, ... }@inputs:
   let
-    system = builtins.currentSystem;
+    system = builtins.currentSystem; # impure builtin
     pkgs = import nixpkgs { inherit system; };
     pkgs-darwin = import nixpkgs-darwin { inherit system; };
+    username = "div";
   in
   {
     homeConfigurations =  {
-      "div" = home-manager.lib.homeManagerConfiguration {
+      "${username}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
-          username = "div";
+          inherit username;
           inherit pkgs-darwin;
         };
 
         modules = [
-          ./div
+          ./${username}
         ];
       };
     };

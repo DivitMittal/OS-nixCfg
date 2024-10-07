@@ -16,7 +16,7 @@
     enable = true;
     package = pkgs.direnv;
     enableBashIntegration = true;
-    enableFishIntegration = true;
+    # enableFishIntegration = true;
     enableZshIntegration = true;
     enableNushellIntegration = true;
 

@@ -21,7 +21,7 @@
 
     shellAliases = {
       brew-ultimate = "brew update; and brew upgrade; and brew autoremove; and brew cleanup -s --prune=0; and rm -rf (brew --cache)";
-      apps-backup   = "env ls /Applications/ 1> ${config.paths.darwinCfg}/div-mbp/apps/bak/apps_(date +%b%y).txt";
+      apps-backup   = "env ls /Applications/ 1> ${config.paths.darwinCfg}/L1/apps/bak/apps_(date +%b%y).txt";
     };
 
     shellAbbrs = {
