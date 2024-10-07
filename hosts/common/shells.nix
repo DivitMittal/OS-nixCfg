@@ -1,14 +1,16 @@
-{ pkgs, config, ... }:
+{ pkgs, lib, username, config, ... }:
 
 {
   environment.shells = with pkgs; [ bashInteractive zsh dash fish ];
 
   environment = {
     variables = rec {
-      XDG_CONFIG_HOME = "$HOME/.config";
-      XDG_CACHE_HOME  = "$HOME/.cache";
-      XDG_STATE_HOME  = "$HOME/.local/state";
-      XDG_DATA_HOME   = "$HOME/.local/share";
+      HOME            = if pkgs.stdenvNoCC.hostPlatform.isDarwin then "/Users/${username}" else "/home/${username}";
+      XDG_CONFIG_HOME = "~/.config";
+      XDG_CACHE_HOME  = "~/.cache";
+      XDG_STATE_HOME  = "~/.local/state";
+      XDG_DATA_HOME   = "~/.local/share";
+      BIN_HOME        = "~/.local/bin";
       LANG            = "en_US.UTF-8";
       VISUAL          = "vim";
       EDITOR          = "${VISUAL}";
@@ -21,9 +23,9 @@
     };
   };
 
-  programs = {
+  programs = let inherit(lib) mkDefault; in {
     bash = {
-      enable = true;
+      enable = mkDefault true;
 
       enableCompletion = false;
 
@@ -47,7 +49,7 @@
     };
 
     zsh = {
-      enable = true;
+      enable = mkDefault true;
 
       enableBashCompletion = false;
       enableCompletion = false; enableGlobalCompInit=false;
@@ -73,7 +75,7 @@
     };
 
     fish = {
-      enable = true;
+      enable = mkDefault true;
       useBabelfish = true;
       babelfishPackage = pkgs.babelfish;
 

@@ -1,14 +1,20 @@
-{ config, lib, pkgs, ... }:
+{ config, username, hostname, lib, pkgs, ... }:
 
 let
-  inherit(lib) mkOption types;
+  inherit(lib) mkOption;
 in
 {
-  options = {
+  options = let inherit(lib) types; in {
     paths.repo = mkOption {
       type = types.str;
-      default = "${config.home.homeDirectory}/OS-nixCfg";
+      default = "/home/${username}/OS-nixCfg";
       description = "Path to the main repo containing nix-on-droid & other nix configs";
+    };
+
+    paths.currentDroidCfg = mkOption {
+      type = types.str;
+      default = "${config.paths.repo}/hosts/droid/${hostname}";
+      description = "Path to darwin configs";
     };
 
     paths.secrets = mkOption {

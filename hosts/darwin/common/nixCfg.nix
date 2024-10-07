@@ -1,39 +1,40 @@
-{ lib, pkgs, ...}:
+{ system, lib, pkgs, ...}:
 
+let
+  inherit(lib) mkDefault;
+in
 {
-  nixpkgs.hostPlatform = "x86_64-darwin";
+  nixpkgs.hostPlatform = "${system}";
 
   services.nix-daemon.enable = true;
 
-  environment.systemPackages = with pkgs; [ nixfmt-rfc-style ];
-
   nix = {
-    package = lib.mkDefault pkgs.nixVersions.latest;
+    package = mkDefault pkgs.nixVersions.latest;
 
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
-      warn-dirty = lib.mkDefault true;
+      warn-dirty = mkDefault true;
 
-      use-xdg-base-directories = lib.mkDefault false;
-      auto-optimise-store = lib.mkDefault false;
+      use-xdg-base-directories = mkDefault false;
+      auto-optimise-store = mkDefault false;
     };
 
     gc = {
-      automatic = lib.mkDefault false;
-      options = "--delete-old";
+      automatic = mkDefault false;
+      options = mkDefault "--delete-old";
     };
   };
 
   nixpkgs.config = {
-    allowBroken = lib.mkDefault true;
-    allowUnfree = lib.mkDefault true;
-    allowUnsupportedSystem = lib.mkDefault true;
-    allowInsecure = lib.mkDefault true;
+    allowBroken = mkDefault true;
+    allowUnfree = mkDefault true;
+    allowUnsupportedSystem = mkDefault true;
+    allowInsecure = mkDefault true;
   };
 
   system.checks = {
-    verifyBuildUsers = true;
-    verifyNixChannels = true;
-    verifyNixPath = true;
+    verifyBuildUsers = mkDefault true;
+    verifyNixChannels = mkDefault true;
+    # verifyNixPath = mkDefault true;
   };
 }

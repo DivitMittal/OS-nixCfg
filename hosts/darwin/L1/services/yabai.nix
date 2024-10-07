@@ -29,10 +29,6 @@
 ##############################################################################
 { pkgs, ... }:
 
-let
-  kanataBin = ./kanata/bin/kanata_macos_cmd_allowed_x86_64;
-  kanataCfg = ./kanata/cfg/tltr.kbd;
-in
 {
   services.yabai = {
     enable = true;
@@ -79,13 +75,6 @@ in
       yabai -m rule --add app="^Finder$"      opacity=0.97
       yabai -m rule --add app="^Thunderbird$" opacity=0.97
       yabai -m rule --add app="^Calculator$"  sticky=on
-
-      # Kanata daemon
-      sudo ${kanataBin} --cfg ${kanataCfg} 1> /dev/null 2> /tmp/rs.kanata.err.log
     '';
   };
-
-  security.sudo.extraConfig = ''
-    ALL ALL=(root) NOPASSWD: ${kanataBin}
-  '';
 }

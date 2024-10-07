@@ -141,8 +141,6 @@ _:
     # Screensaver (in seconds)
     defaults -currentHost write com.apple.screensaver idleTime 300
     # Wake from sleep when opening lid; disabled(0)
-    # sudo pmset lidwake 0
-
-    mkdir ~/Desktop/b
+    # pmset lidwake 0
   '';
 }

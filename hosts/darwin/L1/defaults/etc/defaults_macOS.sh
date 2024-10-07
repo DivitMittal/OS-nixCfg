@@ -374,6 +374,7 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
 # Turn Spotlight Off (in case of utilisation of alternate tools, eg. Raycast)
 sudo mdutil -a -i off
+sudo mdutil -E
 # Also, disable all spotlight indexing and add root directory as an exception from System Preferences
 
-echo "Done. Note that some of these changes require a logout/restart/killall to take effect."
+echo "Done. Note that some of these changes require a restart to take effect."

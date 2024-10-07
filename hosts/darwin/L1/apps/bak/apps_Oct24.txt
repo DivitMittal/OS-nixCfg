@@ -1,0 +1,34 @@
+AlDente.app
+AltTab.app
+Bartender 5.app
+Bluesnooze.app
+Firefox.app
+Ghostery Privacy Ad Blocker.app
+Google Chrome.app
+Homerow.app
+JetBrains Toolbox.app
+Menu Bar Dock.app
+Microsoft OneNote.app
+Microsoft Teams.app
+Nix Apps
+Notion Calendar.app
+Notion.app
+ONLYOFFICE.app
+OneDrive.app
+PDF Expert.app
+Raycast.app
+Safari.app
+Spaceman.app
+Spotify.app
+Super Agent.app
+Texty.app
+Utilities
+VMware Fusion.app
+Vimkey.app
+Visual Studio Code.app
+Wacom Tablet.localized
+WezTerm.app
+WhatsApp.app
+gSwitch.app
+iStat Menus.app
+mpv.app
