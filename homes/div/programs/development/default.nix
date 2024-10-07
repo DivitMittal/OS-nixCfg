@@ -27,7 +27,7 @@
       android-tools
 
       # containerization
-      docker
+      docker lazydocker
 
       # cloud-platforms-cli
       google-cloud-sdk
