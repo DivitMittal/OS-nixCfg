@@ -15,9 +15,9 @@ in
 
   nixpkgs = {
     config = {
-      allowBroken = mkDefault true;
+      allowBroken = mkDefault false;
+      allowUnsupportedSystem = mkDefault false;
       allowUnfree = mkDefault true;
-      allowUnsupportedSystem = mkDefault true;
       allowInsecure = mkDefault true;
     };
   };
