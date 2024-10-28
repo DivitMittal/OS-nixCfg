@@ -2,24 +2,25 @@
 
 let
   inherit(lib) mkOption;
+  cfg = config.path;
 in
 {
   options = let inherit(lib) types; in {
     paths.repo = mkOption {
-      type = types.str;
-      default = "/home/${username}/OS-nixCfg";
+      type = types.path;
+      default = /home/${username}/OS-nixCfg;
       description = "Path to the main repo containing nix-on-droid & other nix configs";
     };
 
     paths.currentDroidCfg = mkOption {
-      type = types.str;
-      default = "${config.paths.repo}/hosts/droid/${hostname}";
+      type = types.path;
+      default = ${cfg.repo}/hosts/droid/${hostname};
       description = "Path to darwin configs";
     };
 
     paths.secrets = mkOption {
-      type = types.str;
-      default = "${config.paths.repo}/secrets";
+      type = types.path;
+      default = ${cfg.repo}/secrets;
       description = "Path to secrets";
     };
   };
@@ -33,10 +34,7 @@ in
       ;
     };
 
-    time.timeZone = "Asia/Calcutta";
-
     environment.etcBackupExtension = ".bak";
-
     system.stateVersion = "24.05";
   };
 }

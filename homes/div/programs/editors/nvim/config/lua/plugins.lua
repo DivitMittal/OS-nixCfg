@@ -4,39 +4,22 @@ return {
   -- ----------------------------------------------------------- --
   --                   Default Plugins
   -- ----------------------------------------------------------- --
+  {
+    "NvChad/NvChad",
+    enabled = true,
+    cond = not isVSCode,
+    lazy = false,
+    branch = "v2.5",
+    import = "nvchad.plugins",
+  },
+
+  -- ----------------------------------------------------------- --
+  --                   Overrides
+  -- ----------------------------------------------------------- --
   -- library of lua functions
   {
     "nvim-lua/plenary.nvim",
     enabled = true,
-    cond = not isVSCode,
-  },
-
-  -- color scheme definition
-  {
-    "NvChad/base46",
-    enabled = true,
-    cond = not isVSCode,
-  },
-
-  -- nvim-nvchad ui library
-  {
-    "NvChad/ui",
-    enabled = true,
-    cond = not isVSCode,
-  },
-
-  -- icon library for neovim
-  {
-    "nvim-tree/nvim-web-devicons",
-    enabled = true,
-    cond = not isVSCode,
-  },
-
-  -- indentation guides
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    enabled = true,
-    cond = not isVSCode,
   },
 
   -- file explorer/navigation
@@ -59,31 +42,16 @@ return {
     },
   },
 
-  -- create key bindings with help sheets
-  {
-    "folke/which-key.nvim",
-    enabled = true,
-    cond = not isVSCode,
-  },
-
   -- formatter
   {
     "stevearc/conform.nvim",
     enabled = true,
-    cond = not isVSCode,
     cmd = { "ConformInfo" },
     opts = require "configs.conform",
     init = function() vim.o.formatexpr = "v:lua.require'conform'.formatexpr()" end,
     keys = {
       { mode = { "n", "v" }, "<leader>fm", function() require("conform").format { async = true } end, desc = "Format buffer", },
     },
-  },
-
-  -- git integration, i.e. hunk & blame
-  {
-    "lewis6991/gitsigns.nvim",
-    enabled = true,
-    cond = not isVSCode,
   },
 
   -- configure the neovim native LSP server
@@ -108,33 +76,6 @@ return {
         end,
       },
     },
-  },
-
-  -- completions with snippets, autopairing, etc. with dependencies "windwp/nvim-autopairs", "L3MON4D3/LuaSnip", "rafamadriz/friendly-snippets" & other snippets
-  {
-    "hrsh7th/nvim-cmp",
-    enabled = true,
-    cond = not isVSCode,
-    opts = {
-      mapping = {
-        ["<Up>"] = require("cmp").mapping.select_prev_item(),
-        ["<Down>"] = require("cmp").mapping.select_next_item(),
-      },
-    },
-  },
-
-  -- fuzzy find/search/view a lot of stuff
-  {
-    "nvim-telescope/telescope.nvim",
-    enabled = true,
-    cond = not isVSCode,
-  },
-
-  -- color-text bg & fg colorizer
-  {
-    "NvChad/nvim-colorizer.lua",
-    enabled = true,
-    cond = not isVSCode,
   },
 
   -- treesitter syntax highlighting

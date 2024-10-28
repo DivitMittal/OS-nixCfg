@@ -22,8 +22,6 @@
 
     # networking
     nmap speedtest-go
-    # learning to use
-    mosh
   ];
 
   programs.thefuck = {

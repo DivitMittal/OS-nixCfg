@@ -9,8 +9,6 @@ in
   services.nix-daemon.enable = true;
 
   nix = {
-    package = mkDefault pkgs.nixVersions.latest;
-
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       warn-dirty = mkDefault true;

@@ -27,7 +27,10 @@
     bash = {
       enable = mkDefault true;
 
-      enableCompletion = false;
+      completion = {
+        enable = false;
+        package = pkgs.bash-completion;
+      };
 
       interactiveShellInit = ''
         # Exit if running non-interactively (handled by nix-darwin)

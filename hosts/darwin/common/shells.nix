@@ -1,10 +1,6 @@
 { pkgs, lib, ... }:
 
 {
-  imports = [
-    ./../../common/shells.nix
-  ];
-
   environment.shells = with pkgs; [ ksh tcsh ];
 
   environment.shellAliases = {

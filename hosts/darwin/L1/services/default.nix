@@ -1,4 +1,4 @@
-{ username, ... }:
+{ config, username, ... }:
 
 {
   imports = [
@@ -9,6 +9,6 @@
 
   services.kanata = {
     enable = true;
-    cfg = /Users/${username}/Projects/TLTR/kanata/TLTR.kbd;
+    package = /Users/${username}/.local/bin/kanata; # impure
   };
 }

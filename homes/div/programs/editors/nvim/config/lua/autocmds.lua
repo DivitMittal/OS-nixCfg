@@ -1,3 +1,5 @@
+require "nvchad.autocmds"
+
 -- ━━━━━━━━━━━━━━━━━━━❰ Filetype ❱━━━━━━━━━━━━━━━━━━━━ --
 local ft = vim.filetype
 
