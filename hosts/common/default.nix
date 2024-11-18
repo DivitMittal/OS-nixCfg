@@ -13,20 +13,20 @@ in
 
   options = let inherit(lib) types; in {
     paths.homeDirectory = mkOption {
-      type = types.path;
-      default = if pkgs.stdenvNoCC.hostPlatform.isDarwin then /Users/${username} else /home/${username};
+      type = types.str;
+      default = if pkgs.stdenvNoCC.hostPlatform.isDarwin then "/Users/${username}" else "/home/${username}";
       description = "Path to your home directory";
     };
 
     paths.repo = mkOption {
-      type = types.path;
-      default = cfg.homeDirectory + /OS-nixCfg;
+      type = types.str;
+      default = cfg.homeDirectory + "/OS-nixCfg";
       description = "Path to the repo that contains this nixOS/nix-darwin/nix-on-droid config along with other nix configs";
     };
 
     paths.secrets = mkOption {
       type = types.str;
-      default = cfg.repo + /secrets;
+      default = cfg.repo + "/secrets";
       description = "Path to repo secrets";
     };
   };
