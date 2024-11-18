@@ -23,8 +23,8 @@
       "${username}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
-          inherit username;
           inherit pkgs-darwin;
+          inherit username;
         };
 
         modules = [
