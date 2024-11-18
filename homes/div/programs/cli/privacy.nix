@@ -4,16 +4,7 @@
   home.packages = builtins.attrValues {
     bw = if pkgs.stdenvNoCC.hostPlatform.isDarwin then pkgs-darwin.bitwarden-cli else pkgs.bitwarden-cli;
     age = pkgs.age;
-  };
-
-  programs.rbw = {
-    enable = true;
-    package = pkgs.rbw;
-
-    settings = {
-      email = "mittaldivit@gmail.com";
-      pinentry = pkgs.pinentry_mac;
-    };
+    pinentry = pkgs-darwin.pinentry_mac;
   };
 
   programs.gpg = {
@@ -25,6 +16,17 @@
     settings = {
       no-comments = false;
       s2k-cipher-algo = "AES128";
+    };
+  };
+
+  # disabled
+  programs.rbw = {
+    enable = true;
+    package = pkgs-darwin.rbw;
+
+    settings = {
+      email = "mittaldivit@gmail.com";
+      pinentry = pkgs.pinentry_mac;
     };
   };
 }

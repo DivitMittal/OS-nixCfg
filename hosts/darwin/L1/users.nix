@@ -1,4 +1,4 @@
-{ username, pkgs, ... }:
+{ username, pkgs, pkgs-darwin, ... }:
 
 {
   nix.settings = {
@@ -13,10 +13,8 @@
 
       # Packages common to only instances of L1 with div user & not all macOS hosts & installed in nix-darwin profile
       packages = builtins.attrValues {
-        inherit(pkgs)
-          duti
-          blueutil
-        ;
+        blueutil = pkgs-darwin.blueutil;
+        duti = pkgs-darwin.duti;
       };
     };
   };
