@@ -86,6 +86,19 @@
               ];
               definedAliases = [ "@yt" ];
             };
+
+            "Github" = {
+              urls = [
+                {
+                  template = "https://github.com/search";
+                  params = [
+                    { name = "q"; value = "{searchTerms}"; }
+                    { name = "type"; value = "repositories"; }
+                  ];
+                }
+              ];
+              definedAliases = [ "@gh" ];
+            };
           };
         };
 
