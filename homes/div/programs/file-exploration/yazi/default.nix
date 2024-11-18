@@ -18,7 +18,7 @@
     enable = true;
     package = pkgs.yazi;
 
-    enableFishIntegration = false; enableZshIntegration = false; enableBashIntegration = false;
+    enableFishIntegration = false; enableZshIntegration = false; enableBashIntegration = false; enableNushellIntegration = false;
 
     settings = import ./yazi.nix;
     keymap = import ./keymap.nix;

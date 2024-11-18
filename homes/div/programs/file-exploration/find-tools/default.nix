@@ -17,7 +17,7 @@
     enable = true;
     package = pkgs.zoxide;
 
-    enableFishIntegration = true; enableZshIntegration  = true; enableBashIntegration = false;
+    enableFishIntegration = true; enableZshIntegration  = true; enableBashIntegration = false; enableNushellIntegration = false;
     options = ["--cmd cd"];
   };
 
