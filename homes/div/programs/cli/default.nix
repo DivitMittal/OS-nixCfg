@@ -28,7 +28,7 @@
     enable = true;
     package = pkgs.thefuck;
 
-    enableFishIntegration = true; enableZshIntegration = true; enableBashIntegration = false;
+    enableFishIntegration = true; enableZshIntegration = true; enableBashIntegration = false; enableNushellIntegration = false;
   };
 
   programs.aria2  = {

@@ -5,7 +5,7 @@
     enable = true;
     package = pkgs.eza;
 
-    enableFishIntegration = true; enableZshIntegration = true; enableBashIntegration = false;
+    enableFishIntegration = true; enableZshIntegration = true; enableBashIntegration = false; enableNushellIntegration = false;
     git = true;
 
     # creates shell alias for ls

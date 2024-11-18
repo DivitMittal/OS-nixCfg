@@ -5,7 +5,7 @@
     enable = true;
     package = pkgs.atuin;
 
-    enableFishIntegration = true; enableZshIntegration  = false; enableBashIntegration = false;
+    enableFishIntegration = true; enableZshIntegration  = false; enableBashIntegration = false; enableNushellIntegration = false;
 
     settings = {
       ## where to store your database, default is your system data directory

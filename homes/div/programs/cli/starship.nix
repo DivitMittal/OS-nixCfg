@@ -5,7 +5,7 @@
     enable = true;
     package = pkgs.starship;
 
-    enableFishIntegration = true; enableZshIntegration  = false; enableBashIntegration = false;
+    enableFishIntegration = true; enableZshIntegration  = false; enableBashIntegration = false; enableNushellIntegration = false;
 
     settings = {
       format = lib.concatStrings [
