@@ -70,6 +70,8 @@ in
       doc.enable  = false;
     };
 
+    programs.nix-index.enable = true;
+
     environment.systemPackages = builtins.attrValues {
       inherit(pkgs)
         bc diffutils findutils gnugrep inetutils gnused gawk which gzip gnutar wget gnupatch gnupg binutils gnumake groff indent # GNU

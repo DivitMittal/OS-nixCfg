@@ -4,6 +4,12 @@ let
   inherit(lib) mkDefault;
 in
 {
+  environment.systemPackages = builtins.attrValues {
+    inherit(pkgs)
+      comma
+    ;
+  };
+
   nixpkgs.hostPlatform = "${system}";
 
   services.nix-daemon.enable = true;
