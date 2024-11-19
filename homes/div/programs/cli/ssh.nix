@@ -1,9 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-darwin, ... }:
 
 {
-  home.packages = with pkgs; [
-    #mosh
-  ];
+  home.packages = builtins.attrValues {
+    mosh = if pkgs.stdenvNoCC.hostPlatform.isDarwin then pkgs-darwin.mosh else pkgs.mosh;
+  };
 
   programs.ssh = {
     enable = true;

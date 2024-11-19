@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, pkgs-darwin, config, ... }:
 
 {
   programs.neovim = {

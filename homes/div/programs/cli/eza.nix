@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-darwin, ... }:
 
 {
   programs.eza = {
     enable = true;
-    package = pkgs.eza;
+    package = if pkgs.stdenvNoCC.hostPlatform.isDarwin then pkgs-darwin.eza else pkgs.eza;
 
     enableFishIntegration = true; enableZshIntegration = true; enableBashIntegration = false; enableNushellIntegration = false;
     git = true;

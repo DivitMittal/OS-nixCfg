@@ -1,4 +1,4 @@
-{ config, lib, username, hostname, pkgs, inputs, ... }:
+{ config, lib, username, hostname, inputs, ... }:
 
 let
   inherit(lib) mkOption;

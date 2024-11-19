@@ -1,11 +1,18 @@
-{ pkgs, lib, username, config, ... }:
-
+{ pkgs, pkgs-darwin, lib, username, config, ... }:
+let
+  isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
+in
 {
-  environment.shells = with pkgs; [ bashInteractive zsh dash fish ];
+  environment.shells = builtins.attrValues {
+    bash = if isDarwin then pkgs-darwin.bashInteractive else pkgs.bashInteractive;
+    zsh = if isDarwin then pkgs-darwin.zsh else pkgs.zsh;
+    dash = if isDarwin then pkgs-darwin.dash else pkgs.dash;
+    fish = if isDarwin then pkgs-darwin.fish else pkgs.fish;
+  };
 
   environment = {
     variables = rec {
-      HOME            = if pkgs.stdenvNoCC.hostPlatform.isDarwin then "/Users/${username}" else "/home/${username}";
+      HOME            = if isDarwin then "/Users/${username}" else "/home/${username}";
       XDG_CONFIG_HOME = "~/.config";
       XDG_CACHE_HOME  = "~/.cache";
       XDG_STATE_HOME  = "~/.local/state";

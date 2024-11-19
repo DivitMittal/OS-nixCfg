@@ -1,7 +1,7 @@
-{ pkgs, lib, ... }:
+{ pkgs-darwin, lib, ... }:
 
 {
-  environment.shells = with pkgs; [ ksh tcsh ];
+  environment.shells = with pkgs-darwin; [ ksh tcsh ];
 
   environment.shellAliases = {
     dt = "builtin cd ~/Desktop/";

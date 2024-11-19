@@ -1,9 +1,9 @@
-{ pkgs, config, ... }:
+{ pkgs, pkgs-darwin, config, ... }:
 
 {
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs-nox;
+    package = if pkgs.stdenvNoCC.hostPlatform.isDarwin then pkgs-darwin.emacs-nox else pkgs.emacs-nox;
   };
 
   home.file.doomEmacs = {
