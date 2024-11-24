@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }:
 
+let
+  isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
+in
 {
   imports = [
     ./macOS_profile_hack.nix
@@ -13,9 +16,7 @@
 
   home.file.userChromeJS = {
     source = ./chrome/JS;
-    target = if pkgs.stdenvNoCC.hostPlatform.isDarwin then
-      "${config.home.homeDirectory}/Library/Application Support/Firefox/Profiles/custom-default/chrome/JS" else
-      "${config.home.homeDirctory}/.mozilla/firefox/custom-default/chrome/JS";
+    target = if isDarwin then "${config.home.homeDirectory}/Library/Application Support/Firefox/Profiles/custom-default/chrome/JS" else "${config.home.homeDirctory}/.mozilla/firefox/custom-default/chrome/JS";
     recursive = true;
   };
 
@@ -37,19 +38,19 @@
 
         bookmarks = [];
 
-        containers = {
-          second = {
-            color = "blue";
-            icon = "tree";
-            id = 1;
-          };
-          finance = {
-            color = "green";
-            icon = "dollar";
-            id = 2;
-          };
-        };
-        containersForce = true;
+        # containers = {
+        #   second = {
+        #     color = "blue";
+        #     icon = "tree";
+        #     id = 1;
+        #   };
+        #   finance = {
+        #     color = "green";
+        #     icon = "dollar";
+        #     id = 2;
+        #   };
+        # };
+        # containersForce = true;
 
         search = {
           default = "Google";

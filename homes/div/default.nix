@@ -1,5 +1,8 @@
 { config, username, pkgs, ... }:
 
+let
+  isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
+in
 {
   imports = [
     ./../common
@@ -9,6 +12,6 @@
 
   home = {
     username = "${username}";
-    homeDirectory = if pkgs.stdenvNoCC.hostPlatform.isDarwin then "/Users/${username}" else "/home/${username}";
+    homeDirectory = if isDarwin then "/Users/${username}" else "/home/${username}";
   };
 }

@@ -13,7 +13,7 @@
 
   outputs = { nixpkgs, nixpkgs-darwin, home-manager, ... }@inputs:
   let
-    system = builtins.currentSystem; # impure builtin
+    system = builtins.currentSystem; # impure
     pkgs = import nixpkgs { inherit system; };
     pkgs-darwin = import nixpkgs-darwin { inherit system; };
     username = "div";

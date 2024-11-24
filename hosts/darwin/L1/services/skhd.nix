@@ -120,21 +120,23 @@
       # hyper - space             : open -a "raycast"
       # hyper - p                 : raycast command palatte generated from the menu bar's menu
       # hyper - w                 : raycast list windows
-      # hyper - return            : open -a "wezterm"
       # hyper - l                 : open -a "launchpad"
       # hyper - e                 : open -a "Finder"
       # cmd + ctrl + alt - space  : open -a "Mission Control"
 
+      ############# Launching stuff onto the screen
+      hyper - return              : wezterm
+
       #################### Window Manipulation ############################
       ########### Switching modes
       ### toggle sticky(+float), topmost, picture-in-picture
-      cmd + ctrl + alt - p      : yabai -m window --toggle sticky --toggle topmost --toggle pip
+      cmd + ctrl + alt - p       : yabai -m window --toggle sticky --toggle topmost --toggle pip
 
       ### float / unfloat window and center on screen
       # cmd + ctrl + alt - space : yabai -m window --toggle float --grid 1:1:0:0:1:1
 
       ### windowing layout for current space for toggling b/w bsp & floating modes
-      # cmd + ctrl + alt - t      : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
+      # cmd + ctrl + alt - t     : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
 
       ########### Tiling
       ### manoeuvre focus b/w windows when tiled
