@@ -1,2 +1,4 @@
 channels:
+  - apple
   - conda-forge
+  - defaults

@@ -1,2 +1,2 @@
-keymap-drawer 0.18.1
+keymap-drawer 0.19.0
 mac-cleanup 3.1.2
