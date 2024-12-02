@@ -1,10 +1,5 @@
 { pkgs, ... } :
 
-let
-  nerdfonts = pkgs.nerdfonts.override {
-    fonts = [ "CascadiaCode" ];
-  };
-in
 {
   imports = [
     ./../common
@@ -18,6 +13,6 @@ in
       cursor = "#FF0000";
     };
 
-    font =  "${nerdfonts}/share/fonts/truetype/NerdFonts/CaskaydiaCoveNerdFontMono-Regular.ttf";
+    font =  "${pkgs.nerd-fonts.caskaydia-cove}/share/fonts/truetype/NerdFonts/CaskaydiaCoveNerdFontMono-Regular.ttf";
   };
 }

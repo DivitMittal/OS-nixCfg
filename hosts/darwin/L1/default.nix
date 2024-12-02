@@ -1,12 +1,5 @@
 { config, lib, hostname, pkgs, ... }:
 
-let
-  nerdfonts = pkgs.nerdfonts.override {
-    fonts = [
-      "CascadiaCode"
-    ];
-  };
-in
 {
   imports = [
     ./../common
@@ -18,7 +11,7 @@ in
 
   environment.darwinConfig = "${config.paths.currentDarwinCfg}/default.nix";
 
-  fonts.packages = [ nerdfonts ];
+  fonts.packages = with pkgs; [ nerd-fonts.caskaydia-cove ];
 
   networking = {
     computerName = "${hostname}";
