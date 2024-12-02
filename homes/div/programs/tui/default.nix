@@ -12,6 +12,25 @@
     bandwhich
   ];
 
+  programs.spotify-player = {
+    enable = true;
+    package = pkgs.spotify-player;
+
+    settings = {
+      enable_media_control = true;
+      enable_notify = false;
+      device = {
+        name = "spotify-tui";
+        device_type = "MacBook";
+        volume = 50;
+        bitrate = 320;
+        audio_cache = true;
+        normalization = false;
+        autoplay = true;
+      };
+    };
+  };
+
   programs.newsboat = {
     enable = true;
 
