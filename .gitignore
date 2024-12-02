@@ -1,1 +1,2 @@
-secrets/**
+#Jetbrains IDE
+.idea/

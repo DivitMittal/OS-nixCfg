@@ -1,2 +1,3 @@
 ./* linguist-detectable
 ./* -linguist-vendored
+secrets/** filter=crypt diff=crypt merge=crypt
