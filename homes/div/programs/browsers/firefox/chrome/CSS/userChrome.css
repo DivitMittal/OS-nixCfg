@@ -85,8 +85,6 @@
 }
 
 #urlbar {
-  top: 0px !important;
-  bottom: unset !important;
   box-shadow: none !important;
   display: flex !important;
   flex-direction: column !important;

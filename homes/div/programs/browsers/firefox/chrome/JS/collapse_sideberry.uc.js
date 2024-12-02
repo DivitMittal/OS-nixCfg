@@ -11,10 +11,10 @@ const extendSidebarBox = (sidebarBox) => {
 
 const resetSidebarBox = (sidebarBox) => {
   sidebarBox.style.position = 'absolute';
-  sidebarBox.style.right ='0px';
+  sidebarBox.style.right = '0px';
   sidebarBox.style.height = '100vh';
   sidebarBox.style.width = '35px';
-  sidebarBox.style.zIndex = '1';
+  sidebarBox.style.zIndex = '5';
   sidebarBox.style.minWidth = 'unset';
   sidebarBox.style.transition = 'all 0.05s ease-in-out';
 };
