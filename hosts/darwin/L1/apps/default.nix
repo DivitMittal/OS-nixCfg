@@ -24,10 +24,10 @@
       "firefox" "google-chrome"
 
       ## Development Environment
-      "wezterm" "visual-studio-code" "jetbrains-toolbox"
+      "wezterm" "visual-studio-code" "jetbrains-toolbox" "cyberduck"
 
       ## Microsoft
-      "microsoft-teams" "onedrive" "microsoft-auto-update" "microsoft-onenote" "onlyoffice"
+      "onlyoffice" "microsoft-onenote" "onedrive" "microsoft-auto-update" "microsoft-teams"
 
       ## Messaging
       "whatsapp"
