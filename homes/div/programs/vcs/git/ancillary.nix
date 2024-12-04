@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  home.packages = with pkgs; [ transcrypt ];
+
   programs.gh = {
     enable = true;
     package = pkgs.gh;
