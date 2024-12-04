@@ -44,7 +44,7 @@
     ];
 
     brews = [
-      "cliclick"
+      "cliclick" "spotify_player"
     ];
 
     masApps = {
