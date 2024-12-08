@@ -14,6 +14,7 @@ Grass.app
 Homerow.app
 IK Product Manager.app
 JetBrains Toolbox.app
+LibreOffice.app
 Logic Pro X.app
 Macs Fan Control.app
 MainStage.app
@@ -31,6 +32,7 @@ OneDrive.app
 PDF Expert.app
 Raycast.app
 Safari.app
+Serato DJ Pro.app
 SoundSource.app
 Spaceman.app
 Spotify.app
