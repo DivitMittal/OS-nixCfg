@@ -29,7 +29,7 @@
       device = {
         name = "spotify_player";
         device_type = "L1";
-        volume = 50;
+        volume = 100;
         bitrate = 320;
         audio_cache = true;
         normalization = false;

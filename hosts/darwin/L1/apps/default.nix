@@ -27,7 +27,7 @@
       "wezterm" "visual-studio-code" "jetbrains-toolbox" "cyberduck"
 
       ## Microsoft
-      "onlyoffice" "microsoft-onenote" "onedrive" "microsoft-auto-update" "microsoft-teams"
+      "onlyoffice" "libreoffice" "microsoft-onenote" "onedrive" "microsoft-auto-update" "microsoft-teams"
 
       ## Messaging
       "whatsapp"
