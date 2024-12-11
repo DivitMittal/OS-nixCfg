@@ -1,7 +1,7 @@
 :root {
     --bg: rgba(0, 0, 0, 1);
     --fg: #14C800;
-    --font: "CaskaydiaCove Nerd Font Mono";
+    --font: "CaskaydiaCove NFM";
 
     --tridactyl-bg: var(--bg);
     --tridactyl-fg: var(--fg);
