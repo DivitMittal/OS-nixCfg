@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  # impure link
+  # impure
   home.file.aerc = {
     enable = true;
     source = /. + "${config.paths.secrets}/email/aerc/accounts.conf";

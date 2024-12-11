@@ -20,9 +20,6 @@
 
   home.packages = builtins.attrValues {
     inherit (pkgs)
-      # networking
-      httpie
-
       # android
       android-tools
 

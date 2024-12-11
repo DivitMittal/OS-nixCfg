@@ -133,14 +133,17 @@
   };
 
   preview = {
-    cache_dir = "";
-    image_filter = "triangle";
-    image_quality = 75;
-    max_height = 900;
-    max_width = 1000;
-    sixel_fraction = 15;
+    wrap = "no";
     tab_size = 2;
-    ueberzug_offset = [ 0 0 0 0 ]; ueberzug_scale = 1;
+    cache_dir = "";
+    image_filter = "nearest";
+    image_delay = 100;
+    image_quality = 50;
+    max_height = 2000;
+    max_width = 2000;
+    sixel_fraction = 15;
+    ueberzug_offset = [ 0 0 0 0 ];
+    ueberzug_scale = 1;
   };
 
   tasks = {

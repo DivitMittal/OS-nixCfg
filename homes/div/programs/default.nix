@@ -2,14 +2,12 @@ _:
 
 {
   imports = [
-    ./browsers
-    ./cli
+    ./AV
     ./development
     ./editors
-    ./file-exploration
-    ./multiplexers
-    ./shells
-    ./tui
-    ./vcs
+    ./social
+    ./terminal
+    ./tools
+    ./web
   ];
 }

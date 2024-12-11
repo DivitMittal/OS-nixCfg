@@ -2,7 +2,8 @@ _:
 
 {
   imports = [
-    ./less.nix
     ./ov
+    ./bat.nix
+    ./less.nix
   ];
 }

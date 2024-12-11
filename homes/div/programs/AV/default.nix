@@ -1,20 +1,43 @@
 { pkgs, ... }:
 
+let
+  isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
+in
 {
   imports = [
-    ./email
-    ./weechat
-    ./btop.nix
+    ./spicetify
   ];
 
-  home.packages = with pkgs; [
-    ttyper
-    bandwhich
-  ];
+  home.packages = builtins.attrValues {
+    inherit(pkgs)
+      # audio
+      spotdl
+
+      # video
+      ffmpeg
+
+      # image
+      chafa imagemagick exif
+    ;
+  };
+
+  programs.mpv = {
+    enable = true;
+    package = if isDarwin then pkgs.hello else pkgs.mpv-unwrapped; # homebrew
+
+    bindings = {
+      "n" = "seek -10";
+      "i" = "seek +10";
+    };
+
+    config = {
+      force-window = true;
+    };
+  };
 
   programs.spotify-player = {
     enable = true;
-    package = if pkgs.stdenvNoCC.hostPlatform.isDarwin then pkgs.hello else pkgs.spotify-player; # Install via homebrew on Darwin
+    package = if isDarwin then pkgs.hello else pkgs.spotify-player; # homebrew
 
     settings = {
       client_id = "561a7e0b6be94efc8f25374180fbe62a";
@@ -44,26 +67,6 @@
       {
         command = "None";
         key_sequence = "q";
-      }
-    ];
-  };
-
-  programs.newsboat = {
-    enable = true;
-
-    autoReload = true;
-    browser = "open";
-
-    urls = [
-      {
-        tags = [ "tech" ];
-        title = "TechCrunch";
-        url = "http://feeds.feedburner.com/TechCrunch/";
-      }
-      {
-        tags = [ "fin" ];
-        title = "WSJ";
-        url = "https://feeds.a.dj.com/rss/RSSMarketsMain.xml";
       }
     ];
   };

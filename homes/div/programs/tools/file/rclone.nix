@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [ rclone ];
 
-  # impure link
+  # impure
   home.file.rclone = {
     enable = false;
     source = config.lib.file.mkOutOfStoreSymlink (/. + "${config.paths.secrets}/rclone.conf");
