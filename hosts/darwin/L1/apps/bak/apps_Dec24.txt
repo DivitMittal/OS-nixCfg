@@ -23,6 +23,7 @@ Menu Bar Dock.app
 Microsoft OneNote.app
 Microsoft Teams.app
 Native Instruments
+Nembrini Audio Central.app
 NeuralAmpModeler.app
 Nix Apps
 Notion Calendar.app
