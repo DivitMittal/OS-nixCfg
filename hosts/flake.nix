@@ -42,13 +42,13 @@
     };
 
     nixOnDroidConfigurations = {
-      M1 = let
+      default = let
         hostname = "M1";
         system = "aarch64-linux";
       in nix-on-droid.lib.nixOnDroidConfiguration {
         pkgs = import nixpkgs { inherit system; };
-        inherit hostname;
-        inherit username;
+        # inherit hostname;
+        # inherit username;
 
         modules = [
           ./droid/${hostname}
