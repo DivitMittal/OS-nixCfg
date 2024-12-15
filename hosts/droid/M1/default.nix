@@ -1,11 +1,11 @@
-{ pkgs, ... } :
+{ pkgs, config, ... } :
 
 {
   imports = [
     ./../common
   ];
 
-  user.shell = "${pkgs.fish}/bin/fish";
+  user.shell = "${pkgs.zsh}/bin/zsh";
 
   terminal = {
     colors = {
@@ -18,6 +18,9 @@
 
   home-manager = {
     config = import ./home.nix;
+    extraSpecialArgs = {
+      repo = "${config.user.home}/OS-nixCfg";
+    };
     backupFileExtension = ".bak";
   };
 }

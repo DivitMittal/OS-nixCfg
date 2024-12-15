@@ -47,7 +47,7 @@
           hostname = "M1";
           system = "aarch64-linux";
         in nix-on-droid.lib.nixOnDroidConfiguration {
-          pkgs = import nixpkgs-stable { inherit system; };
+          pkgs = import nixpkgs { inherit system; };
 
           modules = [
             ./droid/${hostname}

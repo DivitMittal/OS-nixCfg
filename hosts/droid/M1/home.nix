@@ -1,12 +1,12 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, repo, config, ... }:
 
 let
-  divPrograms = "${config.paths.homes}/div/programs";
+  divPrograms = /${repo}/homes/div/programs;
 in
 {
   imports = [
-    ./${divPrograms}/editors
-    ./${divPrograms}/terminal
+    /${divPrograms}/editors
+    /${divPrograms}/terminal
   ];
 
   nixpkgs.config = let inherit(lib) mkDefault; in {
@@ -21,7 +21,7 @@ in
   home.enableNixpkgsReleaseCheck = true;
 
   home.packages = builtins.attrValues {
-    my-hello = pkgs.writeShellScriptBin "my-hello" ''echo "Hello, ${config.home.username}!"'';
+    my-hello = pkgs.writeShellScriptBin "my-hello" ''echo "Hello, ${config.user.name}!"'';
   };
   home.extraOutputsToInstall = [ "info" ]; # "doc" "devdoc"
 
