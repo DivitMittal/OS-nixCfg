@@ -12,16 +12,16 @@ in
     addKeysToAgent = "yes";
 
     extraConfig = ''
-    Host github.com
-      PreferredAuthentications publickey
-      IdentityFile ~/.ssh/github/id_ed25519
+      Host github.com
+        PreferredAuthentications publickey
+        IdentityFile ~/.ssh/github/id_ed25519
 
-    Host *
-      User nix-on-droid
-      Port 8022
-      PubkeyAuthentication yes
-      PreferredAuthentications publickey
-      IdentityFile ~/.ssh/nix-on-droid/ssh_host_rsa_key
+      Host *
+        User nix-on-droid
+        Port 8022
+        PubkeyAuthentication yes
+        PreferredAuthentications publickey
+        IdentityFile ~/.ssh/nix-on-droid/ssh_host_rsa_key
     '';
   };
 }

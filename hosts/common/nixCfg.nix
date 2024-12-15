@@ -4,6 +4,8 @@ let
   inherit(lib) mkDefault;
 in
 {
+  nix.package = mkDefault pkgs.nixVersions.latest;
+
   environment.systemPackages = builtins.attrValues {
     inherit(pkgs)
       comma

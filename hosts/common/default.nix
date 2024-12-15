@@ -5,7 +5,6 @@ let
   cfg = config.paths;
 in
 {
-  # imports = [ ] ++ lib.optional (hostname != "M1") {./shells.nix ./nixCfg.nix};
   imports = [
     ./shells.nix
     ./nixCfg.nix
@@ -31,34 +30,7 @@ in
     };
   };
 
-  # config = mkMerge [
-  #
-  #   {
-  #     nix.package = pkgs.nixVersions.latest;
-  #     time.timeZone = "Asia/Calcutta";
-  #     environment.extraOutputsToInstall = [ "info" ]; # "dev" "devdoc"
-  #   }
-  #
-  #   mkIf (hostname != "M1") {
-  #     # documentation
-  #     documentation = {
-  #       enable      = true;
-  #
-  #       info.enable = true;
-  #       man.enable  = true;
-  #       doc.enable  = false;
-  #     };
-  #
-  #     environment.systemPackages = builtins.attrValues {
-  #       inherit(pkgs)
-  #         bc diffutils findutils gnugrep inetutils gnused gawk which gzip gnutar wget gnupatch gnupg binutils gnumake groff indent # GNU
-  #         zip unzip curl vim git uutils-coreutils-noprefix
-  #       ;
-  #     };
-  #   }
-  # ];
   config = {
-    nix.package = pkgs.nixVersions.latest;
     time.timeZone = "Asia/Calcutta";
     environment.extraOutputsToInstall = [ "info" ]; # "dev" "devdoc"
 
