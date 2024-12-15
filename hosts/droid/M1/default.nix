@@ -3,8 +3,9 @@
 {
   imports = [
     ./../common
-    ./ssh.nix
   ];
+
+  user.shell = pkgs.fish;
 
   terminal = {
     colors = {
@@ -12,7 +13,11 @@
       foreground = "#FFFFFF";
       cursor = "#FF0000";
     };
+    font =  "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/CaskaydiaCoveNerdFontMono-Regular.ttf";
+  };
 
-    font =  "${pkgs.nerd-fonts.caskaydia-cove}/share/fonts/truetype/NerdFonts/CaskaydiaCoveNerdFontMono-Regular.ttf";
+  home-manager = { 
+    config = import ./home.nix;
+    backupFileExtension = ".bak";
   };
 }

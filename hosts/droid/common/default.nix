@@ -5,6 +5,10 @@ let
   hostname = "M1";
 in
 {
+  imports = [
+    ./ssh.nix
+  ];
+
   options = let inherit(lib) types; in {
     paths.repo = mkOption {
       type = types.str;
@@ -26,6 +30,18 @@ in
   };
 
   config = {
+    time.timeZone = "Asia/Calcutta";
+
+    environment.motd = "";
+
+    android-integration = {
+      am.enable = true;
+      termux-open.enable = true;
+      termux-open-url.enable = true;
+      termux-reload-settings.enable = true;
+      termux-setup-storage.enable = true;
+    };
+
     environment.packages = builtins.attrValues {
       inherit(pkgs)
         bc diffutils findutils gnugrep inetutils gnused gawk which gzip gnutar wget gnupatch gnupg # GNU
@@ -33,6 +49,8 @@ in
         utillinux tzdata hostname openssh
       ;
     };
+
+    environment.extraOutputsToInstall = [ "info" ]; # "doc" "devdoc"
 
     environment.etcBackupExtension = ".bak";
     system.stateVersion = "24.05";

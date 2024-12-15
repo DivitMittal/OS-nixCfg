@@ -11,7 +11,7 @@ in
     sshd = (pkgs.writeScriptBin "sshd-start" ''
       #!${pkgs.runtimeShell}
 
-      echo "Starting sshd in non-daemonized way on port ${toString port}"
+      echo "Starting sshd in non-daemonized way on port ${builtins.toString port}"
       ${pkgs.openssh}/bin/sshd -f "${sshdDirectory}/sshd_config" -D
     '');
   };
@@ -25,7 +25,7 @@ in
       $DRY_RUN_CMD ${pkgs.openssh}/bin/ssh-keygen -t rsa -b 4096 -f "${sshdTmpDirectory}/ssh_host_rsa_key" -N ""
 
       $VERBOSE_ECHO "Writing sshd_config..."
-      $DRY_RUN_CMD echo -e "HostKey ${sshdDirectory}/ssh_host_rsa_key\nPort ${toString port}\n" > "${sshdTmpDirectory}/sshd_config"
+      $DRY_RUN_CMD echo -e "HostKey ${sshdDirectory}/ssh_host_rsa_key\nPort ${builtins.toString port}\n" > "${sshdTmpDirectory}/sshd_config"
 
       $DRY_RUN_CMD mv $VERBOSE_ARG "${sshdTmpDirectory}" "${sshdDirectory}"
     fi

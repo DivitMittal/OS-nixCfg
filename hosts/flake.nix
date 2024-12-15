@@ -2,7 +2,8 @@
   description = "hosts flake";
 
   inputs = {
-    nixpkgs.url = "github:nixOS/nixpkgs/nixpkgs-unstable" ;
+    nixpkgs.url = "github:nixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-stable.url = "github:nixOS/nixpkgs/nixos-24.05";
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
 
     nix-darwin  = {
@@ -16,7 +17,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-darwin, nix-darwin, nix-on-droid, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-darwin, nix-darwin, nix-on-droid, ... }@inputs:
   let
     username = "div";
   in
@@ -38,22 +39,20 @@
           modules = [
             ./darwin/${hostname}
           ];
-      };
+        };
     };
 
     nixOnDroidConfigurations = {
       default = let
-        hostname = "M1";
-        system = "aarch64-linux";
-      in nix-on-droid.lib.nixOnDroidConfiguration {
-        pkgs = import nixpkgs { inherit system; };
-        # inherit hostname;
-        # inherit username;
+          hostname = "M1";
+          system = "aarch64-linux";
+        in nix-on-droid.lib.nixOnDroidConfiguration {
+          pkgs = import nixpkgs-stable { inherit system; };
 
-        modules = [
-          ./droid/${hostname}
-        ];
-      };
+          modules = [
+            ./droid/${hostname}
+          ];
+        };
     };
   };
 }
