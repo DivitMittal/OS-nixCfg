@@ -81,6 +81,7 @@
 
       # Tabbing
       { desc = "Create a new tab using the current path"              ; on = [ "t" ]           ; run = "tab_create --current"                               ; }
+      { desc = "Close a tab using the current path"                   ; on = [ "t" "c" ]       ; run = "tab_close --current"                                ; }
       { desc = "Switch to the next tab"                               ; on = [ "t" "n"]        ; run = "tab_switch 1 --relative"                            ; }
       { desc = "Switch to the previous tab"                           ; on = [ "t" "p" ]       ; run = "tab_switch -1 --relative"                           ; }
       { desc = "Switch to the first tab"                              ; on = [ "1" ]           ; run = "tab_switch 0"                                       ; }
@@ -127,11 +128,11 @@
     ];
 
     append_keymap = [
-      { desc = "Maximize or restore preview"                ; on = [ "M" ]      ; run = "plugin max-preview"                ; }
-      { desc = "Smart filter"                               ; on = [ "F" ]      ; run = "plugin smart-filter"               ; }
-      { desc = "Open shell here"                            ; on = [ "!" ]      ; run = "shell \"$SHELL\" --block --confirm"; }
-      { desc = "diff selected file with hovered file"       ; on = [ "<C-d>"]   ; run = "plugin diff"                       ; }
-      { desc = "chmod on selected files"                    ; on = [ "<C-p>"]   ; run = "plugin chmod"                      ; }
+      { desc = "Maximize or restore preview"                ; on = [ "M" ]       ; run = "plugin max-preview"                ; }
+      { desc = "Smart filter"                               ; on = [ "F" ]       ; run = "plugin smart-filter"               ; }
+      { desc = "Open shell here"                            ; on = [ "!" ]       ; run = "shell \"$SHELL\" --block --confirm"; }
+      { desc = "diff selected file with hovered file"       ; on = [ "<C-d>" ]   ; run = "plugin diff"                       ; }
+      { desc = "chmod on selected files"                    ; on = [ "<C-p>" ]   ; run = "plugin chmod"                      ; }
     ];
   };
 
