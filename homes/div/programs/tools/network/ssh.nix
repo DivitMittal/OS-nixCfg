@@ -1,27 +1,27 @@
 { config, pkgs, pkgs-darwin, ... }:
-
+let
+  isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
+in
 {
-  home.packages = builtins.attrValues {
-    mosh = if pkgs.stdenvNoCC.hostPlatform.isDarwin then pkgs-darwin.mosh else pkgs.mosh;
-  };
-
   programs.ssh = {
     enable = true;
-    package = null;
+    package = if isDarwin then null else pkgs.ssh; # homebrew
 
+    includes = [ "~/.colima/ssh_config" ];
     compression = false;
+    addKeysToAgent = "yes";
+
     extraConfig = ''
-      Include ${config.home.homeDirectory}/.colima/ssh_config
+    Host github.com
+      PreferredAuthentications publickey
+      IdentityFile ~/.ssh/github/id_ed25519
 
-      Host github.com
-        AddKeysToAgent yes
-        PreferredAuthentications publickey
-        IdentityFile ${config.home.homeDirectory}/.ssh/github/id_ed25519
-
-      Host [192.0.0.4]:8022
-        AddKeysToAgent yes
-        PreferredAuthentications publickey
-        IdentityFile ${config.home.homeDirectory}/.ssh/nix-on-droid/ssh_rsa
+    Host *
+      User nix-on-droid
+      Port 8022
+      PubkeyAuthentication yes
+      PreferredAuthentications publickey
+      IdentityFile ~/.ssh/nix-on-droid/ssh_host_rsa_key
     '';
   };
 }
