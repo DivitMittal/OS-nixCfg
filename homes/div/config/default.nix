@@ -1,5 +1,8 @@
 { config, pkgs, ...}:
 
+let
+  isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
+in
 {
   home.file = {
     ideavim = {
@@ -14,8 +17,9 @@
       target = "${config.xdg.configHome}/wezterm/wezterm.lua";
     };
 
+    # macOS only
     raycast = {
-      enable = true;
+      enable = if isDarwin then true else false;
       source = ./raycast/scripts;
       target = "${config.xdg.configHome}/raycast/scripts";
       recursive = true;
@@ -23,22 +27,15 @@
 
     # disabled
     hammerspoon = {
-      enable = false;
+      enable = if isDarwin then false else false;
       source = ./hammerspoon/init.lua;
       target = "${config.xdg.configHome}/hammerspoon/init.lua";
     };
 
     karabiner-elements = {
-      enable = false;
+      enable = if isDarwin then false else false;
       source = ./karabiner;
       target = "${config.xdg.configHome}/karabiner";
-      recursive = true;
-    };
-
-    zed = {
-      enable = false;
-      source = ./karabiner;
-      target = "${config.xdg.configHome}/zed";
       recursive = true;
     };
   };

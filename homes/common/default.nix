@@ -45,11 +45,11 @@ in
 
     xdg.enable = true;
     home.preferXdgDirectories = true;
+    home.enableNixpkgsReleaseCheck = true;
 
     home.packages = builtins.attrValues {
       my-hello = pkgs.writeShellScriptBin "my-hello" ''echo "Hello, ${config.home.username}!"'';
     };
-
     home.extraOutputsToInstall = [ "info" ]; # "doc" "devdoc"
 
     home.stateVersion = "25.05";

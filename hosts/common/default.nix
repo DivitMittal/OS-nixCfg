@@ -1,7 +1,8 @@
 { username, hostname, config, lib, pkgs, ... }:
 
 let
-  inherit(lib) mkOption mkIf mkMerge;
+  inherit(lib) mkOption;
+  isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
   cfg = config.paths;
 in
 {
@@ -13,7 +14,7 @@ in
   options = let inherit(lib) types; in {
     paths.homeDirectory = mkOption {
       type = types.str;
-      default = if pkgs.stdenvNoCC.hostPlatform.isDarwin then "/Users/${username}" else "/home/${username}";
+      default = if isDarwin then "/Users/${username}" else "/home/${username}";
       description = "Path to your home directory";
     };
 
@@ -32,7 +33,7 @@ in
 
   config = {
     time.timeZone = "Asia/Calcutta";
-    environment.extraOutputsToInstall = [ "info" ]; # "dev" "devdoc"
+    environment.extraOutputsToInstall = [ "info" ]; # "doc" "devdoc"
 
     documentation = {
       enable      = true;
@@ -47,7 +48,7 @@ in
     environment.systemPackages = builtins.attrValues {
       inherit(pkgs)
         bc diffutils findutils gnugrep inetutils gnused gawk which gzip gnutar wget gnupatch gnupg binutils gnumake groff indent # GNU
-        zip unzip curl vim git uutils-coreutils-noprefix
+        zip unzip curl vim uutils-coreutils-noprefix git
       ;
     };
   };

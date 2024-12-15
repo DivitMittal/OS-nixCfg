@@ -2,11 +2,9 @@
 
 {
   imports = [
-    ./admin
-    ./file
     ./network
-    ./pagers
     ./vcs
+    ./btop.nix
     ./privacy.nix
   ];
 

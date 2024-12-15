@@ -4,7 +4,7 @@ let
   inherit(lib) mkDefault;
 in
 {
-  nix.package =  pkgs.nixVersions.latest;
+  nix.package = pkgs.nixVersions.latest;
 
   nix = {
     checkConfig = mkDefault true;

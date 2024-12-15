@@ -2,7 +2,9 @@
 
 {
   imports = [
+    ./file
     ./multiplexers
+    ./pagers
     ./shells
     ./atuin.nix
     ./eza.nix
@@ -13,6 +15,8 @@
   home.packages = builtins.attrValues {
     inherit(pkgs)
       grc
+      duf
+      dust
     ;
   };
 

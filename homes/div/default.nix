@@ -11,7 +11,7 @@ in
   ];
 
   home = {
-    username = "${username}";
+    inherit username;
     homeDirectory = if isDarwin then "/Users/${username}" else "/home/${username}";
   };
 }

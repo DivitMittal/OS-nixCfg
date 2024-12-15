@@ -16,6 +16,12 @@ in
       description = "Path to the main repo containing nix-on-droid & other nix configs";
     };
 
+    paths.homes = mkOption {
+      type = types.str;
+      default = "${config.paths.repo}/homes";
+      description = "Path to secrets";
+    };
+
     paths.currentDroidCfg = mkOption {
       type = types.str;
       default = "${config.paths.repo}/hosts/droid/${hostname}";

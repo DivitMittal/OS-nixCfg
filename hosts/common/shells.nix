@@ -12,7 +12,7 @@ in
 
   environment = {
     variables = rec {
-      HOME            = if isDarwin then "/Users/${username}" else "/home/${username}";
+      HOME            = "${config.paths.homeDirectory}";
       XDG_CONFIG_HOME = "~/.config";
       XDG_CACHE_HOME  = "~/.cache";
       XDG_STATE_HOME  = "~/.local/state";
