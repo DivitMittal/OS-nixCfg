@@ -20,12 +20,9 @@
 
     enableFishIntegration = false; enableZshIntegration = false; enableBashIntegration = false; enableNushellIntegration = false;
 
+    initLua = ./init.lua;
     settings = import ./yazi.nix;
     keymap = import ./keymap.nix;
     theme = import ./theme.nix;
-    initLua = ./init.lua;
-    plugins = {
-      smart-enter = ./plugins/smart-enter.yazi;
-    };
   };
 }

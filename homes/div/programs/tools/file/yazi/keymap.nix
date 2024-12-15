@@ -123,11 +123,11 @@
     ];
 
     prepend_keymap = [
-      { desc = "Enter the child directory, or open the file"; on = [ "<Right>" ]; run = "plugin --sync smart-enter"         ; }
+      { desc = "Enter the child directory, or open the file"; on = [ "<Right>" ]; run = "plugin smart-enter"                ; }
     ];
 
     append_keymap = [
-      { desc = "Maximize or restore preview"                ; on = [ "M" ]      ; run = "plugin --sync max-preview"         ; }
+      { desc = "Maximize or restore preview"                ; on = [ "M" ]      ; run = "plugin max-preview"                ; }
       { desc = "Smart filter"                               ; on = [ "F" ]      ; run = "plugin smart-filter"               ; }
       { desc = "Open shell here"                            ; on = [ "!" ]      ; run = "shell \"$SHELL\" --block --confirm"; }
       { desc = "diff selected file with hovered file"       ; on = [ "<C-d>"]   ; run = "plugin diff"                       ; }

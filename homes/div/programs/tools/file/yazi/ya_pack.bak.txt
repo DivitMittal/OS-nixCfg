@@ -1,0 +1,12 @@
+plugins:
+	yazi-rs/plugins:max-preview (62f0789)
+	yazi-rs/plugins:full-border (62f0789)
+	yazi-rs/plugins:diff (62f0789)
+	yazi-rs/plugins:chmod (62f0789)
+	yazi-rs/plugins:smart-filter (62f0789)
+	AnirudhG07/rich-preview (8be4d27)
+	ndtoan96/ouch (b869886)
+	Reledia/hexyl (39d3d4e)
+	yazi-rs/plugins:git (62f0789)
+	yazi-rs/plugins:smart-enter (62f0789)
+flavors:

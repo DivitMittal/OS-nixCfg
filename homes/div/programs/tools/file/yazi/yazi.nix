@@ -120,7 +120,7 @@
 
   input = {
     cd_offset = [ 0 2 50 3 ]       ; cd_origin = "top-center"       ; cd_title = "Change directory:"                                 ;
-    create_offset = [ 0 2 50 3 ]   ; create_origin = "top-center"   ; create_title = "Create:"                                       ;
+    create_offset = [ 0 2 50 3 ]   ; create_origin = "top-center"   ; create_title = [ "Create:" "Create (dir):" ]                   ;
     trash_offset = [ 0 2 50 3 ]    ; trash_origin = "top-center"    ; trash_title = "move {n} selected file{s} to trash? (y/n)"      ;
     delete_offset = [ 0 2 50 3 ]   ; delete_origin = "top-center"   ; delete_title = "Delete {n} selected file{s} permanently? (y/N)";
     filter_offset = [ 0 2 50 3 ]   ; filter_origin = "top-center"   ; filter_title = "Filter:"                                       ;
