@@ -21,7 +21,7 @@
   home.packages = builtins.attrValues {
     inherit (pkgs)
       # android
-      android-tools
+      android-tools scrcpy
 
       # containerization
       docker lazydocker
