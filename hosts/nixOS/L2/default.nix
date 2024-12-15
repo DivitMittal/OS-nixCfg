@@ -1,5 +1,7 @@
 { pkgs, ... }:
 
 {
-
+  imports = [
+    ./../common
+  ];
 }

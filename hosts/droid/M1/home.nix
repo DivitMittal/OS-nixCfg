@@ -1,18 +1,15 @@
 { pkgs, lib, config, ... }:
 
 let
-  inherit(lib) mkDefault;
-  p = "${config.paths.homes}/div/programs";
+  divPrograms = "${config.paths.homes}/div/programs";
 in
 {
   imports = [
-    ./${p}/editors/editorconfig.nix
-    ./${p}/editors/nvim
-    ./${p}/editors/vim
-    ./${p}/terminal
+    ./${divPrograms}/editors
+    ./${divPrograms}/terminal
   ];
 
-  nixpkgs.config = {
+  nixpkgs.config = let inherit(lib) mkDefault; in {
     allowBroken = mkDefault false;
     allowUnsupportedSystem = mkDefault false;
     allowUnfree = mkDefault true;
@@ -24,8 +21,7 @@ in
   home.enableNixpkgsReleaseCheck = true;
 
   home.packages = builtins.attrValues {
-    inherit(pkgs)
-    ;
+    my-hello = pkgs.writeShellScriptBin "my-hello" ''echo "Hello, ${config.home.username}!"'';
   };
   home.extraOutputsToInstall = [ "info" ]; # "doc" "devdoc"
 
