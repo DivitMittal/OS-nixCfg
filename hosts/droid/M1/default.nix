@@ -5,7 +5,7 @@
     ./../common
   ];
 
-  user.shell = pkgs.fish;
+  user.shell = "${pkgs.fish}/bin/fish";
 
   terminal = {
     colors = {
@@ -16,7 +16,7 @@
     font =  "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/CaskaydiaCoveNerdFontMono-Regular.ttf";
   };
 
-  home-manager = { 
+  home-manager = {
     config = import ./home.nix;
     backupFileExtension = ".bak";
   };
