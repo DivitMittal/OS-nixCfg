@@ -50,3 +50,4 @@ djay Pro.app
 gSwitch.app
 iStat Menus.app
 mpv.app
+zoom.us.app
