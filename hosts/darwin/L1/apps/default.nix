@@ -29,8 +29,8 @@
       ## Microsoft
       "onlyoffice" "libreoffice" "microsoft-onenote" "onedrive" "microsoft-auto-update" "microsoft-teams"
 
-      ## Messaging
-      "whatsapp"
+      ## Communication
+      "whatsapp" "zoom"
 
       ## Notes
       "notion-calendar" "notion"
