@@ -9,8 +9,7 @@
     inherit(pkgs)
       nmap speedtest-go
       bandwhich
-
-      httpie
+      httpie dig
     ;
   };
 

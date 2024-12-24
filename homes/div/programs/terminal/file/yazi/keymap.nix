@@ -24,10 +24,10 @@
       { desc = "Move cursor to the top"                               ; on = [ "g" "g" ]       ; run = "arrow -99999999"                                    ; }
       { desc = "Move cursor to the bottom"                            ; on = [ "G" ]           ; run = "arrow 99999999"                                     ; }
 
-      { desc = "Toggle the current selection state"                   ; on = [ "<Space>" ]     ; run = [ "select --state=none" "arrow 1" ]                  ; }
+      { desc = "Toggle the current selection state"                   ; on = [ "<Space>" ]     ; run = [ "toggle --state=none" "arrow 1" ]                  ; }
       { desc = "Enter visual mode (selection mode)"                   ; on = [ "V" ]           ; run = "visual_mode"                                        ; }
-      { desc = "Select all files"                                     ; on = [ "<C-a>" ]       ; run = "select_all --state=true"                            ; }
-      { desc = "Inverse selection of all files"                       ; on = [ "<C-r>" ]       ; run = "select_all --state=none"                            ; }
+      { desc = "Select all files"                                     ; on = [ "<C-a>" ]       ; run = "toggle_all --state=true"                            ; }
+      { desc = "Inverse selection of all files"                       ; on = [ "<C-r>" ]       ; run = "toggle_all --state=none"                            ; }
 
       { desc = "Open the selected files"                              ; on = [ "o" ]           ; run = "open"                                               ; }
       { desc = "Open the selected files"                              ; on = [ "<Enter>" ]     ; run = "open"                                               ; }
