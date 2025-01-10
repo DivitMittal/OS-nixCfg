@@ -5,7 +5,7 @@
     enable = true;
     package = if pkgs.stdenvNoCC.hostPlatform.isDarwin then pkgs-darwin.starship else pkgs.starship;
 
-    enableFishIntegration = true; enableZshIntegration  = false; enableBashIntegration = false; enableNushellIntegration = false;
+    enableFishIntegration = true; enableZshIntegration  = false; enableBashIntegration = false; enableNushellIntegration = false; enableInteractive = true;
 
     settings = {
       format = lib.concatStrings [

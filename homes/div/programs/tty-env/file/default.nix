@@ -4,7 +4,6 @@
   imports = [
     ./find
     ./yazi
-    ./rclone.nix
   ];
 
   home.packages = builtins.attrValues {

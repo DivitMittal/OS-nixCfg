@@ -42,6 +42,7 @@ in
 
   config = {
     programs.home-manager.enable = true;
+    news.display = "show";
 
     xdg.enable = true;
     home.preferXdgDirectories = true;

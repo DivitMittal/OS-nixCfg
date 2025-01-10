@@ -14,7 +14,7 @@ in
       spotdl
 
       # video
-      ffmpeg
+      ffmpeg yt-dlp
 
       # image
       chafa imagemagick exif
@@ -36,7 +36,7 @@ in
   };
 
   programs.spotify-player = {
-    enable = true;
+    enable = false;
     package = if isDarwin then pkgs.hello else pkgs.spotify-player; # homebrew
 
     settings = {

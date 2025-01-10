@@ -3,9 +3,9 @@
 {
   imports = [
     ./network
-    ./vcs
-    ./btop.nix
+    ./wezterm
     ./privacy.nix
+    ./rclone.nix
   ];
 
   home.packages = builtins.attrValues {
@@ -16,5 +16,4 @@
       ttyper
     ;
   };
-
 }

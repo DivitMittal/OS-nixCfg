@@ -8,7 +8,7 @@
 
   # Disabled
   programs.zellij = {
-    enable = false;
+    enable = true;
     package = pkgs.zellij;
 
     enableFishIntegration = false; enableZshIntegration = false; enableBashIntegration = false;

@@ -16,7 +16,7 @@ in
         PreferredAuthentications publickey
         IdentityFile ~/.ssh/github/id_ed25519
 
-      Host *
+      Host 10.254.200.59
         User nix-on-droid
         Port 8022
         PubkeyAuthentication yes

@@ -6,8 +6,6 @@ in
 {
   imports = [
     ./../common
-    ./config
-    ./programs
   ];
 
   home = {

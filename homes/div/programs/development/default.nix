@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./javascript.nix
+    ./js.nix
     ./python
   ];
 
@@ -23,9 +23,6 @@
       # android
       android-tools scrcpy
 
-      # containerization
-      docker lazydocker
-
       # cloud-platforms-cli
       google-cloud-sdk
 
@@ -39,7 +36,6 @@
       lua
     ;
 
-    colima = if pkgs.stdenvNoCC.hostPlatform.isDarwin then pkgs-darwin.colima else null;
     luarocks = pkgs.luajitPackages.luarocks;
   };
 }
