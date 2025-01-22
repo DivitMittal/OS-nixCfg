@@ -1,20 +1,19 @@
 { pkgs, lib, repo, config, ... }:
 
 let
-  divPrograms = /${repo}/homes/div/programs;
+  programs = /${repo}/homes/programs;
 in
 {
-  imports = [
-    /${divPrograms}/editors
-    /${divPrograms}/terminal
-  ];
-
   nixpkgs.config = let inherit(lib) mkDefault; in {
     allowBroken = mkDefault false;
     allowUnsupportedSystem = mkDefault false;
     allowUnfree = mkDefault true;
     allowInsecure = mkDefault true;
   };
+
+  imports = [
+    /${programs}/tty-env
+  ];
 
   programs.home-manager.enable = true;
   xdg.enable = true;

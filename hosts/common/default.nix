@@ -1,4 +1,4 @@
-{ username, hostname, config, lib, pkgs, ... }:
+{ username, config, lib, pkgs, ... }:
 
 let
   inherit(lib) mkOption;
@@ -12,12 +12,6 @@ in
   ];
 
   options = let inherit(lib) types; in {
-    paths.homeDirectory = mkOption {
-      type = types.str;
-      default = if isDarwin then "/Users/${username}" else "/home/${username}";
-      description = "Path to your home directory";
-    };
-
     paths.repo = mkOption {
       type = types.str;
       default = cfg.homeDirectory + "/OS-nixCfg";
@@ -28,6 +22,12 @@ in
       type = types.str;
       default = cfg.repo + "/secrets";
       description = "Path to repo secrets";
+    };
+
+    paths.homeDirectory = mkOption {
+      type = types.str;
+      default = if isDarwin then "/Users/${username}" else "/home/${username}";
+      description = "Path to your home directory";
     };
   };
 

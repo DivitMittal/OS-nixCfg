@@ -5,16 +5,13 @@
     ./../common
   ];
 
-  user.shell = "${pkgs.zsh}/bin/zsh";
-
-  terminal = {
-    colors = {
-      background = "#000000";
-      foreground = "#FFFFFF";
-      cursor = "#FF0000";
-    };
-    font =  "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/CaskaydiaCoveNerdFontMono-Regular.ttf";
+  environment.packages = builtins.attrValues {
+    inherit(pkgs)
+      dash
+    ;
   };
+
+  user.shell = "${pkgs.zsh}/bin/zsh";
 
   home-manager = {
     config = import ./home.nix;

@@ -1,14 +1,9 @@
-{ config, username, ... }:
+_:
 
 {
   imports = [
-    ./skhd.nix
+    ./kanata
+    ./skhd
     ./yabai.nix
-    ./kanata.nix
   ];
-
-  services.kanata = {
-    enable = true;
-    package = /Users/${username}/.local/bin/kanata; # impure
-  };
 }

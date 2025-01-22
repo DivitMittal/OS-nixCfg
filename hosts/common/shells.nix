@@ -1,4 +1,4 @@
-{ pkgs, pkgs-darwin, lib, username, config, ... }:
+{ pkgs, pkgs-darwin, lib, ... }:
 let
   isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
 in
@@ -12,12 +12,6 @@ in
 
   environment = {
     variables = rec {
-      HOME            = "${config.paths.homeDirectory}";
-      XDG_CONFIG_HOME = "~/.config";
-      XDG_CACHE_HOME  = "~/.cache";
-      XDG_STATE_HOME  = "~/.local/state";
-      XDG_DATA_HOME   = "~/.local/share";
-      BIN_HOME        = "~/.local/bin";
       LANG            = "en_US.UTF-8";
       VISUAL          = "vim";
       EDITOR          = "${VISUAL}";
@@ -26,7 +20,6 @@ in
     shellAliases = {
       ls = "env ls -aF";
       ll = "env ls -alHbhigUuS";
-      ed = "${pkgs.ed}/bin/ed -v -p ':'";
     };
   };
 
@@ -42,16 +35,6 @@ in
       interactiveShellInit = ''
         # Exit if running non-interactively (handled by nix-darwin)
         # [ -z "$PS1" ] && return
-
-        # Prompt
-        if [ "`id -u`" -eq 0 ]; then # ckeck for root user
-          PS1="\[\e[1;31m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\w]> \[\e[0m\]"
-        else
-          PS1="\[\e[1m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\w]> \[\e[0m\]"
-        fi
-
-        # vi keybindings
-        set -o vi
 
         # Check window size after every command (handled by nix-darwin)
         # shopt -s checkwinsize

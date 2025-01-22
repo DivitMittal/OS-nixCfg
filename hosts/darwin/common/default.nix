@@ -1,15 +1,12 @@
-{ config, lib, hostname, inputs, ... }:
+{ config, lib, hostname, inputs, pkgs-darwin, ... }:
 
-let
-  inherit(lib) mkOption;
-in
 {
   imports = [
     ./../../common
     ./shells.nix
   ];
 
-  options = let inherit(lib) types; in {
+  options = let inherit(lib) mkOption types; in {
     paths.currentDarwinCfg = mkOption {
       type = types.str;
       default = "${config.paths.repo}/hosts/darwin/${hostname}";
@@ -18,9 +15,6 @@ in
   };
 
   config = {
-    programs.man.enable  = true;
-    programs.info.enable = true;
-
     networking = {
       knownNetworkServices = [ "Wi-Fi" ];
       # Cloudflare DNS
@@ -29,6 +23,16 @@ in
         "2606:4700:4700::1111" "2606:4700:4700::1001"  # IPv6
       ];
     };
+
+    environment.packages = builtins.attrValues {
+      inherit(pkgs-darwin)
+        blueutil
+        duti
+      ;
+    };
+
+    programs.man.enable  = true;
+    programs.info.enable = true;
 
     system.activationScripts.postUserActivation.text = lib.mkAfter ''
       /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u

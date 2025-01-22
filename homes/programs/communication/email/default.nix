@@ -1,0 +1,8 @@
+_:
+
+{
+  imports = [
+    ./aerc
+    ./oauth
+  ];
+}

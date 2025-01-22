@@ -20,12 +20,12 @@
   outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-darwin, nix-darwin, nix-on-droid, ... }@inputs:
   let
     username = "div";
+    system = builtins.currentSystem;
   in
   {
     darwinConfigurations = {
-      L1 = let
+      L1 = let # macOS
           hostname = "L1";
-          system = "x86_64-darwin";
         in nix-darwin.lib.darwinSystem {
           inherit inputs;
           inherit system;
@@ -45,7 +45,6 @@
     nixOnDroidConfigurations = {
       default = let
           hostname = "M1";
-          system = "aarch64-linux";
         in nix-on-droid.lib.nixOnDroidConfiguration {
           pkgs = import nixpkgs { inherit system; };
 

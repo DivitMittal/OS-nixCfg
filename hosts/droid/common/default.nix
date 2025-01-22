@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
 let
-  inherit(lib) mkOption;
   hostname = "M1";
 in
 {
@@ -9,7 +8,7 @@ in
     ./ssh.nix
   ];
 
-  options = let inherit(lib) types; in {
+  options = let inherit(lib) mkOption types; in {
     paths.repo = mkOption {
       type = types.str;
       default = "${config.user.home}/OS-nixCfg";
@@ -46,6 +45,15 @@ in
       termux-open-url.enable = true;
       termux-reload-settings.enable = true;
       termux-setup-storage.enable = true;
+    };
+
+    terminal = {
+      colors = {
+        background = "#000000";
+        foreground = "#FFFFFF";
+        cursor = "#FF0000";
+      };
+      font =  "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/CaskaydiaCoveNerdFontMono-Regular.ttf";
     };
 
     environment.packages = builtins.attrValues {

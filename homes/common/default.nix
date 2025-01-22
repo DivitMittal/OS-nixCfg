@@ -1,14 +1,14 @@
 { username, config, lib, pkgs, ... }:
 
 let
-  inherit(lib) mkOption;
+  isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
 in
 {
   imports = [
     ./nixCfg.nix
   ];
 
-  options = let inherit(lib) types; in {
+  options = let inherit(lib) mkOption types; in {
     paths.binHome = mkOption {
       type = types.str;
       default = "${config.home.homeDirectory}/.local/bin";
@@ -27,9 +27,9 @@ in
       description = "Path to secrets";
     };
 
-    paths.currentHomeCfg = mkOption {
+    paths.programs = mkOption {
       type = types.str;
-      default = "${config.paths.repo}/homes/${username}";
+      default = "${config.paths.repo}/homes/programs";
       description = "Path to current-user home-manager module";
     };
 
@@ -41,6 +41,11 @@ in
   };
 
   config = {
+    home = {
+      inherit username;
+      homeDirectory = if isDarwin then "/Users/${username}" else "/home/${username}";
+    };
+
     programs.home-manager.enable = true;
     news.display = "show";
 

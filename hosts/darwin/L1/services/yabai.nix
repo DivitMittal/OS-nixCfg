@@ -65,15 +65,18 @@
 
       # Transparent apps
       yabai -m rule --add app="^Code$"        opacity=0.97
-      yabai -m rule --add app="^IntelliJ      IDEA$" opacity=0.97
+      yabai -m rule --add app="^IntelliJ IDEA$" opacity=0.97
       yabai -m rule --add app="^CLion$"       opacity=0.97
       yabai -m rule --add app="^DataSpell$"   opacity=0.97
       yabai -m rule --add app="^DataGrip$"    opacity=0.97
       yabai -m rule --add app="^WebStorm$"    opacity=0.97
+
       yabai -m rule --add app="^Notion$"      opacity=0.97
       yabai -m rule --add app="^Obsidian$"    opacity=0.97
+
       yabai -m rule --add app="^Finder$"      opacity=0.97
       yabai -m rule --add app="^Thunderbird$" opacity=0.97
+
       yabai -m rule --add app="^Calculator$"  sticky=on
     '';
   };

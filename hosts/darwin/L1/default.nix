@@ -1,4 +1,4 @@
-{ config, lib, hostname, pkgs, ... }:
+{ config, username, hostname, pkgs, pkgs-darwin, ... }:
 
 {
   imports = [
@@ -6,7 +6,6 @@
     ./apps
     ./defaults
     ./services
-    ./users.nix
   ];
 
   environment.darwinConfig = "${config.paths.currentDarwinCfg}/default.nix";
@@ -16,5 +15,17 @@
   networking = {
     computerName = "${hostname}";
     hostName = "${hostname}";
+  };
+
+  nix.settings = {
+    trusted-users = [ "root" "${username}" ];
+  };
+
+  users.users = {
+    "${username}" = {
+      description = "${username}";
+      home = "/Users/${username}";
+      shell = pkgs-darwin.fish;
+    };
   };
 }

@@ -5,7 +5,7 @@
       url = "https://github.com/nixos/nixpkgs/archive/${lock.rev}.tar.gz";
       sha256 = lock.narHash;
     };
-  in import nixpkgs {},
+  in import nixpkgs { system = builtins.currentSystem; },
   ...
 }:
 

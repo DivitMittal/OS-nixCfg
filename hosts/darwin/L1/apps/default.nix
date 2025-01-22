@@ -17,34 +17,53 @@
 
     casks = [
       ## macOS specific
-      "raycast" "alt-tab" "spaceman" "gswitch" "bluesnooze"
+      "macfuse"
+      "raycast" "alt-tab" "spaceman" "gswitch"
+      "bluesnooze"
       #"hammerspoon"
 
       ## WWWW browser
-      "firefox" "google-chrome"
+      "firefox" "google-chrome" "tor-browser"
 
       ## Development Environment
-      "wezterm" "visual-studio-code" "jetbrains-toolbox" "cyberduck"
+      "wezterm"
+      "visual-studio-code" "jetbrains-toolbox" "cursor"
+      # R
+      "rig" "rstudio"
 
       ## Microsoft
-      "onlyoffice" "libreoffice" "microsoft-onenote" "onedrive" "microsoft-auto-update" "microsoft-teams"
+      "onlyoffice"
+      "microsoft-auto-update" "microsoft-onenote" "microsoft-teams" "microsoft-outlook" "microsoft-excel"
+      #"crystalfetch"
+      #"libreoffice"
+      #"onedrive"
 
       ## Communication
-      "whatsapp" "zoom"
+      "whatsapp" "thunderbird" "simplex"
+      #"zoom"
 
-      ## Notes
-      "notion-calendar" "notion"
-      #"obsidian"
+      ## Networking
+      "localsend"
+      #"cyberduck"
 
       ## Multimedia
-      "spotify" "stolendata-mpv"
+      "stolendata-mpv" "spotify"
 
-      ## Other
+      ## Creative
       "wacom-tablet"
+      #"blender"
+
+      ## Data Analytics
+      #"tableau" "tableau-prep"
+
+      ## Notes
+      #"notion-calendar" "notion"
+      #"obsidian"
     ];
 
     brews = [
-      "cliclick" "spotify_player"
+      "cliclick"
+      "gh"
     ];
 
     masApps = {
