@@ -1,7 +1,6 @@
 { username, config, lib, pkgs, ... }:
 
 let
-  inherit(lib) mkOption;
   isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
   cfg = config.paths;
 in
@@ -11,7 +10,7 @@ in
     ./nixCfg.nix
   ];
 
-  options = let inherit(lib) types; in {
+  options = let inherit(lib) mkOption types; in {
     paths.repo = mkOption {
       type = types.str;
       default = cfg.homeDirectory + "/OS-nixCfg";

@@ -17,10 +17,10 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-darwin, nix-darwin, nix-on-droid, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-darwin, nix-darwin, nix-on-droid, ... } @inputs:
   let
     username = "div";
-    system = builtins.currentSystem;
+    system = builtins.currentSystem; # impure
   in
   {
     darwinConfigurations = {
@@ -43,7 +43,7 @@
     };
 
     nixOnDroidConfigurations = {
-      default = let
+      default = let # Android
           hostname = "M1";
         in nix-on-droid.lib.nixOnDroidConfiguration {
           pkgs = import nixpkgs { inherit system; };

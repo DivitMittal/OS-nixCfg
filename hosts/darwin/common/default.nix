@@ -24,7 +24,7 @@
       ];
     };
 
-    environment.packages = builtins.attrValues {
+    environment.systemPackages = builtins.attrValues {
       inherit(pkgs-darwin)
         blueutil
         duti
