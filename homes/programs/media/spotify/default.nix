@@ -8,10 +8,7 @@ in
     ./spicetify
   ];
 
-  home.packages = with pkgs; [
-    # audio
-    spotdl
-  ];
+  home.packages = with pkgs; [ spotdl ];
 
   programs.spotify-player = {
     enable = false;
