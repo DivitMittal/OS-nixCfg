@@ -1,7 +1,6 @@
 ##########################################################################
 #                               NOTES                                    #
 ##########################################################################
-# #!/usr/bin/env dash
 ####################### Modify the launchctl plist (improved performance)
 # plist xml can be found at "yabai --install-service (i.e. ~/Library/LaunchAgents/com.koekeishiya.yabai.plist)"
 # Setting dash as the shell for yabai commands.
