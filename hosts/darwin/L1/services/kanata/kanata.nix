@@ -1,10 +1,10 @@
 { config, pkgs, lib, ... }:
 
 let
-  inherit(lib) mkIf;
+  inherit(lib) mkIf optionals;
   cfg = config.services.kanata;
   configFile = mkIf (cfg.config != "") "${pkgs.writeScript "kanata.kbd" "${cfg.config}"}";
-  command = if (cfg.config != "") then [ "sudo" "${cfg.package}" "--no-delay" "--cfg" configFile ] else [ "sudo" "${cfg.package}" "--no-delay" ];
+  command = ["${cfg.package}" "--nodelay"] ++ optionals (cfg.config != "") ["--cfg" configFile] ++ optionals (cfg.config == "") ["--cfg" "${cfg.configPath}"];
 in
 {
   options = let inherit(lib) mkOption types; in {
@@ -12,7 +12,7 @@ in
       type = types.bool;
       default = false;
       example = true;
-      description = "To enable/disable kanata & run it as a LaunchAgent";
+      description = "To enable/disable kanata & run it as launchd LaunchDaemon";
     };
 
     services.kanata.package = mkOption {
@@ -52,28 +52,20 @@ in
       description = "Your kanata configuration";
     };
 
-    services.kanata.extraConfig = mkOption {
-      type = types.str;
-      default = "";
-      example = ''
-        (defsrc
-          caps grv         i
-                      j    k    l
-          lsft rsft
-        )
-      '';
-      description = "Your extra kanata configuration";
+    services.kanata.configPath = mkOption {
+      type = types.path;
+      default = builtins.toPath "${config.paths.homeDirectory}/.config/kanata/kanata.kbd";
+      example = "~/.config/kanata/kanata.kbd";
+      description = "Your kanata configuration's path";
     };
   };
 
   config = mkIf (cfg.enable) {
-    launchd.user.agents.kanata = {
-      environment.SHELL = "/bin/dash";
+    launchd.daemons.kanata = {
+      script = "${builtins.concatStringsSep " " command}";
       serviceConfig = {
-        ProgramArguments = command;
         StandardOutPath = /tmp/org.nixos.kanata.out.log;
         StandardErrorPath = /tmp/org.nixos.kanata.err.log;
-        ProcessType = "Interactive";
         RunAtLoad = true;
         KeepAlive.SuccessfulExit = false;
         KeepAlive.Crashed = true;
@@ -81,8 +73,13 @@ in
       };
     };
 
-    security.sudo.extraConfig = ''
-      ALL ALL=(root) NOPASSWD: ${cfg.package}
+    # security.sudo.extraConfig = ''
+    #   ALL ALL=(ALL) NOPASSWD: ${builtins.concatStringsSep " " command}
+    # '';
+    environment.etc."sudoers.d/kanata".source = pkgs.runCommand "sudoers-kanata" {} ''
+      cat <<EOF >"$out"
+      ALL ALL=(ALL) NOPASSWD: ${builtins.concatStringsSep " " command}
+      EOF
     '';
   };
 }

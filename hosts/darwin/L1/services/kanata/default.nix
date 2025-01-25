@@ -1,12 +1,11 @@
-{ config, ... }:
+_:
 
 {
   imports = [
-    ./kanata.nix
+    ./kanata-tray.nix
   ];
 
-  services.kanata = {
+  services.kanata-tray = {
     enable = true;
-    package = "${config.paths.homeDirectory}/.local/bin/kanata"; # impure
   };
 }
