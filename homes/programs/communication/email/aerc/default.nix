@@ -3,7 +3,7 @@
 {
   # impure
   home.file.aerc = {
-    enable = true;
+    enable = false;
     source = /. + "${config.paths.secrets}/email/aerc/accounts.conf";
     target = "${config.xdg.configHome}/aerc/accounts.conf";
   };

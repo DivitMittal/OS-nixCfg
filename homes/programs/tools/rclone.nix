@@ -76,7 +76,7 @@ in
 {
   # impure
   home.file.rclone = {
-    enable = true;
+    enable = false;
     source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath "${config.paths.secrets}/rclone.conf");
     target = "${config.xdg.configHome}/rclone/rclone.conf";
 
