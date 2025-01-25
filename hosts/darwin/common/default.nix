@@ -15,6 +15,8 @@
   };
 
   config = {
+    environment.darwinConfig = "${config.paths.currentDarwinCfg}/default.nix";
+
     networking = {
       knownNetworkServices = [ "Wi-Fi" ];
       # Cloudflare DNS
@@ -22,6 +24,8 @@
               "1.1.1.1"              "1.0.0.1"         # IPv4
         "2606:4700:4700::1111" "2606:4700:4700::1001"  # IPv6
       ];
+      computerName = "${hostname}";
+      hostName = "${hostname}";
     };
 
     environment.systemPackages = builtins.attrValues {
