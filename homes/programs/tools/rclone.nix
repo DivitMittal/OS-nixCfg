@@ -74,10 +74,9 @@ let
         --no-unicode-normalization=false'';
 in
 {
-  # impure
   home.file.rclone = {
     enable = false;
-    source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath "${config.paths.secrets}/rclone.conf");
+    source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath "${config.paths.secrets}/rclone.conf"); # impure
     target = "${config.xdg.configHome}/rclone/rclone.conf";
 
   };
@@ -88,19 +87,19 @@ in
     ;
 
     OneDrive-Divit = pkgs.writeShellScriptBin "OneDrive-Divit" ''
-      ${common} OneDrive-Divit: ~/Remotes/OneDrive-Divit &
+      ${common} OneDrive-Divit: ~/Remotes/OneDrive-Divit
     '';
 
     OneDrive-MUJ = pkgs.writeShellScriptBin "OneDrive-MUJ" ''
-      ${common} OneDrive-MUJ: ~/Remotes/OneDrive-MUJ &
+      ${common} OneDrive-MUJ: ~/Remotes/OneDrive-MUJ
     '';
 
     GoogleDrive-Divit = pkgs.writeShellScriptBin "GoogleDrive-Divit" ''
-      ${common} GoogleDrive-Divit: ~/Remotes/GoogleDrive-Divit &
+      ${common} GoogleDrive-Divit: ~/Remotes/GoogleDrive-Divit
     '';
 
     GooglePhotos-Divit = pkgs.writeShellScriptBin "GooglePhotos-Divit" ''
-      ${common} GooglePhotos-Divit: ~/Remotes/GooglePhotos-Divit &
+      ${common} GooglePhotos-Divit: ~/Remotes/GooglePhotos-Divit
     '';
   };
 }

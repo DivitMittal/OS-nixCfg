@@ -11,12 +11,10 @@ Firefox.app
 Ghostery Privacy Ad Blocker.app
 Google Chrome.app
 Grass.app
+Guitar Pro 8.app
 Homerow.app
 IK Product Manager.app
-JetBrains Toolbox.app
-LocalSend.app
 Logic Pro X.app
-Macs Fan Control.app
 MainStage.app
 MeldaProduction
 Menu Bar Dock.app
@@ -24,14 +22,15 @@ Microsoft Excel.app
 Microsoft OneNote.app
 Microsoft Outlook.app
 Microsoft Teams.app
+MuseScore 4.app
 Native Instruments
 Nembrini Audio Central.app
 NeuralAmpModeler.app
 Nix Apps
 ONLYOFFICE.app
-OneDrive.app
 PDF Expert.app
 Parallels Desktop.app
+R.app
 RStudio.app
 Raycast.app
 Rig.app
@@ -45,6 +44,7 @@ Super Agent.app
 Texty.app
 Thunderbird.app
 Tor Browser.app
+Trae.app
 Utilities
 Vimkey.app
 Visual Studio Code.app

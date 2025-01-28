@@ -1,10 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  # impure
   home.file.aerc = {
     enable = false;
-    source = /. + "${config.paths.secrets}/email/aerc/accounts.conf";
+    source = builtins.toPath "${config.paths.secrets}/email/aerc/accounts.conf"; # impure
     target = "${config.xdg.configHome}/aerc/accounts.conf";
   };
 

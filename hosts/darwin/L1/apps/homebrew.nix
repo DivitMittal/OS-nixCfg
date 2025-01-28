@@ -17,13 +17,14 @@
 
     taps = [
       "r-lib/rig"
+      "macos-fuse-t/homebrew-cask"
     ];
 
     casks = [
       ## macOS specific
-      "macfuse"
       "raycast" "alt-tab" "spaceman" "gswitch"
       "bluesnooze"
+      "fuse-t" #"macfuse"
       #"knockknock"
       #"hammerspoon"
 
@@ -59,6 +60,7 @@
       ## Creative
       "wacom-tablet"
       #"blender"
+      "musescore"
 
       ## Data Analytics
       #"tableau" "tableau-prep"

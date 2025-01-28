@@ -5,7 +5,7 @@
 
   home.file.weechat = {
     enable = true;
-    source = ./conf;
+    source = config.lib.file.mkOutOfStoreSymlink ./conf;
     target = "${config.xdg.configHome}/weechat";
     recursive = true;
   };
