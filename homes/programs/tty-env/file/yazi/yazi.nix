@@ -9,17 +9,18 @@
     sort_by = "alphabetical";
     sort_dir_first = true;
     sort_reverse = false;
+    mouse_events = [ "click" "scroll" ];
     sort_sensitive = false;
   };
 
   open.rules = [
-    { name = "*/"                         ; use = [ "edit" "editVS" "open" "reveal" ]; }
+    { name = "*/"                         ; use = [ "edit" "editVS" "open" "reveal" "look" ]; } # general directories
     { mime = "text/*"                     ; use = [ "edit" "editVS" "open" "reveal" ]; }
     { mime = "application/json"           ; use = [ "edit" "editVS" "reveal" ]       ; }
     { mime = "*/javascript"               ; use = [ "edit" "editVS" "reveal" ]       ; }
-    { mime = "image/*"                    ; use = [ "open" "reveal" ]               ; }
-    { mime = "video/*"                    ; use = [ "play" "reveal" ]               ; }
-    { mime = "audio/*"                    ; use = [ "play" "reveal" ]               ; }
+    { mime = "image/*"                    ; use = [ "open" "reveal" "look" ]         ; }
+    { mime = "video/*"                    ; use = [ "play" "reveal" "look" ]         ; }
+    { mime = "audio/*"                    ; use = [ "play" "reveal" "look"]          ; }
     { mime = "inode/x-empty"              ; use = [ "edit" "reveal" ]               ; }
     { mime = "application/zip"            ; use = [ "extract" "reveal" ]            ; }
     { mime = "application/gzip"           ; use = [ "extract" "reveal" ]            ; }
@@ -29,7 +30,7 @@
     { mime = "application/x-7z-compressed"; use = [ "extract" "reveal" ]            ; }
     { mime = "application/x-rar"          ; use = [ "extract" "reveal" ]            ; }
     { mime = "application/xz"             ; use = [ "extract" "reveal" ]            ; }
-    { mime = "*"                          ; use = [ "open" "reveal" ]               ; }
+    { mime = "*"                          ; use = [ "edit" "open" "reveal" "look"]  ; } # general files
   ];
 
   opener = {
@@ -51,16 +52,15 @@
       { desc = "extract here"; for = "windows"; run = "ouch d \"%1\""; }
     ];
     play = [
-      { desc = "play via mpv"   ; for = "macos"  ; run = "mpv \"$@\""     ; orphan = true;}
-      { desc = "play via mpv"   ; for = "windows"; run = "mpv \"%1\""     ; orphan = true;}
-      { desc = "Show media info"; for = "unix"   ; run = "mediainfo \"$1\"; echo \"Press enter to exit\"; read"; block = true;}
+      { desc = "play via mpv"   ; for = "unix"   ; run = "mpv --force-window \"$@\""  ; orphan = true;}
+      { desc = "play via mpv"   ; for = "windows"; run = "mpv --force-window \"%1\""  ; orphan = true;}
     ];
     reveal = [
-      { desc = "Reveal in Finder"  ; for = "macos"     ; run = "open -R \"$1\""          ;}
-      { desc = "Reveal in Explorer"; for = "windows"   ; run = "explorer /select, \"%1\""; orphan = true;}
+      { desc = "Finder reveal"  ; for = "macos"     ; run = "open -R \"$1\""          ;}
+      { desc = "Explorer reveal"; for = "windows"   ; run = "explorer /select, \"%1\""; orphan = true;}
     ];
     look = [
-      { desc = "Open in QuickLook"  ; for = "macos"    ; run = "ql \"$1\"";}
+      { desc = "QuickLook"; for = "macos"    ; run = "qlmanage -p \"$@\"";}
     ];
   };
 

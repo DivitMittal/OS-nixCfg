@@ -80,7 +80,7 @@
       { desc = "Sort by size (reverse)"                               ; on = [ "," "S" ]       ; run = "sort size --reverse --dir-first"                    ; }
 
       # Tabbing
-      { desc = "Create a new tab using the current path"              ; on = [ "t" ]           ; run = "tab_create --current"                               ; }
+      { desc = "Create a new tab using the current path"              ; on = [ "t" "t"]           ; run = "tab_create --current"                               ; }
       { desc = "Close a tab using the current path"                   ; on = [ "t" "c" ]       ; run = "tab_close --current"                                ; }
       { desc = "Switch to the next tab"                               ; on = [ "t" "n"]        ; run = "tab_switch 1 --relative"                            ; }
       { desc = "Switch to the previous tab"                           ; on = [ "t" "p" ]       ; run = "tab_switch -1 --relative"                           ; }
