@@ -18,7 +18,7 @@ _:
     };
 
     finder = {
-      QuitMenuItem                   = false;
+      QuitMenuItem                   = true;
       AppleShowAllFiles              = true; AppleShowAllExtensions = true;
       ShowPathbar                    = true; ShowStatusBar          = false; _FXShowPosixPathInTitle = true;
       FXEnableExtensionChangeWarning = false;

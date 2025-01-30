@@ -38,8 +38,8 @@
           ./programs/virt
           ./programs/web
 
-          ./configs/ideavim
           ./configs/raycast
+          ./configs/kanata-tray
         ];
       };
 

@@ -34,3 +34,9 @@
     --tridactyl-cmplt-font-family: var(--font);
     --tridactyl-cmplt-font-size: 22px;
 }
+
+:root #completions table {
+    font-size: 15pt;
+    border-spacing: 0;
+    table-layout: fixed;
+}
