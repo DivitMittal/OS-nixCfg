@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ transcrypt ];
+  home.packages = with pkgs; [ transcrypt ghfetch ];
 
   programs.gh = {
     enable = true;
