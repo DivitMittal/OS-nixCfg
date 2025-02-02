@@ -51,16 +51,16 @@
       #"zoom"
 
       ## Networking
-      #"localsend"
-      #"cyberduck"
+      "localsend"
+      "cyberduck"
 
       ## Multimedia
       "stolendata-mpv" "spotify"
 
       ## Creative
       "wacom-tablet"
-      #"blender"
       "musescore"
+      #"blender"
 
       ## Data Analytics
       #"tableau" "tableau-prep"
