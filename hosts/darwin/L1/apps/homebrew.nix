@@ -16,8 +16,9 @@
     };
 
     taps = [
-      "r-lib/rig"
-      "macos-fuse-t/homebrew-cask"
+      "r-lib/rig" #rig
+      "aaronraimist/tap" #gomuks
+      "macos-fuse-t/homebrew-cask" #fuse-t
     ];
 
     casks = [
@@ -48,6 +49,7 @@
 
       ## Communication
       "whatsapp" "thunderbird" "simplex"
+      "gomuks"
       #"zoom"
 
       ## Networking
