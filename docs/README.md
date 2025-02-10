@@ -1,6 +1,6 @@
 <h1 align='center'>OS-nixCfg</h1>
 <div align='center'>
-    <img alt='An abstract image of a donut-like object' title='OS-nixCfg' height='250' src='assets/a-12.png' />
+    <img alt='An abstract image of a donut-like object' title='OS-nixCfg' height='250' src='../assets/a-12.png' />
 </div>
 
 ---
