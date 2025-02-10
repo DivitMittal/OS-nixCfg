@@ -42,14 +42,14 @@
 
       ## Microsoft
       "onlyoffice"
-      "microsoft-auto-update" "microsoft-onenote" "microsoft-teams" "microsoft-outlook" "microsoft-excel"
+      "microsoft-auto-update" "microsoft-onenote" "microsoft-teams" "microsoft-outlook" #"microsoft-excel"
       #"crystalfetch"
       #"libreoffice"
       #"onedrive"
 
       ## Communication
       "whatsapp" "thunderbird" "simplex"
-      "gomuks"
+
       #"zoom"
 
       ## Networking
@@ -73,8 +73,14 @@
     ];
 
     brews = [
-      "cliclick"
+      ## homebrew
       "gh"
+
+      ## macOS-specific
+      "cliclick"
+
+      ## Communication
+      "gomuks" # Matrix protocol
     ];
 
     masApps = {
