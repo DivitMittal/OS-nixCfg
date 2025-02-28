@@ -1,6 +1,6 @@
 # Custom shell for bootstrapping on new hosts, modifying nix-config
 { pkgs ? let
-    lock = (builtins.fromJSON (builtins.readFile ./flake.lock)).nodes.nixpkgs.locked;
+    lock = (builtins.fromJSON (builtins.readFile ./hosts/flake.lock)).nodes.nixpkgs.locked;
     nixpkgs = fetchTarball {
       url = "https://github.com/nixos/nixpkgs/archive/${lock.rev}.tar.gz";
       sha256 = lock.narHash;
@@ -16,9 +16,8 @@
     nativeBuildInputs = builtins.attrValues {
       inherit (pkgs)
         nix
+        git pre-commit
         home-manager
-        git
-        pre-commit
       ;
     };
   };
