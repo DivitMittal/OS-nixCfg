@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, user, ... }:
 
 {
   imports = [
@@ -27,8 +27,8 @@
     enable = true;
     package = pkgs.gitFull;
 
-    userName   = "DivitMittal";
-    userEmail  = "64.69.76.69.74.m@gmail.com";
+    userName   = user.fullname;
+    userEmail  = builtins.elemAt user.emails 0;
 
     attributes = import ./attributes.nix;
     ignores    = import ./../common/ignore.nix;

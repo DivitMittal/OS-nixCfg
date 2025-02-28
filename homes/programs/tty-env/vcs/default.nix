@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 
 {
   imports = [
@@ -9,8 +9,8 @@
     enable = false;
     package = pkgs.mercurial;
 
-    userName = "Divit Mittal";
-    userEmail = "64.69.76.69.74.m@gmail.com";
+    userName = user.fullname;
+    userEmail = builtins.elemAt user.emails 0;
 
     ignores = import ./common/ignore.nix;
   };
