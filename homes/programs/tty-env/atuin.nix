@@ -1,12 +1,9 @@
-{ pkgs, pkgs-darwin, ... }:
+{ pkgs, ... }:
 
-let
-  isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
-in
 {
   programs.atuin = {
     enable = true;
-    package = if isDarwin then pkgs-darwin.atuin else pkgs.atuin;
+    package = pkgs.atuin;
 
     enableFishIntegration = true; enableZshIntegration  = false; enableBashIntegration = false; enableNushellIntegration = false;
 

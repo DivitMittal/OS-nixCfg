@@ -1,13 +1,9 @@
-{ pkgs, pkgs-darwin, lib, ... }:
-let
-  isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
-in
+{ pkgs, lib, ... }:
 {
   environment.shells = builtins.attrValues {
-    bash = if isDarwin then pkgs-darwin.bashInteractive else pkgs.bashInteractive;
-    zsh = if isDarwin then pkgs-darwin.zsh else pkgs.zsh;
-    dash = if isDarwin then pkgs-darwin.dash else pkgs.dash;
-    fish = if isDarwin then pkgs-darwin.fish else pkgs.fish;
+    inherit(pkgs)
+      bash zsh dash fish
+    ;
   };
 
   environment = {

@@ -1,4 +1,4 @@
-{ pkgs, pkgs-darwin, ... }:
+{ pkgs, ... }:
 
 let
   isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
@@ -13,6 +13,6 @@ in
       #virt-manager libvirt qemu
     ;
 
-    colima = if isDarwin then pkgs-darwin.colima else pkgs.colima;
+    colima = if isDarwin then pkgs.colima else null;
   };
 }

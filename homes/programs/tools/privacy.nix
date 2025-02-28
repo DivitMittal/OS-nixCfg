@@ -1,18 +1,18 @@
-{ config, pkgs, pkgs-darwin, ... }:
+{ config, pkgs, user, ... }:
 
 let
   isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
-  pinentryPackage = if isDarwin then pkgs-darwin.pinentry_mac else pkgs.pinentry;
+  pinentryPackage = if isDarwin then pkgs.pinentry_mac else pkgs.pinentry;
 in
 {
   home.packages = builtins.attrValues {
-    bw = if isDarwin then pkgs-darwin.bitwarden-cli else pkgs.bitwarden-cli;
+    # bw = pkgs-stable.bitwarden-cli;
     age = pkgs.age;
   };
 
   programs.gpg = {
     enable = true;
-    package = if isDarwin then pkgs-darwin.gnupg else pkgs.gnupg;
+    package = pkgs.gnupg;
 
     homedir = "${config.xdg.dataHome}/gnupg";
 
@@ -23,11 +23,11 @@ in
   };
 
   programs.rbw = {
-    enable = true;
-    package = if isDarwin then pkgs-darwin.rbw else pkgs.rbw;
+    enable = false;
+    package = pkgs.rbw;
 
     settings = {
-      email = "mittaldivit@gmail.com";
+      email = builtins.elemAt user.emails 1;
       pinentry = pinentryPackage;
     };
   };

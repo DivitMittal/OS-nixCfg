@@ -1,9 +1,9 @@
-{ pkgs, pkgs-darwin, config, ... }:
+{ pkgs, ... }:
 
 
 {
   home.packages = builtins.attrValues {
-    nodejs = if pkgs.stdenvNoCC.hostPlatform.isDarwin then pkgs-darwin.nodejs_22 else pkgs.nodejs_22;
+    nodejs = pkgs.nodejs;
     pnpm = pkgs.nodePackages_latest.pnpm;
   };
 

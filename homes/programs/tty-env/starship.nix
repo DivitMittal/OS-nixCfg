@@ -1,9 +1,9 @@
-{ pkgs, pkgs-darwin, lib, ... }:
+{ pkgs, lib, ... }:
 
 {
   programs.starship = {
     enable = true;
-    package = if pkgs.stdenvNoCC.hostPlatform.isDarwin then pkgs-darwin.starship else pkgs.starship;
+    package = pkgs.starship;
 
     enableFishIntegration = true; enableZshIntegration  = false; enableBashIntegration = false; enableNushellIntegration = false; enableInteractive = true;
 

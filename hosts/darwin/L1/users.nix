@@ -1,4 +1,4 @@
-{ username, pkgs-darwin, ... }:
+{ username, pkgs, config, ... }:
 
 {
   nix.settings = {
@@ -8,8 +8,8 @@
   users.users = {
     "${username}" = {
       description = "${username}";
-      home = "/Users/${username}";
-      shell = pkgs-darwin.fish;
+      home = "${config.paths.homeDirectory}";
+      shell = pkgs.fish;
     };
   };
 }

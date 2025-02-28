@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-darwin, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   programs.fish.loginShellInit = lib.mkAfter ''

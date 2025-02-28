@@ -1,4 +1,4 @@
-{ config, lib, hostname, inputs, pkgs-darwin, ... }:
+{ config, lib, hostname, inputs, pkgs, ... }:
 
 {
   imports = [
@@ -29,7 +29,7 @@
     };
 
     environment.systemPackages = builtins.attrValues {
-      inherit(pkgs-darwin)
+      inherit(pkgs)
         blueutil
         duti
       ;
@@ -43,6 +43,6 @@
     '';
 
     system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null; # Set Git commit hash for darwin-version.
-    system.stateVersion = 5;
+    system.stateVersion = 4;
   };
 }

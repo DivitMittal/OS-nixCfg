@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-darwin, ... }:
+{ pkgs, ... }:
 let
   isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
 in

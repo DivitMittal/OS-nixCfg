@@ -1,11 +1,8 @@
-{ config, pkgs, pkgs-darwin, lib, ... }:
+{ config, pkgs, lib, ... }:
 
-let
-  isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
-in
 {
   home.packages = builtins.attrValues {
-    pipx = if isDarwin then pkgs-darwin.pipx else pkgs.pipx;
+    pipx = pkgs.pipx;
     micromamba = pkgs.micromamba;
   };
 
