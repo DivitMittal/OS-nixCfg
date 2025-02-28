@@ -1,11 +1,12 @@
-plugins:
-	yazi-rs/plugins:max-preview (c7feb90)
-	yazi-rs/plugins:git (c7feb90)
-	yazi-rs/plugins:smart-enter (c7feb90)
-	yazi-rs/plugins:full-border (c7feb90)
-	yazi-rs/plugins:diff (c7feb90)
-	yazi-rs/plugins:chmod (c7feb90)
-	yazi-rs/plugins:smart-filter (c7feb90)
-	AnirudhG07/rich-preview (8be4d27)
-	ndtoan96/ouch (b869886)
-flavors:
+Plugins:
+	yazi-rs/plugins:max-preview (5186af7)
+	yazi-rs/plugins:git (5186af7)
+	yazi-rs/plugins:smart-enter (5186af7)
+	yazi-rs/plugins:full-border (5186af7)
+	yazi-rs/plugins:diff (5186af7)
+	yazi-rs/plugins:chmod (5186af7)
+	yazi-rs/plugins:smart-filter (5186af7)
+	AnirudhG07/rich-preview (2559e5f)
+	ndtoan96/ouch (ce6fb75)
+	Reledia/hexyl (228a9ef)
+Flavors:

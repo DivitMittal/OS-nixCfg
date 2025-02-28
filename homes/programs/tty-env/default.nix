@@ -20,6 +20,7 @@
       grc
       duf
       dust
+      sendme # Iroh protocol
     ;
   };
 

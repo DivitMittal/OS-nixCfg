@@ -25,6 +25,7 @@
       ## macOS specific
       "raycast" "alt-tab" "spaceman" "gswitch"
       "bluesnooze"
+      "betterdisplay"
       "fuse-t" #"macfuse"
       #"knockknock"
       #"hammerspoon"
@@ -43,13 +44,12 @@
       ## Microsoft
       "onlyoffice"
       "microsoft-auto-update" "microsoft-onenote" "microsoft-teams" "microsoft-outlook" #"microsoft-excel"
+      "onedrive"
       #"crystalfetch"
       #"libreoffice"
-      #"onedrive"
 
       ## Communication
       "whatsapp" "thunderbird" "simplex"
-
       #"zoom"
 
       ## Networking
@@ -62,14 +62,15 @@
       ## Creative
       "wacom-tablet"
       "musescore"
+      "reaper"
       #"blender"
 
       ## Data Analytics
       #"tableau" "tableau-prep"
 
       ## Notes
+      "obsidian"
       #"notion-calendar" "notion"
-      #"obsidian"
     ];
 
     brews = [
@@ -81,9 +82,14 @@
 
       ## Communication
       "gomuks" # Matrix protocol
+
+      ## Development
+      "libomp" # Multiprogramming
     ];
 
     masApps = {
+      "Tuner" = 1597107926;
+
       "Texty" = 1538996043;
 
       # Safari Extensions

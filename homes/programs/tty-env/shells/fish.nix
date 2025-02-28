@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.fish = {
@@ -35,8 +35,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "jorgebucaran";
           repo = "fisher";
-          rev = "4.4.4";
-          hash = "sha256-e8gIaVbuUzTwKtuMPNXBT5STeddYqQegduWBtURLT3M=";
+          rev = "4.4.5";
+          hash = "sha256-VC8LMjwIvF6oG8ZVtFQvo2mGdyAzQyluAGBoK8N2/QM=";
         };
       }
     ];
