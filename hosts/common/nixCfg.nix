@@ -6,17 +6,11 @@ in
 {
   nix.package = mkDefault pkgs.nixVersions.latest;
 
-  environment.systemPackages = builtins.attrValues {
-    inherit(pkgs)
-      comma
-    ;
-  };
-
   nixpkgs.hostPlatform = "${system}";
 
-  services.nix-daemon.enable = true;
-
   nix = {
+    enable = true;
+
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       warn-dirty = mkDefault true;
@@ -40,7 +34,6 @@ in
 
   system.checks = {
     verifyBuildUsers = mkDefault true;
-    verifyNixChannels = mkDefault true;
     # verifyNixPath = mkDefault true;
   };
 }

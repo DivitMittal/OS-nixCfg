@@ -25,7 +25,7 @@ in
 
     paths.homeDirectory = mkOption {
       type = types.str;
-      default = if isDarwin then "/Users/${username}" else "/home/${username}";
+      default = (if isDarwin then "/Users" else "/home") + "/${username}";
       description = "Path to your home directory";
     };
   };
@@ -41,8 +41,6 @@ in
       man.enable  = true;
       doc.enable  = false;
     };
-
-    programs.nix-index.enable = true;
 
     environment.systemPackages = builtins.attrValues {
       inherit(pkgs)
