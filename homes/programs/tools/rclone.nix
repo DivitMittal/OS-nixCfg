@@ -2,8 +2,6 @@
 
 let
   common = ''
-      #!/bin/bash
-
       # Log start time
       echo "Script started at $(date)"
 

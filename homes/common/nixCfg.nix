@@ -9,6 +9,7 @@ in
   nix = {
     checkConfig = mkDefault true;
     settings = {
+      experimental-features = [ "nix-command" "flakes" ];
       warn-dirty = mkDefault true;
     };
   };

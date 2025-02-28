@@ -2,7 +2,7 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "DivitMittal")
+;; (setq user-full-name "YourName")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -16,8 +16,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "CaskaydiaCove NFM" :size 12 :weight 'semi-light)
-     doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+(setq doom-font (font-spec :family "CaskaydiaCove NFM" :size 12 :weight 'semi-light) doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -70,4 +69,4 @@
 ;; they are implemented
 
 ;; Set bash as the default shell for emacs commands
-(setq shell-file-name (executable-find "fish"))
+(setq shell-file-name (executable-find "bash"))

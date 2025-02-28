@@ -7,7 +7,7 @@
 
     # All interactive sessions
     initExtra = ''
-      export BADOTDIR="${config.home.homeDirectory}/.config/bash"
+      export BADOTDIR="${config.xdg.configHome}/bash"
       export HISTFILE="''${BADOTDIR:-$HOME}/.bash_history"
 
       # Prompt

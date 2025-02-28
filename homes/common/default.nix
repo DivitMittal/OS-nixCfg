@@ -1,4 +1,4 @@
-{ username, config, lib, pkgs, ... }:
+{ user, config, lib, pkgs, ... }:
 
 let
   isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
@@ -42,8 +42,8 @@ in
 
   config = {
     home = {
-      inherit username;
-      homeDirectory = if isDarwin then "/Users/${username}" else "/home/${username}";
+      username = user.username;
+      homeDirectory = (if isDarwin then "/Users" else "/home") + "/${config.home.username}";
     };
 
     programs.home-manager.enable = true;

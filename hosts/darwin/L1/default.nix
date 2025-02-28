@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./../common
     ./apps
     ./defaults
     ./services
