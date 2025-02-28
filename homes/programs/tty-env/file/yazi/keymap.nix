@@ -21,8 +21,8 @@
       { desc = "Go back to the parent directory"                      ; on = [ "<Left>" ]      ; run = "leave"                                              ; }
       { desc = "Enter the child directory"                            ; on = [ "<Right>" ]     ; run = "enter"                                              ; }
 
-      { desc = "Move cursor to the top"                               ; on = [ "g" "g" ]       ; run = "arrow -99999999"                                    ; }
-      { desc = "Move cursor to the bottom"                            ; on = [ "G" ]           ; run = "arrow 99999999"                                     ; }
+      { desc = "Move cursor to the top"                               ; on = [ "g" "g" ]       ; run = "arrow top"                                          ; }
+      { desc = "Move cursor to the bottom"                            ; on = [ "G" ]           ; run = "arrow bot"                                          ; }
 
       { desc = "Toggle the current selection state"                   ; on = [ "<Space>" ]     ; run = [ "toggle --state=none" "arrow 1" ]                  ; }
       { desc = "Enter visual mode (selection mode)"                   ; on = [ "V" ]           ; run = "visual_mode"                                        ; }
