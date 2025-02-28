@@ -3,7 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
+    # nixpkgs-stable.url = "github:nixOS/nixpkgs/nixos-24.11";
+    # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -11,20 +12,26 @@
     };
   };
 
-  outputs = { nixpkgs, nixpkgs-darwin, home-manager, ... }@inputs:
+  outputs = { home-manager, ... }@inputs:
   let
+    user = {
+      fullname = "Divit Mittal";
+      username = "div";
+      emails = [ "64.69.76.69.74.m@gmail.com" "mittaldivit@gmail.com" ];
+    };
     system = builtins.currentSystem; # impure
-    pkgs = import nixpkgs { inherit system; };
-    pkgs-darwin = import nixpkgs-darwin { inherit system; };
-    username = "div";
+    pkgs = import inputs.nixpkgs { inherit system; };
+    #pkgs-darwin = import inputs.nixpkgs-darwin { inherit system; };
+    #pkgs-stable = import inputs.nixpkgs-stable { inherit system; };
   in
   {
     homeConfigurations =  {
-      "${username}-L1" = home-manager.lib.homeManagerConfiguration { # macOS
+      "L1" = home-manager.lib.homeManagerConfiguration { # macOS
         inherit pkgs;
         extraSpecialArgs = {
-          inherit pkgs-darwin;
-          inherit username;
+          inherit user;
+          #inherit pkgs-stable;
+          #inherit pkgs-darwin;
         };
 
         modules = [
@@ -43,10 +50,10 @@
         ];
       };
 
-      "${username}-L2" = home-manager.lib.homeManagerConfiguration { # nixOS
+      "L2" = home-manager.lib.homeManagerConfiguration { # nixOS
         inherit pkgs;
         extraSpecialArgs = {
-          inherit username;
+          inherit user;
         };
 
         modules = [
@@ -56,10 +63,10 @@
         ];
       };
 
-      "${username}-WSL" = home-manager.lib.homeManagerConfiguration {
+      "WSL" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
-          inherit username;
+          inherit user;
         };
 
         modules = [
@@ -69,10 +76,10 @@
         ];
       };
 
-      "${username}-Pi" = home-manager.lib.homeManagerConfiguration {
+      "Pi" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
-          inherit username;
+          inherit user;
         };
 
         modules = [
