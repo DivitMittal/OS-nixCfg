@@ -30,10 +30,12 @@ Nembrini Audio Central.app
 NeuralAmpModeler.app
 Nix Apps
 ONLYOFFICE.app
+Obsidian.app
 OneDrive.app
 PDF Expert.app
 Parallels Desktop.app
 R.app
+REAPER.app
 RStudio.app
 Raycast.app
 Rig.app
@@ -47,6 +49,7 @@ Super Agent.app
 Texty.app
 Thunderbird.app
 Tor Browser.app
+TuneHertz.app
 Utilities
 Vimkey.app
 Visual Studio Code.app

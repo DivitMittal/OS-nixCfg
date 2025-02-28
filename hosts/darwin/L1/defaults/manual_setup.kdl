@@ -18,7 +18,7 @@ Display {
 Accessibility {
   Vision {
     Display {
-      display-contrast "increase"
+      //display-contrast "increase"  // Using BetterDisplay instead
       Text {
         text-size "16pt"
         menu-bar-size "large"
