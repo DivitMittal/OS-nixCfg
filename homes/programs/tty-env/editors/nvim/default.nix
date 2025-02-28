@@ -1,4 +1,4 @@
-{ pkgs, pkgs-darwin, config, ... }:
+{ pkgs, config, ... }:
 
 {
   programs.neovim = {
@@ -14,7 +14,7 @@
 
   home.file.nvimConfig = {
     enable = true;
-    source = ./config;
+    source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath "${config.paths.programs}/tty-env/editors/nvim/config");
     target = "${config.xdg.configHome}/nvim";
     recursive = true;
   };

@@ -248,4 +248,28 @@ return {
       { mode = { "n" }, "<A-Left>",  function() require("smart-splits").resize_left()       end, desc = "resize pane   left  across splits", },
     },
   },
+
+  -- TODO: Add Jupyter ipynb notebooks functionality
+  {
+    "benlubas/molten-nvim",
+    build = ":UpdateRemotePlugins",
+    init = function()
+        -- this is an example, not a default. Please see the readme for more configuration options
+        vim.g.molten_output_win_max_height = 12
+    end,
+  },
+
+  -- TODO: Add support for Github copilot chat or other Cloud-hosted LLMs' chat interface
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = {
+      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+    },
+    build = "make tiktoken", -- Only on MacOS or Linux
+    opts = {
+      -- See Configuration section for options
+    },
+    -- See Commands section for default commands if you want to lazy load on them
+  }
 }
