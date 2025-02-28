@@ -1,13 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
   isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
 in
 {
-  imports = [
-    ./macOS_profile_hack.nix
-  ];
-
   home.file.tridactyl = {
     source = ./tridactyl;
     target = "${config.xdg.configHome}/tridactyl";
@@ -53,8 +49,8 @@ in
         # containersForce = true;
 
         search = {
-          default = "Google";
-          privateDefault = "Google";
+          default = "Unduck";
+          privateDefault = "Startpage";
           force = true;
 
           engines = {
@@ -62,6 +58,7 @@ in
             "Google".metaData.alias = "@g"; # built-in engines only support specifying one additional alias
             "Wikipedia (en)".metaData.alias = "@w";
             "DuckDuckGo".metaData.alias = "@d";
+            "ChatGPT".metaData.alias = [ "@gpt" ]; # third-party firefox addon
 
             "Nix Packages" = {
               urls = [
@@ -100,9 +97,44 @@ in
               ];
               definedAliases = [ "@gh" ];
             };
+
+            "Startpage" = {
+              urls = [
+                {
+                  template = "https://www.startpage.com/sp/search";
+                  params = [
+                    { name = "query"; value = "{searchTerms}"; }
+                  ];
+                }
+              ];
+              definedAliases = [ "@sp" ];
+            };
+
+            "Unduck" = {
+              urls = [
+                {
+                  template = "https://unduck.link/";
+                  params = [
+                    { name = "q"; value = "{searchTerms}"; }
+                  ];
+                }
+              ];
+              definedAliases = [ "@ud"];
+            };
+
+            "Perplexity" = {
+              urls = [
+                {
+                  template = "https://www.perplexity.ai";
+                  params = [
+                    { name = "q"; value = "{searchTerms}"; }
+                  ];
+                }
+              ];
+              definedAliases = [ "@p" ];
+            };
           };
         };
-
         settings = import ./user_settings.nix;
         userContent = builtins.readFile ./chrome/CSS/userContent.css;
         userChrome = builtins.readFile ./chrome/CSS/userChrome.css;
