@@ -1,13 +1,13 @@
-{ username, pkgs, config, ... }:
+{ user, pkgs, config, ... }:
 
 {
   nix.settings = {
-    trusted-users = [ "root" "${username}" ];
+    trusted-users = [ "root" "${user.username}" ];
   };
 
   users.users = {
-    "${username}" = {
-      description = "${username}";
+    "${user.username}" = {
+      description = "${user.username}";
       home = "${config.paths.homeDirectory}";
       shell = pkgs.fish;
     };

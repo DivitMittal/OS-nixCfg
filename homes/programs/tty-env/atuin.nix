@@ -1,5 +1,6 @@
 { pkgs, ... }:
 
+# TODO: backup atuin history (locally or via atuin-hosted servers)
 {
   programs.atuin = {
     enable = true;

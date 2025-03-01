@@ -1,5 +1,6 @@
 { pkgs, ... }:
 
+# TODO: Add ghfetch's output to personal-website
 {
   home.packages = with pkgs; [ transcrypt ghfetch ];
 

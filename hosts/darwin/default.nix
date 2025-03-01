@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ self, inputs, ... }:
 
 {
   flake.darwinConfigurations = {
@@ -10,7 +10,7 @@
         inherit system;
         pkgs = import inputs.nixpkgs { inherit system; };
         specialArgs = {
-          username = "div";
+          user = self.user;
           inherit hostname;
           # pkgs-darwin = import inputs.nixpkgs-darwin { inherit system; };
         };

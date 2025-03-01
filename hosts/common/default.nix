@@ -1,4 +1,4 @@
-{ username, config, lib, pkgs, ... }:
+{ user, config, lib, pkgs, ... }:
 
 let
   isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
@@ -25,7 +25,7 @@ in
 
     paths.homeDirectory = mkOption {
       type = types.str;
-      default = (if isDarwin then "/Users" else "/home") + "/${username}";
+      default = (if isDarwin then "/Users" else "/home") + "/${user.username}";
       description = "Path to your home directory";
     };
   };
