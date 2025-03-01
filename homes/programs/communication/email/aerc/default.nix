@@ -38,7 +38,6 @@
         "message/delivery-status" = "colorize";
         "message/rfc822"          = "colorize";
         "text/html"               = "html | colorize";
-        # "text/html"               = "${config.home.homeDirectory}/Downloads/carbonyl/carbonyl";
         "application/x-sh"        = "bat -fP -l sh";
       };
 

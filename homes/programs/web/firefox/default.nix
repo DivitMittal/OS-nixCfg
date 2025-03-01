@@ -12,7 +12,7 @@ in
 
   home.file.userChromeJS = {
     source = ./chrome/JS;
-    target = if isDarwin then "${config.home.homeDirectory}/Library/Application Support/Firefox/Profiles/custom-default/chrome/JS" else "${config.home.homeDirctory}/.mozilla/firefox/custom-default/chrome/JS";
+    target = "${config.home.homeDirectory}" + (if isDarwin then "/Library/Application Support/Firefox/Profiles/custom-default/chrome/JS" else "/.mozilla/firefox/custom-default/chrome/JS");
     recursive = true;
   };
 
