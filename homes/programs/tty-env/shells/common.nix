@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
   home.sessionVariables = rec {
@@ -16,8 +16,4 @@
   home.sessionPath = [
     "${config.home.sessionVariables.BIN_HOME}"
   ];
-
-  home.shellAliases = {
-    ed = "${pkgs.ed}/bin/ed -v -p ':'";
-  };
 }

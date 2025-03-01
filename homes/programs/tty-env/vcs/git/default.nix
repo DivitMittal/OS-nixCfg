@@ -5,6 +5,8 @@
     ./ancillary.nix
   ];
 
+  home.sessionVariables.GIT_HOSTING = "git@github.com:${config.programs.git.userName}";
+
   programs.fish.shellAbbrs = {
     gs  = { expansion = "git status"; position = "command";};
     gph = { expansion = "git push"; position = "command";};

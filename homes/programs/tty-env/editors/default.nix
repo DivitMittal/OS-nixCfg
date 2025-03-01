@@ -1,4 +1,4 @@
-_:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -7,4 +7,8 @@ _:
     ./emacs
     ./editorconfig.nix
   ];
+
+  home.shellAliases = {
+    ed = "${pkgs.ed}/bin/ed -v -p ':'";
+  };
 }
