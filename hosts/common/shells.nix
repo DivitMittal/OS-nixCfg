@@ -28,13 +28,13 @@
         package = pkgs.bash-completion;
       };
 
-      interactiveShellInit = ''
-        # Exit if running non-interactively (handled by nix-darwin)
-        # [ -z "$PS1" ] && return
-
-        # Check window size after every command (handled by nix-darwin)
-        # shopt -s checkwinsize
-      '';
+      # interactiveShellInit = ''
+      #   # Exit if running non-interactively (handled by nix-darwin)
+      #   # [ -z "$PS1" ] && return
+      #
+      #   # Check window size after every command (handled by nix-darwin)
+      #   # shopt -s checkwinsize
+      # '';
     };
 
     zsh = {
@@ -73,18 +73,6 @@
         completions.enable = true;
         functions.enable   = true;
       };
-
-      shellInit = ''
-        set -g fish_greeting
-      '';
-
-      interactiveShellInit = ''
-        set -g fish_vi_force_cursor 1
-        set -g fish_cursor_default block
-        set -g fish_cursor_visual block
-        set -g fish_cursor_insert line
-        set -g fish_cursor_replace_one underscore
-      '';
     };
   };
 }
