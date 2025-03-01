@@ -1,6 +1,20 @@
 { pkgs, lib, ... }:
 
+let
+  inherit(lib) mkAfter concatStrings;
+in
 {
+  programs.bash.initExtra = mkAfter ''
+    ## Prompt
+    if [ "`id -u`" -eq 0 ]; then # ckeck for root user
+      PS1="\[\e[1;31m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\w]> \[\e[0m\]"
+    else
+      PS1="\[\e[1m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\w]> \[\e[0m\]"
+    fi
+  '';
+
+  programs.zsh.initExtra = mkAfter "PS1='%F{cyan}%~%f %# '";
+
   programs.starship = {
     enable = true;
     package = pkgs.starship;
@@ -8,12 +22,12 @@
     enableFishIntegration = true; enableZshIntegration  = false; enableBashIntegration = false; enableNushellIntegration = false; enableInteractive = true;
 
     settings = {
-      format = lib.concatStrings [
+      format = concatStrings [
         "[╭─sys─-➜❯](bold blue) " "$sudo" "$username" "$hostname" "$shell" "\${custom.yazi}" "$status" "$custom" "$cmd_duration" "$docker_context" "\n"
         "[┣─pwd─-➜❯](bold red) "  "$directory" "$git_branch" "$git_commit" "$git_status" "\n"
         "[╰─cmd─➜❯](bold green) " "$character"
       ];
-      right_format = lib.concatStrings [
+      right_format = concatStrings [
         "$nix_shell"
         "$lua"
         "$rust"

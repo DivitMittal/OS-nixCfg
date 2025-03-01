@@ -1,4 +1,5 @@
 { pkgs, lib, ... }:
+
 {
   environment.shells = builtins.attrValues {
     inherit(pkgs)
@@ -27,14 +28,6 @@
         enable = false;
         package = pkgs.bash-completion;
       };
-
-      # interactiveShellInit = ''
-      #   # Exit if running non-interactively (handled by nix-darwin)
-      #   # [ -z "$PS1" ] && return
-      #
-      #   # Check window size after every command (handled by nix-darwin)
-      #   # shopt -s checkwinsize
-      # '';
     };
 
     zsh = {
@@ -43,8 +36,6 @@
       enableBashCompletion = false;
       enableCompletion = false; enableGlobalCompInit=false;
       enableSyntaxHighlighting = false;
-
-      promptInit = "PS1='%F{cyan}%~%f %# '";
 
       interactiveShellInit = ''
         [[ "$(locale LC_CTYPE)" == "UTF-8" ]] && setopt COMBINING_CHARS   # UTF-8 with combining characters

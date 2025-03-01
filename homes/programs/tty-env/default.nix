@@ -12,7 +12,7 @@
     ./btop.nix
     ./eza.nix
     ./fastfetch.nix
-    ./starship.nix
+    ./prompt.nix
   ];
 
   home.packages = builtins.attrValues {
