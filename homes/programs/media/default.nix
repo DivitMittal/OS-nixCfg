@@ -20,7 +20,7 @@ in
 
   programs.mpv = {
     enable = true;
-    package = if isDarwin then pkgs.hello else pkgs.mpv-unwrapped; # homebrew
+    package = (if isDarwin then pkgs.hello else pkgs.mpv-unwrapped); # homebrew
 
     bindings = {
       "n" = "seek -10";
