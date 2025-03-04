@@ -25,6 +25,7 @@
       ## macOS specific
       "raycast" "alt-tab" "spaceman" "gswitch"
       "bluesnooze"
+      "jordanbaird-ice"
       "betterdisplay"
       "fuse-t" #"macfuse"
       #"knockknock"
@@ -89,8 +90,8 @@
 
     masApps = {
       "Tuner" = 1597107926;
-
       "Texty" = 1538996043;
+      "PerplexityAI" = 6714467650;
 
       # Safari Extensions
       "Ghostery" = 6504861501;
