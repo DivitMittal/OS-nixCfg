@@ -1,2 +1,5 @@
 #Jetbrains IDE
 .idea/
+
+# nvim plugin manager lock file, i.e., lazy-lock.json
+**/lazy-lock.json
