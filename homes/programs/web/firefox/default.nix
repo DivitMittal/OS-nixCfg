@@ -55,10 +55,10 @@ in
 
           engines = {
             "Bing".metaData.hidden = true;
-            "Google".metaData.alias = "@g"; # built-in engines only support specifying one additional alias
+            # built-in engines only support specifying one additional alias
+            "Google".metaData.alias = "@g";
             "Wikipedia (en)".metaData.alias = "@w";
             "DuckDuckGo".metaData.alias = "@d";
-            "ChatGPT".metaData.alias = [ "@gpt" ]; # third-party firefox addon
 
             "Nix Packages" = {
               urls = [

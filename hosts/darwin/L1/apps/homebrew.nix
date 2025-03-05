@@ -26,8 +26,8 @@
       "raycast" "alt-tab" "spaceman" "gswitch"
       "bluesnooze"
       "jordanbaird-ice"
-      "betterdisplay"
       "fuse-t" #"macfuse"
+      #"betterdisplay"
       #"knockknock"
       #"hammerspoon"
 
