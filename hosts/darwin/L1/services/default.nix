@@ -5,5 +5,6 @@ _:
     ./kanata
     ./skhd
     ./yabai.nix
+    ./spotifyd
   ];
 }
