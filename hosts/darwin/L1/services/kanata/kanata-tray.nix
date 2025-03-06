@@ -7,18 +7,20 @@ let
 in
 {
   options = let inherit(lib) mkOption types; in {
-    services.kanata-tray.enable = mkOption {
-      type = types.bool;
-      default = true;
-      example = true;
-      description = "To enable/disable kanata-tray & run it as a LaunchDaemon";
-    };
+    services.kanata-tray = {
+      enable = mkOption {
+        type = types.bool;
+        default = true;
+        example = true;
+        description = "To enable/disable kanata-tray & run it as a LaunchAgent";
+      };
 
-    services.kanata-tray.package = mkOption {
-      type = types.path;
-      default = builtins.toPath "${config.paths.homeDirectory}/.local/bin/kanata-tray"; #impure
-      example = "~/.local/bin/kanata-tray";
-      description = "The kanata-tray package to use";
+      package = mkOption {
+        type = types.path;
+        default = builtins.toPath "${config.paths.homeDirectory}/.local/bin/kanata-tray"; #impure
+        example = "~/.local/bin/kanata-tray";
+        description = "The kanata-tray package to use";
+      };
     };
   };
 
@@ -26,7 +28,7 @@ in
     launchd.user.agents.kanata-tray = {
       environment = {
         # KANATA_TRAY_CONFIG_DIR = "${config.paths.homeDirectory}/.config/kanata-tray"
-        KANATA_TRAY_LOG_DIR = "/tmp";
+        KANATA_TRAY_LOG_DIR = "/tmp/";
       };
       script = "sudo " + "${cfg.package}";
       serviceConfig = {
