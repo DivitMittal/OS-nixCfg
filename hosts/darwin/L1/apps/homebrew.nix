@@ -19,6 +19,7 @@
       "r-lib/rig" #rig
       "aaronraimist/tap" #gomuks
       "macos-fuse-t/homebrew-cask" #fuse-t
+      "homebrew/services"
     ];
 
     casks = [
@@ -80,6 +81,9 @@
 
       ## macOS-specific
       "cliclick"
+
+      ## Multimedia
+      "spotify_player"
 
       ## Communication
       "gomuks" # Matrix protocol

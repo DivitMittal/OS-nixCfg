@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, lib, ... }:
 
 {
   imports = [
@@ -16,12 +16,14 @@
       tree-sitter
       # java
       jdk gradle
-      # rust
-      cargo
       # lua
       lua
+      # Rust
+      cargo
     ;
 
     luarocks = pkgs.luajitPackages.luarocks;
   };
+
+  home.sessionPath = lib.mkAfter [ "${config.home.homeDirectory}/.cargo/bin" ];
 }

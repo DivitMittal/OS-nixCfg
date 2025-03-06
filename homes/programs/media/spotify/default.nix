@@ -11,7 +11,7 @@ in
   home.packages = with pkgs; [ spotdl ];
 
   programs.spotify-player = {
-    enable = false;
+    enable = true;
     package = if isDarwin then pkgs.hello else pkgs.spotify-player; # homebrew
 
     settings = {
