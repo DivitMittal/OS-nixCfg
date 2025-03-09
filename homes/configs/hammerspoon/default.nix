@@ -1,9 +1,8 @@
-{ config, ... }:
+_:
 
 {
-  home.file.hammerspoon = {
-    enable = true;
+  xdg.configFile."hammerspoon/init.lua" = {
+    enable = false;
     source = ./init.lua;
-    target = "${config.xdg.configHome}/hammerspoon/init.lua";
   };
 }

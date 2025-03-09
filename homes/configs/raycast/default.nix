@@ -1,10 +1,9 @@
-{ config, ... }:
+_:
 
 {
-  home.file.raycast = {
+  xdg.configFile."raycast/scripts" = {
     enable = true;
     source = ./scripts;
-    target = "${config.xdg.configHome}/raycast/scripts";
     recursive = true;
   };
 }

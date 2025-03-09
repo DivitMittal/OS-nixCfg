@@ -1,9 +1,8 @@
-{ config, ... }:
+_:
 
 {
-  home.file.ideavim = {
-    enable = true;
+  xdg.configFile."ideavim/ideavimrc" = {
+    enable = false;
     source = ./ideavimrc;
-    target = "${config.xdg.configHome}/ideavim/ideavimrc";
   };
 }

@@ -9,5 +9,4 @@
 # @raycast.icon 🎋
 
 echo "Opening Root Directory..."
-cd /
-open .
+open /
