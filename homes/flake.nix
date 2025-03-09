@@ -48,6 +48,7 @@
 
               ./programs/communication
               ./programs/development
+              ./programs/keyboard
               ./programs/media
               ./programs/tools
               ./programs/tty-env
@@ -55,7 +56,6 @@
               ./programs/web
 
               ./configs/raycast
-              ./configs/kanata-tray
             ];
           };
 
@@ -95,28 +95,7 @@
             modules = [
               ./common
 
-              ./programs/tty-env/editors/vim
-              ./programs/tty-env/editors/editorconfig
-
-              ./programs/tty-env/file/find
-              ./programs/tty-env/file/yazi
-
-              ./programs/tty-env/multiplexers/zellij.nix
-
-              ./programs/tty-env/pagers
-
-              ./programs/tty-env/shells/common.nix
-              ./programs/tty-env/shells/bash
-
-              ./programs/tty-env/vcs
-
-              ./programs/tty-env/atuin.nix
-              ./programs/tty-env/btop.nix
-              ./programs/tty-env/eza.nix
-              ./programs/tty-env/fastfetch.nix
-              ./programs/tty-env/starship.nix
-
-              ./programs/web/tui.nix
+              ./programs/tty-env
             ];
           };
         };

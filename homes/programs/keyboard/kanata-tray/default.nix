@@ -16,10 +16,12 @@
         kanata_executable = "${kanataPackage}/bin/kanata";
         tcp_port = 5830;
       };
-      presets.TLTR = {
-        kanata_config = "";
-        autorun = true;
-        extra_args = [ "--"];
+      presets = {
+        "TLTR" = {
+          kanata_config = "";
+          autorun = true;
+          extra_args = [ "--"];
+        };
       };
     };
   };
