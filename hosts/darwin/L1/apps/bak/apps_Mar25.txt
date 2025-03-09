@@ -3,7 +3,6 @@ AlDente.app
 AltTab.app
 AmpliTube 5.app
 Aurora DSP
-BetterDisplay.app
 Bluesnooze.app
 Capo.app
 Cursor.app
@@ -16,6 +15,7 @@ Grass.app
 Guitar Pro 8.app
 Homerow.app
 IK Product Manager.app
+Ice.app
 LocalSend.app
 Logic Pro X.app
 MainStage.app
@@ -26,7 +26,6 @@ Microsoft Outlook.app
 Microsoft Teams.app
 MuseScore 4.app
 Native Instruments
-Nembrini Audio Central.app
 NeuralAmpModeler.app
 Nix Apps
 ONLYOFFICE.app
@@ -34,17 +33,16 @@ Obsidian.app
 OneDrive.app
 PDF Expert.app
 Parallels Desktop.app
+Perplexity.app
 R.app
 REAPER.app
 RStudio.app
 Raycast.app
 Rig.app
 Safari.app
-Serato DJ Pro.app
 SimpleX.app
 SoundSource.app
 Spaceman.app
-Spotify.app
 Super Agent.app
 Texty.app
 Thunderbird.app
@@ -60,3 +58,4 @@ djay Pro.app
 gSwitch.app
 iStat Menus.app
 mpv.app
+rekordbox 7
