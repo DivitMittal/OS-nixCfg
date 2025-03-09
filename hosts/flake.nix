@@ -6,7 +6,7 @@
     # nixpkgs-stable.url = "github:nixOS/nixpkgs/nixos-24.11";
     # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
 
-    nix-darwin  = {
+    nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -29,13 +29,17 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
-  outputs = { flake-parts, ... }@inputs:
-    flake-parts.lib.mkFlake { inherit inputs; } (_: {
-      systems = [ "x86_64-darwin" "aarch64-linux" "x86_64-linux" ];
+  outputs = {flake-parts, ...} @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} (_: {
+      systems = ["x86_64-darwin" "aarch64-linux" "x86_64-linux"];
 
       flake.user = {
         fullname = "Divit Mittal";
         username = "div";
+      };
+
+      perSystem = {pkgs, ...}: {
+        formatter = inputs.nixpkgs.legacyPackages.alejandra;
       };
 
       imports = [
