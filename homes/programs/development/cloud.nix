@@ -13,8 +13,8 @@
     };
   };
 
-  home.packages = with pkgs; [
+  home.packages = builtins.attrValues {
     # cloud-platforms-cli
-    google-cloud-sdk
-  ];
+    gcp = pkgs.google-cloud-sdk;
+  };
 }

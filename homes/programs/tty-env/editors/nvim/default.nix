@@ -12,10 +12,9 @@
   programs.fish.shellAbbrs.nv = { expansion = "nvim"; position = "command"; };
   programs.zsh.zsh-abbr.abbreviations.nv = "nvim";
 
-  home.file.nvimConfig = {
+  xdg.configFile."nvim" = {
     enable = true;
     source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath "${config.paths.programs}/tty-env/editors/nvim/config");
-    target = "${config.xdg.configHome}/nvim";
     recursive = true;
   };
 }

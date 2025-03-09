@@ -12,6 +12,9 @@ let
   ];
 in
 {
+  home.file.fisherPlugins.text = mkAfter (builtins.concatStringsSep "\n" fishFzfPlugins);
+  programs.zsh.antidote.plugins = [ "Aloxaf/fzf-tab" ];
+
   programs.fzf = {
     enable = true;
     package = pkgs.fzf;
@@ -48,7 +51,4 @@ in
     set -gx fifc_fd_opts ${fd_opts}
     set -gx fifc_eza_opts ${eza_opts}
   '';
-
-  home.file.fisherPlugins.text = mkAfter (builtins.concatStringsSep "\n" fishFzfPlugins);
-  programs.zsh.antidote.plugins = [ "Aloxaf/fzf-tab" ];
 }

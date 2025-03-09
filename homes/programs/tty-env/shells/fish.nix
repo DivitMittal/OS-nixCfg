@@ -1,6 +1,22 @@
 { config, pkgs, ... }:
 
+let
+  fishPlugins = [
+    "jorgebucaran/autopair.fish"
+    "nickeb96/puffer-fish"
+    "markcial/upto"
+    "lengyijun/fc-fish"
+    "edc/bass"
+    "oh-my-fish/plugin-osx"
+  ];
+in
 {
+  home.file.fisherPlugins = {
+    enable = true;
+    text = builtins.concatStringsSep "\n" fishPlugins;
+    target = "${config.xdg.configHome}/fish/fish_plugins";
+  };
+
   programs.fish = {
     enable = true;
     package = pkgs.fish;
@@ -37,8 +53,8 @@
     };
 
     shellAbbrs = {
-      ".2"  = { expansion = "../.."   ; position = "anywhere";};
-      ".3"  = { expansion = "../../.."; position = "anywhere";};
+      ".2" = { expansion = "../.."   ; position = "anywhere";};
+      ".3" = { expansion = "../../.."; position = "anywhere";};
     };
 
     plugins = [
@@ -52,19 +68,5 @@
         };
       }
     ];
-  };
-
-  home.file.fisherPlugins = {
-    enable = true;
-
-    text = ''
-      jorgebucaran/autopair.fish
-      nickeb96/puffer-fish
-      markcial/upto
-      lengyijun/fc-fish
-      edc/bass
-      oh-my-fish/plugin-osx
-    '';
-    target = "${config.xdg.configHome}/fish/fish_plugins";
   };
 }
