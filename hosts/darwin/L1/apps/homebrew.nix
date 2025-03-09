@@ -59,7 +59,8 @@
       "cyberduck"
 
       ## Multimedia
-      "stolendata-mpv" "spotify"
+      "stolendata-mpv"
+      #"spotify"
 
       ## Creative
       "wacom-tablet"

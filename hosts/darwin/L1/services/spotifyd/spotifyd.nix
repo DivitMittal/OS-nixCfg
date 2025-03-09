@@ -3,7 +3,7 @@
 let
   inherit(lib) mkIf;
   tomlFormat = pkgs.formats.toml { };
-  configFile = tomlFormat.generate "spotifyd.conf" cfg.settings;
+  configFile = tomlFormat.generate "spotifyd.toml" cfg.settings;
   cfg = config.services.spotify-daemon;
 in
 {
@@ -43,7 +43,11 @@ in
       script = "${cfg.package} --no-daemon --config-path ${configFile}";
       serviceConfig = {
         RunAtLoad = true;
-        Nice = -19;
+        Nice = 10;
+        KeepAlive = {
+          Crashed = true;
+          SuccessfulExit = false;
+        };
       };
     };
   };
