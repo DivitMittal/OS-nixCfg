@@ -1,5 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, TLTR, ... }:
 
+let
+  configFile = "${TLTR}/kanata/kanata.kbd";
+in
 {
   imports = [ ./kanata-tray.nix ];
 
@@ -17,10 +20,10 @@
         tcp_port = 5830;
       };
       presets = {
-        "TLTR" = {
-          kanata_config = "";
+        TLTR = {
+          kanata_config = "${configFile}";
           autorun = true;
-          extra_args = [ "--"];
+          extra_args = [ "--nodelay" ];
         };
       };
     };

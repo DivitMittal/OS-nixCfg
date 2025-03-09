@@ -31,7 +31,7 @@ in
             allow_concurrent_presets = false;
           };
           defaults = {
-            kanata_executable = "/bin/kanata";
+            kanata_executable = "/usr/bin/kanata";
             tcp_port = 5830;
           };
         };
@@ -40,7 +40,7 @@ in
     };
   };
 
-  config = (mkIf cfg.enable) {
+  config = mkIf (cfg.enable) {
     home.packages = [ cfg.kanataPackage ];
     home.file."${config.home.homeDirectory}/Library/Application Support/kanata-tray/kanata-tray.toml" = mkIf (cfg.settings != {}) { source = configFile; };
   };
