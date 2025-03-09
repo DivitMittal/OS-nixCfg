@@ -1,15 +1,17 @@
 { pkgs, config, ... }:
 
+let
+  enableToggle = false;
+in
 {
   programs.emacs = {
-    enable = true;
+    enable = enableToggle;
     package = pkgs.emacs-nox;
   };
 
-  home.file.doomEmacs = {
-    enable = false;
+  xdg.configFile."doom" = {
+    enable = enableToggle;
     source = ./doom;
-    target = "${config.xdg.configHome}/doom";
     recursive = true;
   };
 }

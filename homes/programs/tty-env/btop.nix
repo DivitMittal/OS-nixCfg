@@ -66,7 +66,7 @@
       proc_reversed = false;
 
       #* Show processes as a tree.;
-      proc_tree = false;
+      proc_tree = true;
 
       #* Use the cpu graph colors in the process list.;
       proc_colors = true;
