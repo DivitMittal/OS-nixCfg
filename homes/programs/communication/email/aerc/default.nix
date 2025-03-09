@@ -1,17 +1,16 @@
 { config, pkgs, ... }:
 
 {
-  home.file.aerc = {
+  xdg.configFile."aerc/accounts.conf" = {
     enable = false;
     source = builtins.toPath "${config.paths.secrets}/email/aerc/accounts.conf"; # impure
-    target = "${config.xdg.configHome}/aerc/accounts.conf";
   };
 
   programs.aerc = {
     enable = true;
     package = pkgs.aerc;
 
-    extraBinds = builtins.readFile ./binds.conf;
+    extraBinds = builtins.import ./binds.nix;
     extraConfig = {
       general = {
         unsafe-accounts-conf = true;
