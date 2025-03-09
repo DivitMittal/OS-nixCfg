@@ -28,7 +28,6 @@ return {
 
   -- nix
   'nil', -- lsp
-  'nixpkgs-fmt', -- formatter
 
   -- data
   'yaml-language-server', -- lsp(yaml)
