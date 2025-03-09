@@ -4,11 +4,13 @@ let
   isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
 in
 {
-  home.packages = with pkgs; [ spicetify-cli ];
+  imports = [ ./spicetify-cli.nix ];
 
-  home.file.spicetifyCfg = {
-    enable = true;
-    text = ''
+  programs.spicetify-cli = {
+    enable = false;
+    package = pkgs.spicetify-cli;
+
+    settings = ''
       [Setting]
       inject_theme_js        = 1
       inject_css             = 1
@@ -35,6 +37,5 @@ in
       home_config           = 1
       experimental_features = 1
     '';
-    target = "${config.xdg.configHome}/spicetify/config-xpui.ini";
   };
 }
