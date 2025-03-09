@@ -2,6 +2,6 @@ _:
 
 {
   imports = [
-    ./kanata-tray.nix
+    ./kanata-tray
   ];
 }

@@ -18,8 +18,8 @@ in
       };
 
       package = mkOption {
-        type = types.path;
-        default = pkgs.kanata-with-cmd;
+        type = types.package;
+        default = pkgs.kanata;
         example = pkgs.kanata;
         description = "The kanata package to use";
       };
@@ -64,8 +64,10 @@ in
         StandardOutPath = /tmp/org.nixos.kanata.out.log;
         StandardErrorPath = /tmp/org.nixos.kanata.err.log;
         RunAtLoad = true;
-        KeepAlive.Crashed = true;
-        KeepAlive.SuccessfulExit = false;
+        KeepAlive = {
+          Crashed = true;
+          SuccessfulExit = false;
+        };
         Nice = -19;
       };
     };
@@ -74,8 +76,10 @@ in
       script = "sudo " + karabinerDaemon;
       serviceConfig = {
         RunAtLoad = true;
-        KeepAlive.Crashed = true;
-        KeepAlive.SuccessfulExit = false;
+        KeepAlive = {
+          Crashed = true;
+          SuccessfulExit = false;
+        };
         Nice = -19;
       };
     };

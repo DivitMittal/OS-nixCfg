@@ -10,7 +10,7 @@ in
     services.kanata-tray = {
       enable = mkOption {
         type = types.bool;
-        default = true;
+        default = false;
         example = true;
         description = "To enable/disable kanata-tray & run it as a LaunchAgent";
       };
@@ -33,8 +33,10 @@ in
       script = "sudo " + "${cfg.package}";
       serviceConfig = {
         RunAtLoad = true;
-        KeepAlive.Crashed = true;
-        KeepAlive.SuccessfulExit = false;
+        KeepAlive = {
+          Crashed = true;
+          SuccessfulExit = false;
+        };
         Nice = -19;
       };
     };
@@ -43,8 +45,10 @@ in
       script = "sudo " + karabinerDaemon;
       serviceConfig = {
         RunAtLoad = true;
-        KeepAlive.Crashed = true;
-        KeepAlive.SuccessfulExit = false;
+        KeepAlive = {
+          Crashed = true;
+          SuccessfulExit = false;
+        };
         Nice = -19;
       };
     };
