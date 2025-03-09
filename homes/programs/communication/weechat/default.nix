@@ -1,12 +1,11 @@
 { pkgs, config, ... }:
 
 {
-  home.packages = with pkgs; [ weechat ];
+  home.packages = [ pkgs.weechat ];
 
-  home.file.weechat = {
+  xdg.configFile."weechat" = {
     enable = true;
     source = config.lib.file.mkOutOfStoreSymlink ./conf;
-    target = "${config.xdg.configHome}/weechat";
     recursive = true;
   };
 }

@@ -135,7 +135,7 @@ in
             };
           };
         };
-        settings = import ./user_settings.nix;
+        settings = builtins.import ./user_settings.nix;
         userContent = builtins.readFile ./chrome/CSS/userContent.css;
         userChrome = builtins.readFile ./chrome/CSS/userChrome.css;
       };
