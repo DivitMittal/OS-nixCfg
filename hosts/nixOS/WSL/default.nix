@@ -1,10 +1,27 @@
-{ pkgs, config, ... }:
+{ pkgs, config, user, ... }:
 
 {
   fonts.packages = with pkgs; [ nerd-fonts.caskaydia-cove ];
 
-  networking = {
-    computerName = "${config.networking.hostName}";
-    # hostName = "${hostname}"; # handled by easy-hosts
+  wsl = {
+    enable = true;
+
+    defaultUser = "${user.username}";
+
+    useWindowsDriver = true;
+
+    interop.includePath = true;
+    startMenuLaunchers = false;
+
+    wslConf = {
+      automount = {
+        enabled = true;
+        root = "/mnt";
+      };
+      boot.systemd = true;
+      user.default = "${config.wsl.defaultUser}";
+    };
+
+    system.stateVersion = "24.05";
   };
 }
