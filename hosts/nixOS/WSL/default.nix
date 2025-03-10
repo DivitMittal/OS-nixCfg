@@ -1,14 +1,10 @@
-{ pkgs, hostname, ... }:
+{ pkgs, config, ... }:
 
 {
-  imports = [
-    ./../common
-  ];
-
   fonts.packages = with pkgs; [ nerd-fonts.caskaydia-cove ];
 
   networking = {
-    computerName = "${hostname}";
-    hostName = "${hostname}";
+    computerName = "${config.networking.hostName}";
+    # hostName = "${hostname}"; # handled by easy-hosts
   };
 }

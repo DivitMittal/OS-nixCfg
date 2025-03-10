@@ -1,5 +1,20 @@
 {
   "nodes": {
+    "easy-hosts": {
+      "locked": {
+        "lastModified": 1739315072,
+        "narHash": "sha256-m0Lzdrj95GbdmKhqlTKkr4vvHy2Ghdi1GxISOKqUeSA=",
+        "owner": "tgirlcloud",
+        "repo": "easy-hosts",
+        "rev": "e96af44cae1f48a1a94f2471faee92caf22aa45f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tgirlcloud",
+        "repo": "easy-hosts",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -282,6 +297,7 @@
     },
     "root": {
       "inputs": {
+        "easy-hosts": "easy-hosts",
         "flake-parts": "flake-parts",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",
