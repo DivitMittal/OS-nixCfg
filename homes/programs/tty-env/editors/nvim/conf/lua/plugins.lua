@@ -16,10 +16,19 @@ return {
   -- ----------------------------------------------------------- --
   --                   Overrides
   -- ----------------------------------------------------------- --
-  -- library of lua functions
   {
-    "nvim-lua/plenary.nvim",
+    "hrsh7th/nvim-cmp",
     enabled = true,
+    opts = {
+      sources = {
+        { name = "copilot", group_index = 2 },
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "buffer" },
+        { name = "nvim_lua" },
+        { name = "path" },
+      },
+    },
   },
 
   -- file explorer/navigation
@@ -46,8 +55,9 @@ return {
   {
     "stevearc/conform.nvim",
     enabled = true,
+    cond = not isVSCode,
     cmd = { "ConformInfo" },
-    opts = require "configs.conform",
+    opts = function(_, conf) return require "configs.conform_opts" end,
     init = function() vim.o.formatexpr = "v:lua.require'conform'.formatexpr()" end,
     keys = {
       { mode = { "n", "v" }, "<leader>fm", function() require("conform").format { async = true } end, desc = "Format buffer", },
@@ -83,7 +93,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     enabled = true,
     cond = not isVSCode,
-    opts = require "configs.treesitter",
+    opts = require "configs.treesitter_opts",
     config = function(_, opts)
       require("nvim-treesitter.install").compilers = { "clang" }
       require("nvim-treesitter.configs").setup(opts)
@@ -96,24 +106,6 @@ return {
   -- All NvChad plugins are lazy-loaded by default
   -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
   -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
-
-  -- linting
-  {
-    "mfussenegger/nvim-lint",
-    enabled = true,
-    cond = not isVSCode,
-    event = { "BufWritePost", "BufReadPost", "InsertLeave" },
-    opts = require "configs.lint",
-    config = function(_, opts)
-      local lint = require('lint')
-      lint.linters_by_ft = opts
-      vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
-        group = vim.api.nvim_create_augroup("lint", { clear = true }),
-        pattern = "*",
-        callback = function() lint.try_lint() end,
-      })
-    end,
-  },
 
   -- Automatically set indentation/tabstop space size of the current buffer
   {
@@ -216,20 +208,6 @@ return {
     },
   },
 
-  -- multicursors.nvim & hydra.nvim(custom keybinding creation)
-  {
-    "smoka7/multicursors.nvim",
-    dependencies = { "smoka7/hydra.nvim" },
-    enabled = true,
-    cond = not isVSCode,
-    event = "VeryLazy",
-    opts = {},
-    cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
-    keys = {
-      { mode = { "v", "n" }, "<leader>mc", "<cmd>MCstart<cr>", desc = "selected word under the cursor and listen for actions", },
-    },
-  },
-
   -- manoeuvre around splits b/w multiplexers & nvim-splits
   {
     "mrjones2014/smart-splits.nvim",
@@ -252,24 +230,70 @@ return {
   -- TODO: Add Jupyter ipynb notebooks functionality
   {
     "benlubas/molten-nvim",
+    enabled = true,
+    cond = not isVSCode,
     build = ":UpdateRemotePlugins",
     init = function()
-        -- this is an example, not a default. Please see the readme for more configuration options
-        vim.g.molten_output_win_max_height = 12
+      vim.g.molten_output_win_max_height = 12
     end,
   },
 
-  -- TODO: Add support for Github copilot chat or other Cloud-hosted LLMs' chat interface
   {
     "CopilotC-Nvim/CopilotChat.nvim",
+    enabled = true,
+    cond = not isVSCode,
     dependencies = {
-      { "zbirenbaum/copilot.lua" }, -- or zbirenbaum/copilot.lua
-      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+      { "zbirenbaum/copilot.lua",
+          cmd = "Copilot",
+          event = "InsertEnter",
+          opts = {
+            suggestion = { enabled = false },
+            panel = { enabled = false },
+          },
+          dependencies = {
+            "zbirenbaum/copilot-cmp",
+            opts = {}
+          },
+      },
+      { "nvim-lua/plenary.nvim" }, -- for curl, log and async functions
     },
     build = "make tiktoken", -- Only on MacOS or Linux
-    opts = {
-      -- See Configuration section for options
+    event = "VeryLazy",
+    opts = { },
+  },
+
+  -- ----------------------------------------------------------- --
+  --                   Disabled Plugins
+  -- ----------------------------------------------------------- --
+  -- multicursors.nvim & hydra.nvim(custom keybinding creation)
+  {
+    "smoka7/multicursors.nvim",
+    dependencies = { "smoka7/hydra.nvim" },
+    enabled = false,
+    cond = not isVSCode,
+    event = "VeryLazy",
+    opts = {},
+    cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
+    keys = {
+      { mode = { "v", "n" }, "<leader>mc", "<cmd>MCstart<cr>", desc = "selected word under the cursor and listen for actions", },
     },
-    -- See Commands section for default commands if you want to lazy load on them
-  }
+  },
+
+  -- Linting
+  {
+    "mfussenegger/nvim-lint",
+    enabled = false,
+    cond = not isVSCode,
+    event = { "BufWritePost", "BufReadPost", "InsertLeave" },
+    opts = function(_, conf)  return require "configs.lint_opts" end,
+    config = function(_, opts)
+      local lint = require('lint')
+      lint.linters_by_ft = opts
+      vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
+        group = vim.api.nvim_create_augroup("lint", { clear = true }),
+        pattern = "*",
+        callback = function() lint.try_lint() end,
+      })
+    end,
+  },
 }
