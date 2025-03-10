@@ -1,4 +1,4 @@
-{ system, lib, pkgs, ...}:
+{ lib, pkgs, ...}:
 
 let
   inherit(lib) mkDefault;
@@ -6,7 +6,7 @@ in
 {
   nix.package = mkDefault pkgs.nixVersions.latest;
 
-  nixpkgs.hostPlatform = "${system}";
+  # nixpkgs.hostPlatform = "${system}"; # handled by easy-hosts
 
   nix = {
     enable = true;
@@ -34,6 +34,6 @@ in
 
   system.checks = {
     verifyBuildUsers = mkDefault true;
-    # verifyNixPath = mkDefault true;
+    # verifyNixPath = mkDefault true;  # handled by easy-hosts
   };
 }
