@@ -1,8 +1,5 @@
 { config, lib, pkgs, ... }:
 
-let
-  hostname = "M1";
-in
 {
   imports = [
     ./ssh.nix
@@ -19,12 +16,6 @@ in
       type = types.str;
       default = "${config.paths.repo}/homes";
       description = "Path to secrets";
-    };
-
-    paths.currentDroidCfg = mkOption {
-      type = types.str;
-      default = "${config.paths.repo}/hosts/droid/${hostname}";
-      description = "Path to darwin configs";
     };
 
     paths.secrets = mkOption {
