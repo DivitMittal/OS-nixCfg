@@ -1,10 +1,6 @@
 { pkgs, config, ... } :
 
 {
-  imports = [
-    ./../common
-  ];
-
   environment.packages = builtins.attrValues {
     inherit(pkgs)
       dash
