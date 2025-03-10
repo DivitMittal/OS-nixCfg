@@ -49,6 +49,6 @@ return {
 
   mason = {
     cmd = true,
-    pkgs = require 'configs.mason',
+    pkgs = require 'configs.mason_pkgs',
   },
 }
