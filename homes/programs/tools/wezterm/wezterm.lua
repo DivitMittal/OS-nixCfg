@@ -65,12 +65,12 @@ end
 
 ---------------------------------------------------------------------------------
 -- config
-local config = {
+return {
   term = "xterm-256color",
   enable_kitty_graphics = true,
 
   -- font
-  font = w.font("CaskaydiaCove NFM"),
+  font = w.font("CaskaydiaCove Nerd Font Mono"),
   font_size = 20,
   adjust_window_size_when_changing_font_size = false,
   custom_block_glyphs = false,
@@ -133,26 +133,26 @@ local config = {
   leader = {
     mods = 'CTRL',
     key = 'r',
-    timeout_milliseconds = 1000
+    timeout_milliseconds = 800
   },
   keys = {
     -- Send Ctrl+r to the terminal when pressing LEADER, LEADER
     {
-      key = 'r',
       mods = 'LEADER|CTRL',
+      key = 'r',
       action = w.action.SendKey { mods = 'CTRL', key = 'r'},
     },
 
     -- splitting
     {
       mods = "LEADER",
-      key = "-",
+      key = "s",
       action = act.SplitVertical { domain = 'CurrentPaneDomain' }
     },
 
     {
       mods = "LEADER",
-      key = "|",
+      key = "v",
       action = act.SplitHorizontal { domain = 'CurrentPaneDomain' }
     },
 
@@ -173,16 +173,14 @@ local config = {
     -- show the pane selection mode, but have it swap the active and selected panes
     {
       mods = 'LEADER',
-      key = '0',
-      action = act.PaneSelect {
-        mode = 'SwapWithActive'
-      }
+      key = 'f',
+      action = act.PaneSelect { mode = 'SwapWithActive' }
     },
 
     -- activate copy mode or vim mode
     {
-      key = 'Enter',
       mods = 'LEADER',
+      key = 'Enter',
       action = act.ActivateCopyMode
     },
 
@@ -201,6 +199,3 @@ local config = {
     -- C-S-l activates the debug overlay (implemented by default)
   }
 }
-
----------------------------------------------------------------------------------
-return config
