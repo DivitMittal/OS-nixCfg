@@ -14,7 +14,7 @@
 
   xdg.configFile."nvim" = {
     enable = true;
-    source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath "${config.paths.programs}/tty-env/editors/nvim/config");
+    source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath "${config.paths.programs}/tty-env/editors/nvim/conf");
     recursive = true;
   };
 }
