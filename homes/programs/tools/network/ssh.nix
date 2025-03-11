@@ -3,6 +3,8 @@ let
   isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
 in
 {
+  home.packages = [ pkgs.upterm ];
+
   programs.ssh = {
     enable = true;
     package = if isDarwin then null else pkgs.ssh; # homebrew

@@ -2,12 +2,14 @@
 
 let
   isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
-  pinentryPackage = if isDarwin then pkgs.pinentry_mac else pkgs.pinentry;
 in
 {
   home.packages = builtins.attrValues {
-    # bw = pkgs-stable.bitwarden-cli;
-    age = pkgs.age;
+    inherit(pkgs)
+      skate
+      # bitwarden-cli
+      # age = pkgs.age;
+    ;
   };
 
   programs.gpg = {
@@ -28,7 +30,7 @@ in
 
     settings = {
       email = builtins.elemAt user.emails 1;
-      pinentry = pinentryPackage;
+      pinentry = (if isDarwin then pkgs.pinentry_mac else pkgs.pinentry);
     };
   };
 }

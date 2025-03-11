@@ -14,7 +14,9 @@ in
       ffmpeg yt-dlp
 
       # image
-      chafa imagemagick exif
+      # chafa
+      imagemagick
+      exif
     ;
   };
 
