@@ -124,14 +124,15 @@
     ];
 
     prepend_keymap = [
-      { desc = "Enter the child directory, or open the file"; on = [ "<Right>" ]; run = "plugin smart-enter"                ; }
+      { desc = "Enter the child directory, or open the file"                           ; on = [ "<Right>" ] ; run = "plugin smart-enter"                ; }
+      { desc = "A mount manager providing disk mount, unmount, and eject functionality"; on = [ "M" ]       ; run = "plugin mount"                      ; }
+      { desc = "diff selected file with hovered file"                                  ; on = [ "<C-d>" ]   ; run = "plugin diff"                       ; }
+      { desc = "Maximize or restore the preview pane"                                  ; on = [ "T"]        ; run = "plugin toggle-pane max-preview"    ; }
     ];
 
     append_keymap = [
-      { desc = "Maximize or restore preview"                ; on = [ "M" ]       ; run = "plugin max-preview"                ; }
       { desc = "Smart filter"                               ; on = [ "F" ]       ; run = "plugin smart-filter"               ; }
       { desc = "Open shell here"                            ; on = [ "!" ]       ; run = "shell \"$SHELL\" --block --confirm"; }
-      { desc = "diff selected file with hovered file"       ; on = [ "<C-d>" ]   ; run = "plugin diff"                       ; }
       { desc = "chmod on selected files"                    ; on = [ "<C-p>" ]   ; run = "plugin chmod"                      ; }
     ];
   };

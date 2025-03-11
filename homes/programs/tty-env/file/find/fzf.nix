@@ -1,19 +1,11 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, config, ... }:
 
 let
-  inherit(lib) mkAfter;
   eza_opts = builtins.concatStringsSep " " config.programs.eza.extraOptions;
   fd_opts = "--hidden";
   delta_opts = "--paging=never";
-  fishFzfPlugins = [
-    "patrickf1/fzf.fish"
-    "gazorby/fifc"
-    #divitmittal/fifc@bugfix
-  ];
 in
 {
-  home.file.fisherPlugins.text = mkAfter (builtins.concatStringsSep "\n" fishFzfPlugins);
-  programs.zsh.antidote.plugins = [ "Aloxaf/fzf-tab" ];
 
   programs.fzf = {
     enable = true;
@@ -38,17 +30,42 @@ in
     ];
   };
 
-  programs.fish.interactiveShellInit = ''
-    # PatrickF1/fzf.fish plugin
-    fzf_configure_bindings --variables=\ev --processes=\ep --git_status=\es --git_log=\el --history=\er --directory=\ef
-    set -gx fzf_fd_opts ${fd_opts}
-    set -gx fzf_preview_dir_cmd eza ${eza_opts}
-    set -gx fzf_preview_file_cmd bat
-    set -gx fzf_diff_highlighter delta ${delta_opts}
+  programs.fish = {
+    plugins = [
+      {
+        name = "fzf";
+        src = pkgs.fetchFromGitHub {
+          owner = "patrickf1";
+          repo = "fzf.fish";
+          rev = "main";
+          hash = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
+        };
+      }
+      {
+        name = "fifc";
+        src = pkgs.fetchFromGitHub {
+          owner = "gazorby";
+          repo = "fifc";
+          rev = "main";
+          hash = "sha256-Ynb0Yd5EMoz7tXwqF8NNKqCGbzTZn/CwLsZRQXIAVp4=";
+        };
+      }
+    ];
 
-    # fifc plugin
-    set -gx fifc_editor ${config.home.sessionVariables.VISUAL}
-    set -gx fifc_fd_opts ${fd_opts}
-    set -gx fifc_eza_opts ${eza_opts}
-  '';
+    interactiveShellInit = ''
+      # PatrickF1/fzf.fish plugin
+      fzf_configure_bindings --variables=\ev --processes=\ep --git_status=\es --git_log=\el --history=\er --directory=\ef
+      set -gx fzf_fd_opts ${fd_opts}
+      set -gx fzf_preview_dir_cmd eza ${eza_opts}
+      set -gx fzf_preview_file_cmd bat
+      set -gx fzf_diff_highlighter delta ${delta_opts}
+
+      # fifc plugin
+      set -gx fifc_editor ${config.home.sessionVariables.VISUAL}
+      set -gx fifc_fd_opts ${fd_opts}
+      set -gx fifc_eza_opts ${eza_opts}
+    '';
+  };
+
+  programs.zsh.antidote.plugins = [ "Aloxaf/fzf-tab" ];
 }

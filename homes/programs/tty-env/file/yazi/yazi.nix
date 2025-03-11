@@ -48,12 +48,12 @@
       { desc = "Default Open"; for = "windows"; run = "start \"\" \"%1\"";  orphan = true;}
     ];
     extract = [
-      { desc = "extract here"; for = "unix"   ; run = "ouch d \"$1\""; }
-      { desc = "extract here"; for = "windows"; run = "ouch d \"%1\""; }
+      { desc = "Extract Here"; for = "unix"   ; run = "ouch d \"$1\""; }
+      { desc = "Extract Here"; for = "windows"; run = "ouch d \"%1\""; }
     ];
     play = [
-      { desc = "play via mpv"   ; for = "unix"   ; run = "mpv --force-window \"$@\""  ; orphan = true;}
-      { desc = "play via mpv"   ; for = "windows"; run = "mpv --force-window \"%1\""  ; orphan = true;}
+      { desc = "Play via mpv"   ; for = "unix"   ; run = "mpv --force-window \"$@\""  ; orphan = true;}
+      { desc = "Play via mpv"   ; for = "windows"; run = "mpv --force-window \"%1\""  ; orphan = true;}
     ];
     reveal = [
       { desc = "Finder reveal"  ; for = "macos"     ; run = "open -R \"$1\""          ;}
