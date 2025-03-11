@@ -2,6 +2,7 @@
 
 let
   isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
+  cfg = config.paths;
 in
 {
   imports = [
@@ -21,21 +22,15 @@ in
       description = "Path to the main repo containing home-manager & other nix configs";
     };
 
-    paths.secrets = mkOption {
-      type = types.str;
-      default = "${config.paths.repo}/secrets";
-      description = "Path to secrets";
-    };
-
     paths.programs = mkOption {
       type = types.str;
-      default = "${config.paths.repo}/homes/programs";
+      default = cfg.repo + "/homes/programs";
       description = "Path to current-user home-manager module";
     };
 
     paths.darwinCfg = mkOption {
       type = types.str;
-      default = "${config.paths.repo}/hosts/darwin";
+      default = cfg.repo + "/hosts/darwin";
       description = "Path to darwinCfg";
     };
   };

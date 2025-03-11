@@ -11,18 +11,6 @@
       default = "${config.user.home}/OS-nixCfg";
       description = "Path to the main repo containing nix-on-droid & other nix configs";
     };
-
-    paths.homes = mkOption {
-      type = types.str;
-      default = "${config.paths.repo}/homes";
-      description = "Path to secrets";
-    };
-
-    paths.secrets = mkOption {
-      type = types.str;
-      default = "${config.paths.repo}/secrets";
-      description = "Path to secrets";
-    };
   };
 
   config = {

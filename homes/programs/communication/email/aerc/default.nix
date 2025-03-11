@@ -3,7 +3,7 @@
 {
   xdg.configFile."aerc/accounts.conf" = {
     enable = false;
-    source = builtins.toPath "${config.paths.secrets}/email/aerc/accounts.conf"; # impure
+    source = builtins.toPath "${config.paths.repo}/secrets/email/aerc/accounts.conf"; # impure
   };
 
   programs.aerc = {

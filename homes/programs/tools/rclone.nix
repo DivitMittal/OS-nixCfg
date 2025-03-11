@@ -72,11 +72,9 @@ let
         --no-unicode-normalization=false'';
 in
 {
-  home.file.rclone = {
+  xdg.configFile."rclone/rclone.conf" = {
     enable = false;
-    source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath "${config.paths.secrets}/rclone.conf"); # impure
-    target = "${config.xdg.configHome}/rclone/rclone.conf";
-
+    source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath "${config.paths.repo}/secrets/rclone.conf"); # impure
   };
 
   home.packages = builtins.attrValues {
