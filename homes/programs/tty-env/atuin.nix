@@ -34,7 +34,7 @@
 
       ## which search mode to use
       ## possible values: prefix, fulltext, fuzzy, skim
-      # search_mode = "fuzzy"
+      search_mode = "fulltext";
 
       ## which filter mode to use
       ## possible values: global, host, session, directory
@@ -124,7 +124,7 @@
       ## 3. Slack oauth tokens (bot, user)
       ## 4. Slack webhooks
       ## 5. Stripe live/test keys
-      # secrets_filter = true
+      secrets_filter = true;
 
       ## Defaults to true. If enabled, upon hitting enter Atuin will immediately execute the command. Press tab to return to the shell and edit.
       # This applies for new installs. Old installs will keep the old behaviour unless configured otherwise.
