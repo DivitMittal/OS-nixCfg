@@ -1,15 +1,17 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
+let
+  enable = false;
+in
 {
   programs.tmux = {
-    enable = false;
+    inherit enable;
     package = pkgs.tmux;
   };
 
-  home.file.tmux = {
-    enable = false;
+  xdg.configFile."tmux" = {
+    inherit enable;
     source = ./conf;
-    target = "${config.xdg.configHome}/tmux";
     recursive = true;
   };
 }

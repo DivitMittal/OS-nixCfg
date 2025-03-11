@@ -1,11 +1,10 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ ov ];
+  home.packages = [ pkgs.ov ];
 
-  home.file.ov_config = {
+  xdg.configFile."ov/config.yaml" = {
     enable = true;
     source = ./config.yaml;
-    target = "${config.xdg.configHome}/ov/config.yaml";
   };
 }

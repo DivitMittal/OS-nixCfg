@@ -4,9 +4,8 @@ let
   isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
 in
 {
-  home.file.tridactyl = {
+  xdg.configFile."tridactyl" = {
     source = ./tridactyl;
-    target = "${config.xdg.configHome}/tridactyl";
     recursive = true;
   };
 

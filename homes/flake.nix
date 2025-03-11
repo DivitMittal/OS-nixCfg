@@ -11,6 +11,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
@@ -26,12 +31,6 @@
       #pkgs-darwin = import inputs.nixpkgs-darwin { inherit system; };
       #pkgs-stable = import inputs.nixpkgs-stable { inherit system; };
     in {
-      systems = ["x86_64-darwin" "aarch64-linux" "x86_64-linux"];
-
-      perSystem = {pkgs, ...}: {
-        formatter = inputs.nixpkgs.legacyPackages.alejandra;
-      };
-
       flake = {
         homeConfigurations = {
           "L1" = inputs.home-manager.lib.homeManagerConfiguration {
@@ -99,6 +98,16 @@
             ];
           };
         };
+      };
+
+      systems = [
+        "x86_64-darwin"
+        "aarch64-linux"
+        "x86_64-linux"
+      ];
+
+      perSystem = {pkgs, ...}: {
+        formatter = inputs.nixpkgs.legacyPackages.alejandra;
       };
     });
 }

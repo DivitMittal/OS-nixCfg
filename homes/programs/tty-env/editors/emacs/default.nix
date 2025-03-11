@@ -1,16 +1,16 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 let
-  enableToggle = false;
+  enable = false;
 in
 {
   programs.emacs = {
-    enable = enableToggle;
+    inherit enable;
     package = pkgs.emacs-nox;
   };
 
   xdg.configFile."doom" = {
-    enable = enableToggle;
+    inherit enable;
     source = ./doom;
     recursive = true;
   };
