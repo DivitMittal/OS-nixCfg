@@ -18,13 +18,31 @@
     enable = true;
     package = pkgs.yazi;
 
-    enableFishIntegration = false; enableZshIntegration = false; enableBashIntegration = false; enableNushellIntegration = false;
+    enableFishIntegration = false;
+    enableZshIntegration = false;
+    enableBashIntegration = false;
+    enableNushellIntegration = false;
 
     initLua = ./init.lua;
     settings = import ./yazi.nix;
     keymap = import ./keymap.nix;
-    theme = import ./theme.nix;
-    plugins = let
+    theme = {
+      flavor.dark = "dracula";
+    };
+    flavors =
+      let
+        officialFlavors = pkgs.fetchFromGitHub {
+          owner = "yazi-rs";
+          repo = "flavors";
+          rev = "main";
+          hash = "sha256-iTMch0T933Tvofvo3ZzFwk+PNs+dsK0SrAIlJ03v73E=";
+        };
+      in
+      {
+        dracula = builtins.toPath "${officialFlavors}/dracula.yazi";
+      };
+    plugins =
+      let
         officialPlugins = pkgs.fetchFromGitHub {
           owner = "yazi-rs";
           repo = "plugins";
