@@ -2,6 +2,7 @@ _:
 
 {
   imports = [
+    ./ai
     ./network
     ./wezterm
     ./privacy.nix
