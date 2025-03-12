@@ -5,7 +5,7 @@ let
   cfg = config.services.kanata;
   karabinerDaemon = "/Library/Application\\ Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon";
   configFile = mkIf (cfg.config != "") "${pkgs.writeScript "kanata.kbd" "${cfg.config}"}";
-  command = ["${cfg.package}" "--nodelay"] ++ optionals (cfg.config != "") ["--cfg" configFile] ++ optionals (cfg.config == "") ["--cfg" "${cfg.configPath}"];
+  command = ["${cfg.package}" "--nodelay"] ++ optionals (cfg.config != "") ["--cfg" configFile];
 in
 {
   options = let inherit(lib) mkOption types; in {
@@ -27,7 +27,7 @@ in
       config = mkOption {
         type = types.str;
         default = "";
-        example = ''
+        example = lib.literalExpression ''
           (defsrc
             caps grv         i
                         j    k    l
@@ -45,14 +45,9 @@ in
             grv (tap-hold-press 200 200 grv (layer-toggle arrows))
           )
         '';
-        description = "Your kanata configuration";
-      };
-
-      configPath = mkOption {
-        type = types.path;
-        default = builtins.toPath "${config.paths.homeDirectory}/.config/kanata/kanata.kbd";
-        example = "~/.config/kanata/kanata.kbd";
-        description = "Your kanata configuration's path";
+        description = ''
+          Your kanata configuration in the kanata lisp-like configuration language
+        '';
       };
     };
   };

@@ -17,7 +17,7 @@ in
       };
       package = mkOption {
         type = types.path;
-        default = /${pkgs.spotifyd}/bin/spotifyd; #impure
+        default = /${pkgs.spotifyd}/bin/spotifyd;
         example = "pkgs.spotifyd";
         description = "The spotifyd package to use";
       };

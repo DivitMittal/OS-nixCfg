@@ -17,7 +17,7 @@ in
 
       package = mkOption {
         type = types.path;
-        default = builtins.toPath "${config.paths.homeDirectory}/.local/bin/kanata-tray"; #impure
+        default = builtins.toPath "${pkgs.kanata-tray}/bin/kanata-tray";
         example = "~/.local/bin/kanata-tray";
         description = "The kanata-tray package to use";
       };

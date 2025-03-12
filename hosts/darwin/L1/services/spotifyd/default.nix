@@ -7,7 +7,7 @@
 
   services.spotify-daemon = {
     enable = true;
-    package = /${config.paths.homeDirectory}/.cargo/bin/spotifyd;
+    package = /${config.paths.homeDirectory}/.cargo/bin/spotifyd; # impure
 
     settings = {
       global = {

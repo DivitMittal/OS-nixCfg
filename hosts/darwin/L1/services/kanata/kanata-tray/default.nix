@@ -1,4 +1,4 @@
-_:
+{ config, ... }:
 
 {
   imports = [
@@ -7,5 +7,6 @@ _:
 
   services.kanata-tray = {
     enable = true;
+    package = /${config.paths.homeDirectory}/.local/bin/kanata-tray; #impure
   };
 }
