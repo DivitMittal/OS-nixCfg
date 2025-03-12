@@ -16,7 +16,9 @@ in
   ];
 
   programs.home-manager.enable = true;
+  news.display = "show";
   xdg.enable = true;
+  home.preferXdgDirectories = true;
   home.enableNixpkgsReleaseCheck = true;
 
   home.packages = builtins.attrValues {
@@ -24,5 +26,5 @@ in
   };
   home.extraOutputsToInstall = [ "info" ]; # "doc" "devdoc"
 
-  home.stateVersion = "24.05";
+  home.stateVersion = "25.05";
 }

@@ -7,8 +7,8 @@ in
   home.packages = builtins.attrValues {
     inherit(pkgs)
       skate
+      age
       # bitwarden-cli
-      # age = pkgs.age;
     ;
   };
 

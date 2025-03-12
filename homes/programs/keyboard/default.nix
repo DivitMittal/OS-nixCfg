@@ -10,7 +10,10 @@ let
 in
 {
   imports = [
-    (import ./kanata-tray { inherit pkgs; inherit TLTR; })
+    (import ./kanata-tray {
+      inherit pkgs;
+      inherit TLTR;
+    })
   ];
 
   xdg.configFile."karabiner" = {

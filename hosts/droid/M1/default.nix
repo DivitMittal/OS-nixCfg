@@ -7,10 +7,10 @@
     ;
   };
 
-  user.shell = "${pkgs.zsh}/bin/zsh";
+  user.shell = "${pkgs.fish}/bin/fish";
 
   home-manager = {
-    config = import ./home.nix;
+    config = import ./home;
     extraSpecialArgs = {
       repo = "${config.user.home}/OS-nixCfg";
     };
