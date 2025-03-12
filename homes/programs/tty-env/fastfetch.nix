@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ self, pkgs, lib, ... }:
 
 {
   programs.fish.loginShellInit = lib.mkAfter ''
@@ -12,7 +12,7 @@
     settings = {
       logo = {
         type = "iterm";
-        source = "${config.paths.repo}/assets/a-12.png";
+        source = self + "/assets/a-12.png";
         height = 20;
         width = 40;
         preserveAspectRatio = true; #iterm only

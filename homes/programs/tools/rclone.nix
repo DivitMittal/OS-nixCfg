@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, self, config, ... }:
 
 let
   common = ''
@@ -70,11 +70,12 @@ let
         --vfs-cache-mode full \
         --log-level ERROR \
         --no-unicode-normalization=false'';
+  remotesPath = "${config.home.homeDirectory}/Remotes";
 in
 {
   xdg.configFile."rclone/rclone.conf" = {
     enable = false;
-    source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath "${config.paths.repo}/secrets/rclone.conf"); # impure
+    source = config.lib.file.mkOutOfStoreSymlink (self + /secrets/rclone.conf);
   };
 
   home.packages = builtins.attrValues {
@@ -83,19 +84,19 @@ in
     ;
 
     OneDrive-Divit = pkgs.writeShellScriptBin "OneDrive-Divit" ''
-      ${common} OneDrive-Divit: ~/Remotes/OneDrive-Divit
+      ${common} OneDrive-Divit: ${remotesPath}/OneDrive-Divit
     '';
 
     OneDrive-MUJ = pkgs.writeShellScriptBin "OneDrive-MUJ" ''
-      ${common} OneDrive-MUJ: ~/Remotes/OneDrive-MUJ
+      ${common} OneDrive-MUJ: ${remotesPath}/OneDrive-MUJ
     '';
 
     GoogleDrive-Divit = pkgs.writeShellScriptBin "GoogleDrive-Divit" ''
-      ${common} GoogleDrive-Divit: ~/Remotes/GoogleDrive-Divit
+      ${common} GoogleDrive-Divit: ${remotesPath}/GoogleDrive-Divit
     '';
 
     GooglePhotos-Divit = pkgs.writeShellScriptBin "GooglePhotos-Divit" ''
-      ${common} GooglePhotos-Divit: ~/Remotes/GooglePhotos-Divit
+      ${common} GooglePhotos-Divit: ${remotesPath}/GooglePhotos-Divit
     '';
   };
 }

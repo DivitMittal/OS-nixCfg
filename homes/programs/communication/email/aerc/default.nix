@@ -1,9 +1,9 @@
-{ config, pkgs, ... }:
+{ config, self, pkgs, ... }:
 
 {
   xdg.configFile."aerc/accounts.conf" = {
     enable = false;
-    source = builtins.toPath "${config.paths.repo}/secrets/email/aerc/accounts.conf"; # impure
+    source = self + /secrets/email/aerc/accounts.conf;
   };
 
   programs.aerc = {

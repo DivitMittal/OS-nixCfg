@@ -1,4 +1,4 @@
-{ config, lib, hostname, inputs, pkgs, ... }:
+{ config, lib, self, hostname, inputs, pkgs, ... }:
 
 {
   imports = [
@@ -8,7 +8,7 @@
   options = let inherit(lib) mkOption types; in {
     paths.currentDarwinCfg = mkOption {
       type = types.str;
-      default = "${config.paths.repo}/hosts/darwin/${hostname}";
+      default = self + "/hosts/darwin/${hostname}";
       description = "Path to darwin configs";
     };
   };

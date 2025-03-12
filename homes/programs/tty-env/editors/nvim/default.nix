@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, self, config, ... }:
 
 {
   programs.neovim = {
@@ -14,7 +14,7 @@
 
   xdg.configFile."nvim" = {
     enable = true;
-    source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath "${config.paths.programs}/tty-env/editors/nvim/conf");
+    source = config.lib.file.mkOutOfStoreSymlink (self + /homes/programs/tty-env/editors/nvim/conf);
     recursive = true;
   };
 }

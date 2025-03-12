@@ -5,7 +5,6 @@ let
 in
 {
   nix.package = mkDefault pkgs.nixVersions.latest;
-
   # nixpkgs.hostPlatform = "${system}"; # handled by easy-hosts
 
   nix = {

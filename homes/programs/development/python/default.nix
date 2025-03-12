@@ -14,7 +14,7 @@
 
   ## pipx
   # home.packages = lib.mkAfter [ pkgs.pipx ];
-  # programs.fish.shellAliases.pipx-ultimate = "pipx upgrade-all; pipx list --short 1> ${config.paths.programs}/development/python/pipx.bak.txt";
+  # programs.fish.shellAliases.pipx-ultimate = "pipx upgrade-all; pipx list --short 1> ${self}/homes/programs/development/python/pipx.bak.txt";
   ## micromamba
   # home.packages = lib.mkAfter [ pkgs.micromamba ];
   # home.file.condarc = {

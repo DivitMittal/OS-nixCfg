@@ -1,8 +1,7 @@
-{ user, config, lib, pkgs, ... }:
+{ user, config, self, lib, pkgs, ... }:
 
 let
   isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
-  cfg = config.paths;
 in
 {
   imports = [
@@ -16,21 +15,9 @@ in
       description = "Path to current-user binary home";
     };
 
-    paths.repo = mkOption {
-      type = types.str;
-      default = "${config.home.homeDirectory}/OS-nixCfg";
-      description = "Path to the main repo containing home-manager & other nix configs";
-    };
-
-    paths.programs = mkOption {
-      type = types.str;
-      default = cfg.repo + "/homes/programs";
-      description = "Path to current-user home-manager module";
-    };
-
     paths.darwinCfg = mkOption {
       type = types.str;
-      default = cfg.repo + "/hosts/darwin";
+      default = self + "/hosts/darwin";
       description = "Path to darwinCfg";
     };
   };

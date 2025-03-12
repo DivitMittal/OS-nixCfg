@@ -1,8 +1,7 @@
-{ user, config, lib, pkgs, ... }:
+{ user, lib, pkgs, ... }:
 
 let
   isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
-  cfg = config.paths;
 in
 {
   imports = [
@@ -15,18 +14,6 @@ in
       type = types.str;
       default = (if isDarwin then "/Users" else "/home") + "/${user.username}";
       description = "Path to your home directory";
-    };
-
-    paths.repo = mkOption {
-      type = types.str;
-      default = cfg.homeDirectory + "/OS-nixCfg";
-      description = "Path to the repo that contains this nixOS/nix-darwin/nix-on-droid config along with other nix configs";
-    };
-
-    paths.secrets = mkOption {
-      type = types.str;
-      default = cfg.repo + "/secrets";
-      description = "Path to repo secrets";
     };
   };
 
