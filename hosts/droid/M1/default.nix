@@ -15,5 +15,6 @@
       repo = "${config.user.home}/OS-nixCfg";
     };
     backupFileExtension = ".bak";
+    useGlobalPkgs = true;
   };
 }

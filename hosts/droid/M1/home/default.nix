@@ -1,16 +1,9 @@
-{ pkgs, lib, repo, config, ... }:
+{ pkgs, repo, config, ... }:
 
 let
   programs = /${repo}/homes/programs;
 in
 {
-  nixpkgs.config = let inherit(lib) mkDefault; in {
-    allowBroken = mkDefault false;
-    allowUnsupportedSystem = mkDefault false;
-    allowUnfree = mkDefault true;
-    allowInsecure = mkDefault true;
-  };
-
   imports = [
     /${programs}/tty-env
   ];
