@@ -26,18 +26,19 @@
       ## macOS specific
       "raycast" "alt-tab" "spaceman" "gswitch"
       "bluesnooze"
-      "jordanbaird-ice"
+      #"jordanbaird-ice" # open-source alt to bartender
       "fuse-t" #"macfuse"
       #"betterdisplay"
       #"knockknock"
       #"hammerspoon"
 
       ## WWWW browser
-      "firefox" "google-chrome" "tor-browser"
+      "firefox" "google-chrome"
+      #"tor-browser"
 
       ## Development Environment
       "wezterm" "visual-studio-code"
-      "cursor"
+      #"cursor"
       #"jetbrains-toolbox"
 
       # R
@@ -51,12 +52,13 @@
       #"libreoffice"
 
       ## Communication
-      "whatsapp" "thunderbird" "simplex"
+      "whatsapp" "thunderbird"
+      #"simplex"
       #"zoom"
 
       ## Networking
       "localsend"
-      "cyberduck"
+      #"cyberduck"
 
       ## Multimedia
       "stolendata-mpv"
@@ -94,9 +96,9 @@
     ];
 
     masApps = {
-      "Tuner" = 1597107926;
       "Texty" = 1538996043;
-      "PerplexityAI" = 6714467650;
+      #"Tuner" = 1597107926;
+      #PerplexityAI" = 6714467650;
 
       # Safari Extensions
       "Ghostery" = 6504861501;
