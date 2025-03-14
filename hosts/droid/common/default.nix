@@ -5,14 +5,6 @@
     ./ssh.nix
   ];
 
-  options = let inherit(lib) mkOption types; in {
-    paths.repo = mkOption {
-      type = types.str;
-      default = "${config.user.home}/OS-nixCfg";
-      description = "Path to the main repo containing nix-on-droid & other nix configs";
-    };
-  };
-
   config = {
     time.timeZone = "Asia/Calcutta";
 

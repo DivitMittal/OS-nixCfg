@@ -1,9 +1,14 @@
-{ inputs, ... }:
+{ self, inputs, user,... }:
 
 let
-  nixDroidGenerator = system: additionalModules:
-    inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+  nixOnDroidGenerator = additionalModules:
+    inputs.nix-on-droid.lib.nixOnDroidConfiguration rec {
+      system = "aarch64-linux";
       pkgs = inputs.nixpkgs.legacyPackages.${system}; # memoized
+      home-manager-path = inputs.home-manager.outPath;
+      extraSpecialArgs = {
+        inherit inputs self user system;
+      };
       modules = [
       ./common
       ] ++ additionalModules;
@@ -11,7 +16,7 @@ let
 in
 {
   flake.nixOnDroidConfigurations = {
-    default = nixDroidGenerator "aarch64-linux" [
+    M1 = nixOnDroidGenerator [
       ./M1
     ];
   };
