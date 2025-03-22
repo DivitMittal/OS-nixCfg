@@ -1,4 +1,4 @@
-{ pkgs, config, ... } :
+{ pkgs, ... } :
 
 {
   environment.packages = builtins.attrValues {
@@ -11,9 +11,9 @@
 
   home-manager = {
     config = import ./home;
-    extraSpecialArgs = {
-      repo = "${config.user.home}/OS-nixCfg";
-    };
+    # extraSpecialArgs = {
+    #   repo = "${config.user.home}/OS-nixCfg";
+    # };
     backupFileExtension = ".bak";
     useGlobalPkgs = true;
   };

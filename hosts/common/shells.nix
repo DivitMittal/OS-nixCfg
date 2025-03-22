@@ -3,7 +3,7 @@
 {
   environment.shells = builtins.attrValues {
     inherit(pkgs)
-      bash zsh dash fish
+      bash zsh fish dash
     ;
   };
 

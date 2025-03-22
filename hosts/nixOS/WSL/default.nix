@@ -1,8 +1,6 @@
-{ pkgs, config, user, ... }:
+{ config, user, ... }:
 
 {
-  fonts.packages = with pkgs; [ nerd-fonts.caskaydia-cove ];
-
   wsl = {
     enable = true;
 

@@ -1,29 +1,19 @@
-{ config, lib, self, hostname, inputs, pkgs, ... }:
+{ config, lib, self, inputs, pkgs, ... }:
 
 {
   imports = [
     ./shells.nix
   ];
 
-  options = let inherit(lib) mkOption types; in {
-    paths.currentDarwinCfg = mkOption {
-      type = types.str;
-      default = self + "/hosts/darwin/${hostname}";
-      description = "Path to darwin configs";
-    };
-  };
-
   config = {
-    environment.darwinConfig = "${config.paths.currentDarwinCfg}/default.nix";
+    environment.darwinConfig = self + "/hosts/darwin/${config.networking.hostName}/default.nix";
 
     networking = {
       knownNetworkServices = [ "Wi-Fi" ];
-      # Cloudflare DNS
-      dns = [
+      dns = [ # Cloudflare DNS
               "1.1.1.1"              "1.0.0.1"         # IPv4
         "2606:4700:4700::1111" "2606:4700:4700::1001"  # IPv6
       ];
-      # hostName = "${hostname}"; # handled by easy-hosts
       computerName = "${config.networking.hostName}";
     };
 

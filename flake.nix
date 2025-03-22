@@ -1,8 +1,8 @@
 {
   description = "OS-nixCfg flake";
   outputs =
-    { self, ... }@inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } (
+    { flake-parts, ... }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } (
       {
         config,
         withSystem,
@@ -32,8 +32,7 @@
 
         imports = [
           ./pre-commit-hooks.nix
-
-          ./homes
+          ./home
           ./hosts
         ];
 
@@ -41,7 +40,9 @@
         perSystem =
           { pkgs, system, ... }:
           {
-            _module.args.pkgs = pkgs;
+            _module.args = {
+              pkgs = inputs.nixpkgs.legacyPackages.${system};
+            };
             formatter = pkgs.nixfmt-rfc-style;
           };
       }

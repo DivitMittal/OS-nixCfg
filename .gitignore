@@ -3,3 +3,6 @@
 
 # Nvim plugin manager lock file, i.e., lazy-lock.json
 **/lazy-lock.json
+
+# direnv
+**/.direnv/

@@ -1,39 +1,35 @@
-{ user, lib, pkgs, ... }:
+{ pkgs, ... }:
 
-let
-  isDarwin = pkgs.stdenvNoCC.hostPlatform.isDarwin;
-in
 {
   imports = [
     ./shells.nix
-    ./nixCfg.nix
+    ./users.nix
   ];
 
-  options = let inherit(lib) mkOption types; in {
-    paths.homeDirectory = mkOption {
-      type = types.str;
-      default = (if isDarwin then "/Users" else "/home") + "/${user.username}";
-      description = "Path to your home directory";
-    };
+  system.checks = {
+    verifyBuildUsers = true;
+    #verifyNixPath = true;  # handled by easy-hosts
   };
 
-  config = {
-    time.timeZone = "Asia/Calcutta";
-    environment.extraOutputsToInstall = [ "info" ]; # "doc" "devdoc"
+  #networking.hostName = "${hostname}"; # handled by easy-hosts
 
-    documentation = {
-      enable      = true;
+  time.timeZone = "Asia/Calcutta";
+  environment.extraOutputsToInstall = [ "info" ]; # "doc" "devdoc"
 
-      info.enable = true;
-      man.enable  = true;
-      doc.enable  = false;
-    };
+  documentation = {
+    enable      = true;
 
-    environment.systemPackages = builtins.attrValues {
-      inherit(pkgs)
-        bc diffutils findutils gnugrep inetutils gnused gawk which gzip gnutar wget gnupatch gnupg binutils gnumake groff indent # GNU
-        zip unzip curl vim uutils-coreutils-noprefix git
-      ;
-    };
+    info.enable = true;
+    man.enable  = true;
+    doc.enable  = false;
+  };
+
+  fonts.packages = with pkgs; [ nerd-fonts.caskaydia-cove ];
+
+  environment.systemPackages = builtins.attrValues {
+    inherit(pkgs)
+      bc gnugrep inetutils gnused gawk which gzip gnutar wget gnupatch gnupg binutils gnumake groff indent # GNU
+      zip unzip curl vim uutils-coreutils-noprefix uutils-diffutils uutils-findutils git
+    ;
   };
 }

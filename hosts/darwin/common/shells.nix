@@ -4,8 +4,6 @@
   environment.shells = with pkgs; [ ksh tcsh ];
 
   environment.shellAliases = {
-    dt = "builtin cd ~/Desktop/";
-    dl = "builtin cd ~/Downloads/";
     cleanup-DS  = "sudo find . -type f -name '*.DS_Store' -ls -delete";
     empty-trash = "bash -c 'sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sudo rm -rfv /private/tmp/*.log'";
   };

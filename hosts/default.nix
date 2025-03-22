@@ -1,4 +1,4 @@
-{ user, inputs, ... }:
+{ user, inputs, self, pkgs, ... }:
 
 {
   imports = [
@@ -6,13 +6,16 @@
     ./droid
   ];
 
+  # darwin & nixos hosts
   easy-hosts = {
     shared = {
       modules = [
         ./common
+        (self + /nix.nix)
       ];
       specialArgs = {
         inherit user;
+        inherit(pkgs.stdenvNoCC) hostPlatform;
       };
     };
 
@@ -26,18 +29,18 @@
 
     hosts = {
       L1 = {
-        arch = "x86_64";
         class = "darwin";
+        arch = "x86_64";
         deployable = true;
         path = ./darwin/L1;
-        specialArgs = {
-          hostname = "L1";
-        };
+        # specialArgs = {
+        #   hostname = "L1";
+        # };
       };
 
       L2 = {
-        arch = "x86_64";
         class = "nixos";
+        arch = "x86_64";
         deployable = true;
         path = ./nixOS/L2;
         modules = [
@@ -46,8 +49,8 @@
       };
 
       WSL = {
-        arch = "x86_64";
         class = "nixos";
+        arch = "x86_64";
         deployable = true;
         path = ./nixOS/WSL;
         modules = [

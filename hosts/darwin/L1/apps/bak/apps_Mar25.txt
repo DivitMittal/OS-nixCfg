@@ -5,8 +5,6 @@ AmpliTube 5.app
 Aurora DSP
 Bluesnooze.app
 Capo.app
-Cursor.app
-Cyberduck.app
 Dynamic Wallpaper.app
 Firefox.app
 Ghostery Privacy Ad Blocker.app
@@ -15,7 +13,6 @@ Grass.app
 Guitar Pro 8.app
 Homerow.app
 IK Product Manager.app
-Ice.app
 LocalSend.app
 Logic Pro X.app
 MainStage.app
@@ -33,21 +30,17 @@ Obsidian.app
 OneDrive.app
 PDF Expert.app
 Parallels Desktop.app
-Perplexity.app
 R.app
 REAPER.app
 RStudio.app
 Raycast.app
 Rig.app
 Safari.app
-SimpleX.app
 SoundSource.app
 Spaceman.app
 Super Agent.app
 Texty.app
 Thunderbird.app
-Tor Browser.app
-TuneHertz.app
 Utilities
 Vimkey.app
 Visual Studio Code.app

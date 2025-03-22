@@ -1,4 +1,4 @@
-{ config, ... }:
+{ user, config, ... }:
 
 {
   imports = [
@@ -7,7 +7,7 @@
 
   services.spotify-daemon = {
     enable = false;
-    package = /${config.paths.homeDirectory}/.cargo/bin/spotifyd; # impure
+    package = /${config.users.users.${user.username}.home}/.cargo/bin/spotifyd; # impure
 
     settings = {
       global = {
