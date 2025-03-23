@@ -1,4 +1,4 @@
-_:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -6,4 +6,10 @@ _:
     ./bat.nix
     ./less.nix
   ];
+
+  home.packages = builtins.attrValues {
+    inherit(pkgs)
+      glow # markdown pager
+    ;
+  };
 }
