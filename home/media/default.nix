@@ -7,11 +7,11 @@
 
   home.packages = builtins.attrValues {
     inherit(pkgs)
-      # video
+      ## video
       ffmpeg yt-dlp
 
-      # image
-      # chafa
+      ## image
+      #chafa
       imagemagick
       exif
     ;

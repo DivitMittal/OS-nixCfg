@@ -2,7 +2,7 @@
 
 {
   programs.awscli = {
-    enable = true;
+    enable = false;
     package = pkgs.awscli2;
 
     settings = {
@@ -14,7 +14,7 @@
   };
 
   home.packages = builtins.attrValues {
-    # cloud-platforms-cli
-    gcp = pkgs.google-cloud-sdk;
+    ## cloud-platforms-cli
+    #gcp = pkgs.google-cloud-sdk;
   };
 }

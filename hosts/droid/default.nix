@@ -10,7 +10,7 @@ let
         inherit inputs self user system;
       };
       modules = [
-      ./common
+        ./common
       ] ++ additionalModules;
     };
 in

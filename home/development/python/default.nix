@@ -7,7 +7,7 @@
     ;
   };
 
-  # pip
+  ## pip
   programs.fish.shellAliases = {
     pip-uninstall-all = "pip3 freeze | cut -d '@' -f1 | xargs pip3 uninstall -y";
   };
@@ -15,6 +15,7 @@
   ## pipx
   # home.packages = lib.mkAfter [ pkgs.pipx ];
   # programs.fish.shellAliases.pipx-ultimate = "pipx upgrade-all; pipx list --short 1> $OS_NIXCFG/home/development/python/pipx.bak.txt";
+
   ## micromamba
   # home.packages = lib.mkAfter [ pkgs.micromamba ];
   # home.file.condarc = {

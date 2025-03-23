@@ -1,4 +1,4 @@
-{ user, inputs, self, pkgs, ... }:
+{ user, inputs, pkgs, self, ... }:
 
 {
   imports = [
@@ -6,7 +6,7 @@
     ./droid
   ];
 
-  # darwin & nixos hosts
+  ## darwin & nixos hosts
   easy-hosts = {
     shared = {
       modules = [

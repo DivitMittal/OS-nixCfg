@@ -22,7 +22,7 @@
         git
         pre-commit
         home-manager
-        ;
+      ;
     };
   };
 }

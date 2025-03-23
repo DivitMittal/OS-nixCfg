@@ -5,7 +5,7 @@
     inherit(pkgs)
       skate
       age
-      # bitwarden-cli
+      #bitwarden-cli
     ;
   };
 
