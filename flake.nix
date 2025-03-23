@@ -24,10 +24,14 @@
           "aarch64-linux"
           "x86_64-linux"
         ];
+
+        system = builtins.currentSystem; #impure
       in
       {
         _module.args = {
           inherit user;
+          pkgs = inputs.nixpkgs.legacyPackages.${system}; # memoized
+          #pkgs = import inputs.nixpkgs { inherit system; }; # not-memoized
         };
 
         imports = [
@@ -38,12 +42,14 @@
 
         inherit systems;
         perSystem =
-          { pkgs, system, ... }:
+          { pkgs, system, inputs', ... }:
           {
-            _module.args = {
-              pkgs = inputs.nixpkgs.legacyPackages.${system};
+            config = {
+              _module.args = {
+                inherit pkgs;
+              };
+              formatter = pkgs.nixfmt-rfc-style;
             };
-            formatter = pkgs.nixfmt-rfc-style;
           };
       }
     );
