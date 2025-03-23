@@ -1,9 +1,6 @@
 { config, pkgs, hostPlatform, ... }:
 
 let
-  configPath = config.programs.firefox.configPath;
-  profilesPath = if hostPlatform.isDarwin then "${configPath}/Profiles" else configPath;
-
   profiles = {
     clean-profile = {
       id = 0;
@@ -139,27 +136,28 @@ in
 
     inherit profiles;
   };
+
   home.file.firefoxUserChromeJS = {
     source = ./chrome/JS;
-    target = "${config.home.homeDirectory}/${config.programs.firefox.configPath}" + (if hostPlatform.isDarwin then "/Profiles" else "") + "/custom-default/chrome/JS";
+    target = "${config.programs.firefox.configPath}" + (if hostPlatform.isDarwin then "/Profiles" else "") + "/custom-default/chrome/JS";
     recursive = true;
   };
 
   ## Mercury (firefox-fork)
-  programs.librewolf = {
-    enable = true;
-    package = null; # binary
-
-    name = "mercury";
-    configPath = if hostPlatform.isDarwin then "Library/Application Support/mercury" else ".mozilla";
-
-    nativeMessagingHosts = with pkgs;[ tridactyl-native ];
-
-    inherit profiles;
-  };
-  home.file.MercuryUserChromeJS = {
-    source = ./chrome/JS;
-    target = "${config.home.homeDirectory}/${config.programs.librewolf.configPath}" + (if hostPlatform.isDarwin then "/Profiles" else "") + "/custom-default/chrome/JS";
-    recursive = true;
-  };
+  # programs.librewolf = {
+  #   enable = true;
+  #   package = null; # binary
+  #
+  #   name = "mercury";
+  #   configPath = if hostPlatform.isDarwin then "Library/Application Support/mercury" else ".mozilla";
+  #
+  #   nativeMessagingHosts = with pkgs;[ tridactyl-native ];
+  #
+  #   inherit profiles;
+  # };
+  # home.file.MercuryUserChromeJS = {
+  #   source = ./chrome/JS;
+  #   target = "${config.programs.librewolf.configPath}" + (if hostPlatform.isDarwin then "/Profiles" else "") + "/custom-default/chrome/JS";
+  #   recursive = true;
+  # };
 }

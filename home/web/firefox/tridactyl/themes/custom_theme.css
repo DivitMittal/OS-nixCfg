@@ -1,11 +1,11 @@
 :root {
   --bg: rgba(0, 0, 0, 1);
   --fg: #14C800;
-  --font: "CaskaydiaCove NFM";
+  --font: "CaskaydiaCove Nerd Font Mono";
 
   --tridactyl-bg: var(--bg);
   --tridactyl-fg: var(--fg);
-  --tridactyl-font-size: 22px;
+  --tridactyl-font-size: 18px;
 
   /* Header */
   --tridactyl-header-first-bg: #333;
@@ -28,15 +28,15 @@
   --tridactyl-cmdl-bg: var(--bg);
   --tridactyl-cmdl-fg: var(--fg);
   --tridactyl-cmdl-font-family: var(--font);
-  --tridactyl-cmdl-font-size: 22px;
+  --tridactyl-cmdl-font-size: 18px;
 
   /* Completions Table */
   --tridactyl-cmplt-font-family: var(--font);
-  --tridactyl-cmplt-font-size: 22px;
+  --tridactyl-cmplt-font-size: 18px;
 }
 
 :root #completions table {
-  font-size: 15pt;
+  font-size: 14pt;
   border-spacing: 0;
   table-layout: fixed;
 }
