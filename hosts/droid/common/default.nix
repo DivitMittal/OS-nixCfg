@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./nixCfg.nix
     ./ssh.nix
   ];
 
@@ -29,8 +30,8 @@
 
     environment.packages = builtins.attrValues {
       inherit(pkgs)
-        bc diffutils findutils gnugrep inetutils gnused gawk which gzip gnutar wget gnupatch gnupg # GNU
-        curl vim uutils-coreutils-noprefix #git
+        bc gnugrep inetutils gnused gawk which gzip gnutar wget gnupatch gnupg # GNU
+        curl vim uutils-coreutils-noprefix uutils-diffutils uutils-findutils #git
         utillinux tzdata hostname openssh
       ;
     };

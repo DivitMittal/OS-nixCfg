@@ -29,7 +29,7 @@
   environment.systemPackages = builtins.attrValues {
     inherit(pkgs)
       bc gnugrep inetutils gnused gawk which gzip gnutar wget gnupatch gnupg binutils gnumake groff indent # GNU
-      zip unzip curl vim uutils-coreutils-noprefix uutils-diffutils uutils-findutils git
+      zip unzip curl vim git uutils-coreutils-noprefix uutils-diffutils uutils-findutils
     ;
   };
 }
