@@ -1,7 +1,7 @@
 {
   description = "OS-nixCfg flake";
   outputs =
-    { flake-parts, ... }@inputs:
+    { self, flake-parts, ... }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } (
       {
         config,
@@ -30,6 +30,7 @@
       {
         _module.args = {
           inherit user;
+          inherit self;
           pkgs = inputs.nixpkgs.legacyPackages.${system}; # memoized
           #pkgs = import inputs.nixpkgs { inherit system; }; # not-memoized
         };

@@ -11,7 +11,7 @@ let
       };
       modules = [
         ./common
-        ./../nix.nix      # (self + ./nix.nix)
+        (self + /nix.nix)
         ./tty-env
         inputs.sops-nix.homeManagerModules.sops
       ] ++ additionalModules;

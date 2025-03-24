@@ -11,10 +11,11 @@
     LANG            = "en_US.UTF-8";
     VISUAL          = "nvim";
     EDITOR          = "${VISUAL}";
-    dt              = "builtin cd ${HOME}/Desktop/";
-    dl              = "builtin cd ${HOME}/Downloads/";
-    ls              = "env ls -aF";
-    ll              = "env ls -alHbhigUuS";
+  };
+
+  home.shellAliases = {
+    dt              = "builtin cd ${config.home.homeDirectory}/Desktop/";
+    dl              = "builtin cd ${config.home.homeDirectory}/Downloads/";
   };
 
   home.sessionPath = [
