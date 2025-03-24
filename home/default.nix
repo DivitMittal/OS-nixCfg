@@ -13,7 +13,7 @@ let
         ./common
         (self + /nix.nix)
         ./tty-env
-        inputs.sops-nix.homeManagerModules.sops
+        inputs.sops-nix.homeManagerModules.sops ./sops.nix
       ] ++ additionalModules;
     };
 in
