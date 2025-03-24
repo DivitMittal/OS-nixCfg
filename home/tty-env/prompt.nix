@@ -23,11 +23,13 @@ in
 
     settings = {
       format = concatStrings [
-        "[╭─sys─-➜❯](bold blue) " "$sudo" "$username" "$hostname" "$shell" "\${custom.yazi}" "$status" "$custom" "$cmd_duration" "$docker_context" "\n"
-        "[┣─pwd─-➜❯](bold red) "  "$directory" "$git_branch" "$git_commit" "$git_status" "\n"
+        "[╭─env─-➜❯](bold blue) " "$sudo" "$username" "$hostname" "$shell" "\${custom.yazi}" "$status" "$custom" "$cmd_duration" "$docker_context" "$directory" "\n"
+        # "[┣─pwd─-➜❯](bold red) "  "$directory" "$git_branch" "$git_commit" "$git_status" "\n"
         "[╰─cmd─➜❯](bold green) " "$character"
       ];
       right_format = concatStrings [
+        "$git_branch" "$git_commit" "$git_status"
+        "$direnv"
         "$nix_shell"
         "$lua"
         "$rust"
@@ -46,49 +48,60 @@ in
       add_newline     = true;
       command_timeout = 425;
       scan_timeout    = 50; # scaning files in the current directory
+      follow_symlinks = true;
 
       character = {
         disabled       = false;
-        error_symbol   = "[✗](bold red)";
         format         = "$symbol ";
+        error_symbol   = "[✗](bold red)";
         success_symbol = "[➜](bold green)";
         vicmd_symbol   = "[V](bold blue)";
       };
       username = {
         disabled    = false;
-        format      = "[$user]($style)";
         show_always = true;
+        format      = "[$user]($style)";
         style_root  = "red bold";
         style_user  = "italic bright-purple";
       };
       hostname = {
         disabled = false;
-        format   = "[@](bold blue)[$hostname](bold red) ";
+        format   = "[@](bold blue)[$hostname]($style) ";
+        style    = "bold red";
         ssh_only = false;
         trim_at  = ".";
+      };
+      direnv = {
+        disabled = false;
+        symbol   = "with 📂env: ";
+        format   = "[$symbol$loaded/$allowed]($style) ";
+        style    = "orange";
       };
       directory = {
         disabled          = false;
         home_symbol       = "🏡";
-        style             = "white";
+        format            = "at [$path]($style)[$read_only]($read_only_style) ";
+        style             = "cyan";
         truncate_to_repo  = false;
         truncation_length = 10;
         truncation_symbol = "…/";
       };
       cmd_duration = {
         disabled          = false;
-        format            = "took [$duration](bold yellow) ";
+        format            = "took [$duration]($style) ";
+        style             = "bold yellow";
         show_milliseconds = true;
       };
       package = {
         disabled = false;
-        format = "[🎁 $version](208 bold) ";
+        format   = "[🎁 $version]($sytle) ";
+        style    = "208 bold";
       };
       shell = {
         disabled             = false;
+        format               = "via $indicator ";
         bash_indicator       = "🐑";
         fish_indicator       = "🐠";
-        format               = "via $indicator ";
         powershell_indicator = "_";
         unknown_indicator    = "❓";
         zsh_indicator        = "🦓";
@@ -96,19 +109,20 @@ in
       status = {
         disabled = true;
         format   = "[\\[$symbol$status\\]]($style) ";
-        style    = "red";
         symbol   = "💥 ";
+        style    = "red";
       };
       sudo = {
         disabled = false;
-        format   = "$symbol";
-        style    = "bold green";
+        format   = " [$symbol]($style)";
         symbol   = "🧙";
+        style    = "bold green";
       };
       git_branch = {
         disabled           = false;
         always_show_remote = true;
-        format             = "on 🌱:[$branch](bold yellow) 🎋:[$remote_name/$remote_branch](bold blue) ";
+        format             = "on 🌱:[$branch]($style) 🎋:[$remote_name/$remote_branch]($style) ";
+        style              = "bold yellow";
       };
       git_commit = {
         disabled      = true;
@@ -118,16 +132,17 @@ in
       };
       git_status = {
         disabled = false;
-        ahead      = "🏃\\([$count](bold blue)\\)";
-        behind     = "🐌\\([$count](bold blue)\\)";
+        ahead      = "🏃\\([$count]($style)\\)";
+        behind     = "🐌\\([$count]($style)\\)";
         conflicted = "🤔";
         deleted    = "🚮";
-        diverged   = "😵\\(\\(🏃[$ahead_count](bold blue)\\);🐌\\([$behind_count](bold blue)\\)\\)";
+        diverged   = "😵\\(\\(🏃[$ahead_count]($style)\\);🐌\\([$behind_count]($style)\\)\\)";
         modified   = "📝";
         renamed    = "🐣";
-        staged     = "🎤\\([$count](bold blue)\\)";
+        staged     = "🎤\\([$count]($style)\\)";
         stashed    = "📦";
-        untracked  = "👀";
+        untracked  = "🙈";
+        style      = "bold blue";
       };
 
       ## External
@@ -143,7 +158,7 @@ in
       dart   = { disabled = false; };
       nix_shell = {
         disabled    = false;
-        format      = "via [☃️ $state( \\($name\\))](bold blue) ";
+        format      = "via [❄️ $state( \\($name\\))](bold blue) ";
         impure_msg  = "[impure shell](bold red)";
         pure_msg    = "[pure shell](bold green)";
         unknown_msg = "[unknown shell](bold yellow)";
@@ -151,18 +166,18 @@ in
 
       custom.yazi = {
         disabled    = false;
-        description = "Indicate the shell was launched by `yazi`";
-        symbol      = "on Y ";
         when        = ''test -n "$YAZI_LEVEL"'';
+        description = "Indicate the shell was launched by `yazi`";
+        symbol      = "on 🦆 ";
       };
 
       ## Disabled
       battery = {
         disabled           = true;
+        format             = "🔋:$symbol ";
         charging_symbol    = "⚡️";
         discharging_symbol = "💦";
         display            = [{ threshold = 100; }];
-        format             = "🔋:$symbol ";
         full_symbol        = "💪";
         unknown_symbol     = "💡";
       };
@@ -185,7 +200,8 @@ in
 
       conda = {
         disabled    = true;
-        format      = "in [$symbol$environment](dimmed green) ";
+        format      = "in [$symbol$environment]($style) ";
+        style       = "dimmed green";
         ignore_base = true;
       };
     };

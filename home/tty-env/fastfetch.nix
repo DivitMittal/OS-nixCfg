@@ -55,7 +55,7 @@
       modules = [
         {
           type = "Custom";
-          format = "┌{$1} info {$1}┐";
+          format = "┌{$1}─────{$1}┐";
         }
         {
           type = "OS";
