@@ -14,7 +14,7 @@
 
   ## pipx
   # home.packages = lib.mkAfter [ pkgs.pipx ];
-  # programs.fish.shellAliases.pipx-ultimate = "pipx upgrade-all; pipx list --short 1> $OS_NIXCFG/home/development/python/pipx.bak.txt";
+  # programs.fish.shellAliases.pipx-ultimate = "pipx upgrade-all; pipx list --short 1> $OS_NIXCFG/home/dev/python/pipx.bak.txt";
 
   ## micromamba
   # home.packages = lib.mkAfter [ pkgs.micromamba ];

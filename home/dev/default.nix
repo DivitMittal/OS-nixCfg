@@ -1,16 +1,14 @@
 { pkgs, config, lib, ... }:
 
 {
-  imports = [
-    ./ideavim
-    ./python
-    ./cloud.nix
-    ./js.nix
-  ];
+  imports = lib.custom.scanPaths ./.;
 
   home.packages = builtins.attrValues {
     inherit (pkgs)
-      # android
+      ## Genreal
+      just
+
+      ## Android
       android-tools scrcpy
 
       ## Programming Languages
