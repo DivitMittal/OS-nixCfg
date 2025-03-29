@@ -1,8 +1,5 @@
-_:
+{ lib, ... }:
 
 {
-  imports = [
-    ./ssh.nix
-    ./extra.nix
-  ];
+  imports = lib.custom.scanPaths ./.;
 }

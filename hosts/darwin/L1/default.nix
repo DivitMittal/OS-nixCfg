@@ -1,9 +1,5 @@
-_:
+{ lib, ... }:
 
 {
-  imports = [
-    ./apps
-    ./defaults
-    ./services
-  ];
+  imports = lib.custom.scanPaths ./.;
 }

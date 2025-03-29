@@ -1,7 +1,5 @@
-_:
+{ lib, ... }:
 
 {
-  imports = [
-    ./wezterm
-  ];
+  imports = lib.custom.scanPaths ./.;
 }

@@ -1,12 +1,5 @@
-_:
+{ lib, ... }:
 
 {
-  imports = [
-    ./ai
-    ./network
-    ./virt
-    ./misc.nix
-    ./privacy.nix
-    ./rclone.nix
-  ];
+  imports = lib.custom.scanPaths ./.;
 }

@@ -1,9 +1,7 @@
 { config, lib, self, inputs, pkgs, ... }:
 
 {
-  imports = [
-    ./shells.nix
-  ];
+  imports = lib.custom.scanPaths ./.;
 
   config = {
     environment.darwinConfig = self + "/hosts/darwin/${config.networking.hostName}/default.nix";

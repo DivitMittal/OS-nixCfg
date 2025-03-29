@@ -1,9 +1,8 @@
-{ pkgs, hostPlatform, ... }:
+{ lib, pkgs, hostPlatform, ... }:
 
 {
-  imports = [
-    ./spicetify
-  ];
+
+  imports = lib.custom.scanPaths ./.;
 
   home.packages = with pkgs; [ spotdl ];
 

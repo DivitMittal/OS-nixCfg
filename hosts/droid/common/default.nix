@@ -1,10 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
-  imports = [
-    ./nixCfg.nix
-    ./ssh.nix
-  ];
+  imports = lib.custom.scanPaths ./.;
 
   config = {
     time.timeZone = "Asia/Calcutta";

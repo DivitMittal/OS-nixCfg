@@ -1,8 +1,5 @@
-_:
+{ lib, ... }:
 
 {
-  imports = [
-    ./firefox
-    ./tui.nix
-  ];
+  imports = lib.custom.scanPaths ./.;
 }

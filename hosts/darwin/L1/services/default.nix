@@ -1,10 +1,5 @@
-_:
+{ lib, ... }:
 
 {
-  imports = [
-    ./kanata
-    ./skhd
-    ./spotifyd
-    ./yabai.nix
-  ];
+  imports = lib.custom.scanPaths ./.;
 }
