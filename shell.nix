@@ -8,7 +8,7 @@
         sha256 = lock.narHash;
       };
     in
-    nixpkgs.legacyPackages.${builtins.currentSystem},
+    import nixpkgs { overlays = []; },
   ...
 }:
 
@@ -19,9 +19,10 @@
     nativeBuildInputs = builtins.attrValues {
       inherit (pkgs)
         nix
+        home-manager
         git
         pre-commit
-        home-manager
+        just
       ;
     };
   };
