@@ -1,62 +1,29 @@
-{ user, inputs, pkgs, self, ... }:
+{ inputs, mkHost, ... }:
 
 {
-  imports = [
-    inputs.easy-hosts.flakeModule
-    ./droid
-  ];
-
-  ## darwin & nixos hosts
-  easy-hosts = {
-    shared = {
-      modules = [
-        ./common
-        (self + /nix.nix)
-      ];
-      specialArgs = {
-        inherit user;
-        inherit(pkgs.stdenvNoCC) hostPlatform;
-      };
+  flake.darwinConfigurations = {
+    L1 = mkHost {
+      hostName = "L1";
+      system = "x86_64-darwin";
+      class = "darwin";
     };
 
-    perClass = class: let inherit(inputs.nixpkgs.lib) optionals; in {
-      modules = optionals (class == "darwin") [
-        ./darwin/common
-      ] ++ optionals (class == "nixos") [
-        ./nixOS/common
+    L2 = mkHost {
+      hostName = "L2";
+      system = "x86_64-linux";
+      class = "nixos";
+      additionalModules = [
+        /etc/nixos/hardware-configuration.nix # impure
       ];
     };
 
-    hosts = {
-      L1 = {
-        class = "darwin";
-        arch = "x86_64";
-        deployable = true;
-        path = ./darwin/L1;
-        # specialArgs = {
-        #   hostname = "L1";
-        # };
-      };
-
-      L2 = {
-        class = "nixos";
-        arch = "x86_64";
-        deployable = true;
-        path = ./nixOS/L2;
-        modules = [
-          /etc/nixos/hardware-configuration.nix # impure
-        ];
-      };
-
-      WSL = {
-        class = "nixos";
-        arch = "x86_64";
-        deployable = true;
-        path = ./nixOS/WSL;
-        modules = [
-          inputs.nixos-wsl.nixosModules.default
-        ];
-      };
+    WSL = mkHost {
+      hostName = "WSL";
+      system = "x86_64-linux";
+      class = "nixos";
+      additionalModules = [
+        inputs.nixos-wsl.nixosModules.default
+      ];
     };
   };
 }
