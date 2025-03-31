@@ -8,22 +8,20 @@ let
   command = ["${cfg.package}" "--nodelay"] ++ optionals (cfg.config != "") ["--cfg" configFile];
 in
 {
-  options = let inherit(lib) mkOption types; in {
+  options = let inherit(lib) mkOption mkPackageOption mkEnableOption types; in {
     services.kanata = {
-      enable = mkOption {
-        type = types.bool;
-        default = false;
-        example = true;
-        description = "To enable/disable kanata & run it as launchd LaunchDaemon";
+      enable = mkEnableOption "kanata";
+      package = mkPackageOption pkgs "kanata" { nullable = true; };
+      environment = mkOption {
+        type = types.attrsOf types.str;
+        default = {};
+        example = lib.literalExpression ''
+          {
+            ENV_VAR1 = "value1";
+          }
+        '';
+        description = "Environment variables to be set for kanata-tray & kanata";
       };
-
-      package = mkOption {
-        type = types.package;
-        default = pkgs.kanata;
-        example = pkgs.kanata;
-        description = "The kanata package to use";
-      };
-
       config = mkOption {
         type = types.str;
         default = "";
@@ -54,8 +52,9 @@ in
 
   config = mkIf (cfg.enable) {
     launchd.daemons.kanata = {
-      script = "sudo " + "${builtins.concatStringsSep " " command}";
+      script = "sudo --preserve-env " + "${builtins.concatStringsSep " " command}";
       serviceConfig = {
+        inherit(cfg) environment;
         StandardOutPath = /tmp/org.nixos.kanata.out.log;
         StandardErrorPath = /tmp/org.nixos.kanata.err.log;
         RunAtLoad = true;

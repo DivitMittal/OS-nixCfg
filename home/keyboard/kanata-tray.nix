@@ -4,19 +4,15 @@ let
   configFile = "${TLTR}/kanata/kanata.kbd";
 in
 {
-  imports = [ ./kanata-tray.nix ];
-
-  services.kanata-tray = rec {
+  programs.kanata-tray = {
     enable = true;
-
-    kanataPackage = pkgs.kanata-with-cmd;
 
     settings = {
       general = {
         allow_concurrent_presets = false;
       };
       defaults = {
-        kanata_executable = "${kanataPackage}/bin/kanata";
+        kanata_executable = "${pkgs.kanata-with-cmd}/bin/kanata";
         tcp_port = 5830;
       };
       presets = {

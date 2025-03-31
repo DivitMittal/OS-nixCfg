@@ -6,31 +6,27 @@ let
   karabinerDaemon = "/Library/Application\\ Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon";
 in
 {
-  options = let inherit(lib) mkOption types; in {
+  options = let inherit(lib) mkEnableOption mkPackageOption types mkOption; in {
     services.kanata-tray = {
-      enable = mkOption {
-        type = types.bool;
-        default = false;
-        example = true;
-        description = "To enable/disable kanata-tray & run it as a LaunchAgent";
-      };
-
-      package = mkOption {
-        type = types.path;
-        default = builtins.toPath "${pkgs.kanata-tray}/bin/kanata-tray";
-        example = "~/.local/bin/kanata-tray";
-        description = "The kanata-tray package to use";
+      enable = mkEnableOption "kanata-tray";
+      package = mkPackageOption pkgs "kanata-tray" { nullable = true; };
+      environment = mkOption {
+        type = types.attrsOf types.str;
+        default = {};
+        example = lib.literalExpression ''
+          {
+            ENV_VAR1 = "value1";
+          }
+        '';
+        description = "Environment variables to be set for kanata-tray & kanata";
       };
     };
   };
 
   config = mkIf (cfg.enable) {
     launchd.user.agents.kanata-tray = {
-      environment = {
-        # KANATA_TRAY_CONFIG_DIR = "${config.paths.homeDirectory}/.config/kanata-tray"
-        KANATA_TRAY_LOG_DIR = "/tmp/";
-      };
-      script = "sudo " + "${cfg.package}";
+      inherit(cfg) environment;
+      script = "sudo --preserve-env " + "${cfg.package}/bin/kanata-tray";
       serviceConfig = {
         RunAtLoad = true;
         KeepAlive = {
@@ -55,7 +51,7 @@ in
 
     environment.etc."sudoers.d/kanata-tray".source = pkgs.runCommand "sudoers-kanata-tray" {} ''
       cat <<EOF >"$out"
-      ALL ALL=(ALL) NOPASSWD: ${cfg.package}
+      ALL ALL=(ALL) NOPASSWD: ${cfg.package}/bin/kanata-tray
       ALL ALL=(ALL) NOPASSWD: ${karabinerDaemon}
       EOF
     '';
