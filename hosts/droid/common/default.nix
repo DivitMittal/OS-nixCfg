@@ -27,8 +27,8 @@
 
     environment.packages = builtins.attrValues {
       inherit(pkgs)
-        bc gnugrep inetutils gnused gawk which gzip gnutar wget gnupatch gnupg binutils gnumake groff indent # GNU
-        uutils-coreutils-noprefix uutils-diffutils uutils-findutils # uutils
+        bc gnugrep inetutils gnused gawk which gzip gnutar wget gnupatch gnupg binutils gnumake groff indent diffutils findutils # GNU
+        uutils-coreutils-noprefix #uutils-diffutils uutils-findutils # uutils
         zip unzip curl vim git
         utillinux tzdata hostname openssh
       ;

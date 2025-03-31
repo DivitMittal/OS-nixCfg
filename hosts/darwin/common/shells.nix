@@ -1,12 +1,19 @@
 { pkgs, lib, ... }:
 
+let
+  empty-trash = pkgs.writeShellScriptBin "empty-trash" ''
+    sudo rm -rfv /Volumes/*/.Trashes
+    sudo rm -rfv ~/.Trash
+    sudo rm -rfv /private/var/log/asl/*.asl
+    sudo rm -rfv /private/tmp/*.log
+  '';
+in
 {
   environment.shells = with pkgs; [ ksh tcsh ];
 
-  environment.shellAliases = {
-    cleanup-DS  = "sudo find . -type f -name '*.DS_Store' -ls -delete";
-    empty-trash = "bash -c 'sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sudo rm -rfv /private/tmp/*.log'";
-  };
+  environment.shellAliases.cleanup-DS  = "sudo ${pkgs.findutils}/bin/find . -type f -name '*.DS_Store' -ls -delete";
+
+  environment.systemPackages = [ empty-trash ];
 
   programs = let inherit(lib) mkAfter; in {
     bash.interactiveShellInit = mkAfter ''
