@@ -5,9 +5,6 @@
 
   home.packages = builtins.attrValues {
     inherit (pkgs)
-      ## Genreal
-      just
-
       ## Android
       android-tools scrcpy
 

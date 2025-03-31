@@ -5,9 +5,9 @@
 
   programs.ssh = {
     enable = true;
-    package = if hostPlatform.isDarwin then null else pkgs.ssh; # homebrew
+    package = if hostPlatform.isDarwin then null else pkgs.ssh; # xcode-dev-tools
 
-    includes = [ "~/.colima/ssh_config" ];
+    # includes = [ "~/.colima/ssh_config" ];
     compression = false;
     addKeysToAgent = "yes";
 
