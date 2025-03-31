@@ -7,20 +7,10 @@ let
   cfg = config.services.spotify-daemon;
 in
 {
-  options = let inherit(lib) mkOption types; in {
+  options = let inherit(lib) mkOption mkEnableOption mkPackageOption; in {
     services.spotify-daemon = {
-      enable = mkOption {
-        type = types.bool;
-        default = false;
-        example = true;
-        description = "To enable/disable spotifyd & run it as a LaunchAgent";
-      };
-      package = mkOption {
-        type = types.path;
-        default = /${pkgs.spotifyd}/bin/spotifyd;
-        example = "pkgs.spotifyd";
-        description = "The spotifyd package to use";
-      };
+      enable = mkEnableOption "spotify-daemon";
+      package = mkPackageOption pkgs "spotifyd" { nullable = true; };
       settings = mkOption {
         type = tomlFormat.type;
         default = { };

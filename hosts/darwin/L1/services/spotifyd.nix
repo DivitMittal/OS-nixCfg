@@ -1,13 +1,9 @@
-{ user, config, ... }:
+{ config, ... }:
 
 {
-  imports = [
-    ./spotifyd.nix
-  ];
-
   services.spotify-daemon = {
     enable = false;
-    package = /${config.users.users.${user.username}.home}/.cargo/bin/spotifyd; # impure
+    package = /${config.hostSpec.home}/.cargo/bin/spotifyd; # impure
 
     settings = {
       global = {

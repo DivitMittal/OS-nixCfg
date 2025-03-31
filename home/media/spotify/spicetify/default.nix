@@ -1,8 +1,6 @@
 { pkgs, config, hostPlatform, ... }:
 
 {
-  imports = [ ./spicetify-cli.nix ];
-
   programs.spicetify-cli = {
     enable = false;
     package = pkgs.spicetify-cli;
