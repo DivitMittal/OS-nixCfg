@@ -1,5 +1,5 @@
 {
-  "content.notify.interval"                                            = 100000; # in microseconds
+  "content.notefy.interval"                                            = 100000; # in microseconds
   "layout.css.grid-template-masonry-value.enabled"                     = true;
   "layout.css.has-selector.enabled"                                    = true;
   "dom.enable_web_task_scheduling"                                     = true;
@@ -230,6 +230,9 @@
   "browser.newtabpage.activity-stream.feeds.section.topstories"        = false;
   "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons"   = false;
   "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
+
+  # Firfeox view
+  "browser.tabs.firefox-view"                                          = true; # Sync tabs across devices
 
   # Pocket
   "extensions.pocket.enabled"                                          = false;

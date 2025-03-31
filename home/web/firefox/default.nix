@@ -11,7 +11,10 @@ let
       id = 1;
       isDefault = true;
 
-      bookmarks = [];
+      bookmarks = {
+        force = true;
+        settings = [];
+      };
 
       # containers = {
       #   second = {
@@ -28,16 +31,16 @@ let
       # containersForce = true;
 
       search = {
+        force = true;
         default = "Unduck";
         privateDefault = "Unduck";
-        force = true;
 
         engines = {
-          "Bing".metaData.hidden = true;
+          "bing".metaData.hidden = true;
           # built-in engines only support specifying one additional alias
-          "Google".metaData.alias = "@g";
-          "Wikipedia (en)".metaData.alias = "@w";
-          "DuckDuckGo".metaData.alias = "@d";
+          "google".metaData.alias = "@g";
+          "wikipedia".metaData.alias = "@w";
+          "ddg".metaData.alias = "@d";
 
           "Nix Packages" = {
             urls = [
@@ -120,6 +123,27 @@ let
       userChrome = builtins.readFile ./chrome/CSS/userChrome.css;
     };
   };
+  policies = {
+    AppAutoUpdate = false; # Disable automatic application update
+    BackgroundAppUpdate = false; # Disable automatic application update in the background, when the application is not running.
+    DefaultDownloadDirectory = "${config.home.homeDirectory}/Downloads";
+    DisableBuiltinPDFViewer = false;
+    DisableFirefoxStudies = true;
+    DisableFirefoxAccounts = false; # Enable Firefox Sync
+    DisablePocket = true;
+    DisableTelemetry = true;
+    DontCheckDefaultBrowser = true;
+    OfferToSaveLogins = false; # Managed by bitwarden
+    EnableTrackingProtection = {
+      Value = true;
+      Locked = true;
+      Cryptomining = true;
+      Fingerprinting = true;
+      EmailTracking = true;
+      # Exceptions = ["https://example.com"]
+    };
+    ExtensionUpdate = false;
+  };
 in
 {
   xdg.configFile."tridactyl" = {
@@ -134,6 +158,7 @@ in
 
     nativeMessagingHosts = with pkgs;[ tridactyl-native ];
 
+    inherit policies;
     inherit profiles;
   };
 
