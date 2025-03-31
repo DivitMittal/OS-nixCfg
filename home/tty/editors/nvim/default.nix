@@ -1,8 +1,6 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, ... }:
 
 {
-  # imports = lib.custom.scanPaths ./.;
-
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-unwrapped;
