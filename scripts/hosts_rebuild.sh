@@ -25,7 +25,7 @@ function yellow() {
 	fi
 }
 
-switch_args="-v --impure --flake"
+switch_args="-v --impure"
 if [[ -n $1 && $1 == "trace" ]]; then
 	switch_args="$switch_args --show-trace"
 fi
@@ -63,10 +63,6 @@ if [[ "$os" == "Darwin" ]]; then
 	# fi
 
   green "====== REBUILDING & SWITCHING (DARWIN) ======"
-
-  OS_NIXCFG=$(pwd)
-  export OS_NIXCFG
-
 	# Test if there's no darwin-rebuild, then use nix build and then run it
 	if ! which darwin-rebuild &>/dev/null; then
 		nix build --show-trace .#darwinConfigurations."$HOST".system
@@ -76,8 +72,15 @@ if [[ "$os" == "Darwin" ]]; then
 		darwin-rebuild $switch_args
 	fi
 else
-  green "====== REBUILDING & SWITCHING (NIXOS) ======"
-  sudo nixos-rebuild $switch_args
+  if which nix-on-droid &> /dev/null; then
+    green "====== REBUILDING & SWITCHING (DROID) ======"
+    echo $switch_args
+    nix-on-droid $switch_args
+  else
+    green "====== REBUILDING & SWITCHING (NIXOS) ======"
+    echo $switch_args
+    sudo nixos-rebuild $switch_args
+  fi
 fi
 
 # shellcheck disable=SC2181

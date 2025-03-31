@@ -1,5 +1,6 @@
 # Custom shell for bootstrapping on new hosts, modifying nix-config
 {
+  system ? builtins.currentSystem,
   pkgs ?
     let
       lock = (builtins.fromJSON (builtins.readFile ./flake.lock)).nodes.nixpkgs.locked;
@@ -8,7 +9,7 @@
         sha256 = lock.narHash;
       };
     in
-    import nixpkgs { overlays = []; },
+    import nixpkgs { inherit system; overlays = []; },
   ...
 }:
 
@@ -22,7 +23,7 @@
         home-manager
         git
         pre-commit
-        just
+        agenix-cli
       ;
     };
   };

@@ -4,6 +4,7 @@
 # This script is used to rebuild the system configuration for the current host.
 #
 # SC2086 is ignored because we purposefully pass some values as a set of arguments, so we want the splitting to happen
+
 function red() {
 	echo -e "\x1B[31m[!] $1 \x1B[0m"
 	if [ -n "${2-}" ]; then
