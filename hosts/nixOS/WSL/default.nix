@@ -1,10 +1,10 @@
-{ config, user, ... }:
+{ config, ... }:
 
 {
   wsl = {
     enable = true;
 
-    defaultUser = "${user.username}";
+    defaultUser = "${config.hostSpec.username}";
 
     useWindowsDriver = true;
 

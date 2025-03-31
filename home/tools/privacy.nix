@@ -1,4 +1,4 @@
-{ config, pkgs, user, hostPlatform, ... }:
+{ config, pkgs, hostPlatform, ... }:
 
 {
   home.packages = builtins.attrValues {
@@ -26,7 +26,7 @@
     package = pkgs.rbw;
 
     settings = {
-      email = builtins.elemAt user.emails 1;
+      email = config.hostSpec.email.personal;
       pinentry = (if hostPlatform.isDarwin then pkgs.pinentry_mac else pkgs.pinentry);
     };
   };

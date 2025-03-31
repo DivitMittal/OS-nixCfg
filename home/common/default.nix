@@ -1,9 +1,9 @@
-{ user, config, pkgs, hostPlatform,... }:
+{ config, pkgs,... }:
 
 {
   home = {
-    username = user.username;
-    homeDirectory = (if hostPlatform.isDarwin then "/Users" else "/home") + "/${config.home.username}";
+    username = config.hostSpec.username;
+    homeDirectory = config.hostSpec.home;
   };
 
   programs.home-manager.enable = true;
@@ -17,6 +17,16 @@
     my-hello = pkgs.writeShellScriptBin "my-hello" ''echo "Hello, ${config.home.username}!"'';
   };
   home.extraOutputsToInstall = [ "info" ]; # "doc" "devdoc"
+
+  home.language = {
+    base = "en_US.UTF-8";
+  };
+
+  manual = {
+    html.enable = true;
+    json.enable = false;
+    manpages.enable = false;
+  };
 
   home.stateVersion = "25.05";
 }

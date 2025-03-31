@@ -1,14 +1,14 @@
-{ user, pkgs, hostPlatform, ... }:
+{ config, pkgs, ... }:
 
 {
   nix.settings = {
-    trusted-users = [ "root" "${user.username}" ];
+    trusted-users = [ "root" "${config.hostSpec.username}" ];
   };
 
   users.users = {
-    "${user.username}" = {
-      description = "${user.username}";
-      home = (if hostPlatform.isDarwin then "/Users" else "/home") + "/${user.username}";
+    "${config.hostSpec.username}" = {
+      inherit(config.hostSpec) home;
+      description = "${config.hostSpec.username}@${config.hostSpec.hostName}";
       shell = pkgs.fish;
     };
   };
