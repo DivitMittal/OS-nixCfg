@@ -1,17 +1,14 @@
-{ pkgs, ... }:
+{ pkgs, config, lib, ... }:
 
 {
-  imports = [
-    ./shells.nix
-    ./users.nix
-  ];
+  imports = lib.custom.scanPaths ./.;
 
   system.checks = {
     verifyBuildUsers = true;
-    #verifyNixPath = true;  # handled by easy-hosts
+    verifyNixPath = false;
   };
 
-  #networking.hostName = "${hostname}"; # handled by easy-hosts
+  networking.hostName = config.hostSpec.hostName;
 
   time.timeZone = "Asia/Calcutta";
   environment.extraOutputsToInstall = [ "info" ]; # "doc" "devdoc"
@@ -29,7 +26,8 @@
   environment.systemPackages = builtins.attrValues {
     inherit(pkgs)
       bc gnugrep inetutils gnused gawk which gzip gnutar wget gnupatch gnupg binutils gnumake groff indent # GNU
-      zip unzip curl vim git uutils-coreutils-noprefix uutils-diffutils uutils-findutils
+      uutils-coreutils-noprefix uutils-diffutils uutils-findutils # uutils
+      zip unzip curl vim git
     ;
   };
 }

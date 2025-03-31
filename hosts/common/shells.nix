@@ -9,9 +9,9 @@
 
   environment = {
     variables = rec {
-      LANG            = "en_US.UTF-8";
-      VISUAL          = "vim";
-      EDITOR          = "${VISUAL}";
+      LANG = "en_US.UTF-8";
+      VISUAL = "vim";
+      EDITOR = "${VISUAL}";
     };
 
     shellAliases = {
@@ -60,9 +60,9 @@
       babelfishPackage = pkgs.babelfish;
 
       vendor = {
-        config.enable      = true;
+        config.enable = true;
         completions.enable = true;
-        functions.enable   = true;
+        functions.enable = true;
       };
     };
   };
