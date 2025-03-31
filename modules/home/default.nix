@@ -1,5 +1,8 @@
 { lib, ... }:
 
 {
-  imports = lib.custom.scanPaths ./.;
+  imports = [
+    ./aichat.nix
+    ./spicetify-cli.nix
+  ];
 }

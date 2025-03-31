@@ -1,60 +1,57 @@
+{ config, pkgs, ... }:
+
 {
-  pkgs,
-  config,
-  lib,
-  ...
-}:
+  programs.aichat = {
+    enable = true;
+    package = pkgs.aichat;
 
-let
-  inherit (lib) mkIf;
-  cfg = config.programs.aichat;
-  yamlFormat = pkgs.formats.yaml { };
-in
-{
-  options =
-    let
-      inherit (lib) mkOption mkEnableOption mkPackageOption;
-    in
-    {
-      programs.aichat = {
-        enable = mkEnableOption "aichat";
-        package = mkPackageOption pkgs "aichat" { nullable = true; };
-
-        settings = mkOption {
-          type = yamlFormat.type;
-          default = { };
-
-          example = lib.literalExpression ''
-            {
-              keybindings = "vim";
-              editor = "nvim";
-              wrap = "auto";
-              wrap_code = false;
-              clients = [
-                {
-                  type = "openai-compatible";
-                  name = "groq";
-                  api_base = "https://api.groq.com/openai/v1";
-                  api_key = "";
-                }
-              ];
-            }
-          '';
-          description = ''
-            Configuration written to
-            {file}`$XDG_CONFIG_HOME/aichat/config.yaml`.
-
-            See <https://github.com/sigoden/aichat/blob/main/config.example.yaml>
-            for the full list of options.
-          '';
-        };
-      };
-    };
-
-  config = (mkIf cfg.enable) {
-    home.packages = mkIf (cfg.package != null) [ cfg.package ];
-    xdg.configFile."aichat/config.yaml" = mkIf (cfg.settings != { }) {
-      source = (yamlFormat.generate "aichat-settings.yaml" cfg.settings);
+    settings = {
+      highlight = true;
+      light_theme = false;
+      left_prompt = "{color.green}{?session {?agent {agent}>}{session}{?role /}}{!session {?agent {agent}>}}{role}{?rag @{rag}}{color.cyan}{?session )}{!session >}{color.reset} ";
+      right_prompt = "{color.purple}{?session {?consume_tokens {consume_tokens}({consume_percent}%)}{!consume_tokens {consume_tokens}}}{color.reset}";
+      keybindings = "vim";
+      editor = "nvim";
+      wrap = "auto";
+      wrap_code = false;
+      clients = [
+        {
+          type = "openai-compatible";
+          name = "groq";
+          api_base = "https://api.groq.com/openai/v1";
+          api_key = (builtins.readFile config.sops.secrets."api-keys/GROQ_API_KEY".path);
+        }
+        {
+          type = "gemini";
+          api_base = "https://generativelanguage.googleapis.com/v1beta";
+          api_key = (builtins.readFile config.sops.secrets."api-keys/GEMINI_API_KEY".path);
+          patch = null;
+          chat_completions = {
+            ".*" = {
+              body = {
+                safetySettings = [
+                  {
+                    category = "HARM_CATEGORY_HARASSMENT";
+                    threshold = "BLOCK_NONE";
+                  }
+                  {
+                    category = "HARM_CATEGORY_HATE_SPEECH";
+                    threshold = "BLOCK_NONE";
+                  }
+                  {
+                    category = "HARM_CATEGORY_SEXUALLY_EXPLICIT";
+                    threshold = "BLOCK_NONE";
+                  }
+                  {
+                    category = "HARM_CATEGORY_DANGEROUS_CONTENT";
+                    threshold = "BLOCK_NONE";
+                  }
+                ];
+              };
+            };
+          };
+        }
+      ];
     };
   };
 }
