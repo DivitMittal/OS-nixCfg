@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.aichat = {
@@ -19,12 +19,12 @@
           type = "openai-compatible";
           name = "groq";
           api_base = "https://api.groq.com/openai/v1";
-          api_key = (builtins.readFile config.sops.secrets."api-keys/GROQ_API_KEY".path);
+          # api_key = ""; # Using environment variables instead
         }
         {
           type = "gemini";
           api_base = "https://generativelanguage.googleapis.com/v1beta";
-          api_key = (builtins.readFile config.sops.secrets."api-keys/GEMINI_API_KEY".path);
+          # api_key = ""; # Using environment variables instead
           patch = null;
           chat_completions = {
             ".*" = {

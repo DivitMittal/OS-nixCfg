@@ -55,9 +55,7 @@
               ./home/tty
               inputs.nix-index-database.hmModules.nix-index { programs.nix-index.enable = true; programs.nix-index-database.comma.enable = true; }
               inputs.kanata-tray.homeManagerModules.kanata-tray
-              # inputs.nixvim.homeManagerModules.nixvim
-              # inputs.sops-nix.homeManagerModules.sops ./home/sops.nix
-              inputs.agenix.homeManagerModules.age
+              inputs.agenix.homeManagerModules.age ./home/age.nix
             ];
         in
           systemFunc (
@@ -99,12 +97,24 @@
     );
 
   inputs = {
-    nixpkgs.url = "github:nixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     # nixpkgs-stable.url = "github:nixOS/nixpkgs/nixos-24.11";
     # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
 
+    systems = {
+      url = "github:nix-systems/default";
+      inputs = { };
+    };
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -113,14 +123,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    systems = {
-      url = "github:nix-systems/default";
-      inputs = { };
-    };
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
 
     nix-index-database = {
@@ -128,10 +134,26 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nixvim = {
-    #   url = "github:nix-community/nixvim";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    pre-commit-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    OS-nixCfg-secrets = {
+      # url = "git+https://github.com/DivitMittal/OS-nixCfg-secrets.git";
+      url = "path:/Users/div/OS-nixCfg-secrets";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+        devshell.follows = "devshell";
+        agenix.follows = "agenix";
+      };
+    };
 
     agenix = {
       url = "github:ryantm/agenix";
@@ -142,38 +164,9 @@
         systems.follows = "systems";
       };
     };
-    sops-nix.url = "github:Mic92/sops-nix";
-
-    nix-on-droid = {
-      url = "github:nix-community/nix-on-droid/release-24.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-
-    ragenix = {
-      url = "github:yaxitech/ragenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    flake-parts.url = "github:hercules-ci/flake-parts";
-
-    pre-commit-hooks = {
-      url = "github:cachix/git-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    OS-nixCfg-secrets = {
-      url = "git+https://github.com/DivitMittal/OS-nixCfg-secrets.git";
-      inputs = { };
-    };
 
     kanata-tray = {
       url = "github:DivitMittal/kanata-tray/flake-darwin-support";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    devshell = {
-      url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

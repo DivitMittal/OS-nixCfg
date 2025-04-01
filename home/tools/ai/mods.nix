@@ -20,7 +20,7 @@
       apis = {
         groq = {
           base-url = "https://api.groq.com/openai/v1";
-          api-key = (builtins.readFile config.sops.secrets."api-keys/GROQ_API_KEY".path);
+          api-key-env = "GROQ_API_KEY";
           models = {
             "deepseek-r1-distill-llama-70b" = {
               aliases = [ "deepseek" ];
@@ -29,7 +29,7 @@
           };
         };
         google = {
-          api-key = (builtins.readFile config.sops.secrets."api-keys/GEMINI_API_KEY".path);
+          api-key-env = "GEMINI_API_KEY";
           models = {
             "gemini-2.0-flash" = {
               aliases = [ "gemini-2.0-flash" ];
