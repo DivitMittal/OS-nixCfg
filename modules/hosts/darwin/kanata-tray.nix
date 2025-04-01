@@ -26,7 +26,7 @@ in
   config = mkIf (cfg.enable) {
     launchd.user.agents.kanata-tray = {
       inherit(cfg) environment;
-      script = "sudo --preserve-env " + "${cfg.package}/bin/kanata-tray";
+      command = "sudo --preserve-env " + "${cfg.package}/bin/kanata-tray";
       serviceConfig = {
         RunAtLoad = true;
         KeepAlive = {
@@ -38,7 +38,7 @@ in
     };
 
     launchd.user.agents.karabiner-daemon = {
-      script = "sudo " + karabinerDaemon;
+      command = "sudo " + karabinerDaemon;
       serviceConfig = {
         RunAtLoad = true;
         KeepAlive = {
@@ -51,7 +51,7 @@ in
 
     environment.etc."sudoers.d/kanata-tray".source = pkgs.runCommand "sudoers-kanata-tray" {} ''
       cat <<EOF >"$out"
-      ALL ALL=(ALL) NOPASSWD: ${cfg.package}/bin/kanata-tray
+      ALL ALL=(ALL) NOPASSWD:SETENV: ${cfg.package}/bin/kanata-tray
       ALL ALL=(ALL) NOPASSWD: ${karabinerDaemon}
       EOF
     '';
