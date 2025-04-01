@@ -54,8 +54,8 @@
               ./home/common
               ./home/tty
               inputs.nix-index-database.hmModules.nix-index { programs.nix-index.enable = true; programs.nix-index-database.comma.enable = true; }
+              inputs.ragenix.homeManagerModules.default ./home/age.nix
               inputs.kanata-tray.homeManagerModules.kanata-tray
-              inputs.agenix.homeManagerModules.age ./home/age.nix
             ];
         in
           systemFunc (
@@ -144,17 +144,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    OS-nixCfg-secrets = {
-      # url = "git+https://github.com/DivitMittal/OS-nixCfg-secrets.git";
-      url = "path:/Users/div/OS-nixCfg-secrets";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-        devshell.follows = "devshell";
-        agenix.follows = "agenix";
-      };
-    };
-
     agenix = {
       url = "github:ryantm/agenix";
       inputs = {
@@ -162,6 +151,24 @@
         home-manager.follows = "home-manager";
         darwin.follows = "nix-darwin";
         systems.follows = "systems";
+      };
+    };
+
+    ragenix = {
+      url = "github:yaxitech/ragenix";
+      inputs.agenix.follows = "agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    OS-nixCfg-secrets = {
+      url = "git+ssh://git@github.com/DivitMittal/OS-nixCfg-secrets.git?ref=master";
+      # url = "path:/Users/div/OS-nixCfg-secrets";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+        devshell.follows = "devshell";
+        agenix.follows = "agenix";
+        ragenix.follows = "ragenix";
       };
     };
 

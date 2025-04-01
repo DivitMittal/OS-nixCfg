@@ -23,7 +23,6 @@
         home-manager
         git
         pre-commit
-        agenix-cli
       ;
     };
   };

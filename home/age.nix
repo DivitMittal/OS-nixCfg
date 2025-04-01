@@ -1,12 +1,10 @@
 { inputs, config, ... }:
 
-let
-  secrets = inputs.OS-nixCfg-secrets.outPath + /secrets;
-in
 {
   age.identityPaths = [ "${config.home.homeDirectory}/.ssh/agenix/id_ed25519" ];
+  age.secretsDir = "${config.xdg.configHome}/agenix";
 
   age.secrets = {
-    groq.file = secrets + /groq.age;
+    github.file = (inputs.OS-nixCfg-secrets + /secrets/github.age);
   };
 }

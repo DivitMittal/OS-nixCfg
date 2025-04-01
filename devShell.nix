@@ -7,9 +7,6 @@
 
   perSystem = { pkgs, system, ... }: {
     devshells.default = {
-      packages = builtins.attrValues {
-        agenix = inputs.agenix.packages.${system}.default;
-      };
       commands = [
         {
           name = "hms";
