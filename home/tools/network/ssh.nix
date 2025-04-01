@@ -1,27 +1,30 @@
-{ pkgs, hostPlatform,... }:
+{ pkgs, hostPlatform, config, ... }:
 
+let
+  sshDir = "${config.home.homeDirectory}/.ssh";
+in
 {
-  home.packages = [ pkgs.upterm ];
+  home.packages = [
+    #pkgs.upterm
+  ];
 
   programs.ssh = {
     enable = true;
     package = if hostPlatform.isDarwin then null else pkgs.ssh; # xcode-dev-tools
 
-    # includes = [ "~/.colima/ssh_config" ];
     compression = false;
     addKeysToAgent = "yes";
+    hashKnownHosts = false;
 
-    extraConfig = ''
-      Host github.com
-        PreferredAuthentications publickey
-        IdentityFile ~/.ssh/github/id_ed25519
-
-      Host 10.254.200.59
-        User nix-on-droid
-        Port 8022
-        PubkeyAuthentication yes
-        PreferredAuthentications publickey
-        IdentityFile ~/.ssh/nix-on-droid/ssh_host_rsa_key
-    '';
+    matchBlocks = {
+      "10.254.200.59" = {
+        user = "nix-on-droid";
+        port = 8022;
+        identityFile = "${sshDir}/nix-on-droid/ssh_host_rsa_key";
+      };
+      "github.com" = {
+        identityFile = "${sshDir}/github/id_ed25519";
+      };
+    };
   };
 }
