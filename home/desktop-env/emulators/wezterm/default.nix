@@ -1,10 +1,10 @@
-{ pkgs, hostPlatform, ... }:
+{ pkgs, ... }:
 
 {
   programs.wezterm = {
     enable = true;
     enableBashIntegration = false; enableZshIntegration = false;
-    package = (if hostPlatform.isDarwin then pkgs.hello else pkgs.wezterm); # homebrew
+    package = pkgs.wezterm;
     extraConfig = builtins.readFile ./wezterm.lua;
   };
 }

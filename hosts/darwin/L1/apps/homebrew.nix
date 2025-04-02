@@ -16,15 +16,20 @@
     };
 
     taps = [
-      "r-lib/rig" #rig
-      "aaronraimist/tap" #gomuks
+      #"homebrew/services"
       "macos-fuse-t/homebrew-cask" #fuse-t
-      "homebrew/services"
+      "r-lib/rig" #rig
+      #"aaronraimist/tap" #gomuks
     ];
+
+    caskArgs = {
+      require_sha = false;
+    };
 
     casks = [
       ## macOS specific
-      "raycast" "alt-tab" "spaceman" "gswitch"
+      #"raycast" "alt-tab"
+      "spaceman" "gswitch"
       "bluesnooze"
       "fuse-t" #"macfuse"
       #"jordanbaird-ice" # open-source alt to bartender
@@ -33,16 +38,18 @@
       #"hammerspoon"
 
       ## WWWW browser
-      "firefox" "google-chrome"
+      { name = "firefox"; args = { appdir = "~/Applications/Homebrew Casks"; };}
+      "google-chrome"
       #"tor-browser"
 
       ## Development Environment
-      "wezterm" "visual-studio-code"
+      #"wezterm"
+      #"visual-studio-code"
       #"cursor"
       #"jetbrains-toolbox"
 
       ## R
-      "rig" "rstudio"
+      "rig" #"rstudio"
 
       ## Microsoft
       "onlyoffice"
@@ -52,12 +59,13 @@
       #"libreoffice"
 
       ## Communication
-      "whatsapp" "thunderbird"
+      #"whatsapp"
+      #"thunderbird"
       #"simplex"
       #"zoom"
 
       ## Networking
-      "localsend"
+      #"localsend"
       #"cyberduck"
 
       ## Multimedia
@@ -65,9 +73,9 @@
       #"spotify"
 
       ## Creative
-      "wacom-tablet"
-      "musescore"
-      "reaper"
+      { name = "wacom-tablet"; greedy = false; }
+      { name = "musescore"; greedy = true; }
+      #"reaper"
       #"blender"
 
       ## Data Analytics
@@ -89,7 +97,7 @@
       "spotify_player"
 
       ## Communication
-      "gomuks" # Matrix protocol
+      #"gomuks" # Matrix protocol
 
       ## Development
       "libomp" # Multiprogramming
