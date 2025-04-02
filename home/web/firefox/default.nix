@@ -1,171 +1,32 @@
-{ config, pkgs, hostPlatform, ... }:
+{ config, pkgs, hostPlatform, lib, ... }:
 
 let
-  profiles = {
-    clean-profile = {
-      id = 0;
-      isDefault = false;
-    };
-
-    custom-default = {
-      id = 1;
-      isDefault = true;
-
-      bookmarks = {
-        force = true;
-        settings = [];
-      };
-
-      # containers = {
-      #   second = {
-      #     color = "blue";
-      #     icon = "tree";
-      #     id = 1;
-      #   };
-      #   finance = {;
-      #     color = "green";
-      #     icon = "dollar";
-      #     id = 2;
-      #   };
-      # };
-      # containersForce = true;
-
-      search = {
-        force = true;
-        default = "Unduck";
-        privateDefault = "Unduck";
-
-        engines = {
-          "bing".metaData.hidden = true;
-          # built-in engines only support specifying one additional alias
-          "google".metaData.alias = "@g";
-          "wikipedia".metaData.alias = "@w";
-          "ddg".metaData.alias = "@d";
-
-          "Nix Packages" = {
-            urls = [
-              {
-                template = "https://search.nixos.org/packages";
-                params = [
-                  { name = "type"; value = "packages"; }
-                  { name = "query"; value = "{searchTerms}"; }
-                  { name = "channel"; value = "unstable"; }
-                ];
-              }
-            ];
-            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = [ "@np" ];
-          };
-
-          "Youtube" = {
-            urls = [
-              {
-                template = "https://www.youtube.com/results";
-                params = [ { name = "search_query"; value = "{searchTerms}"; } ];
-              }
-            ];
-            definedAliases = [ "@yt" ];
-          };
-
-          "Github" = {
-            urls = [
-              {
-                template = "https://github.com/search";
-                params = [
-                  { name = "q"; value = "{searchTerms}"; }
-                  { name = "type"; value = "repositories"; }
-                ];
-              }
-            ];
-            definedAliases = [ "@gh" ];
-          };
-
-          "Startpage" = {
-            urls = [
-              {
-                template = "https://www.startpage.com/sp/search";
-                params = [
-                  { name = "query"; value = "{searchTerms}"; }
-                ];
-              }
-            ];
-            definedAliases = [ "@sp" ];
-          };
-
-          "Unduck" = {
-            urls = [
-              {
-                template = "https://unduck.link";
-                params = [
-                  { name = "q"; value = "{searchTerms}"; }
-                ];
-              }
-            ];
-            definedAliases = [ "@ud"];
-          };
-
-          "Perplexity" = {
-            urls = [
-              {
-                template = "https://www.perplexity.ai";
-                params = [
-                  { name = "q"; value = "{searchTerms}"; }
-                ];
-              }
-            ];
-            definedAliases = [ "@p" ];
-          };
-        };
-      };
-
-      settings = builtins.import ./user_settings.nix;
-      userContent = builtins.readFile ./chrome/CSS/userContent.css;
-      userChrome = builtins.readFile ./chrome/CSS/userChrome.css;
-    };
-  };
-  policies = {
-    AppAutoUpdate = false; # Disable automatic application update
-    BackgroundAppUpdate = false; # Disable automatic application update in the background, when the application is not running.
-    DefaultDownloadDirectory = "${config.home.homeDirectory}/Downloads";
-    DisableBuiltinPDFViewer = false;
-    DisableFirefoxStudies = true;
-    DisableFirefoxAccounts = false; # Enable Firefox Sync
-    DisablePocket = true;
-    DisableTelemetry = true;
-    DontCheckDefaultBrowser = true;
-    OfferToSaveLogins = false; # Managed by bitwarden
-    EnableTrackingProtection = {
-      Value = true;
-      Locked = true;
-      Cryptomining = true;
-      Fingerprinting = true;
-      EmailTracking = true;
-      # Exceptions = ["https://example.com"]
-    };
-    ExtensionUpdate = false;
+  inherit (import ./policies.nix) policies;
+  inherit(import ./profiles.nix { inherit pkgs; }) profiles;
+  fx-autoconfig = pkgs.fetchFromGitHub {
+    owner = "MrOtherGuy";
+    repo = "fx-autoconfig";
+    rev = "master";
+    hash = "sha256-NUGFGlf7HdZUVNmK3Hk5xbRGIKzg3QJVXO5kM44Xqy0=";
   };
 in
 {
-  xdg.configFile."tridactyl" = {
-    source = ./tridactyl;
-    recursive = true;
-  };
-
   ## Firefox
   programs.firefox = {
     enable = true;
+    ## bad built binary on darwin systems
+    # package = (pkgs.firefox.override {
+    #   extraPrefsFiles = [
+    #     (builtins.fetchurl {
+    #       url = "https://raw.githubusercontent.com/MrOtherGuy/fx-autoconfig/master/program/config.js";
+    #       sha256 = "1mx679fbc4d9x4bnqajqx5a95y1lfasvf90pbqkh9sm3ch945p40";
+    #     })
+    #   ];
+    # });
     package = null; # homebrew
-
     nativeMessagingHosts = with pkgs;[ tridactyl-native ];
-
     inherit policies;
     inherit profiles;
-  };
-
-  home.file.firefoxUserChromeJS = {
-    source = ./chrome/JS;
-    target = "${config.programs.firefox.configPath}" + (if hostPlatform.isDarwin then "/Profiles" else "") + "/custom-default/chrome/JS";
-    recursive = true;
   };
 
   ## Mercury (firefox-fork)
@@ -185,4 +46,26 @@ in
   #   target = "${config.programs.librewolf.configPath}" + (if hostPlatform.isDarwin then "/Profiles" else "") + "/custom-default/chrome/JS";
   #   recursive = true;
   # };
+
+  xdg.configFile."tridactyl" = {
+    source = ./tridactyl;
+    recursive = true;
+  };
+
+  home.file.firefoxUserChromeJS = {
+    enable = true;
+    source = ./chrome/JS;
+    target = "${config.programs.firefox.configPath}" + lib.optionalString (hostPlatform.isDarwin) "/Profiles" + "/custom-default/chrome/JS";
+    recursive = true;
+  };
+
+  ## github:MrOtherGuy/fx-autoconfig
+  home.file."Applications/Homebrew Casks/Firefox.app/Contents/Resources/defaults" = lib.mkIf (hostPlatform.isDarwin) {
+    source = (fx-autoconfig + /program/defaults);
+    recursive = true;
+  };
+
+  home.file."Applications/Homebrew Casks/Firefox.app/Contents/Resources/config.js" = lib.mkIf (hostPlatform.isDarwin) {
+    source = (fx-autoconfig + /program/config.js);
+  };
 }
