@@ -4,13 +4,16 @@
   home.packages = builtins.attrValues {
     inherit (pkgs)
       ## Android
-      android-tools scrcpy
+      android-tools
+      scrcpy
 
       ## Programming Languages
-      tree-sitter
-      # java
-      jdk gradle
-      # lua
+      #tree-sitter
+
+      ## java
+      #jdk gradle
+
+      ## lua
       lua
       # Rust
       cargo

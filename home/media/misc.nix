@@ -14,7 +14,7 @@
 
       ##m music
       reaper
-      musescore
+      #musescore  ## bad build binary on darwin systems using homemanager
     ;
   };
 }

@@ -1,14 +1,14 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, ... }:
 
-let
-  enable = false;
-in
 {
-  home.packages = lib.optionals (enable == true) [ pkgs.weechat ];
-
-  xdg.configFile."weechat" = {
-    inherit enable;
-    source = config.lib.file.mkOutOfStoreSymlink ./conf;
-    recursive = true;
-  };
+  # home.packages = builtins.attrValues {
+  #   inherit(pkgs)
+  #     weechat
+  #   ;
+  # };
+  #
+  # xdg.configFile."weechat" = {
+  #   source = config.lib.file.mkOutOfStoreSymlink ./conf;
+  #   recursive = true;
+  # };
 }

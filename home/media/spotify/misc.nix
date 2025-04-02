@@ -1,5 +1,9 @@
 { pkgs, ... }:
 
 {
-  home.packages = [ pkgs.spotdl ];
+  home.packages = builtins.attrValues {
+    inherit(pkgs)
+      spotdl
+    ;
+  };
 }

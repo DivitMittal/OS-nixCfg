@@ -17,8 +17,8 @@
 
     environment.systemPackages = builtins.attrValues {
       inherit(pkgs)
-        blueutil
-        duti
+        blueutil # bluetooth cli
+        duti # file associations
       ;
     };
 

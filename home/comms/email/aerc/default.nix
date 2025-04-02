@@ -1,11 +1,6 @@
-{ config, self, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
-  xdg.configFile."aerc/accounts.conf" = {
-    enable = false;
-    source = self + /secrets/email/aerc/accounts.conf;
-  };
-
   programs.aerc = {
     enable = true;
     package = pkgs.aerc;
