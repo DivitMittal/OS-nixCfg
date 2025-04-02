@@ -46,6 +46,9 @@
               ./hosts/${class}/${hostName}
               ./modules/hosts/${class}
             ]
+            ++ lib.optionals (class == "darwin") [
+              inputs.nix-homebrew.darwinModules.nix-homebrew
+            ]
             ++ lib.optionals (class == "droid") [
               ./hosts/${class}/common
             ]
@@ -112,6 +115,14 @@
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
+      inputs = {
+        nix-darwin.follows = "nix-darwin";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     home-manager = {

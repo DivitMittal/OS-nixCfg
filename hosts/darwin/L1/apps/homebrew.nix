@@ -1,30 +1,14 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
-  environment.variables.HOMEBREW_NO_ENV_HINTS = "1";
-
   homebrew = {
     enable = true;
-    brewPrefix = if pkgs.stdenvNoCC.hostPlatform.isAarch64 then "/opt/homebrew/bin" else "/usr/local/bin";
-
-    global.autoUpdate = false;
-    onActivation = {
-      autoUpdate = true;
-      upgrade = true;
-      cleanup = "zap";
-      extraFlags = [ "--verbose" ];
-    };
-
     taps = [
       #"homebrew/services"
       "macos-fuse-t/homebrew-cask" #fuse-t
       "r-lib/rig" #rig
       #"aaronraimist/tap" #gomuks
     ];
-
-    caskArgs = {
-      require_sha = false;
-    };
 
     casks = [
       ## macOS specific
