@@ -23,12 +23,11 @@ in
 
     settings = {
       format = concatStrings [
-        "[╭─env─-➜❯](bold blue) " "$sudo" "$username" "$hostname" "$shell" "\${custom.yazi}" "$status" "$custom" "$cmd_duration" "$docker_context" "$directory" "\n"
+        "[╭─env─-➜❯](bold blue) " "$sudo" "$username" "$hostname" "$shell" "\${custom.yazi}" "$status" "$custom" "$cmd_duration" "$docker_context" "$directory" "$git_branch" "$git_commit" "$git_status" "\n"
         # "[┣─pwd─-➜❯](bold red) "  "$directory" "$git_branch" "$git_commit" "$git_status" "\n"
         "[╰─cmd─➜❯](bold green) " "$character"
       ];
       right_format = concatStrings [
-        "$git_branch" "$git_commit" "$git_status"
         "$direnv"
         "$nix_shell"
         "$lua"
