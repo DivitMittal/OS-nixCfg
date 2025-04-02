@@ -3,8 +3,8 @@
     "Nvim-Cfg": {
       "flake": false,
       "locked": {
-        "lastModified": 1743556940,
-        "narHash": "sha256-48pd6gHL130CiIg66mwQfBGGGl/JWc+Kv007SNo00yc=",
+        "lastModified": 1743558223,
+        "narHash": "sha256-X2WEPZLxilf3az7An6viXM/LZM/+R9oSS6P0nOCTXTI=",
         "path": "/Users/div/Projects/Nvim-Cfg",
         "type": "path"
       },
@@ -275,6 +275,22 @@
         "owner": "DivitMittal",
         "ref": "flake-darwin-support",
         "repo": "kanata-tray",
+        "type": "github"
+      }
+    },
+    "mynixpkgs": {
+      "locked": {
+        "lastModified": 1743568358,
+        "narHash": "sha256-jeV2pmdV6v5Ajx0JU37tdsjO6UFd0BIp+uRH1zGL+nY=",
+        "owner": "DivitMittal",
+        "repo": "nixpkgs",
+        "rev": "71acff0c7eec4bd9d0e667900610caec8c7e340a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DivitMittal",
+        "ref": "whatsapp-darwin-bump",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
@@ -603,6 +619,7 @@
         "flake-parts": "flake-parts_2",
         "home-manager": "home-manager",
         "kanata-tray": "kanata-tray",
+        "mynixpkgs": "mynixpkgs",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",
         "nix-on-droid": "nix-on-droid",
