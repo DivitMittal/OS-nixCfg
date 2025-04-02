@@ -2,7 +2,7 @@
   description = "OS-nixCfg flake";
   outputs = { self, flake-parts, ... }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } (
-      {config, ...}: let
+      {...}: let
         mkHost = {
           hostName,
           system,
@@ -56,6 +56,7 @@
               inputs.nix-index-database.hmModules.nix-index { programs.nix-index.enable = true; programs.nix-index-database.comma.enable = true; }
               inputs.ragenix.homeManagerModules.default ./home/age.nix
               inputs.kanata-tray.homeManagerModules.kanata-tray
+              inputs.nvchad4nix.homeManagerModules.nvchad
             ];
         in
           systemFunc (
@@ -162,7 +163,7 @@
 
     OS-nixCfg-secrets = {
       url = "git+ssh://git@github.com/DivitMittal/OS-nixCfg-secrets.git?ref=master";
-      # url = "path:/Users/div/OS-nixCfg-secrets";
+      # url = "path:/Users/div/Projects/OS-nixCfg-secrets";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";
@@ -175,6 +176,17 @@
     kanata-tray = {
       url = "github:DivitMittal/kanata-tray/flake-darwin-support";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    Nvim-Cfg = {
+      url = "path:/Users/div/Projects/Nvim-Cfg";
+      flake = false;
+    };
+
+    nvchad4nix = {
+      url = "github:nix-community/nix4nvchad";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nvchad-starter.follows= "Nvim-Cfg";
     };
   };
 }
