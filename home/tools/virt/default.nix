@@ -1,6 +1,8 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
+  imports = lib.custom.scanPaths ./.;
+
   home.packages = builtins.attrValues {
     inherit(pkgs)
       ## containerization
@@ -9,7 +11,5 @@
       ## virtualization
       #virt-manager libvirt qemu
     ;
-
-    # colima = (if hostPlatform.isDarwin then pkgs.colima else null);
   };
 }
