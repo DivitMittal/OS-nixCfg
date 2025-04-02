@@ -37,7 +37,6 @@ in
 
     shellAliases = {
       brew-ultimate = "brew update; and brew upgrade; and brew autoremove; and brew cleanup -s --prune=0; and rm -rf (brew --cache)";
-      apps-backup = (mkIf hostPlatform.isDarwin) "env ls /Applications/ 1> $OS_NIXCFG/hosts/darwin/(hostname)/apps/bak/apps_(date +%b%y).txt";
     };
 
     shellAbbrs = {

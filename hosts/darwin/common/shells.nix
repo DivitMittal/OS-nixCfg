@@ -1,35 +1,42 @@
 { pkgs, lib, ... }:
 
 let
-  empty-trash = pkgs.writeShellScriptBin "empty-trash" ''
-    sudo rm -rfv /Volumes/*/.Trashes
-    sudo rm -rfv ~/.Trash
-    sudo rm -rfv /private/var/log/asl/*.asl
-    sudo rm -rfv /private/tmp/*.log
-  '';
+  inherit (lib) mkAfter;
 in
 {
-  environment.shells = with pkgs; [ ksh tcsh ];
+  # environment.shells = with pkgs; [ ksh tcsh ];
 
   environment.shellAliases.cleanup-DS  = "sudo ${pkgs.findutils}/bin/find . -type f -name '*.DS_Store' -ls -delete";
 
-  environment.systemPackages = [ empty-trash ];
-
-  programs = let inherit(lib) mkAfter; in {
-    bash.interactiveShellInit = mkAfter ''
-      # Silence bash is deprecated as default shell on macOS
-      export BASH_SILENCE_DEPRECATION_WARNING=1
-
-      # Load paths from /etc/paths & /etc/paths.d/ into the path
-      [ -x /usr/libexec/path_helper ] && eval `/usr/libexec/path_helper -s`
-
-      # Source a specific bashrc for Apple Terminal (handled by nix-darwin)
-      # [ -r "/etc/bashrc_$TERM_PROGRAM" ] && . "/etc/bashrc_$TERM_PROGRAM"
+  environment.systemPackages = builtins.attrValues {
+    empty-trash = pkgs.writeShellScriptBin "empty-trash" ''
+      sudo rm -rfv /Volumes/*/.Trashes
+      sudo rm -rfv ~/.Trash
+      sudo rm -rfv /private/var/log/asl/*.asl
+      sudo rm -rfv /private/tmp/*.log
     '';
 
-    zsh.interactiveShellInit = mkAfter ''
-      # Useful support for interacting with Terminal.app or other terminal programs
-      [ -r "/etc/zshrc_$TERM_PROGRAM" ] && . "/etc/zshrc_$TERM_PROGRAM"
+    apps-backup = pkgs.writeShellScriptBin "apps-backup" ''
+      FILE="$OS_NIXCFG/hosts/darwin/$(hostname)/apps/bak/apps_$(date +%b%y).txt"
+      env ls /Applications/ 1> $FILE
+      env ls "$HOME/Applications/Home Manager Apps/" 1>> $FILE
+      env ls "$HOME/Applications/Homebrew Casks/" 1>> $FILE
     '';
   };
+
+  programs.bash.interactiveShellInit = mkAfter ''
+    # Silence bash is deprecated as default shell on macOS
+    export BASH_SILENCE_DEPRECATION_WARNING=1
+
+    # Load paths from /etc/paths & /etc/paths.d/ into the path
+    [ -x /usr/libexec/path_helper ] && eval `/usr/libexec/path_helper -s`
+
+    # Source a specific bashrc for Apple Terminal (handled by nix-darwin)
+    # [ -r "/etc/bashrc_$TERM_PROGRAM" ] && . "/etc/bashrc_$TERM_PROGRAM"
+  '';
+
+  programs.zsh.interactiveShellInit = mkAfter ''
+    # Useful support for interacting with Terminal.app or other terminal programs
+    [ -r "/etc/zshrc_$TERM_PROGRAM" ] && . "/etc/zshrc_$TERM_PROGRAM"
+  '';
 }
