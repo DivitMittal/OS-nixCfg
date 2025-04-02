@@ -27,6 +27,7 @@
           pkgs = inputs.nixpkgs.legacyPackages.${system}; # memoized
           specialArgs = {
               inherit self inputs;
+              mypkgs = inputs.mynixpkgs.legacyPackages.${system};
               inherit (pkgs.stdenvNoCC) hostPlatform;
             } // extraSpecialArgs;
           modules =
@@ -82,9 +83,9 @@
         };
 
         imports = [
-          ./devShell.nix
-          ./checks.nix
-          ./home
+          inputs.devshell.flakeModule ./devShell.nix
+          inputs.pre-commit-hooks.flakeModule ./checks.nix
+          inputs.home-manager.flakeModules.home-manager ./home
           ./hosts
         ];
 
@@ -102,6 +103,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    mynixpkgs.url = "github:DivitMittal/nixpkgs/whatsapp-darwin-bump";
     # nixpkgs-stable.url = "github:nixOS/nixpkgs/nixos-24.11";
     # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
 

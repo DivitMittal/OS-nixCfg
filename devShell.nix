@@ -1,11 +1,7 @@
-{ inputs, ... }:
+_:
 
 {
-  imports = [
-    inputs.devshell.flakeModule
-  ];
-
-  perSystem = { pkgs, system, ... }: {
+  perSystem = { ... }: {
     devshells.default = {
       commands = [
         {
