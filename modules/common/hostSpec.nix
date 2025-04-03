@@ -3,12 +3,9 @@
   lib,
   hostPlatform,
   ...
-}:
-
-let
-  inherit(lib) mkOption types;
-in
-{
+}: let
+  inherit (lib) mkOption types;
+in {
   options.hostSpec = {
     username = mkOption {
       type = types.str;
@@ -33,11 +30,12 @@ in
     home = mkOption {
       type = types.str;
       description = "The home directory of the user";
-      default =
-        let
-          user = config.hostSpec.username;
-        in
-        if hostPlatform.isDarwin then "/Users/${user}" else "/home/${user}";
+      default = let
+        user = config.hostSpec.username;
+      in
+        if hostPlatform.isDarwin
+        then "/Users/${user}"
+        else "/home/${user}";
     };
     # persistFolder = mkOption {
     #   type = types.str;

@@ -1,68 +1,62 @@
 Battery {
-  low-power-mode "never"
+  low-power-mode never
   Battery-Health {
-    optimized-battery-charging "OFF"
-    manage-battery-longevity "OFF"
+    optimized-battery-charging OFF
+    manage-battery-longevity OFF
   }
   Options {
-    automatic-graphics-switching "OFF"
+    automatic-graphics-switching OFF
   }
 }
-
 Display {
   scaling "2048x1280"
-  automatic-brightness "ON"
-  true-tone "OFF"
+  automatic-brightness ON
+  true-tone OFF
 }
-
 Accessibility {
   Vision {
-    Display {
-      //display-contrast "increase"  // Using BetterDisplay instead
+    Display {//display-contrast "increase"  // Using BetterDisplay instead
       Text {
         text-size "16pt"
-        menu-bar-size "large"
+        menu-bar-size large
       }
       Pointer {
-        shake-mouse-pointer-to-locate "OFF"
-        pointer-size "increase"
-        pointer-outline-color "red"
-        pointer-fill-color "black"
+        shake-mouse-pointer-to-locate OFF
+        pointer-size increase
+        pointer-outline-color red
+        pointer-fill-color black
       }
     }
   }
 }
-
 Appearance {
-  appearance "dark"
-  accent-color "red"
-  highlight-color "red"
-  sidebar-icon-size "medium"
-  allow-wallpaper-tinting-in-windows "OFF"
-  show-scroll-bars "when-scrolling"
+  appearance dark
+  accent-color red
+  highlight-color red
+  sidebar-icon-size medium
+  allow-wallpaper-tinting-in-windows OFF
+  show-scroll-bars when-scrolling
   click-in-the-scroll-bar-to "Jump to that spot that's clicked"
 }
-
 Siri&Spotlight {
-  ask-siri "OFF"
+  ask-siri OFF
 }
-
 Desktop&Dock {
   Desktop&StageManager {
     click-wallpaper-to-reveal-desktop "Only in SM"
-    Stage-Manager "OFF"
+    Stage-Manager OFF
   }
   Widgets {
-    widget-style "monochrome"
-    use-iphone-widgets "OFF"
+    widget-style monochrome
+    use-iphone-widgets OFF
   }
 }
-
 Keyboard {
-  adjust-keyboard-brightness-in-low-light "OFF"
-  touchbar-settings "customize"
-  keyboard-shortcuts "customize"
+  adjust-keyboard-brightness-in-low-light OFF
+  touchbar-settings customize
+  keyboard-shortcuts customize
   Text-Input {
     input-sources "English - ABC"
   }
 }
+

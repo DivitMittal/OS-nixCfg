@@ -1,6 +1,8 @@
-{ pkgs, inputs, ... }:
-
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   services.kanata = {
     enable = false;
     package = pkgs.kanata-with-cmd;

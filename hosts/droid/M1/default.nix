@@ -1,10 +1,13 @@
-{ pkgs, self, ... } :
-
 {
+  pkgs,
+  self,
+  ...
+}: {
   environment.packages = builtins.attrValues {
-    inherit(pkgs)
+    inherit
+      (pkgs)
       dash
-    ;
+      ;
   };
 
   user.shell = "${pkgs.fish}/bin/fish";

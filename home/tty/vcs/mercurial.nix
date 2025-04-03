@@ -1,6 +1,8 @@
-{ pkgs, config, ... }:
-
 {
+  pkgs,
+  config,
+  ...
+}: {
   programs.mercurial = {
     enable = false;
     package = pkgs.mercurial;

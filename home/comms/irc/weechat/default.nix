@@ -1,6 +1,8 @@
-{ pkgs, config, ... }:
-
 {
+  pkgs,
+  config,
+  ...
+}: {
   # home.packages = builtins.attrValues {
   #   inherit(pkgs)
   #     weechat

@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # home.packages = builtins.attrValues {
   #   inherit(pkgs)
   #      powershell

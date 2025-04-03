@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.packages = builtins.attrValues {
     nodejs = pkgs.nodejs;
     pnpm = pkgs.nodePackages_latest.pnpm;

@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.awscli = {
     enable = false;
     package = pkgs.awscli2;

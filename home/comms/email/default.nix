@@ -1,6 +1,4 @@
-{ lib, ... }:
-
-{
+{lib, ...}: {
   imports = lib.custom.scanPaths ./.;
 
   programs.zsh.profileExtra = "unset MAILCHECK";

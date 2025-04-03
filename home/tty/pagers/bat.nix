@@ -1,10 +1,8 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.bat = {
     enable = true;
     package = pkgs.bat;
-    extraPackages = with pkgs.bat-extras; [ batman ];
+    extraPackages = with pkgs.bat-extras; [batman];
 
     config = {
       pager = "less";

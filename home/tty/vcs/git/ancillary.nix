@@ -1,11 +1,15 @@
-{ pkgs, config, ... }:
-
+{
+  pkgs,
+  config,
+  ...
+}:
 # TODO: Add ghfetch's output to personal-website
 {
   home.packages = builtins.attrValues {
-    inherit(pkgs)
+    inherit
+      (pkgs)
       transcrypt
-    ;
+      ;
     ghfetch = pkgs.writeShellScriptBin "ghfetch" ''
       ${pkgs.ghfetch}/bin/ghfetch --color magenta --access-token=$(cat ${config.age.secrets.github.path}) --user ${config.hostSpec.handle}
     '';
@@ -14,15 +18,15 @@
   programs.gh = {
     enable = true;
     package = pkgs.gh;
-    extensions = with pkgs; [ gh-eco gh-dash ];
+    extensions = with pkgs; [gh-eco gh-dash];
     gitCredentialHelper = {
       enable = true;
-      hosts = [ "https://github.com" "https://gist.github.com" ];
+      hosts = ["https://github.com" "https://gist.github.com"];
     };
     settings = {
-      git_protocol= "ssh";
-      prompt= "enabled";  # interactivity in gh
-      pager= "less";
+      git_protocol = "ssh";
+      prompt = "enabled"; # interactivity in gh
+      pager = "less";
       aliases = {
         co = "pr checkout";
       };
@@ -67,7 +71,6 @@
       # - 'skip': open most recent repo
       # - 'quit': exit Lazygit
       notARepository = "skip";
-
 
       update.method = "never";
 

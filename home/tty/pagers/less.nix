@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   home.sessionVariables.PAGER = "less";
 
   programs.less = {

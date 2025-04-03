@@ -1,5 +1,5 @@
-local ipc    = require("hs.ipc")
-local timer  = require("hs.timer")
+local ipc = require("hs.ipc")
+local timer = require("hs.timer")
 local spaces = require("hs.spaces")
 
 ------------------------------------------ start of switchSpaces
@@ -88,4 +88,3 @@ local spaces = require("hs.spaces")
 --     end
 -- end)
 --
-

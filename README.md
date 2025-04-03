@@ -35,9 +35,10 @@
 ## 📜 Overview
 
 This repository contains primarily [nix](https://github.com/nixos/nix) configurations, leveraging [Nix Flakes](https://nixos.wiki/wiki/Flakes), [Home Manager](https://github.com/nix-community/home-manager), and system-specific modules ([NixOS](https://nixos.org/), [nix-darwin](https://github.com/LnL7/nix-darwin), [nix-on-droid](https://github.com/nix-community/nix-on-droid)) to achieve a purely declarative, reproducible, and consistent environment across multiple OSes on multiple hosts for multiple users:
-*   🍎 **macOS** (via `nix-darwin`)
-*   🤖 **Android** (via `nix-on-droid`)
-*   🐧 ***nix (NixOS)** (including WSL via `NixOS-WSL`)
+
+- 🍎 **macOS** (via `nix-darwin`)
+- 🤖 **Android** (via `nix-on-droid`)
+- 🐧 **\*nix (NixOS)** (including WSL via `NixOS-WSL`)
 
 ## 📁 Project Structure
 
@@ -45,73 +46,73 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
 
 ```
 └── OS-nixCfg/
-    ├── flake.nix         # Entry point: Defines inputs, outputs, modules imports, mkHosts
-    ├── flake.lock        # Lockfile for reproducible dependencies
-    ├── README.md         # This file
-    ├── LICENSE           # MIT License
-    ├── nix.nix           # Common Nix settings (package, experimental features)
-    ├── devShell.nix      # Defines devShell with helper commands (hts, hms, etc.)
-    ├── checks.nix        # Defines pre-commit checks
-    ├── shell.nix         # Basic shell for bootstrapping
-    ├── assets/           # Images and other static assets
-    ├── lib/              # Custom Nix helper functions (e.g., scanPaths)
-    ├── modules/          # Custom modules for flake-parts, home-manager, nix-darwin, nixos
-    │   ├── common/       # Modules shared across all systems/users
-    │   ├── home/         # Home Manager modules (e.g., aichat, spicetify)
-    │   └── hosts/        # System-specific modules (e.g., kanata services for darwin)
-    ├── home/             # Home Manager configurations, organized by category
-    │   ├── default.nix   # Defines homeConfigurations for different users/hosts
-    │   ├── common/       # Base settings for all home-manager users
-    │   ├── age.nix       # Agenix secrets configuration for home-manager
-    │   ├── comms/        # Communication tools (email, irc, discord, etc.)
-    │   ├── desktop-env/  # Desktop environment settings (terminal, macOS specifics)
-    │   ├── dev/          # Development tools and languages
-    │   ├── keyboard/     # Keyboard remapping (Kanata, Karabiner - disabled)
-    │   ├── media/        # Media applications (mpv, spotify)
-    │   ├── tools/        # General utilities (AI, network, privacy, virt)
-    │   ├── tty/          # Terminal-specific tools (editors, shells, vcs, etc.)
-    │   └── web/          # Web browser configurations (Firefox, Chromium - disabled)
-    ├── hosts/            # System configurations (NixOS, nix-darwin, nix-on-droid)
-    │   ├── default.nix   # Defines system configurations (darwinConfigurations, nixosConfigurations)
-    │   ├── common/       # Base settings shared across nixos & nix-darwin
-    │   ├── darwin/       # macOS specific configurations via nix-darwin
-    │   │   ├── common/   # Settings common to all macOS hosts
-    │   │   ├── L1/       # Host-specific configuration for 'L1' (apps, services, defaults)
-    │   │   └── etc/      # macOS specific static config files (e.g., rEFInd)
-    │   ├── droid/        # Android specific configurations via nix-on-droid
-    │   │   ├── common/   # Settings common to all Android hosts
-    │   │   └── M1/       # Host-specific configuration for 'M1'
-    │   └── nixOS/        # NixOS specific configurations
-    │       ├── common/   # Settings common to all NixOS hosts
-    │       ├── L2/       # Host-specific configuration for 'L2'
-    │       └── WSL/      # Host-specific configuration for 'WSL'
-    └── scripts/          # Helper scripts for applying configurations
-        ├── home_rebuild.sh # Applies home-manager configuration
-        └── hosts_rebuild.sh # Applies system configuration (darwin, nixos, droid)
+    ├── flake.nix             # Entry point: Defines inputs, outputs, modules imports, mkHosts
+    ├── flake.lock            # Lockfile for reproducible dependencies
+    ├── README.md             # This file
+    ├── LICENSE               # MIT License
+    ├── nix.nix               # Common Nix settings (package, experimental features)
+    ├── devShell.nix          # Defines devShell with helper commands (hts, hms, etc.)
+    ├── checks.nix            # Defines pre-commit checks
+    ├── shell.nix             # Basic shell for bootstrapping
+    ├── assets/               # Images and other static assets
+    ├── lib/                  # Custom Nix helper functions (e.g., scanPaths)
+    ├── modules/              # Custom modules for flake-parts, home-manager, nix-darwin, nixos
+    │   ├── common/           # Modules shared across all systems/users
+    │   ├── home/             # Home Manager modules (e.g., aichat, spicetify)
+    │   └── hosts/            # System-specific modules (e.g., kanata services for darwin)
+    ├── home/                 # Home Manager configurations, organized by category
+    │   ├── default.nix       # Defines homeConfigurations for different users/hosts
+    │   ├── common/           # Base settings for all home-manager users
+    │   ├── age.nix           # Agenix secrets configuration for home-manager
+    │   ├── comms/            # Communication tools (email, irc, discord, etc.)
+    │   ├── desktop-env/      # Desktop environment settings (terminal, macOS specifics)
+    │   ├── dev/              # Development tools and languages
+    │   ├── keyboard/         # Keyboard remapping (Kanata, Karabiner - disabled)
+    │   ├── media/            # Media applications (mpv, spotify)
+    │   ├── tools/            # General utilities (AI, network, privacy, virt)
+    │   ├── tty/              # Terminal-specific tools (editors, shells, vcs, etc.)
+    │   └── web/              # Web browser configurations (Firefox, Chromium - disabled)
+    ├── hosts/                # System configurations (NixOS, nix-darwin, nix-on-droid)
+    │   ├── default.nix       # Defines system configurations (darwinConfigurations, nixosConfigurations)
+    │   ├── common/           # Base settings shared across nixos & nix-darwin
+    │   ├── darwin/           # macOS specific configurations via nix-darwin
+    │   │   ├── common/       # Settings common to all macOS hosts
+    │   │   ├── L1/           # Host-specific configuration for 'L1' (apps, services, defaults)
+    │   │   └── etc/          # macOS specific static config files (e.g., rEFInd)
+    │   ├── droid/            # Android specific configurations via nix-on-droid
+    │   │   ├── common/       # Settings common to all Android hosts
+    │   │   └── M1/           # Host-specific configuration for 'M1'
+    │   └── nixOS/            # NixOS specific configurations
+    │       ├── common/       # Settings common to all NixOS hosts
+    │       ├── L2/           # Host-specific configuration for 'L2'
+    │       └── WSL/          # Host-specific configuration for 'WSL'
+    └── scripts/              # Helper scripts for applying configurations
+        ├── home_rebuild.sh   # Applies home-manager configuration
+        └── hosts_rebuild.sh  # Applies system configuration (darwin, nixos, droid)
 ```
 
-## ⚙️ Flake Inputs
+## ❄️Flake Inputs
 
 This flake relies on several external inputs to manage dependencies and configurations:
 
-*   **`nixpkgs`**: The core Nix package set (tracking `nixpkgs-unstable`).
-*   **`flake-parts`**: Used for structuring the flake outputs.
-*   **`home-manager`**: Manages user-level configurations and dotfiles.
-*   **`nix-darwin`**: Enables declarative macOS system configuration.
-*   **`nix-on-droid`**: Enables declarative Android configuration via Termux.
-*   **`NixOS-WSL`**: Provides modules for running NixOS on WSL.
-*   **`nix-homebrew`**: For Homebrew bootstrapping within `nix-darwin`.
-*   **`agenix` / `ragenix`**: Used for managing secrets declaratively via age encryption.
-*   **`OS-nixCfg-secrets`**: **(Private Repository)** Contains encrypted secrets managed by `agenix`. Access is required to fully build the configuration.
-*   **`Nvim-Cfg`**: My external Neovim configuration repository.
-*   **`nvchad4nix`**: Integrates Neovim configurations (like NvChad or custom starters) with Home Manager.
-*   **`kanata-tray`**: Provides a system tray application for managing Kanata keyboard remapping presets.
-*   **`devshell`**: Provides a convenient development shell
-*   **`pre-commit-hooks`**: Manages Git hooks for code quality and formatting.
-*   **`systems`**: Provides standard system identifiers list (e.g., `x86_64-darwin`).
-*   **(Other dependencies)**: Various helper flakes and libraries.
+- **`nixpkgs`**: The core Nix package set (tracking `nixpkgs-unstable`).
+- **`flake-parts`**: Used for structuring the flake outputs with modularity.
+- **`home-manager`**: Manages user-level configurations and dotfiles.
+- **`nix-darwin`**: Enables declarative macOS system configuration.
+- **`nix-on-droid`**: Enables declarative Android configuration via Termux fork.
+- **`NixOS-WSL`**: Provides modules for running NixOS on WSL.
+- **`nix-homebrew`**: For Homebrew bootstrapping within `nix-darwin`.
+- **`agenix` / `ragenix`**: Used for managing secrets declaratively via age encryption.
+- **`OS-nixCfg-secrets`**: **(Private Repository)** Contains encrypted secrets managed by `agenix`.
+- **`Nvim-Cfg`**: My external Neovim configuration repository.
+- **`nvchad4nix`**: Integrates Neovim configurations (like NvChad or custom starters) with Home Manager.
+- **`kanata-tray`**: Provides a system tray application for managing Kanata keyboard remapping presets.
+- **`devshell`**: Provides a convenient development shell
+- **`pre-commit-hooks`**: Manages Git hooks for code quality and formatting.
+- **`systems`**: Provides standard system identifiers list (e.g., `x86_64-darwin`).
+- **(Other dependencies)**: Various helper flakes and libraries.
 
-*(See `flake.nix` for the complete list and specific sources)*
+_(See `flake.nix` for the complete list and specific sources)_
 
 ## 🔒 Secrets Management
 
@@ -126,9 +127,9 @@ Secrets (API keys, passwords, sensitive configurations) are managed using [ageni
 
 ## 🔗 Related Repositories
 
-* [DivitMittal/Nvim-Cfg](https://github.com/DivitMittal/Nvim-Cfg): Pure lua standalone Neovim configuration, used as an input via `nix4nvchad`.
-* `DivitMittal/OS-nixCfg-secrets`: (Private) Contains encrypted secrets managed by `agenix`.
-* [DivitMittal/TLTR](https://github.com/DivitMittal/TLTR): Cross-platform complex multi-layer keyboard layout tailored for programmers .
+- [DivitMittal/Nvim-Cfg](https://github.com/DivitMittal/Nvim-Cfg): Pure lua standalone Neovim configuration, used as an input via `nix4nvchad`.
+- `DivitMittal/OS-nixCfg-secrets`: (Private) Contains encrypted secrets managed by `agenix`.
+- [DivitMittal/TLTR](https://github.com/DivitMittal/TLTR): Cross-platform complex multi-layer keyboard layout tailored for programmers .
 
 <div align="right">
 

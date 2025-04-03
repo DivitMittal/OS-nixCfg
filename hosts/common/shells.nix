@@ -1,10 +1,16 @@
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   environment.shells = builtins.attrValues {
-    inherit(pkgs)
-      bash zsh fish dash
-    ;
+    inherit
+      (pkgs)
+      bash
+      zsh
+      fish
+      dash
+      ;
   };
 
   environment = {
@@ -20,7 +26,9 @@
     };
   };
 
-  programs = let inherit(lib) mkDefault; in {
+  programs = let
+    inherit (lib) mkDefault;
+  in {
     bash = {
       enable = mkDefault true;
 
@@ -34,7 +42,8 @@
       enable = mkDefault true;
 
       enableBashCompletion = false;
-      enableCompletion = false; enableGlobalCompInit=false;
+      enableCompletion = false;
+      enableGlobalCompInit = false;
       enableSyntaxHighlighting = false;
 
       interactiveShellInit = ''

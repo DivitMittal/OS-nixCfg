@@ -1,14 +1,18 @@
 {
   description = "OS-nixCfg flake";
-  outputs = { self, flake-parts, ... }@inputs:
-    flake-parts.lib.mkFlake { inherit inputs; } (
+  outputs = {
+    self,
+    flake-parts,
+    ...
+  } @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} (
       {...}: let
         mkHost = {
           hostName,
           system,
           class,
-          additionalModules ? [ ],
-          extraSpecialArgs ? { },
+          additionalModules ? [],
+          extraSpecialArgs ? {},
         }: let
           configGenerator = {
             darwin = inputs.nix-darwin.lib.darwinSystem;
@@ -25,11 +29,13 @@
           lib = inputs.nixpkgs.lib.extend (_: _: {custom = import ./lib {inherit (inputs.nixpkgs) lib;};} // inputs.home-manager.lib); # extended
           #pkgs = import inputs.nixpkgs { inherit system; overlays = [ ]; }; # not-memoized
           pkgs = inputs.nixpkgs.legacyPackages.${system}; # memoized
-          specialArgs = {
+          specialArgs =
+            {
               inherit self inputs;
               mypkgs = inputs.mynixpkgs.legacyPackages.${system};
               inherit (pkgs.stdenvNoCC) hostPlatform;
-            } // extraSpecialArgs;
+            }
+            // extraSpecialArgs;
           modules =
             [
               ./nix.nix
@@ -57,8 +63,13 @@
               ./modules/home
               ./home/common
               ./home/tty
-              inputs.nix-index-database.hmModules.nix-index { programs.nix-index.enable = true; programs.nix-index-database.comma.enable = true; }
-              inputs.ragenix.homeManagerModules.default ./home/age.nix
+              inputs.nix-index-database.hmModules.nix-index
+              {
+                programs.nix-index.enable = true;
+                programs.nix-index-database.comma.enable = true;
+              }
+              inputs.ragenix.homeManagerModules.default
+              ./home/age.nix
               inputs.kanata-tray.homeManagerModules.kanata-tray
               inputs.nvchad4nix.homeManagerModules.nvchad
             ];
@@ -69,12 +80,12 @@
               inherit lib;
               modules = modules ++ additionalModules;
             }
-            // (lib.attrsets.optionalAttrs (class == "darwin" || class == "nixos") { inherit specialArgs; })
+            // (lib.attrsets.optionalAttrs (class == "darwin" || class == "nixos") {inherit specialArgs;})
             // (lib.attrsets.optionalAttrs (class == "droid") {
               extraSpecialArgs = specialArgs;
               home-manager-path = inputs.home-manager.outPath;
             })
-            // (lib.attrsets.optionalAttrs (class == "home") { extraSpecialArgs = specialArgs; })
+            // (lib.attrsets.optionalAttrs (class == "home") {extraSpecialArgs = specialArgs;})
           );
       in {
         _module.args = {
@@ -83,15 +94,18 @@
         };
 
         imports = [
-          inputs.devshell.flakeModule ./devShell.nix
-          inputs.pre-commit-hooks.flakeModule ./checks.nix
-          inputs.home-manager.flakeModules.home-manager ./home
+          inputs.devshell.flakeModule
+          ./devShell.nix
+          inputs.pre-commit-hooks.flakeModule
+          ./checks.nix
+          inputs.home-manager.flakeModules.home-manager
+          ./home
           ./hosts
         ];
 
         systems = import inputs.systems;
 
-        perSystem = { pkgs, ... }: {
+        perSystem = {pkgs, ...}: {
           ## Causes infinite-recursion
           # _module.args = {
           #   inherit pkgs;
@@ -109,7 +123,7 @@
 
     systems = {
       url = "github:nix-systems/default";
-      inputs = { };
+      inputs = {};
     };
 
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -201,7 +215,7 @@
     nvchad4nix = {
       url = "github:nix-community/nix4nvchad";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nvchad-starter.follows= "Nvim-Cfg";
+      inputs.nvchad-starter.follows = "Nvim-Cfg";
     };
   };
 }

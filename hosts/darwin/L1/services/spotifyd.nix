@@ -1,6 +1,4 @@
-{ config, ... }:
-
-{
+{config, ...}: {
   # services.spotify-daemon = {
   #   enable = true;
   #   package = /${config.hostSpec.home}/.cargo/bin/spotifyd; # impure

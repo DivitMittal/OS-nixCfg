@@ -1,9 +1,14 @@
-{ pkgs, hostPlatform, ... }:
-
 {
+  pkgs,
+  hostPlatform,
+  ...
+}: {
   programs.spotify-player = {
     enable = true;
-    package = if hostPlatform.isDarwin then pkgs.hello else pkgs.spotify-player; # homebrew
+    package =
+      if hostPlatform.isDarwin
+      then pkgs.hello
+      else pkgs.spotify-player; # homebrew
 
     settings = {
       client_id = "561a7e0b6be94efc8f25374180fbe62a";

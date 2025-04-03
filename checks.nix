@@ -1,13 +1,11 @@
-_:
-
-{
+_: {
   perSystem.pre-commit = {
     check.enable = true;
 
     settings = {
       src = ./.;
-      excludes = [ "flake.lock" ];
-      default_stages = [ "pre-commit" ];
+      excludes = ["flake.lock"];
+      default_stages = ["pre-commit"];
       hooks = {
         check-added-large-files = {
           enable = true;

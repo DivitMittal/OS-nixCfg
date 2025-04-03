@@ -1,6 +1,6 @@
 :root {
   --bg: rgba(0, 0, 0, 1);
-  --fg: #14C800;
+  --fg: #14c800;
   --font: "CaskaydiaCove Nerd Font Mono";
 
   --tridactyl-bg: var(--bg);
@@ -38,5 +38,5 @@
 :root #completions table {
   font-size: 14pt;
   border-spacing: 0;
-  table-layout: fixed;
+  table-layout:  fixed;
 }

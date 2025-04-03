@@ -1,9 +1,10 @@
-{ pkgs, TLTR, ... }:
-
-let
-  configFile = "${TLTR}/kanata/kanata.kbd";
-in
 {
+  pkgs,
+  TLTR,
+  ...
+}: let
+  configFile = "${TLTR}/kanata/kanata.kbd";
+in {
   programs.kanata-tray = {
     enable = true;
 
@@ -19,7 +20,7 @@ in
         TLTR = {
           kanata_config = "${configFile}";
           autorun = true;
-          extra_args = [ "--nodelay" ];
+          extra_args = ["--nodelay"];
         };
       };
     };

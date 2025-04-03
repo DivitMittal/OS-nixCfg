@@ -1,10 +1,14 @@
-{ pkgs, config, ... }:
-
 {
+  pkgs,
+  config,
+  ...
+}: {
   programs.mods = {
     enable = true;
     package = pkgs.mods;
-    enableBashIntegration = false; enableFishIntegration = true; enableZshIntegration = true;
+    enableBashIntegration = false;
+    enableFishIntegration = true;
+    enableZshIntegration = true;
     settings = {
       default-model = "deepseek-r1-distill-llama-70b";
 
@@ -23,7 +27,7 @@
           api-key-env = "GROQ_API_KEY";
           models = {
             "deepseek-r1-distill-llama-70b" = {
-              aliases = [ "deepseek" ];
+              aliases = ["deepseek"];
               max-input-chars = 24500;
             };
           };
@@ -32,7 +36,7 @@
           api-key-env = "GEMINI_API_KEY";
           models = {
             "gemini-2.0-flash" = {
-              aliases = [ "gemini-2.0-flash" ];
+              aliases = ["gemini-2.0-flash"];
               max-input-chars = 392000;
             };
           };

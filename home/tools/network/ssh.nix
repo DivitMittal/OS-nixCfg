@@ -1,16 +1,21 @@
-{ pkgs, hostPlatform, config, ... }:
-
-let
-  sshDir = "${config.home.homeDirectory}/.ssh";
-in
 {
+  pkgs,
+  hostPlatform,
+  config,
+  ...
+}: let
+  sshDir = "${config.home.homeDirectory}/.ssh";
+in {
   home.packages = [
     #pkgs.upterm
   ];
 
   programs.ssh = {
     enable = true;
-    package = if hostPlatform.isDarwin then null else pkgs.ssh; # xcode-dev-tools
+    package =
+      if hostPlatform.isDarwin
+      then null
+      else pkgs.ssh; # xcode-dev-tools
 
     compression = false;
     addKeysToAgent = "yes";

@@ -1,9 +1,10 @@
-{ lib, pkgs, ... }:
-
-let
-  inherit(lib) mkDefault;
-in
 {
+  lib,
+  pkgs,
+  ...
+}: let
+  inherit (lib) mkDefault;
+in {
   nix.package = mkDefault pkgs.nixVersions.latest;
   #nixpkgs.hostPlatform = "${pkgs.system}";
 
@@ -11,7 +12,7 @@ in
     enable = true;
 
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = ["nix-command" "flakes"];
       warn-dirty = mkDefault true;
 
       use-xdg-base-directories = mkDefault false;

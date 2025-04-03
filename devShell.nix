@@ -1,7 +1,5 @@
-_:
-
-{
-  perSystem = { ... }: {
+_: {
+  perSystem = {...}: {
     devshells.default = {
       commands = [
         {

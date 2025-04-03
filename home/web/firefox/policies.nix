@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   policies = {
     AppAutoUpdate = false; # Disable automatic application update
     BackgroundAppUpdate = false; # Disable automatic application update in the background, when the application is not running.

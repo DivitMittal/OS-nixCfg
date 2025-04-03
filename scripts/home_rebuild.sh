@@ -6,29 +6,29 @@
 # SC2086 is ignored because we purposefully pass some values as a set of arguments, so we want the splitting to happen
 
 function red() {
-	echo -e "\x1B[31m[!] $1 \x1B[0m"
-	if [ -n "${2-}" ]; then
-		echo -e "\x1B[31m[!] $($2) \x1B[0m"
-	fi
+  echo -e "\x1B[31m[!] $1 \x1B[0m"
+  if [ -n "${2-}" ]; then
+    echo -e "\x1B[31m[!] $($2) \x1B[0m"
+  fi
 }
 
 function green() {
-	echo -e "\x1B[32m[+] $1 \x1B[0m"
-	if [ -n "${2-}" ]; then
-		echo -e "\x1B[32m[+] $($2) \x1B[0m"
-	fi
+  echo -e "\x1B[32m[+] $1 \x1B[0m"
+  if [ -n "${2-}" ]; then
+    echo -e "\x1B[32m[+] $($2) \x1B[0m"
+  fi
 }
 
 function yellow() {
-	echo -e "\x1B[33m[*] $1 \x1B[0m"
-	if [ -n "${2-}" ]; then
-		echo -e "\x1B[33m[*] $($2) \x1B[0m"
-	fi
+  echo -e "\x1B[33m[*] $1 \x1B[0m"
+  if [ -n "${2-}" ]; then
+    echo -e "\x1B[33m[*] $($2) \x1B[0m"
+  fi
 }
 
 switch_args="-v --impure"
 if [[ -n $1 && $1 == "trace" ]]; then
-	switch_args="$switch_args --show-trace"
+  switch_args="$switch_args --show-trace"
 fi
 
 switch_args="$switch_args --flake .#$(hostname) switch"

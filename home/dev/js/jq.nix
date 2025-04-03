@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   ## JSON
   programs.jq = {
     enable = true;

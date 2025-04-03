@@ -1,7 +1,9 @@
-{ config, pkgs, ... }:
-
 {
-  home.packages = [ pkgs.screen ];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = [pkgs.screen];
 
   home.sessionVariables.SCREENRC = "${config.xdg.configHome}/screen/screenrc";
 

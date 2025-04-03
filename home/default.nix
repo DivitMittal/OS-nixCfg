@@ -1,6 +1,4 @@
-{ mkHost, ... }:
-
-{
+{mkHost, ...}: {
   flake.homeConfigurations = {
     L1 = mkHost {
       hostName = "L1";

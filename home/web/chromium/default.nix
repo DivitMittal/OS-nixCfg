@@ -1,6 +1,8 @@
-{ pkgs, hostPlatform, ... }:
-
 {
+  pkgs,
+  hostPlatform,
+  ...
+}: {
   # programs.chromium = {
   #   enable = false;
   #   package = if hostPlatform.isLinux then pkgs.chromium else null;

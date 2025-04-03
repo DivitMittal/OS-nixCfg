@@ -1,7 +1,5 @@
-_:
-
-{
-  programs.aria2  = {
+_: {
+  programs.aria2 = {
     enable = true;
 
     settings = {

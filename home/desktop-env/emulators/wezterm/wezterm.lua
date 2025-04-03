@@ -1,5 +1,5 @@
-local w = require 'wezterm';
-local act = w.action;
+local w = require("wezterm")
+local act = w.action
 
 ---------------------------------------------------------------------------------
 -- Tab title string
@@ -14,7 +14,7 @@ w.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
   local progress = basename(pane.foreground_process_name)
   local text = index .. ": " .. title .. " [" .. progress .. "]"
   return {
-    { Text = text }
+    { Text = text },
   }
 end)
 
@@ -22,21 +22,20 @@ end)
 -- Pane navigation and resizing b/w wezterm & vim/nvim (smart-splits.nvim plugin required)
 local function is_vim(pane)
   -- this is set by the smart-splits.nvim plugin, and unset on ExitPre in Neovim
-  return pane:get_user_vars().IS_NVIM == 'true'
+  return pane:get_user_vars().IS_NVIM == "true"
 end
 
-
 local direction_from_key = {
-  LeftArrow  = 'Left',
-  RightArrow = 'Right',
-  UpArrow    = 'Up',
-  DownArrow  = 'Down'
+  LeftArrow = "Left",
+  RightArrow = "Right",
+  UpArrow = "Up",
+  DownArrow = "Down",
 }
 
 local function split_nav(resize_or_move, key)
   return {
     key = key,
-    mods = resize_or_move == 'move' and 'CTRL' or 'ALT',
+    mods = resize_or_move == "move" and "CTRL" or "ALT",
 
     action = w.action_callback(function(win, pane)
       if is_vim(pane) then
@@ -44,24 +43,23 @@ local function split_nav(resize_or_move, key)
         win:perform_action({
           SendKey = {
             key = key,
-            mods = resize_or_move == 'resize' and 'ALT' or 'CTRL'
-          }
+            mods = resize_or_move == "resize" and "ALT" or "CTRL",
+          },
         }, pane)
       else
-        if resize_or_move == 'resize' then
+        if resize_or_move == "resize" then
           win:perform_action({
-            AdjustPaneSize = {direction_from_key[key] , 3}
+            AdjustPaneSize = { direction_from_key[key], 3 },
           }, pane)
         else
           win:perform_action({
-            ActivatePaneDirection = direction_from_key[key]
+            ActivatePaneDirection = direction_from_key[key],
           }, pane)
         end
       end
-    end)
+    end),
   }
 end
-
 
 ---------------------------------------------------------------------------------
 -- config
@@ -77,28 +75,28 @@ return {
   harfbuzz_features = {
     "calt=1",
     "clig=1",
-    "liga=1"
+    "liga=1",
   },
 
   -- appearance
   window_close_confirmation = "NeverPrompt",
   colors = {
-    foreground    = 'silver',
-    background    = 'black',
+    foreground = "silver",
+    background = "black",
     --cursor
-    cursor_bg     = 'red',
-    cursor_fg     = 'silver',
-    cursor_border = 'silver'
+    cursor_bg = "red",
+    cursor_fg = "silver",
+    cursor_border = "silver",
   },
-  default_cursor_style = 'SteadyBar',
+  default_cursor_style = "SteadyBar",
   hide_tab_bar_if_only_one_tab = true,
   initial_cols = 100,
   initial_rows = 40,
   window_padding = {
-    left   = 0,
-    right  = 0,
-    top    = 0,
-    bottom = 0
+    left = 0,
+    right = 0,
+    top = 0,
+    bottom = 0,
   },
   native_macos_fullscreen_mode = false,
   window_background_opacity = 0.90,
@@ -108,94 +106,94 @@ return {
   -- hyperlink
   hyperlink_rules = {
     {
-      regex  = "\\b\\w+://[\\w.-]+\\.[a-z]{2,15}\\S*\\b",
-      format = "$0"
+      regex = "\\b\\w+://[\\w.-]+\\.[a-z]{2,15}\\S*\\b",
+      format = "$0",
     },
     {
-      regex  = [[\b\w+@[\w-]+(\.[\w-]+)+\b]],
-      format = "mailto:$0"
+      regex = [[\b\w+@[\w-]+(\.[\w-]+)+\b]],
+      format = "mailto:$0",
     },
     {
-      regex  = [[\bfile://\S*\b]],
-      format = "$0"
+      regex = [[\bfile://\S*\b]],
+      format = "$0",
     },
     {
-      regex  = [[\b\w+://(?:[\d]{1,3}\.){3}[\d]{1,3}\S*\b]],
-      format = "$0"
+      regex = [[\b\w+://(?:[\d]{1,3}\.){3}[\d]{1,3}\S*\b]],
+      format = "$0",
     },
     {
-      regex  = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
-      format = "https://www.github.com/$1/$3"
-    }
+      regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
+      format = "https://www.github.com/$1/$3",
+    },
   },
 
   -- Keybindings
   leader = {
-    mods = 'CTRL',
-    key = 'r',
-    timeout_milliseconds = 800
+    mods = "CTRL",
+    key = "r",
+    timeout_milliseconds = 800,
   },
   keys = {
     -- Send Ctrl+r to the terminal when pressing LEADER, LEADER
     {
-      mods = 'LEADER|CTRL',
-      key = 'r',
-      action = w.action.SendKey { mods = 'CTRL', key = 'r'},
+      mods = "LEADER|CTRL",
+      key = "r",
+      action = w.action.SendKey({ mods = "CTRL", key = "r" }),
     },
 
     -- splitting
     {
       mods = "LEADER",
       key = "s",
-      action = act.SplitVertical { domain = 'CurrentPaneDomain' }
+      action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
     },
 
     {
       mods = "LEADER",
       key = "v",
-      action = act.SplitHorizontal { domain = 'CurrentPaneDomain' }
+      action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
     },
 
     -- maximize a single pane
     {
-      mods = 'LEADER',
-      key = '5',
-      action = act.TogglePaneZoomState
+      mods = "LEADER",
+      key = "5",
+      action = act.TogglePaneZoomState,
     },
 
     -- rotate panes
     {
       mods = "LEADER",
       key = "Space",
-      action = act.RotatePanes "Clockwise"
+      action = act.RotatePanes("Clockwise"),
     },
 
     -- show the pane selection mode, but have it swap the active and selected panes
     {
-      mods = 'LEADER',
-      key = 'f',
-      action = act.PaneSelect { mode = 'SwapWithActive' }
+      mods = "LEADER",
+      key = "f",
+      action = act.PaneSelect({ mode = "SwapWithActive" }),
     },
 
     -- activate copy mode or vim mode
     {
-      mods = 'LEADER',
-      key = 'Enter',
-      action = act.ActivateCopyMode
+      mods = "LEADER",
+      key = "Enter",
+      action = act.ActivateCopyMode,
     },
 
     -- move between split panes
-    split_nav('move', 'LeftArrow'),
-    split_nav('move', 'RightArrow'),
-    split_nav('move', 'UpArrow'),
-    split_nav('move', 'DownArrow'),
+    split_nav("move", "LeftArrow"),
+    split_nav("move", "RightArrow"),
+    split_nav("move", "UpArrow"),
+    split_nav("move", "DownArrow"),
 
     -- resize split panes
-    split_nav('resize', 'LeftArrow'),
-    split_nav('resize', 'RightArrow'),
-    split_nav('resize', 'UpArrow'),
-    split_nav('resize', 'DownArrow'),
+    split_nav("resize", "LeftArrow"),
+    split_nav("resize", "RightArrow"),
+    split_nav("resize", "UpArrow"),
+    split_nav("resize", "DownArrow"),
 
     -- C-S-l activates the debug overlay (implemented by default)
-  }
+  },
 }

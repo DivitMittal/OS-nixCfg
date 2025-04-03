@@ -1,12 +1,13 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.packages = builtins.attrValues {
-    inherit(pkgs)
-      nmap speedtest-go
+    inherit
+      (pkgs)
+      nmap
+      speedtest-go
       bandwhich
-      httpie dig
+      httpie
+      dig
       localsend
-    ;
+      ;
   };
 }

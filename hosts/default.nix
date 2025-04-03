@@ -1,6 +1,8 @@
-{ inputs, mkHost, ... }:
-
 {
+  inputs,
+  mkHost,
+  ...
+}: {
   flake.darwinConfigurations = {
     L1 = mkHost {
       hostName = "L1";

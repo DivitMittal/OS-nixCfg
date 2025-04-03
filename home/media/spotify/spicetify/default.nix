@@ -1,6 +1,9 @@
-{ pkgs, config, hostPlatform, ... }:
-
 {
+  pkgs,
+  config,
+  hostPlatform,
+  ...
+}: {
   programs.spicetify-cli = {
     enable = false;
     package = pkgs.spicetify-cli;
@@ -11,9 +14,17 @@
       inject_css             = 1
       check_spicetify_update = 0
       always_enable_devtools = 0
-      spotify_path           = ${(if hostPlatform.isDarwin then "/Applications/Spotify.app/Contents/Resources" else "")}
+      spotify_path           = ${(
+        if hostPlatform.isDarwin
+        then "/Applications/Spotify.app/Contents/Resources"
+        else ""
+      )}
       spotify_launch_flags   =
-      prefs_path             = ${(if hostPlatform.isDarwin then "${config.home.homeDirectory}/Library/Application Support/Spotify/prefs" else "")}
+      prefs_path             = ${(
+        if hostPlatform.isDarwin
+        then "${config.home.homeDirectory}/Library/Application Support/Spotify/prefs"
+        else ""
+      )}
       current_theme          = marketplace
       color_scheme           =
       replace_colors         = 1

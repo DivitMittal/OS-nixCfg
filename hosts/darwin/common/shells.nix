@@ -1,12 +1,13 @@
-{ pkgs, lib, ... }:
-
-let
-  inherit (lib) mkAfter;
-in
 {
+  pkgs,
+  lib,
+  ...
+}: let
+  inherit (lib) mkAfter;
+in {
   # environment.shells = with pkgs; [ ksh tcsh ];
 
-  environment.shellAliases.cleanup-DS  = "sudo ${pkgs.findutils}/bin/find . -type f -name '*.DS_Store' -ls -delete";
+  environment.shellAliases.cleanup-DS = "sudo ${pkgs.findutils}/bin/find . -type f -name '*.DS_Store' -ls -delete";
 
   environment.systemPackages = builtins.attrValues {
     empty-trash = pkgs.writeShellScriptBin "empty-trash" ''

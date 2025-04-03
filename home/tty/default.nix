@@ -1,15 +1,18 @@
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   imports = lib.custom.scanPaths ./.;
 
   home.packages = builtins.attrValues {
-    inherit(pkgs)
+    inherit
+      (pkgs)
       grc
       duf
       dust
       sendme # Iroh protocol
-    ;
+      ;
   };
 
   # Using pay-respects instead
@@ -23,9 +26,11 @@
     enable = true;
     package = pkgs.pay-respects;
 
-    enableFishIntegration = true; enableZshIntegration = true; enableBashIntegration = false; enableNushellIntegration = false;
+    enableFishIntegration = true;
+    enableZshIntegration = true;
+    enableBashIntegration = false;
+    enableNushellIntegration = false;
   };
-
 
   programs.tealdeer = {
     enable = true;

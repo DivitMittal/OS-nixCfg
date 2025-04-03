@@ -1,19 +1,20 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   sshdTmpDirectory = "${config.user.home}/.sshd-tmp";
   sshdDirectory = "${config.user.home}/.sshd";
   pathToPubKey = "${sshdDirectory}/ssh_host_rsa_key.pub";
   port = 8022;
-in
-{
+in {
   environment.packages = builtins.attrValues {
-    sshd = (pkgs.writeScriptBin "sshd-start" ''
+    sshd = pkgs.writeScriptBin "sshd-start" ''
       #!${pkgs.runtimeShell}
 
       echo "Starting sshd in non-daemonized way on port ${builtins.toString port}"
       ${pkgs.openssh}/bin/sshd -f "${sshdDirectory}/sshd_config" -D
-    '');
+    '';
   };
 
   build.activation.sshd = ''

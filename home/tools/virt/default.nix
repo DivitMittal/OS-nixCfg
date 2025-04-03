@@ -1,15 +1,17 @@
-{ lib, pkgs, ... }:
-
 {
+  lib,
+  pkgs,
+  ...
+}: {
   imports = lib.custom.scanPaths ./.;
 
   home.packages = builtins.attrValues {
-    inherit(pkgs)
+    inherit
+      (pkgs)
       ## containerization
       #docker lazydocker
-
       ## virtualization
       #virt-manager libvirt qemu
-    ;
+      ;
   };
 }

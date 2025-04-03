@@ -1,21 +1,19 @@
-{ config, ... }:
-
-{
+{config, ...}: {
   home.sessionVariables = rec {
-    HOME            = "${config.home.homeDirectory}";
+    HOME = "${config.home.homeDirectory}";
     XDG_CONFIG_HOME = "${HOME}/.config";
-    XDG_CACHE_HOME  = "${HOME}/.cache";
-    XDG_STATE_HOME  = "${HOME}/.local/state";
-    XDG_DATA_HOME   = "${HOME}/.local/share";
-    BIN_HOME        = "${HOME}/.local/bin";
-    LANG            = "en_US.UTF-8";
-    VISUAL          = "nvim";
-    EDITOR          = "${VISUAL}";
+    XDG_CACHE_HOME = "${HOME}/.cache";
+    XDG_STATE_HOME = "${HOME}/.local/state";
+    XDG_DATA_HOME = "${HOME}/.local/share";
+    BIN_HOME = "${HOME}/.local/bin";
+    LANG = "en_US.UTF-8";
+    VISUAL = "nvim";
+    EDITOR = "${VISUAL}";
   };
 
   home.shellAliases = {
-    dt              = "builtin cd ${config.home.homeDirectory}/Desktop/";
-    dl              = "builtin cd ${config.home.homeDirectory}/Downloads/";
+    dt = "builtin cd ${config.home.homeDirectory}/Desktop/";
+    dl = "builtin cd ${config.home.homeDirectory}/Downloads/";
   };
 
   home.sessionPath = [

@@ -1,6 +1,8 @@
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   imports = lib.custom.scanPaths ./.;
 
   time.timeZone = "Asia/Calcutta";

@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.aichat = {
     enable = true;
     package = pkgs.aichat;

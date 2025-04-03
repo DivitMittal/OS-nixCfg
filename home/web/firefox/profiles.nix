@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   profiles = {
     clean-profile = {
       id = 0;
@@ -47,24 +45,38 @@
               {
                 template = "https://search.nixos.org/packages";
                 params = [
-                  { name = "type"; value = "packages"; }
-                  { name = "query"; value = "{searchTerms}"; }
-                  { name = "channel"; value = "unstable"; }
+                  {
+                    name = "type";
+                    value = "packages";
+                  }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
+                  {
+                    name = "channel";
+                    value = "unstable";
+                  }
                 ];
               }
             ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = [ "@np" ];
+            definedAliases = ["@np"];
           };
 
           "Youtube" = {
             urls = [
               {
                 template = "https://www.youtube.com/results";
-                params = [ { name = "search_query"; value = "{searchTerms}"; } ];
+                params = [
+                  {
+                    name = "search_query";
+                    value = "{searchTerms}";
+                  }
+                ];
               }
             ];
-            definedAliases = [ "@yt" ];
+            definedAliases = ["@yt"];
           };
 
           "Github" = {
@@ -72,12 +84,18 @@
               {
                 template = "https://github.com/search";
                 params = [
-                  { name = "q"; value = "{searchTerms}"; }
-                  { name = "type"; value = "repositories"; }
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
+                  {
+                    name = "type";
+                    value = "repositories";
+                  }
                 ];
               }
             ];
-            definedAliases = [ "@gh" ];
+            definedAliases = ["@gh"];
           };
 
           "Startpage" = {
@@ -85,11 +103,14 @@
               {
                 template = "https://www.startpage.com/sp/search";
                 params = [
-                  { name = "query"; value = "{searchTerms}"; }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
                 ];
               }
             ];
-            definedAliases = [ "@sp" ];
+            definedAliases = ["@sp"];
           };
 
           "Unduck" = {
@@ -97,11 +118,14 @@
               {
                 template = "https://unduck.link";
                 params = [
-                  { name = "q"; value = "{searchTerms}"; }
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
                 ];
               }
             ];
-            definedAliases = [ "@ud"];
+            definedAliases = ["@ud"];
           };
 
           "Perplexity" = {
@@ -109,11 +133,14 @@
               {
                 template = "https://www.perplexity.ai";
                 params = [
-                  { name = "q"; value = "{searchTerms}"; }
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
                 ];
               }
             ];
-            definedAliases = [ "@p" ];
+            definedAliases = ["@p"];
           };
         };
       };

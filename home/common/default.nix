@@ -1,6 +1,8 @@
-{ config, pkgs,... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home = {
     username = config.hostSpec.username;
     homeDirectory = config.hostSpec.home;
@@ -16,7 +18,7 @@
   home.packages = builtins.attrValues {
     my-hello = pkgs.writeShellScriptBin "my-hello" ''echo "Hello, ${config.home.username}!"'';
   };
-  home.extraOutputsToInstall = [ "info" ]; # "doc" "devdoc"
+  home.extraOutputsToInstall = ["info"]; # "doc" "devdoc"
 
   home.language = {
     base = "en_US.UTF-8";

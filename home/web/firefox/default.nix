@@ -1,16 +1,19 @@
-{ config, pkgs, hostPlatform, lib, ... }:
-
-let
+{
+  config,
+  pkgs,
+  hostPlatform,
+  lib,
+  ...
+}: let
   inherit (import ./policies.nix) policies;
-  inherit(import ./profiles.nix { inherit pkgs; }) profiles;
+  inherit (import ./profiles.nix {inherit pkgs;}) profiles;
   fx-autoconfig = pkgs.fetchFromGitHub {
     owner = "MrOtherGuy";
     repo = "fx-autoconfig";
     rev = "master";
     hash = "sha256-NUGFGlf7HdZUVNmK3Hk5xbRGIKzg3QJVXO5kM44Xqy0=";
   };
-in
-{
+in {
   ## Firefox
   programs.firefox = {
     enable = true;
@@ -24,7 +27,7 @@ in
     #   ];
     # });
     package = null; # homebrew
-    nativeMessagingHosts = with pkgs;[ tridactyl-native ];
+    nativeMessagingHosts = with pkgs; [tridactyl-native];
     inherit policies;
     inherit profiles;
   };
@@ -61,11 +64,11 @@ in
 
   ## github:MrOtherGuy/fx-autoconfig
   home.file."Applications/Homebrew Casks/Firefox.app/Contents/Resources/defaults" = lib.mkIf (hostPlatform.isDarwin) {
-    source = (fx-autoconfig + /program/defaults);
+    source = fx-autoconfig + /program/defaults;
     recursive = true;
   };
 
   home.file."Applications/Homebrew Casks/Firefox.app/Contents/Resources/config.js" = lib.mkIf (hostPlatform.isDarwin) {
-    source = (fx-autoconfig + /program/config.js);
+    source = fx-autoconfig + /program/config.js;
   };
 }

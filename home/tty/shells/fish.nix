@@ -1,10 +1,11 @@
-{ lib, pkgs, hostPlatform, ... }:
-
-let
-  inherit(lib) mkIf;
-in
 {
-
+  lib,
+  pkgs,
+  hostPlatform,
+  ...
+}: let
+  inherit (lib) mkIf;
+in {
   programs.fish = {
     enable = true;
     package = pkgs.fish;
@@ -40,8 +41,14 @@ in
     };
 
     shellAbbrs = {
-      ".2" = { expansion = "../.."   ; position = "anywhere";};
-      ".3" = { expansion = "../../.."; position = "anywhere";};
+      ".2" = {
+        expansion = "../..";
+        position = "anywhere";
+      };
+      ".3" = {
+        expansion = "../../..";
+        position = "anywhere";
+      };
     };
 
     plugins = [

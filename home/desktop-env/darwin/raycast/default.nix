@@ -1,10 +1,9 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.packages = builtins.attrValues {
-    inherit(pkgs)
+    inherit
+      (pkgs)
       raycast
-    ;
+      ;
   };
 
   xdg.configFile."raycast/scripts" = {

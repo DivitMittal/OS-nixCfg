@@ -1,19 +1,23 @@
-{ pkgs, lib, config,... }:
-
-let
-  inherit(lib) mkIf;
-  tomlFormat = pkgs.formats.toml { };
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
+  inherit (lib) mkIf;
+  tomlFormat = pkgs.formats.toml {};
   configFile = tomlFormat.generate "spotifyd.toml" cfg.settings;
   cfg = config.services.spotify-daemon;
-in
-{
-  options = let inherit(lib) mkOption mkEnableOption mkPackageOption; in {
+in {
+  options = let
+    inherit (lib) mkOption mkEnableOption mkPackageOption;
+  in {
     services.spotify-daemon = {
       enable = mkEnableOption "spotify-daemon";
-      package = mkPackageOption pkgs "spotifyd" { nullable = true; };
+      package = mkPackageOption pkgs "spotifyd" {nullable = true;};
       settings = mkOption {
         type = tomlFormat.type;
-        default = { };
+        default = {};
         description = "Configuration for spotifyd";
         example = lib.literalExpression ''
           {

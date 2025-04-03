@@ -1,12 +1,14 @@
-{ pkgs, ... }:
-
+{pkgs, ...}:
 # TODO: backup atuin history (locally or via atuin-hosted servers)
 {
   programs.atuin = {
     enable = true;
     package = pkgs.atuin;
 
-    enableFishIntegration = true; enableZshIntegration  = false; enableBashIntegration = false; enableNushellIntegration = false;
+    enableFishIntegration = true;
+    enableZshIntegration = false;
+    enableBashIntegration = false;
+    enableNushellIntegration = false;
 
     settings = {
       ## where to store your database, default is your system data directory

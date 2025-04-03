@@ -1,15 +1,19 @@
-{ config, lib, pkgs, ... }:
-
-let
-  inherit(lib) mkIf;
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  inherit (lib) mkIf;
   cfg = config.services.kanata-tray;
   karabinerDaemon = "/Library/Application\\ Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon";
-in
-{
-  options = let inherit(lib) mkEnableOption mkPackageOption types mkOption; in {
+in {
+  options = let
+    inherit (lib) mkEnableOption mkPackageOption types mkOption;
+  in {
     services.kanata-tray = {
       enable = mkEnableOption "kanata-tray";
-      package = mkPackageOption pkgs "kanata-tray" { nullable = true; };
+      package = mkPackageOption pkgs "kanata-tray" {nullable = true;};
       environment = mkOption {
         type = types.attrsOf types.str;
         default = {};
@@ -25,7 +29,7 @@ in
 
   config = mkIf (cfg.enable) {
     launchd.user.agents.kanata-tray = {
-      inherit(cfg) environment;
+      inherit (cfg) environment;
       command = "sudo --preserve-env " + "${cfg.package}/bin/kanata-tray";
       serviceConfig = {
         RunAtLoad = true;

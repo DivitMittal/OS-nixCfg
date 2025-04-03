@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   programs.newsboat = {
     enable = true;
 
@@ -9,27 +7,27 @@ _:
 
     urls = [
       {
-        tags = [ "tech" ];
+        tags = ["tech"];
         title = "TechCrunch";
         url = "http://feeds.feedburner.com/TechCrunch/";
       }
       {
-        tags = [ "fin" ];
+        tags = ["fin"];
         title = "WSJ";
         url = "https://feeds.a.dj.com/rss/RSSMarketsMain.xml";
       }
       {
-        tags = [ "tech" ];
+        tags = ["tech"];
         title = "TerminalTroveNew";
         url = "https://terminaltrove.com/new.xml";
       }
       {
-        tags = [ "tech" ];
+        tags = ["tech"];
         title = "TerminalTroveBlog";
         url = "https://terminaltrove.com/blog.xml";
       }
       {
-        tags = [ "tech" ];
+        tags = ["tech"];
         title = "ServerFault SO";
         url = "https://serverfault.com/feeds";
       }

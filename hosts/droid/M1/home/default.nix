@@ -1,6 +1,8 @@
-{ self, config, ... }:
-
 {
+  self,
+  config,
+  ...
+}: {
   imports = [
     (self + /home/common)
     (self + /home/tty-env)

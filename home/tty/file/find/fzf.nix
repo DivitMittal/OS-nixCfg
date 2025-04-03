@@ -1,17 +1,19 @@
-{ pkgs, config, ... }:
-
-let
+{
+  pkgs,
+  config,
+  ...
+}: let
   eza_opts = builtins.concatStringsSep " " config.programs.eza.extraOptions;
   fd_opts = "--hidden";
   delta_opts = "--paging=never";
-in
-{
-
+in {
   programs.fzf = {
     enable = true;
     package = pkgs.fzf;
 
-    enableFishIntegration = false; enableZshIntegration = false; enableBashIntegration = false;
+    enableFishIntegration = false;
+    enableZshIntegration = false;
+    enableBashIntegration = false;
 
     defaultCommand = "fd ${fd_opts}";
 
@@ -67,5 +69,5 @@ in
     '';
   };
 
-  programs.zsh.antidote.plugins = [ "Aloxaf/fzf-tab" ];
+  programs.zsh.antidote.plugins = ["Aloxaf/fzf-tab"];
 }

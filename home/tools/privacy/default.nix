@@ -1,13 +1,17 @@
-{ config, pkgs, lib, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   imports = lib.custom.scanPaths ./.;
 
   home.packages = builtins.attrValues {
-    inherit(pkgs)
+    inherit
+      (pkgs)
       age
       #skate
-    ;
+      ;
   };
 
   programs.gpg = {

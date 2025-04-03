@@ -1,16 +1,15 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.zsh = {
     enable = true;
     package = pkgs.zsh;
 
     dotDir = ".config/zsh";
     history = {
-      extended              = false; # save timestamps as well
-      expireDuplicatesFirst = true; ignoreAllDups = true;
-      path                  = "$ZDOTDIR/.zsh_history";
-      share                 = true;
+      extended = false; # save timestamps as well
+      expireDuplicatesFirst = true;
+      ignoreAllDups = true;
+      path = "$ZDOTDIR/.zsh_history";
+      share = true;
     };
     defaultKeymap = null;
 
@@ -19,7 +18,7 @@
     syntaxHighlighting.enable = true;
 
     autosuggestion = {
-      enable    = true;
+      enable = true;
       highlight = "fg = #ff00ff,bg = cyan,bold,underline";
     };
 
@@ -28,13 +27,13 @@
     zsh-abbr = {
       enable = true;
       abbreviations = {
-        ".2"  = "../..";
-        ".3"  = "../../..";
+        ".2" = "../..";
+        ".3" = "../../..";
       };
     };
 
     antidote = {
-      enable  = true;
+      enable = true;
       plugins = [
         # omz
         "ohmyzsh/ohmyzsh"

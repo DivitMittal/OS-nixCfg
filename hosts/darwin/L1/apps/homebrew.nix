@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   homebrew = {
     enable = true;
     taps = [
@@ -13,7 +11,8 @@
     casks = [
       ## macOS specific
       #"raycast" "alt-tab"
-      "spaceman" "gswitch"
+      "spaceman"
+      "gswitch"
       "bluesnooze"
       "fuse-t" #"macfuse"
       #"jordanbaird-ice" # open-source alt to bartender
@@ -22,7 +21,10 @@
       #"hammerspoon"
 
       ## WWWW browser
-      { name = "firefox"; args = { appdir = "~/Applications/Homebrew Casks"; };}
+      {
+        name = "firefox";
+        args = {appdir = "~/Applications/Homebrew Casks";};
+      }
       "google-chrome"
       #"tor-browser"
 
@@ -37,7 +39,10 @@
 
       ## Microsoft
       "onlyoffice"
-      "microsoft-auto-update" "microsoft-onenote" "microsoft-teams" "microsoft-outlook" #"microsoft-excel"
+      "microsoft-auto-update"
+      "microsoft-onenote"
+      "microsoft-teams"
+      "microsoft-outlook" #"microsoft-excel"
       "onedrive"
       #"crystalfetch"
       #"libreoffice"
@@ -57,8 +62,14 @@
       #"spotify"
 
       ## Creative
-      { name = "wacom-tablet"; greedy = false; }
-      { name = "musescore"; greedy = true; }
+      {
+        name = "wacom-tablet";
+        greedy = false;
+      }
+      {
+        name = "musescore";
+        greedy = true;
+      }
       #"reaper"
       #"blender"
 

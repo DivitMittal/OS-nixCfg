@@ -1,6 +1,9 @@
-{ self, pkgs, lib, ... }:
-
 {
+  self,
+  pkgs,
+  lib,
+  ...
+}: {
   programs.fish.loginShellInit = lib.mkAfter ''
     test "$TERM_PROGRAM" = "WezTerm"; and fastfetch
   '';
@@ -22,14 +25,14 @@
         hideCursor = false;
         separator = " -➜❯ ";
         brightColor = true;
-        constants =  [
+        constants = [
           "───────────────────----────────"
         ];
         color = {
           keys = "light_magenta";
           separator = "light_white";
           title = "white";
-          output  = "light_white";
+          output = "light_white";
         };
         key = {
           type = "both";

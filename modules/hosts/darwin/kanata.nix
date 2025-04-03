@@ -1,17 +1,21 @@
-{ config, pkgs, lib, ... }:
-
-let
-  inherit(lib) mkIf optionals;
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  inherit (lib) mkIf optionals;
   cfg = config.services.kanata;
   karabinerDaemon = "/Library/Application\\ Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon";
   configFile = mkIf (cfg.config != "") "${pkgs.writeScript "kanata.kbd" "${cfg.config}"}";
   command = ["${cfg.package}" "--nodelay"] ++ optionals (cfg.config != "") ["--cfg" configFile];
-in
-{
-  options = let inherit(lib) mkOption mkPackageOption mkEnableOption types; in {
+in {
+  options = let
+    inherit (lib) mkOption mkPackageOption mkEnableOption types;
+  in {
     services.kanata = {
       enable = mkEnableOption "kanata";
-      package = mkPackageOption pkgs "kanata" { nullable = true; };
+      package = mkPackageOption pkgs "kanata" {nullable = true;};
       environment = mkOption {
         type = types.attrsOf types.str;
         default = {};
@@ -54,7 +58,7 @@ in
     launchd.daemons.kanata = {
       script = "sudo --preserve-env " + "${builtins.concatStringsSep " " command}";
       serviceConfig = {
-        inherit(cfg) environment;
+        inherit (cfg) environment;
         StandardOutPath = /tmp/org.nixos.kanata.out.log;
         StandardErrorPath = /tmp/org.nixos.kanata.err.log;
         RunAtLoad = true;

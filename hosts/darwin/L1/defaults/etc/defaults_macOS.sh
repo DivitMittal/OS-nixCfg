@@ -10,7 +10,11 @@ printf "\033[0m\n"
 sudo -v
 
 # Keep-alive: update existing `sudo` time stamp until this script has finished
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+while true; do
+  sudo -n true
+  sleep 60
+  kill -0 "$$" || exit
+done 2>/dev/null &
 
 ###############################################################
 # System
@@ -48,7 +52,7 @@ sudo nvram AutoBoot=%00
 # Reset nvram or run this command ( sudo nvram AutoBoot=%03 ) to revert changes made by above command
 
 # Verbose boot
-sudo nvram boot-args=“-v”
+sudo nvram boot-args='-v'
 
 ###################################################
 # Screenshots
@@ -273,7 +277,7 @@ defaults write com.apple.CrashReporter DialogType -string "none"
 defaults write -g NSToolbarFullScreenAnimationDuration -float 0
 
 # Hide Scrollbars
-defaults write -g AppleShowScrollBars -string “Never”
+defaults write -g AppleShowScrollBars -string "Never"
 
 # Disable rubberband scrolling animation (doesn't affect web views)
 defaults write -g NSScrollViewRubberbanding -bool false

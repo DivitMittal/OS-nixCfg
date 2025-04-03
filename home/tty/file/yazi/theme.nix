@@ -103,7 +103,7 @@
   select = {
     active.fg = "#eb6f92";
     border.fg = "#524f67";
-    inactive = { };
+    inactive = {};
   };
 
   status = {
@@ -159,7 +159,7 @@
     hovered = {
       underline = true;
     };
-    title = { };
+    title = {};
   };
 
   which = {
@@ -176,8 +176,8 @@
     selected = {
       reversed = true;
     };
-    title = { };
-    value = { };
+    title = {};
+    value = {};
   };
 
   help = {

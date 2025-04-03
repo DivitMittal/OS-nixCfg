@@ -10,4 +10,4 @@ nvram AutoBoot=%00
 # Reset nvram or run this command (  nvram AutoBoot=%03 ) to revert changes made by above command
 
 # Verbose boot
-nvram boot-args=“-v”
+nvram boot-args='-v'

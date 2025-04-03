@@ -72,133 +72,133 @@ StyleJumpTargetLine:
 # Connect with modifier key + key
 #   "ctrl+c"
 KeyBind:
-    exit:
-        - "Escape"
-        - "q"
-    cancel:
-        - "ctrl+c"
-    write_exit:
-        - "Q"
-    set_write_exit:
-        - "ctrl+q"
-    suspend:
-        - "ctrl+z"
-    sync:
-        - "ctrl+l"
-    reload:
-        - "ctrl+alt+l"
-        - "F5"
-    watch:
-        - "ctrl+alt+w"
-        - "F4"
-    watch_interval:
-        - "ctrl+w"
-    follow_mode:
-        - "ctrl+f"
-    follow_all:
-        - "ctrl+a"
-    follow_section:
-        -  "F2"
-    help:
-        - "h"
-        - "ctrl+alt+c"
-        - "ctrl+f1"
-    logdoc:
-        - "ctrl+f2"
-        - "ctrl+alt+e"
-    down:
-        - "Enter"
-        - "Down"
-        - "ctrl+N"
-    up:
-        - "Up"
-        - "ctrl+p"
-    top:
-        - "Home"
-    bottom:
-        - "End"
-    left:
-        - "left"
-    right:
-        - "right"
-    half_left:
-        - "ctrl+left"
-    half_right:
-        - "ctrl+right"
-    page_up:
-        - "PageUp"
-        - "ctrl+b"
-    page_down:
-        - "PageDown"
-        - "ctrl+v"
-    page_half_up:
-        - "ctrl+u"
-    page_half_down:
-        - "ctrl+d"
-    section_delimiter:
-        - "alt+d"
-    section_start:
-        - "ctrl+F3"
-        - "alt+s"
-    section_header_num:
-        - "F7"
-    next_section:
-        - "space"
-    last_section:
-        - "9"
-    previous_section:
-        - "^"
-    mark:
-        - "m"
-    remove_mark:
-        - "M"
-    remove_all_mark:
-        - "ctrl+delete"
-    next_mark:
-        - ">"
-    previous_mark:
-        - "<"
-    set_view_mode:
-        - "p"
-        - "P"
-    alter_rows_mode:
-        - "C"
-    line_number_mode:
-        - "G"
-    search:
-        - "/"
-    wrap_mode:
-        - "w"
-        - "W"
-    column_mode:
-        - "c"
-    backsearch:
-        - "?"
-    delimiter:
-        - "d"
-    header:
-        - "H"
-    skip_lines:
-        - "ctrl+s"
-    tabwidth:
-        - "t"
-    goto:
-        - "g"
-    next_search:
-        - "n"
-    next_backsearch:
-        - "N"
-    next_doc:
-        - "]"
-    previous_doc:
-        - "["
-    toggle_mouse:
-        - "ctrl+f3"
-        - "ctrl+alt+r"
-    multi_color:
-        - "."
-    jump_target:
-        - "j"
+  exit:
+    - "Escape"
+    - "q"
+  cancel:
+    - "ctrl+c"
+  write_exit:
+    - "Q"
+  set_write_exit:
+    - "ctrl+q"
+  suspend:
+    - "ctrl+z"
+  sync:
+    - "ctrl+l"
+  reload:
+    - "ctrl+alt+l"
+    - "F5"
+  watch:
+    - "ctrl+alt+w"
+    - "F4"
+  watch_interval:
+    - "ctrl+w"
+  follow_mode:
+    - "ctrl+f"
+  follow_all:
+    - "ctrl+a"
+  follow_section:
+    - "F2"
+  help:
+    - "h"
+    - "ctrl+alt+c"
+    - "ctrl+f1"
+  logdoc:
+    - "ctrl+f2"
+    - "ctrl+alt+e"
+  down:
+    - "Enter"
+    - "Down"
+    - "ctrl+N"
+  up:
+    - "Up"
+    - "ctrl+p"
+  top:
+    - "Home"
+  bottom:
+    - "End"
+  left:
+    - "left"
+  right:
+    - "right"
+  half_left:
+    - "ctrl+left"
+  half_right:
+    - "ctrl+right"
+  page_up:
+    - "PageUp"
+    - "ctrl+b"
+  page_down:
+    - "PageDown"
+    - "ctrl+v"
+  page_half_up:
+    - "ctrl+u"
+  page_half_down:
+    - "ctrl+d"
+  section_delimiter:
+    - "alt+d"
+  section_start:
+    - "ctrl+F3"
+    - "alt+s"
+  section_header_num:
+    - "F7"
+  next_section:
+    - "space"
+  last_section:
+    - "9"
+  previous_section:
+    - "^"
+  mark:
+    - "m"
+  remove_mark:
+    - "M"
+  remove_all_mark:
+    - "ctrl+delete"
+  next_mark:
+    - ">"
+  previous_mark:
+    - "<"
+  set_view_mode:
+    - "p"
+    - "P"
+  alter_rows_mode:
+    - "C"
+  line_number_mode:
+    - "G"
+  search:
+    - "/"
+  wrap_mode:
+    - "w"
+    - "W"
+  column_mode:
+    - "c"
+  backsearch:
+    - "?"
+  delimiter:
+    - "d"
+  header:
+    - "H"
+  skip_lines:
+    - "ctrl+s"
+  tabwidth:
+    - "t"
+  goto:
+    - "g"
+  next_search:
+    - "n"
+  next_backsearch:
+    - "N"
+  next_doc:
+    - "]"
+  previous_doc:
+    - "["
+  toggle_mouse:
+    - "ctrl+f3"
+    - "ctrl+alt+r"
+  multi_color:
+    - "."
+  jump_target:
+    - "j"
 
 Mode:
   Psql:
@@ -215,4 +215,3 @@ Mode:
     LineNumMode: false
     WrapMode: true
     ColumnDelimiter: "|"
-
