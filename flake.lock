@@ -3,11 +3,11 @@
     "Nvim-Cfg": {
       "flake": false,
       "locked": {
-        "lastModified": 1743655549,
-        "narHash": "sha256-en+Fa3rjDewVrXcjSUeRREKthDtJ6Lcv1+TKaw+qaoE=",
+        "lastModified": 1743658403,
+        "narHash": "sha256-hWWaKq3+6K8eYXzFxnuHBmCkFBppCS8DMmk+avsZVVs=",
         "owner": "DivitMittal",
         "repo": "Nvim-Cfg",
-        "rev": "6e0c3ea1396cc48cc6d60d52a56420e0bf234229",
+        "rev": "d6754ee61a443fc27c2381c9280cf4f8a4717d2d",
         "type": "github"
       },
       "original": {
@@ -36,11 +36,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1743482717,
-        "narHash": "sha256-W+F5MKBZjqsRI9isxs5xzllZJzTkr2gOEj6KiNqxpCs=",
+        "lastModified": 1743658462,
+        "narHash": "sha256-+fe9I4OLNRBgmasxnsKtd6naafQgV4G6TXLuXkWJ/iA=",
         "ref": "master",
-        "rev": "300d89bcabf43db31bb4e8659a72ee0a60e6b1a4",
-        "revCount": 8,
+        "rev": "14de4261c9392a0f8b06ae347c2c8e87fbd33d2c",
+        "revCount": 10,
         "type": "git",
         "url": "ssh://git@github.com/DivitMittal/OS-nixCfg-secrets.git"
       },
@@ -186,11 +186,11 @@
         "nixpkgs-lib": "nixpkgs-lib_2"
       },
       "locked": {
-        "lastModified": 1741352980,
-        "narHash": "sha256-+u2UunDA4Cl5Fci3m7S643HzKmIDAe+fiXrLqYsR2fs=",
+        "lastModified": 1743550720,
+        "narHash": "sha256-hIshGgKZCgWh6AYJpJmRgFdR3WUbkY04o82X05xqQiY=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "f4330d22f1c5d2ba72d3d22df5597d123fdb60a9",
+        "rev": "c621e8422220273271f52058f618c94e405bb0f5",
         "type": "github"
       },
       "original": {
@@ -263,11 +263,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1743527271,
-        "narHash": "sha256-EuanEW1qqXZ2h0zJnq7uz8BoHbsgHgUrqWkCZHwZ9FA=",
+        "lastModified": 1743648554,
+        "narHash": "sha256-23JFd+zd2GamTTdnGuFVeIg8x8C3hLpQJRh/PGTORzo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "f4d9d1e2ad19d544a0a0cf3f8f371c6139c762e9",
+        "rev": "107352dde4ff3c01cb5a0b3fe17f5beef37215bc",
         "type": "github"
       },
       "original": {
@@ -299,11 +299,11 @@
     },
     "mynixpkgs": {
       "locked": {
-        "lastModified": 1743568358,
-        "narHash": "sha256-jeV2pmdV6v5Ajx0JU37tdsjO6UFd0BIp+uRH1zGL+nY=",
+        "lastModified": 1743572984,
+        "narHash": "sha256-+Fuw8i4KFlQ/zK+czaIxLwpYingBQIGBN9YpnRHXixQ=",
         "owner": "DivitMittal",
         "repo": "nixpkgs",
-        "rev": "71acff0c7eec4bd9d0e667900610caec8c7e340a",
+        "rev": "12d912a7cd04bf12074ed3e41bac069a1ecb323a",
         "type": "github"
       },
       "original": {
@@ -452,11 +452,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1743472173,
-        "narHash": "sha256-xwNv3FYTC5pl4QVZ79gUxqCEvqKzcKdXycpH5UbYscw=",
+        "lastModified": 1743568003,
+        "narHash": "sha256-ZID5T65E8ruHqWRcdvZLsczWDOAWIE7om+vQOREwiX0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "88e992074d86ad50249de12b7fb8dbaadf8dc0c5",
+        "rev": "b7ba7f9f45c5cd0d8625e9e217c28f8eb6a19a76",
         "type": "github"
       },
       "original": {
@@ -515,11 +515,11 @@
     },
     "nixpkgs-lib_2": {
       "locked": {
-        "lastModified": 1740877520,
-        "narHash": "sha256-oiwv/ZK/2FhGxrCkQkB83i7GnWXPPLzoqFHpDD3uYpk=",
+        "lastModified": 1743296961,
+        "narHash": "sha256-b1EdN3cULCqtorQ4QeWgLMrd5ZGOjLSLemfa00heasc=",
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
-        "rev": "147dee35aab2193b174e4c0868bd80ead5ce755c",
+        "rev": "e4822aea2a6d1cdd36653c134cacfd64c97ff4fa",
         "type": "github"
       },
       "original": {

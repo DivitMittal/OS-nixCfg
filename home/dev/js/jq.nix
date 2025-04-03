@@ -5,13 +5,14 @@
     package = pkgs.jq;
 
     colors = {
+      arrays = "1;37";
+      false = "0;37";
       null = "1;30";
-      false = "0;31";
-      true = "0;32";
-      numbers = "0;36";
-      strings = "0;33";
-      arrays = "1;35";
+      numbers = "0;37";
+      objectKeys = "1;34";
       objects = "1;37";
+      strings = "0;32";
+      true = "0;37";
     };
   };
 }

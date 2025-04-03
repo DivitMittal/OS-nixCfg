@@ -3,7 +3,7 @@
     owner = "DivitMittal";
     repo = "TLTR";
     rev = "master";
-    sha256 = "sha256-TIu/E6nWn2Sgdae9x82eUwOEjw675Fk00/Wop3ENoT0=";
+    sha256 = "sha256-ocTMSUUZ26oLsQ0skAc586dqTBPHy+CCWEUN2mQoZiA=";
   };
 in {
   home.packages = [pkgs.kanata-with-cmd];
