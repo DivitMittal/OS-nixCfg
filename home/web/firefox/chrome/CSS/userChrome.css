@@ -21,9 +21,7 @@
 /* Sideberry */
 /* normal website page right margin for collapsing sidebar */
 #main-window:not([extradragspace="true"])
-  #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]:not(
-    [hidden]
-  )
+  #sidebar-wrapper:has(#sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]:not([hidden]))
   ~ #tabbrowser-tabbox
   .browserContainer {
   margin-right: 35px !important;
@@ -31,9 +29,7 @@
 
 /* in-fullscreen right-margin for collapsing sidebar */
 #main-window:not([extradragspace="true"])[inFullscreen][inDOMFullscreen]
-  #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]:not(
-    [hidden]
-  )
+  #sidebar-wrapper:has(#sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]:not([hidden]))
   ~ #tabbrowser-tabbox
   .browserContainer {
   margin-right: 0 !important;
