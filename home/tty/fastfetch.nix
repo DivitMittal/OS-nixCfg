@@ -65,11 +65,11 @@
           type = "Kernel";
           keyColor = "light_blue";
         }
-        {
-          type = "Display";
-          key = "Resolution";
-          keyColor = "light_blue";
-        }
+        # {
+        #   type = "Display";
+        #   key = "Resolution";
+        #   keyColor = "light_blue";
+        # }
         {
           type = "Terminal";
           keyColor = "light_green";
