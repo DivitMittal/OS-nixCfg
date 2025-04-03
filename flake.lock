@@ -3,14 +3,17 @@
     "Nvim-Cfg": {
       "flake": false,
       "locked": {
-        "lastModified": 1743558223,
-        "narHash": "sha256-X2WEPZLxilf3az7An6viXM/LZM/+R9oSS6P0nOCTXTI=",
-        "path": "/Users/div/Projects/Nvim-Cfg",
-        "type": "path"
+        "lastModified": 1743626252,
+        "narHash": "sha256-XAqljhmcHlKD8o5qVSA1ZAmyatwG1HY/WY6OS6IbhOI=",
+        "owner": "DivitMittal",
+        "repo": "Nvim-Cfg",
+        "rev": "b8afa59b44829d45e47e86e2142408941cdafd78",
+        "type": "github"
       },
       "original": {
-        "path": "/Users/div/Projects/Nvim-Cfg",
-        "type": "path"
+        "owner": "DivitMittal",
+        "repo": "Nvim-Cfg",
+        "type": "github"
       }
     },
     "OS-nixCfg-secrets": {
