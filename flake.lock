@@ -281,16 +281,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1743351645,
+        "lastModified": 1743627588,
         "narHash": "sha256-7HWEpihGYR3czvfirgmT22fs4SH7WSq6ErPUgOLq+ug=",
-        "owner": "DivitMittal",
+        "owner": "rszyma",
         "repo": "kanata-tray",
-        "rev": "4c51611d42ea1b684d9f58211216e8d10bce3114",
+        "rev": "1a04ede69af8dab4d66a95b237ff2c389dedbf17",
         "type": "github"
       },
       "original": {
-        "owner": "DivitMittal",
-        "ref": "flake-darwin-support",
+        "owner": "rszyma",
         "repo": "kanata-tray",
         "type": "github"
       }

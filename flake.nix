@@ -187,12 +187,14 @@
     };
 
     kanata-tray = {
-      url = "github:DivitMittal/kanata-tray/flake-darwin-support";
+      url = "github:rszyma/kanata-tray";
+      #url = "github:DivitMittal/kanata-tray/flake-darwin-support";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     Nvim-Cfg = {
-      url = "path:/Users/div/Projects/Nvim-Cfg";
+      url = "github:DivitMittal/Nvim-Cfg";
+      # url = "path:/Users/div/Projects/Nvim-Cfg";
       flake = false;
     };
 
