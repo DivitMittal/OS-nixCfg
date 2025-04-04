@@ -36,11 +36,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1743658462,
-        "narHash": "sha256-+fe9I4OLNRBgmasxnsKtd6naafQgV4G6TXLuXkWJ/iA=",
+        "lastModified": 1743786854,
+        "narHash": "sha256-ESi88LATleaRmEErDBHmGMWlcfRQcvWjZ9JuhnJD6QA=",
         "ref": "master",
-        "rev": "14de4261c9392a0f8b06ae347c2c8e87fbd33d2c",
-        "revCount": 10,
+        "rev": "99fe5a9e3a359353475b92a28a5c1c85ee8ccc70",
+        "revCount": 11,
         "type": "git",
         "url": "ssh://git@github.com/DivitMittal/OS-nixCfg-secrets.git"
       },

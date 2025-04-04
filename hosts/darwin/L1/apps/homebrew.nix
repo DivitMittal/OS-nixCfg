@@ -62,14 +62,8 @@
       #"spotify"
 
       ## Creative
-      {
-        name = "wacom-tablet";
-        greedy = false;
-      }
-      {
-        name = "musescore";
-        greedy = true;
-      }
+      { name = "wacom-tablet"; greedy = false; }
+      { name = "musescore"; greedy = true; }
       #"reaper"
       #"blender"
 

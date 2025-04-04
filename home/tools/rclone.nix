@@ -75,11 +75,6 @@
       --no-unicode-normalization=false'';
   remotesPath = "${config.home.homeDirectory}/Remotes";
 in {
-  xdg.configFile."rclone/rclone.conf" = {
-    enable = false;
-    source = config.lib.file.mkOutOfStoreSymlink (self + /secrets/rclone.conf);
-  };
-
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
