@@ -8,11 +8,14 @@
     inherit
       (pkgs)
       ## Discord
-      discord #discordo
+      #discord #discordo
 
       ## Matrix
       #element-desktop
       #gomuks
+
+      ## Telegram
+      #telegram-desktop
       ;
 
     whatsapp =
