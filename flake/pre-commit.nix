@@ -21,7 +21,7 @@
         };
         check-case-conflicts.enable = true;
         check-executables-have-shebangs.enable = true;
-        check-shebang-scripts-are-executable.enable = false; # many of the scripts in the config aren't executable because they don't need to be.
+        check-shebang-scripts-are-executable.enable = true;
         check-merge-conflicts.enable = true;
         detect-private-keys.enable = true;
         mixed-line-endings.enable = false;
