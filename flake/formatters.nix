@@ -4,7 +4,7 @@
   ];
 
   perSystem.treefmt = {
-    flakeCheck = true;
+    flakeCheck = false; # handled via pre-commit
 
     programs = {
       deadnix.enable = true;
