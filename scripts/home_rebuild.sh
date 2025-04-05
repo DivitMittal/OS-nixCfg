@@ -41,3 +41,22 @@ if ! which home-manager &>/dev/null; then
 else
   home-manager $switch_args
 fi
+
+# shellcheck disable=SC2181
+if [ $? -eq 0 ]; then
+  green "====== POST-REBUILD ======"
+  green "Rebuilt successfully"
+
+  # Check if there are any pending changes that would affect the build succeeding.
+  if git diff --exit-code >/dev/null && git diff --staged --exit-code >/dev/null; then
+    # Check if the current commit has a buildable tag
+    if git tag --points-at HEAD | grep -q buildable; then
+      yellow "Current commit is already tagged as buildable"
+    else
+      git tag home-buildable-"$(date +%Y%m%d%H%M%S)" -m ''
+      green "Tagged current commit as buildable"
+    fi
+  else
+    yellow "WARN: There are pending changes that would affect the build succeeding. Commit them before tagging"
+  fi
+fi

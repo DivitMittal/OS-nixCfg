@@ -72,7 +72,7 @@ if [ $? -eq 0 ]; then
     if git tag --points-at HEAD | grep -q buildable; then
       yellow "Current commit is already tagged as buildable"
     else
-      git tag buildable-"$(date +%Y%m%d%H%M%S)" -m ''
+      git tag host-buildable-"$(date +%Y%m%d%H%M%S)" -m ''
       green "Tagged current commit as buildable"
     fi
   else
