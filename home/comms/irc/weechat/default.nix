@@ -19,11 +19,15 @@
   );
 in {
   home.packages = builtins.attrValues {
-    inherit (pkgs)
-      weechat;
+    inherit
+      (pkgs)
+      weechat
+      ;
   };
 
-  xdg.configFile = dynamicWeechatFiles // {
-    "weechat/sec.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.age.secrets.weechatSec.path}";
-  };
+  xdg.configFile =
+    dynamicWeechatFiles
+    // {
+      "weechat/sec.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.age.secrets.weechatSec.path}";
+    };
 }

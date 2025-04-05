@@ -1,11 +1,4 @@
-{
-  lib,
-  pkgs,
-  hostPlatform,
-  ...
-}: let
-  inherit (lib) mkIf;
-in {
+{pkgs, ...}: {
   programs.fish = {
     enable = true;
     package = pkgs.fish;

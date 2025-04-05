@@ -16,7 +16,7 @@ in {
       enable = mkEnableOption "spotify-daemon";
       package = mkPackageOption pkgs "spotifyd" {nullable = true;};
       settings = mkOption {
-        type = tomlFormat.type;
+        inherit (tomlFormat) type;
         default = {};
         description = "Configuration for spotifyd";
         example = lib.literalExpression ''
@@ -32,7 +32,7 @@ in {
     };
   };
 
-  config = mkIf (cfg.enable) {
+  config = mkIf cfg.enable {
     launchd.user.agents.spotify-daemon = {
       script = "${cfg.package} --no-daemon --config-path ${configFile}";
       serviceConfig = {

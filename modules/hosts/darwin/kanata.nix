@@ -54,7 +54,7 @@ in {
     };
   };
 
-  config = mkIf (cfg.enable) {
+  config = mkIf cfg.enable {
     launchd.daemons.kanata = {
       script = "sudo --preserve-env " + "${builtins.concatStringsSep " " command}";
       serviceConfig = {

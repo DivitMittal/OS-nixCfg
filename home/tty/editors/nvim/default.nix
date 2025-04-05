@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    inputs.nvchad4nix.homeManagerModules.nvchad
+  ];
   # programs.neovim = {
   #   enable = true;
   #   package = pkgs.neovim-unwrapped;
@@ -26,7 +33,7 @@
       ## LSPs
       bash = pkgs.nodePackages.bash-language-server;
       ## Formatters
-      prettier = pkgs.nodePackages.prettier;
+      inherit (pkgs.nodePackages) prettier;
       ## Both LSPs and Formatters
       python = pkgs.python3.withPackages (ps:
         with ps; [

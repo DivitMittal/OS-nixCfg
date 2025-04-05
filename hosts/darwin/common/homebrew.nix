@@ -1,8 +1,13 @@
 {
   config,
   hostPlatform,
+  inputs,
   ...
 }: {
+  imports = [
+    inputs.nix-homebrew.darwinModules.nix-homebrew
+  ];
+
   environment.variables.HOMEBREW_NO_ENV_HINTS = "1";
 
   homebrew = {

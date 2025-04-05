@@ -1,11 +1,12 @@
-{pkgs, ...}: let
-  # oh-my-tmux = pkgs.fetchFromGitHub {
-  #   owner = "gpakosz";
-  #   repo = ".tmux";
-  #   rev = "master";
-  #   sha256 = "sha256-2mdbOKCiwkr3FgjjyThezL+VVf5nm3+04idMETBLeao=";
-  # };
-in
+_:
+# let
+#   oh-my-tmux = pkgs.fetchFromGitHub {
+#     owner = "gpakosz";
+#     repo = ".tmux";
+#     rev = "master";
+#     sha256 = "sha256-2mdbOKCiwkr3FgjjyThezL+VVf5nm3+04idMETBLeao=";
+#   };
+# in
 {
   # programs.tmux = {
   #   enable = true;

@@ -16,7 +16,7 @@ in {
       package = mkPackageOption pkgs "aichat" {nullable = true;};
 
       settings = mkOption {
-        type = yamlFormat.type;
+        inherit (yamlFormat) type;
         default = {};
 
         example = lib.literalExpression ''

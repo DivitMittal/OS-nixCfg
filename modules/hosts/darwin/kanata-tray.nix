@@ -27,7 +27,7 @@ in {
     };
   };
 
-  config = mkIf (cfg.enable) {
+  config = mkIf cfg.enable {
     launchd.user.agents.kanata-tray = {
       inherit (cfg) environment;
       command = "sudo --preserve-env " + "${cfg.package}/bin/kanata-tray";

@@ -1,9 +1,4 @@
-{
-  pkgs,
-  config,
-  hostPlatform,
-  ...
-}: {
+_: {
   # home.packages = [
   #   pkgs.bitwarden-cli
   # ];

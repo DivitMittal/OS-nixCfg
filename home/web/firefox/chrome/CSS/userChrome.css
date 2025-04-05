@@ -23,8 +23,8 @@
 #main-window:not([extradragspace="true"])
   #sidebar-wrapper:has(
     #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]:not(
-        [hidden]
-      )
+      [hidden]
+    )
   )
   ~ #tabbrowser-tabbox
   .browserContainer {
@@ -35,8 +35,8 @@
 #main-window:not([extradragspace="true"])[inFullscreen][inDOMFullscreen]
   #sidebar-wrapper:has(
     #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]:not(
-        [hidden]
-      )
+      [hidden]
+    )
   )
   ~ #tabbrowser-tabbox
   .browserContainer {
@@ -49,8 +49,7 @@
 /*    order: -1 !important; */
 /* } */
 
-@-moz-document url(chrome://browser/content/browser.xhtml)
-{
+@-moz-document url(chrome://browser/content/browser.xhtml) {
   /* Disable auto-hiding when in 'customize' mode */
   :root[customizing] #navigator-toolbox {
     position: relative !important;
@@ -122,7 +121,8 @@
   #urlbar[breakout][breakout-extend] {
     display: flex !important;
     flex-direction: column-reverse !important;
-    bottom: 0px !important; /* Change to 3-5 px if using compact_urlbar_megabar.css depending on toolbar density */
+    bottom: 0px
+      !important; /* Change to 3-5 px if using compact_urlbar_megabar.css depending on toolbar density */
     top: auto !important;
   }
 
@@ -132,9 +132,8 @@
 
   @media (-moz-platform: linux) {
     #notification-popup[side="top"] {
-      margin-top: calc(
-        -2 * var(--panel-padding-block) - 40px - 32px - 8.5em
-      ) !important;
+      margin-top: calc(-2 * var(--panel-padding-block) - 40px - 32px - 8.5em)
+        !important;
     }
     #permission-popup[side="top"] {
       margin-top: calc(-2 * var(--panel-padding-block) - 2.5em);

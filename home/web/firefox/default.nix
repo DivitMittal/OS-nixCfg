@@ -64,17 +64,17 @@ in {
   home.file.firefoxUserChromeJS = {
     enable = true;
     source = ./chrome/JS;
-    target = "${config.programs.firefox.configPath}" + lib.optionalString (hostPlatform.isDarwin) "/Profiles" + "/custom-default/chrome/JS";
+    target = "${config.programs.firefox.configPath}" + lib.optionalString hostPlatform.isDarwin "/Profiles" + "/custom-default/chrome/JS";
     recursive = true;
   };
 
   ## github:MrOtherGuy/fx-autoconfig
-  home.file."Applications/Homebrew Casks/Firefox.app/Contents/Resources/defaults" = lib.mkIf (hostPlatform.isDarwin) {
+  home.file."Applications/Homebrew Casks/Firefox.app/Contents/Resources/defaults" = lib.mkIf hostPlatform.isDarwin {
     source = fx-autoconfig + /program/defaults;
     recursive = true;
   };
 
-  home.file."Applications/Homebrew Casks/Firefox.app/Contents/Resources/config.js" = lib.mkIf (hostPlatform.isDarwin) {
+  home.file."Applications/Homebrew Casks/Firefox.app/Contents/Resources/config.js" = lib.mkIf hostPlatform.isDarwin {
     source = fx-autoconfig + /program/config.js;
   };
 }

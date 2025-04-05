@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = builtins.attrValues {
-    nodejs = pkgs.nodejs;
-    pnpm = pkgs.nodePackages_latest.pnpm;
+    inherit (pkgs) nodejs;
+    inherit (pkgs.nodePackages_latest) pnpm;
   };
 
   programs.bun = {
