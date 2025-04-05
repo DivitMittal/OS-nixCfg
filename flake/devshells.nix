@@ -1,6 +1,10 @@
-_: {
-  perSystem = {...}: {
-    devshells.default = {
+{inputs, ...}: {
+  imports = [
+    inputs.devshell.flakeModule
+  ];
+
+  perSystem.devshells = {
+    default = {
       commands = [
         {
           name = "hms";

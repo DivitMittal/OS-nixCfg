@@ -1,4 +1,8 @@
-_: {
+{inputs, ...}: {
+  imports = [
+    inputs.pre-commit-hooks.flakeModule
+  ];
+
   perSystem.pre-commit = {
     check.enable = true;
 
@@ -7,6 +11,7 @@ _: {
       excludes = ["flake.lock"];
       default_stages = ["pre-commit"];
       hooks = {
+        treefmt.enable = true;
         check-added-large-files = {
           enable = true;
           excludes = [
@@ -25,14 +30,13 @@ _: {
         trim-trailing-whitespace.enable = true;
 
         # ========== nix ==========
-        nixfmt-rfc-style.enable = true;
+        alejandra.enable = true;
         deadnix = {
           enable = true;
           settings = {
             noLambdaArg = true;
           };
         };
-        nil.enable = true;
         statix.enable = true;
 
         # ========== shellscripts ==========

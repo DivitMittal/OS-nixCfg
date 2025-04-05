@@ -1,10 +1,13 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
+  imports = lib.custom.scanPaths ./.;
+
   home = {
-    username = config.hostSpec.username;
+    inherit (config.hostSpec) username;
     homeDirectory = config.hostSpec.home;
   };
 

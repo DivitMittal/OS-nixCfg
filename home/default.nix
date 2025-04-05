@@ -1,4 +1,12 @@
-{mkHost, ...}: {
+{
+  mkHost,
+  inputs,
+  ...
+}: {
+  imports = [
+    inputs.home-manager.flakeModules.home-manager
+  ];
+
   flake.homeConfigurations = {
     L1 = mkHost {
       hostName = "L1";
@@ -11,6 +19,7 @@
         ./keyboard
         ./media
         ./tools
+        ./tty
         ./web
       ];
     };
