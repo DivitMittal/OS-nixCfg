@@ -217,5 +217,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nvchad-starter.follows = "Nvim-Cfg";
     };
+
+    betterfox = {
+      url = "github:HeitorAugustoLN/betterfox-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }

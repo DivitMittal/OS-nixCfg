@@ -6,3 +6,6 @@
 
 # direnv
 **/.direnv/
+
+# Disabled parts of configuration
+**/disabled/

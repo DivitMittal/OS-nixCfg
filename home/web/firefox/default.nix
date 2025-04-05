@@ -3,6 +3,7 @@
   pkgs,
   hostPlatform,
   lib,
+  inputs,
   ...
 }: let
   inherit (import ./policies.nix) policies;
@@ -14,9 +15,14 @@
     hash = "sha256-NUGFGlf7HdZUVNmK3Hk5xbRGIKzg3QJVXO5kM44Xqy0=";
   };
 in {
+  imports = [
+    inputs.betterfox.homeManagerModules.betterfox
+  ];
+
   ## Firefox
   programs.firefox = {
     enable = true;
+    betterfox.enable = true;
     ## bad built binary on darwin systems
     # package = (pkgs.firefox.override {
     #   extraPrefsFiles = [

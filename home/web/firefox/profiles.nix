@@ -145,7 +145,11 @@
         };
       };
 
-      settings = import ./user_settings.nix;
+      # settings = import ./user_settings.nix;
+      betterfox = {
+        enable = true;
+        enableAllSections = true;
+      };
       userContent = builtins.readFile ./chrome/CSS/userContent.css;
       userChrome = builtins.readFile ./chrome/CSS/userChrome.css;
     };

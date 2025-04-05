@@ -79,6 +79,26 @@
         "type": "github"
       }
     },
+    "betterfox": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1740603755,
+        "narHash": "sha256-w3HfH5D8lfcpHtt7LLJmoeYJy4I3ERMHlPFSKsyFjF4=",
+        "owner": "HeitorAugustoLN",
+        "repo": "betterfox-nix",
+        "rev": "726415968213b2ea3c3ea9f19aa61789b96fa99c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "HeitorAugustoLN",
+        "repo": "betterfox-nix",
+        "type": "github"
+      }
+    },
     "brew-src": {
       "flake": false,
       "locked": {
@@ -658,6 +678,7 @@
         "Nvim-Cfg": "Nvim-Cfg",
         "OS-nixCfg-secrets": "OS-nixCfg-secrets",
         "agenix": "agenix",
+        "betterfox": "betterfox",
         "devshell": "devshell",
         "flake-parts": "flake-parts_2",
         "home-manager": "home-manager",
