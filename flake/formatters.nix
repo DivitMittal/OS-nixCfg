@@ -7,10 +7,11 @@
     flakeCheck = false; # handled via pre-commit
 
     programs = {
-      deadnix.enable = true;
-      deno.enable = true;
       alejandra.enable = true;
+      deadnix.enable = true;
       statix.enable = true;
+
+      deno.enable = true;
       # typos.enable = true;
     };
 

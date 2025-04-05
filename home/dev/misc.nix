@@ -20,7 +20,7 @@
       cargo
       ## IDE
       vscode
-      rstudio
+      #rstudio
       ;
 
     #luarocks = pkgs.luajitPackages.luarocks;

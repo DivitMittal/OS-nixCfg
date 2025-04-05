@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  inputs,
+  ...
+}: let
   TLTR = pkgs.fetchFromGitHub {
     owner = "DivitMittal";
     repo = "TLTR";
@@ -9,6 +13,7 @@ in {
   home.packages = [pkgs.kanata-with-cmd];
 
   imports = [
+    inputs.kanata-tray.homeManagerModules.kanata-tray
     (import ./kanata-tray.nix {
       inherit pkgs;
       inherit TLTR;
