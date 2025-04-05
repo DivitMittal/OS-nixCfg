@@ -21,7 +21,7 @@
     # ========== Extend lib with lib.custom ==========
     # NOTE: This approach allows lib.custom to propagate into hm
     # see: https://github.com/nix-community/home-manager/pull/3454
-    lib = inputs.nixpkgs.lib.extend (_: _: {custom = import ./lib {inherit (inputs.nixpkgs) lib;};} // inputs.home-manager.lib); # extended
+    lib = inputs.nixpkgs.lib.extend (_: _: {custom = import (self + /lib) {inherit (inputs.nixpkgs) lib;};} // inputs.home-manager.lib); # extended
     #pkgs = import inputs.nixpkgs { inherit system; overlays = [ ]; }; # not-memoized
     pkgs = inputs.nixpkgs.legacyPackages.${system}; # memoized
     specialArgs =
