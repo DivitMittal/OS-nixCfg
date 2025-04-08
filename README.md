@@ -47,49 +47,47 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
 
 ```
 └── OS-nixCfg/
-    ├── flake.nix             # Entry point: Defines inputs, outputs, modules imports, mkHosts
-    ├── flake.lock            # Lockfile for reproducible dependencies
-    ├── README.md             # This file
-    ├── LICENSE               # MIT License
-    ├── nix.nix               # Common Nix settings (package, experimental features)
-    ├── devShell.nix          # Defines devShell with helper commands (hts, hms, etc.)
-    ├── checks.nix            # Defines pre-commit checks
-    ├── shell.nix             # Basic shell for bootstrapping
-    ├── assets/               # Images and other static assets
-    ├── lib/                  # Custom Nix helper functions (e.g., scanPaths)
-    ├── modules/              # Custom modules for flake-parts, home-manager, nix-darwin, nixos
-    │   ├── common/           # Modules shared across all systems/users
-    │   ├── home/             # Home Manager modules (e.g., aichat, spicetify)
-    │   └── hosts/            # System-specific modules (e.g., kanata services for darwin)
-    ├── home/                 # Home Manager configurations, organized by category
-    │   ├── default.nix       # Defines homeConfigurations for different users/hosts
-    │   ├── common/           # Base settings for all home-manager users
-    │   ├── age.nix           # Agenix secrets configuration for home-manager
-    │   ├── comms/            # Communication tools (email, irc, discord, etc.)
-    │   ├── desktop-env/      # Desktop environment settings (terminal, macOS specifics)
-    │   ├── dev/              # Development tools and languages
-    │   ├── keyboard/         # Keyboard remapping (Kanata, Karabiner - disabled)
-    │   ├── media/            # Media applications (mpv, spotify)
-    │   ├── tools/            # General utilities (AI, network, privacy, virt)
-    │   ├── tty/              # Terminal-specific tools (editors, shells, vcs, etc.)
-    │   └── web/              # Web browser configurations (Firefox, Chromium - disabled)
-    ├── hosts/                # System configurations (NixOS, nix-darwin, nix-on-droid)
-    │   ├── default.nix       # Defines system configurations (darwinConfigurations, nixosConfigurations)
-    │   ├── common/           # Base settings shared across nixos & nix-darwin
-    │   ├── darwin/           # macOS specific configurations via nix-darwin
-    │   │   ├── common/       # Settings common to all macOS hosts
-    │   │   ├── L1/           # Host-specific configuration for 'L1' (apps, services, defaults)
-    │   │   └── etc/          # macOS specific static config files (e.g., rEFInd)
-    │   ├── droid/            # Android specific configurations via nix-on-droid
-    │   │   ├── common/       # Settings common to all Android hosts
-    │   │   └── M1/           # Host-specific configuration for 'M1'
-    │   └── nixOS/            # NixOS specific configurations
-    │       ├── common/       # Settings common to all NixOS hosts
-    │       ├── L2/           # Host-specific configuration for 'L2'
-    │       └── WSL/          # Host-specific configuration for 'WSL'
-    └── scripts/              # Helper scripts for applying configurations
-        ├── home_rebuild.sh   # Applies home-manager configuration
-        └── hosts_rebuild.sh  # Applies system configuration (darwin, nixos, droid)
+    ├── assets/
+    │   └── qezta.png
+    ├── flake/
+    │   ├── default.nix
+    │   ├── devshells.nix
+    │   ├── formatters.nix
+    │   ├── mkHost.nix
+    │   └── pre-commit.nix
+    ├── flake.lock
+    ├── flake.nix
+    ├── home/
+    │   ├── common
+    │   ├── comms
+    │   ├── default.nix
+    │   ├── desktop-env
+    │   ├── dev
+    │   ├── keyboard
+    │   ├── media
+    │   ├── tools
+    │   ├── tty
+    │   └── web
+    ├── hosts/
+    │   ├── common
+    │   ├── darwin
+    │   ├── default.nix
+    │   ├── droid
+    │   └── nixos
+    ├── lib/
+    │   └── default.nix
+    ├── LICENSE
+    ├── modules/
+    │   ├── common
+    │   ├── home
+    │   └── hosts
+    ├── nix.nix
+    ├── README.md
+    ├── scripts/
+    │   ├── home_rebuild.sh
+    │   └── hosts_rebuild.sh
+    ├── SECURITY.md
+    └── shell.nix
 ```
 
 ## ❄️Flake Inputs
