@@ -1,9 +1,10 @@
-{ pkgs, lib, ... }:
-
-let
-  inherit(lib) mkAfter concatStrings;
-in
 {
+  pkgs,
+  lib,
+  ...
+}: let
+  inherit (lib) mkAfter concatStrings;
+in {
   programs.bash.initExtra = mkAfter ''
     ## Prompt
     if [ "`id -u`" -eq 0 ]; then # ckeck for root user
@@ -19,13 +20,32 @@ in
     enable = true;
     package = pkgs.starship;
 
-    enableFishIntegration = true; enableZshIntegration  = false; enableBashIntegration = false; enableNushellIntegration = false; enableInteractive = true;
+    enableFishIntegration = true;
+    enableZshIntegration = false;
+    enableBashIntegration = false;
+    enableNushellIntegration = false;
+    enableInteractive = true;
 
     settings = {
       format = concatStrings [
-        "[╭─env─-➜❯](bold blue) " "$sudo" "$username" "$hostname" "$shell" "\${custom.yazi}" "$status" "$custom" "$cmd_duration" "$docker_context" "$directory" "$git_branch" "$git_commit" "$git_status" "\n"
+        "[╭─env─-➜❯](bold blue) "
+        "$sudo"
+        "$username"
+        "$hostname"
+        "$shell"
+        "\${custom.yazi}"
+        "$status"
+        "$custom"
+        "$cmd_duration"
+        "$docker_context"
+        "$directory"
+        "$git_branch"
+        "$git_commit"
+        "$git_status"
+        "\n"
         # "[┣─pwd─-➜❯](bold red) "  "$directory" "$git_branch" "$git_commit" "$git_status" "\n"
-        "[╰─cmd─➜❯](bold green) " "$character"
+        "[╰─cmd─➜❯](bold green) "
+        "$character"
       ];
       right_format = concatStrings [
         "$direnv"
@@ -44,163 +64,163 @@ in
         "$package"
       ];
 
-      add_newline     = true;
+      add_newline = true;
       command_timeout = 425;
-      scan_timeout    = 50; # scaning files in the current directory
+      scan_timeout = 50; # scaning files in the current directory
       follow_symlinks = true;
 
       character = {
-        disabled       = false;
-        format         = "$symbol ";
-        error_symbol   = "[✗](bold red)";
+        disabled = false;
+        format = "$symbol ";
+        error_symbol = "[✗](bold red)";
         success_symbol = "[➜](bold green)";
-        vicmd_symbol   = "[V](bold blue)";
+        vicmd_symbol = "[V](bold blue)";
       };
       username = {
-        disabled    = false;
+        disabled = false;
         show_always = true;
-        format      = "[$user]($style)";
-        style_root  = "red bold";
-        style_user  = "italic bright-purple";
+        format = "[$user]($style)";
+        style_root = "red bold";
+        style_user = "italic bright-purple";
       };
       hostname = {
         disabled = false;
-        format   = "[@](bold blue)[$hostname]($style) ";
-        style    = "bold red";
+        format = "[@](bold blue)[$hostname]($style) ";
+        style = "bold red";
         ssh_only = false;
-        trim_at  = ".";
+        trim_at = ".";
       };
       direnv = {
         disabled = false;
-        symbol   = "with 📂env: ";
-        format   = "[$symbol$loaded/$allowed]($style) ";
-        style    = "orange";
+        symbol = "with 📂env: ";
+        format = "[$symbol$loaded/$allowed]($style) ";
+        style = "orange";
       };
       directory = {
-        disabled          = false;
-        home_symbol       = "🏡";
-        format            = "at [$path]($style)[$read_only]($read_only_style) ";
-        style             = "cyan";
-        truncate_to_repo  = false;
+        disabled = false;
+        home_symbol = "🏡";
+        format = "at [$path]($style)[$read_only]($read_only_style) ";
+        style = "cyan";
+        truncate_to_repo = false;
         truncation_length = 10;
         truncation_symbol = "…/";
       };
       cmd_duration = {
-        disabled          = false;
-        format            = "took [$duration]($style) ";
-        style             = "bold yellow";
+        disabled = false;
+        format = "took [$duration]($style) ";
+        style = "bold yellow";
         show_milliseconds = true;
       };
       package = {
         disabled = false;
-        format   = "[🎁 $version]($sytle) ";
-        style    = "208 bold";
+        format = "[🎁 $version]($sytle) ";
+        style = "208 bold";
       };
       shell = {
-        disabled             = false;
-        format               = "via $indicator ";
-        bash_indicator       = "🐑";
-        fish_indicator       = "🐠";
+        disabled = false;
+        format = "via $indicator ";
+        bash_indicator = "🐑";
+        fish_indicator = "🐠";
         powershell_indicator = "_";
-        unknown_indicator    = "❓";
-        zsh_indicator        = "🦓";
+        unknown_indicator = "❓";
+        zsh_indicator = "🦓";
       };
       status = {
         disabled = true;
-        format   = "[\\[$symbol$status\\]]($style) ";
-        symbol   = "💥 ";
-        style    = "red";
+        format = "[\\[$symbol$status\\]]($style) ";
+        symbol = "💥 ";
+        style = "red";
       };
       sudo = {
         disabled = false;
-        format   = " [$symbol]($style)";
-        symbol   = "🧙";
-        style    = "bold green";
+        format = " [$symbol]($style)";
+        symbol = "🧙";
+        style = "bold green";
       };
       git_branch = {
-        disabled           = false;
+        disabled = false;
         always_show_remote = true;
-        format             = "on 🌱:[$branch]($style) 🎋:[$remote_name/$remote_branch]($style) ";
-        style              = "bold yellow";
+        format = "on 🌱:[$branch]($style) 🎋:[$remote_name/$remote_branch]($style) ";
+        style = "bold yellow";
       };
       git_commit = {
-        disabled      = true;
+        disabled = true;
         only_detached = false;
-        style         = "red";
-        tag_disabled  = false;
+        style = "red";
+        tag_disabled = false;
       };
       git_status = {
         disabled = false;
-        ahead      = "🏃\\([$count]($style)\\)";
-        behind     = "🐌\\([$count]($style)\\)";
+        ahead = "🏃\\([$count]($style)\\)";
+        behind = "🐌\\([$count]($style)\\)";
         conflicted = "🤔";
-        deleted    = "🚮";
-        diverged   = "😵\\(\\(🏃[$ahead_count]($style)\\);🐌\\([$behind_count]($style)\\)\\)";
-        modified   = "📝";
-        renamed    = "🐣";
-        staged     = "🎤\\([$count]($style)\\)";
-        stashed    = "📦";
-        untracked  = "🙈";
-        style      = "bold blue";
+        deleted = "🚮";
+        diverged = "😵\\(\\(🏃[$ahead_count]($style)\\);🐌\\([$behind_count]($style)\\)\\)";
+        modified = "📝";
+        renamed = "🐣";
+        staged = "🎤\\([$count]($style)\\)";
+        stashed = "📦";
+        untracked = "🙈";
+        style = "bold blue";
       };
 
       ## External
-      swift  = { disabled = false; };
-      rust   = { disabled = false; };
-      php    = { disabled = false; };
-      python = { disabled = false; };
-      nodejs = { disabled = false; };
-      java   = { disabled = false; };
-      kotlin = { disabled = false; };
-      lua    = { disabled = false; };
-      golang = { disabled = false; };
-      dart   = { disabled = false; };
+      swift = {disabled = false;};
+      rust = {disabled = false;};
+      php = {disabled = false;};
+      python = {disabled = false;};
+      nodejs = {disabled = false;};
+      java = {disabled = false;};
+      kotlin = {disabled = false;};
+      lua = {disabled = false;};
+      golang = {disabled = false;};
+      dart = {disabled = false;};
       nix_shell = {
-        disabled    = false;
-        format      = "via [❄️ $state( \\($name\\))](bold blue) ";
-        impure_msg  = "[impure shell](bold red)";
-        pure_msg    = "[pure shell](bold green)";
+        disabled = false;
+        format = "via [❄️ $state( \\($name\\))](bold blue) ";
+        impure_msg = "[impure shell](bold red)";
+        pure_msg = "[pure shell](bold green)";
         unknown_msg = "[unknown shell](bold yellow)";
       };
 
       custom.yazi = {
-        disabled    = false;
-        when        = ''test -n "$YAZI_LEVEL"'';
+        disabled = false;
+        when = ''test -n "$YAZI_LEVEL"'';
         description = "Indicate the shell was launched by `yazi`";
-        symbol      = "on 🦆 ";
+        symbol = "on 🦆 ";
       };
 
       ## Disabled
       battery = {
-        disabled           = true;
-        format             = "🔋:$symbol ";
-        charging_symbol    = "⚡️";
+        disabled = true;
+        format = "🔋:$symbol ";
+        charging_symbol = "⚡️";
         discharging_symbol = "💦";
-        display            = [{ threshold = 100; }];
-        full_symbol        = "💪";
-        unknown_symbol     = "💡";
+        display = [{threshold = 100;}];
+        full_symbol = "💪";
+        unknown_symbol = "💡";
       };
 
       time = {
         disabled = true;
-        format   = "@ ⏰:[\\[$time\\]](bold yellow) ";
+        format = "@ ⏰:[\\[$time\\]](bold yellow) ";
         use_12hr = true;
       };
 
-      docker_context = { disabled = true; };
+      docker_context = {disabled = true;};
 
       custom.docker = {
-        disabled    = true;
+        disabled = true;
         description = "Shows a  docker symbol if the current directory has Dockerfile or docker-compose.yml files";
-        files       = [ "Dockerfile" "docker-compose.yml" "docker-compose.yaml" ];
-        format      = "with $symbol ";
-        symbol      = "🐳";
+        files = ["Dockerfile" "docker-compose.yml" "docker-compose.yaml"];
+        format = "with $symbol ";
+        symbol = "🐳";
       };
 
       conda = {
-        disabled    = true;
-        format      = "in [$symbol$environment]($style) ";
-        style       = "dimmed green";
+        disabled = true;
+        format = "in [$symbol$environment]($style) ";
+        style = "dimmed green";
         ignore_base = true;
       };
     };

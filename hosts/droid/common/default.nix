@@ -23,19 +23,45 @@
       foreground = "#FFFFFF";
       cursor = "#FF0000";
     };
-    font =  "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/CaskaydiaCoveNerdFontMono-Regular.ttf";
+    font = "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/CaskaydiaCoveNerdFontMono-Regular.ttf";
   };
 
   environment.packages = builtins.attrValues {
-    inherit(pkgs)
-      bc gnugrep inetutils gnused gawk which gzip gnutar wget gnupatch gnupg binutils gnumake groff indent diffutils findutils # GNU
+    inherit
+      (pkgs)
+      ## GNU
+      bc
+      gnugrep
+      inetutils
+      gnused
+      gawk
+      which
+      gzip
+      gnutar
+      wget
+      gnupatch
+      gnupg
+      binutils
+      gnumake
+      groff
+      indent
+      diffutils
+      findutils
       uutils-coreutils-noprefix #uutils-diffutils uutils-findutils # uutils
-      zip unzip curl vim git
-      utillinux tzdata hostname openssh
-    ;
+      ## Others
+      zip
+      unzip
+      curl
+      vim
+      git
+      utillinux
+      tzdata
+      hostname
+      openssh
+      ;
   };
 
-  environment.extraOutputsToInstall = [ "info" ]; # "doc" "devdoc"
+  environment.extraOutputsToInstall = ["info"]; # "doc" "devdoc"
 
   environment.etcBackupExtension = ".bak";
   system.stateVersion = "24.05";

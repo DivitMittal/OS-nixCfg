@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.mods = {
     enable = true;
     package = pkgs.mods;
