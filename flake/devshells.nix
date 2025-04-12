@@ -9,8 +9,11 @@
         packages = builtins.attrValues {
           inherit
             (pkgs)
+            ## Nix
             nixd
             alejandra
+            ## Kdl
+            kdlfmt
             ;
         };
         commands = [

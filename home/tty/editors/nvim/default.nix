@@ -25,7 +25,6 @@
         ## Formatters
         alejandra
         shfmt
-        kdlfmt
         stylua
         ## Both LSPs and Formatters
         clang-tools

@@ -1,8 +1,8 @@
 _: {
   imports = [
-    ./devshells.nix
+    ./checks.nix
+    ./devShells.nix
     ./formatters.nix
     ./mkHost.nix
-    ./pre-commit.nix
   ];
 }
