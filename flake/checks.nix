@@ -12,6 +12,7 @@
       default_stages = ["pre-commit"];
       hooks = {
         treefmt.enable = false;
+
         check-added-large-files = {
           enable = true;
           excludes = [
