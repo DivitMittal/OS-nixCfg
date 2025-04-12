@@ -12,9 +12,7 @@
       alejandra.enable = true;
       deadnix.enable = true;
       statix.enable = true;
-      ## js
-      deno.enable = true;
-      ## Markdown
+      ## js & markdown
       prettier.enable = true;
     };
 
