@@ -24,8 +24,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     mynixpkgs.url = "github:DivitMittal/nixpkgs/whatsapp-darwin-bump";
-    # nixpkgs-stable.url = "github:nixOS/nixpkgs/nixos-24.11";
-    # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
+    #nixpkgs-stable.url = "github:nixOS/nixpkgs/nixos-24.11";
+    #nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
 
     systems = {
       url = "github:nix-systems/default";
@@ -101,7 +101,7 @@
 
     OS-nixCfg-secrets = {
       url = "git+ssh://git@github.com/DivitMittal/OS-nixCfg-secrets.git?ref=master";
-      # url = "path:/Users/div/Projects/OS-nixCfg-secrets";
+      #url = "path:/Users/div/Projects/OS-nixCfg-secrets";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";
@@ -119,7 +119,7 @@
 
     Nvim-Cfg = {
       url = "github:DivitMittal/Nvim-Cfg";
-      # url = "path:/Users/div/Projects/Nvim-Cfg";
+      #url = "path:/Users/div/Projects/Nvim-Cfg";
       flake = false;
     };
 

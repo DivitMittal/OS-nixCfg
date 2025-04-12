@@ -15,30 +15,28 @@
   programs.nvchad = {
     enable = true;
     extraPackages = builtins.attrValues {
+      ## General
+      inherit (pkgs.nodePackages) prettier;
+      inherit(pkgs) vscode-langservers-extracted;
       inherit
         (pkgs)
-        ## LSPs
-        vscode-langservers-extracted
-        emmet-language-server
-        typescript-language-server
-        nixd
-        ## Formatters
-        alejandra
-        shfmt
+        ## Lua
         stylua
-        ## Both LSPs and Formatters
+        ## Nix
+        nixd
+        alejandra
+        ## C/C++
         clang-tools
         ;
-      ## LSPs
-      bash = pkgs.nodePackages.bash-language-server;
-      ## Formatters
-      inherit (pkgs.nodePackages) prettier;
-      ## Both LSPs and Formatters
+      ## Shell
+      inherit(pkgs.nodePackages) bash-language-server;
+      inherit(pkgs) shfmt;
+      ## Python
       python = pkgs.python3.withPackages (ps:
         with ps; [
           python-lsp-server
           flake8
-          black # Formatter
+          black
         ]);
     };
     backup = false;
