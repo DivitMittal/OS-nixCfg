@@ -66,7 +66,6 @@
     fish = {
       enable = mkDefault true;
       useBabelfish = true;
-      babelfishPackage = pkgs.babelfish;
 
       vendor = {
         config.enable = true;
