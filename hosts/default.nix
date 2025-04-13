@@ -9,22 +9,23 @@
       system = "x86_64-darwin";
       class = "darwin";
     };
+  };
 
-    L2 = mkHost {
-      hostName = "L2";
-      system = "x86_64-linux";
-      class = "nixos";
-      additionalModules = [
-        /etc/nixos/hardware-configuration.nix # impure
-      ];
-    };
-
+  flake.nixosConfigurations = {
     WSL = mkHost {
       hostName = "WSL";
       system = "x86_64-linux";
-      class = "nixos";
+      class = "nixOS";
       additionalModules = [
         inputs.nixos-wsl.nixosModules.default
+      ];
+    };
+    L2 = mkHost {
+      hostName = "L2";
+      system = "x86_64-linux";
+      class = "nixOS";
+      additionalModules = [
+        /etc/nixos/hardware-configuration.nix # impure
       ];
     };
   };
