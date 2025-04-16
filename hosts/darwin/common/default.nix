@@ -37,6 +37,11 @@
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
   '';
 
+  system.checks = {
+    verifyBuildUsers = true;
+    verifyNixPath = false;
+  };
+
   system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null; # Set Git commit hash for darwin-version.
   system.stateVersion = 4;
 }

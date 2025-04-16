@@ -6,11 +6,6 @@
 }: {
   imports = lib.custom.scanPaths ./.;
 
-  system.checks = {
-    verifyBuildUsers = true;
-    verifyNixPath = false;
-  };
-
   networking.hostName = config.hostSpec.hostName;
 
   time.timeZone = "Asia/Calcutta";
