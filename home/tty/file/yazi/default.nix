@@ -32,7 +32,7 @@
         owner = "yazi-rs";
         repo = "flavors";
         rev = "main";
-        hash = "sha256-iTMch0T933Tvofvo3ZzFwk+PNs+dsK0SrAIlJ03v73E=";
+        hash = "sha256-nhIhCMBqr4VSzesplQRF6Ik55b3Ljae0dN+TYbzQb5s=";
       };
     in {
       dracula = builtins.toPath "${officialFlavors}/dracula.yazi";
@@ -57,7 +57,7 @@
         owner = "ndtoan96";
         repo = "ouch.yazi";
         rev = "main";
-        hash = "sha256-oUEUGgeVbljQICB43v9DeEM3XWMAKt3Ll11IcLCS/PA=";
+        hash = "sha256-OsNfR7rtnq+ceBTiFjbz+NFMSV/6cQ1THxEFzI4oPJk=";
       };
       richPreview = pkgs.fetchFromGitHub {
         owner = "AnirudhG07";
@@ -69,7 +69,7 @@
         owner = "Reledia";
         repo = "hexyl.yazi";
         rev = "main";
-        sha256 = "sha256-Xv1rfrwMNNDTgAuFLzpVrxytA2yX/CCexFt5QngaYDg=";
+        sha256 = "sha256-ly/cLKl2y3npoT2nX8ioGOFcRXI4UXbD9Es/5veUhOU=";
       };
     };
   };
