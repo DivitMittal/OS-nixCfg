@@ -7,11 +7,13 @@
     inputs.home-manager.flakeModules.home-manager
   ];
 
-  flake.homeConfigurations = {
+  flake.homeConfigurations = let
+    class = "home";
+  in {
     L1 = mkHost {
       hostName = "L1";
       system = "x86_64-darwin";
-      class = "home";
+      inherit class;
       additionalModules = [
         ./comms
         ./desktop-env
@@ -22,6 +24,13 @@
         ./tty
         ./web
       ];
+    };
+
+    WSL = mkHost {
+      hostName = "WSL";
+      system = "x86_64-linux";
+      inherit class;
+      additionalModules = [./tty];
     };
   };
 }
