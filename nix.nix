@@ -6,7 +6,6 @@
   inherit (lib) mkDefault;
 in {
   nix.package = mkDefault pkgs.nixVersions.latest;
-  #nixpkgs.hostPlatform = "${pkgs.system}";
 
   nix = {
     enable = true;
@@ -23,12 +22,5 @@ in {
       automatic = mkDefault false;
       options = mkDefault "--delete-old";
     };
-  };
-
-  nixpkgs.config = {
-    allowBroken = mkDefault false;
-    allowUnsupportedSystem = mkDefault false;
-    allowUnfree = mkDefault true;
-    allowInsecure = mkDefault true;
   };
 }
