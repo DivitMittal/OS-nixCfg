@@ -30,8 +30,6 @@
     inherit (lib) mkDefault;
   in {
     bash = {
-      enable = mkDefault true;
-
       completion = {
         enable = false;
         package = pkgs.bash-completion;
