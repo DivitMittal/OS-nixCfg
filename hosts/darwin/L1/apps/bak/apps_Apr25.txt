@@ -2,6 +2,7 @@ Ableton Live 12 Suite.app
 AlDente.app
 AmpliTube 5.app
 Aurora DSP
+BespokeSynth.app
 Bluesnooze.app
 Capo.app
 Dynamic Wallpaper.app
@@ -12,6 +13,7 @@ Guitar Pro 8.app
 Homerow.app
 IK Product Manager.app
 Logic Pro X.app
+Macs Fan Control.app
 MainStage.app
 MeldaProduction
 Menu Bar Dock.app
@@ -25,10 +27,7 @@ Nix Apps
 ONLYOFFICE.app
 Obsidian.app
 OneDrive.app
-PDF Expert.app
 Parallels Desktop.app
-R.app
-Rig.app
 Safari.app
 SoundSource.app
 Spaceman.app
@@ -42,10 +41,7 @@ gSwitch.app
 iStat Menus.app
 mpv.app
 AltTab.app
-Discord.app
-Halloy.app
 LocalSend.app
-RStudio.app
 Raycast.app
 Reaper.app
 Thunderbird.app

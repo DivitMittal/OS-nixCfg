@@ -4,7 +4,7 @@ _: {
     taps = [
       #"homebrew/services"
       "macos-fuse-t/homebrew-cask" #fuse-t
-      "r-lib/rig" #rig
+      #"r-lib/rig" #rig
       #"aaronraimist/tap" #gomuks
     ];
 
@@ -35,7 +35,7 @@ _: {
       #"jetbrains-toolbox"
 
       ## R
-      "rig" #"rstudio"
+      #"rig" #"rstudio"
 
       ## Microsoft
       "onlyoffice"
