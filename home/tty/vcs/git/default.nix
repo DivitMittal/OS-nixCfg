@@ -82,7 +82,8 @@
 
     extraConfig = {
       core = {
-        autocrlf = "input";
+        autocrlf = "false";
+        eol = "lf";
         ignorecase = false;
         editor = "${config.home.sessionVariables.VISUAL}";
         excludesfile = "${config.xdg.configHome}/git/ignore";
