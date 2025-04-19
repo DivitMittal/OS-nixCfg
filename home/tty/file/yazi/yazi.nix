@@ -167,6 +167,7 @@
         for = "windows";
         run = "$EDITOR \"%*\"";
         orphan = true;
+        block = true;
       }
     ];
     editVS = [
