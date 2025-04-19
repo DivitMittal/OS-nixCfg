@@ -12,7 +12,7 @@
   }: let
     configGenerator = {
       darwin = inputs.nix-darwin.lib.darwinSystem;
-      nixOS = inputs.nixpkgs.lib.nixosSystem;
+      nixos = inputs.nixpkgs.lib.nixosSystem;
       droid = inputs.nix-on-droid.lib.nixOnDroidConfiguration;
       home = inputs.home-manager.lib.homeManagerConfiguration;
     };
@@ -42,12 +42,12 @@
           };
         }
       ]
-      ++ lib.optionals (class == "darwin" || class == "nixOS" || class == "droid") [
+      ++ lib.optionals (class == "darwin" || class == "nixos" || class == "droid") [
         (self + /modules/hosts/${class})
         (self + /hosts/${class}/common)
         (self + /hosts/${class}/${hostName})
       ]
-      ++ lib.optionals (class == "darwin" || class == "nixOS") [
+      ++ lib.optionals (class == "darwin" || class == "nixos") [
         (self + /hosts/common)
       ]
       ++ lib.optionals (class == "home") [
@@ -61,7 +61,7 @@
         inherit lib;
         modules = modules ++ additionalModules;
       }
-      // (lib.attrsets.optionalAttrs (class == "darwin" || class == "nixOS") {inherit specialArgs;})
+      // (lib.attrsets.optionalAttrs (class == "darwin" || class == "nixos") {inherit specialArgs;})
       // (lib.attrsets.optionalAttrs (class == "droid") {
         extraSpecialArgs = specialArgs;
         home-manager-path = inputs.home-manager.outPath;
