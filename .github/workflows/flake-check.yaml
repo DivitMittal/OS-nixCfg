@@ -22,4 +22,4 @@ jobs:
           extra-conf: |
             extra-experimental-features = pipe-operators
       - name: Check flake
-        run: nix flake check
+        run: nix flake check --impure
