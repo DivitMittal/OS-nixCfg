@@ -42,7 +42,7 @@
         owner = "yazi-rs";
         repo = "plugins";
         rev = "main";
-        hash = "sha256-mqo71VLZsHmgTybxgqKNo9F2QeMuCSvZ89uen1VbWb4=";
+        hash = "sha256-auGNSn6tX72go7kYaH16hxRng+iZWw99dKTTUN91Cow=";
       };
     in {
       git = builtins.toPath "${officialPlugins}/git.yazi";

@@ -14,7 +14,7 @@ in {
     fi
   '';
 
-  programs.zsh.initExtra = mkAfter "PS1='%F{cyan}%~%f %# '";
+  programs.zsh.initContent = mkAfter "PS1='%F{cyan}%~%f %# '";
 
   programs.starship = {
     enable = true;
