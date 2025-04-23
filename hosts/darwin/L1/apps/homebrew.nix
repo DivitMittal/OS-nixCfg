@@ -14,6 +14,7 @@ _: {
       "spaceman"
       "gswitch"
       "bluesnooze"
+      "monolingual"
       "fuse-t" #"macfuse"
       #"jordanbaird-ice" # open-source alt to bartender
       #"betterdisplay"
@@ -49,7 +50,7 @@ _: {
 
       ## Communication
       #"whatsapp"
-      #"thunderbird"
+      "thunderbird"
       #"simplex"
       #"zoom"
 

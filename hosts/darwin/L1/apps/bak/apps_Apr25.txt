@@ -11,6 +11,7 @@ Google Chrome.app
 Grass.app
 Guitar Pro 8.app
 Homerow.app
+Hot.app
 IK Product Manager.app
 Logic Pro X.app
 Macs Fan Control.app
@@ -20,6 +21,7 @@ Menu Bar Dock.app
 Microsoft OneNote.app
 Microsoft Outlook.app
 Microsoft Teams.app
+Monolingual.app
 MuseScore 4.app
 Native Instruments
 NeuralAmpModeler.app

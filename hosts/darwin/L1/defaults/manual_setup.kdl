@@ -1,5 +1,5 @@
 Battery {
-  low-power-mode never
+  low-power-mode never // handled by raycast
   Battery-Health {
     optimized-battery-charging OFF
     manage-battery-longevity OFF
@@ -15,7 +15,8 @@ Display {
 }
 Accessibility {
   Vision {
-    Display {//display-contrast "increase"  // Using BetterDisplay instead
+    Display {
+      display-contrast "increase"
       Text {
         text-size "16pt"
         menu-bar-size large
@@ -59,4 +60,3 @@ Keyboard {
     input-sources "English - ABC"
   }
 }
-

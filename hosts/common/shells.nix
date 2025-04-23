@@ -42,7 +42,6 @@
       enableBashCompletion = false;
       enableCompletion = false;
       enableGlobalCompInit = false;
-      enableSyntaxHighlighting = false;
 
       interactiveShellInit = ''
         [[ "$(locale LC_CTYPE)" == "UTF-8" ]] && setopt COMBINING_CHARS   # UTF-8 with combining characters
