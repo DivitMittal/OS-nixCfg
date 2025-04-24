@@ -13,6 +13,8 @@
           alejandra
           ## Kdl
           kdlfmt
+          ## Shell
+          shfmt
           ;
       };
       commands = [
