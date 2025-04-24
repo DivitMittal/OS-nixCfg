@@ -14,6 +14,8 @@
       statix.enable = true;
       ## js & markdown
       prettier.enable = true;
+      ## Shell-scripts
+      shfmt.enable = true;
     };
 
     projectRootFile = "flake.nix";

@@ -33,7 +33,7 @@ fi
 switch_args="$switch_args --flake .#$(hostname) switch"
 
 os=$(uname -s)
-if [[ "$os" == "Darwin" ]]; then
+if [[ $os == "Darwin" ]]; then
   ## Darwin bootstrapping
   if ! which git &>/dev/null; then
     green "====== Installing Command-line tools for Xcode ======"

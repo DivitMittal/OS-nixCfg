@@ -19,8 +19,8 @@ in {
     };
 
     gc = {
-      automatic = mkDefault false;
-      options = mkDefault "--delete-old";
+      automatic = mkDefault true;
+      options = mkDefault "--delete-old 1";
     };
   };
 }
