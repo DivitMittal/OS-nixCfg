@@ -1,4 +1,9 @@
-{inputs, pkgs, config, ...}: {
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     inputs.nix-index-database.hmModules.nix-index
   ];
@@ -32,8 +37,9 @@
   };
 
   home.packages = builtins.attrValues {
-    inherit(pkgs)
+    inherit
+      (pkgs)
       nurl
-    ;
+      ;
   };
 }
