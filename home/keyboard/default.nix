@@ -6,8 +6,8 @@
   TLTR = pkgs.fetchFromGitHub {
     owner = "DivitMittal";
     repo = "TLTR";
-    rev = "master";
-    sha256 = "sha256-ocTMSUUZ26oLsQ0skAc586dqTBPHy+CCWEUN2mQoZiA=";
+    rev = "1af4f80b9ec9b8f2c8f55b66ecdf30ebc2fc162d";
+    hash = "sha256-HeS4M+AQEghl9DxoUAiYpEkQ9Ar47KJjrdWMJXHUA/A=";
   };
 in {
   home.packages = [pkgs.kanata-with-cmd];

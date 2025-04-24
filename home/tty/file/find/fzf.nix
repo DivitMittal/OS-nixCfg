@@ -37,9 +37,9 @@ in {
       {
         name = "fzf";
         src = pkgs.fetchFromGitHub {
-          owner = "patrickf1";
+          owner = "PatrickF1";
           repo = "fzf.fish";
-          rev = "main";
+          rev = "8920367cf85eee5218cc25a11e209d46e2591e7a";
           hash = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
         };
       }
@@ -48,7 +48,7 @@ in {
         src = pkgs.fetchFromGitHub {
           owner = "gazorby";
           repo = "fifc";
-          rev = "main";
+          rev = "a01650cd432becdc6e36feeff5e8d657bd7ee84a";
           hash = "sha256-Ynb0Yd5EMoz7tXwqF8NNKqCGbzTZn/CwLsZRQXIAVp4=";
         };
       }
