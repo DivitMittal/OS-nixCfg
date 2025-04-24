@@ -23,6 +23,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
     mynixpkgs.url = "github:DivitMittal/nixpkgs/whatsapp-darwin-bump";
     #nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     #nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
