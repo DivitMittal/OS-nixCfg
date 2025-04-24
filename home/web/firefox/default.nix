@@ -11,8 +11,8 @@
   fx-autoconfig = pkgs.fetchFromGitHub {
     owner = "MrOtherGuy";
     repo = "fx-autoconfig";
-    rev = "master";
-    hash = "sha256-NUGFGlf7HdZUVNmK3Hk5xbRGIKzg3QJVXO5kM44Xqy0=";
+    rev = "f1f61958491c18e690bed8e04e89dd3a8e4a6c4d";
+    hash = "sha256-V/jY6cV8IQmQ3JvbOspsECPTlhPS6SEfS0j5SWUAcME=";
   };
 in {
   imports = [
