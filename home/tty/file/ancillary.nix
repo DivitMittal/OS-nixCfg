@@ -10,6 +10,6 @@
       poppler # PDFs
       # tectonic-unwrapped # LaTeX
       ;
-    inherit(pkgs.python313Packages) rich;
+    inherit (pkgs.python313Packages) rich;
   };
 }

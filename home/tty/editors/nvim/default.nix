@@ -17,7 +17,7 @@
     extraPackages = builtins.attrValues {
       ## General
       inherit (pkgs.nodePackages) prettier;
-      inherit(pkgs) vscode-langservers-extracted;
+      inherit (pkgs) vscode-langservers-extracted;
       inherit
         (pkgs)
         ## Lua
@@ -29,8 +29,8 @@
         clang-tools
         ;
       ## Shell
-      inherit(pkgs.nodePackages) bash-language-server;
-      inherit(pkgs) shfmt;
+      inherit (pkgs.nodePackages) bash-language-server;
+      inherit (pkgs) shfmt;
       ## Python
       python = pkgs.python3.withPackages (ps:
         with ps; [
