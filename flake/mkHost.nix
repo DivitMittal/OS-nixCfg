@@ -28,6 +28,7 @@
       {
         inherit self inputs;
         mypkgs = inputs.mynixpkgs.legacyPackages.${system};
+        pkgs-master = inputs.nixpkgs-master.legacyPackages.${system};
         inherit (pkgs.stdenvNoCC) hostPlatform;
       }
       // extraSpecialArgs;

@@ -1,11 +1,11 @@
 {
   config,
-  pkgs,
+  pkgs-master,
   ...
 }: {
   programs.aerc = {
     enable = true;
-    package = pkgs.aerc;
+    package = pkgs-master.aerc;
 
     extraBinds = builtins.import ./binds.nix;
     extraConfig = {
