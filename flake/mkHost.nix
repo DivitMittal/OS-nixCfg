@@ -54,20 +54,21 @@
       ++ lib.optionals (class == "home") [
         (self + /modules/home)
         (self + /home/common)
-      ];
+      ]
+      ++ additionalModules;
   in
     systemFunc (
       {
         inherit pkgs;
         inherit lib;
-        modules = modules ++ additionalModules;
+        inherit modules;
       }
       // (lib.attrsets.optionalAttrs (class == "darwin" || class == "nixos") {inherit specialArgs;})
+      // (lib.attrsets.optionalAttrs (class == "home") {extraSpecialArgs = specialArgs;})
       // (lib.attrsets.optionalAttrs (class == "droid") {
         extraSpecialArgs = specialArgs;
         home-manager-path = inputs.home-manager.outPath;
       })
-      // (lib.attrsets.optionalAttrs (class == "home") {extraSpecialArgs = specialArgs;})
     );
 in {
   _module.args = {

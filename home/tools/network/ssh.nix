@@ -15,7 +15,7 @@ in {
     package =
       if hostPlatform.isDarwin
       then null
-      else pkgs.ssh; # xcode-dev-tools
+      else pkgs.ssh; # xcode-select
 
     compression = false;
     addKeysToAgent = "yes";

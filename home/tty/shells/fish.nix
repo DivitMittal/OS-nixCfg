@@ -45,6 +45,7 @@
     };
 
     plugins = [
+      ## Plugin manager (not longer needed)
       # {
       #   name = "fisher";
       #   src = pkgs.fetchFromGitHub {
