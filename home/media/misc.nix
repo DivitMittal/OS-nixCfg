@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  hostPlatform,
+  ...
+}: {
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
@@ -9,11 +13,18 @@
       #chafa
       imagemagick
       exif
-      ##m music
-      reaper
-      #reaper-sws-extension # broken
+      ## music
+      #reaper-sws-extension
       #reaper-reapack-extension
-      #musescore  ## bad build binary on darwin systems using homemanager
       ;
+
+    musescore =
+      if hostPlatform.isDarwin
+      then pkgs.brewCasks.musescore
+      else pkgs.musescore;
+    # reaper =
+    #   if hostPlatform.isDarwin
+    #   then pkgs.brewCasks.reaper
+    #   else pkgs.reaper;
   };
 }

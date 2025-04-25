@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  hostPlatform,
   ...
 }: let
   common = ''
@@ -79,6 +80,11 @@ in {
       (pkgs)
       rclone
       ;
+
+    # fuse =
+    #   if hostPlatform.isDarwin
+    #   then pkgs.brewCasks.fuse-t
+    #   else null;
 
     OneDrive-Divit = pkgs.writeShellScriptBin "OneDrive-Divit" ''
       ${common} OneDrive-Divit: ${remotesPath}/OneDrive-Divit

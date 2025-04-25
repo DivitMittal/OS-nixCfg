@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  hostPlatform,
   ...
 }: {
   home.packages = builtins.attrValues {
@@ -19,10 +20,14 @@
       # Rust
       cargo
       ## IDE
-      vscode
+      #vscode
       #rstudio
       ;
 
+    vscode =
+      if hostPlatform.isDarwin
+      then pkgs.brewCasks.visual-studio-code
+      else pkgs.vscode;
     #luarocks = pkgs.luajitPackages.luarocks;
   };
 

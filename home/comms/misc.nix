@@ -1,5 +1,5 @@
 {
-  mypkgs,
+  pkgs,
   hostPlatform,
   ...
 }: {
@@ -16,9 +16,9 @@
     #   #telegram-desktop
     #   ;
 
-    whatsapp =
-      if hostPlatform.isDarwin
-      then mypkgs.whatsapp-for-mac
-      else null;
+    # whatsapp =
+    #   if hostPlatform.isDarwin
+    #   then pkgs.brewCasks.whatsapp
+    #   else null;
   };
 }

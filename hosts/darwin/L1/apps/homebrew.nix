@@ -11,10 +11,10 @@ _: {
     casks = [
       ## macOS specific
       #"raycast" "alt-tab"
-      "spaceman"
-      "gswitch"
-      "bluesnooze"
-      "monolingual"
+      #"spaceman"
+      # "gswitch"
+      # "bluesnooze"
+      # "monolingual"
       "fuse-t" #"macfuse"
       #"jordanbaird-ice" # open-source alt to bartender
       #"betterdisplay"
@@ -26,7 +26,7 @@ _: {
         name = "firefox";
         args = {appdir = "~/Applications/Homebrew Casks";};
       }
-      "google-chrome"
+      # "google-chrome"
       #"tor-browser"
 
       ## Development Environment
@@ -39,7 +39,7 @@ _: {
       #"rig" #"rstudio"
 
       ## Microsoft
-      "onlyoffice"
+      # "onlyoffice"
       "microsoft-auto-update"
       "microsoft-onenote"
       "microsoft-teams"
@@ -49,8 +49,8 @@ _: {
       #"libreoffice"
 
       ## Communication
-      #"whatsapp"
-      "thunderbird"
+      "whatsapp"
+      #"thunderbird"
       #"simplex"
       #"zoom"
 
@@ -59,7 +59,7 @@ _: {
       #"cyberduck"
 
       ## Multimedia
-      "stolendata-mpv"
+      #"stolendata-mpv"
       #"spotify"
 
       ## Creative
@@ -67,10 +67,10 @@ _: {
         name = "wacom-tablet";
         greedy = false;
       }
-      {
-        name = "musescore";
-        greedy = true;
-      }
+      # {
+      #   name = "musescore";
+      #   greedy = true;
+      # }
       #"reaper"
       #"blender"
 
@@ -78,7 +78,7 @@ _: {
       #"tableau" "tableau-prep"
 
       ## Notes
-      "obsidian"
+      # "obsidian"
       #"notion-calendar" "notion"
     ];
 
@@ -96,7 +96,7 @@ _: {
       #"gomuks" # Matrix protocol
 
       ## Development
-      "libomp" # Multiprogramming
+      #"libomp" # Multiprogramming
     ];
 
     masApps = {

@@ -22,32 +22,43 @@
     );
 
   inputs = {
+    ## nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
-    mynixpkgs.url = "github:DivitMittal/nixpkgs/whatsapp-darwin-bump";
+    #mynixpkgs.url = "github:DivitMittal/nixpkgs/whatsapp-darwin-bump";
     #nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     #nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
 
+    ## flake helpers
     systems.url = "github:nix-systems/default";
+    flake-utils.url = "github:numtide/flake-utils";
 
+    ## flake modules
     flake-parts.url = "github:hercules-ci/flake-parts";
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    pre-commit-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
+    ## nix-darwin
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
       inputs = {
         nix-darwin.follows = "nix-darwin";
         nixpkgs.follows = "nixpkgs";
       };
-    };
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixos-wsl = {
@@ -61,21 +72,17 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    devshell = {
-      url = "github:numtide/devshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    pre-commit-hooks = {
-      url = "github:cachix/git-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    ## Secrets
     agenix = {
       url = "github:ryantm/agenix";
       inputs = {
@@ -85,18 +92,11 @@
         systems.follows = "systems";
       };
     };
-
     ragenix = {
       url = "github:yaxitech/ragenix";
       inputs.agenix.follows = "agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     OS-nixCfg-secrets = {
       url = "git+ssh://git@github.com/DivitMittal/OS-nixCfg-secrets.git?ref=master";
       #url = "path:/Users/div/Projects/OS-nixCfg-secrets";
@@ -109,27 +109,45 @@
       };
     };
 
-    kanata-tray = {
-      url = "github:rszyma/kanata-tray";
-      #url = "github:DivitMittal/kanata-tray/flake-darwin-support";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    ## Neovim
     Nvim-Cfg = {
       url = "github:DivitMittal/Nvim-Cfg";
       #url = "path:/Users/div/Projects/Nvim-Cfg";
       flake = false;
     };
-
     nvchad4nix = {
       url = "github:nix-community/nix4nvchad";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nvchad-starter.follows = "Nvim-Cfg";
     };
 
+    kanata-tray = {
+      url = "github:rszyma/kanata-tray";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     betterfox = {
       url = "github:HeitorAugustoLN/betterfox-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    brew-nix = {
+      # url = "github:BatteredBunny/brew-nix";
+      url = "path:/Users/div/Projects/Forks/brew-nix";
+      inputs.brew-api.follows = "brew-api";
+      inputs.nix-darwin.follows = "nix-darwin";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    brew-api = {
+      url = "github:BatteredBunny/brew-api";
+      flake = false;
+    };
+
+    # nixcasks = {
+    #   url = "github:jacekszymanski/nixcasks";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 }

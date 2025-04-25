@@ -1,10 +1,5 @@
 {pkgs, ...}: {
-  home.packages = builtins.attrValues {
-    inherit
-      (pkgs)
-      raycast
-      ;
-  };
+  home.packages = [pkgs.brewCasks.raycast];
 
   xdg.configFile."raycast/scripts" = {
     enable = true;

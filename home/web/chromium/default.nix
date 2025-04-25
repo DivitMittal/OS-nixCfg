@@ -1,9 +1,23 @@
-_: {
-  # programs.chromium = {
-  #   enable = false;
-  #   package = if hostPlatform.isLinux then pkgs.chromium else null;
-  #   extensions = builtins.attrValues {
-  #     ublock-origin-lite = { id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; };
-  #   };
-  # };
+{
+  pkgs,
+  hostPlatform,
+  ...
+}: let
+  chrome = pkgs.brewCasks.google-chrome.overrideAttrs (oldAttrs: {
+    src = pkgs.fetchurl {
+      url = builtins.head oldAttrs.src.urls;
+      hash = "sha256-3nrt9UyJKcXoFujwB1MkNDKd2JJkGHvyn69E6uQTr9o=";
+    };
+  });
+in {
+  programs.chromium = {
+    enable = true;
+    package =
+      if hostPlatform.isDarwin
+      then chrome
+      else pkgs.chromium;
+    # extensions = builtins.attrValues {
+    #   ublock-origin-lite = { id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; };
+    # };
+  };
 }
