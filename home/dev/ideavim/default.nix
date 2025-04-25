@@ -1,6 +1,8 @@
 _: {
-  xdg.configFile."ideavim/ideavimrc" = {
-    enable = false;
-    source = ./ideavimrc;
-  };
+  # home.packages = [ pkgs.brewCasks.pycharm ];
+
+  # xdg.configFile."ideavim/ideavimrc" = {
+  #   enable = true;
+  #   source = ./ideavimrc;
+  # };
 }

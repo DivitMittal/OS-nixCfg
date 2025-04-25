@@ -4,9 +4,9 @@
   ...
 }: {
   home.packages = builtins.attrValues {
-    onlyoffice =
+    obsidian =
       if hostPlatform.isDarwin
-      then pkgs.brewCasks.onlyoffice
-      else pkgs.onlyoffice;
+      then pkgs.brewCasks.obsidian
+      else pkgs.obsidian;
   };
 }

@@ -1,8 +1,11 @@
 {pkgs, ...}: {
   home.packages = builtins.attrValues {
     inherit
-      (pkgs)
-      alt-tab-macos
+      (pkgs.brewCasks)
+      alt-tab
+      gswitch
+      bluesnooze
+      spaceman
       ;
   };
 }

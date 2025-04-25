@@ -23,6 +23,13 @@
         ./tools
         ./tty
         ./web
+        {
+          nixpkgs = {
+            overlays = [
+              inputs.brew-nix.overlays.default
+            ];
+          };
+        }
       ];
     };
 

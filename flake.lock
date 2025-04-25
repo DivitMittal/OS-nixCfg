@@ -100,6 +100,48 @@
         "type": "github"
       }
     },
+    "brew-api": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1745524032,
+        "narHash": "sha256-ga3MjuZq75ieU0LNdNsRGIONmEvkJbktSdZ59MnM050=",
+        "owner": "BatteredBunny",
+        "repo": "brew-api",
+        "rev": "29244cde49e9a16be9a65923dccb57e7081f6b36",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BatteredBunny",
+        "repo": "brew-api",
+        "type": "github"
+      }
+    },
+    "brew-nix": {
+      "inputs": {
+        "brew-api": [
+          "brew-api"
+        ],
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nix-darwin": [
+          "nix-darwin"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1745532969,
+        "narHash": "sha256-kQ2BOazh4W54aH8zSYlsXN1bLrvRfAyDRzA9rcxC3dM=",
+        "path": "/Users/div/Projects/Forks/brew-nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "/Users/div/Projects/Forks/brew-nix",
+        "type": "path"
+      }
+    },
     "brew-src": {
       "flake": false,
       "locked": {
@@ -256,6 +298,24 @@
         "type": "github"
       }
     },
+    "flake-utils_3": {
+      "inputs": {
+        "systems": "systems_3"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "gitignore": {
       "inputs": {
         "nixpkgs": [
@@ -299,7 +359,7 @@
     },
     "kanata-tray": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -315,22 +375,6 @@
       "original": {
         "owner": "rszyma",
         "repo": "kanata-tray",
-        "type": "github"
-      }
-    },
-    "mynixpkgs": {
-      "locked": {
-        "lastModified": 1743892388,
-        "narHash": "sha256-TQ0cEhDrEDMscDwJO42Puox0Z5xd9oti2Z7O4HvzFcY=",
-        "owner": "DivitMittal",
-        "repo": "nixpkgs",
-        "rev": "4039b85ff205b6f66babff8d5d5f661fb4c7d185",
-        "type": "github"
-      },
-      "original": {
-        "owner": "DivitMittal",
-        "ref": "whatsapp-darwin-bump",
-        "repo": "nixpkgs",
         "type": "github"
       }
     },
@@ -670,7 +714,7 @@
           "agenix"
         ],
         "crane": "crane",
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils_3",
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -696,11 +740,13 @@
         "OS-nixCfg-secrets": "OS-nixCfg-secrets",
         "agenix": "agenix",
         "betterfox": "betterfox",
+        "brew-api": "brew-api",
+        "brew-nix": "brew-nix",
         "devshell": "devshell",
         "flake-parts": "flake-parts_2",
+        "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "kanata-tray": "kanata-tray",
-        "mynixpkgs": "mynixpkgs",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nix-index-database": "nix-index-database",
@@ -711,7 +757,7 @@
         "nvchad4nix": "nvchad4nix",
         "pre-commit-hooks": "pre-commit-hooks",
         "ragenix": "ragenix",
-        "systems": "systems_3",
+        "systems": "systems_4",
         "treefmt-nix": "treefmt-nix_2"
       }
     },
@@ -783,6 +829,21 @@
       }
     },
     "systems_3": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_4": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
