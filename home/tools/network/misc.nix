@@ -7,7 +7,6 @@
       bandwhich
       httpie
       dig
-      localsend
       ;
   };
 }

@@ -2,9 +2,7 @@
   pkgs,
   config,
   ...
-}:
-# TODO: Add ghfetch's output to personal-website
-{
+}: {
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
@@ -33,6 +31,7 @@
     };
   };
 
+  home.shellAliases.lg = "lazygit";
   programs.lazygit = {
     enable = true;
     package = pkgs.lazygit;
