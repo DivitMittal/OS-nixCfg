@@ -12,9 +12,9 @@ _: {
       ## macOS specific
       #"raycast" "alt-tab"
       #"spaceman"
-      # "gswitch"
-      # "bluesnooze"
-      # "monolingual"
+      #"gswitch"
+      #"bluesnooze"
+      #"monolingual"
       "fuse-t" #"macfuse"
       #"jordanbaird-ice" # open-source alt to bartender
       #"betterdisplay"
@@ -26,7 +26,7 @@ _: {
         name = "firefox";
         args = {appdir = "~/Applications/Homebrew Casks";};
       }
-      # "google-chrome"
+      #"google-chrome"
       #"tor-browser"
 
       ## Development Environment
@@ -67,10 +67,10 @@ _: {
         name = "wacom-tablet";
         greedy = false;
       }
-      # {
-      #   name = "musescore";
-      #   greedy = true;
-      # }
+      #{
+      #  name = "musescore";
+      #  greedy = true;
+      #}
       #"reaper"
       #"blender"
 
@@ -78,7 +78,7 @@ _: {
       #"tableau" "tableau-prep"
 
       ## Notes
-      # "obsidian"
+      #"obsidian"
       #"notion-calendar" "notion"
     ];
 

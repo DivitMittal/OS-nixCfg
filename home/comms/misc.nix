@@ -1,8 +1,4 @@
-{
-  pkgs,
-  hostPlatform,
-  ...
-}: {
+_: {
   home.packages = builtins.attrValues {
     # inherit(pkgs)
     #   ## Discord

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  hostPlatform,
-  ...
-}: {
+_: {
   # programs.mpv = {
   #   enable = true;
   #   package =
