@@ -8,6 +8,7 @@
       packages = builtins.attrValues {
         inherit
           (pkgs)
+          ### LSPs & Formatters
           ## Nix
           nixd
           alejandra
@@ -15,6 +16,10 @@
           kdlfmt
           ## Shell
           shfmt
+
+          ### Nix Tools
+          nix-visualize
+          nix-melt
           ;
       };
       commands = [
