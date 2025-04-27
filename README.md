@@ -90,6 +90,12 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
     └── shell.nix
 ```
 
+## 📊 Home Manager Profile Graph
+
+This graph visualizes the dependencies of the Home Manager profile configuration:
+
+![Home Manager Profile Dependency Graph](./assets/graph.png)
+
 ## ❄️Flake Inputs
 
 This flake relies on several external inputs to manage dependencies and configurations:
