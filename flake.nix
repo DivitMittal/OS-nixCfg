@@ -144,10 +144,5 @@
       url = "github:BatteredBunny/brew-api";
       flake = false;
     };
-
-    # nixcasks = {
-    #   url = "github:jacekszymanski/nixcasks";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 }
