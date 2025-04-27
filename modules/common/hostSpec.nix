@@ -37,11 +37,5 @@ in {
         then "/Users/${user}"
         else "/home/${user}";
     };
-    # persistFolder = mkOption {
-    #   type = types.str;
-    #   description = "The folder to persist data if impermenance is enabled";
-    #   default = "";
-    # };
-    #
   };
 }
