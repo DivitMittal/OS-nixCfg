@@ -55,6 +55,15 @@
         (self + /modules/home)
         (self + /home/common)
       ]
+      ++ lib.optionals (class == "home" && lib.strings.hasSuffix "darwin" system) [
+        {
+          nixpkgs = {
+            overlays = [
+              inputs.brew-nix.overlays.default
+            ];
+          };
+        }
+      ]
       ++ additionalModules;
   in
     systemFunc (
