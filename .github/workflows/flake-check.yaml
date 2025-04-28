@@ -2,24 +2,27 @@ name: Run flake checks
 
 on:
   push:
-    branches:
-      - master
+    branches: [master]
   pull_request:
-    branches:
-      - master
+    branches: [master]
   workflow_dispatch:
 
 jobs:
-  check:
+  check_job:
     name: Run `nix flake check`
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v16
+        uses: DeterminateSystems/nix-installer-action@main
         with:
           extra-conf: |
             extra-experimental-features = pipe-operators
+
       - name: Check flake
         run: nix flake check --impure
