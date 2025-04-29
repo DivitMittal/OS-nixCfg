@@ -1,6 +1,6 @@
 {
   pkgs,
-  inputs,
+  lib,
   ...
 }: let
   TLTR = pkgs.fetchFromGitHub {
@@ -11,14 +11,8 @@
   };
 in {
   home.packages = [pkgs.kanata-with-cmd];
-
-  imports = [
-    inputs.kanata-tray.homeManagerModules.kanata-tray
-    (import ./kanata-tray.nix {
-      inherit pkgs;
-      inherit TLTR;
-    })
-  ];
+  imports = lib.custom.scanPaths ./.;
+  _module.args.TLTR = TLTR;
 
   xdg.configFile."karabiner" = {
     enable = false;
