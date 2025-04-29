@@ -1,0 +1,26 @@
+@charset "UTF-8";
+/* ----------------------------- NAVBAR ----------------------------- */
+/* hides unwanted buttons & items from the navbar */
+#back-button,
+#forward-button,
+#reload-button,
+#stop-button,
+#home-button,
+#fxa-toolbar-menu-button {
+  display: none;
+}
+
+/* ---------------------------- URLBAR ------------------------------- */
+#urlbar-go-button,
+#star-button,
+#star-button-box,
+#pocket-button,
+#tracking-protection-icon-container {
+  display: none !important;
+}
+
+/* Empty space before and after the url bar */
+#customizableui-special-spring1,
+#customizableui-special-spring2 {
+  display: none;
+}
