@@ -4,16 +4,10 @@
   lib,
   hostPlatform,
   inputs,
-  fx-autoconfig,
   ...
 }: let
-  fx-csshacks = pkgs.fetchFromGitHub {
-    owner = "MrOtherGuy";
-    repo = "firefox-csshacks";
-    rev = "016521f0a21bbb76e8eff4b8410c1e049f081c77";
-    hash = "sha256-dUboMxvWSP1PS9NT8PsmfOMF1HKqvH6jUAT1La5k6wM=";
-  };
-  profileDir = "${config.programs.firefox.configPath}" + lib.optionalString hostPlatform.isDarwin "/Profiles";
+  profilesDir = "${config.programs.firefox.configPath}" + lib.optionalString hostPlatform.isDarwin "/Profiles";
+  currentProfileDir = "${profilesDir}/custom-default";
   profiles = {
     clean-profile = {
       id = 0;
@@ -172,27 +166,9 @@
 in {
   imports = [
     inputs.betterfox.homeManagerModules.betterfox
+    ./chrome
   ];
+  _module.args.currentProfileDir = currentProfileDir;
   programs.firefox.profiles = profiles;
   programs.firefox.betterfox.enable = true;
-
-  ## fx-csshacks
-  home.file."${profileDir}/custom-default/chrome/CSS/fx-csshacks" = {
-    source = fx-csshacks;
-    recursive = true;
-  };
-
-  ## fx-autoconfig
-  home.file."${profileDir}/custom-default/chrome/JS" = {
-    source = ./chrome/JS;
-    recursive = true;
-  };
-  home.file."${profileDir}/custom-default/chrome/resources" = {
-    source = fx-autoconfig + "/profile/chrome/resources";
-    recursive = true;
-  };
-  home.file."${profileDir}/custom-default/chrome/utils" = {
-    source = fx-autoconfig + "/profile/chrome/utils";
-    recursive = true;
-  };
 }
