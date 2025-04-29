@@ -101,33 +101,33 @@ This graph visualizes the dependencies of the Home Manager profile configuration
 This flake relies on several external inputs to manage dependencies and configurations:
 
 - **Core & System:**
-    - **`nixpkgs`**: The core Nix package set (tracking `nixpkgs-unstable`).
-    - **`nixpkgs-master`**: Tracks the master branch of Nixpkgs (used occasionally).
-    - **`systems`**: Provides standard system identifiers (e.g., `x86_64-darwin`).
+  - **`nixpkgs`**: The core Nix package set (tracking `nixpkgs-unstable`).
+  - **`nixpkgs-master`**: Tracks the master branch of Nixpkgs (used occasionally).
+  - **`systems`**: Provides standard system identifiers (e.g., `x86_64-darwin`).
 - **Flake Helpers:**
-    - **`flake-parts`**: Used for structuring the flake outputs with modularity.
-    - **`flake-utils`**: General utilities for flakes.
-    - **`devshell`**: Provides convenient development shells.
-    - **`pre-commit-hooks`**: Manages Git hooks for code quality and formatting.
-    - **`treefmt-nix`**: For code formatting integration.
+  - **`flake-parts`**: Used for structuring the flake outputs with modularity.
+  - **`flake-utils`**: General utilities for flakes.
+  - **`devshell`**: Provides convenient development shells.
+  - **`pre-commit-hooks`**: Manages Git hooks for code quality and formatting.
+  - **`treefmt-nix`**: For code formatting integration.
 - **OS Integration:**
-    - **`home-manager`**: Manages user-level configurations and dotfiles.
-    - **`nix-darwin`**: Enables declarative macOS system configuration.
-    - **`nix-homebrew`**: For Homebrew package integration within `nix-darwin`.
-    - **`nixos-wsl`**: Provides modules for running NixOS on WSL.
-    - **`nix-on-droid`**: Enables declarative Android configuration via Termux fork.
+  - **`home-manager`**: Manages user-level configurations and dotfiles.
+  - **`nix-darwin`**: Enables declarative macOS system configuration.
+  - **`nix-homebrew`**: For Homebrew package integration within `nix-darwin`.
+  - **`nixos-wsl`**: Provides modules for running NixOS on WSL.
+  - **`nix-on-droid`**: Enables declarative Android configuration via Termux fork.
 - **Secrets Management:**
-    - **`agenix`**: Base library for managing secrets declaratively via age encryption.
-    - **`ragenix`**: Rust implementation/wrapper for `agenix`.
-    - **`OS-nixCfg-secrets`**: **(Private Repository)** Contains encrypted secrets managed by `ragenix`.
+  - **`agenix`**: Base library for managing secrets declaratively via age encryption.
+  - **`ragenix`**: Rust implementation/wrapper for `agenix`.
+  - **`OS-nixCfg-secrets`**: **(Private Repository)** Contains encrypted secrets managed by `ragenix`.
 - **Application/Tooling Specific:**
-    - **`nix-index-database`**: Provides a database for `nix-index`.
-    - **`Nvim-Cfg`**: My external Neovim configuration repository (used as a source).
-    - **`nvchad4nix`**: Integrates Neovim configurations (like NvChad or custom starters) with Home Manager.
-    - **`kanata-tray`**: Provides a system tray application for managing Kanata keyboard remapping presets.
-    - **`betterfox`**: Nix integration for Betterfox Firefox hardening.
-    - **`brew-nix`**: Alternative Nix integration for Homebrew casks/formulae (using a local fork).
-    - **`brew-api`**: Homebrew API data used by `brew-nix`.
+  - **`nix-index-database`**: Provides a database for `nix-index`.
+  - **`Nvim-Cfg`**: My external Neovim configuration repository (used as a source).
+  - **`nvchad4nix`**: Integrates Neovim configurations (like NvChad or custom starters) with Home Manager.
+  - **`kanata-tray`**: Provides a system tray application for managing Kanata keyboard remapping presets.
+  - **`betterfox`**: Nix integration for Betterfox Firefox hardening.
+  - **`brew-nix`**: Alternative Nix integration for Homebrew casks/formulae (using a local fork).
+  - **`brew-api`**: Homebrew API data used by `brew-nix`.
 
 _(See `flake.nix` for the complete list and specific sources/versions)_
 

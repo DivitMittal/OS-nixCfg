@@ -16,7 +16,6 @@
           kdlfmt
           ## Shell
           shfmt
-
           ### Nix Tools
           nix-visualize
           nix-melt
