@@ -1,11 +1,6 @@
-# Jetbrains IDE
-**/.idea/
-
-# Nvim plugin manager lock file, i.e., lazy-lock.json
-**/lazy-lock.json
-
-# direnv
-**/.direnv/
-
-# Disabled parts of configuration
+## direnv
+**/.direnv
+## Disabled parts of configuration
 **/disabled/
+## Nix builds
+**/result
