@@ -168,7 +168,9 @@ in {
     inputs.betterfox.homeManagerModules.betterfox
     ./chrome
   ];
-  _module.args.currentProfileDir = currentProfileDir;
+  _module.args = {
+    inherit currentProfileDir;
+  };
   programs.firefox.profiles = profiles;
   programs.firefox.betterfox.enable = true;
 }

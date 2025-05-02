@@ -1,6 +1,21 @@
 @charset "UTF-8";
-/* ----------------------------- NAVBAR ----------------------------- */
-/* hides unwanted buttons & items from the navbar */
+
+/* ---------------------------- Styling ------------------------------- */
+#urlbar-container {
+  font-family: "CaskaydiaCove Nerd Font Mono";
+  font-size: 14px;
+}
+
+#urlbar {
+  box-shadow: none !important;
+}
+
+#urlbar-background {
+  border-width: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* ---------------------------- Buttons ------------------------------- */
 #back-button,
 #forward-button,
 #reload-button,
@@ -10,7 +25,6 @@
   display: none;
 }
 
-/* ---------------------------- URLBAR ------------------------------- */
 #urlbar-go-button,
 #star-button,
 #star-button-box,

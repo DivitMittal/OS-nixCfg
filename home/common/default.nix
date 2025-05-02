@@ -11,7 +11,7 @@
     homeDirectory = config.hostSpec.home;
   };
 
-  programs.home-manager.enable = true;
+  programs.home-manager.enable = true; # home-manager standalone
   news.display = "show";
 
   xdg.enable = true;
