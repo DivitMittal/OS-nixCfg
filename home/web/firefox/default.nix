@@ -16,7 +16,9 @@ in {
     ./tridactyl
     ./profiles
   ];
-  _module.args.fx-autoconfig = fx-autoconfig;
+  _module.args = {
+    inherit fx-autoconfig;
+  };
 
   programs.firefox = {
     enable = true;

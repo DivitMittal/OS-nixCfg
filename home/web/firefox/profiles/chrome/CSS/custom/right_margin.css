@@ -1,12 +1,9 @@
 @charset "UTF-8";
+
 /* ---------------------------- Sidebar ----------------------------- */
 /* normal website page right margin for collapsing sidebar */
 #main-window:not([extradragspace="true"])
-  #sidebar-wrapper:has(
-    #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]:not(
-        [hidden]
-      )
-  )
+  #sidebar-box:not([hidden])
   ~ #tabbrowser-tabbox
   .browserContainer {
   margin-right: 35px !important;
@@ -14,11 +11,7 @@
 
 /* in-fullscreen right-margin for collapsing sidebar */
 #main-window:not([extradragspace="true"])[inFullscreen][inDOMFullscreen]
-  #sidebar-wrapper:has(
-    #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]:not(
-        [hidden]
-      )
-  )
+  #sidebar-box:not([hidden])
   ~ #tabbrowser-tabbox
   .browserContainer {
   margin-right: 0 !important;

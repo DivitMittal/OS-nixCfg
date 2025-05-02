@@ -4,6 +4,5 @@
 @import url(CSS/fx-csshacks/chrome/hide_statuspanel_when_fullscreen.css);
 @import url(CSS/fx-csshacks/chrome/hide_tabs_toolbar_v2.css);
 @import url(CSS/fx-csshacks/chrome/overlay_sidebar_header.css);
-@import url(CSS/custom/minimal.css);
-@import url(CSS/custom/urlbar.css);
-@import url(CSS/custom/sidebar.css);
+@import url(CSS/custom/right_margin.css);
+@import url(CSS/custom/minimal_bar.css);

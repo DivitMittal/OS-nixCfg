@@ -6,8 +6,8 @@
   fx-csshacks = pkgs.fetchFromGitHub {
     owner = "MrOtherGuy";
     repo = "firefox-csshacks";
-    rev = "016521f0a21bbb76e8eff4b8410c1e049f081c77";
-    hash = "sha256-dUboMxvWSP1PS9NT8PsmfOMF1HKqvH6jUAT1La5k6wM=";
+    rev = "7f4f4511badf6fc8b66c77ddda3244bf4363147b";
+    hash = "sha256-VFzix2atMyPX4HPNKDa9FaF1k1/1a2PqOJVeXRVRBxo=";
   };
 in {
   home.file."${currentProfileDir}/chrome/CSS/fx-csshacks" = {
