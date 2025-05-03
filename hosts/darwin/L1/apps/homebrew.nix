@@ -44,7 +44,7 @@ _: {
       "microsoft-onenote"
       "microsoft-teams"
       "microsoft-outlook" #"microsoft-excel"
-      "onedrive"
+      #"onedrive"
       #"crystalfetch"
       #"libreoffice"
 

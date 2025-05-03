@@ -20,13 +20,13 @@
         inputs.nixos-wsl.nixosModules.default
       ];
     };
-    L2 = mkHost {
-      hostName = "L2";
-      system = "x86_64-linux";
-      class = "nixos";
-      additionalModules = [
-        /etc/nixos/hardware-configuration.nix # impure
-      ];
-    };
+    # L2 = mkHost {
+    #   hostName = "L2";
+    #   system = "x86_64-linux";
+    #   class = "nixos";
+    #   additionalModules = [
+    #     /etc/nixos/hardware-configuration.nix # impure
+    #   ];
+    # };
   };
 }
