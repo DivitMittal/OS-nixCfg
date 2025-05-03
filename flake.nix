@@ -121,16 +121,13 @@
       inputs.nvchad-starter.follows = "Nvim-Cfg";
     };
 
-    kanata-tray = {
-      url = "github:rszyma/kanata-tray";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    ## Firefox
     betterfox = {
       url = "github:HeitorAugustoLN/betterfox-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ## Homebrew
     brew-nix = {
       # url = "github:BatteredBunny/brew-nix";
       url = "path:/Users/div/Projects/Forks/brew-nix";
@@ -139,10 +136,15 @@
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     brew-api = {
       url = "github:BatteredBunny/brew-api";
       flake = false;
+    };
+
+    ## Keyboard
+    kanata-tray = {
+      url = "github:rszyma/kanata-tray";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 }
