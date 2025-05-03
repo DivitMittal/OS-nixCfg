@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  check_job:
+  check-job:
     name: Run `nix flake check`
 
     runs-on: ubuntu-latest
@@ -19,8 +19,9 @@ jobs:
       name: dev
     permissions:
       contents: write
+
     steps:
-      - name: Checkout
+      - name: Checkout repo
         uses: actions/checkout@main
         with:
           fetch-depth: 1
@@ -34,14 +35,16 @@ jobs:
           extra-conf: |
             extra-experimental-features = pipe-operators
 
-      - uses: cachix/cachix-action@master
+      - name: Configure to use personal binary cache @ Cachix
+        uses: cachix/cachix-action@master
         with:
           name: divitmittal
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
-      - uses: webfactory/ssh-agent@v0.9.0
+      - name: SSH-agent with auth for private repos
+        uses: webfactory/ssh-agent@master
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Check flake
-        run: nix flake check --impure
+        run: nix flake check --impure --all-systems
