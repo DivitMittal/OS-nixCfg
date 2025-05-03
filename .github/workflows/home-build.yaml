@@ -1,4 +1,4 @@
-name: Run flake checks
+name: Build Home Configuration
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -15,10 +15,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  check-job:
-    name: Run `nix flake check`
+  build-home-job:
+    name: Builds home-manager configuration
 
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     environment:
       name: dev
     permissions:
@@ -35,9 +35,6 @@ jobs:
 
       - name: Installing Nix
         uses: DeterminateSystems/nix-installer-action@main
-        with:
-          extra-conf: |
-            extra-experimental-features = pipe-operators
 
       - name: Configure to use personal binary cache @ Cachix
         uses: cachix/cachix-action@master
@@ -50,5 +47,5 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Check flake
-        run: nix flake check --impure --all-systems
+      - name: Building a comprehensive(L1) home-manager configuration
+        run: nix build --accept-flake-config .#homeConfigurations.L1.activationPackage --impure
