@@ -1,4 +1,4 @@
-_: {
+{config, ...}: {
   networking = {
     nameservers = [
       # Cloudflare DNS
@@ -9,6 +9,11 @@ _: {
     ];
     firewall = {
       enable = false;
+    };
+  };
+  users.users = {
+    "${config.hostSpec.username}" = {
+      isNormalUser = true;
     };
   };
 }
