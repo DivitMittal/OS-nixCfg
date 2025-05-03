@@ -1,0 +1,46 @@
+Ableton Live 12 Suite.app
+AlDente.app
+AmpliTube 5.app
+Aurora DSP
+Capo.app
+Dynamic Wallpaper.app
+Ghostery Privacy Ad Blocker.app
+Grass.app
+Guitar Pro 8.app
+Homerow.app
+Hot.app
+IK Product Manager.app
+Logic Pro X.app
+MainStage.app
+MeldaProduction
+Menu Bar Dock.app
+Microsoft OneNote.app
+Microsoft Outlook.app
+Microsoft Teams.app
+Native Instruments
+NeuralAmpModeler.app
+Nix Apps
+PDF Expert.app
+Parallels Desktop.app
+Safari.app
+SoundSource.app
+Super Agent.app
+Texty.app
+Utilities
+Vimkey.app
+Wacom Tablet.localized
+WhatsApp.app
+djay Pro.app
+iStat Menus.app
+AltTab.app
+Bluesnooze.app
+Google Chrome.app
+MuseScore 4.app
+ONLYOFFICE.app
+Obsidian.app
+Raycast.app
+Spaceman.app
+Visual Studio Code.app
+WezTerm-macos-20240203-110809-5046fc22
+gSwitch.app
+Firefox.app
