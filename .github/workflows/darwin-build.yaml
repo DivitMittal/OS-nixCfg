@@ -1,4 +1,4 @@
-name: Build on Darwin Hosts
+name: Build Darwin Configuration
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -16,7 +16,7 @@ on:
 
 jobs:
   build-L1-job:
-    name: Builds L1 darwin configuration
+    name: Builds a nix-darwin configuration
 
     runs-on: macos-latest
     environment:
@@ -47,5 +47,5 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Building L1 nix-darwin config
+      - name: Building a comprehensive(L1) nix-darwin configuration
         run: nix build --accept-flake-config .#darwinConfigurations.L1.config.system.build.toplevel
