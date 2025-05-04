@@ -151,6 +151,21 @@
             ];
             definedAliases = ["@p"];
           };
+
+          "Searchix" = {
+            urls = [
+              {
+                template = "https://searchix.alanpearce.eu";
+                params = [
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            definedAliases = ["@sx"];
+          };
         };
       };
 
