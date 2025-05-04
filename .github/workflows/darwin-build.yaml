@@ -48,4 +48,4 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Building a comprehensive(L1) nix-darwin configuration
-        run: nix build --accept-flake-config .#darwinConfigurations.L1.config.system.build.toplevel
+        run: nix build --accept-flake-config .#darwinConfigurations.L1.config.system.build.toplevel --impure --show-trace

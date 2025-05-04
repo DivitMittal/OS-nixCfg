@@ -18,7 +18,7 @@ jobs:
   build-home-job:
     name: Builds home-manager configuration
 
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     environment:
       name: dev
     permissions:
@@ -31,7 +31,7 @@ jobs:
           fetch-depth: 1
 
       - name: Set env var
-        run: export OS_NIXCFG=$(pwd)
+        run: echo "OS_NIXCFG=$(pwd)" >> "$GITHUB_ENV"
 
       - name: Installing Nix
         uses: DeterminateSystems/nix-installer-action@main
@@ -48,4 +48,4 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Building a comprehensive(L1) home-manager configuration
-        run: nix build --accept-flake-config .#homeConfigurations.L1.activationPackage --impure
+        run: nix build --accept-flake-config .#homeConfigurations.L1.activationPackage --impure --show-trace
