@@ -31,7 +31,10 @@
 
     ## flake helpers
     systems.url = "github:nix-systems/default";
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
 
     ## flake modules
     flake-parts.url = "github:hercules-ci/flake-parts";
