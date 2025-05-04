@@ -132,14 +132,18 @@
         ]
       },
       "locked": {
-        "lastModified": 1745532969,
-        "narHash": "sha256-kQ2BOazh4W54aH8zSYlsXN1bLrvRfAyDRzA9rcxC3dM=",
-        "path": "/Users/div/Projects/Forks/brew-nix",
-        "type": "path"
+        "lastModified": 1746330894,
+        "narHash": "sha256-ugpzElCNjcbW1XrtYLmK7FroH9kQtpnbbJ38L+i6j0c=",
+        "owner": "DivitMittal",
+        "repo": "brew-nix",
+        "rev": "147016c51cbccbefe4540e15fb252e6b5680b970",
+        "type": "github"
       },
       "original": {
-        "path": "/Users/div/Projects/Forks/brew-nix",
-        "type": "path"
+        "owner": "DivitMittal",
+        "ref": "cask-variation",
+        "repo": "brew-nix",
+        "type": "github"
       }
     },
     "brew-src": {

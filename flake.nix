@@ -129,8 +129,8 @@
 
     ## Homebrew Casks pkgs overlay
     brew-nix = {
-      # url = "github:BatteredBunny/brew-nix";
-      url = "path:/Users/div/Projects/Forks/brew-nix";
+      url = "github:DivitMittal/brew-nix/cask-variation";
+      # url = "path:/Users/div/Projects/Forks/brew-nix";
       inputs.brew-api.follows = "brew-api";
       inputs.nix-darwin.follows = "nix-darwin";
       inputs.flake-utils.follows = "flake-utils";
