@@ -1,34 +1,36 @@
 {
-  compose = {
+  ## View
+  view = {
+    "<C-n>" = ":next-tab<Enter>";
+    "<C-p>" = ":prev-tab<Enter>";
     "?" = ":help keys<Enter>";
     "!" = ":term<Enter>";
-    "$complete" = "<C-o>";
+    "/" = ":toggle-key-passthrough<Enter>/";
+    "<C-l>" = ":open-link <space>";
+    "<Esc>" = ":close<Enter>";
+    "<Left>" = ":prev<Enter>";
+    "<Right>" = ":next<Enter>";
+    A = ":archive flat<Enter>";
+    D = ":delete<Enter>";
+    E = ":next-part<Enter>";
+    H = ":toggle-headers<Enter>";
+    Rq = ":reply -q<Enter>";
+    Rr = ":reply<Enter>";
+    S = ":save<space>";
+    U = ":prev-part<Enter>";
+    f = ":forward<Enter>";
+    o = ":open<Enter>";
+    rq = ":reply -aq<Enter>";
+    rr = ":reply -a<Enter>";
+    "|" = ":pipe<space>";
+  };
+  "view::passthrough" = {
     "$ex" = "<C-x>";
     "$noinherit" = "true";
-    "<C-n>" = ":next-tab<Enter>";
-    "<C-p>" = ":prev-tab<Enter>";
-    "<backtab>" = ":prev-field<Enter>";
-    "<tab>" = ":next-field<Enter>";
-  };
-  "compose::editor" = {
-    "$ex" = "<C-x>";
-    "$noinherit" = "true";
-    "<A-e>" = ":next-field<Enter>";
-    "<A-u>" = ":prev-field<Enter>";
-    "<C-n>" = ":next-tab<Enter>";
-    "<C-p>" = ":prev-tab<Enter>";
-  };
-  "compose::review" = {
-    a = ":attach<space>";
-    d = ":detach<space>";
-    e = ":edit<Enter>";
-    n = ":abort<Enter>";
-    p = ":postpone<Enter>";
-    q = ":choose -o d discard abort -o p postpone postpone<Enter>";
-    v = ":preview<Enter>";
-    y = ":send<Enter>";
+    "<Esc>" = ":toggle-key-passthrough<Enter>";
   };
 
+  ## Messages
   messages = {
     "<C-n>" = ":next-tab<Enter>";
     "<C-p>" = ":prev-tab<Enter>";
@@ -83,40 +85,42 @@
   };
   "messages:folder=Drafts" = {"<Enter>" = ":recall<Enter>";};
 
+  ## Compose
+  compose = {
+    "?" = ":help keys<Enter>";
+    "!" = ":term<Enter>";
+    "$complete" = "<C-o>";
+    "$ex" = "<C-x>";
+    "$noinherit" = "true";
+    "<C-n>" = ":next-tab<Enter>";
+    "<C-p>" = ":prev-tab<Enter>";
+    "<backtab>" = ":prev-field<Enter>";
+    "<tab>" = ":next-field<Enter>";
+  };
+  "compose::editor" = {
+    "$ex" = "<C-x>";
+    "$noinherit" = "true";
+    "<A-e>" = ":next-field<Enter>";
+    "<A-u>" = ":prev-field<Enter>";
+    "<C-n>" = ":next-tab<Enter>";
+    "<C-p>" = ":prev-tab<Enter>";
+  };
+  "compose::review" = {
+    a = ":attach<space>";
+    d = ":detach<space>";
+    e = ":edit<Enter>";
+    n = ":abort<Enter>";
+    p = ":postpone<Enter>";
+    q = ":choose -o d discard abort -o p postpone postpone<Enter>";
+    v = ":preview<Enter>";
+    y = ":send<Enter>";
+  };
+
+  ## Terminal
   terminal = {
     "$ex" = "<C-x>";
     "$noinherit" = "true";
     "<C-n>" = ":next-tab<Enter>";
     "<C-p>" = ":prev-tab<Enter>";
-  };
-
-  view = {
-    "<C-n>" = ":next-tab<Enter>";
-    "<C-p>" = ":prev-tab<Enter>";
-    "?" = ":help keys<Enter>";
-    "!" = ":term<Enter>";
-    "/" = ":toggle-key-passthrough<Enter>/";
-    "<C-l>" = ":open-link <space>";
-    "<Esc>" = ":close<Enter>";
-    "<Left>" = ":prev<Enter>";
-    "<Right>" = ":next<Enter>";
-    A = ":archive flat<Enter>";
-    D = ":delete<Enter>";
-    E = ":next-part<Enter>";
-    H = ":toggle-headers<Enter>";
-    Rq = ":reply -q<Enter>";
-    Rr = ":reply<Enter>";
-    S = ":save<space>";
-    U = ":prev-part<Enter>";
-    f = ":forward<Enter>";
-    o = ":open<Enter>";
-    rq = ":reply -aq<Enter>";
-    rr = ":reply -a<Enter>";
-    "|" = ":pipe<space>";
-  };
-  "view::passthrough" = {
-    "$ex" = "<C-x>";
-    "$noinherit" = "true";
-    "<Esc>" = ":toggle-key-passthrough<Enter>";
   };
 }

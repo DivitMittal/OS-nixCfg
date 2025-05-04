@@ -127,7 +127,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ## Homebrew
+    ## Homebrew Casks pkgs overlay
     brew-nix = {
       # url = "github:BatteredBunny/brew-nix";
       url = "path:/Users/div/Projects/Forks/brew-nix";

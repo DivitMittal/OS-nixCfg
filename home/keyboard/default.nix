@@ -10,9 +10,12 @@
     hash = "sha256-HeS4M+AQEghl9DxoUAiYpEkQ9Ar47KJjrdWMJXHUA/A=";
   };
 in {
-  home.packages = [pkgs.kanata-with-cmd];
   imports = lib.custom.scanPaths ./.;
-  _module.args.TLTR = TLTR;
+  _module.args = {
+    inherit TLTR;
+  };
+
+  home.packages = [pkgs.kanata-with-cmd];
 
   xdg.configFile."karabiner" = {
     enable = false;

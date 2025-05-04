@@ -89,6 +89,7 @@ return {
     cursor_border = "silver",
   },
   default_cursor_style = "SteadyBar",
+  tab_bar_at_bottom = true,
   hide_tab_bar_if_only_one_tab = true,
   initial_cols = 100,
   initial_rows = 40,
