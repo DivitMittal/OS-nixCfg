@@ -3,10 +3,6 @@
   pkgs,
   ...
 }: {
-  nix.settings = {
-    trusted-users = ["root" "${config.hostSpec.username}"];
-  };
-
   users.users = {
     "${config.hostSpec.username}" = {
       inherit (config.hostSpec) home;
