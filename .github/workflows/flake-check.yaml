@@ -31,7 +31,7 @@ jobs:
           fetch-depth: 1
 
       - name: Set env var
-        run: export OS_NIXCFG=$(pwd)
+        run: echo "OS_NIXCFG=$(pwd)" >> "$GITHUB_ENV"
 
       - name: Installing Nix
         uses: DeterminateSystems/nix-installer-action@main
