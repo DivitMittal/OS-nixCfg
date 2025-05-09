@@ -1,7 +1,5 @@
 {inputs, ...}: {
-  imports = [
-    inputs.treefmt-nix.flakeModule
-  ];
+  imports = [inputs.treefmt-nix.flakeModule];
 
   perSystem.treefmt = {
     flakeCheck = false; # handled via pre-commit

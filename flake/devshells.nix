@@ -1,7 +1,5 @@
 {inputs, ...}: {
-  imports = [
-    inputs.devshell.flakeModule
-  ];
+  imports = [inputs.devshell.flakeModule];
 
   perSystem = {pkgs, ...}: {
     devshells.default = {

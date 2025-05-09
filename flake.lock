@@ -543,35 +543,6 @@
         "type": "github"
       }
     },
-    "nix-topology": {
-      "inputs": {
-        "devshell": [
-          "devshell"
-        ],
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "pre-commit-hooks": [
-          "pre-commit-hooks"
-        ]
-      },
-      "locked": {
-        "lastModified": 1744142264,
-        "narHash": "sha256-h5KyodobZm8dx/HSNN+basgdmjxrQxudjrss4gAQpZk=",
-        "owner": "oddlama",
-        "repo": "nix-topology",
-        "rev": "f49121cbbf4a86c560638ade406d99ee58deb7aa",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oddlama",
-        "repo": "nix-topology",
-        "type": "github"
-      }
-    },
     "nixos-wsl": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -832,7 +803,6 @@
         "nix-homebrew": "nix-homebrew",
         "nix-index-database": "nix-index-database",
         "nix-on-droid": "nix-on-droid",
-        "nix-topology": "nix-topology",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
         "nixpkgs-master": "nixpkgs-master",

@@ -5,6 +5,5 @@ _: {
     ./formatters.nix
     ./mkHost.nix
     ./devshells.nix
-    ./topology.nix
   ];
 }

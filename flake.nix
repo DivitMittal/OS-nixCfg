@@ -59,15 +59,6 @@
         pre-commit-hooks.follows = "pre-commit-hooks";
       };
     };
-    nix-topology = {
-      url = "github:oddlama/nix-topology";
-      inputs = {
-        devshell.follows = "devshell";
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-        pre-commit-hooks.follows = "pre-commit-hooks";
-      };
-    };
 
     ## nix-darwin
     nix-darwin = {
