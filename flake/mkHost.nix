@@ -49,7 +49,7 @@
       // extraSpecialArgs;
     modules =
       [
-        (self + /nix.nix)
+        (self + /conf.nix)
         (self + /modules/common)
         {
           hostSpec = {

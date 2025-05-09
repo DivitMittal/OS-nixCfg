@@ -25,6 +25,7 @@
     ## nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    # nixpkgs-staging.url = "github:nixos/nixpkgs/staging";
     #mynixpkgs.url = "github:DivitMittal/nixpkgs/whatsapp-darwin-bump";
     #nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     #nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
@@ -50,10 +51,27 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    actions-nix = {
+      url = "github:nialov/actions.nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        pre-commit-hooks.follows = "pre-commit-hooks";
+      };
+    };
+    nix-topology = {
+      url = "github:oddlama/nix-topology";
+      inputs = {
+        devshell.follows = "devshell";
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+        pre-commit-hooks.follows = "pre-commit-hooks";
+      };
+    };
 
     ## nix-darwin
     nix-darwin = {
-      url = "github:LnL7/nix-darwin";
+      url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew = {
@@ -71,8 +89,10 @@
 
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/release-24.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
 
     home-manager = {
@@ -97,8 +117,10 @@
     };
     ragenix = {
       url = "github:yaxitech/ragenix";
-      inputs.agenix.follows = "agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        agenix.follows = "agenix";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     OS-nixCfg-secrets = {
       url = "git+ssh://git@github.com/DivitMittal/OS-nixCfg-secrets.git?ref=master";
@@ -120,8 +142,10 @@
     };
     nvchad4nix = {
       url = "github:nix-community/nix4nvchad";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nvchad-starter.follows = "Nvim-Cfg";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nvchad-starter.follows = "Nvim-Cfg";
+      };
     };
 
     ## Firefox
@@ -134,10 +158,12 @@
     brew-nix = {
       url = "github:DivitMittal/brew-nix/cask-variation";
       # url = "path:/Users/div/Projects/Forks/brew-nix";
-      inputs.brew-api.follows = "brew-api";
-      inputs.nix-darwin.follows = "nix-darwin";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        brew-api.follows = "brew-api";
+        nix-darwin.follows = "nix-darwin";
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     brew-api = {
       url = "github:BatteredBunny/brew-api";
