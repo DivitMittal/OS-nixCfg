@@ -36,6 +36,5 @@ in {
       automatic = mkDefault true;
       options = mkDefault "--delete-old";
     };
-
   };
 }
