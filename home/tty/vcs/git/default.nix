@@ -84,7 +84,8 @@
       core = {
         autocrlf = "false";
         eol = "lf";
-        ignorecase = false;
+        ignorecase = true;
+        filemode = false;
         editor = "${config.home.sessionVariables.VISUAL}";
         excludesfile = "${config.xdg.configHome}/git/ignore";
       };
