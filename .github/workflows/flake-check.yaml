@@ -1,4 +1,4 @@
-name: Run flake checks
+name: Flake checks
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

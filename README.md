@@ -28,8 +28,9 @@
         <img src="https://img.shields.io/github/languages/count/DivitMittal/OS-nixCfg?style=for-the-badge&color=purple" alt="repo-language-count"/>
         <br>
         <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/flake-check.yaml/badge.svg" alt="nix-flake-check"/>
-        <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/darwin-build.yaml/badge.svg" alt="nix-darwin-build"/>
         <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/home-build.yaml/badge.svg" alt="nix-home-manager-build"/>
+        <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/darwin-build.yaml/badge.svg" alt="nix-darwin-build"/>
+        <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/nixos-build.yaml/badge.svg" alt="nix-nixos-build"/>
     </div>
     <br>
 </div>

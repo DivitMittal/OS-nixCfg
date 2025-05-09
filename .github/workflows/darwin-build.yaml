@@ -1,4 +1,4 @@
-name: Build Darwin Configuration
+name: Build Configuration Darwin
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

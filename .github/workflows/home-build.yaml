@@ -1,4 +1,4 @@
-name: Build Home Configuration
+name: Build Configuration Home-Manager
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

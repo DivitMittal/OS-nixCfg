@@ -1,4 +1,4 @@
-name: Update Flake Lock File
+name: Update flake.lock
 
 on:
   schedule:

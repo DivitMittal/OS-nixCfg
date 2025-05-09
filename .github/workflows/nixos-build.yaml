@@ -1,4 +1,4 @@
-name: Darwin Configuration Build
+name: Build Configuration NixOS
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
