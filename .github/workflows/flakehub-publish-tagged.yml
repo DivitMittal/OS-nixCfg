@@ -12,16 +12,24 @@ on:
 jobs:
   flakehub-publish:
     runs-on: "ubuntu-latest"
+    environment:
+      name: dev
     permissions:
       id-token: "write"
       contents: "read"
     steps:
-      - uses: "actions/checkout@v4"
+      - uses: "actions/checkout@main"
         with:
           ref: "${{ (inputs.tag != null) && format('refs/tags/{0}', inputs.tag) || '' }}"
+      - name: Set env var
+        run: echo "OS_NIXCFG=$(pwd)" >> "$GITHUB_ENV"
       - uses: "DeterminateSystems/nix-installer-action@main"
         with:
           determinate: true
+      - name: SSH-agent with auth for private repos
+        uses: webfactory/ssh-agent@master
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - uses: "DeterminateSystems/flakehub-push@main"
         with:
           visibility: "public"
