@@ -7,6 +7,7 @@
       bandwhich
       httpie
       dig
+      termscp
       ;
   };
 }
