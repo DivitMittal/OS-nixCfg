@@ -22,10 +22,10 @@ _: {
       #"hammerspoon"
 
       ## WWWW browser
-      {
-        name = "firefox";
-        args = {appdir = "~/Applications/Homebrew Casks";};
-      }
+      # {
+      #   name = "firefox";
+      #   args = {appdir = "~/Applications/Homebrew Casks";};
+      # }
       #"google-chrome"
       #"tor-browser"
 

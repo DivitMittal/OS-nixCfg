@@ -158,11 +158,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1746330894,
-        "narHash": "sha256-ugpzElCNjcbW1XrtYLmK7FroH9kQtpnbbJ38L+i6j0c=",
+        "lastModified": 1746837310,
+        "narHash": "sha256-aCWookdHuiU6CKc+Or2r+VDzdEU5tkDJR67GZlQigis=",
         "owner": "DivitMittal",
         "repo": "brew-nix",
-        "rev": "147016c51cbccbefe4540e15fb252e6b5680b970",
+        "rev": "47f7b6c5b699dfa74ae77c44cfb891932483158d",
         "type": "github"
       },
       "original": {
@@ -597,6 +597,26 @@
         "type": "github"
       }
     },
+    "nixpkgs-firefox-darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1746883874,
+        "narHash": "sha256-9/6yT7v+Lp3w7Ojp3RB+ZGxA9jnQeAKDkxF9j7CQlwA=",
+        "owner": "DivitMittal",
+        "repo": "nixpkgs-firefox-darwin",
+        "rev": "bb399dfdc2357333f56bb0a4051844f35189a8cc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DivitMittal",
+        "repo": "nixpkgs-firefox-darwin",
+        "type": "github"
+      }
+    },
     "nixpkgs-for-bootstrap": {
       "locked": {
         "lastModified": 1720244366,
@@ -805,6 +825,7 @@
         "nix-on-droid": "nix-on-droid",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-firefox-darwin": "nixpkgs-firefox-darwin",
         "nixpkgs-master": "nixpkgs-master",
         "nvchad4nix": "nvchad4nix",
         "pre-commit-hooks": "pre-commit-hooks",

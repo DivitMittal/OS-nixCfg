@@ -39,6 +39,7 @@
         ]
         ++ lib.optionals (class == "home" && lib.strings.hasSuffix "darwin" system) [
           inputs.brew-nix.overlays.default
+          inputs.nixpkgs-firefox-darwin.overlay
         ];
     };
     #pkgs = inputs.nixpkgs.legacyPackages.${system}; # memoized

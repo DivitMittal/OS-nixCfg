@@ -144,11 +144,16 @@
       url = "github:HeitorAugustoLN/betterfox-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-firefox-darwin = {
+      url = "github:DivitMittal/nixpkgs-firefox-darwin";
+      #url = "path:/Users/div/Projects/Forks/nixpkgs-firefox-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     ## Homebrew Casks pkgs overlay
     brew-nix = {
       url = "github:DivitMittal/brew-nix/cask-variation";
-      # url = "path:/Users/div/Projects/Forks/brew-nix";
+      #url = "path:/Users/div/Projects/Forks/brew-nix";
       inputs = {
         brew-api.follows = "brew-api";
         nix-darwin.follows = "nix-darwin";

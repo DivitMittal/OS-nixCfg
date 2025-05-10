@@ -1,7 +1,6 @@
 {
   pkgs,
   hostPlatform,
-  lib,
   ...
 }: let
   inherit (import ./policies.nix) policies;
@@ -28,21 +27,22 @@ in {
       else
         (pkgs.firefox.override {
           extraPrefsFiles = [
-            (builtins.fetchurl {
-              url = "https://raw.githubusercontent.com/MrOtherGuy/fx-autoconfig/master/program/config.js";
-              sha256 = "1mx679fbc4d9x4bnqajqx5a95y1lfasvf90pbqkh9sm3ch945p40";
-            })
+            (fx-autoconfig + /program/config.js)
           ];
         });
     inherit policies;
   };
 
-  ## github:MrOtherGuy/fx-autoconfig
-  home.file."Applications/Homebrew Casks/Firefox.app/Contents/Resources/defaults" = lib.mkIf hostPlatform.isDarwin {
-    source = fx-autoconfig + /program/defaults;
-    recursive = true;
-  };
-  home.file."Applications/Homebrew Casks/Firefox.app/Contents/Resources/config.js" = lib.mkIf hostPlatform.isDarwin {
-    source = fx-autoconfig + /program/config.js;
-  };
+  home.packages = [
+    (pkgs.firefox-bin.override
+      {
+        extraFiles = {
+          "defaults" = {
+            source = fx-autoconfig + /program/defaults;
+            recursive = true;
+          };
+          "config.js".source = fx-autoconfig + /program/config.js;
+        };
+      })
+  ];
 }
