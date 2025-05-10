@@ -21,7 +21,6 @@ in {
       FILE="$OS_NIXCFG/hosts/darwin/$(hostname)/apps/bak/apps_$(date +%b%y).txt"
       env ls /Applications/ 1> $FILE
       env ls "$HOME/Applications/Home Manager Apps/" 1>> $FILE
-      env ls "$HOME/Applications/Homebrew Casks/" 1>> $FILE
     '';
   };
 

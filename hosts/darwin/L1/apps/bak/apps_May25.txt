@@ -34,6 +34,7 @@ djay Pro.app
 iStat Menus.app
 AltTab.app
 Bluesnooze.app
+Firefox.app
 Google Chrome.app
 MuseScore 4.app
 ONLYOFFICE.app
@@ -43,4 +44,3 @@ Spaceman.app
 Visual Studio Code.app
 WezTerm-macos-20240203-110809-5046fc22
 gSwitch.app
-Firefox.app
