@@ -109,7 +109,7 @@
 # cmd + ctrl + alt - space  : open -a "Mission Control"
 
 ############# Launching stuff onto the screen
-hyper - return              : exec wezterm
+hyper - return              : open -a wezterm
 
 #################### Window Manipulation ############################
 ########### Switching modes
