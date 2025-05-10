@@ -171,5 +171,13 @@
       url = "github:rszyma/kanata-tray";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    leetcode-tui = {
+      url = "github:akarsh1995/leetcode-tui";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
+    };
   };
 }

@@ -428,6 +428,30 @@
         "type": "github"
       }
     },
+    "leetcode-tui": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1738678439,
+        "narHash": "sha256-ilzz4ErFU9isA9ss86zvE67cs+ivYYPZoY0erMRu5cc=",
+        "owner": "akarsh1995",
+        "repo": "leetcode-tui",
+        "rev": "53a4b89c135bace07f4002e7646c5fdd06181a61",
+        "type": "github"
+      },
+      "original": {
+        "owner": "akarsh1995",
+        "repo": "leetcode-tui",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -789,7 +813,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": "rust-overlay_2"
       },
       "locked": {
         "lastModified": 1744897914,
@@ -819,6 +843,7 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "kanata-tray": "kanata-tray",
+        "leetcode-tui": "leetcode-tui",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nix-index-database": "nix-index-database",
@@ -835,6 +860,27 @@
       }
     },
     "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "leetcode-tui",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1738463259,
+        "narHash": "sha256-+5QJpiRpkh1ALvKcMEpPyGwkPZfaynsYF4SFdNW5UfQ=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "e2bb8c205a069514535f083742c7da8dfb6e02b9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_2": {
       "inputs": {
         "nixpkgs": [
           "ragenix",
