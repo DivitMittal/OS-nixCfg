@@ -84,10 +84,10 @@ _: {
 
     brews = [
       ## homebrew
-      "gh"
+      #"gh"
 
       ## macOS-specific
-      "cliclick"
+      #"cliclick"
 
       ## Multimedia
       "spotify_player"

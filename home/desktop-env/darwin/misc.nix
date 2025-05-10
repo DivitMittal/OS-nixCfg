@@ -7,5 +7,9 @@
       bluesnooze
       spaceman
       ;
+    inherit
+      (pkgs)
+      cliclick-bin
+      ;
   };
 }

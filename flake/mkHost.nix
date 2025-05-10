@@ -22,6 +22,7 @@
     # NOTE: This approach allows lib.custom to propagate into hm
     # see: https://github.com/nix-community/home-manager/pull/3454
     lib = inputs.nixpkgs.lib.extend (_: _: {custom = import (self + /lib) {inherit (inputs.nixpkgs) lib;};} // inputs.home-manager.lib); # extended
+    # non-memoized pkgs
     pkgs = import inputs.nixpkgs {
       inherit system;
       config = let
@@ -33,11 +34,13 @@
         allowInsecure = mkDefault true;
       };
       overlays =
-        []
+        [
+          (import (self + /pkgs))
+        ]
         ++ lib.optionals (class == "home" && lib.strings.hasSuffix "darwin" system) [
           inputs.brew-nix.overlays.default
         ];
-    }; # not-memoized
+    };
     #pkgs = inputs.nixpkgs.legacyPackages.${system}; # memoized
     specialArgs =
       {
