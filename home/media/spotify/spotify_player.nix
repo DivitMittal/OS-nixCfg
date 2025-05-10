@@ -7,8 +7,16 @@
     enable = true;
     package =
       if hostPlatform.isDarwin
-      then pkgs.hello
-      else pkgs.spotify-player; # homebrew
+      then
+        (pkgs.spotify-player.override {
+          withSixel = false;
+          withNotify = false;
+          withMediaControl = false;
+          withDaemon = true;
+          withImage = true;
+          withAudioBackend = "rodio";
+        })
+      else pkgs.spotify-player;
 
     settings = {
       client_id = "561a7e0b6be94efc8f25374180fbe62a";

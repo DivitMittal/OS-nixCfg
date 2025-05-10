@@ -90,7 +90,7 @@ _: {
       #"cliclick"
 
       ## Multimedia
-      "spotify_player"
+      #"spotify_player"
 
       ## Communication
       #"gomuks" # Matrix protocol
@@ -100,7 +100,8 @@ _: {
     ];
 
     masApps = {
-      "Texty" = 1538996043;
+      ## General
+      #"Texty" = 1538996043;
       #"Tuner" = 1597107926;
       #"PerplexityAI" = 6714467650;
 
