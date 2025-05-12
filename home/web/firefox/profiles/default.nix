@@ -6,7 +6,7 @@
   inputs,
   ...
 }: let
-  profilesDir = "${config.programs.firefox.configPath}" + lib.optionalString hostPlatform.isDarwin "/Profiles";
+  profilesDir = "${config.programs.firefox.configPath}" + lib.strings.optionalString hostPlatform.isDarwin "/Profiles";
   currentProfileDir = "${profilesDir}/custom-default";
   profiles = {
     clean-profile = {

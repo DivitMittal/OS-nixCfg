@@ -4,11 +4,11 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf optionals;
+  inherit (lib) mkIf;
   cfg = config.services.kanata;
   karabinerDaemon = "/Library/Application\\ Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon";
   configFile = mkIf (cfg.config != "") "${pkgs.writeScript "kanata.kbd" "${cfg.config}"}";
-  command = ["${cfg.package}" "--nodelay"] ++ optionals (cfg.config != "") ["--cfg" configFile];
+  command = ["${cfg.package}" "--nodelay"] ++ lib.lists.optionals (cfg.config != "") ["--cfg" configFile];
 in {
   options = let
     inherit (lib) mkOption mkPackageOption mkEnableOption types;

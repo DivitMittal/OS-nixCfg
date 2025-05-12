@@ -37,7 +37,7 @@
         [
           (import (self + /pkgs))
         ]
-        ++ lib.optionals (class == "home" && lib.strings.hasSuffix "darwin" system) [
+        ++ lib.lists.optionals (class == "home" && lib.strings.hasSuffix "darwin" system) [
           inputs.brew-nix.overlays.default
           inputs.nixpkgs-firefox-darwin.overlay
         ];
@@ -46,7 +46,7 @@
     specialArgs =
       {
         inherit self inputs;
-        mypkgs = inputs.mynixpkgs.legacyPackages.${system};
+        #mypkgs = inputs.mynixpkgs.legacyPackages.${system};
         pkgs-master = inputs.nixpkgs-master.legacyPackages.${system};
         inherit (pkgs.stdenvNoCC) hostPlatform;
       }
@@ -62,15 +62,15 @@
           };
         }
       ]
-      ++ lib.optionals (class == "darwin" || class == "nixos" || class == "droid") [
+      ++ lib.lists.optionals (class == "darwin" || class == "nixos" || class == "droid") [
         (self + /modules/hosts/${class})
         (self + /hosts/${class}/common)
         (self + /hosts/${class}/${hostName})
       ]
-      ++ lib.optionals (class == "darwin" || class == "nixos") [
+      ++ lib.lists.optionals (class == "darwin" || class == "nixos") [
         (self + /hosts/common)
       ]
-      ++ lib.optionals (class == "home") [
+      ++ lib.lists.optionals (class == "home") [
         (self + /modules/home)
         (self + /home/common)
       ]
