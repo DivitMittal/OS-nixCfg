@@ -3,3 +3,4 @@ pdfly
 radian
 keymap-drawer
 readmeai
+europie

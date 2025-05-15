@@ -32,6 +32,8 @@
         allowBroken = mkDefault false;
         allowUnsupportedSystem = mkDefault false;
         allowInsecure = mkDefault true;
+        checkMeta = mkDefault false;
+        warnUndeclaredOptions = mkDefault true;
       };
       overlays =
         [

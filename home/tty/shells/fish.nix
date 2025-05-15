@@ -27,6 +27,30 @@
           echo "Please provide a valid input"
         end
       '';
+
+      negate = ''
+        if test (count $argv) -eq 0
+            echo "Error: No argument provided. Please specify a directory or a file."
+            exit 1
+        end
+
+        if test -d $argv[1]
+            set image_files (fd --type f --glob "*.{png,jpg,jpeg}" $argv[1])
+        else if test -f $argv[1]
+            set image_files $argv[1]
+        else
+            echo "Error: Argument must be a directory or a file"
+            exit 1
+        end
+
+        for image_file in $image_files
+            set -l base_name (string replace -r '\.(png|jpe?g)$' ''' "$image_file")
+
+            ${pkgs.imagemagick}/bin/magick -verbose "$image_file" -negate "$base_name.jpg"
+
+            rm $image_file
+        end
+      '';
     };
 
     shellAliases = {
