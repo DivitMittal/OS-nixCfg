@@ -18,7 +18,7 @@
     doc.enable = false;
   };
 
-  fonts.packages = lib.attrsets.attrVals ["nerd-fonts.caskaydia-cove"] pkgs;
+  fonts.packages = [pkgs.nerd-fonts.caskaydia-cove];
 
   environment.systemPackages = lib.attrsets.attrValues {
     inherit

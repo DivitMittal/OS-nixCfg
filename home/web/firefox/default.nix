@@ -11,13 +11,13 @@
     hash = "sha256-V/jY6cV8IQmQ3JvbOspsECPTlhPS6SEfS0j5SWUAcME=";
   };
 in {
+  _module.args = {
+    inherit fx-autoconfig;
+  };
   imports = [
     ./tridactyl
     ./profiles
   ];
-  _module.args = {
-    inherit fx-autoconfig;
-  };
 
   programs.firefox = {
     enable = true;

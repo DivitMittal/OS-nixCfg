@@ -147,9 +147,6 @@
         "brew-api": [
           "brew-api"
         ],
-        "flake-utils": [
-          "flake-utils"
-        ],
         "nix-darwin": [
           "nix-darwin"
         ],
@@ -158,18 +155,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1746837310,
-        "narHash": "sha256-aCWookdHuiU6CKc+Or2r+VDzdEU5tkDJR67GZlQigis=",
-        "owner": "DivitMittal",
-        "repo": "brew-nix",
-        "rev": "47f7b6c5b699dfa74ae77c44cfb891932483158d",
-        "type": "github"
+        "lastModified": 1747224165,
+        "narHash": "sha256-43w92NEh4wjqnlEhBiOsSupELMKN2aa0SP8DW7zyFzY=",
+        "path": "/Users/div/Projects/Forks/brew-nix",
+        "type": "path"
       },
       "original": {
-        "owner": "DivitMittal",
-        "ref": "cask-variation",
-        "repo": "brew-nix",
-        "type": "github"
+        "path": "/Users/div/Projects/Forks/brew-nix",
+        "type": "path"
       }
     },
     "brew-src": {
@@ -687,22 +680,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-master": {
-      "locked": {
-        "lastModified": 1746791479,
-        "narHash": "sha256-ux8R/1ybDUEoacPk8OxG82Ir6Rlh7wXctxnSPQKwo28=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "1a5f51a754a3bd31ca46304024e7b0d830f5f098",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nmd": {
       "flake": false,
       "locked": {
@@ -851,7 +828,6 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
         "nixpkgs-firefox-darwin": "nixpkgs-firefox-darwin",
-        "nixpkgs-master": "nixpkgs-master",
         "nvchad4nix": "nvchad4nix",
         "pre-commit-hooks": "pre-commit-hooks",
         "ragenix": "ragenix",

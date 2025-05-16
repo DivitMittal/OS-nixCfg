@@ -5,30 +5,28 @@
     flake-parts,
     ...
   } @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} (
-      {...}: {
-        systems = import inputs.systems;
+    flake-parts.lib.mkFlake {inherit inputs;} (_: {
+      systems = import inputs.systems;
 
-        _module.args = {
-          inherit self;
-        };
+      _module.args = {
+        inherit self;
+      };
 
-        imports = [
-          ./flake
-          ./home
-          ./hosts
-        ];
-      }
-    );
+      imports = [
+        ./flake
+        ./home
+        ./hosts
+      ];
+    });
 
   inputs = {
     ## nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
-    # nixpkgs-staging.url = "github:nixos/nixpkgs/staging";
-    #mynixpkgs.url = "github:DivitMittal/nixpkgs/whatsapp-darwin-bump";
+    #nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    #nixpkgs-staging.url = "github:nixos/nixpkgs/staging";
     #nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     #nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
+    #mynixpkgs.url = "github:DivitMittal/nixpkgs/whatsapp-darwin-bump";
 
     ## flake helpers
     systems.url = "github:nix-systems/default";
@@ -152,12 +150,12 @@
 
     ## Homebrew Casks pkgs overlay
     brew-nix = {
-      url = "github:DivitMittal/brew-nix/cask-variation";
-      #url = "path:/Users/div/Projects/Forks/brew-nix";
+      #url = "github:DivitMittal/brew-nix/cask-variation";
+      #url = "github:BatteredBunny/brew-nix";
+      url = "path:/Users/div/Projects/Forks/brew-nix";
       inputs = {
         brew-api.follows = "brew-api";
         nix-darwin.follows = "nix-darwin";
-        flake-utils.follows = "flake-utils";
         nixpkgs.follows = "nixpkgs";
       };
     };

@@ -179,13 +179,13 @@
     };
   };
 in {
+  _module.args = {
+    inherit currentProfileDir;
+  };
   imports = [
     inputs.betterfox.homeManagerModules.betterfox
     ./chrome
   ];
-  _module.args = {
-    inherit currentProfileDir;
-  };
   programs.firefox.profiles = profiles;
   programs.firefox.betterfox.enable = true;
 }

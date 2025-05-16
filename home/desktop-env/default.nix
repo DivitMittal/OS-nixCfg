@@ -8,7 +8,7 @@
       ./emulators
       ./misc.nix
     ]
-    ++ lib.lists.optionals hostPlatform.isDarwin [
+    ++ lib.lists.optionals (hostPlatform.isDarwin) [
       ./darwin
     ];
 }

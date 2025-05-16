@@ -10,10 +10,10 @@
     hash = "sha256-HeS4M+AQEghl9DxoUAiYpEkQ9Ar47KJjrdWMJXHUA/A=";
   };
 in {
-  imports = lib.custom.scanPaths ./.;
   _module.args = {
     inherit TLTR;
   };
+  imports = lib.custom.scanPaths ./.;
 
   home.packages = [pkgs.kanata-with-cmd];
 
