@@ -26,7 +26,7 @@
     font = "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/CaskaydiaCoveNerdFontMono-Regular.ttf";
   };
 
-  environment.packages = builtins.attrValues {
+  environment.packages = lib.attrsets.attrValues {
     inherit
       (pkgs)
       ## GNU

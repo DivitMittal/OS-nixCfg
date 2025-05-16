@@ -1,10 +1,14 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [jq];
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  environment.systemPackages = lib.attrsets.attrVals ["jq"] pkgs;
 
   services.skhd = {
     enable = true;
     package = pkgs.skhd;
 
-    skhdConfig = builtins.readFile ./skhdrc;
+    skhdConfig = lib.strings.readFile ./skhdrc;
   };
 }

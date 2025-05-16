@@ -174,8 +174,8 @@
         enable = true;
         enableAllSections = true;
       };
-      userContent = builtins.readFile ./chrome/userContent.css;
-      userChrome = builtins.readFile ./chrome/userChrome.css;
+      userContent = lib.strings.readFile ./chrome/userContent.css;
+      userChrome = lib.strings.readFile ./chrome/userChrome.css;
     };
   };
 in {

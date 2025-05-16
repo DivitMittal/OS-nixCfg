@@ -56,7 +56,7 @@ in {
 
   config = mkIf cfg.enable {
     launchd.daemons.kanata = {
-      script = "sudo --preserve-env " + "${builtins.concatStringsSep " " command}";
+      script = "sudo --preserve-env " + "${lib.strings.concatStringsSep " " command}";
       serviceConfig = {
         inherit (cfg) environment;
         StandardOutPath = /tmp/org.nixos.kanata.out.log;
@@ -83,11 +83,11 @@ in {
     };
 
     # security.sudo.extraConfig = ''
-    #   ALL ALL=(ALL) NOPASSWD: ${builtins.concatStringsSep " " command}
+    #   ALL ALL=(ALL) NOPASSWD: ${lib.strings.concatStringsSep " " command}
     # '';
     environment.etc."sudoers.d/kanata".source = pkgs.runCommand "sudoers-kanata" {} ''
       cat <<EOF >"$out"
-      ALL ALL=(ALL) NOPASSWD: ${builtins.concatStringsSep " " command}
+      ALL ALL=(ALL) NOPASSWD: ${lib.strings.concatStringsSep " " command}
       ALL ALL=(ALL) NOPASSWD: ${karabinerDaemon}
       EOF
     '';

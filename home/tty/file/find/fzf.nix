@@ -1,9 +1,10 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: let
-  eza_opts = builtins.concatStringsSep " " config.programs.eza.extraOptions;
+  eza_opts = lib.strings.concatStringsSep " " config.programs.eza.extraOptions;
   fd_opts = "--hidden";
   delta_opts = "--paging=never";
 in {

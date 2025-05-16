@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   home = {
@@ -15,7 +16,7 @@
   home.preferXdgDirectories = true;
   home.enableNixpkgsReleaseCheck = true;
 
-  home.packages = builtins.attrValues {
+  home.packages = lib.attrsets.attrValues {
     my-hello = pkgs.writeShellScriptBin "my-hello" ''echo "Hello, ${config.home.username}!"'';
   };
   home.extraOutputsToInstall = ["info"]; # "doc" "devdoc"

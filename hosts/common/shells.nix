@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  environment.shells = builtins.attrValues {
+  environment.shells = lib.attrsets.attrValues {
     inherit
       (pkgs)
       bash
@@ -49,7 +49,7 @@
 
         disable log                                                       # avoid conflict with /usr/bin/log
         unalias run-help                                                  # Remove the default of run-help being aliased to man
-        autoload run-help                                                 # Use zsh's run-help, which will display information for zsh builtins.
+        autoload run-help                                                 # Use zsh's run-help, which will display information for zsh builtin
 
         # Default key bindings
         [[ -n ''${key[Delete]} ]] && bindkey "''${key[Delete]}" delete-char

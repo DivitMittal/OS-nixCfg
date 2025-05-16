@@ -6,7 +6,7 @@
 }: {
   imports = lib.custom.scanPaths ./.;
 
-  home.packages = builtins.attrValues {
+  home.packages = lib.attrsets.attrValues {
     inherit
       (pkgs)
       age

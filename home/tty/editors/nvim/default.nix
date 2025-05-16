@@ -1,11 +1,10 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
-  imports = [
-    inputs.nvchad4nix.homeManagerModules.nvchad
-  ];
+  imports = [inputs.nvchad4nix.homeManagerModules.nvchad];
   # programs.neovim = {
   #   enable = true;
   #   package = pkgs.neovim-unwrapped;
@@ -14,7 +13,7 @@
   # };
   programs.nvchad = {
     enable = true;
-    extraPackages = builtins.attrValues {
+    extraPackages = lib.attrsets.attrValues {
       ## General
       inherit (pkgs.nodePackages) prettier;
       inherit (pkgs) vscode-langservers-extracted;

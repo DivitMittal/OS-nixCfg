@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   sshdTmpDirectory = "${config.user.home}/.sshd-tmp";
@@ -8,7 +9,7 @@
   pathToPubKey = "${sshdDirectory}/ssh_host_rsa_key.pub";
   port = 8022;
 in {
-  environment.packages = builtins.attrValues {
+  environment.packages = lib.attrsets.attrValues {
     sshd = pkgs.writeScriptBin "sshd-start" ''
       #!${pkgs.runtimeShell}
 

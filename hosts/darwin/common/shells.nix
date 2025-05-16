@@ -5,11 +5,11 @@
 }: let
   inherit (lib) mkAfter;
 in {
-  # environment.shells = with pkgs; [ ksh tcsh ];
+  # environment.shells = lib.attrsets.attrVals [ "ksh" "tcsh" ] pkgs;
 
   environment.shellAliases.cleanup-DS = "sudo ${pkgs.findutils}/bin/find . -type f -name '*.DS_Store' -ls -delete";
 
-  environment.systemPackages = builtins.attrValues {
+  environment.systemPackages = lib.attrsets.attrValues {
     empty-trash = pkgs.writeShellScriptBin "empty-trash" ''
       sudo rm -rfv /Volumes/*/.Trashes
       sudo rm -rfv ~/.Trash

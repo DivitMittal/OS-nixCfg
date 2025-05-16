@@ -18,9 +18,9 @@
     doc.enable = false;
   };
 
-  fonts.packages = with pkgs; [nerd-fonts.caskaydia-cove];
+  fonts.packages = lib.attrsets.attrVals ["nerd-fonts.caskaydia-cove"] pkgs;
 
-  environment.systemPackages = builtins.attrValues {
+  environment.systemPackages = lib.attrsets.attrValues {
     inherit
       (pkgs)
       ## GNU

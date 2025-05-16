@@ -1,9 +1,10 @@
 {
   pkgs,
   self,
+  lib,
   ...
 }: {
-  environment.packages = builtins.attrValues {
+  environment.packages = lib.attrsets.attrValues {
     inherit
       (pkgs)
       dash

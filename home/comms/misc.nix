@@ -1,5 +1,5 @@
-_: {
-  home.packages = builtins.attrValues {
+{lib, ...}: {
+  home.packages = lib.attrsets.attrValues {
     # inherit(pkgs)
     #   ## Discord
     #   #discord #discordo

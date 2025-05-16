@@ -1,9 +1,10 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
-  home.packages = builtins.attrValues {
+  home.packages = lib.attrsets.attrValues {
     inherit
       (pkgs)
       transcrypt

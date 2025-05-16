@@ -1,4 +1,4 @@
-# Custom shell for bootstrapping on new hosts, modifying nix-config
+# Custom shell for bootstrapping on new hosts/modifying nix-config
 {
   system ? builtins.currentSystem,
   pkgs ? let
@@ -10,14 +10,20 @@
   in
     import nixpkgs {
       inherit system;
-      overlays = [];
+      config = {
+        allowUnfree = true;
+        allowBroken = false;
+        allowUnsupportedSystem = false;
+        allowInsecure = true;
+      };
     },
+  lib ? pkgs.lib,
   ...
 }: {
   default = pkgs.mkShell {
     NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
 
-    nativeBuildInputs = builtins.attrValues {
+    nativeBuildInputs = lib.attrsets.attrValues {
       inherit
         (pkgs)
         nix

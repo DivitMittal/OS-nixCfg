@@ -1,4 +1,4 @@
-_: {
+{lib, ...}: {
   # programs.awscli = {
   #   enable = true;
   #   package = pkgs.awscli2;
@@ -11,7 +11,7 @@ _: {
   #   };
   # };
 
-  home.packages = builtins.attrValues {
+  home.packages = lib.attrsets.attrValues {
     ## cloud-platforms-cli
     #gcp = pkgs.google-cloud-sdk;
   };

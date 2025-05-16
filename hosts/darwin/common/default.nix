@@ -22,7 +22,7 @@
     computerName = "${config.networking.hostName}";
   };
 
-  environment.systemPackages = builtins.attrValues {
+  environment.systemPackages = lib.attrsets.attrValues {
     inherit
       (pkgs)
       blueutil # bluetooth cli

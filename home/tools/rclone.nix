@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: let
   common = ''
@@ -74,7 +75,7 @@
       --no-unicode-normalization=false'';
   remotesPath = "${config.home.homeDirectory}/Remotes";
 in {
-  home.packages = builtins.attrValues {
+  home.packages = lib.attrsets.attrValues {
     inherit
       (pkgs)
       rclone
