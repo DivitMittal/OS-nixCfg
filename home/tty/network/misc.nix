@@ -1,4 +1,21 @@
-_: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  home.packages = lib.attrsets.attrValues {
+    inherit
+      (pkgs)
+      nmap
+      speedtest-go
+      bandwhich
+      httpie
+      termscp
+      gping
+      dog dig
+      ;
+  };
+
   programs.aria2 = {
     enable = true;
 
