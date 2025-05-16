@@ -17,16 +17,15 @@
       home = inputs.home-manager.lib.homeManagerConfiguration;
     };
     systemFunc = configGenerator.${class};
-    #lib = inputs.nixpkgs.lib; # unextended
-    # ========== Extend lib with lib.custom ==========
-    # NOTE: This approach allows lib.custom to propagate into hm
-    # see: https://github.com/nix-community/home-manager/pull/3454
-    lib = inputs.nixpkgs.lib.extend (_: _: {custom = import (self + /lib) {inherit (inputs.nixpkgs) lib;};} // inputs.home-manager.lib); # extended
-    # non-memoized pkgs
+    ## ====== Unextended lib ======
+    _lib = inputs.nixpkgs.lib;
+    ## ====== pkgs ======
+    #pkgs = inputs.nixpkgs.legacyPackages.${system}; # memoized
+    ## non-memoized pkgs
     pkgs = import inputs.nixpkgs {
       inherit system;
       config = let
-        inherit (lib) mkDefault;
+        inherit (_lib) mkDefault;
       in {
         allowUnfree = mkDefault true;
         allowBroken = mkDefault false;
@@ -37,19 +36,22 @@
       };
       overlays =
         [
-          (import (self + /pkgs))
+          (import (self + /pkgs/overlay.nix))
         ]
-        ++ lib.lists.optionals (class == "home" && lib.strings.hasSuffix "darwin" system) [
+        ++ _lib.lists.optionals (class == "home" && _lib.strings.hasSuffix "darwin" system) [
           inputs.brew-nix.overlays.default
           inputs.nixpkgs-firefox-darwin.overlay
         ];
     };
-    #pkgs = inputs.nixpkgs.legacyPackages.${system}; # memoized
+    ## ====== Extended lib ======
+    lib = _lib.extend (_final: _prev:
+      {
+        custom = import (self + /lib) {lib = _lib;};
+      }
+      // (_lib.attrsets.optionalAttrs (class == "home") inputs.home-manager.lib));
     specialArgs =
       {
         inherit self inputs;
-        #mypkgs = inputs.mynixpkgs.legacyPackages.${system};
-        pkgs-master = inputs.nixpkgs-master.legacyPackages.${system};
         inherit (pkgs.stdenvNoCC) hostPlatform;
       }
       // extraSpecialArgs;
@@ -64,33 +66,37 @@
           };
         }
       ]
-      ++ lib.lists.optionals (class == "darwin" || class == "nixos" || class == "droid") [
+      ++ (lib.lists.optionals (class == "darwin" || class == "nixos" || class == "droid") [
         (self + /modules/hosts/${class})
         (self + /hosts/${class}/common)
         (self + /hosts/${class}/${hostName})
-      ]
-      ++ lib.lists.optionals (class == "darwin" || class == "nixos") [
+      ])
+      ++ (lib.lists.optionals (class == "darwin" || class == "nixos") [
         (self + /hosts/common)
-      ]
-      ++ lib.lists.optionals (class == "home") [
+      ])
+      ++ (lib.lists.optionals (class == "home") [
         (self + /modules/home)
         (self + /home/common)
-      ]
+      ])
       ++ additionalModules;
   in
-    systemFunc (
+    systemFunc (lib.attrsets.mergeAttrsList [
       {
         inherit pkgs;
         inherit lib;
         inherit modules;
       }
-      // (lib.attrsets.optionalAttrs (class == "darwin" || class == "nixos") {inherit specialArgs;})
-      // (lib.attrsets.optionalAttrs (class == "home") {extraSpecialArgs = specialArgs;})
-      // (lib.attrsets.optionalAttrs (class == "droid") {
+      (lib.attrsets.optionalAttrs (class == "darwin" || class == "nixos") {
+        inherit specialArgs;
+      })
+      (lib.attrsets.optionalAttrs (class == "home") {
+        extraSpecialArgs = specialArgs;
+      })
+      (lib.attrsets.optionalAttrs (class == "droid") {
         extraSpecialArgs = specialArgs;
         home-manager-path = inputs.home-manager.outPath;
       })
-    );
+    ]);
 in {
   _module.args = {
     inherit mkHost;
