@@ -2,21 +2,14 @@
   log.enabled = false;
 
   manager = {
-    ratio = [
-      1
-      3
-      3
-    ];
+    ratio = [1 3 3];
     linemode = "permissions";
     show_hidden = true;
     show_symlink = false;
     sort_by = "alphabetical";
     sort_dir_first = true;
     sort_reverse = false;
-    mouse_events = [
-      "click"
-      "scroll"
-    ];
+    mouse_events = ["click" "scroll"];
     sort_sensitive = false;
   };
 
@@ -292,12 +285,10 @@
         mime = "*/x-wine-extension-ini";
         run = "code";
       }
-
       {
         mime = "application/json";
         run = "json";
       }
-
       {
         mime = "image/vnd.djvu";
         run = "noop";
@@ -314,7 +305,6 @@
         mime = "application/pdf";
         run = "pdf";
       }
-
       {
         mime = "application/zip";
         run = "archive";
@@ -347,7 +337,6 @@
         mime = "application/xz";
         run = "archive";
       }
-
       {
         mime = "*";
         run = "hexyl";
@@ -379,7 +368,6 @@
         mime = "application/x-xz";
         run = "ouch";
       }
-
       {
         mime = "*.csv";
         run = "rich-preview";
@@ -403,109 +391,49 @@
   };
 
   select = {
-    open_offset = [
-      0
-      1
-      50
-      7
-    ];
+    open_offset = [0 1 50 7];
     open_origin = "hovered";
     open_title = "Open with:";
   };
 
   input = {
-    cd_offset = [
-      0
-      2
-      50
-      3
-    ];
+    cd_offset = [0 2 50 3];
     cd_origin = "top-center";
     cd_title = "Change directory:";
-    create_offset = [
-      0
-      2
-      50
-      3
-    ];
+    create_offset = [0 2 50 3];
     create_origin = "top-center";
     create_title = [
       "Create:"
       "Create (dir):"
     ];
-    trash_offset = [
-      0
-      2
-      50
-      3
-    ];
+    trash_offset = [0 2 50 3];
     trash_origin = "top-center";
     trash_title = "move {n} selected file{s} to trash? (y/n)";
-    delete_offset = [
-      0
-      2
-      50
-      3
-    ];
+    delete_offset = [0 2 50 3];
     delete_origin = "top-center";
     delete_title = "Delete {n} selected file{s} permanently? (y/N)";
-    filter_offset = [
-      0
-      2
-      50
-      3
-    ];
+    filter_offset = [0 2 50 3];
     filter_origin = "top-center";
     filter_title = "Filter:";
-    find_offset = [
-      0
-      2
-      50
-      3
-    ];
+    find_offset = [0 2 50 3];
     find_origin = "top-center";
     find_title = [
       "Find next:"
       "Find previous:"
     ];
-    overwrite_offset = [
-      0
-      2
-      50
-      3
-    ];
+    overwrite_offset = [0 2 50 3];
     overwrite_origin = "top-center";
     overwrite_title = "Overwrite an existing file? (y/N)";
-    quit_offset = [
-      0
-      2
-      50
-      3
-    ];
+    quit_offset = [0 2 50 3];
     quit_origin = "top-center";
     quit_title = "{n} task{s} running, sure to quit? (y/N)";
-    rename_offset = [
-      0
-      1
-      50
-      3
-    ];
+    rename_offset = [0 1 50 3];
     rename_origin = "hovered";
     rename_title = "Rename:";
-    search_offset = [
-      0
-      2
-      50
-      3
-    ];
+    search_offset = [0 2 50 3];
     search_origin = "top-center";
     search_title = "Search via {n}:";
-    shell_offset = [
-      0
-      2
-      50
-      3
-    ];
+    shell_offset = [0 2 50 3];
     shell_origin = "top-center";
     shell_title = [
       "Shell:"
@@ -523,22 +451,14 @@
     max_height = 2000;
     max_width = 2000;
     sixel_fraction = 15;
-    ueberzug_offset = [
-      0
-      0
-      0
-      0
-    ];
+    ueberzug_offset = [0 0 0 0];
     ueberzug_scale = 1;
   };
 
   tasks = {
     bizarre_retry = 5;
     image_alloc = 536870912;
-    image_bound = [
-      0
-      0
-    ];
+    image_bound = [0 0];
     macro_workers = 25;
     micro_workers = 10;
     suppress_preload = false;
