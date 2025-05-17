@@ -1,5 +1,6 @@
 {
   inputs,
+  outputs,
   self,
   ...
 }: let
@@ -36,7 +37,7 @@
       };
       overlays =
         [
-          (import (self + /pkgs/overlay.nix))
+          outputs.overlays.default
         ]
         ++ _lib.lists.optionals (class == "home" && _lib.strings.hasSuffix "darwin" system) [
           inputs.brew-nix.overlays.default
@@ -46,7 +47,7 @@
     ## ====== Extended lib ======
     lib = _lib.extend (_final: _prev:
       {
-        custom = import (self + /lib) {lib = _lib;};
+        custom = import ../lib {lib = _lib;};
       }
       // (_lib.attrsets.optionalAttrs (class == "home") inputs.home-manager.lib));
     specialArgs =
@@ -57,8 +58,8 @@
       // extraSpecialArgs;
     modules =
       [
-        (self + /conf.nix)
-        (self + /modules/common)
+        ../conf.nix
+        inputs.OS-nixCfg-secrets.modules.default
         {
           hostSpec = {
             inherit (inputs.OS-nixCfg-secrets.user) username userFullName handle email;
@@ -66,18 +67,20 @@
           };
         }
       ]
-      ++ (lib.lists.optionals (class == "darwin" || class == "nixos" || class == "droid") [
-        (self + /modules/hosts/${class})
-        (self + /hosts/${class}/common)
-        (self + /hosts/${class}/${hostName})
-      ])
-      ++ (lib.lists.optionals (class == "darwin" || class == "nixos") [
-        (self + /hosts/common)
-      ])
-      ++ (lib.lists.optionals (class == "home") [
-        (self + /modules/home)
-        (self + /home/common)
-      ])
+      ++ lib.lists.optionals (class == "darwin" || class == "nixos" || class == "droid") [
+        ../hosts/${class}/common
+        ../hosts/${class}/${hostName}
+      ]
+      ++ lib.lists.optionals (class == "darwin" || class == "nixos") [
+        ../hosts/common
+      ]
+      ++ lib.lists.optionals (class == "home") [
+        outputs.homeManagerModules.default
+        ../home/common
+      ]
+      ++ lib.lists.optionals (class == "darwin") [
+        outputs.darwinModules.default
+      ]
       ++ additionalModules;
   in
     systemFunc (lib.attrsets.mergeAttrsList [
