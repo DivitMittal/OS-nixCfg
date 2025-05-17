@@ -12,7 +12,8 @@
       httpie
       termscp
       gping
-      dog dig
+      dog
+      dig
       ;
   };
 

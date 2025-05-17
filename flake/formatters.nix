@@ -17,5 +17,8 @@
     };
 
     projectRootFile = "flake.nix";
+    excludes = [
+      ".github/*"
+    ];
   };
 }

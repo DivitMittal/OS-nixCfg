@@ -11,8 +11,8 @@ in {
 
   nix = {
     enable = true;
-    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;  # This will add each flake input as a registry
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;  # This will each flake inputs to the system's NIX_PATH env var
+    registry = lib.mapAttrs (_: value: {flake = value;}) inputs; # This will add each flake input as a registry
+    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry; # This will each flake inputs to the system's NIX_PATH env var
 
     settings = {
       connect-timeout = 5;

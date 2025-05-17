@@ -6,7 +6,7 @@
     }
   );
 
-  master-pkgs = final: prev: {
+  master-pkgs = _final: _prev: {
     master = import inputs.pkgs-master {
       config = {
         allowUnfree = true;
