@@ -10,19 +10,22 @@
 
       _module.args = {
         inherit self;
+        inherit (self) outputs;
       };
 
       imports = [
         ./flake
-        ./home
-        ./hosts
+        ./modules/flakeModule.nix
+        ./overlays/flakeModule.nix
+        ./home/flakeModule.nix
+        ./hosts/flakeModule.nix
       ];
     });
 
   inputs = {
     ## nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    #nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
     #nixpkgs-staging.url = "github:nixos/nixpkgs/staging";
     #nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     #nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
@@ -120,6 +123,8 @@
         devshell.follows = "devshell";
         agenix.follows = "agenix";
         ragenix.follows = "ragenix";
+        actions-nix.follows = "actions-nix";
+        pre-commit-hooks.follows = "pre-commit-hooks";
       };
     };
 
