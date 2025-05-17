@@ -2,6 +2,13 @@
   imports = [inputs.treefmt-nix.flakeModule];
 
   perSystem.treefmt = {
+    projectRootFile = "flake.nix";
+    settings.global = {
+      excludes = [
+        ".github/*"
+      ];
+    };
+
     flakeCheck = false; # handled via pre-commit
 
     programs = {
@@ -15,10 +22,5 @@
       ## Shell-scripts
       shfmt.enable = true;
     };
-
-    projectRootFile = "flake.nix";
-    excludes = [
-      ".github/*"
-    ];
   };
 }
