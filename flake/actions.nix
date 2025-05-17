@@ -111,7 +111,6 @@
         jobs.checking-flake = {
           runs-on = "ubuntu-latest";
           inherit environment;
-          permissions.contents = "write";
           steps =
             common-actions
             ++ [
