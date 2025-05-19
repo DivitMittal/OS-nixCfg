@@ -9,5 +9,9 @@
       if hostPlatform.isDarwin
       then pkgs.brewCasks.obsidian
       else pkgs.obsidian;
+    onenote =
+      if hostPlatform.isDarwin
+      then pkgs.brewCasks.microsoft-onenote
+      else null;
   };
 }

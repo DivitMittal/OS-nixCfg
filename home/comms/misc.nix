@@ -1,4 +1,9 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  hostPlatform,
+  ...
+}: {
   home.packages = lib.attrsets.attrValues {
     # inherit(pkgs)
     #   ## Discord
@@ -12,9 +17,9 @@
     #   #telegram-desktop
     #   ;
 
-    # whatsapp =
-    #   if hostPlatform.isDarwin
-    #   then pkgs.brewCasks.whatsapp
-    #   else null;
+    whatsapp =
+      if hostPlatform.isDarwin
+      then pkgs.brewCasks.whatsapp
+      else null;
   };
 }

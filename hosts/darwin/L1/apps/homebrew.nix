@@ -22,10 +22,10 @@ _: {
       #"hammerspoon"
 
       ## WWWW browser
-      # {
-      #   name = "firefox";
-      #   args = {appdir = "~/Applications/Homebrew Casks";};
-      # }
+      #{
+      #  name = "firefox";
+      #  args = {appdir = "~/Applications/Homebrew Casks";};
+      #}
       #"google-chrome"
       #"tor-browser"
 
@@ -39,17 +39,17 @@ _: {
       #"rig" #"rstudio"
 
       ## Microsoft
-      # "onlyoffice"
-      "microsoft-auto-update"
-      "microsoft-onenote"
-      "microsoft-teams"
-      "microsoft-outlook" #"microsoft-excel"
+      #"onlyoffice"
+      #"microsoft-auto-update"
+      #"microsoft-onenote"
+      #"microsoft-teams"
+      #"microsoft-outlook" #"microsoft-excel"
       #"onedrive"
       #"crystalfetch"
       #"libreoffice"
 
       ## Communication
-      "whatsapp"
+      #"whatsapp"
       #"thunderbird"
       #"simplex"
       #"zoom"
@@ -106,9 +106,9 @@ _: {
       #"PerplexityAI" = 6714467650;
 
       ## Safari Extensions
-      "Ghostery" = 6504861501;
-      "SuperAgent" = 1568262835;
-      "Vimkey" = 1585682577;
+      #"Ghostery" = 6504861501;
+      #"SuperAgent" = 1568262835;
+      #"Vimkey" = 1585682577;
     };
   };
 }
