@@ -3,11 +3,11 @@
     "Nvim-Cfg": {
       "flake": false,
       "locked": {
-        "lastModified": 1747288509,
-        "narHash": "sha256-+GhRLX1KbWGpg9iIe2np96BtH9IYyb+tXbkiNkYigEY=",
+        "lastModified": 1747750173,
+        "narHash": "sha256-YmwjcEfGWIwPw7Jb+jf5kCk4MDDM6V8/N+ioDHZ8dHQ=",
         "owner": "DivitMittal",
         "repo": "Nvim-Cfg",
-        "rev": "361adcff47751fa3ddf7304ed2a478b2228b9073",
+        "rev": "90c12c49e7757322dbdb610a6a48a431ff701199",
         "type": "github"
       },
       "original": {
@@ -43,11 +43,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1747739152,
-        "narHash": "sha256-v+3Ph5HsRHHb8hajaaY3YdCDbSX8HdQizcZa+cgGvK0=",
+        "lastModified": 1747749203,
+        "narHash": "sha256-r1TwQhG2kK7AwAwC3zYvGrHZEqxrHvLFUVUJ5zfiQQA=",
         "ref": "master",
-        "rev": "4a93dc712f2aff5de8a0b234433c2744f8e90e35",
-        "revCount": 28,
+        "rev": "ed87b28c9b10acccaabc2bc1857629ae6f8ebd01",
+        "revCount": 29,
         "type": "git",
         "url": "ssh://git@github.com/DivitMittal/OS-nixCfg-secrets.git"
       },
@@ -161,11 +161,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1747759897,
-        "narHash": "sha256-ezXwyNFR8RbbxsgSU0gAbkycU/AompuJ1ReytxXpX/E=",
+        "lastModified": 1747763269,
+        "narHash": "sha256-oMmWRZtUGnE744hEtXOzFXSc+uCpm0V/NrMqHlMOWdQ=",
         "owner": "DivitMittal",
         "repo": "brew-nix",
-        "rev": "b1a0f32f2e271938128a69d34e48a0fbdc00588d",
+        "rev": "8d96519a0454d39f30a837fa0313190ca8f524e3",
         "type": "github"
       },
       "original": {
@@ -647,11 +647,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1747685642,
-        "narHash": "sha256-SbKrwO0ceCuodSYAS9JYceSFVaE07RgzwIQ6G5Jr2mw=",
+        "lastModified": 1747760184,
+        "narHash": "sha256-o+We0OzAGGtO4ucnBvVIgl+rsPKGGLYu5TqYfpvnTKw=",
         "owner": "DivitMittal",
         "repo": "nixpkgs-firefox-darwin",
-        "rev": "fe4bfa7e5f010cb3bc0ff6a72d009a2af44539bc",
+        "rev": "b73739cff2205b6f37509e824ba33ceff8bd8f28",
         "type": "github"
       },
       "original": {
