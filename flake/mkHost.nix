@@ -58,8 +58,10 @@
       // extraSpecialArgs;
     modules =
       [
+        ## ====== nix.conf ======
         ../conf.nix
-        inputs.OS-nixCfg-secrets.modules.default
+        ## ===== OS-nixCfg-secrets ======
+        inputs.OS-nixCfg-secrets.modules.hostSpec
         {
           hostSpec = {
             inherit (inputs.OS-nixCfg-secrets.user) username userFullName handle email;
@@ -75,11 +77,11 @@
         ../hosts/common
       ]
       ++ lib.lists.optionals (class == "home") [
-        outputs.homeManagerModules.default
+        outputs.homeManagerModules.all
         ../home/common
       ]
       ++ lib.lists.optionals (class == "darwin") [
-        outputs.darwinModules.default
+        outputs.darwinModules.all
       ]
       ++ additionalModules;
   in
