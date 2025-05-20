@@ -6,7 +6,7 @@
     ...
   } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} (_: {
-      systems = import inputs.systems;
+      systems = builtins.import inputs.systems;
 
       _module.args = {
         inherit self;
@@ -26,10 +26,9 @@
     ## nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
-    #nixpkgs-staging.url = "github:nixos/nixpkgs/staging";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
     #nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-    #nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
-    #mynixpkgs.url = "github:DivitMittal/nixpkgs/whatsapp-darwin-bump";
+    #nixpkgs-staging.url = "github:nixos/nixpkgs/staging";
 
     ## flake helpers
     systems.url = "github:nix-systems/default";
@@ -148,15 +147,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-firefox-darwin = {
-      url = "github:DivitMittal/nixpkgs-firefox-darwin";
+      url = "github:DivitMittal/nixpkgs-firefox-darwin/extra-files";
       #url = "path:/Users/div/Projects/Forks/nixpkgs-firefox-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ## Homebrew Casks pkgs overlay
     brew-nix = {
-      #url = "github:DivitMittal/brew-nix/cask-variation";
-      url = "github:BatteredBunny/brew-nix";
+      url = "github:DivitMittal/brew-nix/cask-variation";
+      #url = "github:BatteredBunny/brew-nix";
       #url = "path:/Users/div/Projects/Forks/brew-nix";
       inputs = {
         brew-api.follows = "brew-api";
