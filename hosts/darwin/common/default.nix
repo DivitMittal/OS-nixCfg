@@ -9,6 +9,7 @@
   imports = lib.custom.scanPaths ./.;
 
   environment.darwinConfig = self + "/hosts/darwin/${config.networking.hostName}/default.nix";
+  system.primaryUser = "${config.hostSpec.username}";
 
   networking = {
     knownNetworkServices = ["Wi-Fi"];
@@ -32,10 +33,6 @@
 
   programs.man.enable = true;
   programs.info.enable = true;
-
-  system.activationScripts.postUserActivation.text = lib.mkAfter ''
-    /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-  '';
 
   system.checks = {
     verifyBuildUsers = true;
