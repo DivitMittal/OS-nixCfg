@@ -3,9 +3,7 @@
   config,
   ...
 }: {
-  imports = [
-    ./ancillary.nix
-  ];
+  imports = [./ancillary.nix];
 
   home.sessionVariables.GIT_HOSTING = "git@github.com:${config.programs.git.userName}";
 
@@ -52,8 +50,8 @@
     userName = config.hostSpec.userFullName;
     userEmail = config.hostSpec.email.dev;
 
-    attributes = import ./attributes.nix;
-    ignores = import ./../common/ignore.nix;
+    attributes = builtins.import ./attributes.nix;
+    ignores = builtins.import ./../common/ignore.nix;
 
     aliases = {
       last = "log -1 HEAD";

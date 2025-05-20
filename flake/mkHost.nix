@@ -23,7 +23,7 @@
     ## ====== pkgs ======
     #pkgs = inputs.nixpkgs.legacyPackages.${system}; # memoized
     ## non-memoized pkgs
-    pkgs = import inputs.nixpkgs {
+    pkgs = builtins.import inputs.nixpkgs {
       inherit system;
       config = let
         inherit (_lib) mkDefault;
@@ -47,7 +47,7 @@
     ## ====== Extended lib ======
     lib = _lib.extend (_final: _prev:
       {
-        custom = import ../lib {lib = _lib;};
+        custom = builtins.import ../lib {lib = _lib;};
       }
       // (_lib.attrsets.optionalAttrs (class == "home") inputs.home-manager.lib));
     specialArgs =

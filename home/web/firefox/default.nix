@@ -3,7 +3,7 @@
   hostPlatform,
   ...
 }: let
-  inherit (import ./policies.nix) policies;
+  inherit (builtins.import ./policies.nix) policies;
   fx-autoconfig = pkgs.fetchFromGitHub {
     owner = "MrOtherGuy";
     repo = "fx-autoconfig";

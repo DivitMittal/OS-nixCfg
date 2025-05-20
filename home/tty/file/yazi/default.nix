@@ -22,8 +22,8 @@
     enableNushellIntegration = false;
 
     initLua = ./init.lua;
-    settings = import ./yazi.nix;
-    keymap = import ./keymap.nix;
+    settings = builtins.import ./yazi.nix;
+    keymap = builtins.import ./keymap.nix;
     theme = {
       flavor.dark = "dracula";
     };

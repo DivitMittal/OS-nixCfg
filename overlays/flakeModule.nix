@@ -1,3 +1,3 @@
 {inputs, ...}: {
-  flake.overlays = import ./default.nix {inherit inputs;};
+  flake.overlays = builtins.import ./default.nix {inherit inputs;};
 }

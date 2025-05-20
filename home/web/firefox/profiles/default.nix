@@ -169,7 +169,7 @@
         };
       };
 
-      # settings = import ./user_settings.nix;
+      # settings = builtins.import ./user_settings.nix;
       betterfox = {
         enable = true;
         enableAllSections = true;

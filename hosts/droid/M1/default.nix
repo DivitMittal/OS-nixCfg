@@ -14,7 +14,7 @@
   user.shell = "${pkgs.fish}/bin/fish";
 
   home-manager = {
-    config = import ./home;
+    config = builtins.import ./home;
     extraSpecialArgs = {
       inherit self;
     };
