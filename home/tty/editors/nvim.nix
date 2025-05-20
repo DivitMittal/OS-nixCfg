@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  imports = [inputs.nvchad4nix.homeManagerModules.nvchad];
+  imports = [inputs.nvchad4nix.homeManagerModule];
   # programs.neovim = {
   #   enable = true;
   #   package = pkgs.neovim-unwrapped;
