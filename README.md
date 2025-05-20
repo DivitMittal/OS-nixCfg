@@ -9,30 +9,29 @@
 ---
 
 <div align='center'>
-    <p></p>
-    <div align="center">
-        <!-- GitHub Badges -->
-        <a href="https://github.com/DivitMittal/OS-nixCfg/stargazers">
-            <img src="https://img.shields.io/github/stars/DivitMittal/OS-nixCfg?&style=for-the-badge&logo=starship&logoColor=white&color=purple" alt="stars"/>
-        </a>
-        <a href="https://github.com/DivitMittal/OS-nixCfg/">
-            <img src="https://img.shields.io/github/repo-size/DivitMittal/OS-nixCfg?&style=for-the-badge&logo=github&logoColor=white&color=purple" alt="size" />
-        </a>
-        <a href="https://github.com/DivitMittal/OS-nixCfg/blob/main/LICENSE">
-            <img src="https://img.shields.io/github/license/DivitMittal/OS-nixCfg?&style=for-the-badge&logo=unlicense&logoColor=white&color=purple" alt="license"/>
-        </a>
-         <a href="https://github.com/nixos/nixpkgs">
-            <img src="https://img.shields.io/badge/Nixpkgs-unstable-blue.svg?style=for-the-badge&logo=NixOS&logoColor=white&color=purple" alt="nixpkgs"/>
-        </a>
-        <img src="https://img.shields.io/github/languages/top/DivitMittal/OS-nixCfg?style=for-the-badge&color=purple" alt="repo-top-language"/>
-        <img src="https://img.shields.io/github/languages/count/DivitMittal/OS-nixCfg?style=for-the-badge&color=purple" alt="repo-language-count"/>
-        <br>
-        <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/.github/workflows/flake-check.yml/badge.svg" alt="nix-flake-check"/>
-        <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/.github/workflows/home-build.yml/badge.svg" alt="nix-home-manager-build"/>
-        <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/.github/workflows/darwin-build.yml/badge.svg" alt="nix-darwin-build"/>
-        <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/.github/workflows/nixos-build.yml/badge.svg" alt="nix-nixos-build"/>
-    </div>
-    <br>
+    <a href="https://github.com/DivitMittal/OS-nixCfg/stargazers">
+        <img src="https://img.shields.io/github/stars/DivitMittal/OS-nixCfg?&style=for-the-badge&logo=starship&logoColor=white&color=purple" alt="stars"/>
+    </a>
+    <a href="https://github.com/DivitMittal/OS-nixCfg/">
+        <img src="https://img.shields.io/github/repo-size/DivitMittal/OS-nixCfg?&style=for-the-badge&logo=github&logoColor=white&color=purple" alt="size" />
+    </a>
+    <a href="https://github.com/DivitMittal/OS-nixCfg/blob/main/LICENSE">
+        <img src="https://img.shields.io/github/license/DivitMittal/OS-nixCfg?&style=for-the-badge&logo=unlicense&logoColor=white&color=purple" alt="license"/>
+    </a>
+    <a href="https://github.com/nixos/nixpkgs">
+        <img src="https://img.shields.io/badge/Nixpkgs-unstable-blue.svg?style=for-the-badge&logo=NixOS&logoColor=white&color=purple" alt="nixpkgs"/>
+    </a>
+    <img src="https://img.shields.io/github/languages/top/DivitMittal/OS-nixCfg?style=for-the-badge&color=purple" alt="repo-top-language"/>
+    <img src="https://img.shields.io/github/languages/count/DivitMittal/OS-nixCfg?style=for-the-badge&color=purple" alt="repo-language-count"/>
+</div>
+
+---
+
+<div align='center'>
+    <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/.github/workflows/flake-check.yml/badge.svg" alt="nix-flake-check"/>
+    <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/.github/workflows/home-build.yml/badge.svg" alt="nix-home-manager-build"/>
+    <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/.github/workflows/darwin-build.yml/badge.svg" alt="nix-darwin-build"/>
+    <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/.github/workflows/nixos-build.yml/badge.svg" alt="nix-nixos-build"/>
 </div>
 
 ---
@@ -51,47 +50,53 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
 
 ```
 └── OS-nixCfg/
+    ├── .editorconfig
+    ├── .envrc
+    ├── .gitattributes
+    ├── .gitignore
+    ├── conf.nix
+    ├── flake.lock
+    ├── flake.nix
+    ├── LICENSE
+    ├── README.md
+    ├── SECURITY.md
+    ├── shell.nix
     ├── assets/
+    │   ├── graph.png
     │   └── qezta.png
     ├── flake/
+    │   ├── actions.nix
+    │   ├── checks.nix
     │   ├── default.nix
     │   ├── devshells.nix
     │   ├── formatters.nix
-    │   ├── mkHost.nix
-    │   └── pre-commit.nix
-    ├── flake.lock
-    ├── flake.nix
+    │   └── mkHost.nix
     ├── home/
-    │   ├── common
-    │   ├── comms
-    │   ├── default.nix
-    │   ├── desktop-env
-    │   ├── dev
-    │   ├── keyboard
-    │   ├── media
-    │   ├── tools
-    │   ├── tty
-    │   └── web
+    │   ├── flakeModule.nix
+    │   ├── common/
+    │   ├── comms/
+    │   ├── desktop-env/
+    │   ├── dev/
+    │   ├── keyboard/
+    │   ├── media/
+    │   ├── tty/
+    │   └── web/
     ├── hosts/
-    │   ├── common
-    │   ├── darwin
-    │   ├── default.nix
-    │   ├── droid
-    │   └── nixos
+    │   ├── flakeModule.nix
+    │   ├── common/
+    │   ├── darwin/
+    │   ├── droid/
+    │   └── nixos/
     ├── lib/
     │   └── default.nix
-    ├── LICENSE
     ├── modules/
-    │   ├── common
-    │   ├── home
-    │   └── hosts
-    ├── nix.nix
-    ├── README.md
-    ├── scripts/
-    │   ├── home_rebuild.sh
-    │   └── hosts_rebuild.sh
-    ├── SECURITY.md
-    └── shell.nix
+    │   ├── flakeModule.nix
+    │   ├── home/
+    │   └── hosts/
+    ├── overlays/
+    │   └── default.nix
+    ├── pkgs/
+    └── utils/
 ```
 
 ## 📊 Home Manager Profile Graph
