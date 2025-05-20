@@ -32,7 +32,7 @@
           name = "Checkout repo";
           uses = "actions/checkout@main";
           "with" = {
-            "fetch-depth" = 1;
+            fetch-depth = 1;
           };
         }
         {
