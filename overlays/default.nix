@@ -1,13 +1,24 @@
 {inputs, ...}: let
-  additions = final: prev: (
-    prev.lib.packagesFromDirectoryRecursive {
-      callPackage = prev.lib.customisation.callPackageWith final;
+  additions = self: super: (
+    super.lib.packagesFromDirectoryRecursive {
+      callPackage = super.lib.customisation.callPackageWith self;
       directory = ../pkgs;
     }
   );
 
-  master-pkgs = _final: _prev: {
-    master = import inputs.pkgs-master {
+  master-pkgs = _: _: {
+    master = builtins.import inputs.nixpkgs-master {
+      config = {
+        allowUnfree = true;
+        allowBroken = false;
+        allowUnsupportedSystem = false;
+        allowInsecure = true;
+      };
+    };
+  };
+
+  darwin-pkgs = _: _: {
+    darwinStable = builtins.import inputs.nixpkgs-darwin {
       config = {
         allowUnfree = true;
         allowBroken = false;
@@ -17,9 +28,10 @@
     };
   };
 in {
-  default = final: prev:
-    prev.lib.attrsets.mergeAttrsList [
-      (additions final prev)
-      (master-pkgs final prev)
+  default = self: super:
+    super.lib.attrsets.mergeAttrsList [
+      (additions self super)
+      (master-pkgs self super)
+      (darwin-pkgs self super)
     ];
 }

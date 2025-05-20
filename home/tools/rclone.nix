@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  hostPlatform,
   ...
 }: let
   common = ''
@@ -76,15 +77,10 @@
   remotesPath = "${config.home.homeDirectory}/Remotes";
 in {
   home.packages = lib.attrsets.attrValues {
-    inherit
-      (pkgs)
-      rclone
-      ;
-
-    # fuse =
-    #   if hostPlatform.isDarwin
-    #   then pkgs.brewCasks.fuse-t
-    #   else null;
+    rclone =
+      if hostPlatform.isDarwin
+      then pkgs.darwinStable.rclone
+      else pkgs.rclone;
 
     OneDrive-Divit = pkgs.writeShellScriptBin "OneDrive-Divit" ''
       ${common} OneDrive-Divit: ${remotesPath}/OneDrive-Divit
