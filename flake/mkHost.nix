@@ -1,9 +1,9 @@
 {
-  inputs,
-  outputs,
   self,
+  inputs,
+  lib,
   ...
-}: let
+} @ args: let
   mkHost = {
     hostName,
     system,
@@ -17,16 +17,15 @@
       droid = inputs.nix-on-droid.lib.nixOnDroidConfiguration;
       home = inputs.home-manager.lib.homeManagerConfiguration;
     };
-    systemFunc = configGenerator.${class};
-    ## ====== Unextended lib ======
-    _lib = inputs.nixpkgs.lib;
+    ## ====== Extended lib ======
+    lib = args.lib.extend (self.outputs.overlay.lib.default);
     ## ====== pkgs ======
     #pkgs = inputs.nixpkgs.legacyPackages.${system}; # memoized
     ## non-memoized pkgs
     pkgs = builtins.import inputs.nixpkgs {
       inherit system;
       config = let
-        inherit (_lib) mkDefault;
+        inherit (lib) mkDefault;
       in {
         allowUnfree = mkDefault true;
         allowBroken = mkDefault false;
@@ -37,19 +36,23 @@
       };
       overlays =
         [
-          outputs.overlays.default
+          self.outputs.overlay.pkgs.default
         ]
-        ++ _lib.lists.optionals (class == "home" && _lib.strings.hasSuffix "darwin" system) [
+        ++ lib.lists.optionals (class == "darwin") [
+          self.outputs.overlay.pkgs.darwin-pkgs
+        ]
+        ++ lib.lists.optionals (class == "nixos") [
+          self.outputs.overlay.pkgs.nixos-pkgs
+        ]
+        ++ lib.lists.optionals (class == "home" && lib.strings.hasSuffix "darwin" system) [
           inputs.brew-nix.overlays.default
           inputs.nixpkgs-firefox-darwin.overlay
+          self.outputs.overlay.pkgs.darwin-pkgs
+        ]
+        ++ lib.lists.optionals (class == "home" && lib.strings.hasSuffix "linux" system) [
+          self.outputs.overlay.pkgs.nixos-pkgs
         ];
     };
-    ## ====== Extended lib ======
-    lib = _lib.extend (_final: _prev:
-      {
-        custom = builtins.import ../lib {lib = _lib;};
-      }
-      // (_lib.attrsets.optionalAttrs (class == "home") inputs.home-manager.lib));
     specialArgs =
       {
         inherit self inputs;
@@ -77,30 +80,28 @@
         ../hosts/common
       ]
       ++ lib.lists.optionals (class == "home") [
-        outputs.homeManagerModules.all
+        self.outputs.homeManagerModules.default
         ../home/common
       ]
       ++ lib.lists.optionals (class == "darwin") [
-        outputs.darwinModules.all
+        self.outputs.darwinModules.default
       ]
       ++ additionalModules;
   in
-    systemFunc (lib.attrsets.mergeAttrsList [
-      {
-        inherit pkgs;
-        inherit lib;
-        inherit modules;
-      }
-      (lib.attrsets.optionalAttrs (class == "darwin" || class == "nixos") {
-        inherit specialArgs;
-      })
-      (lib.attrsets.optionalAttrs (class == "home") {
-        extraSpecialArgs = specialArgs;
-      })
-      (lib.attrsets.optionalAttrs (class == "droid") {
-        extraSpecialArgs = specialArgs;
-        home-manager-path = inputs.home-manager.outPath;
-      })
+    configGenerator.${class} (lib.attrsets.mergeAttrsList [
+      {inherit pkgs lib modules;}
+      (lib.attrsets.optionalAttrs
+        (class == "darwin" || class == "nixos")
+        {inherit specialArgs;})
+      (lib.attrsets.optionalAttrs
+        (class == "home")
+        {extraSpecialArgs = specialArgs;})
+      (lib.attrsets.optionalAttrs
+        (class == "droid")
+        {
+          extraSpecialArgs = specialArgs;
+          home-manager-path = inputs.home-manager.outPath;
+        })
     ]);
 in {
   _module.args = {
