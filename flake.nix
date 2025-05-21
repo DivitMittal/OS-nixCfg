@@ -1,34 +1,24 @@
 {
   description = "OS-nixCfg flake";
-  outputs = {
-    self,
-    flake-parts,
-    ...
-  } @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} (_: {
+  outputs = {flake-parts, ...} @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} {
       systems = builtins.import inputs.systems;
-
-      _module.args = {
-        inherit self;
-        inherit (self) outputs;
-      };
-
       imports = [
         ./flake
-        ./modules/flakeModule.nix
-        ./overlays/flakeModule.nix
-        ./home/flakeModule.nix
-        ./hosts/flakeModule.nix
+        ./modules
+        ./overlays
+        ./home
+        ./hosts
       ];
-    });
+    };
 
   inputs = {
-    ## nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
-    #nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    ## nixpkgs (from most unstable to stable)
     #nixpkgs-staging.url = "github:nixos/nixpkgs/staging";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
+    nixpkgs-nixos.url = "github:nixos/nixpkgs/nixos-25.05";
 
     ## flake helpers
     systems.url = "github:nix-systems/default";
