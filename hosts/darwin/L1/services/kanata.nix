@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  hostPlatform,
   ...
 }: {
   services.kanata = {
@@ -10,7 +11,7 @@
 
   services.kanata-tray = {
     enable = true;
-    package = inputs.kanata-tray.packages.${pkgs.system}.kanata-tray;
+    package = inputs.kanata-tray.packages.${hostPlatform.system}.kanata-tray;
     environment = {
       KANATA_RSCROLL = "1";
     };

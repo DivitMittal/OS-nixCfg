@@ -1,16 +1,20 @@
 {
   description = "OS-nixCfg flake";
-  outputs = {flake-parts, ...} @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs = {flake-parts, ...} @ inputs: let
+    specialArgs.lib = inputs.nixpkgs.lib.extend (self: super: {
+      custom = builtins.import ./lib {lib = super;};
+    });
+  in
+    flake-parts.lib.mkFlake {inherit inputs specialArgs;} ({inputs, ...}: {
       systems = builtins.import inputs.systems;
       imports = [
         ./flake
+        ./home
         ./modules
         ./overlays
-        ./home
         ./hosts
       ];
-    };
+    });
 
   inputs = {
     ## nixpkgs (from most unstable to stable)

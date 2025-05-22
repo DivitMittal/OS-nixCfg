@@ -27,7 +27,7 @@
       then (if hostPlatform.isx86_64 then (pkgs.brewCasks.visual-studio-code.override { variation = "sequoia"; }) else pkgs.brewCasks.visual-studio-code)
       else pkgs.vscode;
 
-    leetcode-tui = inputs.leetcode-tui.packages.${pkgs.system}.default;
+    leetcode-tui = inputs.leetcode-tui.packages.${hostPlatform.system}.default;
   };
 
   home.sessionPath = lib.mkAfter ["${config.home.homeDirectory}/.cargo/bin"];
