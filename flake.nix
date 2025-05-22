@@ -10,9 +10,9 @@
       imports = [
         ./flake
         ./home
+        ./hosts
         ./modules
         ./overlays
-        ./hosts
       ];
     });
 

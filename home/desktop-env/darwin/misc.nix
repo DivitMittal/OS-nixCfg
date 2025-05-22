@@ -12,7 +12,7 @@
       spaceman
       ;
     inherit
-      (pkgs)
+      (pkgs.customDarwin)
       cliclick-bin
       hot-bin
       menubar-dock-bin
