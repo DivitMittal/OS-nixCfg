@@ -69,7 +69,7 @@
       ++ additionalModules;
   in
     configGenerator.${class} (lib.attrsets.mergeAttrsList [
-      {inherit lib modules;}
+      {inherit modules;}
       (
         lib.attrsets.optionalAttrs (hostPlatform.isLinux) {
           pkgs = pkgs.extend (self.outputs.overlays.pkgs-nixos);
@@ -80,10 +80,13 @@
           pkgs = pkgs.extend (self.outputs.overlays.pkgs-darwin);
         }
       )
-      (lib.attrsets.optionalAttrs (class == "nixos" || class == "darwin") {inherit specialArgs;})
+      (lib.attrsets.optionalAttrs (class == "nixos" || class == "darwin") {inherit specialArgs lib;})
       (
         lib.attrsets.optionalAttrs (class == "home") (lib.attrsets.mergeAttrsList [
-          {extraSpecialArgs = specialArgs;}
+          {
+            inherit lib;
+            extraSpecialArgs = specialArgs;
+          }
           (
             lib.attrsets.optionalAttrs (hostPlatform.isDarwin) {
               pkgs = pkgs.extend (_: _:
