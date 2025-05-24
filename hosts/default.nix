@@ -29,4 +29,12 @@
     #   ];
     # };
   };
+
+  flake.nixOnDroidConfigurations = {
+    M1 = mkHost {
+      hostName = "M1";
+      system = "aarch64-linux";
+      class = "droid";
+    };
+  };
 }

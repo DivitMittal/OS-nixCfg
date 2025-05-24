@@ -33,6 +33,6 @@ in {
     fi
 
     $DRY_RUN_CMD mkdir $VERBOSE_ARG -p "${config.user.home}/.ssh"
-    $DRY_RUN_CMD cat ${pathToPubKey} > "${config.user.home}/.ssh/authorized_keys"
+    $DRY_RUN_CMD cat ${pathToPubKey} 1> "${config.user.home}/.ssh/authorized_keys"
   '';
 }
