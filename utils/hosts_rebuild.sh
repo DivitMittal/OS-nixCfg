@@ -43,10 +43,10 @@ if [[ $os == "Darwin" ]]; then
   # Test if there's no darwin-rebuild, then use nix build and then run it
   if ! which darwin-rebuild &>/dev/null; then
     nix build --show-trace .#darwinConfigurations."$HOST".system
-    ./result/sw/bin/darwin-rebuild $switch_args
+    sudo ./result/sw/bin/darwin-rebuild $switch_args
   else
     echo $switch_args
-    darwin-rebuild $switch_args
+    sudo darwin-rebuild $switch_args
   fi
 else
   if which nix-on-droid &>/dev/null; then
