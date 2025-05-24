@@ -71,17 +71,16 @@
     configGenerator.${class} (lib.attrsets.mergeAttrsList [
       {inherit lib modules;}
       (
-        lib.attrsets.optionalAttrs (class == "nixos") {
+        lib.attrsets.optionalAttrs (hostPlatform.isLinux) {
           pkgs = pkgs.extend (self.outputs.overlays.pkgs-nixos);
-          inherit specialArgs;
         }
       )
       (
-        lib.attrsets.optionalAttrs (class == "darwin") {
+        lib.attrsets.optionalAttrs (hostPlatform.isDarwin) {
           pkgs = pkgs.extend (self.outputs.overlays.pkgs-darwin);
-          inherit specialArgs;
         }
       )
+      (lib.attrsets.optionalAttrs (class == "nixos" || class == "darwin") {inherit specialArgs;})
       (
         lib.attrsets.optionalAttrs (class == "home") (lib.attrsets.mergeAttrsList [
           {extraSpecialArgs = specialArgs;}
@@ -89,22 +88,15 @@
             lib.attrsets.optionalAttrs (hostPlatform.isDarwin) {
               pkgs = pkgs.extend (_: _:
                 lib.attrsets.mergeAttrsList [
-                  (self.outputs.overlays.pkgs-darwin _ _)
                   (inputs.brew-nix.overlays.default _ _)
                   (inputs.nixpkgs-firefox-darwin.overlay _ _)
                 ]);
-            }
-          )
-          (
-            lib.attrsets.optionalAttrs (hostPlatform.isLinux) {
-              pkgs = pkgs.extend (self.outputs.overlays.pkgs-nixos);
             }
           )
         ])
       )
       (
         lib.attrsets.optionalAttrs (class == "droid") {
-          pkgs = pkgs.extend (self.outputs.overlays.pkgs-nixos);
           extraSpecialArgs = specialArgs;
           home-manager-path = inputs.home-manager.outPath;
         }
