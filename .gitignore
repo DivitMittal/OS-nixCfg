@@ -1,6 +1,7 @@
 ## direnv
-**/.direnv
+.direnv
 ## Disabled parts of configuration
 **/disabled/
 ## Nix builds
-**/result
+result
+result-*
