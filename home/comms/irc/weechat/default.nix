@@ -12,7 +12,7 @@
     lib.lists.map (entryName: {
       name = "weechat/${entryName}";
       value = {
-        source = config.lib.file.mkOutOfStoreSymlink "${weechatConfSourceDir}/${entryName}";
+        source = config.lib.file.mkOutOfStoreSymlink "${weechatConfSourceDir}/${entryName}"; # impure
       };
     })
     weechatConfNames
@@ -23,6 +23,6 @@ in {
   xdg.configFile =
     dynamicWeechatFiles
     // {
-      "weechat/sec.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.age.secrets.weechatSec.path}";
+      "weechat/sec.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.age.secrets.weechatSec.path}"; # impure
     };
 }

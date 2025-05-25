@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [inputs.ragenix.homeManagerModules.default];
+
   age.identityPaths = ["${config.home.homeDirectory}/.ssh/agenix/id_ed25519"];
   age.secretsDir = "${config.xdg.configHome}/agenix";
 
