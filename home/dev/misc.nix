@@ -18,13 +18,18 @@
       #jdk gradle
       ## lua
       lua
-      # Rust
+      ## Rust
       cargo
       ;
 
     vscode =
       if hostPlatform.isDarwin
-      then (if hostPlatform.isx86_64 then (pkgs.brewCasks.visual-studio-code.override { variation = "sequoia"; }) else pkgs.brewCasks.visual-studio-code)
+      then
+        (
+          if hostPlatform.isx86_64
+          then (pkgs.brewCasks.visual-studio-code.override {variation = "sequoia";})
+          else pkgs.brewCasks.visual-studio-code
+        )
       else pkgs.vscode;
 
     leetcode-tui = inputs.leetcode-tui.packages.${hostPlatform.system}.default;

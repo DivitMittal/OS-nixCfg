@@ -10,7 +10,7 @@
 
   homebrew = {
     brewPrefix =
-      if hostPlatform.isAarch64
+      if hostPlatform.isAarch
       then "/opt/homebrew/bin"
       else "/usr/local/bin";
     global.autoUpdate = false;
@@ -28,7 +28,7 @@
   nix-homebrew = {
     enable = true;
     enableRosetta =
-      if hostPlatform.isAarch64
+      if hostPlatform.isAarch
       then true
       else false;
     user = config.hostSpec.username;

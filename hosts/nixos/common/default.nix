@@ -1,4 +1,10 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
+  imports = lib.custom.scanPaths ./.;
+
   networking = {
     nameservers = [
       # Cloudflare DNS

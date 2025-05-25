@@ -5,10 +5,14 @@
 }: {
   imports = lib.custom.scanPaths ./.;
 
+  system.stateVersion = "24.05";
+
   time.timeZone = "Asia/Calcutta";
 
+  environment.etcBackupExtension = ".bak";
   environment.motd = "";
 
+  ## Termux settings
   android-integration = {
     am.enable = true;
     termux-open.enable = true;
@@ -16,7 +20,6 @@
     termux-reload-settings.enable = true;
     termux-setup-storage.enable = true;
   };
-
   terminal = {
     colors = {
       background = "#000000";
@@ -60,9 +63,5 @@
       openssh
       ;
   };
-
   environment.extraOutputsToInstall = ["info"]; # "doc" "devdoc"
-
-  environment.etcBackupExtension = ".bak";
-  system.stateVersion = "24.05";
 }
