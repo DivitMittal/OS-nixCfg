@@ -2,17 +2,14 @@
   lib,
   pkgs,
   config,
-  inputs,
   ...
 }: let
   inherit (lib) mkDefault;
 in {
-  nix.package = mkDefault pkgs.lix;
-
   nix = {
     enable = true;
-    registry = lib.attrsets.mapAttrs (_: value: {flake = value;}) inputs; # This will add each flake input as a registry
-    nixPath = lib.attrsets.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry; # This will each add flake inputs to the system's NIX_PATH env var
+    package = mkDefault pkgs.lix; # test lix, alt to CppNix
+    checkConfig = mkDefault true;
 
     settings = {
       experimental-features = ["nix-command" "flakes" "repl-flake"];
@@ -38,11 +35,6 @@ in {
       ];
 
       trusted-users = ["${config.hostSpec.username}"];
-    };
-
-    gc = {
-      automatic = mkDefault true;
-      options = mkDefault "--delete-old";
     };
   };
 }
