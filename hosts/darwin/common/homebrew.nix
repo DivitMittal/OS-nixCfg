@@ -9,6 +9,7 @@
   environment.variables.HOMEBREW_NO_ENV_HINTS = "1";
 
   homebrew = {
+    enable = true;
     brewPrefix =
       if hostPlatform.isAarch
       then "/opt/homebrew/bin"

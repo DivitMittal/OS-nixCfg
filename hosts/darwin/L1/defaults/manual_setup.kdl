@@ -1,5 +1,5 @@
 Battery {
-  low-power-mode never // handled by raycast
+  low-power-mode never
   Battery-Health {
     optimized-battery-charging OFF
     manage-battery-longevity OFF
@@ -16,7 +16,7 @@ Display {
 Accessibility {
   Vision {
     Display {
-      display-contrast "increase"
+      display-contrast increase
       Text {
         text-size "16pt"
         menu-bar-size large

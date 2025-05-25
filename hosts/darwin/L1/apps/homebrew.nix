@@ -1,6 +1,5 @@
 _: {
   homebrew = {
-    enable = true;
     taps = [
       #"homebrew/services"
       "macos-fuse-t/homebrew-cask" #fuse-t
@@ -82,7 +81,7 @@ _: {
       #"notion-calendar" "notion"
     ];
 
-    brews = [
+    # brews = [
       ## homebrew
       #"gh"
 
@@ -97,9 +96,9 @@ _: {
 
       ## Development
       #"libomp" # Multiprogramming
-    ];
+    # ];
 
-    masApps = {
+    # masApps = {
       ## General
       #"Texty" = 1538996043;
       #"Tuner" = 1597107926;
@@ -109,6 +108,6 @@ _: {
       #"Ghostery" = 6504861501;
       #"SuperAgent" = 1568262835;
       #"Vimkey" = 1585682577;
-    };
+    # };
   };
 }
