@@ -32,10 +32,17 @@
         checkMeta = mkDefault false;
         warnUndeclaredOptions = mkDefault true;
       };
-      overlays = [
-        self.outputs.overlays.default
-        self.outputs.overlays.pkgs-master
-      ];
+      overlays =
+        [
+          self.outputs.overlays.default
+          self.outputs.overlays.pkgs-master
+        ]
+        ++ lib.lists.optionals (lib.strings.hasSuffix "darwin" system) [
+          self.outputs.overlays.pkgs-darwin
+        ]
+        ++ lib.lists.optionals (lib.strings.hasSuffix "linux" system) [
+          self.outputs.overlays.pkgs-nixos
+        ];
     };
     inherit (pkgs.stdenvNoCC) hostPlatform;
     specialArgs = {inherit self inputs hostPlatform;} // extraSpecialArgs;
@@ -70,16 +77,6 @@
   in
     configGenerator.${class} (lib.attrsets.mergeAttrsList [
       {inherit modules;}
-      (
-        lib.attrsets.optionalAttrs (hostPlatform.isLinux) {
-          pkgs = pkgs.extend (self.outputs.overlays.pkgs-nixos);
-        }
-      )
-      (
-        lib.attrsets.optionalAttrs (hostPlatform.isDarwin) {
-          pkgs = pkgs.extend (self.outputs.overlays.pkgs-darwin);
-        }
-      )
       (lib.attrsets.optionalAttrs (class == "nixos" || class == "darwin") {inherit specialArgs lib;})
       (
         lib.attrsets.optionalAttrs (class == "home") (lib.attrsets.mergeAttrsList [
@@ -89,10 +86,10 @@
           }
           (
             lib.attrsets.optionalAttrs (hostPlatform.isDarwin) {
-              pkgs = pkgs.extend (_: _:
+              pkgs = pkgs.extend (self: super:
                 lib.attrsets.mergeAttrsList [
-                  (inputs.brew-nix.overlays.default _ _)
-                  (inputs.nixpkgs-firefox-darwin.overlay _ _)
+                  (inputs.brew-nix.overlays.default self super)
+                  (inputs.nixpkgs-firefox-darwin.overlay self super)
                 ]);
             }
           )
