@@ -11,13 +11,16 @@ in {
 
   environment.systemPackages = lib.attrsets.attrValues {
     empty-trash = pkgs.writeShellScriptBin "empty-trash" ''
-      sudo rm -rfv /Volumes/*/.Trashes
-      sudo rm -rfv ~/.Trash
-      sudo rm -rfv /private/var/log/asl/*.asl
-      sudo rm -rfv /private/tmp/*.log
+      sudo -i
+      rm -rfv /Volumes/*/.Trashes
+      rm -rfv ~/.Trash
+      rm -rfv /private/var/log/asl/*.asl
+      rm -rfv /private/tmp/*.log
     '';
 
     apps-backup = pkgs.writeShellScriptBin "apps-backup" ''
+      [ -n "$OS_NIXCFG" ] || { echo "OS_NIXCFG is not set"; exit 1; }
+      [ -d "$OS_NIXCFG/hosts/darwin/$(hostname)/apps/bak" ] || { echo "Backup directory doesn't exist"; exit 1; }
       FILE="$OS_NIXCFG/hosts/darwin/$(hostname)/apps/bak/apps_$(date +%b%y).txt"
       env ls /Applications/ 1> $FILE
       env ls "$HOME/Applications/Home Manager Apps/" 1>> $FILE
