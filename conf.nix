@@ -11,16 +11,16 @@ in {
 
   nix = {
     enable = true;
-    registry = lib.mapAttrs (_: value: {flake = value;}) inputs; # This will add each flake input as a registry
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry; # This will each flake inputs to the system's NIX_PATH env var
+    registry = lib.attrsets.mapAttrs (_: value: {flake = value;}) inputs; # This will add each flake input as a registry
+    nixPath = lib.attrsets.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry; # This will each add flake inputs to the system's NIX_PATH env var
 
     settings = {
+      experimental-features = ["nix-command" "flakes" "repl-flake"];
+
       connect-timeout = 5;
       log-lines = 25;
       min-free = 128000000; # 128MB
       max-free = 1000000000; # 1GB
-
-      experimental-features = ["nix-command" "flakes"];
       warn-dirty = mkDefault true;
 
       use-xdg-base-directories = mkDefault true;
