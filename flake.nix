@@ -69,7 +69,7 @@
     };
 
     nixos-wsl = {
-      url = "github:nix-community/NixOS-WSL/main";
+      url = "github:nix-community/nixos-wsl/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -109,7 +109,7 @@
       };
     };
     OS-nixCfg-secrets = {
-      url = "git+ssh://git@github.com/DivitMittal/OS-nixCfg-secrets.git?ref=master";
+      url = "git+ssh://git@github.com/divitmittal/os-nixcfg-secrets.git?ref=master";
       #url = "path:/Users/div/Projects/OS-nixCfg-secrets";
       inputs = {
         nixpkgs.follows = "nixpkgs";
@@ -122,9 +122,9 @@
       };
     };
 
-    ## Neovim
+    ## neovim
     Nvim-Cfg = {
-      url = "github:DivitMittal/Nvim-Cfg";
+      url = "github:divitmittal/nvim-cfg";
       #url = "path:/Users/div/Projects/Nvim-Cfg";
       flake = false;
     };
@@ -138,18 +138,18 @@
 
     ## Firefox
     betterfox = {
-      url = "github:HeitorAugustoLN/betterfox-nix";
+      url = "github:heitoraugustoln/betterfox-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-firefox-darwin = {
-      url = "github:DivitMittal/nixpkgs-firefox-darwin/extra-files";
+      url = "github:divitmittal/nixpkgs-firefox-darwin/extra-files";
       #url = "path:/Users/div/Projects/Forks/nixpkgs-firefox-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ## Homebrew Casks pkgs overlay
     brew-nix = {
-      url = "github:DivitMittal/brew-nix/cask-variation";
+      url = "github:divitmittal/brew-nix/cask-variation";
       #url = "github:BatteredBunny/brew-nix";
       #url = "path:/Users/div/Projects/Forks/brew-nix";
       inputs = {
@@ -159,16 +159,15 @@
       };
     };
     brew-api = {
-      url = "github:BatteredBunny/brew-api";
+      url = "github:batteredbunny/brew-api";
       flake = false;
     };
 
-    ## Keyboard
+    ## Other external pkgs
     kanata-tray = {
       url = "github:rszyma/kanata-tray";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     leetcode-tui = {
       url = "github:akarsh1995/leetcode-tui";
       inputs = {

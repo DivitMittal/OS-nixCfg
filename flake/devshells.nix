@@ -1,9 +1,9 @@
-{inputs, ...}: {
+{inputs, lib, ...}: {
   imports = [inputs.devshell.flakeModule];
 
   perSystem = {pkgs, ...}: {
     devshells.default = {
-      packages = builtins.attrValues {
+      packages = lib.attrsets.attrValues {
         inherit
           (pkgs)
           ### LSPs & Formatters
