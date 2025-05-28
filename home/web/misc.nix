@@ -1,11 +1,17 @@
-{pkgs, ...}: {
-  # home.packages = lib.attrsets.attrValues {
-  #   inherit
-  #     (pkgs)
-  #   #w3m
-  #   #browsh
-  #     ;
-  # };
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  home.packages = lib.attrsets.attrValues {
+    inherit
+      (pkgs)
+      lynx
+      #w3m
+      #elinks
+      #browsh links2
+      ;
+  };
 
   programs.chawan = {
     enable = true;

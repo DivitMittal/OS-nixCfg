@@ -33,7 +33,7 @@
         "text/calendar" = "calendar";
         "message/delivery-status" = "colorize";
         "message/rfc822" = "colorize";
-        "text/html" = "html | colorize";
+        "text/html" = "!${pkgs.lynx}/bin/lynx -stdin";
         "application/x-sh" = "bat -fP -l sh";
       };
 
