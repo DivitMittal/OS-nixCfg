@@ -7,17 +7,17 @@
 in {
   # environment.shells = lib.attrsets.attrVals [ "ksh" "tcsh" ] pkgs;
 
-  environment.shellAliases.cleanup-DS = "sudo ${pkgs.findutils}/bin/find . -type f -name '*.DS_Store' -ls -delete";
-
   environment.systemPackages = lib.attrsets.attrValues {
     empty-trash = pkgs.writeShellScriptBin "empty-trash" ''
-      sudo -v
       rm -rfv /Volumes/*/.Trashes
       rm -rfv ~/.Trash
       rm -rfv /private/var/log/asl/*.asl
       rm -rfv /private/tmp/*.log
     '';
 
+    cleanup-DS = pkgs.writeShellScriptBin "cleanup-DS" ''
+      ${pkgs.findutils}/bin/find . -type f -name '*.DS_Store' -ls -delete
+    '';
   };
 
   programs.bash.interactiveShellInit = mkAfter ''
