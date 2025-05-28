@@ -35,6 +35,16 @@
 </div>
 
 ---
+## Contents
+
+- [📜 Overview](#-overview)
+- [📁 Project Structure](#-project-structure)
+- [📊 Home Manager Profile Graph](#-home-manager-profile-graph)
+- [❄️Flake Inputs](#flake-inputs)
+- [🔒 Secrets Management](#-secrets-management)
+- [🔗 Related Repositories](#-related-repositories)
+
+---
 
 ## 📜 Overview
 
@@ -54,16 +64,17 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
     ├── .envrc
     ├── .gitattributes
     ├── .gitignore
-    ├── conf.nix
     ├── flake.lock
     ├── flake.nix
     ├── LICENSE
     ├── README.md
-    ├── SECURITY.md
-    ├── shell.nix
     ├── assets/
     │   ├── graph.png
     │   └── qezta.png
+    ├── common/
+    │   ├── conf.nix
+    │   ├── default.nix
+    │   └── hostSpec.nix
     ├── flake/
     │   ├── actions.nix
     │   ├── checks.nix
@@ -72,25 +83,27 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
     │   ├── formatters.nix
     │   └── mkHost.nix
     ├── home/
-    │   ├── flakeModule.nix
+    │   ├── default.nix
     │   ├── common/
     │   ├── comms/
     │   ├── desktop-env/
     │   ├── dev/
     │   ├── keyboard/
     │   ├── media/
+    │   ├── tools/
     │   ├── tty/
     │   └── web/
     ├── hosts/
-    │   ├── flakeModule.nix
+    │   ├── default.nix
     │   ├── common/
     │   ├── darwin/
     │   ├── droid/
     │   └── nixos/
     ├── lib/
+    │   ├── custom.nix
     │   └── default.nix
     ├── modules/
-    │   ├── flakeModule.nix
+    │   ├── default.nix
     │   ├── home/
     │   └── hosts/
     ├── overlays/
