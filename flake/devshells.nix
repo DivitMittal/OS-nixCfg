@@ -32,7 +32,7 @@
               env ls /Applications/ 1> $FILE
               env ls "$HOME/Applications/Home Manager Apps/" 1>> $FILE
             '')
-          else null;
+          else pkgs.hello;
       };
       commands = [
         {

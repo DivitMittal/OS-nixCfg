@@ -183,7 +183,7 @@ in {
     inherit currentProfileDir;
   };
   imports = [
-    inputs.betterfox.homeManagerModules.betterfox
+    inputs.betterfox-nix.homeManagerModules.betterfox
     ./chrome
   ];
   programs.firefox.profiles = profiles;

@@ -5,10 +5,9 @@
 }: {
   nix = {
     registry = lib.attrsets.mapAttrs (_: value: {flake = value;}) inputs; # add each flake input as a registry
+    #nixPath = lib.attrsets.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry; # add flake inputs to the $NIX_PATH
 
     settings = {
-      #nixPath = lib.attrsets.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry; # add flake inputs to the $NIX_PATH
-
       substituters = [
         "https://cache.nixos.org"
         "https://wezterm.cachix.org"

@@ -124,7 +124,7 @@
       };
     };
 
-    ## neovim
+    ## editors
     Nvim-Cfg = {
       url = "github:divitmittal/nvim-cfg";
       #url = "path:/Users/div/Projects/Nvim-Cfg";
@@ -139,7 +139,7 @@
     };
 
     ## Firefox
-    betterfox = {
+    betterfox-nix = {
       url = "github:heitoraugustoln/betterfox-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
