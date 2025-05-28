@@ -1,4 +1,8 @@
-{inputs, lib, ...}: {
+{
+  inputs,
+  lib,
+  ...
+}: {
   imports = [inputs.devshell.flakeModule];
 
   perSystem = {pkgs, ...}: {
@@ -18,6 +22,18 @@
           nix-visualize
           nix-melt
           ;
+
+        apps-backup =
+          if pkgs.stdenvNoCC.hostPlatform.isDarwin
+          then
+            (pkgs.writeShellScriptBin "apps-backup" ''
+              [ -n "$OS_NIXCFG" ] || { echo "OS_NIXCFG is not set"; exit 1; }
+              [ -d "$OS_NIXCFG/hosts/darwin/$(hostname)/apps/bak" ] || { echo "Backup directory doesn't exist"; exit 1; }
+              FILE="$OS_NIXCFG/hosts/darwin/$(hostname)/apps/bak/apps_$(date +%b%y).txt"
+              env ls /Applications/ 1> $FILE
+              env ls "$HOME/Applications/Home Manager Apps/" 1>> $FILE
+            '')
+          else null;
       };
       commands = [
         {
