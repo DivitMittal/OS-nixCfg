@@ -47,13 +47,10 @@
     specialArgs = {inherit self inputs hostPlatform;} // extraSpecialArgs;
     modules =
       [
-        ## ====== nix.conf ======
-        ../conf.nix
+        ../common
         ## ===== OS-nixCfg-secrets ======
-        inputs.OS-nixCfg-secrets.modules.hostSpec
         {
           hostSpec = {
-            inherit (inputs.OS-nixCfg-secrets.user) username userFullName handle email;
             inherit hostName;
           };
         }
