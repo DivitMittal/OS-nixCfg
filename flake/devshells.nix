@@ -20,7 +20,6 @@
           shfmt
           ### Nix Tools
           nix-visualize
-          nix-melt
           ;
 
         apps-backup =
