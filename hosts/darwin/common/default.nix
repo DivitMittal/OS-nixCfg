@@ -24,7 +24,7 @@
   programs.man.enable = true;
   programs.info.enable = true;
 
-  system.stateVersion = 6;
+  system.stateVersion = lib.mkDefault 6;
   #environment.darwinConfig = self + "/hosts/darwin/${config.networking.hostName}/default.nix"; # non-flake feature
   system.primaryUser = "${config.hostSpec.username}";
   system.tools = {
