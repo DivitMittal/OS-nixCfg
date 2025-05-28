@@ -137,6 +137,18 @@
         nvchad-starter.follows = "Nvim-Cfg";
       };
     };
+    Emacs-Cfg = {
+      url = "github:divitmittal/emacs-cfg";
+      #url = "path:/Users/div/Projects/Emacs-Cfg";
+      flake = false;
+    };
+    nix-doom-emacs-unstraightened = {
+      url = "github:marienz/nix-doom-emacs-unstraightened";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
+    };
 
     ## Firefox
     betterfox-nix = {

@@ -154,6 +154,7 @@ Secrets (API keys, passwords, sensitive configurations) are managed using [ageni
 ## 🔗 Related Repositories
 
 - [DivitMittal/Nvim-Cfg](https://github.com/DivitMittal/Nvim-Cfg): Pure lua standalone Neovim configuration, used as an input via `nix4nvchad`.
+- [DivitMittal/Emacs-Cfg](https://github.com/DivitMittal/Emacs-Cfg): An elisp doomemacs configuration, used as an input via `nix-doom-emacs-unstraightened`.
 - `DivitMittal/OS-nixCfg-secrets`: (Private) Contains encrypted secrets managed by `agenix`.
 - [DivitMittal/TLTR](https://github.com/DivitMittal/TLTR): Cross-platform complex multi-layer keyboard layout tailored for programmers .
 

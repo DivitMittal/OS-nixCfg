@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "Emacs-Cfg": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1748469529,
+        "narHash": "sha256-dIeXGAiUtbtaQ/yRkehFVKbIaxke7r+VfDwUcQa7hiM=",
+        "owner": "divitmittal",
+        "repo": "emacs-cfg",
+        "rev": "55e8aa96997a3c0d2e1f01a8e8167c3508529639",
+        "type": "github"
+      },
+      "original": {
+        "owner": "divitmittal",
+        "repo": "emacs-cfg",
+        "type": "github"
+      }
+    },
     "Nvim-Cfg": {
       "flake": false,
       "locked": {
@@ -278,7 +294,7 @@
         "type": "github"
       }
     },
-    "betterfox_2": {
+    "betterfox-nix": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -456,6 +472,45 @@
       "original": {
         "owner": "numtide",
         "repo": "devshell",
+        "type": "github"
+      }
+    },
+    "doomemacs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1748100747,
+        "narHash": "sha256-rOkgOdmLESVAbOeEM9nJTzxyI+akdk48Ed2VlktOy3Q=",
+        "owner": "doomemacs",
+        "repo": "doomemacs",
+        "rev": "8406c1ff22b95bd0f816de4a0223fa3ce3c82568",
+        "type": "github"
+      },
+      "original": {
+        "owner": "doomemacs",
+        "repo": "doomemacs",
+        "type": "github"
+      }
+    },
+    "emacs-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "nix-doom-emacs-unstraightened"
+        ],
+        "nixpkgs-stable": [
+          "nix-doom-emacs-unstraightened"
+        ]
+      },
+      "locked": {
+        "lastModified": 1748309015,
+        "narHash": "sha256-NVgo/saT8uehYYwwhzWrTTFlpH0icR2E3tHHKsUouJ4=",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "0fba546d9aa235fc726fe9c8c3bb703e918c14c4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
         "type": "github"
       }
     },
@@ -891,6 +946,31 @@
       "original": {
         "owner": "nix-darwin",
         "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
+    "nix-doom-emacs-unstraightened": {
+      "inputs": {
+        "doomemacs": "doomemacs",
+        "emacs-overlay": "emacs-overlay",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1748421854,
+        "narHash": "sha256-zA05anQiTY9aaunfsyLqQrxjrxREHAyzTTnC0x3NvcI=",
+        "owner": "marienz",
+        "repo": "nix-doom-emacs-unstraightened",
+        "rev": "517be53d309ac6978f4ee3b04ca053afb30de421",
+        "type": "github"
+      },
+      "original": {
+        "owner": "marienz",
+        "repo": "nix-doom-emacs-unstraightened",
         "type": "github"
       }
     },
@@ -1619,11 +1699,12 @@
     },
     "root": {
       "inputs": {
+        "Emacs-Cfg": "Emacs-Cfg",
         "Nvim-Cfg": "Nvim-Cfg",
         "OS-nixCfg-secrets": "OS-nixCfg-secrets",
         "actions-nix": "actions-nix",
         "agenix": "agenix",
-        "betterfox": "betterfox_2",
+        "betterfox-nix": "betterfox-nix",
         "brew-api": "brew-api_2",
         "brew-nix": "brew-nix_2",
         "devshell": "devshell",
@@ -1633,6 +1714,7 @@
         "kanata-tray": "kanata-tray_2",
         "leetcode-tui": "leetcode-tui_2",
         "nix-darwin": "nix-darwin_2",
+        "nix-doom-emacs-unstraightened": "nix-doom-emacs-unstraightened",
         "nix-homebrew": "nix-homebrew_2",
         "nix-index-database": "nix-index-database_2",
         "nix-on-droid": "nix-on-droid_2",
