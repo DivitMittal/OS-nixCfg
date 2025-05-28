@@ -1,4 +1,5 @@
 {config, ...}: {
+  networking.nameservers = [];
   wsl = {
     enable = true;
 

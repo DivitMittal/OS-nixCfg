@@ -6,7 +6,7 @@
   imports = lib.custom.scanPaths ./.;
 
   networking = {
-    nameservers = [
+    nameservers = lib.mkDefault [
       # Cloudflare DNS
       "1.1.1.1"
       "1.0.0.1" # IPv4
