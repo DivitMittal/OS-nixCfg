@@ -28,7 +28,6 @@
         allowUnfree = mkDefault true;
         allowBroken = mkDefault false;
         allowUnsupportedSystem = mkDefault false;
-        allowInsecure = mkDefault true;
         checkMeta = mkDefault false;
         warnUndeclaredOptions = mkDefault true;
       };
@@ -76,7 +75,7 @@
       ++ additionalModules;
   in
     configGenerator.${class} (lib.attrsets.mergeAttrsList [
-      {inherit modules;}
+      {inherit pkgs modules;}
       (lib.attrsets.optionalAttrs (class == "nixos" || class == "darwin") {inherit specialArgs lib;})
       (
         lib.attrsets.optionalAttrs (class == "home") (lib.attrsets.mergeAttrsList [

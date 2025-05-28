@@ -3,7 +3,6 @@
     allowUnfree = true;
     allowBroken = false;
     allowUnsupportedSystem = false;
-    allowInsecure = true;
   };
 in {
   pkgs-master = _: _: {
