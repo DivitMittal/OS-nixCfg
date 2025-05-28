@@ -4,7 +4,12 @@
   lib,
   ...
 }: let
-  OS_NIXCFG = builtins.getEnv "OS_NIXCFG"; # impure
+  OS_NIXCFG = let
+    envVar = builtins.getEnv "OS_NIXCFG"; # impure
+  in
+    if envVar == ""
+    then throw "Environment variable $OS_NIXCFG must be set"
+    else envVar;
   weechatConfSourceDir = "${OS_NIXCFG}/home/comms/irc/weechat/conf";
   weechatConfEntries = builtins.readDir weechatConfSourceDir;
   weechatConfNames = lib.attrsets.attrNames weechatConfEntries;
