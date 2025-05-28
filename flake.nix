@@ -1,11 +1,13 @@
 {
   description = "OS-nixCfg flake";
-  outputs = {flake-parts, ...} @ inputs: let
-    specialArgs.lib = inputs.nixpkgs.lib.extend (_: super: {
-      custom = builtins.import ./lib/custom.nix {lib = super;};
+  outputs = {nixpkgs, ...} @ inputs: let
+    inherit (inputs.flake-parts.lib) mkFlake;
+    lib = nixpkgs.lib;
+    specialArgs.lib = lib.extend (_: super: {
+      custom = builtins.import ./lib/custom.nix {inherit lib;};
     });
   in
-    flake-parts.lib.mkFlake {inherit inputs specialArgs;} ({inputs, ...}: {
+    mkFlake {inherit inputs specialArgs;} ({inputs, ...}: {
       systems = builtins.import inputs.systems;
       imports = [
         ./flake
