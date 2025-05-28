@@ -7,8 +7,37 @@
       custom = builtins.import ./lib/custom.nix {inherit lib;};
     });
   in
-    mkFlake {inherit inputs specialArgs;} ({inputs, ...}: {
+    mkFlake {inherit inputs specialArgs;} ({
+      inputs,
+      lib,
+      self,
+      ...
+    }: {
       systems = builtins.import inputs.systems;
+      perSystem = {system, ...}: {
+        ## ====== pkgs ======
+        #pkgs = inputs.nixpkgs.legacyPackages.${system}; # memoized
+        ## non-memoized pkgs
+        _module.args.pkgs = builtins.import nixpkgs {
+          inherit system;
+          config = let
+            inherit (lib) mkDefault;
+          in {
+            allowUnfree = mkDefault true;
+            allowBroken = mkDefault false;
+            allowUnsupportedSystem = mkDefault false;
+            checkMeta = mkDefault false;
+            warnUndeclaredOptions = mkDefault true;
+          };
+          overlays = lib.attrsets.attrValues {
+            inherit
+              (self.outputs.overlays)
+              default
+              pkgs-master
+              ;
+          };
+        };
+      };
       imports = [
         ./flake
         ./home

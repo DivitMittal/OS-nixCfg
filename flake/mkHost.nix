@@ -1,103 +1,85 @@
 {
-  self,
   inputs,
   lib,
+  withSystem,
+  self,
   ...
-}: let
+} @ args: let
   mkHost = {
     hostName,
-    system,
     class,
+    system,
     additionalModules ? [],
     extraSpecialArgs ? {},
-  }: let
-    configGenerator = {
-      nixos = lib.nixosSystem;
-      darwin = inputs.nix-darwin.lib.darwinSystem;
-      droid = inputs.nix-on-droid.lib.nixOnDroidConfiguration;
-      home = inputs.home-manager.lib.homeManagerConfiguration;
-    };
-    ## ====== pkgs ======
-    #pkgs = inputs.nixpkgs.legacyPackages.${system}; # memoized
-    # non-memoized
-    pkgs = builtins.import inputs.nixpkgs {
-      inherit system;
-      config = let
-        inherit (lib) mkDefault;
-      in {
-        allowUnfree = mkDefault true;
-        allowBroken = mkDefault false;
-        allowUnsupportedSystem = mkDefault false;
-        checkMeta = mkDefault false;
-        warnUndeclaredOptions = mkDefault true;
+  }:
+    withSystem system (ctx @ {pkgs, ...}: let
+      configGenerator = {
+        nixos = lib.nixosSystem;
+        darwin = inputs.nix-darwin.lib.darwinSystem;
+        droid = inputs.nix-on-droid.lib.nixOnDroidConfiguration;
+        home = inputs.home-manager.lib.homeManagerConfiguration;
       };
-      overlays =
+      inherit (ctx.pkgs.stdenvNoCC) hostPlatform;
+      pkgs = ctx.pkgs.extend (
+        self: super:
+          lib.attrsets.mergeAttrsList [
+            (lib.attrsets.optionalAttrs (hostPlatform.isDarwin) (
+              args.self.outputs.overlays.pkgs-darwin self super
+            ))
+            (lib.attrsets.optionalAttrs (hostPlatform.isLinux) (
+              args.self.outputs.overlays.pkgs-nixos self super
+            ))
+          ]
+      );
+      specialArgs = {inherit self inputs hostPlatform;} // extraSpecialArgs;
+      modules =
         [
-          self.outputs.overlays.default
-          self.outputs.overlays.pkgs-master
+          ../common
+          {hostSpec = {inherit hostName;};}
         ]
-        ++ lib.lists.optionals (lib.strings.hasSuffix "darwin" system) [
-          self.outputs.overlays.pkgs-darwin
+        ++ lib.lists.optionals (class == "darwin" || class == "nixos" || class == "droid") [
+          ../hosts/${class}/common
+          ../hosts/${class}/${hostName}
         ]
-        ++ lib.lists.optionals (lib.strings.hasSuffix "linux" system) [
-          self.outputs.overlays.pkgs-nixos
-        ];
-    };
-    inherit (pkgs.stdenvNoCC) hostPlatform;
-    specialArgs = {inherit self inputs hostPlatform;} // extraSpecialArgs;
-    modules =
-      [
-        ../common
-        ## ===== OS-nixCfg-secrets ======
-        {
-          hostSpec = {
-            inherit hostName;
-          };
-        }
-      ]
-      ++ lib.lists.optionals (class == "darwin" || class == "nixos" || class == "droid") [
-        ../hosts/${class}/common
-        ../hosts/${class}/${hostName}
-      ]
-      ++ lib.lists.optionals (class == "darwin" || class == "nixos") [
-        ../hosts/common
-      ]
-      ++ lib.lists.optionals (class == "home") [
-        self.outputs.homeManagerModules.default
-        ../home/common
-      ]
-      ++ lib.lists.optionals (class == "darwin") [
-        self.outputs.darwinModules.default
-      ]
-      ++ additionalModules;
-  in
-    configGenerator.${class} (lib.attrsets.mergeAttrsList [
-      {inherit pkgs modules;}
-      (lib.attrsets.optionalAttrs (class == "nixos" || class == "darwin") {inherit specialArgs lib;})
-      (
-        lib.attrsets.optionalAttrs (class == "home") (lib.attrsets.mergeAttrsList [
-          {
-            inherit lib;
-            extraSpecialArgs = specialArgs;
-          }
-          (
-            lib.attrsets.optionalAttrs (hostPlatform.isDarwin) {
-              pkgs = pkgs.extend (self: super:
-                lib.attrsets.mergeAttrsList [
-                  (inputs.brew-nix.overlays.default self super)
-                  (inputs.nixpkgs-firefox-darwin.overlay self super)
-                ]);
+        ++ lib.lists.optionals (class == "darwin" || class == "nixos") [
+          ../hosts/common
+        ]
+        ++ lib.lists.optionals (class == "home") [
+          self.outputs.homeManagerModules.default
+          ../home/common
+        ]
+        ++ lib.lists.optionals (class == "darwin") [
+          self.outputs.darwinModules.default
+        ]
+        ++ additionalModules;
+    in
+      configGenerator.${class} (lib.attrsets.mergeAttrsList [
+        {inherit pkgs modules;}
+        (lib.attrsets.optionalAttrs (class == "nixos" || class == "darwin") {inherit specialArgs lib;})
+        (
+          lib.attrsets.optionalAttrs (class == "home") (lib.attrsets.mergeAttrsList [
+            {
+              inherit lib;
+              extraSpecialArgs = specialArgs;
             }
-          )
-        ])
-      )
-      (
-        lib.attrsets.optionalAttrs (class == "droid") {
-          extraSpecialArgs = specialArgs;
-          home-manager-path = inputs.home-manager.outPath;
-        }
-      )
-    ]);
+            (
+              lib.attrsets.optionalAttrs (hostPlatform.isDarwin) {
+                pkgs = pkgs.extend (self: super:
+                  lib.attrsets.mergeAttrsList [
+                    (inputs.brew-nix.overlays.default self super)
+                    (inputs.nixpkgs-firefox-darwin.overlay self super)
+                  ]);
+              }
+            )
+          ])
+        )
+        (
+          lib.attrsets.optionalAttrs (class == "droid") {
+            extraSpecialArgs = specialArgs;
+            home-manager-path = inputs.home-manager.outPath;
+          }
+        )
+      ]));
 in {
   _module.args = {
     inherit mkHost;
