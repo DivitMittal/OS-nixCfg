@@ -1,11 +1,9 @@
 {
-  pkgs,
-  config,
   lib,
+  config,
+  pkgs,
   ...
 }: {
-  imports = lib.custom.scanPaths ./.;
-
   networking.hostName = config.hostSpec.hostName;
 
   time.timeZone = "Asia/Calcutta";

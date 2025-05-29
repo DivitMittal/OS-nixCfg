@@ -1,11 +1,11 @@
 {
+  self,
   config,
   lib,
-  self,
   pkgs,
   ...
 }: {
-  imports = lib.custom.scanPaths ./.;
+  imports = [self.outputs.darwinModules.default];
 
   networking = {
     knownNetworkServices = ["Wi-Fi"];

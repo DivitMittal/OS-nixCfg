@@ -72,9 +72,9 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
     │   ├── graph.png
     │   └── qezta.png
     ├── common/
-    │   ├── conf.nix
-    │   ├── default.nix
-    │   └── hostSpec.nix
+    │   ├── all/
+    │   ├── home/
+    │   └── hosts/
     ├── flake/
     │   ├── actions.nix
     │   ├── checks.nix
@@ -83,9 +83,8 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
     │   ├── formatters.nix
     │   └── mkHost.nix
     ├── home/
-    │   ├── default.nix
-    │   ├── common/
     │   ├── comms/
+    │   ├── default.nix
     │   ├── desktop-env/
     │   ├── dev/
     │   ├── keyboard/
@@ -94,9 +93,8 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
     │   ├── tty/
     │   └── web/
     ├── hosts/
-    │   ├── default.nix
-    │   ├── common/
     │   ├── darwin/
+    │   ├── default.nix
     │   ├── droid/
     │   └── nixos/
     ├── lib/
@@ -107,7 +105,6 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
     │   ├── home/
     │   └── hosts/
     ├── overlays/
-    │   └── default.nix
     ├── pkgs/
     └── utils/
 ```

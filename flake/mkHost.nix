@@ -32,25 +32,19 @@
           ]
       );
       specialArgs = {inherit self inputs hostPlatform;} // extraSpecialArgs;
-      modules =
+      modules = let
+        commonDir = self + "/common";
+      in
         [
-          ../common
+          (commonDir + "/all")
           {hostSpec = {inherit hostName;};}
         ]
+        ++ lib.lists.optionals (class == "darwin" || class == "nixos") [(commonDir + "/hosts/all")]
         ++ lib.lists.optionals (class == "darwin" || class == "nixos" || class == "droid") [
-          ../hosts/${class}/common
-          ../hosts/${class}/${hostName}
+          (commonDir + "/hosts/${class}")
+          (self + "/hosts/${class}/${hostName}")
         ]
-        ++ lib.lists.optionals (class == "darwin" || class == "nixos") [
-          ../hosts/common
-        ]
-        ++ lib.lists.optionals (class == "home") [
-          self.outputs.homeManagerModules.default
-          ../home/common
-        ]
-        ++ lib.lists.optionals (class == "darwin") [
-          self.outputs.darwinModules.default
-        ]
+        ++ lib.lists.optionals (class == "home") [(commonDir + "/home")]
         ++ additionalModules;
     in
       configGenerator.${class} (lib.attrsets.mergeAttrsList [

@@ -2,8 +2,11 @@
   config,
   pkgs,
   lib,
+  self,
   ...
 }: {
+  imports = [self.outputs.homeManagerModules.default];
+
   home = {
     inherit (config.hostSpec) username;
     homeDirectory = config.hostSpec.home;
@@ -31,5 +34,5 @@
     manpages.enable = false;
   };
 
-  home.stateVersion = "25.05";
+  home.stateVersion = lib.mkDefault "25.05";
 }

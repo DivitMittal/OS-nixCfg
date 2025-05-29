@@ -1,10 +1,8 @@
 {
-  config,
   lib,
+  config,
   ...
 }: {
-  imports = lib.custom.scanPaths ./.;
-
   networking = {
     nameservers = lib.mkDefault [
       # Cloudflare DNS
