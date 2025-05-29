@@ -42,6 +42,7 @@
       nurl
       nix-melt
       omnix
+      cachix
       ;
   };
 }
