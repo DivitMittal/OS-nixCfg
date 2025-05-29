@@ -2,9 +2,8 @@
   description = "OS-nixCfg flake";
   outputs = {nixpkgs, ...} @ inputs: let
     inherit (inputs.flake-parts.lib) mkFlake;
-    lib = nixpkgs.lib;
-    specialArgs.lib = lib.extend (_: super: {
-      custom = builtins.import ./lib/custom.nix {inherit lib;};
+    specialArgs.lib = nixpkgs.lib.extend (_: super: {
+      custom = builtins.import ./lib/custom.nix {lib = super;};
     });
   in
     mkFlake {inherit inputs specialArgs;} ({
@@ -15,7 +14,6 @@
     }: {
       systems = builtins.import inputs.systems;
       perSystem = {system, ...}: {
-        ## ====== pkgs ======
         #pkgs = inputs.nixpkgs.legacyPackages.${system}; # memoized
         ## non-memoized pkgs
         _module.args.pkgs = builtins.import nixpkgs {

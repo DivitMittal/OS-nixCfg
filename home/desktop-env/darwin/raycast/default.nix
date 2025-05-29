@@ -9,7 +9,7 @@
       (pkgs.brewCasks.raycast.override {
         variation = "sequoia";
       })
-    else (pkgs.brewCasks.raycast);
+    else pkgs.brewCasks.raycast;
 in {
   home.packages = [raycast];
 

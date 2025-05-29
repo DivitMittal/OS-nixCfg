@@ -23,10 +23,10 @@
       pkgs = ctx.pkgs.extend (
         self: super:
           lib.attrsets.mergeAttrsList [
-            (lib.attrsets.optionalAttrs (hostPlatform.isDarwin) (
+            (lib.attrsets.optionalAttrs hostPlatform.isDarwin (
               args.self.outputs.overlays.pkgs-darwin self super
             ))
-            (lib.attrsets.optionalAttrs (hostPlatform.isLinux) (
+            (lib.attrsets.optionalAttrs hostPlatform.isLinux (
               args.self.outputs.overlays.pkgs-nixos self super
             ))
           ]
@@ -35,9 +35,7 @@
       modules = let
         commonDir = self + "/common";
       in
-        [
-          {hostSpec = {inherit hostName;};}
-        ]
+        [{hostSpec = {inherit hostName;};}]
         ++ lib.lists.optionals (class == "darwin" || class == "nixos") [
           (commonDir + "/all")
           (commonDir + "/hosts/all")
@@ -65,7 +63,7 @@
               extraSpecialArgs = specialArgs;
             }
             (
-              lib.attrsets.optionalAttrs (hostPlatform.isDarwin) {
+              lib.attrsets.optionalAttrs hostPlatform.isDarwin {
                 pkgs = pkgs.extend (self: super:
                   lib.attrsets.mergeAttrsList [
                     (inputs.brew-nix.overlays.default self super)
