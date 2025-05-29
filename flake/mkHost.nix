@@ -36,15 +36,23 @@
         commonDir = self + "/common";
       in
         [
-          (commonDir + "/all")
           {hostSpec = {inherit hostName;};}
         ]
-        ++ lib.lists.optionals (class == "darwin" || class == "nixos") [(commonDir + "/hosts/all")]
+        ++ lib.lists.optionals (class == "darwin" || class == "nixos") [
+          (commonDir + "/all")
+          (commonDir + "/hosts/all")
+        ]
         ++ lib.lists.optionals (class == "darwin" || class == "nixos" || class == "droid") [
           (commonDir + "/hosts/${class}")
           (self + "/hosts/${class}/${hostName}")
         ]
-        ++ lib.lists.optionals (class == "home") [(commonDir + "/home")]
+        ++ lib.lists.optionals (class == "home") [
+          (commonDir + "/all")
+          (commonDir + "/home")
+        ]
+        ++ lib.lists.optionals (class == "droid") [
+          (commonDir + "/all/hostSpec.nix")
+        ]
         ++ additionalModules;
     in
       configGenerator.${class} (lib.attrsets.mergeAttrsList [
@@ -69,7 +77,7 @@
         )
         (
           lib.attrsets.optionalAttrs (class == "droid") {
-            extraSpecialArgs = specialArgs;
+            extraSpecialArgs = specialArgs // {inherit lib;};
             home-manager-path = inputs.home-manager.outPath;
           }
         )
