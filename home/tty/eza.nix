@@ -23,10 +23,10 @@
   };
 
   home.shellAliases = let
-    ov = "${pkgs.ov}/bin/ov";
+    ov = "${pkgs.ov}/bin/ov -H1";
     eza = "${pkgs.eza}/bin/eza";
   in {
-    ll = "${eza} -albhHigUuS -m@ | ${ov} -H1";
-    lt = "${eza} --tree --level=2 | ${ov} -H1";
+    ll = "${eza} -albhHigUuS -m@ | ${ov}";
+    lt = "${eza} --tree --level=2 | ${ov}";
   };
 }

@@ -139,7 +139,7 @@ return {
     {
       mods = "LEADER|CTRL",
       key = "r",
-      action = w.action.SendKey({ mods = "CTRL", key = "r" }),
+      action = act.SendKey({ mods = "CTRL", key = "r" }),
     },
 
     -- splitting

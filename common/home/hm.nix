@@ -20,7 +20,9 @@
   home.enableNixpkgsReleaseCheck = true;
 
   home.packages = lib.attrsets.attrValues {
-    my-hello = pkgs.writeShellScriptBin "my-hello" ''echo "Hello, ${config.home.username}!"'';
+    my-hello = pkgs.writeShellScriptBin "my-hello" ''
+      echo "Hello, ${config.home.username}!"
+    '';
   };
   home.extraOutputsToInstall = ["info"]; # "doc" "devdoc"
 

@@ -32,7 +32,7 @@
     };
   };
 
-  home.shellAliases.lg = "lazygit";
+  home.shellAliases.lg = "${pkgs.lazygit}/bin/lazygit";
   programs.lazygit = {
     enable = true;
     package = pkgs.lazygit;
@@ -57,12 +57,11 @@
         fetchAll = true;
         autoRefresh = true;
         parseEmoji = true;
-      };
-
-      git.paging = {
-        useConfig = false;
-        colorArg = "always";
-        pager = "delta --dark --paging=never";
+        paging = {
+          useConfig = false;
+          colorArg = "always";
+          pager = "${pkgs.delta}/bin/delta --dark --paging=never";
+        };
       };
 
       # What to do when opening Lazygit outside of a git repo.

@@ -35,7 +35,7 @@
         end
 
         if test -d $argv[1]
-            set image_files (fd --type f --glob "*.{png,jpg,jpeg}" $argv[1])
+            set image_files (${pkgs.fd}/bin/fd --type f --glob "*.{png,jpg,jpeg}" $argv[1])
         else if test -f $argv[1]
             set image_files $argv[1]
         else
