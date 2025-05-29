@@ -24,7 +24,7 @@
       foreground = "#FFFFFF";
       cursor = "#FF0000";
     };
-    font = "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/CaskaydiaCoveNerdFontMono-Regular.ttf";
+    font = "${pkgs.nerd-fonts.caskaydia-cove}/share/fonts/truetype/NerdFonts/CaskaydiaCoveNerdFontMono-Regular.ttf";
   };
 
   environment.packages = lib.attrsets.attrValues {

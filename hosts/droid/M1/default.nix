@@ -3,9 +3,7 @@
   lib,
   ...
 }: {
-  imports = [
-    ./home
-  ];
+  imports = lib.custom.scanPaths ./.;
 
   environment.packages = lib.attrsets.attrValues {
     inherit

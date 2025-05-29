@@ -8,8 +8,8 @@
   imports = [self.outputs.homeManagerModules.default];
 
   home = {
-    inherit (config.hostSpec) username;
-    homeDirectory = config.hostSpec.home;
+    username = lib.mkDefault config.hostSpec.username;
+    homeDirectory = lib.mkDefault config.hostSpec.home;
   };
 
   programs.home-manager.enable = true; # home-manager standalone
