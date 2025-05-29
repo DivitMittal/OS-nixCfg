@@ -1,6 +1,7 @@
 {
   mkHost,
   inputs,
+  lib,
   ...
 }: {
   imports = [inputs.home-manager.flakeModules.home-manager];
@@ -12,16 +13,7 @@
       hostName = "L1";
       system = "x86_64-darwin";
       inherit class;
-      additionalModules = [
-        ./comms
-        ./desktop-env
-        ./dev
-        ./keyboard
-        ./media
-        ./tools
-        ./tty
-        ./web
-      ];
+      additionalModules = lib.custom.scanPaths ./.;
     };
 
     WSL = mkHost {

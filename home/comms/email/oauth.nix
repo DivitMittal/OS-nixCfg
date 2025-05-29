@@ -10,5 +10,5 @@
     hash = "sha256-DyFCczkCQCV9egIY/gWNLGtcxlFEWpprBHGdIS8+OFU=";
   };
 in {
-  home.file."${config.home.sessionVariables.BIN_HOME}/oauth2".source = mutt + /contrib/mutt_oauth2.py;
+  home.file."${config.home.sessionVariables.BIN_HOME}/oauth2".source = mutt + "/contrib/mutt_oauth2.py";
 }

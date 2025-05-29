@@ -13,7 +13,7 @@ _:
   #   package = pkgs.tmux;
   # };
   # xdg.configFile."tmux/tmux.conf" = {
-  #   source = oh-my-tmux + /.tmux.conf;
+  #   source = oh-my-tmux + "/.tmux.conf";
   # };
   # xdg.configFile."tmux/tmux.conf.local" = {
   #   source = ./tmux.conf.local;

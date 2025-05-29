@@ -9,7 +9,7 @@
   age.secretsDir = "${config.xdg.configHome}/agenix";
 
   age.secrets = {
-    github.file = inputs.OS-nixCfg-secrets + /secrets/github.age;
-    weechatSec.file = inputs.OS-nixCfg-secrets + /secrets/weechat/sec.conf;
+    github.file = inputs.OS-nixCfg-secrets + "/secrets/github.age";
+    weechatSec.file = inputs.OS-nixCfg-secrets + "/secrets/weechat/sec.conf";
   };
 }

@@ -27,7 +27,7 @@ in {
       else
         (pkgs.firefox.override {
           extraPrefsFiles = [
-            (fx-autoconfig + /program/config.js)
+            (fx-autoconfig + "/program/config.js")
           ];
         });
     inherit policies;
@@ -38,10 +38,10 @@ in {
       {
         extraFiles = {
           "defaults" = {
-            source = fx-autoconfig + /program/defaults;
+            source = fx-autoconfig + "/program/defaults";
             recursive = true;
           };
-          "config.js".source = fx-autoconfig + /program/config.js;
+          "config.js".source = fx-autoconfig + "/program/config.js";
         };
       })
   ];

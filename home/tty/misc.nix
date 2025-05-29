@@ -14,7 +14,6 @@
       ;
   };
 
-  # Using pay-respects instead
   # programs.thefuck = {
   #   enable = false;
   #   package = pkgs.thefuck;
@@ -33,6 +32,7 @@
 
   programs.tealdeer = {
     enable = true;
+    package = pkgs.tealdeer;
 
     settings = {
       display = {

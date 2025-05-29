@@ -16,13 +16,13 @@
   environment = {
     variables = rec {
       LANG = "en_US.UTF-8";
-      VISUAL = "vim";
+      VISUAL = "${pkgs.vim}/bin/vim";
       EDITOR = "${VISUAL}";
     };
 
     shellAliases = {
-      ls = "env ls -aF";
-      ll = "env ls -alHbhigUuS";
+      ls = "/usr/bin/env ls -aF";
+      ll = "/usr/bin/env ls -alHbhigUuS";
     };
   };
 

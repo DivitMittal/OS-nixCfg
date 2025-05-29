@@ -22,8 +22,11 @@
     ];
   };
 
-  home.shellAliases = {
-    ll = "eza -albhHigUuS -m@ | ov -H1";
-    lt = "eza --tree --level=2 | ov -H1";
+  home.shellAliases = let
+    ov = "${pkgs.ov}/bin/ov";
+    eza = "${pkgs.eza}/bin/eza";
+  in {
+    ll = "${eza} -albhHigUuS -m@ | ${ov} -H1";
+    lt = "${eza} --tree --level=2 | ${ov} -H1";
   };
 }
