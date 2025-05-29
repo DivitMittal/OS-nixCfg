@@ -106,23 +106,6 @@
         };
       };
 
-      ".github/workflows/droid-build.yml" = {
-        inherit on;
-        jobs.build-nix-on-droid-configuration = {
-          runs-on = "ubuntu-24.04-arm";
-          inherit environment;
-          permissions.contents = "write";
-          steps =
-            common-actions
-            ++ [
-              {
-                name = "Builds a nix-on-droid configuration";
-                run = "nix build --accept-flake-config .#nixOnDroidConfigurations.M1.config.build.activationPackage --impure --show-trace";
-              }
-            ];
-        };
-      };
-
       ".github/workflows/flake-check.yml" = {
         inherit on;
         jobs.checking-flake = {
