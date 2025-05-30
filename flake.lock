@@ -19,11 +19,11 @@
     "Nvim-Cfg": {
       "flake": false,
       "locked": {
-        "lastModified": 1748538887,
-        "narHash": "sha256-I3XvO+0++3dvTTVtQ+xyT+ucTb7rI6OT67zggvgLNNQ=",
+        "lastModified": 1748574465,
+        "narHash": "sha256-3TgCa1kIiKOPk+dsy1bNcgz+uDEBpi0gHBfCrW106Iw=",
         "owner": "divitmittal",
         "repo": "nvim-cfg",
-        "rev": "24a2557fd143ab3103b9e60259b5c5e216bca164",
+        "rev": "be66293ebf35e62f38da1ea4b1ef1f5be75477e5",
         "type": "github"
       },
       "original": {
