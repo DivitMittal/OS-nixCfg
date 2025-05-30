@@ -158,7 +158,7 @@
       {
         desc = "Edit via $EDITOR";
         for = "windows";
-        run = "$EDITOR \"%*\"";
+        run = "%EDITOR% \"%*\"";
         orphan = true;
         block = true;
       }
