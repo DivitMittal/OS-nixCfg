@@ -16,7 +16,6 @@
     extraPackages = lib.attrsets.attrValues {
       ## General
       inherit (pkgs.nodePackages) prettier;
-      inherit (pkgs) vscode-langservers-extracted;
       inherit
         (pkgs)
         ## Lua
@@ -26,6 +25,10 @@
         alejandra
         ## C/C++
         clang-tools
+        ## Collection
+        vscode-langservers-extracted
+        ## Markdown
+        markdown-oxide
         ;
       ## Shell
       inherit (pkgs.nodePackages) bash-language-server;
