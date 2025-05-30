@@ -17,7 +17,24 @@
   programs.gh = {
     enable = true;
     package = pkgs.gh;
-    extensions = with pkgs; [gh-eco gh-dash];
+    extensions = lib.attrsets.attrValues {
+      inherit
+        (pkgs)
+        ## Manage
+        gh-f
+        gh-notify
+        gh-dash
+        ## Contribution
+        gh-eco
+        gh-skyline
+        gh-contribs # gh-cal
+        ## Misc
+        gh-copilot
+        gh-screensaver
+        gh-markdown-preview
+        ;
+    };
+
     gitCredentialHelper = {
       enable = true;
       hosts = ["https://github.com" "https://gist.github.com"];

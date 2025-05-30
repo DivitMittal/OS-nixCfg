@@ -86,6 +86,7 @@
         filemode = false;
         editor = "${config.home.sessionVariables.VISUAL}";
         excludesfile = "${config.xdg.configHome}/git/ignore";
+        symlinks = true;
       };
 
       push = {
