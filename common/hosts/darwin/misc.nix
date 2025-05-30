@@ -21,9 +21,6 @@
     computerName = "${config.networking.hostName}";
   };
 
-  programs.man.enable = true;
-  programs.info.enable = true;
-
   system.stateVersion = lib.mkDefault 6;
   #environment.darwinConfig = self + "/hosts/darwin/${config.networking.hostName}/default.nix"; # non-flake feature(adds darwin to $NIX_PATH)
   system.primaryUser = "${config.hostSpec.username}";

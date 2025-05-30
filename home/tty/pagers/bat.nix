@@ -16,7 +16,7 @@
   };
 
   home.shellAliases = {
-    man = "${pkgs.bat-extras.batman}";
+    man = "${pkgs.bat-extras.batman}/bin/batman";
     cat = "${pkgs.bat}/bin/bat --paging=never";
   };
 }
