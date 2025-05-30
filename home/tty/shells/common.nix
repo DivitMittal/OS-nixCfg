@@ -1,14 +1,17 @@
 {config, ...}: {
-  home.sessionVariables = rec {
+  home.sessionVariables = let
     HOME = "${config.home.homeDirectory}";
-    XDG_CONFIG_HOME = "${HOME}/.config";
+    local = "${HOME}/.local";
+  in {
+    inherit HOME;
+    XDG_CONFIG_HOME = "${config.xdg.configHome}";
     XDG_CACHE_HOME = "${HOME}/.cache";
-    XDG_STATE_HOME = "${HOME}/.local/state";
-    XDG_DATA_HOME = "${HOME}/.local/share";
-    BIN_HOME = "${HOME}/.local/bin";
-    LANG = "en_US.UTF-8";
-    VISUAL = "nvim";
-    EDITOR = "${VISUAL}";
+    XDG_STATE_HOME = "${local}/state";
+    XDG_DATA_HOME = "${local}/share";
+    BIN_HOME = "${local}/bin";
+    LANG = "${config.home.language.base}";
+    EDITOR = "nvim";
+    VISUAL = "${config.home.sessionVariables.EDITOR}";
   };
 
   home.shellAliases = {
