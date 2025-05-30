@@ -1,40 +1,29 @@
 {
   config,
-  pkgs,
   lib,
   self,
   ...
 }: {
   imports = [self.outputs.homeManagerModules.default];
 
+  programs.home-manager.enable = true; # home-manager standalone
+
   home = {
     username = lib.mkDefault config.hostSpec.username;
     homeDirectory = lib.mkDefault config.hostSpec.home;
+    preferXdgDirectories = true;
+    enableNixpkgsReleaseCheck = true;
+    language.base = "en_US.UTF-8";
+    stateVersion = lib.mkDefault "25.05";
   };
 
-  programs.home-manager.enable = true; # home-manager standalone
-  news.display = "show";
-
-  xdg.enable = true;
-  home.preferXdgDirectories = true;
-  home.enableNixpkgsReleaseCheck = true;
-
-  home.packages = lib.attrsets.attrValues {
-    my-hello = pkgs.writeShellScriptBin "my-hello" ''
-      echo "Hello, ${config.home.username}!"
-    '';
-  };
-  home.extraOutputsToInstall = ["info"]; # "doc" "devdoc"
-
-  home.language = {
-    base = "en_US.UTF-8";
-  };
-
+  ## home-manager manual
   manual = {
     html.enable = true;
+    manpages.enable = true;
     json.enable = false;
-    manpages.enable = false;
   };
 
-  home.stateVersion = lib.mkDefault "25.05";
+  xdg.enable = true;
+  news.display = "show";
 }

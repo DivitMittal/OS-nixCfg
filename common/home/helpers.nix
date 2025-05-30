@@ -45,4 +45,12 @@
       cachix
       ;
   };
+
+  programs.man = {
+    enable = true;
+    package = pkgs.man;
+    generateCaches = true;
+  };
+  programs.info.enable = true;
+  home.extraOutputsToInstall = ["info"]; # "doc" "devdoc"
 }
