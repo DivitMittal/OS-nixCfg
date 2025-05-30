@@ -22,7 +22,6 @@
         <img src="https://img.shields.io/badge/Nixpkgs-unstable-blue.svg?style=for-the-badge&logo=NixOS&logoColor=white&color=purple" alt="nixpkgs"/>
     </a>
     <img src="https://img.shields.io/github/languages/top/DivitMittal/OS-nixCfg?style=for-the-badge&color=purple" alt="repo-top-language"/>
-    <img src="https://img.shields.io/github/languages/count/DivitMittal/OS-nixCfg?style=for-the-badge&color=purple" alt="repo-language-count"/>
 </div>
 
 ---
