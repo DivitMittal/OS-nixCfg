@@ -3,7 +3,7 @@
 
   manager = {
     ratio = [1 3 3];
-    linemode = "permissions";
+    linemode = "size";
     show_hidden = true;
     show_symlink = false;
     sort_by = "alphabetical";
@@ -23,7 +23,8 @@
         "reveal"
         "look"
       ];
-    } # general directories
+    }
+    # general directories
     {
       mime = "text/*";
       use = [
@@ -136,6 +137,7 @@
         "reveal"
       ];
     }
+    # general files
     {
       mime = "*";
       use = [
@@ -144,7 +146,7 @@
         "reveal"
         "look"
       ];
-    } # general files
+    }
   ];
 
   opener = {

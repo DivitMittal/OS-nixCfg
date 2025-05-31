@@ -98,6 +98,12 @@
             rev = "4872af0da53023358154c8233ab698581de5b2b2";
             hash = "sha256-7uk8QXAlck0/4bynPdh/m7Os2ayW1UXbELmusPqRmf4=";
           };
+          lazygit = pkgs.fetchFromGitHub {
+            owner = "Lil-Dank";
+            repo = "lazygit.yazi";
+            rev = "7a08a0988c2b7481d3f267f3bdc58080e6047e7d";
+            hash = "sha256-OJJPgpSaUHYz8a9opVLCds+VZsK1B6T+pSRJyVgYNy8=";
+          };
         }
         (getPlugin lpanebrPluginsFork "yatline-symlink")
       ];

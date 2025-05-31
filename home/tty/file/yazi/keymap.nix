@@ -26,7 +26,6 @@
         on = ["<C-z>"];
         run = "suspend";
       }
-
       # Hopping
       {
         desc = "Move cursor up";
@@ -39,16 +38,6 @@
         run = "arrow 1";
       }
       {
-        desc = "Move cursor up halfpage";
-        on = ["<C-u>"];
-        run = "arrow -50%";
-      }
-      {
-        desc = "Move cursor down half page";
-        on = ["<C-d>"];
-        run = "arrow 50%";
-      }
-      {
         desc = "Move cursor up one page";
         on = ["<PageUp>"];
         run = "arrow -100%";
@@ -58,7 +47,6 @@
         on = ["<PageDown>"];
         run = "arrow 100%";
       }
-
       {
         desc = "Seek up 5 units in the preview";
         on = ["<A-Up>"];
@@ -69,7 +57,6 @@
         on = ["<A-Down>"];
         run = "seek 5";
       }
-
       {
         desc = "Go back to the parent directory";
         on = ["<Left>"];
@@ -80,7 +67,6 @@
         on = ["<Right>"];
         run = "enter";
       }
-
       {
         desc = "Move cursor to the top";
         on = ["g" "g"];
@@ -91,7 +77,6 @@
         on = ["G"];
         run = "arrow bot";
       }
-
       {
         desc = "Toggle the current selection state";
         on = ["<Space>"];
@@ -112,7 +97,6 @@
         on = ["<C-r>"];
         run = "toggle_all --state=none";
       }
-
       {
         desc = "Open the selected files";
         on = ["o"];
@@ -128,7 +112,6 @@
         on = ["O"];
         run = "open --interactive";
       }
-
       {
         desc = "Copy the selected files";
         on = ["y"];
@@ -154,7 +137,6 @@
         on = ["P"];
         run = "paste --force";
       }
-
       {
         desc = "Move the files to the trash";
         on = ["d"];
@@ -165,7 +147,6 @@
         on = ["D"];
         run = ["remove --permanently" "escape --visual --select"];
       }
-
       {
         desc = "Create a file or directory(append /)";
         on = ["a"];
@@ -176,7 +157,6 @@
         on = ["r"];
         run = "rename --cursor=before_ext";
       }
-
       {
         desc = "Symlink the absolute path of files";
         on = ["-"];
@@ -192,7 +172,6 @@
         on = ["<C-->"];
         run = "hardlink";
       }
-
       {
         desc = "Run a shell command";
         on = [":"];
@@ -208,7 +187,6 @@
         on = ["."];
         run = "hidden toggle";
       }
-
       # change linemode
       {
         desc = "Set linemode to size";
@@ -230,7 +208,6 @@
         on = ["m" "n"];
         run = "linemode none";
       }
-
       # copy mode
       {
         desc = "Copy the absolute path";
@@ -252,69 +229,67 @@
         on = ["c" "n"];
         run = "copy name_without_ext";
       }
-
       # Sorting
       {
         desc = "Sort by modified time";
-        on = ["," "m"];
+        on = ["b" "m"];
         run = "sort modified --dir-first";
       }
       {
         desc = "Sort by modified time (reverse)";
-        on = ["," "M"];
+        on = ["b" "M"];
         run = "sort modified --reverse --dir-first";
       }
       {
         desc = "Sort by created time";
-        on = ["," "c"];
+        on = ["b" "c"];
         run = "sort created --dir-first";
       }
       {
         desc = "Sort by created time (reverse)";
-        on = ["," "C"];
+        on = ["b" "C"];
         run = "sort created --reverse --dir-first";
       }
       {
         desc = "Sort by extension";
-        on = ["," "e"];
+        on = ["b" "e"];
         run = "sort extension --dir-first";
       }
       {
         desc = "Sort by extension (reverse)";
-        on = ["," "E"];
+        on = ["b" "E"];
         run = "sort extension --reverse --dir-first";
       }
       {
         desc = "Sort alphabetically";
-        on = ["," "a"];
+        on = ["b" "a"];
         run = "sort alphabetical --dir-first";
       }
       {
         desc = "Sort alphabetically (reverse)";
-        on = ["," "A"];
+        on = ["b" "A"];
         run = "sort alphabetical --reverse --dir-first";
       }
       {
         desc = "Sort naturally";
-        on = ["," "n"];
+        on = ["b" "n"];
         run = "sort natural --dir-first";
       }
       {
         desc = "Sort naturally (reverse)";
-        on = ["," "N"];
+        on = ["b" "N"];
         run = "sort natural --reverse --dir-first";
       }
       {
         desc = "Sort by size";
-        on = ["," "s"];
+        on = ["b" "s"];
         run = "sort size --dir-first";
       }
       {
         desc = "Sort by size (reverse)";
-        on = ["," "S"];
+        on = ["b" "S"];
         run = "sort size --reverse --dir-first";
       }
-
       # Tabbing
       {
         desc = "Create a new tab using the current path";
@@ -391,14 +366,12 @@
         on = ["}"];
         run = "tab_swap 1";
       }
-
       # filter
       {
         desc = "Filter the files";
         on = ["f"];
         run = "filter --smart";
       }
-
       # searching
       {
         desc = "Search files by name using fd";
@@ -415,7 +388,6 @@
         on = ["<C-s>"];
         run = "search none";
       }
-
       # find
       {
         desc = "Find next file";
@@ -437,7 +409,6 @@
         on = ["N"];
         run = "find_arrow --previous";
       }
-
       # goto/change directory
       {
         desc = "Go to the home directory";
@@ -469,8 +440,6 @@
         on = ["g" "f"];
         run = "plugin fzf";
       }
-
-      # additioanl dialogs
       {
         desc = "Show the tasks manager";
         on = ["w"];
@@ -482,17 +451,45 @@
         run = "help";
       }
     ];
-
     prepend_keymap = [
+      {
+        desc = "Open shell here";
+        on = ["!"];
+        for = "unix";
+        run = "shell \"$SHELL\" --block --confirm";
+      }
+      {
+        desc = "Open shell here";
+        on = ["!"];
+        for = "windows";
+        run = "shell \"pwsh.exe\" --block --confirm";
+      }
       {
         desc = "Enter the child directory, or open the file";
         on = ["<Right>"];
         run = "plugin smart-enter";
       }
+    ];
+    append_keymap = [
       {
         desc = "A mount manager providing disk mount, unmount, and eject functionality";
-        on = ["M"];
+        on = ["<C-m>"];
         run = "plugin mount";
+      }
+      {
+        desc = "Maximize or restore the preview pane";
+        on = ["T"];
+        run = "plugin toggle-pane max-preview";
+      }
+      {
+        desc = "Smart filter";
+        on = ["F"];
+        run = "plugin smart-filter";
+      }
+      {
+        desc = "chmod on selected files";
+        on = ["<C-p>"];
+        run = "plugin chmod";
       }
       {
         desc = "diff selected file with hovered file";
@@ -500,276 +497,284 @@
         run = "plugin diff";
       }
       {
-        desc = "Maximize or restore the preview pane";
-        on = ["T"];
-        run = "plugin toggle-pane max-preview";
-      }
-    ];
-
-    append_keymap = [
-      {
-        desc = "Smart filter";
-        on = ["F"];
-        run = "plugin smart-filter";
-      }
-      {
-        desc = "Open shell here";
-        on = ["!"];
-        run = "shell \"$SHELL\" --block --confirm";
-      }
-      {
-        desc = "chmod on selected files";
-        on = ["<C-p>"];
-        run = "plugin chmod";
+        desc = "Run Lazygit";
+        on = ["g" "l"];
+        run = "plugin lazygit";
       }
     ];
   };
 
-  input.keymap = [
-    {
-      desc = "Go back the normal mode, or cancel input";
-      on = ["<Esc>"];
-      run = "escape";
-    }
-    {
-      desc = "Submit the input";
-      on = ["<Enter>"];
-      run = "close --submit";
-    }
+  input = {
+    keymap = [
+      {
+        desc = "Go back the normal mode, or cancel input";
+        on = ["<Esc>"];
+        run = "escape";
+      }
+      {
+        desc = "Submit the input";
+        on = ["<Enter>"];
+        run = "close --submit";
+      }
+      # basic vim style editing
+      {
+        desc = "Enter insert mode";
+        on = ["i"];
+        run = "insert";
+      }
+      {
+        desc = "Enter append mode";
+        on = ["a"];
+        run = "insert --append";
+      }
+      {
+        desc = "Move to the BOL, and enter insert mode";
+        on = ["I"];
+        run = ["move -999" "insert"];
+      }
+      {
+        desc = "Move to the EOL, and enter append mode";
+        on = ["A"];
+        run = ["move 999" "insert --append"];
+      }
+      {
+        desc = "Enter visual mode";
+        on = ["v"];
+        run = "visual";
+      }
+      {
+        desc = "Enter visual mode and select all";
+        on = ["V"];
+        run = ["move -999" "visual" "move 999"];
+      }
+      {
+        desc = "Move back a character";
+        on = ["<Left>"];
+        run = "move -1";
+      }
+      {
+        desc = "Move forward a character";
+        on = ["<Right>"];
+        run = "move 1";
+      }
+      {
+        desc = "Move back to the start of the current or previous word";
+        on = ["b"];
+        run = "backward";
+      }
+      {
+        desc = "Move forward to the start of the next word";
+        on = ["w"];
+        run = "forward";
+      }
+      {
+        desc = "Move forward to the end of the current or next word";
+        on = ["e"];
+        run = "forward --end-of-word";
+      }
+      {
+        desc = "Move to the BOL";
+        on = ["0"];
+        run = "move -999";
+      }
+      {
+        desc = "Move to the EOL";
+        on = ["$"];
+        run = "move 999";
+      }
+      {
+        desc = "Delete the character before the cursor";
+        on = ["<Backspace>"];
+        run = "backspace";
+      }
+      {
+        desc = "Cut the selected characters";
+        on = ["d"];
+        run = "delete --cut";
+      }
+      {
+        desc = "Cut until the EOL";
+        on = ["D"];
+        run = ["delete --cut" "move 999"];
+      }
+      {
+        desc = "Cut the selected characters, and enter insert mode";
+        on = ["c"];
+        run = "delete --cut --insert";
+      }
+      {
+        desc = "Cut until the EOL, and enter insert mode";
+        on = ["C"];
+        run = ["delete --cut --insert" "move 999"];
+      }
+      {
+        desc = "Cut the current character";
+        on = ["x"];
+        run = ["delete --cut" "move 1 --in-operating"];
+      }
+      {
+        desc = "Copy the selected characters";
+        on = ["y"];
+        run = "yank";
+      }
+      {
+        desc = "Paste the copied characters after the cursor";
+        on = ["p"];
+        run = "paste";
+      }
+      {
+        desc = "Paste the copied characters before the cursor";
+        on = ["P"];
+        run = "paste --before";
+      }
+      {
+        desc = "Undo the last operation";
+        on = ["U"];
+        run = "undo";
+      }
+      {
+        desc = "Redo the last operation";
+        on = ["R"];
+        run = "redo";
+      }
+      {
+        desc = "Open help";
+        on = ["~"];
+        run = "help";
+      }
+    ];
+    append_keymap = [
+      {
+        desc = "Open help";
+        on = ["?"];
+        run = "help";
+      }
+    ];
+  };
 
-    # basic vim style editing
-    {
-      desc = "Enter insert mode";
-      on = ["i"];
-      run = "insert";
-    }
-    {
-      desc = "Enter append mode";
-      on = ["a"];
-      run = "insert --append";
-    }
-    {
-      desc = "Move to the BOL, and enter insert mode";
-      on = ["I"];
-      run = ["move -999" "insert"];
-    }
-    {
-      desc = "Move to the EOL, and enter append mode";
-      on = ["A"];
-      run = ["move 999" "insert --append"];
-    }
-    {
-      desc = "Enter visual mode";
-      on = ["v"];
-      run = "visual";
-    }
-    {
-      desc = "Enter visual mode and select all";
-      on = ["V"];
-      run = ["move -999" "visual" "move 999"];
-    }
-    {
-      desc = "Move back a character";
-      on = ["<Left>"];
-      run = "move -1";
-    }
-    {
-      desc = "Move forward a character";
-      on = ["<Right>"];
-      run = "move 1";
-    }
-    {
-      desc = "Move back to the start of the current or previous word";
-      on = ["b"];
-      run = "backward";
-    }
-    {
-      desc = "Move forward to the start of the next word";
-      on = ["w"];
-      run = "forward";
-    }
-    {
-      desc = "Move forward to the end of the current or next word";
-      on = ["e"];
-      run = "forward --end-of-word";
-    }
-    {
-      desc = "Move to the BOL";
-      on = ["0"];
-      run = "move -999";
-    }
-    {
-      desc = "Move to the EOL";
-      on = ["$"];
-      run = "move 999";
-    }
-    {
-      desc = "Delete the character before the cursor";
-      on = ["<Backspace>"];
-      run = "backspace";
-    }
-    {
-      desc = "Cut the selected characters";
-      on = ["d"];
-      run = "delete --cut";
-    }
-    {
-      desc = "Cut until the EOL";
-      on = ["D"];
-      run = ["delete --cut" "move 999"];
-    }
-    {
-      desc = "Cut the selected characters, and enter insert mode";
-      on = ["c"];
-      run = "delete --cut --insert";
-    }
-    {
-      desc = "Cut until the EOL, and enter insert mode";
-      on = ["C"];
-      run = ["delete --cut --insert" "move 999"];
-    }
-    {
-      desc = "Cut the current character";
-      on = ["x"];
-      run = ["delete --cut" "move 1 --in-operating"];
-    }
-    {
-      desc = "Copy the selected characters";
-      on = ["y"];
-      run = "yank";
-    }
-    {
-      desc = "Paste the copied characters after the cursor";
-      on = ["p"];
-      run = "paste";
-    }
-    {
-      desc = "Paste the copied characters before the cursor";
-      on = ["P"];
-      run = "paste --before";
-    }
-    {
-      desc = "Undo the last operation";
-      on = ["U"];
-      run = "undo";
-    }
-    {
-      desc = "Redo the last operation";
-      on = ["R"];
-      run = "redo";
-    }
+  completion = {
+    keymap = [
+      {
+        desc = "Cancel completion";
+        on = ["<Esc>"];
+        run = "close";
+      }
+      {
+        desc = "Submit the completion";
+        on = ["<Tab>"];
+        run = "close --submit";
+      }
+      {
+        desc = "Submit the completion and input";
+        on = ["<Enter>"];
+        run = ["close --submit" "close_input --submit"];
+      }
+      {
+        desc = "Move cursor up";
+        on = ["<Up>"];
+        run = "arrow -1";
+      }
+      {
+        desc = "Move cursor down";
+        on = ["<Down>"];
+        run = "arrow 1";
+      }
+      {
+        desc = "Open help";
+        on = ["~"];
+        run = "help";
+      }
+    ];
+    append_keymap = [
+      {
+        desc = "Open help";
+        on = ["?"];
+        run = "help";
+      }
+    ];
+  };
 
-    # additional dialog
-    {
-      desc = "Open help";
-      on = ["~"];
-      run = "help";
-    }
-  ];
+  tasks = {
+    keymap = [
+      {
+        desc = "Hide the task manager";
+        on = ["<Esc>"];
+        run = "close";
+      }
+      {
+        desc = "Hide the task manager";
+        on = ["w"];
+        run = "close";
+      }
+      {
+        desc = "Move cursor up";
+        on = ["<Up>"];
+        run = "arrow -1";
+      }
+      {
+        desc = "Move cursor down";
+        on = ["<Down>"];
+        run = "arrow 1";
+      }
+      {
+        desc = "Inspect the task";
+        on = ["<Enter>"];
+        run = "inspect";
+      }
+      {
+        desc = "Cancel the task";
+        on = ["k"];
+        run = "cancel";
+      }
+      {
+        desc = "Open help";
+        on = ["~"];
+        run = "help";
+      }
+    ];
+    append_keymap = [
+      {
+        desc = "Open help";
+        on = ["?"];
+        run = "help";
+      }
+    ];
+  };
 
-  completion.keymap = [
-    {
-      desc = "Cancel completion";
-      on = ["<Esc>"];
-      run = "close";
-    }
-    {
-      desc = "Submit the completion";
-      on = ["<Tab>"];
-      run = "close --submit";
-    }
-    {
-      desc = "Submit the completion and input";
-      on = ["<Enter>"];
-      run = ["close --submit" "close_input --submit"];
-    }
-
-    {
-      desc = "Move cursor up";
-      on = ["<Up>"];
-      run = "arrow -1";
-    }
-    {
-      desc = "Move cursor down";
-      on = ["<Down>"];
-      run = "arrow 1";
-    }
-
-    {
-      desc = "Open help";
-      on = ["~"];
-      run = "help";
-    }
-  ];
-
-  tasks.keymap = [
-    {
-      desc = "Hide the task manager";
-      on = ["<Esc>"];
-      run = "close";
-    }
-    {
-      desc = "Hide the task manager";
-      on = ["w"];
-      run = "close";
-    }
-
-    {
-      desc = "Move cursor up";
-      on = ["<Up>"];
-      run = "arrow -1";
-    }
-    {
-      desc = "Move cursor down";
-      on = ["<Down>"];
-      run = "arrow 1";
-    }
-
-    {
-      desc = "Inspect the task";
-      on = ["<Enter>"];
-      run = "inspect";
-    }
-    {
-      desc = "Cancel the task";
-      on = ["k"];
-      run = "cancel";
-    }
-
-    {
-      desc = "Open help";
-      on = ["~"];
-      run = "help";
-    }
-  ];
-
-  help.keymap = [
-    {
-      desc = "Clear the filter, or hide the help";
-      on = ["<Esc>"];
-      run = "escape";
-    }
-    {
-      desc = "Exit the process";
-      on = ["~"];
-      run = "close";
-    }
-
-    {
-      desc = "Move cursor up";
-      on = ["<Up>"];
-      run = "arrow -1";
-    }
-    {
-      desc = "Move cursor down";
-      on = ["<Down>"];
-      run = "arrow 1";
-    }
-
-    {
-      desc = "Apply a filter for the help items";
-      on = ["/"];
-      run = "filter";
-    }
-  ];
+  help = {
+    keymap = [
+      {
+        desc = "Clear the filter, or hide the help";
+        on = ["<Esc>"];
+        run = "escape";
+      }
+      {
+        desc = "Move cursor up";
+        on = ["<Up>"];
+        run = "arrow -1";
+      }
+      {
+        desc = "Move cursor down";
+        on = ["<Down>"];
+        run = "arrow 1";
+      }
+      {
+        desc = "Apply a filter for the help items";
+        on = ["/"];
+        run = "filter";
+      }
+      {
+        desc = "Exit the process";
+        on = ["~"];
+        run = "close";
+      }
+    ];
+    append_keymap = [
+      {
+        desc = "Close help";
+        on = ["?"];
+        run = "close";
+      }
+    ];
+  };
 }

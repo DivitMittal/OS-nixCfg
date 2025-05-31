@@ -12,8 +12,8 @@
       ## Documents
       pandoc
       poppler # PDFs
+      rich-cli # csv, ipynbs, md
       # tectonic-unwrapped # LaTeX
       ;
-    inherit (pkgs.python313Packages) rich;
   };
 }
