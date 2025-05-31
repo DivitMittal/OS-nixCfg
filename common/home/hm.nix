@@ -1,11 +1,8 @@
 {
   config,
   lib,
-  self,
   ...
 }: {
-  imports = [self.outputs.homeManagerModules.default];
-
   programs.home-manager.enable = true; # home-manager standalone
 
   home = {

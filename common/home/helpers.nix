@@ -28,9 +28,7 @@
     enable = true;
     package = pkgs.nix-init;
     settings = {
-      maintainers = [
-        config.hostSpec.handle
-      ];
+      maintainers = [config.hostSpec.handle];
       commit = true;
       nixpkgs = "<nixpkgs>";
     };
@@ -46,6 +44,7 @@
       ;
   };
 
+  ## documentation
   programs.man = {
     enable = true;
     package = pkgs.man;

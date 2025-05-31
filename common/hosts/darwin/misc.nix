@@ -5,8 +5,6 @@
   pkgs,
   ...
 }: {
-  imports = [self.outputs.darwinModules.default];
-
   networking = {
     knownNetworkServices = ["Wi-Fi"];
     dns = [

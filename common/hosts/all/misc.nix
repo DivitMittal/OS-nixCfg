@@ -5,16 +5,16 @@
   ...
 }: {
   networking.hostName = config.hostSpec.hostName;
-
   time.timeZone = "Asia/Calcutta";
-  environment.extraOutputsToInstall = ["info"]; # "doc" "devdoc"
 
+  ## documentation
   documentation = {
     enable = true;
     info.enable = true;
     man.enable = true;
     doc.enable = false;
   };
+  environment.extraOutputsToInstall = ["info"]; # "doc" "devdoc"
 
   fonts.packages = [pkgs.nerd-fonts.caskaydia-cove];
 
