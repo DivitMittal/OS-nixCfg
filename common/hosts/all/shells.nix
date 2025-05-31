@@ -26,16 +26,16 @@
     };
   };
 
+  environment.pathsToLink = [
+    "/share/bash-completion"
+    "/share/fish"
+    "/share/zsh"
+  ];
+
   programs = let
     inherit (lib) mkDefault;
   in {
-    bash = {
-      completion = {
-        enable = false;
-        package = pkgs.bash-completion;
-      };
-    };
-
+    bash.completion.enable = false;
     zsh = {
       enable = mkDefault true;
 
@@ -45,7 +45,7 @@
 
       interactiveShellInit = ''
         [[ "$(locale LC_CTYPE)" == "UTF-8" ]] && setopt COMBINING_CHARS   # UTF-8 with combining characters
-        setopt BEEP                                                       # beep on error
+        #setopt BEEP                                                      # beep on error
 
         disable log                                                       # avoid conflict with /usr/bin/log
         unalias run-help                                                  # Remove the default of run-help being aliased to man
@@ -63,6 +63,7 @@
     fish = {
       enable = mkDefault true;
       useBabelfish = true;
+      babelfishPackage = pkgs.babelfish;
 
       vendor = {
         config.enable = true;

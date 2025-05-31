@@ -3,6 +3,8 @@
     enable = true;
     package = pkgs.fish;
 
+    generateCompletions = true;
+
     loginShellInit = ''
       set -g fish_greeting
     '';

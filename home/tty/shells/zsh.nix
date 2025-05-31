@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  hostPlatform,
+  ...
+}: {
   programs.zsh = {
     enable = true;
     package = pkgs.zsh;
@@ -13,17 +18,7 @@
     };
     defaultKeymap = null;
 
-    enableCompletion = true;
-
-    syntaxHighlighting.enable = true;
-
-    autosuggestion = {
-      enable = true;
-      highlight = "fg = #ff00ff,bg = cyan,bold,underline";
-    };
-
     autocd = true;
-
     zsh-abbr = {
       enable = true;
       abbreviations = {
@@ -32,17 +27,31 @@
       };
     };
 
+    enableCompletion = false;
+    autosuggestion.enable = false;
+    syntaxHighlighting.enable = false;
+    completionInit = true;
     antidote = {
       enable = true;
-      plugins = [
-        # omz
-        "ohmyzsh/ohmyzsh"
-        "ohmyzsh/ohmyzsh path:plugins/macos"
-        "ohmyzsh/ohmyzsh path:plugins/git"
+      package = pkgs.antidote;
 
-        "hlissner/zsh-autopair"
-        "jeffreytse/zsh-vi-mode"
-      ];
+      plugins =
+        [
+          "hlissner/zsh-autopair"
+          "jeffreytse/zsh-vi-mode"
+
+          # Add core plugins that make Zsh a bit more like Fish
+          "zsh-users/zsh-completions path:src kind:fpath"
+          "zsh-users/zsh-autosuggestions"
+          "zsh-users/zsh-history-substring-search"
+          "zdharma-continuum/fast-syntax-highlighting"
+        ]
+        ++ lib.lists.optionals hostPlatform.isDarwin [
+          # Oh My Zsh plugins
+          "getantidote/use-omz"
+          "ohmyzsh/ohmyzsh path:plugins/brew"
+          "ohmyzsh/ohmyzsh path:plugins/macos"
+        ];
     };
   };
 }

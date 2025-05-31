@@ -3,13 +3,19 @@
     enable = true;
     enableCompletion = true;
 
-    # All interactive sessions
-    initExtra = ''
-      export BADOTDIR="${config.xdg.configHome}/bash"
-      export HISTFILE="''${BADOTDIR:-$HOME}/.bash_history"
+    sessionVariables.BADOTDIR = "${config.xdg.configHome}/bash";
+    historyControl = ["ignoreboth"];
+    historyFile = "${config.programs.bash.sessionVariables.BADOTDIR}/.bash_history";
+    historyIgnore = [
+      "ls"
+      "cd"
+      "pwd"
+      "exit"
+      "clear"
+      "history"
+    ];
 
-      # vi keybindings
-      set -o vi
-    '';
+    # All interactive sessions
+    initExtra = ''set -o vi # vi keybindings'';
   };
 }
