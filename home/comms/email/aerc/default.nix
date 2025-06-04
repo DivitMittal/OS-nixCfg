@@ -11,14 +11,14 @@
     extraConfig = {
       general = {
         unsafe-accounts-conf = true;
-        default-menu-cmd = "fzf --multi";
+        default-menu-cmd = "${pkgs.fzf}/bin/fzf --multi";
       };
 
       ui = {
+        styleset-name = "nord";
         index-columns = "name<17,flags>4,subject<*,date<20";
         sidebar-width = 30;
         mouse-enabled = true;
-        styleset-name = "pink";
         fuzzy-complete = true;
         icon-unencrypted = "";
         icon-encrypted = "✔";
@@ -38,8 +38,8 @@
       };
 
       openers = {
-        "x-scheme-handler/irc" = "weechat";
-        "text/plain" = "${config.home.sessionVariables.VISUAL}";
+        "x-scheme-handler/irc" = "${pkgs.weechat}/bin/weechat";
+        "text/plain" = "${config.home.sessionVariables.EDITOR}";
       };
     };
   };
