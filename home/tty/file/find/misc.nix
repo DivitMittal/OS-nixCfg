@@ -1,4 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  home.packages = lib.attrsets.attrValues {
+    inherit
+      (pkgs)
+      fselect
+      ;
+  };
+
   programs.fd = {
     enable = true;
     package = pkgs.fd;

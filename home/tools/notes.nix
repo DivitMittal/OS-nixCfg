@@ -23,6 +23,10 @@
   });
 in {
   home.packages = lib.attrsets.attrValues {
+    inherit
+      (pkgs)
+      zk
+      ;
     obsidian =
       if hostPlatform.isDarwin
       then pkgs.brewCasks.obsidian

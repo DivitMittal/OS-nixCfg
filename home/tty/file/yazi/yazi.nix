@@ -3,7 +3,7 @@
 
   manager = {
     ratio = [1 3 3];
-    linemode = "size";
+    linemode = "permissions";
     show_hidden = true;
     show_symlink = false;
     sort_by = "alphabetical";
