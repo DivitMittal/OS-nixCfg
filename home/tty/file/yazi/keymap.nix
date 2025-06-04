@@ -1,5 +1,5 @@
 {
-  manager = {
+  mgr = {
     keymap = [
       {
         desc = "Exit visual mode, clear selected, or cancel search";

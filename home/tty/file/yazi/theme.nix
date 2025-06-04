@@ -50,7 +50,7 @@
     }
   ];
 
-  manager = {
+  mgr = {
     border_style.fg = "#524f67";
     border_symbol = "│";
 

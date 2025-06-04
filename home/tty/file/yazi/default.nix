@@ -47,8 +47,8 @@
       officialPlugins = pkgs.fetchFromGitHub {
         owner = "yazi-rs";
         repo = "plugins";
-        rev = "4b027c79371af963d4ae3a8b69e42177aa3fa6ee";
-        hash = "sha256-auGNSn6tX72go7kYaH16hxRng+iZWw99dKTTUN91Cow=";
+        rev = "63f9650e522336e0010261dcd0ffb0bf114cf912";
+        hash = "sha256-ZCLJ6BjMAj64/zM606qxnmzl2la4dvO/F5QFicBEYfU=";
       };
       # lpanebrPlugins = pkgs.fetchFromGitHub {
       #   owner = "lpanebr";
@@ -86,11 +86,17 @@
             rev = "fdcf37320e35f7c12e8087900eebffcdafaee8cb";
             hash = "sha256-HO9hTCfgGTDERClZaLnUEWDvsV9GMK1kwFpWNM1wq8I=";
           };
+          # hexyl = pkgs.fetchFromGitHub {
+          #   owner = "Reledia";
+          #   repo = "hexyl.yazi";
+          #   rev = "016a09bcc249dd3ce06267d54cc039e73de9c647";
+          #   hash = "sha256-ly/cLKl2y3npoT2nX8ioGOFcRXI4UXbD9Es/5veUhOU=";
+          # };
           hexyl = pkgs.fetchFromGitHub {
-            owner = "Reledia";
+            owner = "DivitMittal";
             repo = "hexyl.yazi";
-            rev = "016a09bcc249dd3ce06267d54cc039e73de9c647";
-            hash = "sha256-ly/cLKl2y3npoT2nX8ioGOFcRXI4UXbD9Es/5veUhOU=";
+            rev = "update-deprecated-api-v25.5.31";
+            hash = "sha256-n0shoqUZWUjWK+1PfPTjZxEg6g+kmWBRaFANg6sOUpI=";
           };
           yatline = pkgs.fetchFromGitHub {
             owner = "imsi32";

@@ -1,7 +1,7 @@
 {
   log.enabled = false;
 
-  manager = {
+  mgr = {
     ratio = [1 3 3];
     linemode = "permissions";
     show_hidden = true;
@@ -16,39 +16,20 @@
   open.rules = [
     {
       name = "*/";
-      use = [
-        "edit"
-        "editVS"
-        "open"
-        "reveal"
-        "look"
-      ];
+      use = ["edit" "editVS" "open" "reveal" "look"];
     }
     # general directories
     {
       mime = "text/*";
-      use = [
-        "edit"
-        "editVS"
-        "open"
-        "reveal"
-      ];
+      use = ["edit" "editVS" "open" "reveal"];
     }
     {
       mime = "application/json";
-      use = [
-        "edit"
-        "editVS"
-        "reveal"
-      ];
+      use = ["edit" "editVS" "reveal"];
     }
     {
       mime = "*/javascript";
-      use = [
-        "edit"
-        "editVS"
-        "reveal"
-      ];
+      use = ["edit" "editVS" "reveal"];
     }
     {
       mime = "image/*";
