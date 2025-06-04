@@ -26,4 +26,9 @@
       "--colors=line:style:bold"
     ];
   };
+
+  programs.ripgrep-all = {
+    enable = true;
+    package = pkgs.ripgrep-all;
+  };
 }

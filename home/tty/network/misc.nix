@@ -9,7 +9,7 @@
       nmap
       speedtest-go
       bandwhich
-      httpie
+      xh #httpie
       termscp
       gping
       dog

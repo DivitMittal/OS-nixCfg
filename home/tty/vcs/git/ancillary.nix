@@ -32,6 +32,8 @@
         gh-copilot
         gh-screensaver
         gh-markdown-preview
+
+        gh-actions-cache
         ;
     };
 

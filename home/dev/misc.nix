@@ -12,6 +12,8 @@
       ## Android
       android-tools
       scrcpy
+      ## General
+      kondo
       ## Programming Languages
       #tree-sitter
       ## java
@@ -35,5 +37,6 @@
     leetcode-tui = inputs.leetcode-tui.packages.${hostPlatform.system}.default;
   };
 
+  ## Rust
   home.sessionPath = lib.mkAfter ["${config.home.homeDirectory}/.cargo/bin"];
 }
