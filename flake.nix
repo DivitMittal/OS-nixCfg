@@ -89,13 +89,7 @@
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-homebrew = {
-      url = "github:zhaofengli-wip/nix-homebrew";
-      inputs = {
-        nix-darwin.follows = "nix-darwin";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
     nixos-wsl = {
       url = "github:nix-community/nixos-wsl/main";
