@@ -1,5 +1,5 @@
-_: {
-  home.sessionVariables.PAGER = "less";
+{pkgs, ...}: {
+  home.sessionVariables.PAGER = "${pkgs.less}/bin/less";
 
   programs.less = {
     enable = true;

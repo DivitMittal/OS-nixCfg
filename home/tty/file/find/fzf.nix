@@ -16,7 +16,7 @@ in {
     enableZshIntegration = false;
     enableBashIntegration = false;
 
-    defaultCommand = "fd ${fd_opts}";
+    defaultCommand = "${pkgs.fd}/bin/fd ${fd_opts}";
 
     defaultOptions = [
       "--multi"
@@ -59,9 +59,9 @@ in {
       # PatrickF1/fzf.fish plugin
       fzf_configure_bindings --variables=\ev --processes=\ep --git_status=\es --git_log=\el --history=\er --directory=\ef
       set -gx fzf_fd_opts ${fd_opts}
-      set -gx fzf_preview_dir_cmd eza ${eza_opts}
-      set -gx fzf_preview_file_cmd bat
-      set -gx fzf_diff_highlighter delta ${delta_opts}
+      set -gx fzf_preview_dir_cmd ${pkgs.eza}/bin/eza ${eza_opts}
+      set -gx fzf_preview_file_cmd ${pkgs.bat}/bin/bat
+      set -gx fzf_diff_highlighter ${pkgs.delta}/bin/delta ${delta_opts}
 
       # fifc plugin
       set -gx fifc_editor ${config.home.sessionVariables.VISUAL}

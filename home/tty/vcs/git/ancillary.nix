@@ -41,8 +41,9 @@
     };
     settings = {
       git_protocol = "ssh";
-      prompt = "enabled"; # interactivity in gh
-      pager = "less";
+      prompt = "enabled";
+      pager = "${config.home.sessionVariables.PAGER}";
+      editor = "${config.home.sessionVariables.EDITOR}";
       aliases = {
         co = "pr checkout";
       };
