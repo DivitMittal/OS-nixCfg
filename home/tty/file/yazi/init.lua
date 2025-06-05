@@ -4,6 +4,9 @@ require("git"):setup()
 -- yatline
 require("yatline"):setup({
   show_background = false,
+  display_header_line = true,
+  display_status_line = true,
+  tab_use_inverse = false,
   header_line = {
     left = {
       section_a = {
@@ -33,7 +36,8 @@ require("yatline"):setup({
         { type = "string", custom = false, name = "hovered_name" },
       },
       section_c = {
-        { type = "coloreds", custom = false, name = "permissions" },
+        { type = "string", custom = false, name = "hovered_size" },
+        { type = "string", custom = false, name = "hovered_ownership" },
       },
     },
     right = {
