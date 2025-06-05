@@ -77,8 +77,8 @@
           ouch = pkgs.fetchFromGitHub {
             owner = "ndtoan96";
             repo = "ouch.yazi";
-            rev = "2496cd9ac2d1fb52597b22ae84f3af06c826a86d";
-            hash = "sha256-OsNfR7rtnq+ceBTiFjbz+NFMSV/6cQ1THxEFzI4oPJk=";
+            rev = "10b462765f37502065555e83c68a72bb26870fe2";
+            hash = "sha256-mtXl76a54Deg4cyrD0wr++sD/5b/kCsnJ+ngM6OokTc=";
           };
           richPreview = pkgs.fetchFromGitHub {
             owner = "AnirudhG07";
