@@ -14,6 +14,7 @@
       gping
       dog
       dig
+      croc
       ;
   };
 

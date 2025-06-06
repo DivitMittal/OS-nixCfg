@@ -8,6 +8,12 @@
       (pkgs)
       ttyper
       gcalcli
+      cyme
+      ;
+
+    inherit
+      (pkgs.customDarwin)
+      cliclick-bin
       ;
   };
 }

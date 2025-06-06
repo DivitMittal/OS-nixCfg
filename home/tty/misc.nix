@@ -9,8 +9,6 @@
       grc
       duf
       dust
-      cyme
-      croc
       ;
   };
 
@@ -29,5 +27,4 @@
     enableBashIntegration = false;
     enableNushellIntegration = false;
   };
-
 }
