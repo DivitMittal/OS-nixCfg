@@ -4,40 +4,38 @@ require("git"):setup()
 -- yatline
 require("yatline"):setup({
   show_background = false,
-  display_header_line = true,
-  display_status_line = true,
   tab_use_inverse = false,
+
+  display_header_line = true,
   header_line = {
     left = {
       section_a = {
-        { type = "string", custom = false, name = "tab_path" },
-      },
-      section_b = {},
-      section_c = {
-        { type = "coloreds", custom = false, name = "symlink" },
-      },
-    },
-    right = {
-      section_a = {
-        { type = "line", custom = false, name = "tabs", params = { "right" } },
+        { type = "line", custom = false, name = "tabs", params = { "left" } },
       },
       section_b = {},
       section_c = {
         { type = "coloreds", custom = false, name = "count", params = "true" },
       },
     },
+    right = {
+      section_a = {},
+      section_b = {},
+      section_c = {
+        { type = "coloreds", custom = false, name = "task_states" },
+      },
+    },
   },
+  display_status_line = true,
   status_line = {
     left = {
       section_a = {
         { type = "string", custom = false, name = "tab_mode" },
       },
       section_b = {
-        { type = "string", custom = false, name = "hovered_name" },
+        { type = "string", custom = false, name = "hovered_path" },
       },
       section_c = {
-        { type = "string", custom = false, name = "hovered_size" },
-        { type = "string", custom = false, name = "hovered_ownership" },
+        { type = "coloreds", custom = false, name = "symlink" },
       },
     },
     right = {
@@ -45,12 +43,11 @@ require("yatline"):setup({
         { type = "string", custom = false, name = "cursor_position" },
       },
       section_b = {
-        { type = "string", custom = false, name = "cursor_percentage" },
+        { type = "string", custom = false, name = "hovered_size" },
       },
       section_c = {
-        { type = "coloreds", custom = false, name = "task_states" },
+        { type = "string", custom = false, name = "hovered_ownership" },
       },
     },
   },
 })
-require("yatline-symlink"):setup()
