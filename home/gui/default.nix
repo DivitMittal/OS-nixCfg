@@ -6,7 +6,7 @@
   imports =
     [
       ./emulators
-      ./misc.nix
+      ./viewers.nix
     ]
     ++ lib.lists.optionals hostPlatform.isDarwin [
       ./darwin

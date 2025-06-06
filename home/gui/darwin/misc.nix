@@ -10,10 +10,10 @@
       gswitch
       bluesnooze
       spaceman
+      #aldente
       ;
     inherit
       (pkgs.customDarwin)
-      cliclick-bin
       hot-bin
       menubar-dock-bin
       ;
