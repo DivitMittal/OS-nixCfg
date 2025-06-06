@@ -4,7 +4,7 @@
   ...
 }: {
   programs.mercurial = {
-    enable = true;
+    enable = false;
     package = pkgs.mercurial;
 
     userName = config.hostSpec.userFullName;

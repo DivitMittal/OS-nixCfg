@@ -17,9 +17,9 @@ in {
 
   home.packages = [pkgs.kanata-with-cmd];
 
-  # xdg.configFile."karabiner" = {
-  #   enable = true;
-  #   source = "${TLTR}/karabiner";
-  #   recursive = true;
-  # };
+  xdg.configFile."karabiner" = {
+    enable = false;
+    source = TLTR + "/karabiner";
+    recursive = true;
+  };
 }

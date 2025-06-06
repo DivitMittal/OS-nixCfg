@@ -11,14 +11,13 @@
     emacs = pkgs.emacs-nox;
   };
 
-  # programs.emacs = {
-  #   enable = true;
-  #   package = pkgs.emacs-nox;
-  # };
-  #
-  # xdg.configFile."doom" = {
-  #   enable = true;
-  #   source = ./doom;
-  #   recursive = true;
-  # };
+  programs.emacs = {
+    enable = false;
+    package = pkgs.emacs-nox;
+  };
+  xdg.configFile."doom" = {
+    enable = false;
+    source = inputs.Emacs-Cfg;
+    recursive = true;
+  };
 }

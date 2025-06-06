@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   hostPlatform,
   lib,
@@ -22,6 +23,9 @@
       '';
   });
 in {
+  programs.zsh.profileExtra = "unset MAILCHECK";
+  programs.bash.profileExtra = config.programs.zsh.profileExtra;
+
   home.packages = lib.attrsets.attrValues {
     outlook =
       if hostPlatform.isDarwin

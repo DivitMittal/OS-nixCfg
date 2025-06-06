@@ -5,12 +5,7 @@
   ...
 }: {
   imports = [inputs.nvchad4nix.homeManagerModule];
-  # programs.neovim = {
-  #   enable = true;
-  #   package = pkgs.neovim-unwrapped;
-  #
-  #   defaultEditor = true; # Sets the EDITOR sessionVariable
-  # };
+
   programs.nvchad = {
     enable = true;
     extraPackages = lib.attrsets.attrValues {
@@ -50,4 +45,11 @@
     position = "command";
   };
   programs.zsh.zsh-abbr.abbreviations.nv = "nvim";
+
+  programs.neovim = {
+    enable = false;
+    package = pkgs.neovim-unwrapped;
+
+    defaultEditor = true; # Sets the EDITOR sessionVariable
+  };
 }
