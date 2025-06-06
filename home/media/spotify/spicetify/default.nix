@@ -16,7 +16,7 @@
       always_enable_devtools = 0
       spotify_path           = ${(
         if hostPlatform.isDarwin
-        then "/Applications/Spotify.app/Contents/Resources"
+        then "${config.home.homeDirectory}/Applications/Home Manager Apps/Spotify.app/Contents/Resources"
         else ""
       )}
       spotify_launch_flags   =
