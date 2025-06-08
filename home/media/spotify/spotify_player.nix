@@ -14,7 +14,7 @@
           withMediaControl = false;
           withDaemon = true;
           withImage = true;
-          withAudioBackend = "rodio";
+          withAudioBackend = "portaudio";
         })
       else pkgs.spotify-player;
 
