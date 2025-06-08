@@ -19,6 +19,7 @@ _: {
       #"betterdisplay"
       #"knockknock"
       #"hammerspoon"
+      "lulu"
 
       ## WWWW browser
       #{
