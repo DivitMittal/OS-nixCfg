@@ -64,6 +64,7 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
     ├── .envrc
     ├── .gitattributes
     ├── .gitignore
+    ├── CODEOWNERS
     ├── flake.lock
     ├── flake.nix
     ├── LICENSE
@@ -85,8 +86,8 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
     ├── home/
     │   ├── comms/
     │   ├── default.nix
-    │   ├── desktop-env/
     │   ├── dev/
+    │   ├── gui/
     │   ├── keyboard/
     │   ├── media/
     │   ├── tools/
