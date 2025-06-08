@@ -13,7 +13,6 @@
       pandoc
       poppler # PDFs
       rich-cli # csv, ipynbs, md
-      # tectonic-unwrapped # LaTeX
       ;
   };
 }

@@ -5,6 +5,7 @@ require("git"):setup()
 require("yatline"):setup({
   show_background = false,
   tab_use_inverse = false,
+  style_b = { bg = "#393939", fg = "white" },
 
   display_header_line = true,
   header_line = {
@@ -51,3 +52,4 @@ require("yatline"):setup({
     },
   },
 })
+require("yatline-symlink"):setup()

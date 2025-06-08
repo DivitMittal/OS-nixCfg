@@ -33,100 +33,56 @@
     }
     {
       mime = "image/*";
-      use = [
-        "open"
-        "reveal"
-        "look"
-      ];
+      use = ["open" "reveal" "look"];
     }
     {
       mime = "video/*";
-      use = [
-        "play"
-        "reveal"
-        "look"
-      ];
+      use = ["play" "reveal" "look"];
     }
     {
       mime = "audio/*";
-      use = [
-        "play"
-        "reveal"
-        "look"
-      ];
+      use = ["play" "reveal" "look"];
     }
     {
       mime = "inode/x-empty";
-      use = [
-        "edit"
-        "reveal"
-      ];
+      use = ["edit" "reveal"];
     }
     {
       mime = "application/zip";
-      use = [
-        "extract"
-        "reveal"
-      ];
+      use = ["extract" "reveal"];
     }
     {
       mime = "application/gzip";
-      use = [
-        "extract"
-        "reveal"
-      ];
+      use = ["extract" "reveal"];
     }
     {
       mime = "application/x-tar";
-      use = [
-        "extract"
-        "reveal"
-      ];
+      use = ["extract" "reveal"];
     }
     {
       mime = "application/x-bzip";
-      use = [
-        "extract"
-        "reveal"
-      ];
+      use = ["extract" "reveal"];
     }
     {
       mime = "application/x-bzip2";
-      use = [
-        "extract"
-        "reveal"
-      ];
+      use = ["extract" "reveal"];
     }
     {
       mime = "application/x-7z-compressed";
-      use = [
-        "extract"
-        "reveal"
-      ];
+      use = ["extract" "reveal"];
     }
     {
       mime = "application/x-rar";
-      use = [
-        "extract"
-        "reveal"
-      ];
+      use = ["extract" "reveal"];
     }
     {
       mime = "application/xz";
-      use = [
-        "extract"
-        "reveal"
-      ];
+      use = ["extract" "reveal"];
     }
     # general files
     {
       mime = "*";
-      use = [
-        "edit"
-        "open"
-        "reveal"
-        "look"
-      ];
+      use = ["edit" "open" "reveal" "look"];
     }
   ];
 
