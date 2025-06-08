@@ -1,12 +1,13 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: {
-  environment.systemPackages = lib.attrsets.attrVals ["jq"] pkgs;
+  environment.systemPackages = lib.lists.optionals config.services.skhd.enable (lib.attrsets.attrVals ["jq"] pkgs);
 
   services.skhd = {
-    enable = true;
+    enable = false;
     package = pkgs.skhd;
 
     skhdConfig = lib.strings.readFile ./skhdrc;

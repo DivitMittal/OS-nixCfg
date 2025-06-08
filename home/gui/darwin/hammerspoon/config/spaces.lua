@@ -1,4 +1,3 @@
-local ipc = require("hs.ipc")
 local timer = require("hs.timer")
 local spaces = require("hs.spaces")
 
@@ -69,19 +68,19 @@ function AddSpace()
   spaces.addSpaceToScreen()
 end
 
+--
 -- ------------------------------------- end of switchSpaces
 
 -- Keybindings
-local windowKey = { "cmd", "alt", "ctrl" }
 
-hs.hotkey.bind(windowKey, "right", function()
+hs.hotkey.bind(WindowKey, "right", function()
   local nextSpaceID = getNextSpaceID()
   if nextSpaceID then
     hs.spaces.gotoSpace(nextSpaceID)
   end
 end)
 
-hs.hotkey.bind(windowKey, "left", function()
+hs.hotkey.bind(WindowKey, "left", function()
   local previousSpaceID = getPreviousSpaceID()
   if previousSpaceID then
     hs.spaces.gotoSpace(previousSpaceID)
