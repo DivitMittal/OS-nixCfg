@@ -132,7 +132,7 @@
       };
     };
     OS-nixCfg-secrets = {
-      url = "git+ssh://git@github.com/divitmittal/os-nixcfg-secrets.git?ref=master";
+      url = "git+ssh://git@github.com/DivitMittal/OS-nixCfg-secrets.git?ref=master";
       #url = "path:/Users/div/Projects/OS-nixCfg-secrets";
       inputs = {
         nixpkgs.follows = "nixpkgs";
@@ -147,7 +147,7 @@
 
     ## editors
     Nvim-Cfg = {
-      url = "github:divitmittal/nvim-cfg";
+      url = "github:DivitMittal/nvim-cfg";
       #url = "path:/Users/div/Projects/Nvim-Cfg";
       flake = false;
     };
@@ -159,7 +159,7 @@
       };
     };
     Emacs-Cfg = {
-      url = "github:divitmittal/emacs-cfg";
+      url = "github:DivitMittal/emacs-cfg";
       #url = "path:/Users/div/Projects/Emacs-Cfg";
       flake = false;
     };
@@ -177,15 +177,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-firefox-darwin = {
-      url = "github:divitmittal/nixpkgs-firefox-darwin/extra-files";
+      url = "github:DivitMittal/nixpkgs-firefox-darwin/extra-files";
       #url = "path:/Users/div/Projects/Forks/nixpkgs-firefox-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ## Homebrew Casks pkgs overlay
     brew-nix = {
-      url = "github:divitmittal/brew-nix/cask-variation";
-      #url = "github:BatteredBunny/brew-nix";
+      #url = "github:DivitMittal/brew-nix/cask-variation";
+      url = "github:BatteredBunny/brew-nix";
       #url = "path:/Users/div/Projects/Forks/brew-nix";
       inputs = {
         brew-api.follows = "brew-api";
