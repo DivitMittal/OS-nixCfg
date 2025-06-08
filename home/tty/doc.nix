@@ -7,7 +7,6 @@
     inherit
       (pkgs)
       wiki-tui
-      presenterm
       ;
   };
 

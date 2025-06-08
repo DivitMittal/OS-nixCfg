@@ -1,14 +1,13 @@
 {
   pkgs,
   lib,
+  config,
   ...
-}: let
-  enable = false;
-in {
-  home.packages = lib.lists.optionals enable [pkgs.brewCasks.pycharm];
+}: {
+  home.packages = lib.lists.optionals config.xdg.configFile."ideavim/ideavimrc".enable [pkgs.brewCasks.pycharm];
 
   xdg.configFile."ideavim/ideavimrc" = {
-    inherit enable;
+    enable = false;
     source = ./ideavimrc;
   };
 }
