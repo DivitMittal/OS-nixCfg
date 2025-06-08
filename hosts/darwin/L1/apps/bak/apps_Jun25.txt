@@ -1,0 +1,43 @@
+Ableton Live 12 Suite.app
+AlDente.app
+AmpliTube 5.app
+Aurora DSP
+Capo.app
+Dynamic Wallpaper.app
+Grass.app
+Guitar Pro 8.app
+IK Product Manager.app
+Logic Pro X.app
+LuLu.app
+Macs Fan Control.app
+MainStage.app
+MeldaProduction
+Native Instruments
+Nix Apps
+PDF Expert.app
+Parallels Desktop.app
+Safari.app
+SoundSource.app
+Utilities
+Wacom Tablet.localized
+djay Pro.app
+iStat Menus.app
+AltTab.app
+Bluesnooze.app
+Firefox.app
+Google Chrome.app
+Hammerspoon.app
+Hot.app
+Menu Bar Dock.app
+Microsoft AutoUpdate.app
+Microsoft OneNote.app
+Microsoft Outlook.app
+MuseScore 4.app
+ONLYOFFICE.app
+Obsidian.app
+Raycast.app
+Spaceman.app
+Visual Studio Code.app
+WezTerm-macos-20240203-110809-5046fc22
+WhatsApp.app
+gSwitch.app
