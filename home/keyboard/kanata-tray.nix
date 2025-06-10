@@ -1,10 +1,9 @@
 {
   pkgs,
-  TLTR,
   inputs,
   ...
 }: let
-  configFile = "${TLTR}/kanata/kanata.kbd";
+  configFile = inputs.TLTR + "/kanata/kanata.kbd";
 in {
   imports = [inputs.kanata-tray.homeManagerModules.kanata-tray];
 

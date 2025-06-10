@@ -198,11 +198,17 @@
       flake = false;
     };
 
-    ## Other external pkgs
+    ## Keyboard
     kanata-tray = {
       url = "github:rszyma/kanata-tray";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    TLTR = {
+      url = "github:DivitMittal/TLTR";
+      inputs = {};
+    };
+
+    ## Other external pkgs
     leetcode-tui = {
       url = "github:akarsh1995/leetcode-tui";
       inputs = {
