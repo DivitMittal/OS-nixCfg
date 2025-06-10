@@ -9,12 +9,17 @@
       if hostPlatform.isDarwin
       then
         (pkgs.spotify-player.override {
+          withImage = true;
+          withFuzzy = true;
+
+          withAudioBackend = "";
+          withDaemon = false;
+          withStreaming = false;
           withSixel = false;
           withNotify = false;
           withMediaControl = false;
-          withDaemon = true;
-          withImage = true;
-          withAudioBackend = "portaudio";
+        }).overrideAttrs (oldAttrs: {
+          buildNoDefaultFeatures = true;
         })
       else pkgs.spotify-player;
 
