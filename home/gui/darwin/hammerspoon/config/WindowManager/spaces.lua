@@ -3,7 +3,6 @@ local window = require("hs.window")
 
 Drag = hs.loadSpoon("Drag")
 
------------------------------------------- start of switchSpaces
 -- Wait time for mission control in seconds to perform certain functions
 local mcWaitTime = 0.275
 spaces.MCwaitTime = mcWaitTime

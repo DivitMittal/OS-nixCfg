@@ -1,7 +1,9 @@
+local yabaiOutput, _, _, _ = hs.execute("which yabai", true)
+local yabaiBin = string.gsub(yabaiOutput, "%s+", "")
 local function yabai(args)
-  local command = string.format("yabai -m %s", args)
+  local command = string.format("%s -m %s", yabaiBin, args)
   print(string.format("yabai: %s", command))
-  hs.execute(command, true)
+  print(os.execute(command))
 end
 
 -- Focus spaces
@@ -14,9 +16,7 @@ end
 
 -- Create or destroy spaces
 local refreshSpaceman = function()
-  hs.timer.doAfter(0.2, function()
-    hs.execute("cliclick kd:ctrl kp:esc ku:ctrl", true)
-  end)
+  hs.eventtap.keyStroke({ "ctrl" }, "escape", 0.2)
 end
 local exist = { c = "create", d = "destroy" }
 for key, action in pairs(exist) do

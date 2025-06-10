@@ -11,4 +11,4 @@ vim
 vim:shouldDimScreenInNormalMode(false)
 vim:shouldShowAlertInNormalMode(true)
 vim:setAlertFont(Font.default)
-vim:enterWithSequence('ne')
+vim:enterWithSequence('tn')
