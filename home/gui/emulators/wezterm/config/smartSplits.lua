@@ -40,17 +40,4 @@ local function split_nav(resize_or_move, key)
   }
 end
 
--- Binds
-M.keys = {
-  -- move between split panes
-  split_nav("move", "LeftArrow"),
-  split_nav("move", "RightArrow"),
-  split_nav("move", "UpArrow"),
-  split_nav("move", "DownArrow"),
-
-  -- resize split panes
-  split_nav("resize", "LeftArrow"),
-  split_nav("resize", "RightArrow"),
-  split_nav("resize", "UpArrow"),
-  split_nav("resize", "DownArrow"),
-}
+return split_nav
