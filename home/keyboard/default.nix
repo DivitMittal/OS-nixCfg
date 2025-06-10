@@ -6,8 +6,8 @@
   TLTR = pkgs.fetchFromGitHub {
     owner = "DivitMittal";
     repo = "TLTR";
-    rev = "1af4f80b9ec9b8f2c8f55b66ecdf30ebc2fc162d";
-    hash = "sha256-HeS4M+AQEghl9DxoUAiYpEkQ9Ar47KJjrdWMJXHUA/A=";
+    rev = "c18d25661936b0e612d3e9fed74719a6315e53ef";
+    hash = "sha256-P6FqVAzBr6Nza1iPMzMj9HTR23w2HqV1iQY0/nbLuXg=";
   };
 in {
   _module.args = {
