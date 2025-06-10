@@ -1,7 +1,6 @@
 {
   pkgs,
   hostPlatform,
-  lib,
   ...
 }: {
   programs.wezterm = {
@@ -13,6 +12,11 @@
 
     enableBashIntegration = false;
     enableZshIntegration = false;
-    extraConfig = lib.strings.readFile ./wezterm.lua;
+  };
+
+  xdg.configFile."wezterm" = {
+    enable = true;
+    source = ./config;
+    recursive = true;
   };
 }

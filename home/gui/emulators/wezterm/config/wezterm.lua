@@ -1,5 +1,5 @@
-local w = require("wezterm")
-local act = w.action
+W = require("wezterm")
+local act = W.action
 
 ---------------------------------------------------------------------------------
 -- Tab title string
@@ -7,7 +7,7 @@ local function basename(s)
   return string.gsub(s, "(.*[/\\])(.*)", "%2")
 end
 
-w.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+W.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
   local index = tab.tab_index + 1
   local title = tab.active_pane.title
   local pane = tab.active_pane
@@ -19,56 +19,13 @@ w.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
 end)
 
 ---------------------------------------------------------------------------------
--- Pane navigation and resizing b/w wezterm & vim/nvim (smart-splits.nvim plugin required)
-local function is_vim(pane)
-  -- this is set by the smart-splits.nvim plugin, and unset on ExitPre in Neovim
-  return pane:get_user_vars().IS_NVIM == "true"
-end
-
-local direction_from_key = {
-  LeftArrow = "Left",
-  RightArrow = "Right",
-  UpArrow = "Up",
-  DownArrow = "Down",
-}
-
-local function split_nav(resize_or_move, key)
-  return {
-    key = key,
-    mods = resize_or_move == "move" and "CTRL" or "ALT",
-
-    action = w.action_callback(function(win, pane)
-      if is_vim(pane) then
-        -- pass the keys through to vim/nvim
-        win:perform_action({
-          SendKey = {
-            key = key,
-            mods = resize_or_move == "resize" and "ALT" or "CTRL",
-          },
-        }, pane)
-      else
-        if resize_or_move == "resize" then
-          win:perform_action({
-            AdjustPaneSize = { direction_from_key[key], 3 },
-          }, pane)
-        else
-          win:perform_action({
-            ActivatePaneDirection = direction_from_key[key],
-          }, pane)
-        end
-      end
-    end),
-  }
-end
-
----------------------------------------------------------------------------------
 -- config
-return {
+M = {
   term = "xterm-256color",
   enable_kitty_graphics = true,
 
   -- font
-  font = w.font("CaskaydiaCove Nerd Font Mono"),
+  font = W.font("CaskaydiaCove NFM"),
   font_size = 20,
   adjust_window_size_when_changing_font_size = false,
   custom_block_glyphs = false,
@@ -182,19 +139,10 @@ return {
       key = "Enter",
       action = act.ActivateCopyMode,
     },
-
-    -- move between split panes
-    split_nav("move", "LeftArrow"),
-    split_nav("move", "RightArrow"),
-    split_nav("move", "UpArrow"),
-    split_nav("move", "DownArrow"),
-
-    -- resize split panes
-    split_nav("resize", "LeftArrow"),
-    split_nav("resize", "RightArrow"),
-    split_nav("resize", "UpArrow"),
-    split_nav("resize", "DownArrow"),
-
     -- C-S-l activates the debug overlay (implemented by default)
   },
 }
+
+require("splitPanes")
+
+return M
