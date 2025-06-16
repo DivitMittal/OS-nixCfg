@@ -12,10 +12,10 @@
       system = "x86_64-linux";
       additionalModules = [inputs.nixos-wsl.nixosModules.default];
     };
-    # L2 = mkHost {
-    #   inherit class;
-    #   hostName = "L2";
-    #   system = "x86_64-linux";
-    # };
+    L2 = mkHost {
+     inherit class;
+     hostName = "L2";
+     system = "x86_64-linux";
+    };
   };
 }
