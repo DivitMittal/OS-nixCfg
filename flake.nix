@@ -205,7 +205,7 @@
     };
     TLTR = {
       url = "github:DivitMittal/TLTR";
-      inputs = {};
+      flake = false;
     };
 
     ## Other external pkgs
