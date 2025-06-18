@@ -13,4 +13,9 @@
       sc-im #Spreadsheet calculator
       ;
   };
+
+  programs.visidata = {
+    enable = true;
+    package = pkgs.visidata;
+  };
 }
