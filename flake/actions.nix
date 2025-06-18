@@ -27,6 +27,10 @@
       environment = {
         name = "dev";
       };
+      permissions = {
+        contents = "write";
+        id-token = "write";
+      };
       common-actions = [
         {
           name = "Checkout repo";
@@ -40,6 +44,10 @@
           run = "echo \"OS_NIXCFG=$(pwd)\" >> \"$GITHUB_ENV\"";
         }
         inputs.actions-nix.lib.steps.DeterminateSystemsNixInstallerAction
+        {
+          name = "Magic Nix Cache(Use Github Actions Cache)";
+          uses = "DeterminateSystems/magic-nix-cache-action@main";
+        }
         {
           name = "Configure to use personal binary cache @ Cachix";
           uses = "cachix/cachix-action@master";
@@ -60,8 +68,8 @@
       ".github/workflows/darwin-build.yml" = {
         inherit on;
         jobs.build-nix-darwin-configuration = {
+          inherit permissions;
           inherit environment;
-          permissions.contents = "write";
           steps =
             common-actions
             ++ [
@@ -77,8 +85,8 @@
         inherit on;
         jobs.build-nixos-configuration = {
           runs-on = "ubuntu-latest";
+          inherit permissions;
           inherit environment;
-          permissions.contents = "write";
           steps =
             common-actions
             ++ [
@@ -94,7 +102,7 @@
         inherit on;
         jobs.build-home-manager-configuration = {
           inherit environment;
-          permissions.contents = "write";
+          inherit permissions;
           steps =
             common-actions
             ++ [
@@ -110,6 +118,7 @@
         inherit on;
         jobs.checking-flake = {
           runs-on = "ubuntu-latest";
+          inherit permissions;
           inherit environment;
           steps =
             common-actions
