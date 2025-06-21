@@ -3,7 +3,7 @@
   inputs,
   ...
 }: let
-  configFile = inputs.TLTR + "/kanata/kanata.kbd";
+  configFile = inputs.TLTR + "/kanata/tltr.kbd";
 in {
   imports = [inputs.kanata-tray.homeManagerModules.kanata-tray];
 
