@@ -8,18 +8,24 @@ _: {
     ];
 
     casks = [
+      "fuse-t" #"macfuse"
+      "lulu"
+      "blackhole-2ch"
+      {
+        name = "wacom-tablet";
+        greedy = false;
+      }
+
       ## macOS specific
       #"raycast" "alt-tab"
       #"spaceman"
       #"gswitch"
       #"bluesnooze"
       #"monolingual"
-      "fuse-t" #"macfuse"
       #"jordanbaird-ice" # open-source alt to bartender
       #"betterdisplay"
       #"knockknock"
       #"hammerspoon"
-      "lulu"
 
       ## WWWW browser
       #{
@@ -63,10 +69,6 @@ _: {
       #"spotify"
 
       ## Creative
-      {
-        name = "wacom-tablet";
-        greedy = false;
-      }
       #{
       #  name = "musescore";
       #  greedy = true;
