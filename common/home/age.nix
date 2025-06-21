@@ -11,5 +11,6 @@
   age.secrets = {
     github.file = inputs.OS-nixCfg-secrets + "/secrets/github.age";
     weechatSec.file = inputs.OS-nixCfg-secrets + "/secrets/weechat/sec.conf";
+    nixConf.file = inputs.OS-nixCfg-secrets + "/secrets/nix.conf";
   };
 }
