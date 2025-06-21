@@ -5,11 +5,15 @@
   ...
 }: {
   home.packages = lib.attrsets.attrValues {
-    # Office files (e.g., .docx, .xlsx, .pptx) editors
+    # Office files (e.g., .docx, .xlsx, .pptx) editors/viewer
     onlyoffice =
       if hostPlatform.isDarwin
       then (pkgs.brewCasks.onlyoffice.override {variation = "sequoia";})
       else pkgs.onlyoffice;
+    libreoffice =
+      if hostPlatform.isDarwin
+      then pkgs.libreoffice-bin
+      else pkgs.libreoffice;
   };
 
   # PDF, EPUB, Djvu reader
