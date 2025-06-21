@@ -4,7 +4,7 @@
   ...
 }: {
   programs.mpv = {
-    enable = false;
+    enable = true;
     package =
       if hostPlatform.isDarwin
       then pkgs.brewCasks.stolendata-mpv
