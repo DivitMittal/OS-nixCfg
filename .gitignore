@@ -1,7 +1,10 @@
-## direnv
-.direnv
-## Disabled parts of configuration
+## macOS finder metadata
+**/.DS_Store
+
+## disabled parts of configuration
 **/disabled/
-## Nix builds
+
+## nix builds & caching
+.direnv
 result
 result-*
