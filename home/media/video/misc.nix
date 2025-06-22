@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  home.packmages = lib.attrsets.attrValues {
+  home.packages = lib.attrsets.attrValues {
     inherit
       (pkgs)
       ffmpeg
