@@ -32,10 +32,15 @@ jobs:
   pull_request:
     branches:
     - master
+    paths-ignore:
+    - '**/*.md'
+    - .github/**
+    - .git*
   push:
     branches:
     - master
     paths-ignore:
     - '**/*.md'
     - .github/**
+    - .git*
   workflow_dispatch: {}

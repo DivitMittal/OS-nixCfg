@@ -33,10 +33,21 @@ jobs:
   pull_request:
     branches:
     - master
+    paths-ignore:
+    - '**/*.md'
+    - .github/**
+    - .git*
+    - common/hosts/**
+    - hosts/**
+    - modules/hosts/**
   push:
     branches:
     - master
     paths-ignore:
     - '**/*.md'
     - .github/**
+    - .git*
+    - common/hosts/**
+    - hosts/**
+    - modules/hosts/**
   workflow_dispatch: {}

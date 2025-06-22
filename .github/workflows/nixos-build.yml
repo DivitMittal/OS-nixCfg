@@ -33,10 +33,33 @@ jobs:
   pull_request:
     branches:
     - master
+    paths-ignore:
+    - '**/*.md'
+    - .github/**
+    - .git*
+    - common/home/**
+    - common/hosts/droid/**
+    - common/hosts/darwin/**
+    - home/**
+    - hosts/droid/**
+    - hosts/darwin/**
+    - modules/home/**
+    - modules/hosts/droid/**
+    - modules/hosts/darwin/**
   push:
     branches:
     - master
     paths-ignore:
     - '**/*.md'
     - .github/**
+    - .git*
+    - common/home/**
+    - common/hosts/droid/**
+    - common/hosts/darwin/**
+    - home/**
+    - hosts/droid/**
+    - hosts/darwin/**
+    - modules/home/**
+    - modules/hosts/droid/**
+    - modules/hosts/darwin/**
   workflow_dispatch: {}

@@ -11,17 +11,16 @@
     };
 
     workflows = let
-      on = {
+      on = rec {
         push = {
           branches = ["master"];
           paths-ignore = [
             "**/*.md"
             ".github/**"
+            ".git*"
           ];
         };
-        pull_request = {
-          branches = ["master"];
-        };
+        pull_request = push;
         workflow_dispatch = {};
       };
       environment = {
@@ -66,7 +65,30 @@
       ];
     in {
       ".github/workflows/darwin-build.yml" = {
-        inherit on;
+        on =
+          on
+          // rec {
+            push = {
+              branches = ["master"];
+              paths-ignore =
+                on.push.paths-ignore
+                ++ [
+                  ## common
+                  "common/home/**"
+                  "common/hosts/droid/**"
+                  "common/hosts/nixos/**"
+                  ## configuration
+                  "home/**"
+                  "hosts/droid/**"
+                  "hosts/nixos/**"
+                  ## modules
+                  "modules/home/**"
+                  "modules/hosts/droid/**"
+                  "modules/hosts/nixos/**"
+                ];
+            };
+            pull_request = push;
+          };
         jobs.build-nix-darwin-configuration = {
           inherit permissions;
           inherit environment;
@@ -82,7 +104,30 @@
       };
 
       ".github/workflows/nixos-build.yml" = {
-        inherit on;
+        on =
+          on
+          // rec {
+            push = {
+              branches = ["master"];
+              paths-ignore =
+                on.push.paths-ignore
+                ++ [
+                  ## common
+                  "common/home/**"
+                  "common/hosts/droid/**"
+                  "common/hosts/darwin/**"
+                  ## configuration
+                  "home/**"
+                  "hosts/droid/**"
+                  "hosts/darwin/**"
+                  ## modules
+                  "modules/home/**"
+                  "modules/hosts/droid/**"
+                  "modules/hosts/darwin/**"
+                ];
+            };
+            pull_request = push;
+          };
         jobs.build-nixos-configuration = {
           runs-on = "ubuntu-latest";
           inherit permissions;
@@ -99,7 +144,24 @@
       };
 
       ".github/workflows/home-build.yml" = {
-        inherit on;
+        on =
+          on
+          // rec {
+            push = {
+              branches = ["master"];
+              paths-ignore =
+                on.push.paths-ignore
+                ++ [
+                  ## common
+                  "common/hosts/**"
+                  ## configuration
+                  "hosts/**"
+                  ## modules
+                  "modules/hosts/**"
+                ];
+            };
+            pull_request = push;
+          };
         jobs.build-home-manager-configuration = {
           inherit environment;
           inherit permissions;
@@ -130,6 +192,24 @@
             ];
         };
       };
+
+      # ".github/workflows/home-visualize.yml" = {
+      #   inherit on;
+      #   jobs.generating-home-dependency-graph = {
+      #     runs-on = "ubuntu-latest";
+      #     inherit permissions;
+      #     steps = common-actions ++ [
+      #       {
+      #         name = "Build nix-visualize via nix";
+      #         run = "nix shell nixpkgs#nix-visualize";
+      #       }
+      #       {
+      #         name = "Generate home-manager dependency graph";
+      #         run = "nix-visualize --verbose --output ./assets/home-graph.svg --format svg";
+      #       }
+      #     ];
+      #   };
+      # };
     };
   };
 }
