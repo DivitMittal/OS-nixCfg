@@ -15,21 +15,21 @@ Bind(TLKeys.hyper, "l", nil, function()
   app.launchOrFocusByBundleID(bundleID.launchpad)
 end)
 
+local wifi = require("hs.wifi")
 Bind(TLKeys.hyper, "i", nil, function()
-  local wifi = require("hs.wifi")
   local status = wifi.interfaceDetails().power
   wifi.setPower(not status)
 end)
 
+local blueutilOutput, _, _, _ = hs.execute("which blueutil", true)
+local blueutilBin = string.gsub(blueutilOutput, "%s+", "")
+local function blueutil(args)
+  local command = string.format("%s %s", blueutilBin, args)
+  print(string.format("blueutil: %s", command))
+  local out, _, _, _ = hs.execute(command)
+  return out
+end
 Bind(TLKeys.hyper, "b", nil, function()
-  local blueutilOutput, _, _, _ = hs.execute("which blueutil", true)
-  local blueutilBin = string.gsub(blueutilOutput, "%s+", "")
-  local function blueutil(args)
-    local command = string.format("%s %s", blueutilBin, args)
-    print(string.format("blueutil: %s", command))
-    local out, _, _, _ = hs.execute(command, false)
-    return out
-  end
-  print(blueutil("-p"))
-  blueutil(string.format("-p %s", status == 0 and "1" or "0"))
+  local status = tonumber(blueutil("-p"))
+  blueutil(string.format("-p %s", status == 0 and 1 or 0))
 end)
