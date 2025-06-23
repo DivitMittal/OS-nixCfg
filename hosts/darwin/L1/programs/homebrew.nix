@@ -8,8 +8,9 @@ _: {
     ];
 
     casks = [
-      "fuse-t" #"macfuse"
       "lulu"
+      "cloudflare-warp"
+      "fuse-t" #"macfuse"
       "blackhole-2ch"
       {
         name = "wacom-tablet";
