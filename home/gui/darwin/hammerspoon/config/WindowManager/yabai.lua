@@ -3,7 +3,7 @@ local yabaiBin = string.gsub(yabaiOutput, "%s+", "")
 local function yabai(args)
   local command = string.format("%s -m %s", yabaiBin, args)
   print(string.format("yabai: %s", command))
-  print(os.execute(command))
+  os.execute(command)
 end
 
 -- Focus spaces

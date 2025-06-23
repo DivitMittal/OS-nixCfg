@@ -67,7 +67,7 @@ in {
     targets.darwin.defaults = {
       "org.hammerspoon.Hammerspoon".MJConfigFile = "${config.xdg.configHome}/hammerspoon/init.lua";
     };
-
+    home.packages = mkIf (cfg.package != null) [ cfg.package ];
     xdg.configFile = mkIf (cfg.configPath != null || cfg.spoons != {}) {
       "hammerspoon" = {
         source = hammerspoonDir;
