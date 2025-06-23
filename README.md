@@ -114,7 +114,7 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
 
 This graph visualizes the dependencies of the Home Manager profile configuration:
 
-![Home Manager Profile Dependency Graph](./assets/graph.png)
+![Home Manager Profile Dependency Graph](./assets/home_graph.png)
 
 ## ❄️Flake Inputs
 
