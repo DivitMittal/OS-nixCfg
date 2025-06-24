@@ -11,6 +11,7 @@
     inherit
       (pkgs)
       sc-im #Spreadsheet calculator
+      sd # sed alternative
       ;
   };
 
