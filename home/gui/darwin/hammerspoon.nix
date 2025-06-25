@@ -3,7 +3,7 @@
   inputs,
   ...
 }: let
-  hammerspoon-nix = inputs.hammerspoon-nix;
+  inherit (inputs) hammerspoon-nix;
 in {
   # home.packages = lib.lists.optionals config.xdg.configFile."hammerspoon".enable [pkgs.brewCasks.hammerspoon];
 

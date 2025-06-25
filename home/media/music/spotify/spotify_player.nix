@@ -18,7 +18,7 @@
           withSixel = false;
           withNotify = false;
           withMediaControl = false;
-        }).overrideAttrs (oldAttrs: {
+        }).overrideAttrs (_oldAttrs: {
           buildNoDefaultFeatures = true;
         })
       else pkgs.spotify-player;

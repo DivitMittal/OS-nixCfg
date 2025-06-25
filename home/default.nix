@@ -26,7 +26,7 @@
     L2 = mkHost {
       hostName = "L2";
       system = "x86_64-linux";
-      inherit class; 
+      inherit class;
       additionalModules = [./tty];
     };
   };

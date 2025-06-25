@@ -4,10 +4,11 @@
   ...
 }: {
   home.packages = lib.attrsets.attrValues {
-    inherit(pkgs)
+    inherit
+      (pkgs)
       #chafa
       imagemagick
       exif # metadata
-    ;
+      ;
   };
 }

@@ -42,7 +42,8 @@
         rev = "68326b4ca4b5b66da3d4a4cce3050e5e950aade5";
         hash = "sha256-nhIhCMBqr4VSzesplQRF6Ik55b3Ljae0dN+TYbzQb5s=";
       };
-    in getPlugin officialFlavors "dracula";
+    in
+      getPlugin officialFlavors "dracula";
     plugins = let
       officialPlugins = pkgs.fetchFromGitHub {
         owner = "yazi-rs";
