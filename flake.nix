@@ -43,6 +43,7 @@
         ./lib
         ./modules
         ./overlays
+        ./templates
       ];
     });
 
@@ -184,8 +185,8 @@
 
     ## Hammerspoon
     hammerspoon-nix = {
-      #url = "github:DivitMittal/hammerspoon-nix";
-      url = "path:/Users/div/Projects/hammerspoon-nix";
+      url = "github:DivitMittal/hammerspoon-nix";
+      #url = "path:/Users/div/Projects/hammerspoon-nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
