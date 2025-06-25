@@ -182,6 +182,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ## Hammerspoon
+    hammerspoon-nix = {
+      #url = "github:DivitMittal/hammerspoon-nix";
+      url = "path:/Users/div/Projects/hammerspoon-nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        systems.follows = "systems";
+        devshell.follows = "devshell";
+        treefmt-nix.follows = "treefmt-nix";
+        pre-commit-hooks.follows = "pre-commit-hooks";
+        actions-nix.follows = "actions-nix";
+      };
+    };
+
     ## Homebrew Casks pkgs overlay
     brew-nix = {
       #url = "github:DivitMittal/brew-nix/cask-variation";

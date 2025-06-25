@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: let
+  hammerspoon-nix = inputs.hammerspoon-nix;
+in {
   # home.packages = lib.lists.optionals config.xdg.configFile."hammerspoon".enable [pkgs.brewCasks.hammerspoon];
 
   # run once: defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
@@ -12,11 +18,14 @@
   #   source = vimModeSpoon;
   #   recursive = true;
   # };
+
+  imports = [hammerspoon-nix.homeManagerModules.default];
+
   programs.hammerspoon = {
     enable = true;
     package = pkgs.brewCasks.hammerspoon;
 
-    configPath = ./config;
+    configPath = hammerspoon-nix + ./myCfg;
     spoons = {
       VimMode = pkgs.fetchFromGitHub {
         repo = "VimMode.spoon";
