@@ -3564,11 +3564,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1750840984,
-        "narHash": "sha256-1UUmGc5g57DPhdN+oA3Ig/eogQ0I8r6HMFf7z+zUe/I=",
+        "lastModified": 1750879083,
+        "narHash": "sha256-W1r/KZHyEbnc63TLYKK0QZK3Awagd0g2PNjKkcnDkpM=",
         "owner": "DivitMittal",
         "repo": "hammerspoon-nix",
-        "rev": "7e2b110ad2708ab643fe70e0aeadf3ba66c51e9f",
+        "rev": "3d3993fa6b1855bfdd72c40f75b7eb455bd44bbf",
         "type": "github"
       },
       "original": {

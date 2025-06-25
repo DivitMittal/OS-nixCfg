@@ -25,7 +25,7 @@ in {
     enable = true;
     package = pkgs.brewCasks.hammerspoon;
 
-    configPath = hammerspoon-nix + ./myCfg;
+    configPath = hammerspoon-nix + "/myCfg";
     spoons = {
       VimMode = pkgs.fetchFromGitHub {
         repo = "VimMode.spoon";
