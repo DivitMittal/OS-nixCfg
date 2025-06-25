@@ -1,0 +1,7 @@
+## macOS finder metadata
+**/.DS_Store
+
+## nix builds & direnv caches
+.direnv
+result
+result-*
