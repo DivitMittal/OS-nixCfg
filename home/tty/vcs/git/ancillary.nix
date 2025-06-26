@@ -15,6 +15,10 @@
     '';
   };
 
+  programs.fish.functions = {
+    gen-gitignore = "curl -sL https://www.gitignore.io/api/$argv";
+  };
+
   programs.gh = {
     enable = true;
     package = pkgs.gh;

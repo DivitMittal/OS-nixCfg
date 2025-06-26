@@ -10,6 +10,10 @@
       ;
   };
 
+  programs.fish.functions = {
+    cht = "curl -ssL https://cheat.sh/$argv | ${pkgs.bat}/bin/bat";
+  };
+
   programs.tealdeer = {
     enable = true;
     package = pkgs.tealdeer;
