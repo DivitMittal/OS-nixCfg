@@ -8,7 +8,6 @@
       (pkgs)
       ttyper
       gcalcli
-      cyme
       ;
 
     inherit
