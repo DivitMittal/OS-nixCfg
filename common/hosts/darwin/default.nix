@@ -3,5 +3,9 @@
   lib,
   ...
 }: {
-  imports = (lib.custom.scanPaths ./.) ++ [self.outputs.darwinModules.default];
+  imports =
+    (lib.custom.scanPaths ./.)
+    ++ [
+      self.outputs.darwinModules.default
+    ];
 }

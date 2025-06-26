@@ -120,9 +120,9 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
         └── hosts_rebuild.sh
 ```
 
-## 📊 Home Manager Profile Graph
+## 📊 Home-Manager Profile Graph
 
-This graph visualizes the dependencies of the Home Manager profile configuration:
+This dependency graph visualizes the dependencies of the Home-Manager profile configuration:
 
 ![Home Manager Profile Dependency Graph](./assets/home_graph.png)
 
