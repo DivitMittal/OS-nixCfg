@@ -6,6 +6,7 @@
     ai-chat = builtins.import ./home/aichat.nix;
     glow = builtins.import ./home/glow.nix;
     spicetify-cli = builtins.import ./home/spicetify-cli.nix;
+    wiki-tui = builtins.import ./home/wiki-tui.nix;
   };
 
   flake.darwinModules = {
