@@ -69,8 +69,10 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
     ├── flake.nix
     ├── LICENSE
     ├── README.md
+    ├── SECURITY.md
+    ├── shell.nix
     ├── assets/
-    │   ├── graph.png
+    │   ├── home_graph.png
     │   └── qezta.png
     ├── common/
     │   ├── all/
@@ -85,29 +87,37 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
     │   └── mkHost.nix
     ├── home/
     │   ├── comms/
-    │   ├── default.nix
     │   ├── dev/
     │   ├── gui/
     │   ├── keyboard/
     │   ├── media/
     │   ├── tools/
     │   ├── tty/
-    │   └── web/
+    │   ├── web/
+    │   └── default.nix
     ├── hosts/
     │   ├── darwin/
-    │   ├── default.nix
     │   ├── droid/
-    │   └── nixos/
+    │   ├── nixos/
+    │   └── default.nix
     ├── lib/
     │   ├── custom.nix
     │   └── default.nix
     ├── modules/
-    │   ├── default.nix
     │   ├── home/
-    │   └── hosts/
+    │   ├── hosts/
+    │   └── default.nix
     ├── overlays/
+    │   ├── default.nix
+    │   └── nixpkgs.nix
     ├── pkgs/
+    │   └── darwin/
+    ├── templates/
+    │   ├── vanilla/
+    │   └── default.nix
     └── utils/
+        ├── home_rebuild.sh
+        └── hosts_rebuild.sh
 ```
 
 ## 📊 Home Manager Profile Graph
@@ -146,7 +156,7 @@ This flake relies on several external inputs to manage dependencies and configur
   - **`nvchad4nix`**: Integrates Neovim configurations (like NvChad or custom starters) with Home Manager.
   - **`kanata-tray`**: Provides a system tray application for managing Kanata keyboard remapping presets.
   - **`betterfox`**: Nix integration for Betterfox Firefox hardening.
-  - **`brew-nix`**: Alternative Nix integration for Homebrew casks/formulae (using a local fork).
+  - **`brew-nix`**: Alternative Nix integration for Homebrew casks/formulae.
   - **`brew-api`**: Homebrew API data used by `brew-nix`.
 
 _(See `flake.nix` for the complete list and specific sources/versions)_
@@ -167,7 +177,8 @@ Secrets (API keys, passwords, sensitive configurations) are managed using [ageni
 - [DivitMittal/Nvim-Cfg](https://github.com/DivitMittal/Nvim-Cfg): Pure lua standalone Neovim configuration, used as an input via `nix4nvchad`.
 - [DivitMittal/Emacs-Cfg](https://github.com/DivitMittal/Emacs-Cfg): An elisp doomemacs configuration, used as an input via `nix-doom-emacs-unstraightened`.
 - `DivitMittal/OS-nixCfg-secrets`: (Private) Contains encrypted secrets managed by `agenix`.
-- [DivitMittal/TLTR](https://github.com/DivitMittal/TLTR): Cross-platform complex multi-layer keyboard layout tailored for programmers .
+- [DivitMittal/TLTR](https://github.com/DivitMittal/TLTR): Cross-platform complex multi-layer keyboard layout tailored for programmers.
+- [DivitMittal/hammerspoon-nix](https://github.com/DivitMittal/hammerspoon-nix): A nix home-manager module for & lua hammerspoon configuration
 
 <div align="right">
 
