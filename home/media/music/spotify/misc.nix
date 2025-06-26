@@ -4,10 +4,10 @@
   ...
 }: {
   home.packages = lib.attrsets.attrValues {
-    inherit
-      (pkgs)
-      spotdl
-      ;
+    # inherit
+    #   (pkgs)
+    #   spotdl
+    #   ;
 
     # spotify =
     #   if hostPlatform.isDarwin

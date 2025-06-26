@@ -2,8 +2,10 @@ _: {
   # home.packages = lib.attrsets.attrValues {
   #   inherit
   #     (pkgs)
-  #     ## containerization
-  #     #docker lazydocker
+  #     ## container runtimes
+  #     # colima
+  #     ## container management
+  #     #docker lazydocker kubernetes
   #     ## virtualization
   #     #virt-manager libvirt qemu
   #     ;
