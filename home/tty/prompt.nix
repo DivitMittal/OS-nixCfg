@@ -47,7 +47,7 @@ in {
         "[╰─cmd─➜❯](bold green) "
         "$character"
       ];
-      right_format = concatStrings [
+      right_format = lib.strings.concatStrings [
         "$direnv"
         "$nix_shell"
         "$lua"
