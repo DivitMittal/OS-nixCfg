@@ -152,7 +152,7 @@ This flake relies on several external inputs to manage dependencies and configur
   - **`OS-nixCfg-secrets`**: **(Private Repository)** Contains encrypted secrets managed by `ragenix`.
 - **Application/Tooling Specific:**
   - **`nix-index-database`**: Provides a database for `nix-index`.
-  - **`Nvim-Cfg`**: My external Neovim configuration repository (used as a source).
+  - **`Vim-Cfg`**: My external Neovim configuration repository (used as a source).
   - **`nvchad4nix`**: Integrates Neovim configurations (like NvChad or custom starters) with Home Manager.
   - **`kanata-tray`**: Provides a system tray application for managing Kanata keyboard remapping presets.
   - **`betterfox`**: Nix integration for Betterfox Firefox hardening.
@@ -174,7 +174,7 @@ Secrets (API keys, passwords, sensitive configurations) are managed using [ageni
 
 ## 🔗 Related Repositories
 
-- [DivitMittal/Nvim-Cfg](https://github.com/DivitMittal/Nvim-Cfg): Pure lua standalone Neovim configuration, used as an input via `nix4nvchad`.
+- [DivitMittal/Vim-Cfg](https://github.com/DivitMittal/Vim-Cfg): Pure lua standalone Neovim configuration, used as an input via `nix4nvchad`.
 - [DivitMittal/Emacs-Cfg](https://github.com/DivitMittal/Emacs-Cfg): An elisp doomemacs configuration, used as an input via `nix-doom-emacs-unstraightened`.
 - `DivitMittal/OS-nixCfg-secrets`: (Private) Contains encrypted secrets managed by `agenix`.
 - [DivitMittal/TLTR](https://github.com/DivitMittal/TLTR): Cross-platform complex multi-layer keyboard layout tailored for programmers.

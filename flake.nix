@@ -147,16 +147,16 @@
     };
 
     ## editors
-    Nvim-Cfg = {
-      url = "github:DivitMittal/nvim-cfg";
-      #url = "path:/Users/div/Projects/Nvim-Cfg";
+    Vim-Cfg = {
+      url = "github:DivitMittal/Vim-Cfg";
+      #url = "path:/Users/div/Projects/Vim-Cfg";
       flake = false;
     };
     nvchad4nix = {
       url = "github:nix-community/nix4nvchad";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        nvchad-starter.follows = "Nvim-Cfg";
+        nvchad-starter.follows = "Vim-Cfg";
       };
     };
     Emacs-Cfg = {

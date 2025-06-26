@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   programs.vim = {
@@ -8,6 +9,6 @@
     packageConfigurable = pkgs.vim;
 
     defaultEditor = false;
-    extraConfig = lib.strings.readFile ./vimrc;
+    extraConfig = lib.strings.readFile (inputs.Vim-Cfg + "/vim/vimrc");
   };
 }
