@@ -6,7 +6,7 @@
     defaults = {
       jobs = {
         runs-on = "macos-latest";
-        timeout-minutes = 30;
+        timeout-minutes = 60;
       };
     };
 
@@ -63,7 +63,7 @@
           };
         }
       ];
-    in {
+    in rec {
       ".github/workflows/darwin-build.yml" = {
         on =
           on
@@ -162,7 +162,7 @@
             };
             pull_request = push;
           };
-        jobs.build-home-manager-configuration = {
+        jobs.build-home-manager-and-graph = {
           inherit environment;
           inherit permissions;
           steps =
@@ -171,6 +171,23 @@
               {
                 name = "Builds a home-manager configuration";
                 run = "nix build --accept-flake-config .#homeConfigurations.L1.activationPackage --impure --show-trace";
+              }
+              {
+                name = "Generate home-manager dependency graph";
+                run = "nix run github:craigmbooth/nix-visualize -- --verbose --output ./assets/home_graph.png ./result";
+              }
+              {
+                name = "Push to repo";
+                run = ''
+                  git config --global user.name "GitHub Actions Bot"
+                  git config --global user.email bot@github.com
+                  git add .
+                  git commit -m "chore: update home-manager dependency graph"
+                  git push origin master
+                '';
+                env = {
+                  GITHUB_TOKEN = "\${{ secrets.GITHUB_TOKEN }}";
+                };
               }
             ];
         };
@@ -192,24 +209,6 @@
             ];
         };
       };
-
-      # ".github/workflows/home-visualize.yml" = {
-      #   inherit on;
-      #   jobs.generating-home-dependency-graph = {
-      #     runs-on = "ubuntu-latest";
-      #     inherit permissions;
-      #     steps = common-actions ++ [
-      #       {
-      #         name = "Build nix-visualize via nix";
-      #         run = "nix shell nixpkgs#nix-visualize";
-      #       }
-      #       {
-      #         name = "Generate home-manager dependency graph";
-      #         run = "nix-visualize --verbose --output ./assets/home-graph.svg --format svg";
-      #       }
-      #     ];
-      #   };
-      # };
     };
   };
 }

@@ -27,7 +27,7 @@ jobs:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - name: Run nix flake check
       run: nix flake check --impure --all-systems --no-build
-    timeout-minutes: 30
+    timeout-minutes: 60
 'on':
   pull_request:
     branches:
