@@ -213,6 +213,14 @@
       url = "github:batteredbunny/brew-api";
       flake = false;
     };
+    mac-app-util = {
+      url = "github:hraban/mac-app-util";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+        systems.follows = "systems";
+      };
+    };
 
     ## Keyboard
     kanata-tray = {
