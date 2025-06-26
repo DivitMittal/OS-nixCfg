@@ -10,9 +10,8 @@
       gcalcli
       ;
 
-    inherit
-      (pkgs.customDarwin)
-      cliclick-bin
-      ;
+    # inherit
+    #   (pkgs.customDarwin)
+    #   cliclick-bin
+    #   ;
   };
-}

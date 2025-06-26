@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  inherit (lib) mkAfter concatStrings;
+  inherit (lib) mkAfter;
 in {
   programs.bash.initExtra = mkAfter ''
     ## Prompt
@@ -27,7 +27,7 @@ in {
     enableInteractive = true;
 
     settings = {
-      format = concatStrings [
+      format = lib.strings.concatStrings [
         "[╭─env─-➜❯](bold blue) "
         "$sudo"
         "$username"
