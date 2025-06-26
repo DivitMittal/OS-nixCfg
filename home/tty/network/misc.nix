@@ -6,15 +6,15 @@
   home.packages = lib.attrsets.attrValues {
     inherit
       (pkgs)
-      nmap
-      speedtest-go
-      bandwhich
-      xh #httpie
-      termscp
-      gping
-      dog
-      dig
-      croc
+      nmap # network scanner
+      speedtest-go # speedtest cli
+      bandwhich # bandwidth usage
+      xh #httpie # http API client
+      termscp # scp, ftp client
+      gping # graphical ping alt
+      dig # dns lookup
+      dog # dig alt
+      croc # file transfer
       ;
   };
 

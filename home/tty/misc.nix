@@ -6,9 +6,8 @@
   home.packages = lib.attrsets.attrValues {
     inherit
       (pkgs)
-      grc
-      duf
-      dust
+      duf # df alt
+      dust # du alt
       ;
   };
 
