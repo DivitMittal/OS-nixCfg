@@ -1,10 +1,10 @@
-_: {
-  # programs.zellij = {
-  #   enable = true;
-  #   package = pkgs.zellij;
-  #
-  #   enableFishIntegration = false;
-  #   enableZshIntegration = false;
-  #   enableBashIntegration = false;
-  # };
+{pkgs, ...}: {
+  programs.zellij = {
+    enable = false;
+    package = pkgs.zellij;
+
+    enableFishIntegration = false;
+    enableZshIntegration = false;
+    enableBashIntegration = false;
+  };
 }
