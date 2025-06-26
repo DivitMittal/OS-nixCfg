@@ -1458,11 +1458,11 @@
     "TLTR_2": {
       "flake": false,
       "locked": {
-        "lastModified": 1750534696,
-        "narHash": "sha256-WrlRNqpbbhI4+w7lh5aOqAAgPKBBDxGNrwyRztadMs8=",
+        "lastModified": 1750969526,
+        "narHash": "sha256-pYg+p/NMNl21LxjQzX1wOzBskzqzc8pHtPa57JpfArg=",
         "owner": "DivitMittal",
         "repo": "TLTR",
-        "rev": "024cf3b33f7717c7c391cc1cbd1e368a92ec2df8",
+        "rev": "731a26ac0717048219b7ac47db087b798d27f7b7",
         "type": "github"
       },
       "original": {
