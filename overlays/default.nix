@@ -10,6 +10,10 @@ in {
       callPackage = super.lib.customisation.callPackageWith self;
       directory = ../pkgs/darwin;
     };
+    customPypi = super.lib.packagesFromDirectoryRecursive {
+      callPackage = super.python3Packages.callPackage;
+      directory = ../pkgs/pypi;
+    };
   };
 
   flake.overlays = {
