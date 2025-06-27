@@ -1,6 +1,0 @@
-mac-cleanup
-pdfly
-radian
-keymap-drawer
-readmeai
-europie
