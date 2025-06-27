@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  hostPlatform,
   ...
 }: {
   home.packages = lib.attrsets.attrValues {
@@ -8,10 +9,9 @@
       (pkgs)
       ttyper
       ;
-
-    # inherit
-    #   (pkgs.customDarwin)
-    #   cliclick-bin
-    #   ;
+    mac-cleanup =
+      if hostPlatform.isDarwin
+      then pkgs.customPypi.mac-cleanup
+      else null;
   };
 }
