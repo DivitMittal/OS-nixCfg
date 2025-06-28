@@ -15,7 +15,6 @@
   pyyaml,
   tree-sitter,
   tree-sitter-grammars,
-  tree-sitter-devicetree ? tree-sitter-grammars.tree-sitter-devicetree,
   typing-extensions,
   typing-inspection,
   ...
@@ -43,9 +42,9 @@ buildPythonApplication rec {
     python-dotenv
     pyyaml
     tree-sitter
-    tree-sitter-devicetree
     typing-extensions
     typing-inspection
+    tree-sitter-grammars.tree-sitter-devicetree
   ];
   inherit doCheck;
   meta = with lib; {
