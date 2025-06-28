@@ -13,7 +13,7 @@
     workflows = let
       on = rec {
         push = {
-          branches = ["master"];
+          branches = ["main"];
           paths-ignore = [
             ## Markup
             "**/*.md"
