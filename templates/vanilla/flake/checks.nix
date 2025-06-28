@@ -5,7 +5,7 @@
     check.enable = true;
 
     settings = {
-      src = ./.;
+      src = ../.;
       excludes = ["flake.lock"];
       default_stages = ["pre-commit"];
       hooks = {
@@ -14,8 +14,11 @@
         check-added-large-files = {
           enable = true;
           excludes = [
+            ## Images
             "\\.png"
             "\\.jpg"
+            "\\.jpeg"
+            "\\.svg"
           ];
         };
         check-case-conflicts.enable = true;

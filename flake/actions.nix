@@ -3,7 +3,7 @@
 
   flake.actions-nix = {
     pre-commit.enable = true;
-    defaults = {
+    defaultValues = {
       jobs = {
         runs-on = "macos-latest";
         timeout-minutes = 60;
@@ -15,9 +15,20 @@
         push = {
           branches = ["master"];
           paths-ignore = [
+            ## Markup
             "**/*.md"
+            "**/*.adoc"
+            ## Images
+            "**/*.jpeg"
+            "**/*.jpg"
+            "**/*.png"
+            "**/*.svg"
+            ## Github Actions
             ".github/**"
+            ## git
             ".git*"
+            ## assets
+            "assets/**"
           ];
         };
         pull_request = push;

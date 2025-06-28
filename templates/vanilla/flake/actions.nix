@@ -3,7 +3,7 @@
 
   flake.actions-nix = {
     pre-commit.enable = true;
-    defaults = {
+    defaultValues = {
       jobs = {
         runs-on = "ubuntu-latest";
         timeout-minutes = 30;
@@ -15,9 +15,17 @@
         push = {
           branches = ["master"];
           paths-ignore = [
+            ## Markup
             "**/*.md"
+            "**/*.adoc"
+            ## Images
+            "**/*.jpeg"
+            "**/*.jpg"
+            "**/*.png"
+            "**/*.svg"
+            ## Github Actions
             ".github/**"
-            "assets/*"
+            ## git
             ".git*"
           ];
         };
