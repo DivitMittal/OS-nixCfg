@@ -16,13 +16,8 @@
   open.rules = [
     ## Directories
     {
-      name = "*/";
+      mime = "*/";
       use = ["open" "reveal" "look"];
-    }
-    ## Files
-    {
-      mime = "*";
-      use = ["edit" "editVS" "open" "reveal" "look"];
     }
     {
       mime = "text/*";
@@ -49,9 +44,15 @@
       use = ["play" "reveal" "look"];
     }
     {
+      mime = "application/pdf";
+      use = ["zathura" "reveal" "look"];
+    }
+    ## empty file
+    {
       mime = "inode/x-empty";
       use = ["edit" "reveal"];
     }
+    ## archives
     {
       mime = "application/zip";
       use = ["extract" "reveal"];
@@ -83,6 +84,11 @@
     {
       mime = "application/xz";
       use = ["extract" "reveal"];
+    }
+    ## fallback all other files catch
+    {
+      mime = "*";
+      use = ["edit" "editVS" "open" "reveal" "look"];
     }
   ];
 
@@ -178,6 +184,18 @@
         for = "macos";
         desc = "QuickLook";
         run = "qlmanage -p \"$@\"";
+      }
+    ];
+    zathura = [
+      {
+        for = "unix";
+        desc = "Zathura PDF Viewer";
+        run = "zathura \"$@\"";
+      }
+      {
+        for = "windows";
+        desc = "Zathura PDF Viewer";
+        run = "zathura \"%1\"";
       }
     ];
   };
@@ -318,6 +336,7 @@
     ];
 
     append_previewers = [
+      ## fallback all other files previewer
       {
         name = "*";
         run = "piper -- hexyl --border=none --terminal-width=$w \"$1\"";
@@ -325,6 +344,12 @@
     ];
 
     prepend_fetchers = [
+      {
+        name = "*";
+        id = "mime";
+        run = "mime-ext";
+        prio = "high";
+      }
       {
         name = "*";
         id = "git";

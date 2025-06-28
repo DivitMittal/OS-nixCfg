@@ -39,8 +39,8 @@
       officialFlavors = pkgs.fetchFromGitHub {
         owner = "yazi-rs";
         repo = "flavors";
-        rev = "68326b4ca4b5b66da3d4a4cce3050e5e950aade5";
-        hash = "sha256-nhIhCMBqr4VSzesplQRF6Ik55b3Ljae0dN+TYbzQb5s=";
+        rev = "d04a298a8d4ada755816cb1a8cfb74dd46ef7124";
+        hash = "sha256-m3yk6OcJ9vbCwtxkMRVUDhMMTOwaBFlqWDxGqX2Kyvc=";
       };
     in
       getPlugin officialFlavors "dracula";
@@ -48,8 +48,8 @@
       officialPlugins = pkgs.fetchFromGitHub {
         owner = "yazi-rs";
         repo = "plugins";
-        rev = "63f9650e522336e0010261dcd0ffb0bf114cf912";
-        hash = "sha256-ZCLJ6BjMAj64/zM606qxnmzl2la4dvO/F5QFicBEYfU=";
+        rev = "7c174cc0ae1e07876218868e5e0917308201c081";
+        hash = "sha256-RE93ZNlG6CRGZz7YByXtO0mifduh6MMGls6J9IYwaFA=";
       };
       # lpanebrPlugins = pkgs.fetchFromGitHub {
       #   owner = "lpanebr";
@@ -75,6 +75,7 @@
         (getOfficialPlugin "mount")
         (getOfficialPlugin "toggle-pane")
         (getOfficialPlugin "piper")
+        (getOfficialPlugin "mime-ext")
         {
           ouch = pkgs.fetchFromGitHub {
             owner = "ndtoan96";
