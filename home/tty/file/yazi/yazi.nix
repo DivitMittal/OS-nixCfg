@@ -14,11 +14,16 @@
   };
 
   open.rules = [
+    ## Directories
     {
       name = "*/";
+      use = ["open" "reveal" "look"];
+    }
+    ## Files
+    {
+      mime = "*";
       use = ["edit" "editVS" "open" "reveal" "look"];
     }
-    # general directories
     {
       mime = "text/*";
       use = ["edit" "editVS" "open" "reveal"];
@@ -79,24 +84,19 @@
       mime = "application/xz";
       use = ["extract" "reveal"];
     }
-    # general files
-    {
-      mime = "*";
-      use = ["edit" "open" "reveal" "look"];
-    }
   ];
 
   opener = {
     edit = [
       {
-        desc = "Edit via $EDITOR";
         for = "unix";
+        desc = "Edit via $EDITOR";
         run = "$EDITOR \"$@\"";
         block = true;
       }
       {
-        desc = "Edit via $EDITOR";
         for = "windows";
+        desc = "Edit via $EDITOR";
         run = "%EDITOR% \"%*\"";
         orphan = true;
         block = true;
@@ -104,79 +104,79 @@
     ];
     editVS = [
       {
-        desc = "Edit via VSCode";
         for = "unix";
+        desc = "Edit via VSCode";
         run = "code \"$@\"";
         block = true;
       }
       {
-        desc = "Edit via VSCode";
         for = "windows";
+        desc = "Edit via VSCode";
         run = "code \"%*\"";
         orphan = true;
       }
     ];
     open = [
       {
-        desc = "Default Open";
         for = "linux";
+        desc = "Default Open";
         run = "xdg-open \"$@\"";
       }
       {
-        desc = "Default Open";
         for = "macos";
+        desc = "Default Open";
         run = "open \"$@\"";
       }
       {
-        desc = "Default Open";
         for = "windows";
+        desc = "Default Open";
         run = "start \"\" \"%1\"";
         orphan = true;
       }
     ];
     extract = [
       {
-        desc = "Extract Here";
         for = "unix";
+        desc = "Extract Here";
         run = "ouch d \"$1\"";
       }
       {
-        desc = "Extract Here";
         for = "windows";
+        desc = "Extract Here";
         run = "ouch d \"%1\"";
       }
     ];
     play = [
       {
-        desc = "Play via mpv";
         for = "unix";
+        desc = "Play via mpv";
         run = "mpv --force-window \"$@\"";
         orphan = true;
       }
       {
-        desc = "Play via mpv";
         for = "windows";
+        desc = "Play via mpv";
         run = "mpv --force-window \"%1\"";
         orphan = true;
       }
     ];
     reveal = [
       {
-        desc = "Finder reveal";
         for = "macos";
+        desc = "Finder reveal";
         run = "open -R \"$1\"";
       }
       {
-        desc = "Explorer reveal";
         for = "windows";
+        desc = "Explorer reveal";
         run = "explorer /select, \"%1\"";
         orphan = true;
       }
     ];
     look = [
       {
-        desc = "QuickLook";
         for = "macos";
+        desc = "QuickLook";
         run = "qlmanage -p \"$@\"";
       }
     ];
@@ -276,10 +276,6 @@
         mime = "application/xz";
         run = "archive";
       }
-      {
-        mime = "*";
-        run = "hexyl";
-      }
     ];
 
     prepend_previewers = [
@@ -308,23 +304,36 @@
         run = "ouch";
       }
       {
-        mime = "*.csv";
-        run = "rich-preview";
+        name = "*.csv";
+        run = "piper -- rich -w $w \"$1\"";
       }
       {
-        mime = "*.md";
-        run = "rich-preview";
+        name = "*.md";
+        run = "piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark \"$1\"";
       }
       {
-        mime = "*.ipynb";
-        run = "rich-preview";
+        name = "*.ipynb";
+        run = "piper -- rich -w $w \"$1\"";
       }
     ];
 
     append_previewers = [
       {
         name = "*";
-        run = "file";
+        run = "piper -- hexyl --border=none --terminal-width=$w \"$1\"";
+      }
+    ];
+
+    prepend_fetchers = [
+      {
+        name = "*";
+        id = "git";
+        run = "git";
+      }
+      {
+        name = "*/";
+        id = "git";
+        run = "git";
       }
     ];
   };
@@ -401,20 +410,5 @@
     macro_workers = 25;
     micro_workers = 10;
     suppress_preload = false;
-  };
-
-  plugin = {
-    prepend_fetchers = [
-      {
-        id = "git";
-        name = "*";
-        run = "git";
-      }
-      {
-        id = "git";
-        name = "*/";
-        run = "git";
-      }
-    ];
   };
 }
