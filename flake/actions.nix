@@ -51,7 +51,7 @@
         }
         {
           name = "Set env var";
-          run = "echo \"OS_NIXCFG=$(pwd)\" >> \"$GITHUB_ENV\"";
+          run = "echo \"OS_NIXCFG=$(pwd)\" 1>> \"$GITHUB_ENV\"";
         }
         inputs.actions-nix.lib.steps.DeterminateSystemsNixInstallerAction
         {
