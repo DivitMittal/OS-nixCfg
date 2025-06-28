@@ -1,5 +1,5 @@
 {
-  description = "{template-name} flake";
+  description = "{project-name} flake";
 
   outputs = inputs: let
     inherit (inputs.flake-parts.lib) mkFlake;

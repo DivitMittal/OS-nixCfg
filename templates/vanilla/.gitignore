@@ -1,7 +1,13 @@
 ## macOS finder metadata
 **/.DS_Store
 
-## nix builds & direnv caches
+## disabled parts of configuration
+**/disabled/
+
+## nix builds & caching
 .direnv
 result
 result-*
+
+## git pre-commit hooks (handled via cachix/git-hooks)
+.pre-commit-config.yaml
