@@ -3,6 +3,23 @@
   doCheck ? false,
   fetchPypi,
   lib,
+  attrs,
+  beartype,
+  blessed,
+  cffi,
+  editor,
+  inquirer,
+  markdown-it-py,
+  mdurl,
+  pycparser,
+  pygments,
+  readchar,
+  rich,
+  runs,
+  toml,
+  wcwidth,
+  xattr,
+  xmod,
   ...
 }:
 buildPythonApplication rec {
@@ -16,6 +33,25 @@ buildPythonApplication rec {
     platform = "any";
     hash = "sha256-ZbxmPfggmOzc9hNx/TzHi/bnDZO6piyF0ckb6SyS/MM=";
   };
+  propagatedBuildInputs = [
+    attrs
+    beartype
+    blessed
+    cffi
+    editor
+    inquirer
+    markdown-it-py
+    mdurl
+    pycparser
+    pygments
+    readchar
+    rich
+    runs
+    toml
+    wcwidth
+    xattr
+    xmod
+  ];
   inherit doCheck;
   meta = with lib; {
     description = "A python cleanup script for macOS";
