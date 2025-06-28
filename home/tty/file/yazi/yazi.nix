@@ -14,11 +14,17 @@
   };
 
   open.rules = [
-    ## Directories
+    ## Directory
     {
-      mime = "*/";
+      name = "*/";
       use = ["open" "reveal" "look"];
     }
+    ## Empty file
+    {
+      mime = "inode/x-empty";
+      use = ["edit" "reveal"];
+    }
+    ## Code
     {
       mime = "text/*";
       use = ["edit" "editVS" "open" "reveal"];
@@ -31,6 +37,7 @@
       mime = "*/javascript";
       use = ["edit" "editVS" "reveal"];
     }
+    ## Media
     {
       mime = "image/*";
       use = ["open" "reveal" "look"];
@@ -46,11 +53,6 @@
     {
       mime = "application/pdf";
       use = ["zathura" "reveal" "look"];
-    }
-    ## empty file
-    {
-      mime = "inode/x-empty";
-      use = ["edit" "reveal"];
     }
     ## archives
     {
@@ -85,9 +87,9 @@
       mime = "application/xz";
       use = ["extract" "reveal"];
     }
-    ## fallback all other files catch
+    ## fallback for all other files
     {
-      mime = "*";
+      name = "*";
       use = ["edit" "editVS" "open" "reveal" "look"];
     }
   ];
@@ -202,6 +204,11 @@
 
   plugin = {
     preloaders = [
+      ## Images
+      {
+        mime = "image/{avif,hei?,jxl,svg+xml}";
+        run = "magick";
+      }
       {
         mime = "image/vnd.djvu";
         run = "noop";
@@ -210,22 +217,76 @@
         mime = "image/*";
         run = "image";
       }
+      ## Video
       {
         mime = "video/*";
         run = "video";
       }
+      ## PDF
       {
         mime = "application/pdf";
         run = "pdf";
       }
+      ## Font
+      {
+        mime = "font/*";
+        run = "font";
+      }
+      {
+        mime = "application/ms-opentype";
+        run = "font";
+      }
+    ];
+
+    spotters = [
+      ## Directory
+      {
+        name = "*/";
+        run = "folder";
+      }
+      ## Code
+      {
+        mime = "text/*";
+        run = "code";
+      }
+      {
+        mime = "*/{xml,javascript,wine-extension-ini}";
+        run = "code";
+      }
+      ## Image
+      {
+        mime = "image/{avif,hei?,jxl,svg+xml}";
+        run = "magick";
+      }
+      {
+        mime = "image/*";
+        run = "image";
+      }
+      ## Video
+      {
+        mime = "video/*";
+        run = "video";
+      }
+      ## File Fallback
+      {
+        name = "*";
+        run = "file";
+      }
     ];
 
     previewers = [
+      ## Directories
       {
         name = "*/";
         run = "folder";
         sync = true;
       }
+      ## Empty File
+      {
+        mime = "inode/empty";
+        run = "empty";
+      }
+      ## Code
       {
         mime = "text/*";
         run = "code";
@@ -243,8 +304,13 @@
         run = "code";
       }
       {
-        mime = "application/json";
+        mime = "application/{json, ndjson}";
         run = "json";
+      }
+      ## Images
+      {
+        mime = "image/{avif,hei?,jxl,svg+xml}";
+        run = "magick";
       }
       {
         mime = "image/vnd.djvu";
@@ -254,14 +320,17 @@
         mime = "image/*";
         run = "image";
       }
+      ## Video
       {
         mime = "video/*";
         run = "video";
       }
+      ## PDF
       {
         mime = "application/pdf";
         run = "pdf";
       }
+      ## Archives
       {
         mime = "application/zip";
         run = "archive";
@@ -294,9 +363,41 @@
         mime = "application/xz";
         run = "archive";
       }
+      ## Package Archives
+      {
+        mime = "application/{debian*-package,redhat-package-manager,rpm,android.package-archive}";
+        run = "archive";
+      }
+      {
+        name = "*.{AppImage,appimage}";
+        run = "archive";
+      }
+      ## Virtual Disk
+      {
+        mime = "application/{iso9660-image,qemu-disk,ms-wim,apple-diskimage}";
+        run = "archive";
+      }
+      {
+        mime = "application/virtualbox-{vhd,vhdx}";
+        run = "archive";
+      }
+      {
+        name = "*.{img,fat,ext,ext2,ext3,ext4,squashfs,ntfs,hfs,hfsx}";
+        run = "archive";
+      }
+      ## Font
+      {
+        mime = "font/*";
+        run = "font";
+      }
+      {
+        mime = "application/ms-opentype";
+        run = "font";
+      }
     ];
 
     prepend_previewers = [
+      ## Archives
       {
         mime = "application/*zip";
         run = "ouch";
@@ -321,6 +422,7 @@
         mime = "application/x-xz";
         run = "ouch";
       }
+      ## Other
       {
         name = "*.csv";
         run = "piper -- rich -w $w \"$1\"";
@@ -336,7 +438,7 @@
     ];
 
     append_previewers = [
-      ## fallback all other files previewer
+      ## fallback for all other files
       {
         name = "*";
         run = "piper -- hexyl --border=none --terminal-width=$w \"$1\"";
@@ -354,11 +456,13 @@
         name = "*";
         id = "git";
         run = "git";
+        prio = "low";
       }
       {
         name = "*/";
         id = "git";
         run = "git";
+        prio = "low";
       }
     ];
   };
