@@ -60,7 +60,7 @@
             ++ [
               {
                 name = "Run nix flake check";
-                run = "nix flake check --impure --all-systems --no-build";
+                run = "nix -vL flake check --impure --all-systems --no-build";
               }
             ];
         };

@@ -108,7 +108,7 @@
             ++ [
               {
                 name = "Builds a nix-darwin configuration";
-                run = "nix build --accept-flake-config .#darwinConfigurations.L1.config.system.build.toplevel --impure --show-trace";
+                run = "nix -vL build --accept-flake-config .#darwinConfigurations.L1.config.system.build.toplevel --impure --show-trace";
               }
             ];
         };
@@ -148,7 +148,7 @@
             ++ [
               {
                 name = "Builds a nixos configuration";
-                run = "nix build --accept-flake-config .#nixosConfigurations.WSL.config.system.build.toplevel --impure --show-trace";
+                run = "nix -vL build --accept-flake-config .#nixosConfigurations.WSL.config.system.build.toplevel --impure --show-trace";
               }
             ];
         };
@@ -181,11 +181,11 @@
             ++ [
               {
                 name = "Builds a home-manager configuration";
-                run = "nix build --accept-flake-config .#homeConfigurations.L1.activationPackage --impure --show-trace";
+                run = "nix -vL build --accept-flake-config .#homeConfigurations.L1.activationPackage --impure --show-trace";
               }
               {
                 name = "Generate home-manager dependency graph";
-                run = "nix run github:craigmbooth/nix-visualize -- --verbose --output ./assets/home_graph.png ./result";
+                run = "nix -vL run github:craigmbooth/nix-visualize -- --verbose --output ./assets/home_graph.png ./result";
               }
               {
                 name = "Push to repo";
@@ -215,7 +215,7 @@
             ++ [
               {
                 name = "Run nix flake check";
-                run = "nix flake check --impure --all-systems --no-build";
+                run = "nix -vL flake check --impure --all-systems --no-build";
               }
             ];
         };
