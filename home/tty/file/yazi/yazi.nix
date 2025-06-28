@@ -448,12 +448,6 @@
     prepend_fetchers = [
       {
         name = "*";
-        id = "mime";
-        run = "mime-ext";
-        prio = "high";
-      }
-      {
-        name = "*";
         id = "git";
         run = "git";
         prio = "low";

@@ -75,7 +75,6 @@
         (getOfficialPlugin "mount")
         (getOfficialPlugin "toggle-pane")
         (getOfficialPlugin "piper")
-        (getOfficialPlugin "mime-ext")
         {
           ouch = pkgs.fetchFromGitHub {
             owner = "ndtoan96";
