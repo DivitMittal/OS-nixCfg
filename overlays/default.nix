@@ -11,7 +11,7 @@ in {
       directory = ../pkgs/darwin;
     };
     customPypi = super.lib.packagesFromDirectoryRecursive {
-      callPackage = super.python3Packages.callPackage;
+      inherit (super.python3Packages) callPackage;
       directory = ../pkgs/pypi;
     };
   };

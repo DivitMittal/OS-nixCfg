@@ -3,7 +3,6 @@
   fetchPypi,
   lib,
 }:
-
 buildPythonPackage rec {
   pname = "flatlatex";
   version = "0.15";
@@ -19,6 +18,6 @@ buildPythonPackage rec {
 
   meta = with lib; {
     description = "A basic converter from LaTeX math to human readable text math using unicode characters"; # Placeholder: Add actual description
-    maintainers = with maintainers; [ DivitMittal ];
+    maintainers = with maintainers; [DivitMittal];
   };
 }

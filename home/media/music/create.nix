@@ -24,7 +24,7 @@
         then pkgs.brewCasks.musescore
         else pkgs.musescore;
     }
-    // lib.attrsets.optionalAttrs (hostPlatform.isLinux) {
+    // lib.attrsets.optionalAttrs hostPlatform.isLinux {
       inherit
         (pkgs)
         reaper-sws-extension
