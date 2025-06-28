@@ -52,8 +52,14 @@ jobs:
     - master
     paths-ignore:
     - '**/*.md'
+    - '**/*.adoc'
+    - '**/*.jpeg'
+    - '**/*.jpg'
+    - '**/*.png'
+    - '**/*.svg'
     - .github/**
     - .git*
+    - assets/**
     - common/hosts/**
     - hosts/**
     - modules/hosts/**
@@ -62,8 +68,14 @@ jobs:
     - master
     paths-ignore:
     - '**/*.md'
+    - '**/*.adoc'
+    - '**/*.jpeg'
+    - '**/*.jpg'
+    - '**/*.png'
+    - '**/*.svg'
     - .github/**
     - .git*
+    - assets/**
     - common/hosts/**
     - hosts/**
     - modules/hosts/**

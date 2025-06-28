@@ -74,7 +74,7 @@
           };
         }
       ];
-    in rec {
+    in {
       ".github/workflows/darwin-build.yml" = {
         on =
           on

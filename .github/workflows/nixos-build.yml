@@ -35,8 +35,14 @@ jobs:
     - master
     paths-ignore:
     - '**/*.md'
+    - '**/*.adoc'
+    - '**/*.jpeg'
+    - '**/*.jpg'
+    - '**/*.png'
+    - '**/*.svg'
     - .github/**
     - .git*
+    - assets/**
     - common/home/**
     - common/hosts/droid/**
     - common/hosts/darwin/**
@@ -51,8 +57,14 @@ jobs:
     - master
     paths-ignore:
     - '**/*.md'
+    - '**/*.adoc'
+    - '**/*.jpeg'
+    - '**/*.jpg'
+    - '**/*.png'
+    - '**/*.svg'
     - .github/**
     - .git*
+    - assets/**
     - common/home/**
     - common/hosts/droid/**
     - common/hosts/darwin/**

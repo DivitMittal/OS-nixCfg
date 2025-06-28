@@ -34,13 +34,25 @@ jobs:
     - master
     paths-ignore:
     - '**/*.md'
+    - '**/*.adoc'
+    - '**/*.jpeg'
+    - '**/*.jpg'
+    - '**/*.png'
+    - '**/*.svg'
     - .github/**
     - .git*
+    - assets/**
   push:
     branches:
     - master
     paths-ignore:
     - '**/*.md'
+    - '**/*.adoc'
+    - '**/*.jpeg'
+    - '**/*.jpg'
+    - '**/*.png'
+    - '**/*.svg'
     - .github/**
     - .git*
+    - assets/**
   workflow_dispatch: {}
