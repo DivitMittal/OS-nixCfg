@@ -4,10 +4,20 @@
   ...
 }: let
   enable = true;
+  templates =
+    (
+      pkgs.fetchFromGitHub {
+        owner = "DivitMittal";
+        repo = "PKMS";
+        rev = "e1b097e7c3c05d2a66210bfeeadef75feb3dcb5f";
+        hash = "sha256-uXH29PBoPwpjFm0Bfh7LaLcXv2onDOjK/1wVN7OxGr4=";
+      }
+    )
+    + "/etc/zk/templates";
 in {
   xdg.configFile."zk/templates" = {
     inherit enable;
-    source = ./templates;
+    source = templates;
     recursive = true;
   };
 
