@@ -163,22 +163,22 @@ _(See `flake.nix` for the complete list and specific sources/versions)_
 
 ## 🔒 Secrets Management
 
-Secrets (API keys, passwords, sensitive configurations) are managed using [agenix](https://github.com/ryantm/agenix) or specificaly [ragenix](https://github.com/yaxitech/ragenix).
+Secrets (API keys, passwords, sensitive configurations) are managed via [agenix](https://github.com/ryantm/agenix) or specificaly [ragenix](https://github.com/yaxitech/ragenix).
 
 1.  Secrets are encrypted using `ssh` keys. My public key is explicitly available to `ragenix`.
 2.  The encrypted files reside in a **private** GitHub repository: `DivitMittal/OS-nixCfg-secrets`. This repository is referenced as a flake input.
-3.  During the Nix build process, `agenix` decrypts these files using my private key (which must be present on the target machine at `~/.ssh/agenix/id_ed25519`).
-4.  The decrypted files are placed in the Nix store and symlinked to their target locations.
+3.  During the Nix build process, `agenix` decrypts these files using my private key.
+4.  The decrypted files are placed in the Nix store & symlinked to their target locations.
 
-⚠️ **Building this configuration requires access to the private `OS-nixCfg-secrets` repository and the corresponding private `ssh` key.**
+⚠️ **Building this configuration requires access to the private `DivitMittal/OS-nixCfg-secrets` repo and the corresponding [age](https://github.com/FiloSottile/age) private `ssh` key.**
 
 ## 🔗 Related Repositories
 
-- [DivitMittal/Vim-Cfg](https://github.com/DivitMittal/Vim-Cfg): Pure lua standalone Neovim configuration, used as an input via `nix4nvchad`.
+- `DivitMittal/OS-nixCfg-secrets`: (Private) Contains encrypted secrets managed by `agenix` & `ragenix`.
+- [DivitMittal/Vim-Cfg](https://github.com/DivitMittal/Vim-Cfg): Pure lua standalone Neovim configuration, deployed via `nix4nvchad`.
 - [DivitMittal/Emacs-Cfg](https://github.com/DivitMittal/Emacs-Cfg): An elisp doomemacs configuration, used as an input via `nix-doom-emacs-unstraightened`.
-- `DivitMittal/OS-nixCfg-secrets`: (Private) Contains encrypted secrets managed by `agenix`.
 - [DivitMittal/TLTR](https://github.com/DivitMittal/TLTR): Cross-platform complex multi-layer keyboard layout tailored for programmers.
-- [DivitMittal/hammerspoon-nix](https://github.com/DivitMittal/hammerspoon-nix): A nix home-manager module for & lua hammerspoon configuration
+- [DivitMittal/hammerspoon-nix](https://github.com/DivitMittal/hammerspoon-nix): A nix home-manager module for hammerspoon & my hammerspoon lua configuration
 
 <div align="right">
 
