@@ -19,7 +19,7 @@ in {
         language = "en";
         default-title = "Untitled";
         filename = "{{id}}";
-        extension = ".md";
+        extension = "md";
         template = "${config.xdg.configHome}/zk/templates/default.md";
         id-charset = "alphanum";
         id-length = 8;
@@ -55,36 +55,22 @@ in {
       alias = {
         # Edit the last modified note.
         edlast = "zk edit --limit 1 --sort modified- $argv";
-
         # Edit the notes selected interactively among the notes created the last two weeks.
         recent = "zk edit --sort created- --created-after 'last two weeks' --interactive";
-
         # Show a random note.
         lucky = "zk list --quiet --format full --sort random --limit 1";
-
         # list notes for editing
         ls = "zk edit --interactive";
-
-        # sear notes by tags
+        # search notes by tags
         t = "zk edit --interactive --tag $argv";
-
-        config = ''nvim "$HOME/.dotfiles/zk/config.toml"'';
-
-        # new journal entry
+        config = ''nvim "${config.xdg.configHome}/zk/config.toml"'';
+        ## Inbox & Journal
         daily = ''zk new --no-input "$ZK_NOTEBOOK_DIR/journal"'';
-
-        # new note
-        ne = ''zk new --no-input "$ZK_NOTEBOOK_DIR/ideas" --title $argv'';
-
+        ne = ''zk new --no-input "$ZK_NOTEBOOK_DIR/inbox" --title $argv'';
         journal = "zk edit --sort created- $ZK_NOTEBOOK_DIR/journal --interactive";
-
-        ideas = "zk edit --sort created- $ZK_NOTEBOOK_DIR/ideas --interactive";
-
+        inbox = "zk edit --sort created- $ZK_NOTEBOOK_DIR/inbox --interactive";
         # remove a files
         rm = "zk list --interactive --quiet --format path --delimiter0 $argv | xargs -0 rm -vf --";
-
-        # open last zk in slides
-        slides = "zk list --interactive --quiet --format path --delimiter0 $argv | xargs -0 slides";
       };
       lsp = {
         diagnostics = {
