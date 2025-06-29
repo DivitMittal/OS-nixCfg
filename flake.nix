@@ -48,12 +48,17 @@
     });
 
   inputs = {
-    ## nixpkgs (from most unstable to stable)
+    ### nixpkgs (from most unstable to stable)
     #nixpkgs-staging.url = "github:nixos/nixpkgs/staging";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
     nixpkgs-nixos.url = "github:nixos/nixpkgs/nixos-25.05";
+    ## nixpkgs indexed
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     ## flake helpers
     systems.url = "github:nix-systems/default";
@@ -62,7 +67,7 @@
       inputs.systems.follows = "systems";
     };
 
-    ## flake modules
+    ## flake-parts
     flake-parts.url = "github:hercules-ci/flake-parts";
     devshell = {
       url = "github:numtide/devshell";
@@ -83,36 +88,6 @@
         flake-parts.follows = "flake-parts";
         pre-commit-hooks.follows = "pre-commit-hooks";
       };
-    };
-
-    ## nix-darwin
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-
-    nixos-wsl = {
-      url = "github:nix-community/nixos-wsl/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-on-droid = {
-      url = "github:nix-community/nix-on-droid/release-24.05";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
-    };
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ## Secrets
@@ -146,7 +121,7 @@
       };
     };
 
-    ## editors
+    ## Editors
     Vim-Cfg = {
       url = "github:DivitMittal/Vim-Cfg";
       #url = "path:/Users/div/Projects/Vim-Cfg";
@@ -178,11 +153,39 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-firefox-darwin = {
+      #url = "github:bandithedoge/nixpkgs-firefox-darwin";
       url = "github:DivitMittal/nixpkgs-firefox-darwin/extra-files";
       #url = "path:/Users/div/Projects/Forks/nixpkgs-firefox-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ## NixOS
+    nixos-wsl = {
+      url = "github:nix-community/nixos-wsl/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-hardware.url = "github:nixos/nixos-hardware/master";
+
+    ## Android
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-24.05";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
+
+    ## Home Manager
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    ### macOS
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ## Hammerspoon
     hammerspoon-nix = {
       url = "github:DivitMittal/hammerspoon-nix";
@@ -197,8 +200,8 @@
         actions-nix.follows = "actions-nix";
       };
     };
-
-    ## Homebrew Casks pkgs overlay
+    ## macOS GUI .app bundles
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew"; # Bootstrapping homebrew
     brew-nix = {
       #url = "github:DivitMittal/brew-nix/cask-variation";
       url = "github:BatteredBunny/brew-nix";
