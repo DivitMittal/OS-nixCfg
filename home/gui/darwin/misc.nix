@@ -7,7 +7,7 @@
     inherit
       (pkgs.brewCasks)
       alt-tab
-      gswitch
+      #gswitch
       bluesnooze
       spaceman
       #aldente
