@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 printf "\033[0;33m"
 printf "\n#######################"
 printf "\nD's macOS SETUP"
