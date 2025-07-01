@@ -64,11 +64,7 @@
             }
             (
               lib.attrsets.optionalAttrs hostPlatform.isDarwin {
-                pkgs = pkgs.extend (self: super:
-                  lib.attrsets.mergeAttrsList [
-                    (inputs.brew-nix.overlays.default self super)
-                    (inputs.nixpkgs-firefox-darwin.overlay self super)
-                  ]);
+                pkgs = pkgs.extend (self: super: (inputs.brew-nix.overlays.default self super));
               }
             )
           ])

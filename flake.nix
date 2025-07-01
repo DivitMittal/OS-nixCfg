@@ -148,15 +148,18 @@
     };
 
     ## Firefox
-    betterfox-nix = {
-      url = "github:heitoraugustoln/betterfox-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixpkgs-firefox-darwin = {
-      #url = "github:bandithedoge/nixpkgs-firefox-darwin";
-      url = "github:DivitMittal/nixpkgs-firefox-darwin/extra-files";
-      #url = "path:/Users/div/Projects/Forks/nixpkgs-firefox-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
+    firefox-nixCfg = {
+      #url = "path:/Users/div/Projects/firefox-nixCfg";
+      url = "github:DivitMittal/firefox-nixCfg";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        systems.follows = "systems";
+        devshell.follows = "devshell";
+        treefmt-nix.follows = "treefmt-nix";
+        pre-commit-hooks.follows = "pre-commit-hooks";
+        actions-nix.follows = "actions-nix";
+      };
     };
 
     ## NixOS
@@ -175,7 +178,7 @@
       };
     };
 
-    ## Home Manager
+    ## Home-Manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
