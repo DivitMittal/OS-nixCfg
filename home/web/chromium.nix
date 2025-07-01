@@ -22,3 +22,8 @@ in {
     # };
   };
 }
+## Flags
+# Override software redering list
+# GPU rasterization
+# Parallel downloading
+# Experimental QUIC protocol
