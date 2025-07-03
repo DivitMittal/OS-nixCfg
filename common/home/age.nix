@@ -8,9 +8,12 @@
   age.identityPaths = ["${config.home.homeDirectory}/.ssh/agenix/id_ed25519"];
   age.secretsDir = "${config.xdg.configHome}/agenix";
 
-  age.secrets = {
-    github.file = inputs.OS-nixCfg-secrets + "/secrets/github.age";
-    weechatSec.file = inputs.OS-nixCfg-secrets + "/secrets/weechat/sec.conf";
-    nixConf.file = inputs.OS-nixCfg-secrets + "/secrets/nix.conf";
+  age.secrets = let
+    secretsPath = inputs.OS-nixCfg-secrets + "/secrets";
+  in {
+    "api/github.txt".file = secretsPath + "/api/github.age";
+    "weechat/sec.conf".file = secretsPath + "/weechat/sec.conf.age";
+    "nix.conf".file = secretsPath + "/nix.conf.age";
+    "id_passage".file = secretsPath + "/passage.age";
   };
 }

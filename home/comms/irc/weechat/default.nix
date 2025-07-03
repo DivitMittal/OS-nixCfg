@@ -28,6 +28,6 @@ in {
   xdg.configFile =
     dynamicWeechatFiles
     // {
-      "weechat/sec.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.age.secrets.weechatSec.path}"; # impure
+      "weechat/sec.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.age.secrets."weechat/sec.conf".path}"; # impure
     };
 }

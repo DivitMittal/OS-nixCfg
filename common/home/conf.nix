@@ -33,7 +33,7 @@
     };
 
     extraOptions = ''
-      !include ${config.age.secrets.nixConf.path}
+      !include ${config.age.secrets."nix.conf".path}
     '';
   };
 }
