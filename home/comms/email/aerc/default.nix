@@ -1,8 +1,13 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
+  imports = [
+    inputs.OS-nixCfg-secrets.homeManagerConfigurations.aercAccounts
+  ];
+
   programs.aerc = {
     enable = true;
     package = pkgs.aerc;
