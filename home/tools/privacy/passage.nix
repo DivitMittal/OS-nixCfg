@@ -7,12 +7,12 @@
     pkgs.passage
     (pkgs.writeShellScriptBin "passage-fzf" ''
       set -eou pipefail
-      PREFIX="''${PASSAGE_DIR:-$HOME/.passage/store}"
+      PREFIX="''${PASSAGE_DIR}"
       FZF_DEFAULT_OPTS=""
       name="$(find "$PREFIX" -type f -name '*.age' | \
         sed -e "s|$PREFIX/||" -e 's|\.age$||' | \
-        fzf --height 40% --reverse --no-multi)"
-      ${pkgs.passage} "''${@}" "$name"
+        ${pkgs.fzf}/bin/fzf --height 40% --reverse --no-multi)"
+      ${pkgs.passage}/bin/passage "''${@}" "$name"
     '')
   ];
 
