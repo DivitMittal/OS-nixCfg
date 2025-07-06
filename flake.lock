@@ -60,11 +60,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1751588796,
-        "narHash": "sha256-Vu5xCNtM5KmYzvTq8xscPGH+9vcSKUjqwUNPR6cX1v4=",
+        "lastModified": 1751607232,
+        "narHash": "sha256-wv/kLYUqBrM3xxXY2Q3Cla7shYqTRvO0tBiwHJxGYLM=",
         "ref": "master",
-        "rev": "5c2a092be686759efc23bdf6802e378f70e07f02",
-        "revCount": 53,
+        "rev": "eb9d46e57728e02d9ce723763e27eba3ce7604dd",
+        "revCount": 54,
         "type": "git",
         "url": "ssh://git@github.com/DivitMittal/OS-nixCfg-secrets.git"
       },
