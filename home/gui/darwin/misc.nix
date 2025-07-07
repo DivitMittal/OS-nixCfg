@@ -12,6 +12,7 @@
       spaceman # spaces in menubar for macOS
       #aldente # Battery Management
       #licecap # Screen GIF Capture
+      #keycastr # Keystroke visualizer
       ;
     inherit
       (pkgs.customDarwin)
