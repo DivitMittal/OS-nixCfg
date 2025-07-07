@@ -16,47 +16,23 @@ Display {
 Accessibility {
   Vision {
     Display {
-      display-contrast increase
       Text {
         text-size "16pt"
-        menu-bar-size large
       }
       Pointer {
         shake-mouse-pointer-to-locate OFF
-        pointer-size increase
-        pointer-outline-color red
-        pointer-fill-color black
       }
     }
   }
 }
 Appearance {
-  appearance dark
-  accent-color red
-  highlight-color red
-  sidebar-icon-size medium
   allow-wallpaper-tinting-in-windows OFF
-  show-scroll-bars when-scrolling
   click-in-the-scroll-bar-to "Jump to that spot that's clicked"
 }
 Siri&Spotlight {
   ask-siri OFF
 }
-Desktop&Dock {
-  Desktop&StageManager {
-    click-wallpaper-to-reveal-desktop "Only in SM"
-    Stage-Manager OFF
-  }
-  Widgets {
-    widget-style monochrome
-    use-iphone-widgets OFF
-  }
-}
 Keyboard {
   adjust-keyboard-brightness-in-low-light OFF
-  touchbar-settings customize
   keyboard-shortcuts customize
-  Text-Input {
-    input-sources "English - ABC"
-  }
 }
