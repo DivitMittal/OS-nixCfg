@@ -6,7 +6,7 @@
     defaultValues = {
       jobs = {
         runs-on = "macos-latest";
-        timeout-minutes = 60;
+        timeout-minutes = 90;
       };
     };
 

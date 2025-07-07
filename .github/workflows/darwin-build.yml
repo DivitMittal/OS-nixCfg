@@ -28,7 +28,7 @@ jobs:
     - name: Builds a nix-darwin configuration
       run: nix -vL build --accept-flake-config .#darwinConfigurations.L1.config.system.build.toplevel
         --impure --show-trace
-    timeout-minutes: 60
+    timeout-minutes: 90
 'on':
   pull_request:
     branches:

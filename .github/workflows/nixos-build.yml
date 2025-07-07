@@ -28,7 +28,7 @@ jobs:
     - name: Builds a nixos configuration
       run: nix -vL build --accept-flake-config .#nixosConfigurations.WSL.config.system.build.toplevel
         --impure --show-trace
-    timeout-minutes: 60
+    timeout-minutes: 90
 'on':
   pull_request:
     branches:

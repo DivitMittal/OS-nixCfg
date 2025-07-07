@@ -45,7 +45,7 @@ jobs:
         git push origin master
 
         '
-    timeout-minutes: 60
+    timeout-minutes: 90
 'on':
   pull_request:
     branches:
