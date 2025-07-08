@@ -6,6 +6,7 @@
   home.packages = lib.attrsets.attrValues {
     inherit
       (pkgs)
+      calcurse
       gcalcli
       ;
   };
