@@ -4,7 +4,7 @@
   ...
 }: {
   programs.spotify-player = {
-    enable = true;
+    enable = false;
     package =
       if hostPlatform.isDarwin
       then
