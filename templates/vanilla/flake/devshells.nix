@@ -23,6 +23,7 @@
           inherit
             (pkgs)
             ### LSPs & Formatters
+            ## Nix
             nixd
             alejandra
             ;

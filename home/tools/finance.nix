@@ -1,8 +1,9 @@
 {
   lib,
   pkgs,
+  ...
 }: {
-  home.packages = lib.attrsts.attrValues {
+  home.packages = lib.attrsets.attrValues {
     inherit
       (pkgs)
       tickrs
