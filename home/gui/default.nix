@@ -6,6 +6,7 @@
   imports =
     [
       ./emulators
+      ./ide
       ./viewers.nix
       ./misc.nix
     ]
