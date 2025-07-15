@@ -23,51 +23,51 @@ _: {
       NSAutomaticPeriodSubstitutionEnabled = false;
       NSAutomaticQuoteSubstitutionEnabled = false;
       NSAutomaticSpellingCorrectionEnabled = false;
-      ## Stage Manager
-      WindowManager = {
-        GloballyEnabled = false;
-        AppWindowGroupingBehavior = true; # false means “One at a time” true means “All at once”
-        EnableStandardClickToShowDesktop = false;
-      };
-      ## Finder
-      finder = {
-        AppleShowAllFiles = true;
-        AppleShowAllExtensions = true;
-        ShowPathbar = true;
-        ShowStatusBar = false;
-        _FXSortFoldersFirst = true;
-        _FXSortFoldersFirstOnDesktop = true;
-        _FXShowPosixPathInTitle = true;
-        FXRemoveOldTrashItems = false; # Remove items from the Trash after 30 days
-        FXEnableExtensionChangeWarning = false;
-      };
-      ## Calendar
-      iCal = {
-        "first day of week" = "Monday";
-      };
-      ## Login Window
-      loginwindow = {
-        PowerOffDisabledWhileLoggedIn = false;
-        RestartDisabled = false;
-        RestartDisabledWhileLoggedIn = false;
-        ShutDownDisabled = false;
-        ShutDownDisabledWhileLoggedIn = false;
-        SleepDisabled = false;
-      };
-      ## Menubar Clock
-      menuExtraClock = {
-        FlashDateSeparators = false; # Do not flash the date separators for every second
-        IsAnalog = false; # Show clock as analog
-        Show24Hour = false;
-        ShowAMPM = true;
-        ShowDate = 1; # 0 = when space, 1 = always, 2 = never
-        ShowDayOfMonth = true;
-        ShowDayOfWeek = true;
-        ShowSeconds = false;
-      };
-      LaunchServices.LSQuarantine = false;
-      SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
     };
+    ## Stage Manager
+    WindowManager = {
+      GloballyEnabled = false;
+      AppWindowGroupingBehavior = true; # false means “One at a time” true means “All at once”
+      EnableStandardClickToShowDesktop = false;
+    };
+    ## Finder
+    finder = {
+      AppleShowAllFiles = true;
+      AppleShowAllExtensions = true;
+      ShowPathbar = true;
+      ShowStatusBar = false;
+      _FXSortFoldersFirst = true;
+      _FXSortFoldersFirstOnDesktop = true;
+      _FXShowPosixPathInTitle = true;
+      FXRemoveOldTrashItems = false; # Remove items from the Trash after 30 days
+      FXEnableExtensionChangeWarning = false;
+    };
+    ## Calendar
+    iCal = {
+      "first day of week" = "Monday";
+    };
+    ## Login Window
+    loginwindow = {
+      PowerOffDisabledWhileLoggedIn = false;
+      RestartDisabled = false;
+      RestartDisabledWhileLoggedIn = false;
+      ShutDownDisabled = false;
+      ShutDownDisabledWhileLoggedIn = false;
+      SleepDisabled = false;
+    };
+    ## Menubar Clock
+    menuExtraClock = {
+      FlashDateSeparators = false; # Do not flash the date separators for every second
+      IsAnalog = false; # Show clock as analog
+      Show24Hour = false;
+      ShowAMPM = true;
+      ShowDate = 1; # 0 = when space, 1 = always, 2 = never
+      ShowDayOfMonth = true;
+      ShowDayOfWeek = true;
+      ShowSeconds = false;
+    };
+    LaunchServices.LSQuarantine = false;
+    SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
   };
 
   system.defaults.CustomSystemPreferences = {

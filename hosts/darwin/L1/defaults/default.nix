@@ -1,3 +1,5 @@
 {lib, ...}: {
-  imports = lib.custom.scanPaths ./.;
+  imports = [
+    ./defaultsPrefs.nix
+  ];
 }
