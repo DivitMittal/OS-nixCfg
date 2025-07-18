@@ -238,6 +238,12 @@
       flake = false;
     };
 
+    ## yazi
+    yazi-plugins = {
+      url = "github:yazi-rs/plugins";
+      flake = false;
+    };
+
     ## Other external pkgs
     leetcode-tui = {
       url = "github:akarsh1995/leetcode-tui";

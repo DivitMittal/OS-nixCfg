@@ -1228,7 +1228,8 @@
         "pre-commit-hooks": "pre-commit-hooks",
         "ragenix": "ragenix",
         "systems": "systems_4",
-        "treefmt-nix": "treefmt-nix_2"
+        "treefmt-nix": "treefmt-nix_2",
+        "yazi-plugins": "yazi-plugins"
       }
     },
     "rust-overlay": {
@@ -1387,6 +1388,22 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "yazi-plugins": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1751806373,
+        "narHash": "sha256-29K8PmBoqAMcQhDIfOVnbJt2FU4BR6k23Es9CqyEloo=",
+        "owner": "yazi-rs",
+        "repo": "plugins",
+        "rev": "b8860253fc44e500edeb7a09db648a829084facd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yazi-rs",
+        "repo": "plugins",
         "type": "github"
       }
     }

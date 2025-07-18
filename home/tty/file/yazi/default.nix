@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   programs.fish.functions = {
@@ -39,31 +40,13 @@
       officialFlavors = pkgs.fetchFromGitHub {
         owner = "yazi-rs";
         repo = "flavors";
-        rev = "d04a298a8d4ada755816cb1a8cfb74dd46ef7124";
-        hash = "sha256-m3yk6OcJ9vbCwtxkMRVUDhMMTOwaBFlqWDxGqX2Kyvc=";
+        rev = "d3fd3a5d774b48b3f88845f4f0ae1b82f106d331";
+        hash = "sha256-RtunaCs1RUfzjefFLFu5qLRASbyk5RUILWTdavThRkc=";
       };
     in
       getPlugin officialFlavors "dracula";
     plugins = let
-      officialPlugins = pkgs.fetchFromGitHub {
-        owner = "yazi-rs";
-        repo = "plugins";
-        rev = "7c174cc0ae1e07876218868e5e0917308201c081";
-        hash = "sha256-RE93ZNlG6CRGZz7YByXtO0mifduh6MMGls6J9IYwaFA=";
-      };
-      # lpanebrPlugins = pkgs.fetchFromGitHub {
-      #   owner = "lpanebr";
-      #   repo = "yazi-plugins";
-      #   rev = "ca18a2cfb893e3608997c9de54acced124373871";
-      #   hash = "sha256-v+EmMbrccAlzeR9rhmlFq0f+899l624EhWx1DFz+qzc=";
-      # };
-      lpanebrPluginsFork = pkgs.fetchFromGitHub {
-        owner = "DivitMittal";
-        repo = "yazi-plugins";
-        rev = "update-yatline-symlink-for-yazi's-Deprecated-API";
-        hash = "sha256-wT2m05UyYqWaRSPaUe7LL9jEnPusJMpIyU9oz5J3NQU=";
-      };
-      getOfficialPlugin = getPlugin officialPlugins;
+      getOfficialPlugin = getPlugin inputs.yazi-plugins;
     in
       lib.attrsets.mergeAttrsList [
         (getOfficialPlugin "git")
@@ -79,17 +62,10 @@
           ouch = pkgs.fetchFromGitHub {
             owner = "ndtoan96";
             repo = "ouch.yazi";
-            rev = "10b462765f37502065555e83c68a72bb26870fe2";
-            hash = "sha256-mtXl76a54Deg4cyrD0wr++sD/5b/kCsnJ+ngM6OokTc=";
-          };
-          yatline = pkgs.fetchFromGitHub {
-            owner = "imsi32";
-            repo = "yatline.yazi";
-            rev = "4872af0da53023358154c8233ab698581de5b2b2";
-            hash = "sha256-7uk8QXAlck0/4bynPdh/m7Os2ayW1UXbELmusPqRmf4=";
+            rev = "0742fffea5229271164016bf96fb599d861972db";
+            hash = "sha256-C0wG8NQ+zjAMfd+J39Uvs3K4U6e3Qpo1yLPm2xcsAaI=";
           };
         }
-        (getPlugin lpanebrPluginsFork "yatline-symlink")
       ];
   };
 }
