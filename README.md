@@ -27,10 +27,18 @@
 ---
 
 <div align='center'>
-    <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/.github/workflows/flake-check.yml/badge.svg" alt="nix-flake-check"/>
-    <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/.github/workflows/home-build.yml/badge.svg" alt="home-manager-build"/>
-    <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/.github/workflows/darwin-build.yml/badge.svg" alt="nix-darwin-build"/>
-    <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/.github/workflows/nixos-build.yml/badge.svg" alt="nixos-build"/>
+    <a href="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/flake-check.yml">
+        <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/.github/workflows/flake-check.yml/badge.svg" alt="nix-flake-check"/>
+    </a>
+    <a href="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/home-build.yml">
+        <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/.github/workflows/home-build.yml/badge.svg" alt="home-manager-build"/>
+    </a>
+    <a href="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/darwin-build.yml">
+        <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/.github/workflows/darwin-build.yml/badge.svg" alt="nix-darwin-build"/>
+    </a>
+    <a href="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/nixos-build.yml">
+        <img src="https://github.com/DivitMittal/OS-nixCfg/actions/workflows/.github/workflows/nixos-build.yml/badge.svg" alt="nixos-build"/>
+    </a>
 </div>
 
 ---
