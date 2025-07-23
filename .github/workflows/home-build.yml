@@ -34,17 +34,12 @@ jobs:
     - env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       name: Push to repo
-      run: 'git config --global user.name "GitHub Actions Bot"
-
+      run: |-
+        git config --global user.name "GitHub Actions Bot"
         git config --global user.email bot@github.com
-
         git add .
-
         git commit -m "chore: update home-manager dependency graph"
-
         git push origin master
-
-        '
     timeout-minutes: 90
 'on':
   pull_request:
