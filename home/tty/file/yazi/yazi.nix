@@ -162,6 +162,12 @@
         orphan = true;
       }
       {
+        for = "macos";
+        desc = "Play via mpv";
+        run = "stolendata-mpv --force-window \"$@\"";
+        orphan = true;
+      }
+      {
         for = "windows";
         desc = "Play via mpv";
         run = "mpv --force-window \"%1\"";

@@ -1,6 +1,7 @@
 {
   pkgs,
   hostPlatform,
+  lib,
   ...
 }: {
   programs.mpv = {
@@ -27,5 +28,8 @@
     config = {
       force-window = true;
     };
+  };
+  home.shellAliases = lib.mkIf hostPlatform.isDarwin {
+    mpv = "stolendata-mpv";
   };
 }
