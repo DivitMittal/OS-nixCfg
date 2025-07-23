@@ -1,10 +1,10 @@
 {
   inputs,
-  customLib,
+  lib,
   ...
 }: {
   imports =
-    (customLib.scanPaths ./.)
+    (lib.custom.scanPaths ./.)
     ++ [
       inputs.actions-nix.flakeModules.default
     ];
