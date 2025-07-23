@@ -52,7 +52,7 @@
     #nixpkgs-staging.url = "github:nixos/nixpkgs/staging";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.05-darwin";
     nixpkgs-nixos.url = "github:nixos/nixpkgs/nixos-25.05";
     ## nixpkgs indexed
     nix-index-database = {
