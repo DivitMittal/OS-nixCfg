@@ -73,7 +73,7 @@
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    pre-commit-hooks = {
+    git-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -86,7 +86,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
-        pre-commit-hooks.follows = "pre-commit-hooks";
+        git-hooks.follows = "git-hooks";
       };
     };
 
@@ -117,7 +117,7 @@
         agenix.follows = "agenix";
         ragenix.follows = "ragenix";
         actions-nix.follows = "actions-nix";
-        pre-commit-hooks.follows = "pre-commit-hooks";
+        git-hooks.follows = "git-hooks";
       };
     };
 
@@ -157,7 +157,7 @@
         systems.follows = "systems";
         devshell.follows = "devshell";
         treefmt-nix.follows = "treefmt-nix";
-        pre-commit-hooks.follows = "pre-commit-hooks";
+        git-hooks.follows = "git-hooks";
         actions-nix.follows = "actions-nix";
       };
     };
@@ -199,7 +199,7 @@
         systems.follows = "systems";
         devshell.follows = "devshell";
         treefmt-nix.follows = "treefmt-nix";
-        pre-commit-hooks.follows = "pre-commit-hooks";
+        git-hooks.follows = "git-hooks";
         actions-nix.follows = "actions-nix";
       };
     };

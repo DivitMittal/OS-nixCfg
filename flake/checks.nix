@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  imports = [inputs.pre-commit-hooks.flakeModule];
+  imports = [inputs.git-hooks.flakeModule];
 
   perSystem.pre-commit = {
     check.enable = true;
