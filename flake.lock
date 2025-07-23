@@ -3,11 +3,11 @@
     "Emacs-Cfg": {
       "flake": false,
       "locked": {
-        "lastModified": 1751191802,
-        "narHash": "sha256-CEalTNRje2bz1wvR182PjezBNs4j9BIXwWkS9zSIRMA=",
+        "lastModified": 1753310059,
+        "narHash": "sha256-w3Qdu9R/Bgre6Dr5D1MNA0xYUUu1hp5vFwkmF5K7zO4=",
         "owner": "DivitMittal",
         "repo": "emacs-cfg",
-        "rev": "0f4276cad17a54ace635766f49fee142d05ab6c2",
+        "rev": "8ab3996d34d4a5f13a15695d8d2d87502e4ca621",
         "type": "github"
       },
       "original": {
@@ -60,11 +60,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1753307914,
-        "narHash": "sha256-ZcsabCxqdrOP0cfLpQTTIqigcRnwXp7NbB0H/lNwcjc=",
+        "lastModified": 1753310510,
+        "narHash": "sha256-qOrvB301Uw1dSigrJR2JuHHFLVXCgbjflgETm53kDLs=",
         "ref": "master",
-        "rev": "74ef4a6532d698f5d024ed03723c5fb5a9fe122b",
-        "revCount": 58,
+        "rev": "4c3513d7ba8188bbd40abaea05c2f7f93460ee5a",
+        "revCount": 60,
         "type": "git",
         "url": "ssh://git@github.com/DivitMittal/OS-nixCfg-secrets.git"
       },
@@ -109,11 +109,11 @@
     "TLTR": {
       "flake": false,
       "locked": {
-        "lastModified": 1752125884,
-        "narHash": "sha256-k8EDAs9jjVxG0c0sDGzqWDKEOmeBTLVGzqpCchxAxrk=",
+        "lastModified": 1753311189,
+        "narHash": "sha256-kVlSWn3hLMSvKVXesXyh7NEy9Z12G/32Mw648mHuraI=",
         "owner": "DivitMittal",
         "repo": "TLTR",
-        "rev": "6cbdb0d5cbb0e22bcc70b7f6ff2db1e7b1ef3b4c",
+        "rev": "4265decc6529e6c43e784c82c2ca6507edace857",
         "type": "github"
       },
       "original": {
@@ -125,11 +125,11 @@
     "Vim-Cfg": {
       "flake": false,
       "locked": {
-        "lastModified": 1751190935,
-        "narHash": "sha256-yeU2JMZH7lctP6nxtJCYr0VaqmjaUR89a957Q2G9zHw=",
+        "lastModified": 1753311535,
+        "narHash": "sha256-2dM2zz+FPIzl7QFTby9JR8B9wuFKHDCHmXV51sV08VY=",
         "owner": "DivitMittal",
         "repo": "Vim-Cfg",
-        "rev": "7246aec24d37bfe9417633f7d22b88a008189a59",
+        "rev": "5d8037233dd85c244b31e0bc7d9f6b2d0993fb7e",
         "type": "github"
       },
       "original": {
@@ -217,11 +217,11 @@
     "brew-api": {
       "flake": false,
       "locked": {
-        "lastModified": 1753303994,
-        "narHash": "sha256-0mNEuSZV/Owy9LBDjXtRVlR0917yQhEpcorXUrtJJPc=",
+        "lastModified": 1753310150,
+        "narHash": "sha256-GFq8asVfoPYSYoiEGTwCce7pKLMDxMukOabU71ULlmY=",
         "owner": "batteredbunny",
         "repo": "brew-api",
-        "rev": "99f2a685660067aaac4b71c9432085874c892309",
+        "rev": "bf0f70818605f1201d145e834053bae08f093aba",
         "type": "github"
       },
       "original": {
@@ -392,11 +392,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1753307200,
-        "narHash": "sha256-rGvWC+Bp67XH6y6TbGRqcl1rD5uNcjLRLSHh70DA2CM=",
+        "lastModified": 1753309738,
+        "narHash": "sha256-aScGcDvVZYs09DPyxhARaLDA3EhYMu6teYAw3WsJzXg=",
         "owner": "DivitMittal",
         "repo": "firefox-nixCfg",
-        "rev": "511185b7516e06b109c35fc8255fdfdcc02f3d73",
+        "rev": "84bc22d16ca10e023d197c119cc905c1e9c5c40c",
         "type": "github"
       },
       "original": {
@@ -665,11 +665,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1753307704,
-        "narHash": "sha256-87RLn13xFJV1/ONXL+9UoVp+TA3QWAseJwzwJmqQEJs=",
+        "lastModified": 1753310295,
+        "narHash": "sha256-ehk16sdQuvHKzvTE1teE5Nd33EhSdhpakqBSClOwaXU=",
         "owner": "DivitMittal",
         "repo": "hammerspoon-nix",
-        "rev": "cae9b67b9ed3132afcde9693aeff32ba1dff68c0",
+        "rev": "ad7fabf75b56fc224fc03f556b1b9b701c5328f6",
         "type": "github"
       },
       "original": {
@@ -1060,11 +1060,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1753306955,
-        "narHash": "sha256-HjsK08xcaWpj+V3UVJIEaPEGWUuT2uDJqmNzwGRKYA4=",
+        "lastModified": 1753311566,
+        "narHash": "sha256-F5AFdyIophZH0J/DOWNTH1s5HzY05tU+n5a0K0TCmQk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b0aeb7b64bad5f9025339c096c43cf13b77e3fff",
+        "rev": "183b32a7a9a941e862fa9c7eaf42a4cffc368326",
         "type": "github"
       },
       "original": {
