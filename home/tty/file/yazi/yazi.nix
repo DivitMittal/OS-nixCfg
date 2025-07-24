@@ -156,7 +156,7 @@
     ];
     play = [
       {
-        for = "unix";
+        for = "linux";
         desc = "Play via mpv";
         run = "mpv --force-window \"$@\"";
         orphan = true;
