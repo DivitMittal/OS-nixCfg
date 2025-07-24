@@ -12,7 +12,7 @@
       ## Documents
       pandoc
       poppler # PDFs
-      rich-cli # csv, ipynbs, md
       ;
+    inherit (pkgs.nixosStable) rich-cli;
   };
 }
