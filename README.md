@@ -1,9 +1,10 @@
 <div id="top">
     <div align="center">
-        <img alt='An abstract image of a donut-like object' title='Qezta' height=250 width=250 src='./assets/qezta.png' style="position: relative; top: 0; right: 0;" />
+        <img alt='An abstract image of a donut-like object' title='Qezta' height=250 width=250 src='./assets/qezta.gif' style="position: relative; top: 0; right: 0;" />
         <h1 align='center'>OS-nixCfg</h1>
         <strong>My personal declarative Nix configurations for macOS, Android, and Linux (NixOS/WSL).</strong>
     </div>
+
 </div>
 
 ---
