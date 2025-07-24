@@ -102,16 +102,16 @@ _: {
     #"libomp" # Multiprogramming
     # ];
 
-    # masApps = {
-    ## General
-    #"Texty" = 1538996043;
-    #"Tuner" = 1597107926;
-    #"PerplexityAI" = 6714467650;
+    masApps = {
+      ## General
+      #"Texty" = 1538996043;
+      #"Tuner" = 1597107926;
+      "PerplexityAI" = 6714467650;
 
-    ## Safari Extensions
-    #"Ghostery" = 6504861501;
-    #"SuperAgent" = 1568262835;
-    #"Vimkey" = 1585682577;
-    # };
+      ## Safari Extensions
+      #"Ghostery" = 6504861501;
+      #"SuperAgent" = 1568262835;
+      #"Vimkey" = 1585682577;
+    };
   };
 }

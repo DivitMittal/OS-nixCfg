@@ -6,4 +6,9 @@
   home.packages = lib.attrsets.attrValues {
     inherit (pkgs) gemini-cli;
   };
+
+  programs.opencode = {
+    enable = true;
+    package = pkgs.master.opencode;
+  };
 }
