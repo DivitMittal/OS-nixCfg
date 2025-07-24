@@ -22,6 +22,7 @@
             "\\.jpg"
             "\\.jpeg"
             "\\.svg"
+            "\\.gif"
           ];
         };
         check-case-conflicts.enable = true;
