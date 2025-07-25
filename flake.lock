@@ -60,11 +60,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1753310510,
-        "narHash": "sha256-qOrvB301Uw1dSigrJR2JuHHFLVXCgbjflgETm53kDLs=",
+        "lastModified": 1753415235,
+        "narHash": "sha256-pp2BfBpCnFAz94JEcHTrg+gxAE2hphNQnv3hx9gRw7U=",
         "ref": "master",
-        "rev": "4c3513d7ba8188bbd40abaea05c2f7f93460ee5a",
-        "revCount": 60,
+        "rev": "bcb3d5524f07ab0f62f64b6aee761272f1f87a50",
+        "revCount": 66,
         "type": "git",
         "url": "ssh://git@github.com/DivitMittal/OS-nixCfg-secrets.git"
       },
@@ -77,11 +77,11 @@
     "OS-nixCfg_2": {
       "flake": false,
       "locked": {
-        "lastModified": 1752842678,
-        "narHash": "sha256-A+MPuqWK0Nt2w3KhGUCua81KSD7HY7RO0Pk/po+HoxE=",
+        "lastModified": 1753344192,
+        "narHash": "sha256-X4Yx9Z7tlsxkoWgQYKAnVdPrQc53I3gp/I8y7h16ni8=",
         "owner": "DivitMittal",
         "repo": "OS-nixCfg",
-        "rev": "9334a9138430d8bc2ad3146a9b0a81daa948fc90",
+        "rev": "881270a3db22223d43a6cd574bcd4e76891db870",
         "type": "github"
       },
       "original": {
@@ -392,11 +392,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1753309738,
-        "narHash": "sha256-aScGcDvVZYs09DPyxhARaLDA3EhYMu6teYAw3WsJzXg=",
+        "lastModified": 1753414817,
+        "narHash": "sha256-kpu3EaKnYY4V1jnYRdMGZiDbf4lD8ObvCI0dp1YVCDk=",
         "owner": "DivitMittal",
         "repo": "firefox-nixCfg",
-        "rev": "84bc22d16ca10e023d197c119cc905c1e9c5c40c",
+        "rev": "b2183037f5e0c647b844fa12466f1957f629d948",
         "type": "github"
       },
       "original": {
@@ -583,11 +583,11 @@
     "fx-csshacks": {
       "flake": false,
       "locked": {
-        "lastModified": 1751171381,
-        "narHash": "sha256-XmBzgKFCHz3uE45NhUpbAYi4OP939wE8biufgudDzrc=",
+        "lastModified": 1753243578,
+        "narHash": "sha256-6EhhWoeTFQ1zu8t4WC/IuBqqYPoeBG4w6Z0ru7c4+5M=",
         "owner": "MrOtherGuy",
         "repo": "firefox-csshacks",
-        "rev": "bedf5da5134360f5031dbd5ea78f0ccb2937c99b",
+        "rev": "eaddc9b4dd42e79a47e2536df388f795697046c9",
         "type": "github"
       },
       "original": {
@@ -999,11 +999,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1752974296,
-        "narHash": "sha256-u5n2dK5J2//BmGTWfBvT6ZoT+UzBLL6EyHitS78/uSY=",
+        "lastModified": 1753405900,
+        "narHash": "sha256-JvnlMwNUPtYR7oxTKCN9Uv44z8frCaK5vCIr4OpX3Ew=",
         "owner": "bandithedoge",
         "repo": "nixpkgs-firefox-darwin",
-        "rev": "c24e26b470688f2cd3ad9c034f2783b2ec125109",
+        "rev": "ba508e7016d09675b5f9fa6a90aeae320beedb93",
         "type": "github"
       },
       "original": {
