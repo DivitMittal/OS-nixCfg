@@ -8,6 +8,7 @@
     inherit
       (pkgs)
       age
+      cotp
       #skate
       ;
   };
