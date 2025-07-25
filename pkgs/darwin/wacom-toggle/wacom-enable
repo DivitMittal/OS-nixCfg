@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+echo "Enabling Wacom services..."
+
+## User (post-login)
+declare -a TOENABLE_USER
+TOENABLE_USER+=(
+  'com.wacom.DataStoreMgr'
+  'com.wacom.wacomtablet'
+)
+for agent in "${TOENABLE_USER[@]}"; do
+  launchctl enable gui/501/"${agent}"
+  if launchctl bootstrap gui/501 "/Library/LaunchAgents/${agent}.plist" &>/dev/null; then
+    echo "Bootstrap(User): ${agent}"
+  else
+    echo "Already running(User): ${agent}"
+  fi
+done
+
+# Special case for IOManager
+launchctl enable gui/501/Wacom_IOManager
+if launchctl bootstrap gui/501 /Library/LaunchAgents/com.wacom.IOManager.plist &>/dev/null; then
+  echo "Bootstrap(User): com.wacom.IOManager"
+else
+  echo "Already running(User): com.wacom.IOManager"
+fi
+
+
+## System
+declare -a TOENABLE_SYSTEM
+TOENABLE_SYSTEM+=(
+  'com.wacom.UpdateHelper'
+)
+for daemon in "${TOENABLE_SYSTEM[@]}"; do
+  sudo launchctl enable system/"${daemon}"
+  if sudo launchctl bootstrap system "/Library/LaunchDaemons/${daemon}.plist" &>/dev/null; then
+    echo "Bootstrap(System): ${daemon}"
+  else
+    echo "Already running(System): ${daemon}"
+  fi
+done
+
+echo "Wacom services enabled."

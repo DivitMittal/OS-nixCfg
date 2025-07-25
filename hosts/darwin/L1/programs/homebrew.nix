@@ -12,10 +12,6 @@ _: {
       "cloudflare-warp"
       "fuse-t" #"macfuse"
       "blackhole-2ch"
-      {
-        name = "wacom-tablet";
-        greedy = false;
-      }
 
       ## macOS specific
       #"raycast" "alt-tab"

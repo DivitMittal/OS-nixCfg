@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+echo "Disabling Wacom services..."
+
+## User (post-login)
+declare -a TODISABLE_USER
+TODISABLE_USER+=(
+  'com.wacom.DataStoreMgr'
+  'com.wacom.wacomtablet'
+  'Wacom_IOManager'
+)
+for agent in "${TODISABLE_USER[@]}"; do
+  if launchctl bootout gui/501/"${agent}" &>/dev/null; then
+    echo "Bootout(User): ${agent}"
+  else
+    echo "Already stopped(User): ${agent}"
+  fi
+  launchctl disable gui/501/"${agent}"
+done
+
+## System
+declare -a TODISABLE_SYSTEM
+TODISABLE_SYSTEM+=(
+  'com.wacom.UpdateHelper'
+)
+for daemon in "${TODISABLE_SYSTEM[@]}"; do
+  if sudo launchctl bootout system/"${daemon}" &>/dev/null; then
+    echo "Bootout(System): ${daemon}"
+  else
+    echo "Already stopped(System): ${daemon}"
+  fi
+  sudo launchctl disable system/"${daemon}"
+done
+
+echo "Wacom services disabled."
