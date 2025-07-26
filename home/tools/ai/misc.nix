@@ -4,7 +4,12 @@
   ...
 }: {
   home.packages = lib.attrsets.attrValues {
-    inherit (pkgs.master) gemini-cli;
+    inherit
+      (pkgs.master)
+      gemini-cli
+      #qwen-code
+      #trae-agent
+      ;
   };
 
   programs.opencode = {
