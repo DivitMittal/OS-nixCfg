@@ -4,7 +4,7 @@
   ...
 }: {
   home.packages = lib.attrsets.attrValues {
-    inherit (pkgs) gemini-cli;
+    inherit (pkgs.master) gemini-cli;
   };
 
   programs.opencode = {
