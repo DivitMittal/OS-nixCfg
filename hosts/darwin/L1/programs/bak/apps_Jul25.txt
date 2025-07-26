@@ -1,0 +1,45 @@
+AlDente.app
+AmpliTube 5.app
+Aurora DSP
+Capo.app
+Cloudflare WARP.app
+Dynamic Wallpaper.app
+Element.app
+GigPerformer5.app
+Grass.app
+Guitar Pro 8.app
+IK Product Manager.app
+LuLu.app
+MeldaProduction
+Native Instruments
+Nix Apps
+PDF Expert.app
+Parallels Desktop.app
+Perplexity.app
+Safari.app
+Utilities
+Wacom Tablet.localized
+djay Pro.app
+iStat Menus.app
+AltTab.app
+Bluesnooze.app
+Firefox.app
+Google Chrome.app
+Hammerspoon.app
+Hot.app
+LibreOffice.app
+LocalSend.app
+Menu Bar Dock.app
+Microsoft AutoUpdate.app
+Microsoft OneNote.app
+Microsoft Outlook.app
+MuseScore 4.app
+ONLYOFFICE.app
+Obsidian.app
+REAPER.app
+Raycast.app
+Spaceman.app
+Visual Studio Code.app
+WezTerm-macos-20240203-110809-5046fc22
+WhatsApp.app
+mpv.app
