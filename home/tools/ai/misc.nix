@@ -10,6 +10,10 @@
       #qwen-code
       #trae-agent
       ;
+    inherit
+      (pkgs)
+      geminicommit
+      ;
   };
 
   programs.opencode = {

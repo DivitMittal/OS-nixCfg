@@ -8,7 +8,6 @@
     inherit
       (pkgs)
       transcrypt
-      geminicommit
       ;
   };
 
