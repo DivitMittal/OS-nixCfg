@@ -10,7 +10,7 @@
       default_stages = ["pre-commit"];
       hooks = {
         ## Formatting
-        treefmt.enable = false;
+        treefmt.enable = true;
         trim-trailing-whitespace.enable = true;
         mixed-line-endings.enable = false;
 
