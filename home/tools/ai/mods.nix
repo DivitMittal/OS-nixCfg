@@ -27,7 +27,7 @@
               max-input-chars = 24500;
             };
             "moonshotai/kimi-k2-instruct" = {
-              aliases = ["kimi"];
+              aliases = ["kimi-instruct"];
               max-input-chars = 24500;
             };
           };
