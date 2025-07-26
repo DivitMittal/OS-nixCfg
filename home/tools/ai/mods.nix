@@ -6,7 +6,7 @@
     enableFishIntegration = true;
     enableZshIntegration = true;
     settings = {
-      default-model = "deepseek-r1-distill-llama-70b";
+      default-model = "kimi";
 
       roles = {
         shell = [
@@ -26,14 +26,36 @@
               aliases = ["deepseek"];
               max-input-chars = 24500;
             };
+            "moonshotai/kimi-k2-instruct" = {
+              aliases = ["kimi"];
+              max-input-chars = 24500;
+            };
           };
         };
         google = {
           api-key-env = "GEMINI_API_KEY";
           models = {
-            "gemini-2.0-flash" = {
-              aliases = ["gemini-2.0-flash"];
+            "gemini-2.5-flash" = {
+              aliases = ["gemini-flash"];
               max-input-chars = 392000;
+            };
+            "gemini-2.5-pro" = {
+              aliases = ["gemini-pro"];
+              max-input-chars = 392000;
+            };
+          };
+        };
+        openrouter = {
+          base-url = "https://openrouter.ai/api/v1";
+          api-key-env = "OPENROUTER_API_KEY";
+          models = {
+            "qwen/qwen3-coder:free" = {
+              aliases = ["qwen3-coder"];
+              max-input-chars = 24500;
+            };
+            "moonshotai/kimi-k2:free" = {
+              aliases = ["kimi"];
+              max-input-chars = 24500;
             };
           };
         };
