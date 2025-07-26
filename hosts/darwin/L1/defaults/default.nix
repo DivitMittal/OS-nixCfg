@@ -1,4 +1,4 @@
-{lib, ...}: {
+_: {
   imports = [
     ./defaultsPrefs.nix
   ];

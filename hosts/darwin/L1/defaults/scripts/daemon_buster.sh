@@ -260,7 +260,7 @@ TODISABLE+=(
 )
 for agent in "${TODISABLE[@]}"; do
   launchctl bootout gui/501/"${agent}" &>/dev/null && echo "Bootout(User): ${agent}" || echo "Failed to bootout(User): ${agent}" # disables the service immediately w/o reboot
-  launchctl disable gui/501/"${agent}" # adds the service to the disabled plist, requires reboot
+  launchctl disable gui/501/"${agent}"                                                                                           # adds the service to the disabled plist, requires reboot
 done
 
 ## system
