@@ -251,7 +251,8 @@
       };
     };
     aicommit2 = {
-      url = "path:/Users/div/Projects/Forks/aicommit2";
+      #url = "path:/Users/div/Projects/Forks/aicommit2";
+      url = "github:DivitMittal/aicommit2/fix-nix-package";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";

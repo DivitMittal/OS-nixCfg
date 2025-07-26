@@ -203,14 +203,18 @@
         ]
       },
       "locked": {
-        "lastModified": 1753559321,
-        "narHash": "sha256-SkHVq9sjN2PPmZpgcIwOUG3b6+DVPXMssLUoHW8lmh0=",
-        "path": "/Users/div/Projects/Forks/aicommit2",
-        "type": "path"
+        "lastModified": 1753558583,
+        "narHash": "sha256-Zdm1Ap6hwIaQlEvi0HkJEiNRHSMN61jkcn6Poa92zsQ=",
+        "owner": "DivitMittal",
+        "repo": "aicommit2",
+        "rev": "77533d76f79dee28d77b9be84dbcbe17e2ed128c",
+        "type": "github"
       },
       "original": {
-        "path": "/Users/div/Projects/Forks/aicommit2",
-        "type": "path"
+        "owner": "DivitMittal",
+        "ref": "fix-nix-package",
+        "repo": "aicommit2",
+        "type": "github"
       }
     },
     "betterfox-nix": {
