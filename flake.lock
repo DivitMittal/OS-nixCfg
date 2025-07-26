@@ -193,6 +193,26 @@
         "type": "github"
       }
     },
+    "aicommit2": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1753559321,
+        "narHash": "sha256-SkHVq9sjN2PPmZpgcIwOUG3b6+DVPXMssLUoHW8lmh0=",
+        "path": "/Users/div/Projects/Forks/aicommit2",
+        "type": "path"
+      },
+      "original": {
+        "path": "/Users/div/Projects/Forks/aicommit2",
+        "type": "path"
+      }
+    },
     "betterfox-nix": {
       "inputs": {
         "nixpkgs": [
@@ -1202,6 +1222,7 @@
         "Vim-Cfg": "Vim-Cfg",
         "actions-nix": "actions-nix",
         "agenix": "agenix",
+        "aicommit2": "aicommit2",
         "brew-api": "brew-api",
         "brew-nix": "brew-nix",
         "devshell": "devshell",

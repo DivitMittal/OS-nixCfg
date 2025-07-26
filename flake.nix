@@ -250,5 +250,12 @@
         flake-utils.follows = "flake-utils";
       };
     };
+    aicommit2 = {
+      url = "path:/Users/div/Projects/Forks/aicommit2";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
   };
 }
