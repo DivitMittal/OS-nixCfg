@@ -23,13 +23,17 @@
   });
 in {
   home.packages = lib.attrsets.attrValues {
-    obsidian =
-      if hostPlatform.isDarwin
-      then pkgs.brewCasks.obsidian
-      else pkgs.obsidian;
     onenote =
       if hostPlatform.isDarwin
       then onenote
       else null;
+  };
+
+  programs.obsidian = {
+    enable = true;
+    package =
+      if hostPlatform.isDarwin
+      then pkgs.brewCasks.obsidian
+      else pkgs.obsidian;
   };
 }
