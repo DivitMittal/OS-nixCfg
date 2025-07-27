@@ -79,7 +79,7 @@
     pre-commit.enable = true;
     defaultValues = {
       jobs = {
-        runs-on = "macos-latest";
+        runs-on = "ubuntu-latest";
         timeout-minutes = 90;
       };
     };

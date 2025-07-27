@@ -8,7 +8,6 @@
   flake.actions-nix.workflows.".github/workflows/flake-check.yml" = {
     on = common-on;
     jobs.checking-flake = {
-      runs-on = "ubuntu-latest";
       permissions = common-permissions;
       inherit environment;
       steps =

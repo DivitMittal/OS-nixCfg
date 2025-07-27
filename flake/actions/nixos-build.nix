@@ -31,7 +31,6 @@
         pull_request = push;
       };
     jobs.build-nixos-configuration = {
-      runs-on = "ubuntu-latest";
       permissions = common-permissions;
       inherit environment;
       steps =
