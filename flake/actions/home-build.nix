@@ -32,7 +32,7 @@
         ++ [
           {
             name = "Builds a home-manager configuration";
-            run = "nix -vL build --accept-flake-config .#homeConfigurations.L1.activationPackage --impure --show-trace";
+            run = "nix build --accept-flake-config .#homeConfigurations.L1.activationPackage --impure --show-trace";
           }
           {
             name = "Generate home-manager dependency graph";
