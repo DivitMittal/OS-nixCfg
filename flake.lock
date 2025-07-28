@@ -203,16 +203,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1753558583,
-        "narHash": "sha256-Zdm1Ap6hwIaQlEvi0HkJEiNRHSMN61jkcn6Poa92zsQ=",
-        "owner": "DivitMittal",
+        "lastModified": 1753672508,
+        "narHash": "sha256-GXjFzRSUu5FDS52HA5uQq7k+DUFS2g6H3p6SqGEq/BI=",
+        "owner": "tak-bro",
         "repo": "aicommit2",
-        "rev": "77533d76f79dee28d77b9be84dbcbe17e2ed128c",
+        "rev": "6eb6d0f0faaa250880334f49b26cb7fc1b3ec686",
         "type": "github"
       },
       "original": {
-        "owner": "DivitMittal",
-        "ref": "fix-nix-package",
+        "owner": "tak-bro",
         "repo": "aicommit2",
         "type": "github"
       }
