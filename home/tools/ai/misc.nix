@@ -21,7 +21,10 @@
     aicommit2 = inputs.aicommit2.packages.${pkgs.system}.default;
   };
 
-  home.sessionVariables.KAGGLE_CONFIG_DIR = "${config.xdg.configHome}/kaggle";
+  home.sessionVariables = {
+    KAGGLE_CONFIG_DIR = "${config.xdg.configHome}/kaggle";
+    HF_HUB_DISABLE_TELEMETRY = "1";
+  };
 
   programs.opencode = {
     enable = true;
