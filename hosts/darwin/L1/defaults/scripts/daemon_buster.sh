@@ -78,7 +78,7 @@ TODISABLE+=(
 
   ### Find My
   ## The daemon for the "Find My Friends" feature.
-  'com.apple.icloud.fmfd'
+  'com.apple.icloud.findmydeviced.findmydevice-user-agent'
   ## User agent for the "Find My" network's offline finding capabilities.
   'com.apple.icloud.searchpartyuseragent'
   'com.apple.findmy.findmylocateagent'
@@ -114,7 +114,7 @@ TODISABLE+=(
 
   ### iMessage & FaceTime
   ## Core agent for the iMessage and FaceTime services.
-  #'com.apple.imagent'
+  'com.apple.imagent'
   ## Automatically deletes old iMessage history.
   'com.apple.imautomatichistorydeletionagent'
   ## Manages file transfers for iMessage and other IM services.
@@ -218,9 +218,9 @@ TODISABLE+=(
 
   ### System Services
   ## Manages audio and video conferencing, including camera access.
-  #'com.apple.avconferenced'
+  'com.apple.avconferenced'
   ## A helper process for accessing call history.
-  #'com.apple.CallHistoryPluginHelper'
+  'com.apple.CallHistoryPluginHelper'
   ## Manages telephony services, including cellular calls and data.
   'com.apple.CommCenter-osx'
   ## Provides speech recognition services to applications.
@@ -230,10 +230,10 @@ TODISABLE+=(
   ## Displays help content in applications.
   'com.apple.helpd'
   ## The system daemon responsible for maintaining the state of phone calls.
-  #'com.apple.telephonyutilities.callservicesd'
+  'com.apple.telephonyutilities.callservicesd'
   ## Powers widgets and their connections to the widget center.
   'com.apple.chronod'
-  ## Synchronizes widget data and settings across devices.
+
   'com.apple.replicatord'
   ## Manages notifications and actions for items that require user follow-up.
   'com.apple.followupd'
@@ -291,7 +291,7 @@ TODISABLE+=(
 
   ### Find My
   ## The main process for the "Find My Mac" feature.
-  'com.apple.findmymac'
+  'com.apple.findmymacd'
   ## A messenger process for the "Find My Mac" feature.
   'com.apple.findmymacmessenger'
   ## Manages the local "Find My" beaconing for offline finding.
@@ -342,7 +342,7 @@ TODISABLE+=(
   'com.apple.backupd-helper'
 
   ### Trial & Beta
-  ### Manages participation in OS and application trials (e.g., betas).
+  ## Manages participation in OS and application trials (e.g., betas).
   'com.apple.triald.system'
 )
 for daemon in "${TODISABLE[@]}"; do
@@ -354,7 +354,6 @@ done
 TODISABLE=()
 TODISABLE+=(
   ### Apple
-  ### Location
   ## Provides geolocation services to applications and other system processes.
   'com.apple.geod'
 )
