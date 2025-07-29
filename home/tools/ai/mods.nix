@@ -6,7 +6,7 @@
     enableFishIntegration = true;
     enableZshIntegration = true;
     settings = {
-      default-model = "kimi";
+      default-model = "kimi-instruct";
 
       roles = {
         shell = [
