@@ -18,7 +18,9 @@
       kaggle
       ;
     inherit (pkgs.nur.repos.charmbracelet) crush;
-    hf = pkgs.python313Packages.huggingface-hub;
+    hf = pkgs.writeShellScriptBin "hf" ''
+      exec ${pkgs.uv}/bin/uv tool run --from huggingface-hub[cli] hf "$@"
+    '';
     aicommit2 = inputs.aicommit2.packages.${pkgs.system}.default;
   };
 
