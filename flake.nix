@@ -54,6 +54,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.05-darwin";
     nixpkgs-nixos.url = "github:nixos/nixpkgs/nixos-25.05";
+    ## Nix User Repository (NUR)
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ## nixpkgs indexed
     nix-index-database = {
       url = "github:nix-community/nix-index-database";

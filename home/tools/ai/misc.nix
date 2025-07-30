@@ -17,6 +17,7 @@
       geminicommit
       kaggle
       ;
+    inherit (pkgs.nur.repos.charmbracelet) crush;
     hf = pkgs.python313Packages.huggingface-hub;
     aicommit2 = inputs.aicommit2.packages.${pkgs.system}.default;
   };

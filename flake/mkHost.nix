@@ -24,6 +24,7 @@
         self: super:
           lib.attrsets.mergeAttrsList [
             (args.self.outputs.overlays.pkgs-nixos self super)
+            (inputs.nur.overlays.default self super)
             (lib.attrsets.optionalAttrs hostPlatform.isDarwin (
               args.self.outputs.overlays.pkgs-darwin self super
             ))
