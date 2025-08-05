@@ -12,9 +12,12 @@
       ## Documents
       pandoc
       poppler # PDFs
-
       ;
-    inherit (pkgs.nixosStable) rich-cli;
-    inherit (pkgs.python313Packages) markitdown;
+    markitdown = pkgs.writeScriptBin "markitdown" ''
+      exec ${pkgs.uv}/bin/uv tool run markitdown "$@"
+    '';
+    rich-cli = pkgs.writeScriptBin "rich" ''
+      exec ${pkgs.uv}/bin/uv tool run rich "$@"
+    '';
   };
 }
