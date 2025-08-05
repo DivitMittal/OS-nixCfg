@@ -9,6 +9,7 @@
       duf # df alt
       dust # du alt
       cyme # lsusb alt
+      caligula # dd alt
       ;
   };
 
