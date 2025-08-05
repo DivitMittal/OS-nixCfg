@@ -2,13 +2,14 @@
   pkgs,
   lib,
   hostPlatform,
+  config,
   ...
 }: {
   programs.zsh = {
     enable = true;
     package = pkgs.zsh;
 
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     history = {
       extended = false; # save timestamps as well
       expireDuplicatesFirst = true;

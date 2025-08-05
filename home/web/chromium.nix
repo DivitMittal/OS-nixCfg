@@ -7,7 +7,7 @@
   chrome = pkgs.brewCasks.google-chrome.overrideAttrs (oldAttrs: {
     src = pkgs.fetchurl {
       url = lib.lists.head oldAttrs.src.urls;
-      hash = "sha256-R/k9gdOthgiME1/zK+6qQ6oqNgHme76iTkybVVFSU9I=";
+      hash = "sha256-BEqxAS7H5awRgJHarBw2qHmaMVaDAdjAZorCy4tFaAs=";
     };
   });
 in {

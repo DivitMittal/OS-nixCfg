@@ -6,7 +6,7 @@
   imports = [inputs.nix-doom-emacs-unstraightened.homeModule];
 
   programs.doom-emacs = {
-    enable = true;
+    enable = false;
     doomDir = inputs.Emacs-Cfg;
     emacs = pkgs.emacs-nox;
   };
