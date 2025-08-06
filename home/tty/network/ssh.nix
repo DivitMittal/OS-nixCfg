@@ -30,6 +30,9 @@ in {
       "github.com" = {
         identityFile = "${sshDir}/github/id_ed25519";
       };
+      "hf.co" = {
+        identityFile = "${sshDir}/hf/hf";
+      };
     };
   };
 }
