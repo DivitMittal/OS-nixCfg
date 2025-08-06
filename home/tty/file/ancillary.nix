@@ -17,7 +17,7 @@
       exec ${pkgs.uv}/bin/uv tool run markitdown "$@"
     '';
     rich-cli = pkgs.writeScriptBin "rich" ''
-      exec ${pkgs.uv}/bin/uv tool run rich "$@"
+      exec ${pkgs.uv}/bin/uv tool run --from rich-cli rich "$@"
     '';
   };
 }
