@@ -46,6 +46,7 @@
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
+    lfs.enable = true;
 
     userName = config.hostSpec.userFullName;
     userEmail = config.hostSpec.email.dev;
