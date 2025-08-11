@@ -34,6 +34,12 @@
     };
   };
 
+  programs.nix-search-tv = {
+    enable = true;
+    package = pkgs.nix-search-tv;
+    enableTelevisionIntegration = true;
+  };
+
   home.packages = lib.attrsets.attrValues {
     inherit
       (pkgs)

@@ -42,4 +42,12 @@
     enable = true;
     package = pkgs.ripgrep-all;
   };
+
+  programs.television = {
+    enable = true;
+    package = pkgs.television;
+    enableBashIntegration = false;
+    enableZshIntegration = true;
+    enableFishIntegration = true;
+  };
 }
