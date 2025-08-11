@@ -20,5 +20,14 @@
       menubar-dock-bin # macOS dock in menubar
       MultiSoundChanger-bin # aggregate-output volume control in menubar
       ;
+
+    claude-desktop = pkgs.brewCasks.claude.overrideAttrs (oldAttrs: {
+      installPhase =
+        oldAttrs.installPhase
+        + ''
+          # Clean bin due to collision with claude-code
+          rm -rf $out/bin
+        '';
+    });
   };
 }
