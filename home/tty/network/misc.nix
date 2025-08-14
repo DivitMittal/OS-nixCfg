@@ -13,7 +13,7 @@
       termscp # scp, ftp client
       gping # graphical ping alt
       dig # dns lookup
-      dog # dig alt
+      doggo # dig alt
       croc # file transfer
       ;
   };

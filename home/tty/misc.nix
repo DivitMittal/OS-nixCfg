@@ -10,6 +10,7 @@
       dust # du alt
       cyme # lsusb alt
       caligula # dd alt
+      choose # cut alt
       ;
   };
 
