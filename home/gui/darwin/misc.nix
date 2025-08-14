@@ -13,6 +13,7 @@
       #aldente # Battery Management
       #licecap # Screen GIF Capture
       #keycastr # Keystroke visualizer
+      thunderbird # Email client
       ;
     inherit
       (pkgs.customDarwin)
