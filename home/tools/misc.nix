@@ -8,6 +8,7 @@
     inherit
       (pkgs)
       ttyper
+      czkawka-full
       ;
     mac-cleanup =
       if hostPlatform.isDarwin
