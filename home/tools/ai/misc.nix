@@ -16,7 +16,6 @@
       (pkgs)
       geminicommit
       kaggle
-      claude-code
       #aider-chat-full
       ;
     inherit (pkgs.nur.repos.charmbracelet) crush;
