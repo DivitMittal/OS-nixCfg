@@ -4,7 +4,7 @@
   programs.less = {
     enable = true;
 
-    keys = ''
+    config = ''
       #command
       # scroll a page down
       # Spacebar (40 in octal)
