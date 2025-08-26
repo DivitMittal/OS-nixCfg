@@ -2,6 +2,7 @@
   lib,
   inputs,
   config,
+  hostPlatform,
   ...
 }: {
   nix = {
@@ -28,7 +29,10 @@
 
     gc = {
       automatic = true;
-      frequency = "daily";
+      dates =
+        if hostPlatform.isDarwin
+        then "weekly"
+        else "Sun 22:00";
       options = "--delete-old";
     };
 
