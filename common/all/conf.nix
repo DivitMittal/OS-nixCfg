@@ -12,7 +12,7 @@ in {
     checkConfig = mkDefault true;
 
     settings = {
-      experimental-features = ["nix-command" "flakes" "repl-flake"];
+      experimental-features = ["nix-command" "flakes"];
 
       connect-timeout = 5;
       log-lines = 25;
