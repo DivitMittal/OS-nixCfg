@@ -15,3 +15,4 @@ result-*
 ## Tools
 .vscode/
 .crush/
+.aider*
