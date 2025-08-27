@@ -24,29 +24,17 @@ in {
   programs.zk = {
     inherit enable;
     package = pkgs.zk;
+
     settings = {
       note = {
         language = "en";
+        template = "${config.xdg.configHome}/zk/templates/default.md";
         default-title = "Untitled";
         filename = "{{id}}";
         extension = "md";
-        template = "${config.xdg.configHome}/zk/templates/default.md";
         id-charset = "alphanum";
         id-length = 8;
         id-case = "lower";
-      };
-      extra = {
-        author = "${config.hostSpec.userFullName}";
-      };
-      group = {
-        daily = {
-          paths = ["journal"];
-          note = {
-            filename = "{{format-date now '%Y-%m-%d'}}";
-            extension = "md";
-            template = "${config.xdg.configHome}/zk/templates/daily.md";
-          };
-        };
       };
       format = {
         markdown = {
@@ -56,15 +44,26 @@ in {
       };
       tool = {
         editor = "${config.home.sessionVariables.EDITOR}";
-        pager = "less -FIRX";
-        fzf-preview = "bat -p --color always {-1}";
+        pager = "${pkgs.glow}/bin/glow";
+        fzf-preview = "${pkgs.bat}/bin/bat -p --color always {-1}";
+      };
+      extra.author = "${config.hostSpec.userFullName}";
+      group = {
+        daily = {
+          paths = ["journal"];
+          note = {
+            template = "${config.xdg.configHome}/zk/templates/daily.md";
+            filename = "{{format-date now '%Y-%m-%d'}}";
+            extension = "md";
+          };
+        };
       };
       filter = {
         recents = "--sort created- --created-after 'last two weeks'";
       };
       alias = {
         # Edit the last modified note.
-        edlast = "zk edit --limit 1 --sort modified- $argv";
+        last = "zk edit --limit 1 --sort modified- $argv";
         # Edit the notes selected interactively among the notes created the last two weeks.
         recent = "zk edit --sort created- --created-after 'last two weeks' --interactive";
         # Show a random note.
@@ -73,7 +72,7 @@ in {
         ls = "zk edit --interactive";
         # search notes by tags
         t = "zk edit --interactive --tag $argv";
-        config = ''nvim "${config.xdg.configHome}/zk/config.toml"'';
+        config = ''${config.home.sessionVariables.EDITOR} "${config.xdg.configHome}/zk/config.toml"'';
         ## Inbox & Journal
         daily = ''zk new --no-input "$ZK_NOTEBOOK_DIR/journal"'';
         ne = ''zk new --no-input "$ZK_NOTEBOOK_DIR/inbox" --title $argv'';
