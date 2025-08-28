@@ -71,6 +71,10 @@
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
     };
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+      flake = false;
+    };
 
     ## flake-parts
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -167,13 +171,21 @@
       };
     };
 
+    ### Infra
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "flake-utils";
+        flake-compat.follows = "flake-compat";
+      };
+    };
     ## NixOS
     nixos-wsl = {
       url = "github:nix-community/nixos-wsl/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
-
     ## Android
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/release-24.05";
@@ -244,6 +256,13 @@
     };
 
     ## Misc.
+    nix-ai-tools = {
+      url = "github:numtide/nix-ai-tools";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        treefmt-nix.follows = "treefmt-nix";
+      };
+    };
     yazi-plugins = {
       url = "github:yazi-rs/plugins";
       flake = false;
