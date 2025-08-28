@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   programs.aichat = {
     enable = true;
     package = pkgs.aichat;
@@ -8,8 +12,8 @@
       light_theme = false;
       left_prompt = "{color.green}{?session {?agent {agent}>}{session}{?role /}}{!session {?agent {agent}>}}{role}{?rag @{rag}}{color.cyan}{?session )}{!session >}{color.reset} ";
       right_prompt = "{color.purple}{?session {?consume_tokens {consume_tokens}({consume_percent}%)}{!consume_tokens {consume_tokens}}}{color.reset}";
+      editor = "${config.home.sessionVariables.EDITOR}";
       keybindings = "vim";
-      editor = "nvim";
       wrap = "auto";
       wrap_code = false;
       clients = [

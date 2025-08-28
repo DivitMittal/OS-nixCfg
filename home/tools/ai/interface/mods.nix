@@ -2,9 +2,11 @@
   programs.mods = {
     enable = true;
     package = pkgs.mods;
+
     enableBashIntegration = false;
     enableFishIntegration = true;
     enableZshIntegration = true;
+
     settings = {
       default-model = "kimi-instruct";
 
