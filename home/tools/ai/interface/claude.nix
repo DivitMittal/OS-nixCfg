@@ -1,7 +1,54 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: {
+  home.packages = lib.attrsets.attrValues {
+    ccusage = pkgs.writeShellScriptBin "ccusage" ''
+      exec ${pkgs.pnpm}/bin/pnpm dlx ccusage "$@"
+    '';
+  };
+
   programs.claude-code = {
     enable = true;
-    package = pkgs.claude-code;
+    package = inputs.nix-ai-tools.packages.${pkgs.system}.claude-code;
+
+    mcpServers = {
+      ## modelcontextprotocol
+      filesystem = {
+        type = "stdio";
+        command = "npx";
+        args = ["-y" "@modelcontextprotocol/server-filesystem" "/tmp"];
+      };
+      sequential-thinking = {
+        type = "stdio";
+        command = "npx";
+        args = ["-y" "@modelcontextprotocol/server-sequential-thinking"];
+      };
+      memory = {
+        type = "stdio";
+        command = "npx";
+        args = ["-y" "@modelcontextprotocol/server-memory"];
+      };
+      ## microsoft
+      playwright = {
+        type = "stdio";
+        command = "npx";
+        args = ["-y" "@playwright/mcp"];
+      };
+      ## Third-party
+      octocode = {
+        type = "stdio";
+        command = "npx";
+        args = ["-y" "octocode-mcp@latest"];
+      };
+      ddg = {
+        type = "stdio";
+        command = "npx";
+        args = ["duckduckgo-mcp-server"];
+      };
+    };
 
     settings = {
       hooks = {
@@ -30,9 +77,7 @@
       };
       includeCoAuthoredBy = false;
       permissions = {
-        additionalDirectories = [
-          "../docs/"
-        ];
+        # additionalDirectories = [ "../docs/" ];
         allow = [
           "Bash(git diff:*)"
           "Edit"
@@ -55,7 +100,9 @@
         type = "command";
       };
       theme = "dark";
+      outputStyle = "Explanatory";
     };
+
     agents = {
       code-reviewer = ''
         ---
@@ -79,6 +126,7 @@
         Focus on user-friendly explanations and examples.
       '';
     };
+
     commands = {
       changelog = ''
         ---
@@ -112,21 +160,6 @@
         ---
         Fix issue #$ARGUMENTS following our coding standards and best practices.
       '';
-    };
-    mcpServers = {
-      filesystem = {
-        args = [
-          "-y"
-          "@modelcontextprotocol/server-filesystem"
-          "/tmp"
-        ];
-        command = "npx";
-        type = "stdio";
-      };
-      github = {
-        type = "http";
-        url = "https://api.githubcopilot.com/mcp/";
-      };
     };
   };
 }
