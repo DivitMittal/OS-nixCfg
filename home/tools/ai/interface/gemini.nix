@@ -14,33 +14,40 @@
       theme = "ANSI";
       preferredEditor = "${config.home.sessionVariables.EDITOR}";
       vimMode = true;
-      mcpServers = {
+      mcpServers = let
+        pnpmCommand = "${pkgs.pnpm}/bin/pnpm";
+        uvCommand = "${pkgs.uv}/bin/uvx";
+      in {
         ## modelcontextprotocol
         filesystem = {
-          command = "npx";
-          args = ["-y" "@modelcontextprotocol/server-filesystem" "/tmp"];
+          command = pnpmCommand;
+          args = ["dlx" "@modelcontextprotocol/server-filesystem" "/tmp"];
         };
         sequential-thinking = {
-          command = "npx";
-          args = ["-y" "@modelcontextprotocol/server-sequential-thinking"];
+          command = pnpmCommand;
+          args = ["dlx" "@modelcontextprotocol/server-sequential-thinking"];
         };
         memory = {
-          command = "npx";
-          args = ["-y" "@modelcontextprotocol/server-memory"];
+          command = pnpmCommand;
+          args = ["dlx" "@modelcontextprotocol/server-memory"];
         };
         ## microsoft
-        playwright = {
-          command = "npx";
-          args = ["-y" "@playwright/mcp"];
+        # playwright = {
+        #   command = "npx";
+        #   args = ["-y" "@playwright/mcp"];
+        # };
+        markitdown = {
+          command = uvCommand;
+          args = ["markitdown-mcp"];
         };
         ## third-party
         octocode = {
-          command = "npx";
-          args = ["-y" "octocode-mcp@latest"];
+          command = pnpmCommand;
+          args = ["dlx" "octocode-mcp@latest"];
         };
         ddg = {
-          command = "npx";
-          args = ["duckduckgo-mcp-server"];
+          command = pnpmCommand;
+          args = ["dlx" "duckduckgo-mcp-server"];
         };
       };
     };

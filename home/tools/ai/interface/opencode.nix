@@ -39,39 +39,47 @@
         };
       };
 
-      mcp = {
+      mcp = let
+        pnpmCommand = ["${pkgs.pnpm}/bin/pnpm" "dlx"];
+        uvCommand = ["${pkgs.uv}/bin/uvx"];
+      in {
         ## modelcontextprotocol
         filesystem = {
           enabled = true;
           type = "local";
-          command = ["npx" "-y" "@modelcontextprotocol/server-filesystem" "/tmp"];
+          command = pnpmCommand ++ ["@modelcontextprotocol/server-filesystem" "/tmp"];
         };
         memory = {
           enabled = true;
           type = "local";
-          command = ["npx" "-y" "@modelcontextprotocol/server-memory"];
+          command = pnpmCommand ++ ["@modelcontextprotocol/server-memory"];
         };
         sequential-thinking = {
           enabled = true;
           type = "local";
-          command = ["npx" "-y" "@modelcontextprotocol/server-sequential-thinking"];
+          command = pnpmCommand ++ ["@modelcontextprotocol/server-sequential-thinking"];
         };
         ## microsoft
         playwright = {
+          enabled = false;
+          type = "local";
+          command = pnpmCommand ++ ["@playwright/mcp"];
+        };
+        markitdown = {
           enabled = true;
           type = "local";
-          command = ["npx" "-y" "@playwright/mcp"];
+          command = uvCommand ++ ["markitdown-mcp"];
         };
         ## third-party
         octocode = {
           enabled = true;
           type = "local";
-          command = ["npx" "-y" "octocode-mcp@latest"];
+          command = pnpmCommand ++ ["octocode-mcp@latest"];
         };
         ddg = {
           enabled = true;
           type = "local";
-          command = ["npx" "-y" "duckduckgo-mcp-server"];
+          command = pnpmCommand ++ ["duckduckgo-mcp-server"];
         };
       };
     };

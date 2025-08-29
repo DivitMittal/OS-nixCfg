@@ -18,50 +18,51 @@
         ];
       };
       lsp = {
-        go = {
-          command = "gopls";
-        };
-        typescript = {
-          command = "typescript-language-server";
-          args = ["--stdio"];
-        };
         nix = {
-          command = "nixd";
+          command = "${pkgs.nixd}/bin/nixd";
         };
       };
-      mcp = {
+      mcp = let
+        pnpmCommand = "${pkgs.pnpm}/bin/pnpm";
+        uvCommand = "${pkgs.uv}/bin/uvx";
+      in {
         ## modelcontextprotocol
         filesystem = {
           type = "stdio";
-          command = "npx";
-          args = ["-y" "@modelcontextprotocol/server-filesystem"];
+          command = pnpmCommand;
+          args = ["dlx" "@modelcontextprotocol/server-filesystem"];
         };
         sequential-thinking = {
           type = "stdio";
-          command = "npx";
-          args = ["-y" "@modelcontextprotocol/server-sequential-thinking"];
+          command = pnpmCommand;
+          args = ["dlx" "@modelcontextprotocol/server-sequential-thinking"];
         };
         memory = {
           type = "stdio";
-          command = "npx";
-          args = ["-y" "@modelcontextprotocol/server-memory"];
+          command = pnpmCommand;
+          args = ["dlx" "@modelcontextprotocol/server-memory"];
         };
         ## Microsoft
-        playwright = {
+        # playwright = {
+        #   type = "stdio";
+        #   command = pnpmCommand;
+        #   args = ["dlx" "@playwright/mcp"];
+        # };
+        markitdown = {
           type = "stdio";
-          command = "npx";
-          args = ["-y" "@playwright/mcp"];
+          command = uvCommand;
+          args = ["markitdown-mcp"];
         };
         ## third-party
         octocode = {
           type = "stdio";
-          command = "npx";
-          args = ["-y" "octocode-mcp@latest"];
+          command = pnpmCommand;
+          args = ["dlx" "octocode-mcp@latest"];
         };
         ddg = {
           type = "stdio";
-          command = "npx";
-          args = ["duckduckgo-mcp-server"];
+          command = pnpmCommand;
+          args = ["dlx" "duckduckgo-mcp-server"];
         };
       };
     };
