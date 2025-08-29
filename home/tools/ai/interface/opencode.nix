@@ -71,6 +71,11 @@
           command = uvCommand ++ ["markitdown-mcp"];
         };
         ## third-party
+        deepwiki = {
+          enabled = true;
+          type = "remote";
+          url = "https://mcp.deepwiki.com/mcp";
+        };
         octocode = {
           enabled = true;
           type = "local";

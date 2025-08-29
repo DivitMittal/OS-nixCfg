@@ -41,6 +41,10 @@
           args = ["markitdown-mcp"];
         };
         ## third-party
+        deepwiki = {
+          trust = true;
+          httpUrl = "https://mcp.deepwiki.com/mcp";
+        };
         octocode = {
           command = pnpmCommand;
           args = ["dlx" "octocode-mcp@latest"];

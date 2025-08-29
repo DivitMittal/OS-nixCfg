@@ -54,6 +54,10 @@
           args = ["markitdown-mcp"];
         };
         ## third-party
+        deepwiki = {
+          type = "http";
+          url = "https://mcp.deepwiki.com/mcp";
+        };
         octocode = {
           type = "stdio";
           command = pnpmCommand;
