@@ -21,7 +21,7 @@
         ## modelcontextprotocol
         filesystem = {
           command = pnpmCommand;
-          args = ["dlx" "@modelcontextprotocol/server-filesystem" "/tmp"];
+          args = ["dlx" "@modelcontextprotocol/server-filesystem"];
         };
         sequential-thinking = {
           command = pnpmCommand;

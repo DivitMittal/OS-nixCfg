@@ -22,7 +22,7 @@
       filesystem = {
         type = "stdio";
         command = pnpmCommand;
-        args = ["dlx" "@modelcontextprotocol/server-filesystem" "/tmp"];
+        args = ["dlx" "@modelcontextprotocol/server-filesystem"];
       };
       sequential-thinking = {
         type = "stdio";

@@ -47,7 +47,7 @@
         filesystem = {
           enabled = true;
           type = "local";
-          command = pnpmCommand ++ ["@modelcontextprotocol/server-filesystem" "/tmp"];
+          command = pnpmCommand ++ ["@modelcontextprotocol/server-filesystem"];
         };
         memory = {
           enabled = true;
