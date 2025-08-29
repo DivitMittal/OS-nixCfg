@@ -8,7 +8,7 @@
       (pkgs.brewCasks)
       alt-tab # Alt-Tab replacement
       #gswitch # MUX switcher (use pmset instead)
-      bluesnooze # turns bluetooth off when asleep
+      #bluesnooze # turns bluetooth off when asleep
       spaceman # spaces in menubar for macOS
       #aldente # Battery Management
       #licecap # Screen GIF Capture
@@ -22,13 +22,13 @@
       MultiSoundChanger-bin # aggregate-output volume control in menubar
       ;
 
-    claude-desktop = pkgs.brewCasks.claude.overrideAttrs (oldAttrs: {
-      installPhase =
-        oldAttrs.installPhase
-        + ''
-          # Clean bin due to collision with claude-code
-          rm -rf $out/bin
-        '';
-    });
+    # claude-desktop = pkgs.brewCasks.claude.overrideAttrs (oldAttrs: {
+    #   installPhase =
+    #     oldAttrs.installPhase
+    #     + ''
+    #       # Clean bin due to collision with claude-code
+    #       rm -rf $out/bin
+    #     '';
+    # });
   };
 }
