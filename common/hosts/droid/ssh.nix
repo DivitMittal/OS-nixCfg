@@ -10,7 +10,7 @@
   port = 8022;
 in {
   environment.packages = lib.attrsets.attrValues {
-    sshd = pkgs.writeScriptBin "sshd-start" ''
+    sshd-start = pkgs.writeScriptBin "sshd-start" ''
       #!${pkgs.runtimeShell}
 
       echo "Starting sshd in non-daemonized way on port ${builtins.toString port}"
@@ -18,7 +18,7 @@ in {
     '';
   };
 
-  build.activation.sshd = ''
+  build.activation.sshd-setup = ''
     if [[ ! -d "${sshdDirectory}" ]]; then
       $DRY_RUN_CMD rm $VERBOSE_ARG -rf "${sshdTmpDirectory}"
       $DRY_RUN_CMD mkdir $VERBOSE_ARG -p "${sshdTmpDirectory}"
