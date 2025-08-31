@@ -6,20 +6,14 @@
 }: let
   sshDir = "${config.home.homeDirectory}/.ssh";
 in {
-  home.packages = [
-    #pkgs.upterm
-  ];
-
   programs.ssh = {
     enable = true;
     package =
       if hostPlatform.isDarwin
       then null
-      else pkgs.openssh; # xcode-select
+      else pkgs.openssh;
 
-    compression = false;
-    addKeysToAgent = "yes";
-    hashKnownHosts = false;
+    enableDefaultConfig = false;
 
     matchBlocks = {
       "10.254.200.59" = {
@@ -32,6 +26,11 @@ in {
       };
       "hf.co" = {
         identityFile = "${sshDir}/hf/hf";
+      };
+      "*" = {
+        compression = false;
+        addKeysToAgent = "yes";
+        hashKnownHosts = false;
       };
     };
   };
