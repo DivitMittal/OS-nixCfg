@@ -1,12 +1,13 @@
 {
   config,
-  inputs,
   pkgs,
   ...
 }: {
   programs.gemini-cli = {
     enable = true;
-    package = inputs.nix-ai-tools.packages.${pkgs.system}.gemini-cli;
+    package = pkgs.writeShellScriptBin "gemini-cli" ''
+      exec ${pkgs.pnpm}/bin/pnpm dlx @google/gemini-cli@latest "$@"
+    '';
 
     defaultModel = "gemini-2.5-pro";
     settings = {
