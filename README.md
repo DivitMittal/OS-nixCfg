@@ -73,6 +73,8 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
     ├── .envrc
     ├── .gitattributes
     ├── .gitignore
+    ├── .mcp.json
+    ├── CLAUDE.md
     ├── CODEOWNERS
     ├── flake.lock
     ├── flake.nix
@@ -80,15 +82,17 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
     ├── README.md
     ├── SECURITY.md
     ├── shell.nix
+    ├── .github/
     ├── assets/
     │   ├── home_graph.png
+    │   ├── qezta.gif
     │   └── qezta.png
     ├── common/
     │   ├── all/
     │   ├── home/
     │   └── hosts/
     ├── flake/
-    │   ├── actions.nix
+    │   ├── actions/
     │   ├── checks.nix
     │   ├── default.nix
     │   ├── devshells.nix
@@ -120,7 +124,8 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
     │   ├── default.nix
     │   └── nixpkgs.nix
     ├── pkgs/
-    │   └── darwin/
+    │   ├── darwin/
+    │   └── pypi/
     ├── templates/
     │   ├── vanilla/
     │   └── default.nix
