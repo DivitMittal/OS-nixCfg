@@ -7,8 +7,8 @@
     mutt = pkgs.fetchFromGitHub {
       owner = "muttmua";
       repo = "mutt";
-      rev = "5fd040e3aa1f807db1cab4ca7d7ba5fc8d48722e";
-      hash = "sha256-DyFCczkCQCV9egIY/gWNLGtcxlFEWpprBHGdIS8+OFU=";
+      rev = "master";
+      hash = "sha256-qiujvWDOTv2fa9Go4Txxy681v7eogZPQcoooCuaAArM=";
     };
   in {
     enable = false;

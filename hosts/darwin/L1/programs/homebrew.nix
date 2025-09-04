@@ -81,28 +81,32 @@ _: {
       #"notion-calendar" "notion"
     ];
 
-    # brews = [
-    ## homebrew
-    #"gh"
+    brews = [
+      ## mas
+      "mas"
 
-    ## macOS-specific
-    #"cliclick"
+      ## homebrew
+      # "gh"
 
-    ## Multimedia
-    #"spotify_player"
+      ## macOS-specific
+      #"cliclick"
 
-    ## Communication
-    #"gomuks" # Matrix protocol
+      ## Multimedia
+      #"spotify_player"
 
-    ## Development
-    #"libomp" # Multiprogramming
-    # ];
+      ## Communication
+      #"gomuks" # Matrix protocol
+
+      ## Development
+      #"libomp" # Multiprogramming
+    ];
 
     masApps = {
       ## General
       #"Texty" = 1538996043;
       #"Tuner" = 1597107926;
       "PerplexityAI" = 6714467650;
+      "Mirror" = 1502839586;
 
       ## Safari Extensions
       #"Ghostery" = 6504861501;

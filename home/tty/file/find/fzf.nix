@@ -40,7 +40,7 @@ in {
         src = pkgs.fetchFromGitHub {
           owner = "PatrickF1";
           repo = "fzf.fish";
-          rev = "8920367cf85eee5218cc25a11e209d46e2591e7a";
+          rev = "main";
           hash = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
         };
       }
@@ -49,21 +49,21 @@ in {
         src = pkgs.fetchFromGitHub {
           owner = "gazorby";
           repo = "fifc";
-          rev = "a01650cd432becdc6e36feeff5e8d657bd7ee84a";
+          rev = "main";
           hash = "sha256-Ynb0Yd5EMoz7tXwqF8NNKqCGbzTZn/CwLsZRQXIAVp4=";
         };
       }
     ];
 
     interactiveShellInit = ''
-      # PatrickF1/fzf.fish plugin
+      ## PatrickF1/fzf.fish plugin
       fzf_configure_bindings --variables=\ev --processes=\ep --git_status=\es --git_log=\el --history=\er --directory=\ef
       set -gx fzf_fd_opts ${fd_opts}
       set -gx fzf_preview_dir_cmd ${pkgs.eza}/bin/eza ${eza_opts}
       set -gx fzf_preview_file_cmd ${pkgs.bat}/bin/bat
       set -gx fzf_diff_highlighter ${pkgs.delta}/bin/delta ${delta_opts}
 
-      # fifc plugin
+      ## fifc plugin
       set -gx fifc_editor ${config.home.sessionVariables.VISUAL}
       set -gx fifc_fd_opts ${fd_opts}
       set -gx fifc_eza_opts ${eza_opts}

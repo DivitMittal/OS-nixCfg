@@ -58,7 +58,7 @@
         src = pkgs.fetchFromGitHub {
           owner = "jorgebucaran";
           repo = "autopair.fish";
-          rev = "1.0.4";
+          rev = "main";
           hash = "sha256-s1o188TlwpUQEN3X5MxUlD/2CFCpEkWu83U9O+wg3VU=";
         };
       }
@@ -67,7 +67,7 @@
         src = pkgs.fetchFromGitHub {
           owner = "nickeb96";
           repo = "puffer-fish";
-          rev = "v1.0.0";
+          rev = "master";
           hash = "sha256-2niYj0NLfmVIQguuGTA7RrPIcorJEPkxhH6Dhcy+6Bk=";
         };
       }
