@@ -5,7 +5,7 @@
 }: let
   raycast =
     if hostPlatform.isx86_64
-    then (pkgs.brewCasks.raycast.override {variation = "sequoia";})
+    then (pkgs.brewCasks.raycast.override {variation = "tahoe";})
     else pkgs.brewCasks.raycast;
 in {
   home.packages = [raycast];
