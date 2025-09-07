@@ -40,8 +40,8 @@
       officialFlavors = pkgs.fetchFromGitHub {
         owner = "yazi-rs";
         repo = "flavors";
-        rev = "main";
-        hash = "sha256-tjXv4+KzHE/OI1ZURjttqsh4FgPsqqQ+aRxfAQ2vANQ=";
+        rev = "3e6da982edcb113d584b020d7ed08ef809c29a39";
+        hash = "sha256-60XGlsdIoEJw7nf/3d6nOKsC/r83MRN5jeal2I3BYQM=";
       };
     in
       getPlugin officialFlavors "dracula";

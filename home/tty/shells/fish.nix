@@ -58,8 +58,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "jorgebucaran";
           repo = "autopair.fish";
-          rev = "main";
-          hash = "sha256-s1o188TlwpUQEN3X5MxUlD/2CFCpEkWu83U9O+wg3VU=";
+          rev = "4d1752ff5b39819ab58d7337c69220342e9de0e2";
+          hash = "sha256-qt3t1iKRRNuiLWiVoiAYOu+9E7jsyECyIqZJ/oRIT1A=";
         };
       }
       {

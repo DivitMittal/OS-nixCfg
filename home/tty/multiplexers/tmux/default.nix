@@ -2,8 +2,8 @@
   oh-my-tmux = pkgs.fetchFromGitHub {
     owner = "gpakosz";
     repo = ".tmux";
-    rev = "master";
-    sha256 = "sha256-2mdbOKCiwkr3FgjjyThezL+VVf5nm3+04idMETBLeao=";
+    rev = "124f5fc36dbca79a840d14f898d751c96ed9a1e7";
+    hash = "sha256-XXiyPSvrrtZgQ1IN797O1vgZDkwppKImgL+OQE507Fs=";
   };
   enable = false;
 in {

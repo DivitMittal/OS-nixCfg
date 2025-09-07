@@ -9,8 +9,8 @@
       pkgs.fetchFromGitHub {
         owner = "DivitMittal";
         repo = "PKMS";
-        rev = "main";
-        hash = "sha256-uXH29PBoPwpjFm0Bfh7LaLcXv2onDOjK/1wVN7OxGr4=";
+        rev = "8d5e3bc9f5db68ef3b7f6326b71cefb5f9080417";
+        hash = "sha256-zxzi2BkQDEOeQXsFkqvZxq/CMFT14J5JwNrneOKB25c=";
       }
     )
     + "/etc/zk/templates";
