@@ -4,11 +4,18 @@
   "permissions": {
     "allow": [
       "mcp__filesystem__list_directory",
+      "mcp__filesystem__read_multiple_files",
+      "mcp__filesystem__edit_file",
+
       "mcp__serena__find_symbol",
       "mcp__serena__search_for_pattern",
       "mcp__serena__list_dir",
       "mcp__serena__insert_after_symbol",
-      "mcp__serena__get_symbols_overview"
+      "mcp__serena__get_symbols_overview",
+
+      "Bash(nix flake check:*)",
+      "Bash(nix fmt:*)",
+      "Bash(nurl:*)"
     ],
     "deny": [],
     "ask": []
