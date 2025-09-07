@@ -106,7 +106,7 @@ TODISABLE+=(
   ## Handles user-facing notifications related to iCloud accounts.
   'com.apple.iCloudUserNotifications'
   ## Manages iCloud Music Library, subscription status, and play activity.
-  'com.apple.itunescloudd'
+  #'com.apple.itunescloudd'
   ## Manages the backup and syncing of encrypted Protected Cloud Storage (PCS) keys to CloudKit.
   'com.apple.protectedcloudstorage.protectedcloudkeysyncing'
   ## A proxy agent involved in syncing the iCloud Keychain.
