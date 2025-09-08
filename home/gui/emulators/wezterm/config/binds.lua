@@ -7,6 +7,11 @@ M.leader = {
   timeout_milliseconds = 800,
 }
 M.keys = {
+  {
+    mods = "ALT",
+    key = "Enter",
+    action = act.DisableDefaultAssignment,
+  },
   -- Send Ctrl+r to the terminal when pressing LEADER, LEADER
   {
     mods = "LEADER|CTRL",
@@ -69,3 +74,4 @@ M.keys = {
 
   -- C-S-l activates the debug overlay (implemented by default)
 }
+
