@@ -6,6 +6,8 @@
       "mcp__filesystem__list_directory",
       "mcp__filesystem__read_multiple_files",
       "mcp__filesystem__edit_file",
+      "mcp__filesystem__create_directory",
+      "mcp__filesystem__write_file",
 
       "mcp__serena__find_symbol",
       "mcp__serena__search_for_pattern",
@@ -15,7 +17,8 @@
 
       "Bash(nix flake check:*)",
       "Bash(nix fmt:*)",
-      "Bash(nurl:*)"
+      "Bash(nurl:*)",
+      "Bash(nix-prefetch-url:*)"
     ],
     "deny": [],
     "ask": []
