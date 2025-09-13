@@ -41,7 +41,7 @@
 
       mcp = let
         pnpmCommand = ["${pkgs.pnpm}/bin/pnpm" "dlx"];
-        uvCommand = ["${pkgs.uv}/bin/uvx"];
+        # uvCommand = ["${pkgs.uv}/bin/uvx"];
       in {
         ## modelcontextprotocol
         filesystem = {
@@ -60,16 +60,16 @@
           command = pnpmCommand ++ ["@modelcontextprotocol/server-sequential-thinking"];
         };
         ## microsoft
-        playwright = {
-          enabled = false;
-          type = "local";
-          command = pnpmCommand ++ ["@playwright/mcp"];
-        };
-        markitdown = {
-          enabled = true;
-          type = "local";
-          command = uvCommand ++ ["markitdown-mcp"];
-        };
+        # playwright = {
+        #   enabled = false;
+        #   type = "local";
+        #   command = pnpmCommand ++ ["@playwright/mcp"];
+        # };
+        # markitdown = {
+        #   enabled = true;
+        #   type = "local";
+        #   command = uvCommand ++ ["markitdown-mcp"];
+        # };
         ## third-party
         deepwiki = {
           enabled = true;

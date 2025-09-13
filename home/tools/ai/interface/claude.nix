@@ -16,7 +16,7 @@
 
     mcpServers = let
       pnpmCommand = "${pkgs.pnpm}/bin/pnpm";
-      uvCommand = "${pkgs.uv}/bin/uvx";
+      # uvCommand = "${pkgs.uv}/bin/uvx";
     in {
       ## modelcontextprotocol
       filesystem = {
@@ -40,11 +40,11 @@
       #   command = pnpmCommand;
       #   args = ["dlx" "@playwright/mcp"];
       # };
-      markitdown = {
-        type = "stdio";
-        command = uvCommand;
-        args = ["markitdown-mcp"];
-      };
+      # markitdown = {
+      #   type = "stdio";
+      #   command = uvCommand;
+      #   args = ["markitdown-mcp"];
+      # };
       ## Third-party
       deepwiki = {
         type = "http";

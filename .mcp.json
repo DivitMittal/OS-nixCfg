@@ -11,7 +11,7 @@
         "--context",
         "ide-assistant",
         "--project",
-        "/Users/div/OS-nixCfg"
+        "~/OS-nixCfg"
       ],
       "env": {}
     }

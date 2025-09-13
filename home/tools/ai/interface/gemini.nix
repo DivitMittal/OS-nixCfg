@@ -17,7 +17,7 @@
       vimMode = true;
       mcpServers = let
         pnpmCommand = "${pkgs.pnpm}/bin/pnpm";
-        uvCommand = "${pkgs.uv}/bin/uvx";
+        # uvCommand = "${pkgs.uv}/bin/uvx";
       in {
         ## modelcontextprotocol
         filesystem = {
@@ -37,10 +37,10 @@
         #   command = "npx";
         #   args = ["-y" "@playwright/mcp"];
         # };
-        markitdown = {
-          command = uvCommand;
-          args = ["markitdown-mcp"];
-        };
+        # markitdown = {
+        #   command = uvCommand;
+        #   args = ["markitdown-mcp"];
+        # };
         ## third-party
         deepwiki = {
           trust = true;
