@@ -14,6 +14,11 @@
         "~/OS-nixCfg"
       ],
       "env": {}
+    },
+    "nixos": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["mcp-nixos"]
     }
   }
 }
