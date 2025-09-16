@@ -64,26 +64,26 @@
 
     settings = {
       hooks = {
-        PostToolUse = [
-          {
-            hooks = [
-              {
-                command = "nix fmt $(jq -r '.tool_input.file_path' <<< '$CLAUDE_TOOL_INPUT')";
-                type = "command";
-              }
-            ];
-            matcher = "Edit|MultiEdit|Write";
-          }
-        ];
         PreToolUse = [
           {
+            matcher = "Bash";
             hooks = [
               {
-                command = "echo 'Running command: $CLAUDE_TOOL_INPUT'";
                 type = "command";
+                command = "echo 'Running command: $CLAUDE_TOOL_INPUT'";
               }
             ];
-            matcher = "Bash";
+          }
+        ];
+        PostToolUse = [
+          {
+            matcher = "Edit|MultiEdit|Write";
+            hooks = [
+              {
+                type = "command";
+                command = "nix fmt $(jq -r '.tool_input.file_path' <<< '$CLAUDE_TOOL_INPUT')";
+              }
+            ];
           }
         ];
       };
@@ -91,11 +91,36 @@
       permissions = {
         # additionalDirectories = [ "../docs/" ];
         allow = [
+          "Read"
           "Bash(git diff:*)"
           "Edit"
+          "Search(pattern:*)"
+          "Write"
+
+          ## Filesystem MCP
+          "mcp__filesystem__list_directory"
+          "mcp__filesystem__edit_file"
+          "mcp__filesystem__write_file"
+          "mcp__filesystem__read_text_file"
+          "mcp__filesystem__read_multiple_files"
+          "mcp__filesystem__create_directory"
+          "mcp__filesystem__directory_tree"
+
+          ## Serena MCP
+          "mcp__serena__onboarding"
+          "mcp__serena__find_file"
+          "mcp__serena__check_onboarding_performed"
+          "mcp__serena__write_memory"
+          "mcp__serena__list_dir"
+          "mcp__serena__find_symbol"
+          "mcp__serena__insert_after_symbol"
+          "mcp__serena__get_symbols_overview"
+          "mcp__serena__replace_symbol_body"
+          "mcp__serena__search_for_pattern"
         ];
         ask = [
           "Bash(git push:*)"
+          "Bash(git commit:*)"
         ];
         defaultMode = "acceptEdits";
         deny = [
