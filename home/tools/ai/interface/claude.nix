@@ -55,11 +55,11 @@
         command = pnpmCommand;
         args = ["dlx" "octocode-mcp@latest"];
       };
-      ddg = {
-        type = "stdio";
-        command = pnpmCommand;
-        args = ["dlx" "duckduckgo-mcp-server"];
-      };
+      # ddg = {
+      #   type = "stdio";
+      #   command = pnpmCommand;
+      #   args = ["dlx" "duckduckgo-mcp-server"];
+      # };
     };
 
     settings = {
@@ -96,6 +96,7 @@
           "Edit"
           "Search(pattern:*)"
           "Write"
+          "Web Search"
 
           ## Filesystem MCP
           "mcp__filesystem__list_directory"
