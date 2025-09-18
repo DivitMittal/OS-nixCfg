@@ -108,6 +108,7 @@
           "mcp__filesystem__directory_tree"
 
           ## Serena MCP
+          "mcp__serena__activate_project"
           "mcp__serena__onboarding"
           "mcp__serena__find_file"
           "mcp__serena__check_onboarding_performed"
@@ -118,6 +119,10 @@
           "mcp__serena__get_symbols_overview"
           "mcp__serena__replace_symbol_body"
           "mcp__serena__search_for_pattern"
+
+          ## Octocode MCP
+          "mcp__octocode__githubViewRepoStructure"
+          "mcp__octocode__githubGetFileContent"
         ];
         ask = [
           "Bash(git push:*)"
