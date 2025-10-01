@@ -16,9 +16,9 @@
       #amp
       #qwen-code
       #catnip
-      goose-cli
-      cursor-agent
-      forge
+      #goose-cli
+      #forge
+      #cursor-agent
       groq-code-cli
       ;
   };

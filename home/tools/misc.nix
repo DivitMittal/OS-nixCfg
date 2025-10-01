@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  hostPlatform,
   ...
 }: {
   home.packages = lib.attrsets.attrValues {
@@ -10,9 +9,8 @@
       ttyper
       czkawka-full
       ;
-    mac-cleanup =
-      if hostPlatform.isDarwin
-      then pkgs.customPypi.mac-cleanup
-      else null;
+    mac-cleanup = pkgs.writeShellScriptBin "mac-cleanup" ''
+      exec ${pkgs.uv}/bin/uvx mac-cleanup "$@"
+    '';
   };
 }
