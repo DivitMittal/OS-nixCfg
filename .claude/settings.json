@@ -1,5 +1,5 @@
 {
-  "enabledMcpjsonServers": ["serena"],
+  "enabledMcpjsonServers": ["serena", "nixos"],
   "enableAllProjectMcpServers": true,
   "permissions": {
     "allow": [
