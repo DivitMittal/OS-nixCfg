@@ -123,6 +123,7 @@
           ## Octocode MCP
           "mcp__octocode__githubViewRepoStructure"
           "mcp__octocode__githubGetFileContent"
+          "mcp__octocode__githubSearchCode"
         ];
         ask = [
           "Bash(git push:*)"
