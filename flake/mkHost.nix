@@ -12,7 +12,7 @@
     additionalModules ? [],
     extraSpecialArgs ? {},
   }:
-    withSystem system (ctx @ {pkgs, ...}: let
+    withSystem system (ctx: let
       configGenerator = {
         nixos = lib.nixosSystem;
         darwin = inputs.nix-darwin.lib.darwinSystem;
