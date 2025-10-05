@@ -16,7 +16,7 @@
       #thunderbird # Email client
       #brilliant # Screen Anotation Tool
       ;
-    browseros = pkgs.brewCasks.browseros.override {variation = "tahoe";};
+    #browseros = pkgs.brewCasks.browseros.override {variation = "tahoe";};
     inherit
       (pkgs.customDarwin)
       hot-bin # CPU temperature monitor for menubar
