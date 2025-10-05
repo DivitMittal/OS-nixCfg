@@ -9,6 +9,7 @@
       ttyper
       czkawka-full
       ;
+    gittype = pkgs.custom.gittype-bin;
     mac-cleanup = pkgs.writeShellScriptBin "mac-cleanup" ''
       exec ${pkgs.uv}/bin/uvx mac-cleanup "$@"
     '';
