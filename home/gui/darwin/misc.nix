@@ -23,6 +23,7 @@
       menubar-dock-bin # macOS dock in menubar
       MultiSoundChanger-bin # aggregate-output volume control in menubar
       #LosslessSwitcher-bin # Lossless audio toggle in menubar
+      LibreScore-bin # Music notation ripper
       ;
 
     claude-desktop = pkgs.brewCasks.claude.overrideAttrs (oldAttrs: {
