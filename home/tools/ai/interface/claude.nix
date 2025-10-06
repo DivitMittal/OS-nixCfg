@@ -132,7 +132,6 @@
         defaultMode = "acceptEdits";
         deny = [
           "WebFetch"
-          "Bash(curl:*)"
           "Read(./.env)"
           "Read(./secrets/**)"
         ];

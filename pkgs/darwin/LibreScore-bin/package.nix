@@ -3,8 +3,6 @@
   fetchurl,
   lib,
   makeWrapper,
-  undmg,
-  unzip,
   _7zz,
   ...
 }:
@@ -17,11 +15,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     hash = "sha256-sO2uB4imy7AxnPXAI6MwZB06j89RKxYlUJANzP11Ybs=";
   };
 
-  nativeBuildInputs = [undmg unzip _7zz makeWrapper];
+  nativeBuildInputs = [_7zz makeWrapper];
 
-  unpackPhase = ''
-    undmg $src || unzip $src || 7zz x -snld $src
-  '';
+  unpackPhase = ''7zz x -snld $src'';
 
   sourceRoot = "LibreScore.app";
 
