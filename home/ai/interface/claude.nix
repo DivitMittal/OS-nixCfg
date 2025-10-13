@@ -8,6 +8,10 @@
     ccusage = pkgs.writeShellScriptBin "ccusage" ''
       exec ${pkgs.pnpm}/bin/pnpm dlx ccusage "$@"
     '';
+    inherit
+      (inputs.nix-ai-tools.packages.${pkgs.system})
+      claude-code-router
+      ;
   };
 
   programs.claude-code = {

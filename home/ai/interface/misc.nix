@@ -20,6 +20,7 @@
       #forge
       #cursor-agent
       groq-code-cli
+      copilot-cli
       ;
   };
 }

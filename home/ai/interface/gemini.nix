@@ -1,14 +1,12 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   programs.gemini-cli = {
     enable = true;
-    package = pkgs.writeShellScriptBin "gemini-cli" ''
-      exec ${pkgs.pnpm}/bin/pnpm dlx @google/gemini-cli@latest "$@"
-    '';
-
+    package = inputs.nix-ai-tools.packages.${pkgs.system}.gemini-cli;
     defaultModel = "gemini-2.5-pro";
     settings = {
       selectedAuthType = "gemini-api-key";

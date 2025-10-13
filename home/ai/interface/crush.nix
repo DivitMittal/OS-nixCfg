@@ -14,7 +14,6 @@
           "ls"
           "grep"
           "edit"
-          "mcp_context7_get-library-doc"
         ];
       };
       lsp = {
