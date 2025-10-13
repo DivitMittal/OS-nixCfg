@@ -10,6 +10,9 @@
       imagemagick
       exif # metadata
       ;
+    bgrm = pkgs.writeShellScriptBin "bgrm" ''
+      exec ${pkgs.uv} tool run --python 3.11 --with "numpy<2" backgroundremover "$@"
+    '';
   };
 
   programs.fish.functions = {
