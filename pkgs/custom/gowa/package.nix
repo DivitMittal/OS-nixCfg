@@ -4,7 +4,7 @@
   fetchFromGitHub,
 }:
 buildGoModule rec {
-  pname = "gowa";
+  pname = "go-whatsapp-web-multidevice";
   version = "7.7.0";
 
   src = fetchFromGitHub {
