@@ -203,15 +203,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1760322565,
-        "narHash": "sha256-SUmey7Nw+aXfYnephA9VsmiiXxEZwiwB6kL9CdNPzjA=",
-        "owner": "tak-bro",
+        "lastModified": 1760335506,
+        "narHash": "sha256-wJxAKKCFM7RwQ2iN1YPAPyM8Fa/HHimzTei8MKMGEq8=",
+        "owner": "DivitMittal",
         "repo": "aicommit2",
-        "rev": "a39b4ca6b0c8f6d855116800857f969421115fa3",
+        "rev": "fe973149b59192c79e442f67057f3d9b4ed82218",
         "type": "github"
       },
       "original": {
-        "owner": "tak-bro",
+        "owner": "DivitMittal",
+        "ref": "update-fix-pnpm-err",
         "repo": "aicommit2",
         "type": "github"
       }
