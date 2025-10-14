@@ -8,7 +8,7 @@
     enableZshIntegration = true;
 
     settings = {
-      default-model = "kimi-instruct";
+      default-model = "gpt-oss";
 
       roles = {
         shell = [
@@ -24,12 +24,12 @@
           base-url = "https://api.groq.com/openai/v1";
           api-key-env = "GROQ_API_KEY";
           models = {
-            "deepseek-r1-distill-llama-70b" = {
-              aliases = ["deepseek"];
+            "openai/gpt-oss-120b" = {
+              aliases = ["gpt-oss"];
               max-input-chars = 24500;
             };
-            "moonshotai/kimi-k2-instruct" = {
-              aliases = ["kimi-instruct"];
+            "qwen/qwen3-32b" = {
+              aliases = ["qwen3"];
               max-input-chars = 24500;
             };
           };
@@ -51,12 +51,12 @@
           base-url = "https://openrouter.ai/api/v1";
           api-key-env = "OPENROUTER_API_KEY";
           models = {
-            "qwen/qwen3-coder:free" = {
-              aliases = ["qwen3-coder"];
+            "deepseek/deepseek-chat-v3.1:free" = {
+              aliases = ["deepseek"];
               max-input-chars = 24500;
             };
-            "moonshotai/kimi-k2:free" = {
-              aliases = ["kimi"];
+            "z-ai/glm-4.5-air:free" = {
+              aliases = ["glm"];
               max-input-chars = 24500;
             };
           };
