@@ -275,8 +275,8 @@
     };
     aicommit2 = {
       #url = "path:/Users/div/Projects/Forks/aicommit2";
-      url = "github:DivitMittal/aicommit2/update-fix-pnpm-err";
-      #url = "github:tak-bro/aicommit2";
+      #url = "github:DivitMittal/aicommit2/update-fix-pnpm-err";
+      url = "github:tak-bro/aicommit2";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
