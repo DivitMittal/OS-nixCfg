@@ -239,7 +239,7 @@
     mac-app-util = {
       url = "github:hraban/mac-app-util";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        #nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
         systems.follows = "systems";
       };
