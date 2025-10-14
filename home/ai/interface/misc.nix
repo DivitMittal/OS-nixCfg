@@ -19,7 +19,7 @@
       #goose-cli
       #forge
       #cursor-agent
-      groq-code-cli
+      #groq-code-cli
       copilot-cli
       ;
   };

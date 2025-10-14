@@ -1,22 +1,22 @@
 {
   pkgs,
   lib,
-  inputs,
   ...
 }: {
   home.packages = lib.attrsets.attrValues {
     ccusage = pkgs.writeShellScriptBin "ccusage" ''
-      exec ${pkgs.pnpm}/bin/pnpm dlx ccusage "$@"
+      exec ${pkgs.pnpm}/bin/pnpm dlx ccusage@latest "$@"
     '';
-    inherit
-      (inputs.nix-ai-tools.packages.${pkgs.system})
-      claude-code-router
-      ;
+    claude-code-router = pkgs.writeShellScriptBin "ccr" ''
+      exec ${pkgs.pnpm}/bin/pnpm dlx @musistudio/claude-code-router "$@"
+    '';
   };
 
   programs.claude-code = {
     enable = true;
-    package = inputs.nix-ai-tools.packages.${pkgs.system}.claude-code;
+    package = pkgs.writeShellScriptBin "claude" ''
+      exec ${pkgs.pnpm}/bin/pnpm dlx @anthropic-ai/claude-code "$@"
+    '';
 
     mcpServers = let
       pnpmCommand = "${pkgs.pnpm}/bin/pnpm";
@@ -98,9 +98,7 @@
           "Read"
           "Bash(git diff:*)"
           "Edit"
-          "Search(pattern:*)"
           "Write"
-          "Web Search"
 
           ## Filesystem MCP
           "mcp__filesystem__list_directory"
@@ -142,36 +140,12 @@
         disableBypassPermissionsMode = "disable";
       };
       statusLine = {
-        command = "input=$(cat); echo \"[$(echo \"$input\" | jq -r '.model.display_name')] 📁 $(basename \"$(echo \"$input\" | jq -r '.workspace.current_dir')\")\"";
+        command = "pnpm dlx ccstatusline@latest";
         padding = 0;
         type = "command";
       };
       theme = "dark";
       outputStyle = "Explanatory";
-    };
-
-    agents = {
-      code-reviewer = ''
-        ---
-        name: code-reviewer
-        description: Specialized code review agent
-        tools: Read, Edit, Grep
-        ---
-
-        You are a senior software engineer specializing in code reviews.
-        Focus on code quality, security, and maintainability.
-      '';
-      documentation = ''
-        ---
-        name: documentation
-        description: Documentation writing assistant
-        model: claude-3-5-sonnet-20241022
-        tools: Read, Write, Edit
-        ---
-
-        You are a technical writer who creates clear, comprehensive documentation.
-        Focus on user-friendly explanations and examples.
-      '';
     };
 
     commands = {
