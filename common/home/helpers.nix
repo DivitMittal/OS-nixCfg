@@ -45,7 +45,7 @@
       (pkgs)
       nurl
       nix-melt
-      omnix
+      nix-tree
       cachix
       ;
   };
