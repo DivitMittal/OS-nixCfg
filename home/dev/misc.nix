@@ -23,6 +23,8 @@
       lua
       ## Rust
       cargo
+      ## macOS
+      xcodes
       ;
 
     leetcode-tui = inputs.leetcode-tui.packages.${hostPlatform.system}.default;
