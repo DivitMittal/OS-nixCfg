@@ -83,6 +83,8 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
     ├── SECURITY.md
     ├── shell.nix
     ├── .github/
+    │   ├── FUNDING.yml
+    │   └── workflows/
     ├── assets/
     │   ├── home_graph.png
     │   ├── qezta.gif
@@ -99,6 +101,8 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
     │   ├── formatters.nix
     │   └── mkHost.nix
     ├── home/
+    │   ├── default.nix
+    │   ├── ai/
     │   ├── comms/
     │   ├── dev/
     │   ├── gui/
@@ -106,29 +110,29 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
     │   ├── media/
     │   ├── tools/
     │   ├── tty/
-    │   ├── web/
-    │   └── default.nix
+    │   └── web/
     ├── hosts/
+    │   ├── default.nix
     │   ├── darwin/
     │   ├── droid/
-    │   ├── nixos/
-    │   └── default.nix
+    │   └── nixos/
     ├── lib/
     │   ├── custom.nix
     │   └── default.nix
     ├── modules/
+    │   ├── default.nix
     │   ├── home/
-    │   ├── hosts/
-    │   └── default.nix
+    │   └── hosts/
     ├── overlays/
     │   ├── default.nix
     │   └── nixpkgs.nix
     ├── pkgs/
+    │   ├── custom/
     │   ├── darwin/
     │   └── pypi/
     ├── templates/
-    │   ├── vanilla/
-    │   └── default.nix
+    │   ├── default.nix
+    │   └── vanilla/
     └── utils/
         ├── home_rebuild.sh
         └── hosts_rebuild.sh
