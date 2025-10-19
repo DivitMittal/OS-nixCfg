@@ -13,7 +13,6 @@
       android-tools
       scrcpy
       ## General
-      kondo
       tokei
       ## Programming Languages
       #tree-sitter
