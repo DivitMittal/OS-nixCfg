@@ -31,7 +31,7 @@
         pull_request = push;
       };
     jobs.build-nix-darwin-configuration = {
-      runs-on = "macos-latest";
+      runs-on = "macos-14-large";
       permissions = common-permissions;
       inherit environment;
       steps =
