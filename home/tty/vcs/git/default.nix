@@ -48,70 +48,73 @@
     package = pkgs.gitFull;
     lfs.enable = true;
 
-    userName = config.hostSpec.userFullName;
-    userEmail = config.hostSpec.email.dev;
+    settings = {
+      user = {
+        name = config.hostSpec.userFullName;
+        email = config.hostSpec.email.dev;
+      };
+      aliases = {
+        last = "log -1 HEAD";
+        graph = "log --graph --all --full-history --pretty=format:'%Cred%h%Creset %ad %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=short";
+        unstage = "restore --staged";
+        clean-U-dr = "clean -d -x f -n";
+        clean-U = "clean -d -x -f";
+      };
+      extraConfig = {
+        core = {
+          autocrlf = "false";
+          eol = "lf";
+          ignorecase = true;
+          filemode = false;
+          editor = "${config.home.sessionVariables.VISUAL}";
+          excludesfile = "${config.xdg.configHome}/git/ignore";
+          symlinks = true;
+        };
+
+        push = {
+          default = "simple";
+          followTags = true;
+        };
+        init = {
+          defaultBranch = "main";
+        };
+        fetch = {
+          prune = true;
+        };
+        grep = {
+          lineNumber = true;
+        };
+        help = {
+          autocorrect = "1";
+        };
+        merge = {
+          conflictstyle = "diff3";
+        };
+        color = {
+          ui = "auto";
+        };
+      };
+    };
 
     attributes = builtins.import ./attributes.nix;
     ignores = builtins.import ./../common/ignore.nix;
+  };
 
-    aliases = {
-      last = "log -1 HEAD";
-      graph = "log --graph --all --full-history --pretty=format:'%Cred%h%Creset %ad %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=short";
-      unstage = "restore --staged";
-      clean-U-dr = "clean -d -x f -n";
-      clean-U = "clean -d -x -f";
-    };
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    package = pkgs.delta;
 
-    delta = {
-      enable = true;
-      package = pkgs.delta;
-
-      options = {
-        features = "custom-delta";
-        custom-delta = {
-          commit-decoration-style = "bold yellow box ul";
-          file-decoration-style = "none";
-          file-style = "bold yellow ul";
-          paging = "always";
-        };
-
-        whitespace-error-style = "22 reverse";
-      };
-    };
-
-    extraConfig = {
-      core = {
-        autocrlf = "false";
-        eol = "lf";
-        ignorecase = true;
-        filemode = false;
-        editor = "${config.home.sessionVariables.VISUAL}";
-        excludesfile = "${config.xdg.configHome}/git/ignore";
-        symlinks = true;
+    options = {
+      features = "custom-delta";
+      custom-delta = {
+        commit-decoration-style = "bold yellow box ul";
+        file-decoration-style = "none";
+        file-style = "bold yellow ul";
+        paging = "always";
       };
 
-      push = {
-        default = "simple";
-        followTags = true;
-      };
-      init = {
-        defaultBranch = "main";
-      };
-      fetch = {
-        prune = true;
-      };
-      grep = {
-        lineNumber = true;
-      };
-      help = {
-        autocorrect = "1";
-      };
-      merge = {
-        conflictstyle = "diff3";
-      };
-      color = {
-        ui = "auto";
-      };
+      whitespace-error-style = "22 reverse";
     };
   };
 }
