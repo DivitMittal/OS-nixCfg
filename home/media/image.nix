@@ -11,7 +11,7 @@
       exif # metadata
       ;
     bgrm = pkgs.writeShellScriptBin "bgrm" ''
-      exec ${pkgs.uv} tool run --python 3.11 --with "numpy<2" backgroundremover "$@"
+      exec ${pkgs.uv}/bin/uv tool run --python 3.11 --with "numpy<2" backgroundremover "$@"
     '';
   };
 
