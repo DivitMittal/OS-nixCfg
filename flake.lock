@@ -397,6 +397,32 @@
         "type": "github"
       }
     },
+    "direnv-instant": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760948060,
+        "narHash": "sha256-7LfzT5pJFDj9lgH1wt0Ka4wKmi53/pOuOoMf+O0Xi5k=",
+        "owner": "Mic92",
+        "repo": "direnv-instant",
+        "rev": "29fc15b0cd15123f15ce9792490b7526233e563e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "direnv-instant",
+        "type": "github"
+      }
+    },
     "doomemacs": {
       "flake": false,
       "locked": {
@@ -1445,6 +1471,7 @@
         "brew-nix": "brew-nix",
         "deploy-rs": "deploy-rs",
         "devshell": "devshell",
+        "direnv-instant": "direnv-instant",
         "firefox-nixCfg": "firefox-nixCfg",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts_3",

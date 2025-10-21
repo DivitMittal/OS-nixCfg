@@ -21,7 +21,7 @@
     package = pkgs.nix-your-shell;
     enableZshIntegration = true;
     enableFishIntegration = true;
-    enableNushellIntegration = false;
+    enableNushellIntegration = true;
   };
 
   programs.nix-init = {
@@ -40,6 +40,20 @@
     enableTelevisionIntegration = true;
   };
 
+  programs.direnv = {
+    enable = true;
+    package = pkgs.direnv;
+    enableBashIntegration = false;
+    # enableFishIntegration = false;
+    enableZshIntegration = false;
+    enableNushellIntegration = false;
+
+    nix-direnv = {
+      enable = true;
+      package = pkgs.nix-direnv;
+    };
+  };
+
   home.packages = lib.attrsets.attrValues {
     inherit
       (pkgs)
@@ -48,6 +62,7 @@
       nix-tree
       cachix
       ;
+    direnv-instant = inputs.direnv-instant.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
 
   ## documentation
