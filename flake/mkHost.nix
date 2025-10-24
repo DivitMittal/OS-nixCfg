@@ -50,6 +50,9 @@
         ++ lib.lists.optionals (class == "droid") [
           (commonDir + "/all/hostSpec.nix")
         ]
+        ++ lib.lists.optionals (class == "nixos") [
+          inputs.nix-topology.nixosModules.default
+        ]
         ++ additionalModules;
     in
       configGenerator.${class} (lib.attrsets.mergeAttrsList [

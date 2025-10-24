@@ -263,6 +263,17 @@
       flake = false;
     };
 
+    ## Topology
+    nix-topology = {
+      url = "github:oddlama/nix-topology";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+        devshell.follows = "devshell";
+        pre-commit-hooks.follows = "git-hooks";
+      };
+    };
+
     ## Misc.
     nix-ai-tools = {
       url = "github:numtide/nix-ai-tools";
