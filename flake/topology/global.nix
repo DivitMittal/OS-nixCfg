@@ -26,6 +26,10 @@ _: {
       network = "home";
       type = "ethernet";
     };
+    interfaces.wlan = {
+      network = "home";
+      type = "wifi";
+    };
   };
 
   # macOS system (nix-darwin) - defined as non-NixOS node
