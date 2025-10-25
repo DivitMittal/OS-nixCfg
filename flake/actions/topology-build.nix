@@ -1,35 +1,25 @@
 {
-  common-on,
   common-permissions,
   common-actions,
   environment,
   ...
 }: {
   flake.actions-nix.workflows.".github/workflows/topology-build.yml" = {
-    on =
-      common-on
-      // rec {
-        push = {
-          branches = ["master"];
-          paths-ignore =
-            common-on.push.paths-ignore
-            ++ [
-              ## Topology outputs (don't rebuild on topology changes)
-              "assets/topology/**"
-            ];
-          paths = [
-            ## Topology configuration
-            "topology/**"
-            "hosts/nixos/*/topology.nix"
-            ## Flake topology module
-            "flake/topology.nix"
-            ## Host configurations
-            "hosts/nixos/**"
-            "flake/mkHost.nix"
-          ];
-        };
-        pull_request = push;
+    on = rec {
+      push = {
+        branches = ["master"];
+        paths = [
+          ## Global Topology configuration
+          "topology/**"
+          ## Flake topology module
+          "flake/topology.nix"
+          ## Host configurations
+          "hosts/nixos/**"
+        ];
       };
+      pull_request = push;
+      workflow_dispatch = {};
+    };
     jobs.build-topology-and-commit = {
       runs-on = "ubuntu-latest"; # Topology requires Linux
       permissions = common-permissions;

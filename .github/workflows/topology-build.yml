@@ -53,39 +53,13 @@ jobs:
     - master
     paths:
     - topology/**
-    - hosts/nixos/*/topology.nix
     - flake/topology.nix
     - hosts/nixos/**
-    - flake/mkHost.nix
-    paths-ignore:
-    - '**/*.md'
-    - '**/*.adoc'
-    - '**/*.jpeg'
-    - '**/*.jpg'
-    - '**/*.png'
-    - '**/*.svg'
-    - .github/**
-    - .git*
-    - assets/**
-    - assets/topology/**
   push:
     branches:
     - master
     paths:
     - topology/**
-    - hosts/nixos/*/topology.nix
     - flake/topology.nix
     - hosts/nixos/**
-    - flake/mkHost.nix
-    paths-ignore:
-    - '**/*.md'
-    - '**/*.adoc'
-    - '**/*.jpeg'
-    - '**/*.jpg'
-    - '**/*.png'
-    - '**/*.svg'
-    - .github/**
-    - .git*
-    - assets/**
-    - assets/topology/**
   workflow_dispatch: {}
