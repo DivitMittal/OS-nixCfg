@@ -28,10 +28,9 @@
       };
     };
 
-    enableCompletion = false;
+    enableCompletion = true;
     autosuggestion.enable = false;
     syntaxHighlighting.enable = false;
-    completionInit = true;
     antidote = {
       enable = true;
       package = pkgs.antidote;

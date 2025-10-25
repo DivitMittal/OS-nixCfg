@@ -5,7 +5,8 @@
 
     enableBashIntegration = false;
     enableFishIntegration = true;
-    enableZshIntegration = true;
+    # Disable automatic Zsh integration - loading it manually after compinit
+    enableZshIntegration = false;
 
     settings = {
       default-model = "gpt-oss";
@@ -64,4 +65,9 @@
       };
     };
   };
+
+  # Manual Zsh integration - loaded after compinit to avoid "command not found: compdef" error
+  programs.zsh.initContent = ''
+    source <(${pkgs.mods}/bin/mods completion zsh)
+  '';
 }
