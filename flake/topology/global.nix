@@ -1,5 +1,4 @@
 _: {
-  # Define networks that hosts can be connected to
   networks.home = {
     name = "Home Network";
     cidrv4 = "192.168.1.0/24";
@@ -15,8 +14,6 @@ _: {
     cidrv4 = "0.0.0.0/0";
   };
 
-  # You can add non-NixOS nodes like routers, switches, etc.
-  # Example:
   nodes.router = {
     name = "Home Router";
     deviceType = "router";
@@ -29,13 +26,6 @@ _: {
       network = "home";
       type = "ethernet";
     };
-  };
-
-  # Define the internet as a special node
-  nodes.internet = {
-    name = "Internet";
-    deviceType = "internet";
-    hardware.info = "Global Network";
   };
 
   # macOS system (nix-darwin) - defined as non-NixOS node

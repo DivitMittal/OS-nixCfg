@@ -5,13 +5,13 @@ _: {
     hardware.info = "NixOS Desktop - Physical Hardware";
 
     interfaces = {
-      eth0 = {
+      wlan0 = {
         network = "home";
-        type = "ethernet";
+        type = "wireless";
         physicalConnections = [
           {
             node = "router";
-            interface = "lan";
+            interface = "wlan";
           }
         ];
       };
