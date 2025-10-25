@@ -3,7 +3,9 @@
     enable = true;
     package = pkgs.atuin;
 
-    enableFishIntegration = true;
+    # Disable automatic Fish integration due to bind -k deprecation
+    # See: https://github.com/atuinsh/atuin/issues/2803
+    enableFishIntegration = false;
     enableZshIntegration = false;
     enableBashIntegration = false;
     enableNushellIntegration = false;
@@ -187,4 +189,10 @@
       # sync_frequency = "10m"
     };
   };
+
+  # Manual Fish integration with fix for bind -k deprecation
+  # See: https://github.com/atuinsh/atuin/issues/2803
+  programs.fish.interactiveShellInit = ''
+    ${pkgs.atuin}/bin/atuin init fish | sed 's/-k up/up/' | source
+  '';
 }
