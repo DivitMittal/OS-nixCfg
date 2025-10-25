@@ -40,6 +40,10 @@
             run = "nix -vL run github:craigmbooth/nix-visualize -- --verbose --output ./assets/home_graph.png ./result";
           }
           {
+            name = "Invert graph colors";
+            run = "nix run nixpkgs#imagemagick -- convert ./assets/home_graph.png -negate ./assets/home_graph.png";
+          }
+          {
             name = "Push to repo";
             run = ''
               git config --global user.name "GitHub Actions Bot"
