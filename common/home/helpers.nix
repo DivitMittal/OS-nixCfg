@@ -5,7 +5,10 @@
   lib,
   ...
 }: {
-  imports = [inputs.nix-index-database.homeModules.nix-index];
+  imports = [
+    inputs.nix-index-database.homeModules.nix-index
+    inputs.direnv-instant.homeModules.direnv-instant
+  ];
 
   programs.nix-index-database.comma.enable = true;
   programs.nix-index = {
@@ -43,14 +46,23 @@
   programs.direnv = {
     enable = true;
     package = pkgs.direnv;
-    enableBashIntegration = false;
+    enableBashIntegration = false; # handled by direnv-instant
+    enableZshIntegration = false; # handled by direnv-instant
     # enableFishIntegration = false;
-    enableZshIntegration = false;
     enableNushellIntegration = false;
 
     nix-direnv = {
       enable = true;
       package = pkgs.nix-direnv;
+    };
+  };
+
+  programs.direnv-instant = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    settings = {
+      mux_delay = 1;
     };
   };
 
@@ -62,7 +74,6 @@
       nix-tree
       cachix
       ;
-    direnv-instant = inputs.direnv-instant.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
 
   ## documentation
