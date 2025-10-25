@@ -10,6 +10,11 @@ _: {
     cidrv4 = "172.16.0.0/12";
   };
 
+  networks.internet = {
+    name = "Internet";
+    cidrv4 = "0.0.0.0/0";
+  };
+
   # You can add non-NixOS nodes like routers, switches, etc.
   # Example:
   nodes.router = {
