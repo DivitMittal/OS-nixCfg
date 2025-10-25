@@ -49,6 +49,7 @@
 - [📜 Overview](#-overview)
 - [📁 Project Structure](#-project-structure)
 - [📊 Home Manager Profile Graph](#-home-manager-profile-graph)
+- [🗺️ Network Topology](#️-network-topology)
 - [❄️Flake Inputs](#flake-inputs)
 - [🔒 Secrets Management](#-secrets-management)
 - [🔗 Related Repositories](#-related-repositories)
@@ -143,6 +144,24 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
 This dependency graph visualizes the dependencies of the Home-Manager profile configuration:
 
 ![Home Manager Profile Dependency Graph](./assets/home_graph.png)
+
+## 🗺️ Network Topology
+
+The network topology visualizations are automatically generated using [nix-topology](https://github.com/oddlama/nix-topology) and provide a comprehensive view of the infrastructure setup across all hosts and networks.
+
+### Main Topology
+
+Complete view of all nodes, networks, and their interconnections:
+
+![Main Network Topology](./assets/topology/main.svg)
+
+### Network View
+
+Focused visualization of network segments and connectivity:
+
+![Network Topology View](./assets/topology/network.svg)
+
+> **Note**: These topology diagrams are automatically built and updated via GitHub Actions whenever topology configurations.
 
 ## ❄️Flake Inputs
 
