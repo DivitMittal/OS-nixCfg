@@ -28,6 +28,9 @@
             (lib.attrsets.optionalAttrs hostPlatform.isDarwin (
               args.self.outputs.overlays.pkgs-darwin self super
             ))
+            (lib.attrsets.optionalAttrs (class == "droid") (
+              inputs.nix-on-droid.overlays.default self super
+            ))
           ]
       );
       specialArgs = {inherit self inputs hostPlatform;} // extraSpecialArgs;
