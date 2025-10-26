@@ -203,6 +203,13 @@
       };
     };
 
+    ### Linux GUI
+    ## Wayland Compositor
+    niri-flake = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ## Home-Manager
     home-manager = {
       url = "github:nix-community/home-manager";

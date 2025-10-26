@@ -14,5 +14,8 @@
     ]
     ++ lib.lists.optionals hostPlatform.isDarwin [
       ./darwin
+    ]
+    ++ lib.lists.optionals hostPlatform.isLinux [
+      ./linux
     ];
 }
