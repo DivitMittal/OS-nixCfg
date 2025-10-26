@@ -8,6 +8,7 @@
   perSystem = {
     pkgs,
     config,
+    system,
     ...
   }: {
     devshells.default = {
@@ -19,21 +20,25 @@
             ${config.pre-commit.installationScript}
           '';
         };
-        packages = lib.attrsets.attrValues {
-          inherit
-            (pkgs)
-            ### LSPs & Formatters
-            ## Nix
-            nixd
-            alejandra
-            ## Kdl
-            kdlfmt
-            ## Shell
-            shfmt
-            ### Nix Tools
-            # nix-visualize # (handled by GitHub Actions CI workflow)
-            ;
-        };
+        packages =
+          lib.attrsets.attrValues {
+            inherit
+              (pkgs)
+              ### LSPs & Formatters
+              ## Nix
+              nixd
+              alejandra
+              ## Kdl
+              kdlfmt
+              ## Shell
+              shfmt
+              ### Nix Tools
+              # nix-visualize # (handled by GitHub Actions CI workflow)
+              ;
+          }
+          ++ [
+            inputs.deploy-rs.packages.${system}.default # Deploy-rs for remote deployment
+          ];
       };
       env = [
         {
