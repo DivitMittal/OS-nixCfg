@@ -6,7 +6,7 @@
   home.packages = lib.attrsets.attrValues {
     inherit
       (pkgs)
-      fselect
+      fselect # SQL find
       ;
   };
 

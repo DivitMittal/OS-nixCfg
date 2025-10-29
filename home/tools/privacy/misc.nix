@@ -8,8 +8,8 @@
     inherit
       (pkgs)
       age
-      cotp
-      #skate
+      cotp # TOTP TUI
+      #skate # key-value store
       ;
   };
 

@@ -75,7 +75,7 @@ in {
         config = ''${config.home.sessionVariables.EDITOR} "${config.xdg.configHome}/zk/config.toml"'';
         ## Inbox & Journal
         daily = ''zk new --no-input "$ZK_NOTEBOOK_DIR/journal"'';
-        ne = ''zk new --no-input "$ZK_NOTEBOOK_DIR/inbox" --title $argv'';
+        n = ''zk new --no-input "$ZK_NOTEBOOK_DIR/inbox" --title $argv'';
         journal = "zk edit --sort created- $ZK_NOTEBOOK_DIR/journal --interactive";
         inbox = "zk edit --sort created- $ZK_NOTEBOOK_DIR/inbox --interactive";
         # remove a files

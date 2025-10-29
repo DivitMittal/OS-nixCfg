@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  hostPlatform,
   ...
 }: {
   home.packages = lib.attrsets.attrValues {
@@ -12,10 +13,13 @@
       xh #httpie # http API client
       termscp # scp, ftp client
       gping # graphical ping alt
-      dig # dns lookup
-      doggo # dig alt
+      doggo #dig # dns lookup
       croc # file transfer
       ;
+    bluetui =
+      if hostPlatform.isLinux
+      then pkgs.bluetui
+      else null; # bluetooth tui
   };
 
   programs.aria2 = {
