@@ -4,23 +4,23 @@
   hostPlatform,
   ...
 }: {
-  home.packages = lib.attrsets.attrValues {
-    inherit
-      (pkgs)
-      nmap # network scanner
-      speedtest-go # speedtest cli
-      bandwhich # bandwidth usage
-      xh #httpie # http API client
-      termscp # scp, ftp client
-      gping # graphical ping alt
-      doggo #dig # dns lookup
-      croc # file transfer
-      ;
-    bluetui =
-      if hostPlatform.isLinux
-      then pkgs.bluetui
-      else null; # bluetooth tui
-  };
+  home.packages =
+    lib.attrsets.attrValues {
+      inherit
+        (pkgs)
+        nmap # network scanner
+        speedtest-go # speedtest cli
+        bandwhich # bandwidth usage
+        xh #httpie # http API client
+        termscp # scp, ftp client
+        gping # graphical ping alt
+        doggo #dig # dns lookup
+        croc # file transfer
+        ;
+    }
+    ++ lib.optionals hostPlatform.isLinux [
+      pkgs.bluetui
+    ];
 
   programs.aria2 = {
     enable = true;
