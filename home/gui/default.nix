@@ -11,6 +11,8 @@
       ./misc.nix
       ./notes.nix
       ./music.nix
+      ./video.nix
+      ./email.nix
     ]
     ++ lib.lists.optionals hostPlatform.isDarwin [
       ./darwin
