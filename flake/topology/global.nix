@@ -9,6 +9,11 @@ _: {
     cidrv4 = "172.16.0.0/12";
   };
 
+  networks.mobile = {
+    name = "Mobile Network";
+    cidrv4 = "10.0.0.0/8";
+  };
+
   networks.internet = {
     name = "Internet";
     cidrv4 = "0.0.0.0/0";
@@ -40,6 +45,53 @@ _: {
     interfaces.en0 = {
       network = "home";
       type = "wifi";
+      physicalConnections = [
+        {
+          node = "router";
+          interface = "wlan";
+        }
+      ];
+    };
+  };
+
+  nodes.windows-host = {
+    name = "Windows Host";
+    deviceType = "device";
+    hardware.info = "Windows 11 - WSL2 Host";
+    interfaces.eth0 = {
+      network = "home";
+      type = "ethernet";
+      physicalConnections = [
+        {
+          node = "router";
+          interface = "lan";
+        }
+      ];
+    };
+    interfaces.wsl0 = {
+      network = "wsl";
+      type = "virtual";
+      virtual = true;
+    };
+  };
+
+  nodes.M1 = {
+    name = "M1";
+    deviceType = "device";
+    hardware.info = "Android - nix-on-droid (aarch64)";
+    interfaces.wlan0 = {
+      network = "home";
+      type = "wifi";
+      physicalConnections = [
+        {
+          node = "router";
+          interface = "wlan";
+        }
+      ];
+    };
+    interfaces.mobile0 = {
+      network = "mobile";
+      type = "mobile";
     };
   };
 }

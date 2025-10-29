@@ -9,6 +9,12 @@ _: {
         network = "wsl";
         type = "virtual";
         virtual = true;
+        physicalConnections = [
+          {
+            node = "windows-host";
+            interface = "wsl0";
+          }
+        ];
       };
     };
 
