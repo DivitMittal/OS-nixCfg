@@ -70,6 +70,116 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
 
 ```
 └── OS-nixCfg/
+    ├── .claude/
+    │   └── settings.json
+    ├── .github/
+    │   ├── workflows/
+    │   │   ├── darwin-build.yml
+    │   │   ├── flake-check.yml
+    │   │   ├── flake-lock-update.yml
+    │   │   ├── flakehub-publish-tagged.yml
+    │   │   ├── home-build.yml
+    │   │   ├── nixos-build.yml
+    │   │   └── topology-build.yml
+    │   └── FUNDING.yml
+    ├── assets/
+    │   ├── topology/
+    │   │   ├── main.svg
+    │   │   └── network.svg
+    │   ├── home_graph.png
+    │   ├── qezta.gif
+    │   └── qezta.png
+    ├── common/
+    │   ├── all/
+    │   ├── home/
+    │   └── hosts/
+    │       ├── all/
+    │       ├── darwin/
+    │       ├── droid/
+    │       └── nixos/
+    ├── flake/
+    │   ├── actions/
+    │   ├── topology/
+    │   ├── checks.nix
+    │   ├── default.nix
+    │   ├── devshells.nix
+    │   ├── formatters.nix
+    │   └── mkHost.nix
+    ├── home/
+    │   ├── ai/
+    │   │   └── interface/
+    │   ├── comms/
+    │   │   ├── email/
+    │   │   └── irc/
+    │   ├── dev/
+    │   │   ├── js/
+    │   │   └── python/
+    │   ├── gui/
+    │   │   ├── darwin/
+    │   │   ├── emulators/
+    │   │   ├── ide/
+    │   │   └── linux/
+    │   ├── media/
+    │   │   └── music/
+    │   ├── tools/
+    │   │   ├── keyboard/
+    │   │   ├── privacy/
+    │   │   └── productivity/
+    │   ├── tty/
+    │   │   ├── editors/
+    │   │   ├── fetchers/
+    │   │   ├── file/
+    │   │   ├── multiplexers/
+    │   │   ├── network/
+    │   │   ├── pagers/
+    │   │   ├── shells/
+    │   │   └── vcs/
+    │   ├── web/
+    │   │   └── tui/
+    │   └── default.nix
+    ├── hosts/
+    │   ├── darwin/
+    │   │   └── L1/
+    │   ├── droid/
+    │   │   └── M1/
+    │   ├── nixos/
+    │   │   ├── L2/
+    │   │   └── WSL/
+    │   └── default.nix
+    ├── lib/
+    │   ├── custom.nix
+    │   └── default.nix
+    ├── modules/
+    │   ├── home/
+    │   ├── hosts/
+    │   │   └── darwin/
+    │   └── default.nix
+    ├── overlays/
+    │   ├── default.nix
+    │   └── nixpkgs.nix
+    ├── pkgs/
+    │   ├── custom/
+    │   │   ├── gittype-bin/
+    │   │   └── gowa/
+    │   ├── darwin/
+    │   │   ├── cliclick-bin/
+    │   │   ├── element/
+    │   │   ├── hot-bin/
+    │   │   ├── LibreScore-bin/
+    │   │   ├── LosslessSwitcher-bin/
+    │   │   ├── menubar-dock-bin/
+    │   │   ├── MultiSoundChanger-bin/
+    │   │   └── wacom-toggle/
+    │   └── pypi/
+    │       ├── flatlatex/
+    │       └── keymap-drawer/
+    ├── templates/
+    │   ├── vanilla/
+    │   │   └── flake/
+    │   └── default.nix
+    ├── utils/
+    │   ├── home_rebuild.sh
+    │   └── hosts_rebuild.sh
     ├── .editorconfig
     ├── .envrc
     ├── .gitattributes
@@ -82,61 +192,7 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
     ├── LICENSE
     ├── README.md
     ├── SECURITY.md
-    ├── shell.nix
-    ├── .github/
-    │   ├── FUNDING.yml
-    │   └── workflows/
-    ├── assets/
-    │   ├── home_graph.png
-    │   ├── qezta.gif
-    │   └── qezta.png
-    ├── common/
-    │   ├── all/
-    │   ├── home/
-    │   └── hosts/
-    ├── flake/
-    │   ├── actions/
-    │   ├── checks.nix
-    │   ├── default.nix
-    │   ├── devshells.nix
-    │   ├── formatters.nix
-    │   └── mkHost.nix
-    ├── home/
-    │   ├── default.nix
-    │   ├── ai/
-    │   ├── comms/
-    │   ├── dev/
-    │   ├── gui/
-    │   ├── keyboard/
-    │   ├── media/
-    │   ├── tools/
-    │   ├── tty/
-    │   └── web/
-    ├── hosts/
-    │   ├── default.nix
-    │   ├── darwin/
-    │   ├── droid/
-    │   └── nixos/
-    ├── lib/
-    │   ├── custom.nix
-    │   └── default.nix
-    ├── modules/
-    │   ├── default.nix
-    │   ├── home/
-    │   └── hosts/
-    ├── overlays/
-    │   ├── default.nix
-    │   └── nixpkgs.nix
-    ├── pkgs/
-    │   ├── custom/
-    │   ├── darwin/
-    │   └── pypi/
-    ├── templates/
-    │   ├── default.nix
-    │   └── vanilla/
-    └── utils/
-        ├── home_rebuild.sh
-        └── hosts_rebuild.sh
+    └── shell.nix
 ```
 
 ## 📊 Home-Manager Profile Graph
