@@ -2,7 +2,6 @@
   pkgs,
   config,
   lib,
-  hostPlatform,
   inputs,
   ...
 }: let
@@ -87,10 +86,7 @@ in {
   ];
 
   home.packages = lib.attrsets.attrValues ({
-      rclone =
-        if hostPlatform.isDarwin
-        then pkgs.darwinStable.rclone
-        else pkgs.rclone;
+      inherit (pkgs) rclone;
     }
     // (lib.attrsets.genAttrs config.programs.rclone.remotesList mkRcloneMountScript));
 }
