@@ -51,4 +51,10 @@
       scroll-step = 100;
     };
   };
+
+  # Fix for LibreOffice on macOS: use the binary from within the app bundle
+  # The symlinked soffice in PATH doesn't work properly on Darwin
+  home.shellAliases = lib.mkIf hostPlatform.isDarwin {
+    soffice = "${pkgs.libreoffice-bin}/Applications/LibreOffice.app/Contents/MacOS/soffice";
+  };
 }
