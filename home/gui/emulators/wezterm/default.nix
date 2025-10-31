@@ -19,4 +19,9 @@
     source = ./config;
     recursive = true;
   };
+
+  # Install wezterm terminfo for full feature support
+  home.packages = with pkgs; [
+    wezterm.terminfo
+  ];
 }

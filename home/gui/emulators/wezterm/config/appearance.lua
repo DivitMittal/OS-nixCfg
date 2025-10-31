@@ -16,7 +16,7 @@ end)
 
 ---------------------------------------------------------------------------------
 M = {
-  term = "xterm-256color",
+  term = "wezterm",
   enable_kitty_graphics = true,
 
   -- font
