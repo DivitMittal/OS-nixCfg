@@ -7,7 +7,10 @@
 
     useWindowsDriver = true;
 
-    interop.includePath = true;
+    interop = {
+      includePath = true;
+      register = true; # Required when using binfmt registrations to preserve .exe compatibility
+    };
     startMenuLaunchers = false;
 
     wslConf = {
