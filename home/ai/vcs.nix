@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  inputs,
   ...
 }: {
   home.packages = lib.attrsets.attrValues {
@@ -9,6 +8,6 @@
       (pkgs)
       geminicommit
       ;
-    aicommit2 = inputs.aicommit2.packages.${pkgs.system}.default;
+    # aicommit2 = inputs.aicommit2.packages.${hostPlatform.system}.default;
   };
 }
