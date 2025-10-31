@@ -5,7 +5,7 @@
 }: {
   imports = [./ancillary.nix];
 
-  home.sessionVariables.GIT_HOSTING = "git@github.com:${config.programs.git.userName}";
+  home.sessionVariables.GIT_HOSTING = "git@github.com:${config.programs.git.settings.user.name}";
 
   programs.fish.shellAbbrs = {
     gs = {
