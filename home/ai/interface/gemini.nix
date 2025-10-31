@@ -2,11 +2,12 @@
   config,
   pkgs,
   inputs,
+  hostPlatform,
   ...
 }: {
   programs.gemini-cli = {
     enable = true;
-    package = inputs.nix-ai-tools.packages.${pkgs.system}.gemini-cli;
+    package = inputs.nix-ai-tools.packages.${hostPlatform.system}.gemini-cli;
     defaultModel = "gemini-2.5-pro";
     settings = {
       selectedAuthType = "gemini-api-key";

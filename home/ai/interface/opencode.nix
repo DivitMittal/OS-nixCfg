@@ -1,11 +1,12 @@
 {
   pkgs,
   inputs,
+  hostPlatform,
   ...
 }: {
   programs.opencode = {
     enable = true;
-    package = inputs.nix-ai-tools.packages.${pkgs.system}.opencode;
+    package = inputs.nix-ai-tools.packages.${hostPlatform.system}.opencode;
 
     rules = ''
       ## External File Loading

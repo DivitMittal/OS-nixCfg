@@ -1,7 +1,7 @@
 {
   lib,
-  pkgs,
   inputs,
+  hostPlatform,
   ...
 }: {
   home.packages = lib.attrsets.attrValues {
@@ -12,7 +12,7 @@
     #   exec ${pkgs.uv}/bin/uv tool run --python python3.12 --with pip --from aider-chat@latest aider "$@"
     # '';
     inherit
-      (inputs.nix-ai-tools.packages.${pkgs.system})
+      (inputs.nix-ai-tools.packages.${hostPlatform.system})
       #amp
       #qwen-code
       #catnip
