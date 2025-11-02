@@ -441,6 +441,10 @@
         name = "*.ipynb";
         run = "piper -- rich -w $w \"$1\"";
       }
+      {
+        name = "*.docx";
+        run = "piper -- doxx \"$1\"";
+      }
     ];
 
     append_previewers = [
