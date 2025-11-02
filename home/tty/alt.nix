@@ -15,7 +15,7 @@
       ;
   };
 
-  ## Command correction tools
+  ## fc alt
   programs.pay-respects = {
     enable = true;
     package = pkgs.pay-respects;

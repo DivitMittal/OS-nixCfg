@@ -40,8 +40,8 @@
       officialFlavors = pkgs.fetchFromGitHub {
         owner = "yazi-rs";
         repo = "flavors";
-        rev = "3e6da982edcb113d584b020d7ed08ef809c29a39";
-        hash = "sha256-60XGlsdIoEJw7nf/3d6nOKsC/r83MRN5jeal2I3BYQM=";
+        rev = "f6b425a6d57af39c10ddfd94790759f4d7612332";
+        hash = "sha256-bavHcmeGZ49nNeM+0DSdKvxZDPVm3e6eaNmfmwfCid0=";
       };
     in
       getPlugin officialFlavors "dracula";
@@ -62,7 +62,7 @@
           ouch = pkgs.fetchFromGitHub {
             owner = "ndtoan96";
             repo = "ouch.yazi";
-            rev = "main";
+            rev = "0742fffea5229271164016bf96fb599d861972db";
             hash = "sha256-C0wG8NQ+zjAMfd+J39Uvs3K4U6e3Qpo1yLPm2xcsAaI=";
           };
         }
