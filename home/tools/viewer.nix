@@ -9,9 +9,12 @@
   };
 
   home.packages = lib.attrsets.attrValues {
+    sc-im = pkgs.sc-im.override {
+      xlsSupport = true;
+      inherit (pkgs.custom) libxls;
+    };
     inherit
       (pkgs)
-      sc-im
       tabiew
       doxx
       pandoc
