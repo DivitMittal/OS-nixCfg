@@ -8,7 +8,6 @@
   perSystem = {
     pkgs,
     config,
-    system,
     ...
   }: {
     devshells.default = {
@@ -37,7 +36,7 @@
               ;
           }
           ++ [
-            inputs.deploy-rs.packages.${system}.default # Deploy-rs for remote deployment
+            inputs.deploy-rs.packages.${pkgs.stdenvNoCC.hostPlatform.system}.default # Deploy-rs for remote deployment
           ];
       };
       env = [
