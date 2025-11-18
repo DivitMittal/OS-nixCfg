@@ -63,7 +63,7 @@ in {
       };
       alias = {
         # Edit the last modified note.
-        last = "zk edit --limit 1 --sort modified- $argv";
+        last = ''zk edit --limit 1 --sort modified- "$argv"'';
         # Edit the notes selected interactively among the notes created the last two weeks.
         recent = "zk edit --sort created- --created-after 'last two weeks' --interactive";
         # Show a random note.
@@ -71,15 +71,15 @@ in {
         # list notes for editing
         ls = "zk edit --interactive";
         # search notes by tags
-        t = "zk edit --interactive --tag $argv";
+        t = ''zk edit --interactive --tag "$argv"'';
         config = ''${config.home.sessionVariables.EDITOR} "${config.xdg.configHome}/zk/config.toml"'';
         ## Inbox & Journal
-        daily = ''zk new --no-input "$ZK_NOTEBOOK_DIR/journal"'';
-        n = ''zk new --no-input "$ZK_NOTEBOOK_DIR/inbox" --title $argv'';
+        daily = "zk new --no-input $ZK_NOTEBOOK_DIR/journal";
+        n = ''zk new --no-input $ZK_NOTEBOOK_DIR/inbox --title "$argv"'';
         journal = "zk edit --sort created- $ZK_NOTEBOOK_DIR/journal --interactive";
         inbox = "zk edit --sort created- $ZK_NOTEBOOK_DIR/inbox --interactive";
         # remove a files
-        rm = "zk list --interactive --quiet --format path --delimiter0 $argv | xargs -0 rm -vf --";
+        rm = ''zk list --interactive --quiet --format path --delimiter0 "$argv" | xargs -0 rm -vf --'';
       };
       lsp = {
         diagnostics = {
