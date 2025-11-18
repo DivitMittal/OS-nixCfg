@@ -77,11 +77,12 @@
         fetchAll = true;
         autoRefresh = true;
         parseEmoji = true;
-        paging = {
-          useConfig = false;
-          colorArg = "always";
-          pager = "${pkgs.delta}/bin/delta --dark --paging=never";
-        };
+        pagers = [
+          {
+            colorArg = "always";
+            pager = "${pkgs.delta}/bin/delta --dark --paging=never";
+          }
+        ];
       };
 
       # What to do when opening Lazygit outside of a git repo.
