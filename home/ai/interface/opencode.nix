@@ -1,5 +1,4 @@
 {
-  pkgs,
   inputs,
   hostPlatform,
   ...
@@ -7,6 +6,9 @@
   programs.opencode = {
     enable = true;
     package = inputs.nix-ai-tools.packages.${hostPlatform.system}.opencode;
+
+    # Use central MCP configuration from programs.mcp
+    enableMcpIntegration = true;
 
     rules = ''
       ## External File Loading
@@ -40,54 +42,8 @@
         };
       };
 
-      mcp = let
-        pnpmCommand = ["${pkgs.pnpm}/bin/pnpm" "dlx"];
-        # uvCommand = ["${pkgs.uv}/bin/uvx"];
-      in {
-        ## modelcontextprotocol
-        filesystem = {
-          enabled = true;
-          type = "local";
-          command = pnpmCommand ++ ["@modelcontextprotocol/server-filesystem"];
-        };
-        memory = {
-          enabled = true;
-          type = "local";
-          command = pnpmCommand ++ ["@modelcontextprotocol/server-memory"];
-        };
-        sequential-thinking = {
-          enabled = true;
-          type = "local";
-          command = pnpmCommand ++ ["@modelcontextprotocol/server-sequential-thinking"];
-        };
-        ## microsoft
-        # playwright = {
-        #   enabled = false;
-        #   type = "local";
-        #   command = pnpmCommand ++ ["@playwright/mcp"];
-        # };
-        # markitdown = {
-        #   enabled = true;
-        #   type = "local";
-        #   command = uvCommand ++ ["markitdown-mcp"];
-        # };
-        ## third-party
-        deepwiki = {
-          enabled = true;
-          type = "remote";
-          url = "https://mcp.deepwiki.com/mcp";
-        };
-        octocode = {
-          enabled = true;
-          type = "local";
-          command = pnpmCommand ++ ["octocode-mcp@latest"];
-        };
-        ddg = {
-          enabled = true;
-          type = "local";
-          command = pnpmCommand ++ ["duckduckgo-mcp-server"];
-        };
-      };
+      # MCP servers now managed centrally via programs.mcp
+      # Tool-specific overrides can still be added here if needed
     };
   };
 }
