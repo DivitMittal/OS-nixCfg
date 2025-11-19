@@ -9,7 +9,7 @@
     '';
 
     pdf-watermark = pkgs.writeShellScriptBin "pdf-watermark" ''
-      exec ${pkgs.uv}/bin/uvx pdf-watermark "$@"
+      exec ${pkgs.uv}/bin/uvx --with "cryptography>=3.1" pdf-watermark "$@"
     '';
   };
 }
