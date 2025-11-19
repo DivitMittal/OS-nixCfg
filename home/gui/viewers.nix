@@ -3,8 +3,38 @@
   hostPlatform,
   lib,
   ...
-}: {
+}: let
+  mkCalibreAlias = name: "${pkgs.brewCasks.calibre}/Applications/calibre.app/Contents/MacOS/${name}";
+
+  calibreBinaries = [
+    "calibre"
+    "calibre-complete"
+    "calibre-customize"
+    "calibre-debug"
+    "calibre-parallel"
+    "calibre-server"
+    "calibre-smtp"
+    "calibredb"
+    "ebook-convert"
+    "ebook-device"
+    "ebook-edit"
+    "ebook-meta"
+    "ebook-polish"
+    "ebook-viewer"
+    "fetch-ebook-metadata"
+    "lrf2lrs"
+    "lrfviewer"
+    "lrs2lrf"
+    "markdown-calibre"
+    "web2disk"
+  ];
+in {
   home.packages = lib.attrsets.attrValues {
+    calibre =
+      if hostPlatform.isDarwin
+      then pkgs.brewCasks.calibre
+      else pkgs.calibre;
+
     # Office files (e.g., .docx, .xlsx, .pptx) editors/viewer
     onlyoffice =
       if hostPlatform.isDarwin
@@ -52,9 +82,12 @@
     };
   };
 
-  # Fix for LibreOffice on macOS: use the binary from within the app bundle
-  # The symlinked soffice in PATH doesn't work properly on Darwin
-  home.shellAliases = lib.mkIf hostPlatform.isDarwin {
-    soffice = "${pkgs.libreoffice-bin}/Applications/LibreOffice.app/Contents/MacOS/soffice";
-  };
+  home.shellAliases =
+    lib.mkIf hostPlatform.isDarwin
+    (
+      {
+        soffice = "${pkgs.libreoffice-bin}/Applications/LibreOffice.app/Contents/MacOS/soffice";
+      }
+      // lib.genAttrs calibreBinaries mkCalibreAlias
+    );
 }
