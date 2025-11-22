@@ -38,7 +38,7 @@
     inherit
       (pkgs)
       blueutil # bluetooth cli
-      duti # file associations
+      #duti # file associations (use utiluti instead)
       ;
   };
 }

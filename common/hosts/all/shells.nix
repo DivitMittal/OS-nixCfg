@@ -36,6 +36,7 @@
     inherit (lib) mkDefault;
   in {
     bash.completion.enable = false;
+
     zsh = {
       enable = mkDefault true;
 

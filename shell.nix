@@ -29,7 +29,6 @@
         nix
         home-manager
         git
-        pre-commit
         ;
     };
   };
