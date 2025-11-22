@@ -3,10 +3,8 @@
     enable = true;
     package = pkgs.atuin;
 
-    # Disable automatic Fish integration due to bind -k deprecation
-    # See: https://github.com/atuinsh/atuin/issues/2803
-    enableFishIntegration = false;
-    enableZshIntegration = false;
+    enableFishIntegration = true;
+    enableZshIntegration = true;
     enableBashIntegration = false;
     enableNushellIntegration = false;
 
