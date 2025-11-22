@@ -642,7 +642,7 @@
 
     prepend_previewers = let
       # Markitdown → Glow previewers for documents
-      markitdownCmd = "piper -- ${pkgs.uv}/bin/uvx markitdown[all] \"$1\" 2>/dev/null | CLICOLOR_FORCE=1 ${pkgs.glow}/bin/glow -w=$w -s=dark - 2>/dev/null";
+      markitdownCmd = "piper -- ${pkgs.uv}/bin/uvx markitdown[all] \"$1\" 2>/dev/null | CLICOLOR_FORCE=1 ${pkgs.glow}/bin/glow -w=$w - 2>/dev/null";
       markitdownPatterns = ["*.csv" "*.tsv" "*.{xlsx,xls,ods}" "*.{docx,odt}" "*.{pptx,ppt,odp}" "*.{html,htm}" "*.xml" "*.epub" "*.ipynb"];
       markitdownPreviewers =
         map (pattern: {
@@ -666,7 +666,7 @@
         ## Other
         {
           name = "*.md";
-          run = "piper -- CLICOLOR_FORCE=1 ${pkgs.glow}/bin/glow -w=$w -s=dark \"$1\"";
+          run = "piper -- CLICOLOR_FORCE=1 ${pkgs.glow}/bin/glow -w=$w \"$1\"";
         }
       ];
 
