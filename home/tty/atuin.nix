@@ -189,10 +189,4 @@
       # sync_frequency = "10m"
     };
   };
-
-  # Manual Fish integration with fix for bind -k deprecation
-  # See: https://github.com/atuinsh/atuin/issues/2803
-  programs.fish.interactiveShellInit = ''
-    ${pkgs.atuin}/bin/atuin init fish | sed 's/-k up/up/' | source
-  '';
 }
