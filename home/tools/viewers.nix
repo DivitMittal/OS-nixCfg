@@ -5,7 +5,7 @@
 }: {
   programs.visidata = {
     enable = true;
-    package = pkgs.visidata;
+    package = pkgs.nixosStable.visidata;
   };
 
   home.packages = lib.attrsets.attrValues {

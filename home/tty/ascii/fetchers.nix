@@ -8,6 +8,9 @@
     inherit
       (pkgs)
       ipfetch
+      ;
+    inherit
+      (pkgs.nixosStable)
       cpufetch
       ;
     ghfetch = pkgs.writeShellScriptBin "ghfetch" ''
