@@ -5,7 +5,7 @@ jobs:
     permissions:
       contents: write
       id-token: write
-    runs-on: macos-15-intel
+    runs-on: macos-15
     steps:
     - name: Checkout repo
       uses: actions/checkout@main
