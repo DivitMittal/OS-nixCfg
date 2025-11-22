@@ -1,4 +1,4 @@
-{
+{pkgs}: {
   log.enabled = false;
 
   mgr = {
@@ -23,6 +23,11 @@
     {
       mime = "inode/x-empty";
       use = ["edit" "reveal"];
+    }
+    ## HTML Documents
+    {
+      name = "*.{html,htm}";
+      use = ["chrome" "firefox" "open" "edit" "editVS" "reveal"];
     }
     ## Code
     {
@@ -53,6 +58,36 @@
     {
       mime = "application/pdf";
       use = ["zathura" "reveal" "look"];
+    }
+    ## Ebook Documents
+    {
+      name = "*.{epub,mobi,azw,azw3,fb2,lrf,pdb,cbz,cbr}";
+      use = ["ebook-viewer" "open" "reveal"];
+    }
+    ## Office Documents - Spreadsheets
+    {
+      name = "*.{xlsx,xls,ods}";
+      use = ["excel" "libreoffice" "onlyoffice" "reveal"];
+    }
+    ## Office Documents - Word
+    {
+      name = "*.{docx,odt}";
+      use = ["doxx" "word" "libreoffice" "onlyoffice" "reveal"];
+    }
+    ## Office Documents - Presentations
+    {
+      name = "*.{pptx,ppt,odp}";
+      use = ["libreoffice" "onlyoffice" "reveal"];
+    }
+    ## Ableton Live Files
+    {
+      name = "*.{als,alp,adg,adv,agr,amxd}";
+      use = ["ableton" "reveal"];
+    }
+    ## MIDI Files
+    {
+      name = "*.{mid,midi}";
+      use = ["guitarpro" "musescore" "ableton" "reveal"];
     }
     ## archives
     {
@@ -90,7 +125,7 @@
     ## fallback for all other files
     {
       name = "*";
-      use = ["edit" "editVS" "open" "reveal" "look"];
+      use = ["edit" "open" "reveal" "look"];
     }
   ];
 
@@ -206,6 +241,235 @@
         run = "zathura \"%1\"";
       }
     ];
+    ebook-viewer = let
+      calibrePath =
+        if pkgs.stdenvNoCC.hostPlatform.isDarwin
+        then "${pkgs.brewCasks.calibre}/Applications/calibre.app/Contents/MacOS"
+        else "";
+    in [
+      {
+        for = "linux";
+        desc = "Calibre Ebook Viewer";
+        run = "ebook-viewer \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "macos";
+        desc = "Calibre Ebook Viewer";
+        run = "${calibrePath}/ebook-viewer \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "windows";
+        desc = "Calibre Ebook Viewer";
+        run = "ebook-viewer \"%*\"";
+        orphan = true;
+      }
+    ];
+    onlyoffice = let
+      linuxPath =
+        if pkgs.stdenvNoCC.hostPlatform.isLinux
+        then "${pkgs.onlyoffice-bin}/bin/onlyoffice-desktopeditors"
+        else "onlyoffice-desktopeditors";
+      macosPath =
+        if pkgs.stdenvNoCC.hostPlatform.isDarwin
+        then "${pkgs.brewCasks.onlyoffice}/Applications/ONLYOFFICE.app/Contents/MacOS"
+        else "";
+    in [
+      {
+        for = "linux";
+        desc = "OnlyOffice";
+        run = "${linuxPath} \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "macos";
+        desc = "OnlyOffice";
+        run = "${macosPath}/ONLYOFFICE \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "windows";
+        desc = "OnlyOffice";
+        run = "start \"\" \"ONLYOFFICE Desktop Editors.exe\" \"%*\"";
+        orphan = true;
+      }
+    ];
+    excel = let
+      excelPath =
+        if pkgs.stdenvNoCC.hostPlatform.isDarwin
+        then "${pkgs.brewCasks.microsoft-excel}/Applications/Microsoft Excel.app/Contents/MacOS"
+        else "";
+    in [
+      {
+        for = "macos";
+        desc = "Microsoft Excel";
+        run = "${excelPath}/Microsoft Excel \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "windows";
+        desc = "Microsoft Excel";
+        run = "start \"\" \"excel.exe\" \"%*\"";
+        orphan = true;
+      }
+    ];
+    word = let
+      wordPath =
+        if pkgs.stdenvNoCC.hostPlatform.isDarwin
+        then "${pkgs.brewCasks.microsoft-word}/Applications/Microsoft Word.app/Contents/MacOS"
+        else "";
+    in [
+      {
+        for = "macos";
+        desc = "Microsoft Word";
+        run = "${wordPath}/Microsoft Word \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "windows";
+        desc = "Microsoft Word";
+        run = "start \"\" \"winword.exe\" \"%*\"";
+        orphan = true;
+      }
+    ];
+    doxx = [
+      {
+        for = "unix";
+        desc = "Doxx TUI Word Viewer";
+        run = "${pkgs.doxx}/bin/doxx \"$@\"";
+        block = true;
+      }
+      {
+        for = "macos";
+        desc = "Doxx TUI Word Viewer";
+        run = "${pkgs.doxx}/bin/doxx \"$@\"";
+        block = true;
+      }
+      {
+        for = "windows";
+        desc = "Doxx TUI Word Viewer";
+        run = "doxx \"%*\"";
+        block = true;
+      }
+    ];
+    libreoffice = let
+      linuxPath =
+        if pkgs.stdenvNoCC.hostPlatform.isLinux
+        then "${pkgs.libreoffice}/bin/libreoffice"
+        else "libreoffice";
+      macosPath =
+        if pkgs.stdenvNoCC.hostPlatform.isDarwin
+        then "${pkgs.libreoffice-bin}/Applications/LibreOffice.app/Contents/MacOS"
+        else "";
+    in [
+      {
+        for = "linux";
+        desc = "LibreOffice";
+        run = "${linuxPath} \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "macos";
+        desc = "LibreOffice";
+        run = "${macosPath}/soffice \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "windows";
+        desc = "LibreOffice";
+        run = "start \"\" \"soffice.exe\" \"%*\"";
+        orphan = true;
+      }
+    ];
+    chrome = [
+      {
+        for = "linux";
+        desc = "Google Chrome";
+        run = "google-chrome \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "macos";
+        desc = "Google Chrome";
+        run = "open -a 'Google Chrome' \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "windows";
+        desc = "Google Chrome";
+        run = "start \"\" \"chrome.exe\" \"%*\"";
+        orphan = true;
+      }
+    ];
+    firefox = [
+      {
+        for = "linux";
+        desc = "Mozilla Firefox";
+        run = "firefox \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "macos";
+        desc = "Mozilla Firefox";
+        run = "open -a 'Firefox' \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "windows";
+        desc = "Mozilla Firefox";
+        run = "start \"\" \"firefox.exe\" \"%*\"";
+        orphan = true;
+      }
+    ];
+    ableton = [
+      {
+        for = "macos";
+        desc = "Ableton Live";
+        run = "open -a 'Ableton Live 12 Suite' \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "windows";
+        desc = "Ableton Live";
+        run = "start \"\" \"Ableton Live 12 Suite.exe\" \"%*\"";
+        orphan = true;
+      }
+    ];
+    guitarpro = [
+      {
+        for = "macos";
+        desc = "Guitar Pro 8";
+        run = "open -a 'Guitar Pro 8' \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "windows";
+        desc = "Guitar Pro 8";
+        run = "start \"\" \"GuitarPro8.exe\" \"%*\"";
+        orphan = true;
+      }
+    ];
+    musescore = [
+      {
+        for = "linux";
+        desc = "MuseScore";
+        run = "musescore \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "macos";
+        desc = "MuseScore";
+        run = "open -a 'MuseScore 4' \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "windows";
+        desc = "MuseScore";
+        run = "start \"\" \"MuseScore4.exe\" \"%*\"";
+        orphan = true;
+      }
+    ];
   };
 
   plugin = {
@@ -280,178 +544,137 @@
       }
     ];
 
-    previewers = [
-      ## Directories
-      {
-        name = "*/";
-        run = "folder";
-        sync = true;
-      }
-      ## Empty File
-      {
-        mime = "inode/empty";
-        run = "empty";
-      }
-      ## Code
-      {
-        mime = "text/*";
-        run = "code";
-      }
-      {
-        mime = "*/xml";
-        run = "code";
-      }
-      {
-        mime = "*/javascript";
-        run = "code";
-      }
-      {
-        mime = "*/x-wine-extension-ini";
-        run = "code";
-      }
-      {
-        mime = "application/{json, ndjson}";
-        run = "json";
-      }
-      ## Images
-      {
-        mime = "image/{avif,hei?,jxl,svg+xml}";
-        run = "magick";
-      }
-      {
-        mime = "image/vnd.djvu";
-        run = "noop";
-      }
-      {
-        mime = "image/*";
-        run = "image";
-      }
-      ## Video
-      {
-        mime = "video/*";
-        run = "video";
-      }
-      ## PDF
-      {
-        mime = "application/pdf";
-        run = "pdf";
-      }
-      ## Archives
-      {
-        mime = "application/zip";
-        run = "archive";
-      }
-      {
-        mime = "application/gzip";
-        run = "archive";
-      }
-      {
-        mime = "application/x-tar";
-        run = "archive";
-      }
-      {
-        mime = "application/x-bzip";
-        run = "archive";
-      }
-      {
-        mime = "application/x-bzip2";
-        run = "archive";
-      }
-      {
-        mime = "application/x-7z-compressed";
-        run = "archive";
-      }
-      {
-        mime = "application/x-rar";
-        run = "archive";
-      }
-      {
-        mime = "application/xz";
-        run = "archive";
-      }
-      ## Package Archives
-      {
-        mime = "application/{debian*-package,redhat-package-manager,rpm,android.package-archive}";
-        run = "archive";
-      }
-      {
-        name = "*.{AppImage,appimage}";
-        run = "archive";
-      }
-      ## Virtual Disk
-      {
-        mime = "application/{iso9660-image,qemu-disk,ms-wim,apple-diskimage}";
-        run = "archive";
-      }
-      {
-        mime = "application/virtualbox-{vhd,vhdx}";
-        run = "archive";
-      }
-      {
-        name = "*.{img,fat,ext,ext2,ext3,ext4,squashfs,ntfs,hfs,hfsx}";
-        run = "archive";
-      }
-      ## Font
-      {
-        mime = "font/*";
-        run = "font";
-      }
-      {
-        mime = "application/ms-opentype";
-        run = "font";
-      }
-    ];
+    previewers = let
+      # Code previewers
+      codeMimes = ["text/*" "*/xml" "*/javascript" "*/x-wine-extension-ini"];
+      codePreviewers =
+        map (mime: {
+          inherit mime;
+          run = "code";
+        })
+        codeMimes;
 
-    prepend_previewers = [
-      ## Archives
-      {
-        mime = "application/*zip";
-        run = "ouch";
-      }
-      {
-        mime = "application/x-tar";
-        run = "ouch";
-      }
-      {
-        mime = "application/x-bzip2";
-        run = "ouch";
-      }
-      {
-        mime = "application/x-7z-compressed";
-        run = "ouch";
-      }
-      {
-        mime = "application/x-rar";
-        run = "ouch";
-      }
-      {
-        mime = "application/x-xz";
-        run = "ouch";
-      }
-      ## Other
-      {
-        name = "*.csv";
-        run = "piper -- rich -w $w \"$1\"";
-      }
-      {
-        name = "*.md";
-        run = "piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark \"$1\"";
-      }
-      {
-        name = "*.ipynb";
-        run = "piper -- rich -w $w \"$1\"";
-      }
-      {
-        name = "*.docx";
-        run = "piper -- doxx \"$1\"";
-      }
-    ];
+      # Archive previewers (mime-based)
+      archiveMimes = [
+        "application/zip"
+        "application/gzip"
+        "application/x-tar"
+        "application/x-bzip"
+        "application/x-bzip2"
+        "application/x-7z-compressed"
+        "application/x-rar"
+        "application/xz"
+        "application/{debian*-package,redhat-package-manager,rpm,android.package-archive}"
+        "application/{iso9660-image,qemu-disk,ms-wim,apple-diskimage}"
+        "application/virtualbox-{vhd,vhdx}"
+      ];
+      archiveMimePreviewers =
+        map (mime: {
+          inherit mime;
+          run = "archive";
+        })
+        archiveMimes;
+
+      # Archive previewers (name-based)
+      archiveNames = ["*.{AppImage,appimage}" "*.{img,fat,ext,ext2,ext3,ext4,squashfs,ntfs,hfs,hfsx}"];
+      archiveNamePreviewers =
+        map (name: {
+          inherit name;
+          run = "archive";
+        })
+        archiveNames;
+
+      # Font previewers
+      fontMimes = ["font/*" "application/ms-opentype"];
+      fontPreviewers =
+        map (mime: {
+          inherit mime;
+          run = "font";
+        })
+        fontMimes;
+    in
+      [
+        ## Directories
+        {
+          name = "*/";
+          run = "folder";
+          sync = true;
+        }
+        ## Empty File
+        {
+          mime = "inode/empty";
+          run = "empty";
+        }
+      ]
+      ++ codePreviewers
+      ++ [
+        {
+          mime = "application/{json, ndjson}";
+          run = "json";
+        }
+        ## Images
+        {
+          mime = "image/{avif,hei?,jxl,svg+xml}";
+          run = "magick";
+        }
+        {
+          mime = "image/vnd.djvu";
+          run = "noop";
+        }
+        {
+          mime = "image/*";
+          run = "image";
+        }
+        ## Video
+        {
+          mime = "video/*";
+          run = "video";
+        }
+        ## PDF
+        {
+          mime = "application/pdf";
+          run = "pdf";
+        }
+      ]
+      ++ archiveMimePreviewers
+      ++ archiveNamePreviewers
+      ++ fontPreviewers;
+
+    prepend_previewers = let
+      # Markitdown → Glow previewers for documents
+      markitdownCmd = "piper -- ${pkgs.uv}/bin/uvx markitdown[all] \"$1\" 2>/dev/null | CLICOLOR_FORCE=1 ${pkgs.glow}/bin/glow -w=$w -s=dark - 2>/dev/null";
+      markitdownPatterns = ["*.csv" "*.tsv" "*.{xlsx,xls,ods}" "*.{docx,odt}" "*.{pptx,ppt,odp}" "*.{html,htm}" "*.xml" "*.epub" "*.ipynb"];
+      markitdownPreviewers =
+        map (pattern: {
+          name = pattern;
+          run = markitdownCmd;
+        })
+        markitdownPatterns;
+
+      # Ouch archive previewers
+      ouchMimes = ["application/*zip" "application/x-tar" "application/x-bzip2" "application/x-7z-compressed" "application/x-rar" "application/x-xz"];
+      ouchPreviewers =
+        map (mime: {
+          inherit mime;
+          run = "ouch";
+        })
+        ouchMimes;
+    in
+      markitdownPreviewers
+      ++ ouchPreviewers
+      ++ [
+        ## Other
+        {
+          name = "*.md";
+          run = "piper -- CLICOLOR_FORCE=1 ${pkgs.glow}/bin/glow -w=$w -s=dark \"$1\"";
+        }
+      ];
 
     append_previewers = [
       ## fallback for all other files
       {
         name = "*";
-        run = "piper -- hexyl --border=none --terminal-width=$w \"$1\"";
+        run = "piper -- ${pkgs.hexyl}/bin/hexyl --border=none --terminal-width=$w \"$1\"";
       }
     ];
 

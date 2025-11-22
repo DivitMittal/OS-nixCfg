@@ -29,7 +29,7 @@
     enableNushellIntegration = false;
 
     initLua = ./init.lua;
-    settings = builtins.import ./yazi.nix;
+    settings = import ./yazi.nix {inherit pkgs;};
     keymap = builtins.import ./keymap.nix;
     theme = {
       flavor = {
