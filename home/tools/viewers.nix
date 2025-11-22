@@ -15,7 +15,6 @@
     };
     inherit
       (pkgs)
-      tabiew
       doxx
       pandoc
       ;
@@ -30,10 +29,7 @@
       exec ${pkgs.uv}/bin/uv tool run --from euporie euporie "$@"
     '';
     markitdown = pkgs.writeScriptBin "markitdown" ''
-      exec ${pkgs.uv}/bin/uv tool run markitdown "$@"
-    '';
-    rich-cli = pkgs.writeScriptBin "rich" ''
-      exec ${pkgs.uv}/bin/uv tool run --from rich-cli rich "$@"
+      exec ${pkgs.uv}/bin/uv tool run markitdown[all] "$@"
     '';
   };
 }
