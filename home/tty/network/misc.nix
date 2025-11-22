@@ -16,6 +16,7 @@
         gping # graphical ping alt
         doggo #dig # dns lookup
         croc # file transfer
+        ttyd # terminal sharing over web
         ;
     }
     ++ lib.optionals hostPlatform.isLinux [
