@@ -15,8 +15,11 @@
     };
     inherit
       (pkgs)
-      doxx
-      pandoc
+      doxx # docx
+      pandoc # various docs
+      ouch # archives
+      hexyl # binary & misc.
+      poppler # PDFs
       ;
     ## Euporie (Jupyter client)
     euporie-notebook = pkgs.writeScriptBin "euporie-notebook" ''
