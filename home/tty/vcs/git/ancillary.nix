@@ -80,7 +80,7 @@
         pagers = [
           {
             colorArg = "always";
-            pager = "${pkgs.delta}/bin/delta --dark --paging=never";
+            pager = "${pkgs.delta}/bin/delta --paging=never";
           }
         ];
       };
