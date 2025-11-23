@@ -271,10 +271,6 @@
         if pkgs.stdenvNoCC.hostPlatform.isLinux
         then "${pkgs.onlyoffice-bin}/bin/onlyoffice-desktopeditors"
         else "onlyoffice-desktopeditors";
-      macosPath =
-        if pkgs.stdenvNoCC.hostPlatform.isDarwin
-        then "${pkgs.brewCasks.onlyoffice}/Applications/ONLYOFFICE.app/Contents/MacOS"
-        else "";
     in [
       {
         for = "linux";
@@ -285,7 +281,7 @@
       {
         for = "macos";
         desc = "OnlyOffice";
-        run = "${macosPath}/ONLYOFFICE \"$@\"";
+        run = "open -a 'ONLYOFFICE' \"$@\"";
         orphan = true;
       }
       {
@@ -295,16 +291,11 @@
         orphan = true;
       }
     ];
-    excel = let
-      excelPath =
-        if pkgs.stdenvNoCC.hostPlatform.isDarwin
-        then "${pkgs.brewCasks.microsoft-excel}/Applications/Microsoft Excel.app/Contents/MacOS"
-        else "";
-    in [
+    excel = [
       {
         for = "macos";
         desc = "Microsoft Excel";
-        run = "${excelPath}/Microsoft Excel \"$@\"";
+        run = "open -a 'Microsoft Excel' \"$@\"";
         orphan = true;
       }
       {
@@ -314,16 +305,11 @@
         orphan = true;
       }
     ];
-    word = let
-      wordPath =
-        if pkgs.stdenvNoCC.hostPlatform.isDarwin
-        then "${pkgs.brewCasks.microsoft-word}/Applications/Microsoft Word.app/Contents/MacOS"
-        else "";
-    in [
+    word = [
       {
         for = "macos";
         desc = "Microsoft Word";
-        run = "${wordPath}/Microsoft Word \"$@\"";
+        run = "open -a 'Microsoft Word' \"$@\"";
         orphan = true;
       }
       {
@@ -358,10 +344,6 @@
         if pkgs.stdenvNoCC.hostPlatform.isLinux
         then "${pkgs.libreoffice}/bin/libreoffice"
         else "libreoffice";
-      macosPath =
-        if pkgs.stdenvNoCC.hostPlatform.isDarwin
-        then "${pkgs.libreoffice-bin}/Applications/LibreOffice.app/Contents/MacOS"
-        else "";
     in [
       {
         for = "linux";
@@ -372,7 +354,7 @@
       {
         for = "macos";
         desc = "LibreOffice";
-        run = "${macosPath}/soffice \"$@\"";
+        run = "open -a 'LibreOffice' \"$@\"";
         orphan = true;
       }
       {
