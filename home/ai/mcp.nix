@@ -7,12 +7,9 @@
     inherit (pkgs.custom) gowa;
   };
 
-  # Central MCP (Model Context Protocol) server configuration
-  # Shared across multiple AI tools that support enableMcpIntegration
   programs.mcp = {
     enable = true;
     servers = {
-      # Official Model Context Protocol servers
       filesystem = {
         command = "${pkgs.pnpm}/bin/pnpm";
         args = ["dlx" "@modelcontextprotocol/server-filesystem"];
@@ -38,8 +35,6 @@
         command = "${pkgs.pnpm}/bin/pnpm";
         args = ["dlx" "duckduckgo-mcp-server"];
       };
-
-      # Commented out servers (uncomment as needed)
       # playwright = {
       #   command = "${pkgs.pnpm}/bin/pnpm";
       #   args = ["dlx" "@playwright/mcp"];

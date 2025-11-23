@@ -12,16 +12,16 @@
     '';
   };
 
-  programs.claude-code = {
+  programs.claude-code = let
+    pnpmCommand = "${pkgs.pnpm}/bin/pnpm";
+    # uvCommand = "${pkgs.uv}/bin/uvx";
+  in {
     enable = true;
     package = pkgs.writeShellScriptBin "claude" ''
       exec ${pkgs.pnpm}/bin/pnpm dlx @anthropic-ai/claude-code "$@"
     '';
 
-    mcpServers = let
-      pnpmCommand = "${pkgs.pnpm}/bin/pnpm";
-      # uvCommand = "${pkgs.uv}/bin/uvx";
-    in {
+    mcpServers = {
       ## modelcontextprotocol
       filesystem = {
         type = "stdio";
@@ -140,12 +140,12 @@
         #disableBypassPermissionsMode = "disable";
       };
       statusLine = {
-        command = "pnpm dlx ccstatusline@latest";
+        command = "${pnpmCommand} dlx ccstatusline@latest";
         padding = 0;
         type = "command";
       };
       theme = "dark";
-      outputStyle = "Explanatory";
+      #outputStyle = "Explanatory";
     };
 
     commands = {
