@@ -3,9 +3,12 @@
     all = builtins.import ./home;
     default = self.outputs.homeManagerModules.all;
 
-    ai-chat = builtins.import ./home/aichat.nix;
+    crush = builtins.import ./home/crush.nix;
     glow = builtins.import ./home/glow.nix;
+    ov = builtins.import ./home/ov.nix;
     spicetify-cli = builtins.import ./home/spicetify-cli.nix;
+    spotifyd = builtins.import ./home/spotifyd.nix;
+    warpd = builtins.import ./home/warpd.nix;
     wiki-tui = builtins.import ./home/wiki-tui.nix;
   };
 
