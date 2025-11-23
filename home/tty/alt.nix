@@ -53,7 +53,7 @@
     ov = "${pkgs.ov}/bin/ov -H1";
     eza = "${pkgs.eza}/bin/eza";
   in {
-    ll = "${eza} -albhHigUuS -m@ | ${ov}";
-    lt = "${eza} --tree --level=2 | ${ov}";
+    ll = "${eza} -albhHigUuS -m@ --color=always | ${ov}";
+    lt = "${eza} --tree --level=2 --color=always | ${ov}";
   };
 }
