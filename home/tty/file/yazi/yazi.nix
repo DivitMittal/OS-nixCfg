@@ -641,8 +641,17 @@
       ++ fontPreviewers;
 
     prepend_previewers = let
+      # Glow style configuration
+      glamourStyles = pkgs.fetchFromGitHub {
+        owner = "charmbracelet";
+        repo = "glamour";
+        rev = "0af1a2d9bc9e9d52422b26440fe218c69f9afbdd";
+        hash = "sha256-ZnkYUVtpGGfZHOKx3I4mnMYaXGiMoSNuviz+ooENmbc=";
+      };
+      glowStyle = "${glamourStyles}/styles/pink.json";
+
       # Markitdown → Glow previewers for documents
-      markitdownCmd = "piper -- ${pkgs.uv}/bin/uvx markitdown[all] \"$1\" 2>/dev/null | CLICOLOR_FORCE=1 ${pkgs.glow}/bin/glow -w=$w - 2>/dev/null";
+      markitdownCmd = "piper -- ${pkgs.uv}/bin/uvx markitdown[all] \"$1\" 2>/dev/null | CLICOLOR_FORCE=1 ${pkgs.glow}/bin/glow --style ${glowStyle} -w=$w - 2>/dev/null";
       markitdownPatterns = ["*.csv" "*.tsv" "*.{xlsx,xls,ods}" "*.{docx,odt}" "*.{pptx,ppt,odp}" "*.{html,htm}" "*.xml" "*.epub" "*.ipynb"];
       markitdownPreviewers =
         map (pattern: {
@@ -666,7 +675,7 @@
         ## Other
         {
           name = "*.md";
-          run = "piper -- CLICOLOR_FORCE=1 ${pkgs.glow}/bin/glow -w=$w \"$1\"";
+          run = "piper -- CLICOLOR_FORCE=1 ${pkgs.glow}/bin/glow --style ${glowStyle} -w=$w \"$1\"";
         }
       ];
 
