@@ -11,7 +11,7 @@
       ## container management
       docker
       lazydocker
-      #kubernetes
+      kubectl
       ## virtualization
       #virt-manager libvirt qemu
       ;
