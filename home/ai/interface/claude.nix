@@ -137,7 +137,7 @@
           "Read(./.env)"
           "Read(./secrets/**)"
         ];
-        disableBypassPermissionsMode = "disable";
+        #disableBypassPermissionsMode = "disable";
       };
       statusLine = {
         command = "pnpm dlx ccstatusline@latest";
