@@ -12,6 +12,12 @@ M.keys = {
     key = "Enter",
     action = act.DisableDefaultAssignment,
   },
+  -- Send ESC+Enter when pressing Shift+Enter
+  {
+    mods = "SHIFT",
+    key = "Enter",
+    action = act.SendString("\x1b\r"),
+  },
   -- Send Ctrl+r to the terminal when pressing LEADER, LEADER
   {
     mods = "LEADER|CTRL",
