@@ -46,6 +46,7 @@
         uses = "actions/checkout@main";
         "with" = {
           fetch-depth = 1;
+          persist-credentials = false;
         };
       }
       {
