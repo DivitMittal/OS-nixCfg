@@ -7,7 +7,8 @@
     inherit
       (pkgs)
       calcurse
-      gcalcli
+      #gcalcli
+      #calcure
       ;
   };
 }
