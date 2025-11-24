@@ -3,17 +3,19 @@
   pkgs,
   ...
 }: {
-  home.packages = lib.attrsets.attrValues {
-    inherit
-      (pkgs)
-      #chafa
-      imagemagick
-      exif # metadata
-      ;
-    bgrm = pkgs.writeShellScriptBin "bgrm" ''
-      exec ${pkgs.uv}/bin/uv tool run --python 3.11 --with "numpy<2" backgroundremover "$@"
-    '';
-  };
+  home.packages =
+    lib.attrsets.attrValues {
+      inherit
+        (pkgs)
+        #chafa
+        imagemagick
+        exif # metadata
+        ;
+      bgrm = pkgs.writeShellScriptBin "bgrm" ''
+        exec ${pkgs.uv}/bin/uv tool run --python 3.11 --with "numpy<2" backgroundremover "$@"
+      '';
+    }
+    ++ lib.optionals pkgs.stdenvNoCC.hostPlatform.isDarwin [pkgs.customDarwin.nomacs-bin];
 
   programs.fish.functions = {
     negate = ''

@@ -45,7 +45,7 @@
     ## Media
     {
       mime = "image/*";
-      use = ["open" "reveal" "look"];
+      use = ["nomacs" "open" "reveal" "look"];
     }
     {
       mime = "video/*";
@@ -449,6 +449,26 @@
         for = "windows";
         desc = "MuseScore";
         run = "start \"\" \"MuseScore4.exe\" \"%*\"";
+        orphan = true;
+      }
+    ];
+    nomacs = [
+      {
+        for = "linux";
+        desc = "nomacs Image Viewer";
+        run = "nomacs \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "macos";
+        desc = "nomacs Image Viewer";
+        run = "nomacs \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "windows";
+        desc = "nomacs Image Viewer";
+        run = "nomacs \"%*\"";
         orphan = true;
       }
     ];
