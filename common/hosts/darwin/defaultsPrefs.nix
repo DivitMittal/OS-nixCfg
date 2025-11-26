@@ -36,6 +36,7 @@ _: {
       AppleShowAllExtensions = true;
       ShowPathbar = true;
       ShowStatusBar = false;
+      QuitMenuItem = true; # Allow Finder to be quit
       _FXSortFoldersFirst = true;
       _FXSortFoldersFirstOnDesktop = true;
       _FXShowPosixPathInTitle = true;
