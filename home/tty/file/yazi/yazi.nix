@@ -27,7 +27,7 @@
     ## HTML Documents
     {
       name = "*.{html,htm}";
-      use = ["chrome" "firefox" "open" "edit" "editVS" "reveal"];
+      use = ["firefox" "chrome" "open" "edit" "editVS" "reveal"];
     }
     ## Code
     {
