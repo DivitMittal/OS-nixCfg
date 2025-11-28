@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = [
     (pkgs.writeShellScriptBin "brew-ultimate" ''
-      set -e
       echo "Running brew update..."
       brew update
 
