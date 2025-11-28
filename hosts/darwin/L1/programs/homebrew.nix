@@ -1,4 +1,26 @@
-_: {
+{pkgs, ...}: {
+  environment.systemPackages = [
+    (pkgs.writeShellScriptBin "brew-ultimate" ''
+      set -e
+      echo "Running brew update..."
+      brew update
+
+      echo "Running brew upgrade..."
+      brew upgrade
+
+      echo "Running brew autoremove..."
+      brew autoremove
+
+      echo "Running brew cleanup..."
+      brew cleanup -s --prune=0
+
+      echo "Removing brew cache..."
+      rm -rf "$(brew --cache)"
+
+      echo "Brew maintenance complete!"
+    '')
+  ];
+
   homebrew = {
     taps = [
       "macos-fuse-t/homebrew-cask" #fuse-t
