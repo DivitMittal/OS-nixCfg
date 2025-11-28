@@ -241,12 +241,7 @@
         run = "zathura \"%1\"";
       }
     ];
-    ebook-viewer = let
-      calibrePath =
-        if pkgs.stdenvNoCC.hostPlatform.isDarwin
-        then "${pkgs.brewCasks.calibre}/Applications/calibre.app/Contents/MacOS"
-        else "";
-    in [
+    ebook-viewer = [
       {
         for = "linux";
         desc = "Calibre Ebook Viewer";
@@ -256,7 +251,7 @@
       {
         for = "macos";
         desc = "Calibre Ebook Viewer";
-        run = "${calibrePath}/ebook-viewer \"$@\"";
+        run = "ebook-viewer \"$@\"";
         orphan = true;
       }
       {
@@ -266,16 +261,11 @@
         orphan = true;
       }
     ];
-    onlyoffice = let
-      linuxPath =
-        if pkgs.stdenvNoCC.hostPlatform.isLinux
-        then "${pkgs.onlyoffice-bin}/bin/onlyoffice-desktopeditors"
-        else "onlyoffice-desktopeditors";
-    in [
+    onlyoffice = [
       {
         for = "linux";
         desc = "OnlyOffice";
-        run = "${linuxPath} \"$@\"";
+        run = "onlyoffice-desktopeditors \"$@\"";
         orphan = true;
       }
       {
@@ -339,16 +329,11 @@
         block = true;
       }
     ];
-    libreoffice = let
-      linuxPath =
-        if pkgs.stdenvNoCC.hostPlatform.isLinux
-        then "${pkgs.libreoffice}/bin/libreoffice"
-        else "libreoffice";
-    in [
+    libreoffice = [
       {
         for = "linux";
         desc = "LibreOffice";
-        run = "${linuxPath} \"$@\"";
+        run = "libreoffice \"$@\"";
         orphan = true;
       }
       {
