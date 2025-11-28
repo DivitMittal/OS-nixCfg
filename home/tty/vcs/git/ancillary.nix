@@ -9,10 +9,18 @@
       (pkgs)
       transcrypt
       ;
-  };
 
-  programs.fish.functions = {
-    gen-gitignore = "curl -sL https://www.gitignore.io/api/$argv";
+    gen-gitignore = pkgs.writeShellScriptBin "gen-gitignore" ''
+      if [ $# -eq 0 ]; then
+        echo "Usage: gen-gitignore <template1> [template2] ..." >&2
+        echo "Example: gen-gitignore python node vim" >&2
+        exit 1
+      fi
+
+      # Join arguments with commas for gitignore.io API
+      templates=$(IFS=,; echo "$*")
+      ${pkgs.curl}/bin/curl -sL "https://www.gitignore.io/api/$templates"
+    '';
   };
 
   programs.gh = {

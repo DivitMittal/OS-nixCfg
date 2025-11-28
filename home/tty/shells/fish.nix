@@ -17,20 +17,6 @@
       set -g fish_cursor_replace_one underscore
     '';
 
-    functions = {
-      hisaab = ''
-        if test (count $argv) -eq 1
-          echo $argv | sed -E 's/\(([A-Za-z&])*\)//g' | bc -q
-        else
-          echo "Please provide a valid input"
-        end
-      '';
-    };
-
-    shellAliases = {
-      brew-ultimate = "brew update; and brew upgrade; and brew autoremove; and brew cleanup -s --prune=0; and rm -rf (brew --cache)";
-    };
-
     shellAbbrs = {
       ".2" = {
         expansion = "../..";
