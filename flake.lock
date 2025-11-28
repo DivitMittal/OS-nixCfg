@@ -93,11 +93,11 @@
     "OS-nixCfg_3": {
       "flake": false,
       "locked": {
-        "lastModified": 1761927286,
-        "narHash": "sha256-X6G5nBQkk8jzGGY+H+dgH8S8swpEqguMivq7Uh8+DLk=",
+        "lastModified": 1763971757,
+        "narHash": "sha256-XPEurFlOWN7IUs2re+hBVIwqGL+4PH5BLMtIKDGdxac=",
         "owner": "DivitMittal",
         "repo": "OS-nixCfg",
-        "rev": "198c5d9eb7b6e7a9b6f27b8cee3b8c084980f0a2",
+        "rev": "c805698f3bf352b527c8635bb56ebb55a47a72c9",
         "type": "github"
       },
       "original": {
@@ -125,11 +125,11 @@
     "Vim-Cfg": {
       "flake": false,
       "locked": {
-        "lastModified": 1762095280,
-        "narHash": "sha256-G2M1IOZoLRYVdoth7V3gmdp5c609Wy0/qvTTkNrxz08=",
+        "lastModified": 1764328458,
+        "narHash": "sha256-Ro0Fzr+5pdKMu1lPZZOD7Ry/3Rv+NIAnbiPV7gk9H6Q=",
         "owner": "DivitMittal",
         "repo": "Vim-Cfg",
-        "rev": "2c39082baed316cf8ee60cd5cde0e21233384f45",
+        "rev": "aa8ad7e4b7bff656a20ebdeda9c9ec307c15b062",
         "type": "github"
       },
       "original": {
@@ -824,11 +824,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1763848041,
-        "narHash": "sha256-SzD1jrjE0BG3pTMKWXOlqzZgsEJ/ESxu8RiBJG6pe98=",
+        "lastModified": 1763985260,
+        "narHash": "sha256-TmLZqcdm2HnHero91mYwXzzKRVOGubfDLsZzdd6Jql8=",
         "owner": "DivitMittal",
         "repo": "hammerspoon-nix",
-        "rev": "b99c748b0f1fd396ad4de302df0efcd31fca2016",
+        "rev": "f563c8c7c0f2a50159c47a201944a86dbe2234e0",
         "type": "github"
       },
       "original": {
