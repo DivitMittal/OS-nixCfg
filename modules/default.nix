@@ -4,6 +4,7 @@
     default = self.outputs.homeManagerModules.all;
 
     crush = builtins.import ./home/crush.nix;
+    github-copilot = builtins.import ./home/github-copilot.nix;
     glow = builtins.import ./home/glow.nix;
     ov = builtins.import ./home/ov.nix;
     spicetify-cli = builtins.import ./home/spicetify-cli.nix;
