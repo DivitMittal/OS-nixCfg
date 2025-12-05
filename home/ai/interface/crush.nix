@@ -5,7 +5,7 @@
   ...
 }: {
   programs.crush = {
-    enable = true;
+    enable = false;
     package = inputs.nix-ai-tools.packages.${hostPlatform.system}.crush;
 
     settings = {
