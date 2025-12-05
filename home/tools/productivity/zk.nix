@@ -71,12 +71,12 @@ in {
         # list notes for editing
         ls = "zk edit --interactive";
         # search notes by tags
-        t = ''zk edit --interactive --tag "$argv"'';
+        tag = ''zk edit --interactive --tag "$argv"'';
         config = ''${config.home.sessionVariables.EDITOR} "${config.xdg.configHome}/zk/config.toml"'';
         ## Inbox & Journal
-        daily = "zk new --no-input $ZK_NOTEBOOK_DIR/journal";
-        n = ''zk new --no-input $ZK_NOTEBOOK_DIR/inbox --title "$argv"'';
+        today = "zk new --no-input $ZK_NOTEBOOK_DIR/journal";
         journal = "zk edit --sort created- $ZK_NOTEBOOK_DIR/journal --interactive";
+        scratch = ''zk new --no-input $ZK_NOTEBOOK_DIR/inbox --title "$argv"'';
         inbox = "zk edit --sort created- $ZK_NOTEBOOK_DIR/inbox --interactive";
         # remove a files
         rm = ''zk list --interactive --quiet --format path --delimiter0 "$argv" | xargs -0 rm -vf --'';
