@@ -1,0 +1,58 @@
+Ableton Live 12 Suite.app
+Air Music Technology
+Akai Professional MPK Mini III Program Editor.app
+AlDente.app
+AmpliTube 5.app
+Aurora DSP
+BFDPlayer.app
+Capo.app
+Cloudflare WARP.app
+Comet.app
+Essential Keyboards.app
+GigPerformer5.app
+Guitar Pro 8.app
+Hand Mirror.app
+Happy Wallpaper.app
+IK Product Manager.app
+LuLu.app
+MPC Beats.app
+MeldaProduction
+Melodics.app
+Native Access.app
+Native Instruments
+Nix Apps
+PDF Expert.app
+Perplexity.app
+Safari.app
+Utilities
+VMware Fusion.app
+Wacom Tablet.localized
+Xcode-26.0.1.app
+djay Pro.app
+iStat Menus.app
+inMusic Software Center.app
+AltTab.app
+Claude.app
+Firefox.app
+Google Chrome.app
+Hammerspoon.app
+Hot.app
+LibreOffice.app
+LibreScore.app
+LocalSend.app
+Menu Bar Dock.app
+Microsoft Excel.app
+Microsoft OneNote.app
+Microsoft Outlook.app
+MultiSoundChanger.app
+MuseScore 4.app
+ONLYOFFICE.app
+Raycast.app
+Spaceman.app
+SuperCollider.app
+Visual Studio Code.app
+WezTerm-macos-20240203-110809-5046fc22
+WhatsApp.app
+calibre.app
+mpv.app
+nomacs.app
