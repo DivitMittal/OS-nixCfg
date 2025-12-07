@@ -29,12 +29,12 @@
     ];
 
     casks = [
-      "lulu"
       "cloudflare-warp"
       "fuse-t" #"macfuse"
       "blackhole-2ch"
 
       ## macOS specific
+      # "lulu"
       #"raycast" "alt-tab"
       #"spaceman"
       #"gswitch"
