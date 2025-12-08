@@ -21,103 +21,23 @@
   ];
 
   homebrew = {
-    taps = [
-      "macos-fuse-t/homebrew-cask" #fuse-t
-      #"homebrew/services"
-      #"r-lib/rig" #rig
-      #"aaronraimist/tap" #gomuks
-    ];
+    # taps = [
+    #   #"homebrew/services"
+    # ];
 
     casks = [
       "cloudflare-warp"
-      "fuse-t" #"macfuse"
       "blackhole-2ch"
 
       ## macOS specific
       # "lulu"
-      #"raycast" "alt-tab"
-      #"spaceman"
-      #"gswitch"
-      #"bluesnooze"
       #"monolingual"
-      #"jordanbaird-ice" # open-source alt to bartender
-      #"betterdisplay"
       #"knockknock"
-      #"hammerspoon"
-
-      ## WWWW browser
-      #{
-      #  name = "firefox";
-      #  args = {appdir = "~/Applications/Homebrew Casks";};
-      #}
-      #"google-chrome"
-      #"tor-browser"
-
-      ## Development Environment
-      #"wezterm"
-      #"visual-studio-code"
-      #"cursor"
-      #"jetbrains-toolbox"
-
-      ## R
-      #"rig" #"rstudio"
-
-      ## Microsoft
-      #"onlyoffice"
-      #"microsoft-auto-update"
-      #"microsoft-onenote"
-      #"microsoft-teams"
-      #"microsoft-outlook" #"microsoft-excel"
-      #"onedrive"
-      #"crystalfetch"
-      #"libreoffice"
-
-      ## Communication
-      #"whatsapp"
-      #"thunderbird"
-      #"simplex"
-      #"zoom"
-
-      ## Networking
-      #"localsend"
-      #"cyberduck"
-
-      ## Multimedia
-      #"stolendata-mpv"
-      #"spotify"
-
-      ## Creative
-      #{
-      #  name = "musescore";
-      #  greedy = true;
-      #}
-      #"reaper"
-      #"blender"
-
-      ## Data Analytics
-      #"tableau" "tableau-prep"
-
-      ## Notes
-      #"obsidian"
-      #"notion-calendar" "notion"
     ];
 
     brews = [
       ## mas
       "mas"
-
-      ## homebrew
-      # "gh"
-
-      ## macOS-specific
-      #"cliclick"
-
-      ## Multimedia
-      #"spotify_player"
-
-      ## Communication
-      #"gomuks" # Matrix protocol
-
       ## Development
       #"libomp" # Multiprogramming
     ];
