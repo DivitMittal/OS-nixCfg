@@ -4,20 +4,19 @@
   ...
 }: {
   programs.spotify-player = {
-    enable = false;
+    enable = true;
     package =
       if hostPlatform.isDarwin
       then
         (pkgs.spotify-player.override {
           withImage = true;
           withFuzzy = true;
-
-          withAudioBackend = "";
-          withDaemon = false;
-          withStreaming = false;
+          withAudioBackend = "rodio";
+          withDaemon = true;
+          withStreaming = true;
           withSixel = false;
           withNotify = false;
-          withMediaControl = false;
+          withMediaControl = true;
         }).overrideAttrs (_oldAttrs: {
           buildNoDefaultFeatures = true;
         })
@@ -25,6 +24,7 @@
 
     settings = {
       client_id = "561a7e0b6be94efc8f25374180fbe62a";
+      login_redirect_uri = "http://127.0.0.1:8989/login";
       enable_media_control = true;
       enable_notify = false;
       enable_cover_image_cache = true;
