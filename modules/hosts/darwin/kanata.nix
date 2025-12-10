@@ -87,7 +87,7 @@ in {
     # '';
     environment.etc."sudoers.d/kanata".source = pkgs.runCommand "sudoers-kanata" {} ''
       cat <<EOF >"$out"
-      ALL ALL=(ALL) NOPASSWD: ${lib.strings.concatStringsSep " " command}
+      ALL ALL=(ALL) NOPASSWD:SETENV: ${lib.strings.concatStringsSep " " command}
       ALL ALL=(ALL) NOPASSWD: ${karabinerDaemon}
       EOF
     '';
