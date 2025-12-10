@@ -48,7 +48,7 @@
     ${lib.optionalString hostPlatform.isDarwin ''
       SC3_PLUGINS_VERSION="3.13.0"
       SC3_PLUGINS_URL="https://github.com/supercollider/sc3-plugins/releases/download/Version-$SC3_PLUGINS_VERSION/sc3-plugins-$SC3_PLUGINS_VERSION-macOS.zip"
-      EXTENSIONS_DIR="$HOME/Library/Application Support/SuperCollider/Extensions"
+      EXTENSIONS_DIR="$HOME/.local/share/SuperCollider/Extensions"
 
       echo "Installing SC3-Plugins version $SC3_PLUGINS_VERSION..."
 
@@ -62,10 +62,25 @@
       echo "Downloading sc3-plugins..."
       ${pkgs.curl}/bin/curl -L -o sc3-plugins.zip "$SC3_PLUGINS_URL"
 
-      echo "Extracting to $EXTENSIONS_DIR..."
-      ${pkgs.unzip}/bin/unzip -q sc3-plugins.zip -d "$EXTENSIONS_DIR"
+      echo "Extracting to temporary directory..."
+      ${pkgs.unzip}/bin/unzip -q sc3-plugins.zip
+
+      echo "Installing to $EXTENSIONS_DIR..."
+      # The zip contains sc3-plugins/SC3plugins/
+      # Move SC3plugins contents directly to Extensions directory
+      # This ensures SuperCollider can find them
+      if [ -d "sc3-plugins/SC3plugins" ]; then
+        # Use rsync to copy and exclude macOS resource fork files (._*)
+        ${pkgs.rsync}/bin/rsync -av --exclude='._*' sc3-plugins/SC3plugins/ "$EXTENSIONS_DIR/"
+      fi
+
+      # Also copy README if it exists (but not ._README.txt)
+      if [ -f "sc3-plugins/README.txt" ]; then
+        cp sc3-plugins/README.txt "$EXTENSIONS_DIR/"
+      fi
 
       # Cleanup
+      cd /
       rm -rf "$TEMP_DIR"
 
       echo "SC3-Plugins installed successfully!"
@@ -102,6 +117,18 @@
         echo "ERROR: SuperCollider not found at ${scPath}"
         echo "Please rebuild your home-manager config to install SuperCollider via brewCasks"
         echo "Run: hms"
+        exit 1
+      fi
+
+      # Check for sc3-plugins
+      EXTENSIONS_DIR="$HOME/.local/share/SuperCollider/Extensions"
+      if [ ! -d "$EXTENSIONS_DIR/JoshUGens" ] && [ ! -d "$EXTENSIONS_DIR/MdaUGens" ]; then
+        echo "ERROR: SC3-Plugins not found in SuperCollider Extensions"
+        echo "SuperDirt requires SC3-Plugins to be installed."
+        echo ""
+        echo "Please run: install-sc3-plugins"
+        echo ""
+        echo "Then restart SuperCollider or rerun this command."
         exit 1
       fi
     ''}
