@@ -69,114 +69,71 @@ This repository contains primarily [nix](https://github.com/nixos/nix) configura
 The repository is organized using [flake-parts](https://github.com/hercules-ci/flake-parts) for better modularity.
 
 ```
-├── .claude/
+.
+├── .claude
 │   └── settings.json
-├── .github/
-│   ├── workflows/
-│   │   ├── darwin-build.yml
-│   │   ├── flake-check.yml
-│   │   ├── flake-lock-update.yml
-│   │   ├── flakehub-publish-tagged.yml
-│   │   ├── home-build.yml
-│   │   ├── nixos-build.yml
-│   │   └── topology-build.yml
+├── .github
+│   ├── workflows
 │   └── FUNDING.yml
-├── assets/
-│   ├── topology/
-│   │   ├── main.svg
-│   │   └── network.svg
+├── assets
+│   ├── topology
 │   ├── home_graph.png
 │   ├── qezta.gif
 │   └── qezta.png
-├── common/
-│   ├── all/
-│   ├── home/
-│   └── hosts/
-│       ├── all/
-│       ├── darwin/
-│       ├── droid/
-│       └── nixos/
-├── flake/
-│   ├── actions/
-│   ├── topology/
+├── common
+│   ├── all
+│   ├── home
+│   ├── hosts
+│   └── README.md
+├── flake
+│   ├── actions
+│   ├── topology
 │   ├── checks.nix
 │   ├── default.nix
 │   ├── devshells.nix
 │   ├── formatters.nix
-│   └── mkHost.nix
-├── home/
-│   ├── ai/
-│   │   └── interface/
-│   ├── comms/
-│   │   ├── email/
-│   │   └── irc/
-│   ├── dev/
-│   │   ├── js/
-│   │   └── python/
-│   ├── gui/
-│   │   ├── darwin/
-│   │   ├── emulators/
-│   │   ├── ide/
-│   │   └── linux/
-│   ├── media/
-│   │   └── music/
-│   ├── tools/
-│   │   ├── keyboard/
-│   │   ├── privacy/
-│   │   └── productivity/
-│   ├── tty/
-│   │   ├── editors/
-│   │   ├── fetchers/
-│   │   ├── file/
-│   │   ├── multiplexers/
-│   │   ├── network/
-│   │   ├── pagers/
-│   │   ├── shells/
-│   │   └── vcs/
-│   ├── web/
-│   │   └── tui/
-│   └── default.nix
-├── hosts/
-│   ├── darwin/
-│   │   └── L1/
-│   ├── droid/
-│   │   └── M1/
-│   ├── nixos/
-│   │   ├── L2/
-│   │   └── WSL/
-│   └── default.nix
-├── lib/
-│   ├── custom.nix
-│   └── default.nix
-├── modules/
-│   ├── home/
-│   ├── hosts/
-│   │   └── darwin/
-│   └── default.nix
-├── overlays/
+│   ├── mkHost.nix
+│   └── README.md
+├── home
+│   ├── ai
+│   ├── comms
+│   ├── dev
+│   ├── gui
+│   ├── media
+│   ├── tools
+│   ├── tty
+│   ├── web
 │   ├── default.nix
-│   └── nixpkgs.nix
-├── pkgs/
-│   ├── custom/
-│   │   ├── gittype-bin/
-│   │   └── gowa/
-│   ├── darwin/
-│   │   ├── cliclick-bin/
-│   │   ├── element/
-│   │   ├── hot-bin/
-│   │   ├── LibreScore-bin/
-│   │   ├── LosslessSwitcher-bin/
-│   │   ├── menubar-dock-bin/
-│   │   ├── MultiSoundChanger-bin/
-│   │   └── wacom-toggle/
-│   └── pypi/
-│       ├── flatlatex/
-│       └── keymap-drawer/
-├── templates/
-│   ├── vanilla/
-│   │   └── flake/
+│   └── README.md
+├── hosts
+│   ├── darwin
+│   ├── droid
+│   ├── nixos
+│   ├── default.nix
+│   └── README.md
+├── lib
+│   ├── custom.nix
+│   ├── default.nix
+│   └── README.md
+├── modules
+│   ├── home
+│   ├── hosts
+│   ├── default.nix
+│   └── README.md
+├── overlays
+│   ├── default.nix
+│   ├── nixpkgs.nix
+│   └── README.md
+├── pkgs
+│   ├── custom
+│   ├── darwin
+│   ├── pypi
+│   └── README.md
+├── templates
+│   ├── vanilla
 │   └── default.nix
-├── utils/
+├── utils
+│   ├── common.sh
 │   ├── home_rebuild.sh
 │   └── hosts_rebuild.sh
 ├── .editorconfig
@@ -184,6 +141,7 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
 ├── .gitattributes
 ├── .gitignore
 ├── .mcp.json
+├── .pre-commit-config.yaml
 ├── CLAUDE.md
 ├── CODEOWNERS
 ├── flake.lock
@@ -192,6 +150,8 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
 ├── README.md
 ├── SECURITY.md
 └── shell.nix
+
+38 directories, 43 files
 ```
 
 ## 📊 Home-Manager Profile Graph
