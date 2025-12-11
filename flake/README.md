@@ -8,7 +8,7 @@ Flake-parts modules defining flake outputs.
 - **formatters.nix** - Code formatting (`nix fmt`: alejandra, deadnix, statix)
 - **checks.nix** - Pre-commit hooks
 - **mkHost.nix** - Universal host builder (nixos/darwin/droid/home)
-- **topology.nix** - Infrastructure visualization (nix-topology)
+- **topology/** - Infrastructure visualization (nix-topology)
 - **actions/** - GitHub Actions workflows
 
 ## Adding Modules
