@@ -27,7 +27,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [cfg.pacakge];
+    home.packages = [cfg.package];
     xdg.configFile."spicetify/config-xpui.ini" = mkIf (cfg.settings != "") {text = cfg.settings;};
   };
 }
