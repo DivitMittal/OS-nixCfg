@@ -21,7 +21,6 @@
       workflow_dispatch = {};
     };
     jobs.build-topology-and-commit = {
-      runs-on = "ubuntu-latest"; # Topology requires Linux
       permissions = common-permissions;
       inherit environment;
       steps =
