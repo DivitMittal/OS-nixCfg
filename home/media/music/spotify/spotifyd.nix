@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   programs.spotifyd = {
-    enable = true;
+    enable = false;
     package = pkgs.spotifyd;
     settings = {
       global = {

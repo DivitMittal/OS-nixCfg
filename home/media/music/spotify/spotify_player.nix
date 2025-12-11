@@ -16,7 +16,7 @@
           withStreaming = true;
           withSixel = false;
           withNotify = false;
-          withMediaControl = true;
+          withMediaControl = false;
         }).overrideAttrs (_oldAttrs: {
           buildNoDefaultFeatures = true;
         })
