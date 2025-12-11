@@ -11,9 +11,10 @@ jobs:
       uses: actions/checkout@main
       with:
         fetch-depth: 1
+        persist-credentials: false
     - name: Set env var
       run: echo "OS_NIXCFG=$(pwd)" 1>> "$GITHUB_ENV"
-    - uses: DeterminateSystems/nix-installer-action@v19
+    - uses: DeterminateSystems/nix-installer-action@v21
     - name: Magic Nix Cache(Use Github Actions Cache)
       uses: DeterminateSystems/magic-nix-cache-action@main
     - name: Configure to use personal binary cache @ Cachix
@@ -64,10 +65,6 @@ jobs:
   push:
     branches:
     - master
-    paths:
-    - hosts/nixos/iso/**
-    - home/tty/**
-    - common/**
     tags:
     - iso-*
   workflow_dispatch: {}
