@@ -1,0 +1,73 @@
+jobs:
+  build-and-release-iso:
+    environment:
+      name: dev
+    permissions:
+      contents: write
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@main
+      with:
+        fetch-depth: 1
+    - name: Set env var
+      run: echo "OS_NIXCFG=$(pwd)" 1>> "$GITHUB_ENV"
+    - uses: DeterminateSystems/nix-installer-action@v19
+    - name: Magic Nix Cache(Use Github Actions Cache)
+      uses: DeterminateSystems/magic-nix-cache-action@main
+    - name: Configure to use personal binary cache @ Cachix
+      uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: divitmittal
+    - name: SSH-agent with auth for private repos
+      uses: webfactory/ssh-agent@master
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - name: Build NixOS ISO
+      run: nix -vL build --accept-flake-config .#nixosConfigurations.iso.config.system.build.isoImage
+        --impure --show-trace
+    - name: Prepare release artifacts
+      run: |-
+        ISO_PATH=$(find result/iso -name "*.iso" -type f | head -n 1)
+        ISO_NAME=$(basename "$ISO_PATH")
+        echo "ISO_PATH=$ISO_PATH" >> $GITHUB_ENV
+        echo "ISO_NAME=$ISO_NAME" >> $GITHUB_ENV
+
+        sha256sum "$ISO_PATH" > "$ISO_PATH.sha256"
+
+        TAG_NAME="iso-$(date -u +%Y%m%d-%H%M%S)"
+        echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+    - name: Create release tag
+      run: |-
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git tag -a "$TAG_NAME" -m "NixOS ISO Release $TAG_NAME"
+        git push origin "$TAG_NAME"
+    - env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        body: Custom NixOS ISO with home-manager integration. See README for usage
+          instructions.
+        draft: false
+        files: |-
+          ${{ env.ISO_PATH }}
+          ${{ env.ISO_PATH }}.sha256
+        name: NixOS Custom ISO
+        prerelease: false
+        tag_name: ${{ env.TAG_NAME }}
+    timeout-minutes: 90
+'on':
+  push:
+    branches:
+    - master
+    paths:
+    - hosts/nixos/iso/**
+    - home/tty/**
+    - common/**
+    tags:
+    - iso-*
+  workflow_dispatch: {}
