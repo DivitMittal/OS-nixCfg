@@ -22,7 +22,17 @@
       inherit environment;
 
       steps =
-        common-actions
+        [
+          {
+            name = "Checkout repo";
+            uses = "actions/checkout@main";
+            "with" = {
+              fetch-depth = 1;
+              persist-credentials = true; # Enable credentials for tag push
+            };
+          }
+        ]
+        ++ (builtins.tail common-actions) # Skip the common checkout action
         ++ [
           {
             name = "Build NixOS ISO";
@@ -57,10 +67,6 @@
             run = ''
               git config user.name "github-actions[bot]"
               git config user.email "github-actions[bot]@users.noreply.github.com"
-
-              # Configure git to use GITHUB_TOKEN for authentication
-              git remote set-url origin "https://x-access-token:''${{ secrets.GITHUB_TOKEN }}@github.com/''${{ github.repository }}.git"
-
               git tag -a "$TAG_NAME" -m "NixOS ISO Release $TAG_NAME"
               git push origin "$TAG_NAME"
             '';
