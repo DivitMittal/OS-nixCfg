@@ -31,12 +31,22 @@ jobs:
         --impure --show-trace
     - name: Prepare release artifacts
       run: |-
+        # Find the ISO in the Nix store result
         ISO_PATH=$(find result/iso -name "*.iso" -type f | head -n 1)
         ISO_NAME=$(basename "$ISO_PATH")
-        echo "ISO_PATH=$ISO_PATH" >> $GITHUB_ENV
-        echo "ISO_NAME=$ISO_NAME" >> $GITHUB_ENV
 
-        sha256sum "$ISO_PATH" > "$ISO_PATH.sha256"
+        # Copy ISO to writable location
+        mkdir -p artifacts
+        cp "$ISO_PATH" "artifacts/$ISO_NAME"
+
+        # Generate SHA256 checksum in writable location
+        cd artifacts
+        sha256sum "$ISO_NAME" > "$ISO_NAME.sha256"
+        cd ..
+
+        # Set environment variables for release step
+        echo "ISO_PATH=artifacts/$ISO_NAME" >> $GITHUB_ENV
+        echo "ISO_NAME=$ISO_NAME" >> $GITHUB_ENV
 
         TAG_NAME="iso-$(date -u +%Y%m%d-%H%M%S)"
         echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
