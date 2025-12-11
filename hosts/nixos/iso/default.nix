@@ -1,5 +1,4 @@
 {
-  pkgs,
   modulesPath,
   lib,
   inputs,
@@ -24,7 +23,7 @@
     home = lib.mkForce "/home/nixos";
   };
 
-  image.fileName = lib.mkForce "nixos-custom-${pkgs.stdenvNoCC.hostPlatform.system}.iso";
+  image.fileName = lib.mkForce "nixos-custom-${hostPlatform.system}.iso";
 
   isoImage = {
     squashfsCompression = "zstd";
