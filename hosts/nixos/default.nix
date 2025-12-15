@@ -17,5 +17,10 @@
       hostName = "L2";
       system = "x86_64-linux";
     };
+    iso = mkHost {
+      inherit class;
+      hostName = "iso";
+      system = "x86_64-linux";
+    };
   };
 }
