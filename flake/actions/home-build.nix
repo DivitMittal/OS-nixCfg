@@ -25,6 +25,7 @@
         pull_request = push;
       };
     jobs.build-home-manager-and-graph = {
+      runs-on = "macos-15-intel";
       permissions = common-permissions;
       inherit environment;
       steps =

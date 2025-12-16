@@ -31,7 +31,7 @@
         pull_request = push;
       };
     jobs.build-nix-darwin-configuration = {
-      runs-on = "macos-15";
+      runs-on = "macos-15-intel";
       permissions = common-permissions;
       inherit environment;
       steps =
