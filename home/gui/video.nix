@@ -11,7 +11,7 @@
       then
         ((pkgs.brewCasks.stolendata-mpv.override
           {
-            variation = "sequoia";
+            variation = "tahoe";
           }).overrideAttrs (oldAttrs: {
           nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [pkgs.gnutar];
           unpackPhase = ''

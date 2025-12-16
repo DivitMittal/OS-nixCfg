@@ -10,7 +10,7 @@
       then
         (
           if hostPlatform.isx86_64
-          then (pkgs.brewCasks.visual-studio-code.override {variation = "sequoia";})
+          then (pkgs.brewCasks.visual-studio-code.override {variation = "tahoe";})
           else pkgs.brewCasks.visual-studio-code
         )
       else pkgs.vscode;

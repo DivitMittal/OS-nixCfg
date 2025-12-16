@@ -125,11 +125,11 @@
     "TermEmulator-Cfg": {
       "flake": false,
       "locked": {
-        "lastModified": 1765866966,
-        "narHash": "sha256-v7MfHMGGPLlaJZ9ZFHQOIqutWQj4MdLHgXteXs6+1Es=",
+        "lastModified": 1765875158,
+        "narHash": "sha256-v0457TED82Qg7GLZkTlQfiX12mAhZu059HZFAF7OqSw=",
         "owner": "DivitMittal",
         "repo": "TermEmulator-Cfg",
-        "rev": "8e7468280cfab6a07fc2fc33f81e9ab9b1532cb3",
+        "rev": "89bc51729977260932e457f38aaccc95130bcb50",
         "type": "github"
       },
       "original": {
@@ -281,11 +281,11 @@
     "brew-api": {
       "flake": false,
       "locked": {
-        "lastModified": 1765383753,
-        "narHash": "sha256-KHBvDtYX1+z+/l2qUetAs3K9wCRgYtSO02Qo8CMZCws=",
+        "lastModified": 1765873438,
+        "narHash": "sha256-Rlt6cyur5ERHXPdb0ZLBZSLF4Ec21Cj/mHrEuE7vs7g=",
         "owner": "batteredbunny",
         "repo": "brew-api",
-        "rev": "9bc6741fe7157193a3b94669e96f7d0789941e1a",
+        "rev": "69a13132a3969f50e0311aff66365181260e9495",
         "type": "github"
       },
       "original": {

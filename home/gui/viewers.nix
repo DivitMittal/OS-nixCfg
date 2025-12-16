@@ -49,7 +49,7 @@ in {
       # Office files (e.g., .docx, .xlsx, .pptx) editors/viewer
       onlyoffice =
         if hostPlatform.isDarwin
-        then (pkgs.brewCasks.onlyoffice.override {variation = "sequoia";})
+        then (pkgs.brewCasks.onlyoffice.override {variation = "tahoe";})
         else pkgs.onlyoffice;
       libreoffice =
         if hostPlatform.isDarwin

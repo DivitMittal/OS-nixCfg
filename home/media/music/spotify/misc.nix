@@ -14,7 +14,7 @@
       if hostPlatform.isDarwin
       then
         (pkgs.brewCasks.spotify.override {
-          variation = "sequoia";
+          variation = "tahoe";
         }).overrideAttrs (oldAttrs: {
           src = pkgs.fetchurl {
             url = lib.lists.head oldAttrs.src.urls;

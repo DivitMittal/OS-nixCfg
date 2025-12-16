@@ -7,12 +7,12 @@
   chrome = pkgs.brewCasks.google-chrome.overrideAttrs (oldAttrs: {
     src = pkgs.fetchurl {
       url = lib.lists.head oldAttrs.src.urls;
-      hash = "sha256-n1sCr/aE0TN20USl3ONQI4AzAi2xW3IrRrLwOjgqsW8=";
+      hash = "sha256-4lf5x1Gg+TsMI86tj32EjCgI9V1l8oSQmuJJC3VOHTw=";
     };
   });
 in {
   programs.chromium = {
-    enable = true;
+    enable = false;
     package =
       if hostPlatform.isDarwin
       then chrome
