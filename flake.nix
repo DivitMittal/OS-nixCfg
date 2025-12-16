@@ -164,6 +164,12 @@
       };
     };
 
+    ## Terminal Emulator
+    TermEmulator-Cfg = {
+      url = "github:DivitMittal/TermEmulator-Cfg";
+      flake = false;
+    };
+
     ## Firefox
     firefox-nixCfg = {
       #url = "path:/Users/div/Projects/firefox-nixCfg";

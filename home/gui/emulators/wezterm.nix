@@ -1,6 +1,7 @@
 {
   pkgs,
   hostPlatform,
+  inputs,
   ...
 }: {
   programs.wezterm = {
@@ -16,7 +17,7 @@
 
   xdg.configFile."wezterm" = {
     enable = true;
-    source = ./config;
+    source = "${inputs.TermEmulator-Cfg}/wezterm";
     recursive = true;
   };
 

@@ -122,6 +122,22 @@
         "type": "github"
       }
     },
+    "TermEmulator-Cfg": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1765866966,
+        "narHash": "sha256-v7MfHMGGPLlaJZ9ZFHQOIqutWQj4MdLHgXteXs6+1Es=",
+        "owner": "DivitMittal",
+        "repo": "TermEmulator-Cfg",
+        "rev": "8e7468280cfab6a07fc2fc33f81e9ab9b1532cb3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DivitMittal",
+        "repo": "TermEmulator-Cfg",
+        "type": "github"
+      }
+    },
     "Vim-Cfg": {
       "flake": false,
       "locked": {
@@ -1566,6 +1582,7 @@
         "Emacs-Cfg": "Emacs-Cfg",
         "OS-nixCfg-secrets": "OS-nixCfg-secrets",
         "TLTR": "TLTR",
+        "TermEmulator-Cfg": "TermEmulator-Cfg",
         "Vim-Cfg": "Vim-Cfg",
         "actions-nix": "actions-nix",
         "agenix": "agenix",
