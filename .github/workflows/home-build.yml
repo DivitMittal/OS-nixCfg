@@ -44,7 +44,7 @@ jobs:
         git add .
         git commit -m "chore: update home-manager dependency graph"
         git push origin master
-    timeout-minutes: 90
+    timeout-minutes: 120
 'on':
   pull_request:
     branches:

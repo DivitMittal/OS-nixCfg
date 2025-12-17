@@ -26,6 +26,7 @@
       };
     jobs.build-home-manager-and-graph = {
       runs-on = "macos-15-intel";
+      timeout-minutes = 120;
       permissions = common-permissions;
       inherit environment;
       steps =
