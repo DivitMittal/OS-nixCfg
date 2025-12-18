@@ -4,17 +4,17 @@
   ...
 }:
 stdenvNoCC.mkDerivation {
-  name = "kanata-daemon";
+  name = "kanata-tray-daemon";
   version = "1.0.0";
 
   src = ./.;
 
   installPhase = ''
     mkdir -p $out/bin
-    cp kanata-start $out/bin/kanata-start
-    cp kanata-stop $out/bin/kanata-stop
-    chmod +x $out/bin/kanata-start
-    chmod +x $out/bin/kanata-stop
+    cp kanata-tray-start $out/bin/kanata-tray-start
+    cp kanata-tray-stop $out/bin/kanata-tray-stop
+    chmod +x $out/bin/kanata-tray-start
+    chmod +x $out/bin/kanata-tray-stop
   '';
 
   meta = {

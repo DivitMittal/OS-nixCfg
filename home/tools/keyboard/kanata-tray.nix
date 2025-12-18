@@ -7,6 +7,10 @@
 in {
   imports = [inputs.kanata-tray.homeManagerModules.kanata-tray];
 
+  home.packages = [
+    pkgs.customDarwin.kanata-tray-daemon
+  ];
+
   programs.kanata-tray = {
     enable = true;
 

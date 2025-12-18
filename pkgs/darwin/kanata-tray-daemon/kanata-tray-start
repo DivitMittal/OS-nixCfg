@@ -21,12 +21,7 @@ if pgrep -f "kanata-tray" >/dev/null; then
     echo "kanata-tray is already running"
 else
     # Try to find kanata-tray in common locations
-    KANATA_TRAY=""
-    if command -v kanata-tray >/dev/null 2>&1; then
-        KANATA_TRAY=$(command -v kanata-tray)
-    elif [ -x "/nix/store"*"/bin/kanata-tray" ]; then
-        KANATA_TRAY=$(find /nix/store -name kanata-tray -type f -executable 2>/dev/null | head -1)
-    fi
+    KANATA_TRAY="$HOME/.nix-profile/bin/kanata-tray"
 
     if [ -z "$KANATA_TRAY" ]; then
         echo "Error: kanata-tray not found in PATH or nix store"
@@ -38,4 +33,4 @@ else
 fi
 
 echo "Both services started successfully!"
-echo "Use 'kanata-stop' to stop them."
+echo "Use 'kanata-tray-stop' to stop them."
