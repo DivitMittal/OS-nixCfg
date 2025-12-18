@@ -34,4 +34,7 @@
 
   # Docker
   ".dockerignore"
+
+  # Personal notes
+  "TODO.md"
 ]
