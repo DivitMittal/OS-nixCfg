@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Start kanata-tray and Karabiner daemon as background processes
+set -e
+
+KARABINER_DAEMON="/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon"
+
+# Set environment variables for kanata
+export KANATA_RSCROLL=1
+
+echo "Starting Karabiner VirtualHIDDevice Daemon..."
+if pgrep -f "Karabiner-VirtualHIDDevice-Daemon" >/dev/null; then
+    echo "Karabiner daemon is already running"
+else
+    sudo nohup "$KARABINER_DAEMON" >/dev/null 2>&1 &
+    echo "Karabiner daemon started"
+fi
+
+echo "Starting kanata-tray..."
+if pgrep -f "kanata-tray" >/dev/null; then
+    echo "kanata-tray is already running"
+else
+    # Try to find kanata-tray in common locations
+    KANATA_TRAY=""
+    if command -v kanata-tray >/dev/null 2>&1; then
+        KANATA_TRAY=$(command -v kanata-tray)
+    elif [ -x "/nix/store"*"/bin/kanata-tray" ]; then
+        KANATA_TRAY=$(find /nix/store -name kanata-tray -type f -executable 2>/dev/null | head -1)
+    fi
+
+    if [ -z "$KANATA_TRAY" ]; then
+        echo "Error: kanata-tray not found in PATH or nix store"
+        exit 1
+    fi
+
+    sudo --preserve-env nohup "$KANATA_TRAY" >/dev/null 2>&1 &
+    echo "kanata-tray started ($KANATA_TRAY)"
+fi
+
+echo "Both services started successfully!"
+echo "Use 'kanata-stop' to stop them."

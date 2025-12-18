@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Stop kanata-tray and Karabiner daemon processes
+set -e
+
+echo "Stopping kanata-tray..."
+if pgrep -f "kanata-tray" >/dev/null; then
+    sudo pkill -f "kanata-tray"
+    echo "kanata-tray stopped"
+else
+    echo "kanata-tray is not running"
+fi
+
+echo "Stopping Karabiner VirtualHIDDevice Daemon..."
+if pgrep -f "Karabiner-VirtualHIDDevice-Daemon" >/dev/null; then
+    sudo pkill -f "Karabiner-VirtualHIDDevice-Daemon"
+    echo "Karabiner daemon stopped"
+else
+    echo "Karabiner daemon is not running"
+fi
+
+echo "Both services stopped successfully!"
