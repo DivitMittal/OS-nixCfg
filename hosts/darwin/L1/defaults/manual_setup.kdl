@@ -5,17 +5,14 @@ Battery {
     manage-battery-longevity OFF
   }
   Options {
+    slightly-dim-display-on-battery OFF
     automatic-graphics-switching OFF
   }
-}
-Display {
-  scaling "2048x1280"
-  automatic-brightness ON
-  true-tone OFF
 }
 Accessibility {
   Vision {
     Display {
+      Display-Contrast "0.5"
       Text {
         text-size "16pt"
       }
@@ -26,11 +23,27 @@ Accessibility {
   }
 }
 Appearance {
-  allow-wallpaper-tinting-in-windows OFF
+  Windows {
+    tint-window-background-with-wallpaper-color OFF
+  }
   click-in-the-scroll-bar-to "Jump to that spot that's clicked"
 }
-Siri&Spotlight {
-  ask-siri OFF
+Display {
+  scaling "2048x1280"
+  automatic-brightness ON
+  true-tone OFF
+}
+Siri {
+  Siri OFF
+}
+Spotlight {
+  Results-from-apps {
+    turn-everything OFF
+  }
+  Results-from-system {
+    turn-everything OFF
+    apps ON
+  }
 }
 Keyboard {
   adjust-keyboard-brightness-in-low-light OFF

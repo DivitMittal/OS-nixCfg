@@ -8,13 +8,14 @@
 
     NSGlobalDomain = {
       ## Finder
-      NSTableViewDefaultSizeMode = 2; # 1 = Small, 2 = Medium, 3 = Large (sidebar icons)
+      NSTableViewDefaultSizeMode = 3; # 1 = Small, 2 = Medium, 3 = Large (sidebar icons)
       ## Windows
       NSAutomaticWindowAnimationsEnabled = false;
       NSWindowShouldDragOnGesture = true;
       ## UI
       _HIHideMenuBar = false;
       AppleInterfaceStyle = "Dark";
+      AppleIconAppearanceTheme = "RegularDark";
       AppleInterfaceStyleSwitchesAutomatically = false;
       #AppleFontSmoothing = 2;
       ## Keyboard
