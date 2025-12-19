@@ -2,8 +2,11 @@
   pkgs,
   inputs,
   lib,
+  config,
   ...
-}: {
+}: let
+  inherit (lib) mkIf;
+in {
   imports = [inputs.nvchad4nix.homeManagerModule];
 
   programs.nvchad = {
@@ -39,12 +42,11 @@
     backup = false;
   };
 
-  home.sessionVariables.VISUAL = "nvim";
-  programs.fish.shellAbbrs.nv = {
+  programs.fish.shellAbbrs.nv = mkIf config.programs.fish.enable {
     expansion = "nvim";
     position = "command";
   };
-  programs.zsh.zsh-abbr.abbreviations.nv = "nvim";
+  programs.zsh.zsh-abbr.abbreviations.nv = mkIf config.programs.zsh.enable "nvim";
 
   programs.neovim = {
     enable = false;

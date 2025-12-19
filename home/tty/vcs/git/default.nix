@@ -1,13 +1,16 @@
 {
   pkgs,
   config,
+  lib,
   ...
-}: {
+}: let
+  inherit (lib) mkIf;
+in {
   imports = [./ancillary.nix];
 
-  home.sessionVariables.GIT_HOSTING = "git@github.com:${config.programs.git.settings.user.name}";
+  home.sessionVariables.GIT_HOSTING = mkIf config.programs.git.enable "git@github.com:${config.programs.git.settings.user.name}";
 
-  programs.fish.shellAbbrs = {
+  programs.fish.shellAbbrs = mkIf (config.programs.fish.enable && config.programs.git.enable) {
     gs = {
       expansion = "git status";
       position = "command";
@@ -34,7 +37,7 @@
     };
   };
 
-  programs.zsh.zsh-abbr.abbreviations = {
+  programs.zsh.zsh-abbr.abbreviations = mkIf (config.programs.zsh.enable && config.programs.git.enable) {
     gs = "git status";
     gph = "git push";
     gpl = "git pull";
@@ -102,7 +105,7 @@
 
   programs.delta = {
     enable = true;
-    enableGitIntegration = true;
+    enableGitIntegration = config.programs.git.enable;
     package = pkgs.delta;
 
     options = {

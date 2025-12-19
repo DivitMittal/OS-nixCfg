@@ -2,9 +2,12 @@
   pkgs,
   lib,
   inputs,
+  config,
   ...
-}: {
-  programs.fish.functions = {
+}: let
+  inherit (lib) mkIf;
+in {
+  programs.fish.functions = mkIf (config.programs.yazi.enable && config.programs.fish.enable) {
     y = {
       body = ''
         set tmp (mktemp -t "yazi-cwd.XXXXX")

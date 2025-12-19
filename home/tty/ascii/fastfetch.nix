@@ -1,12 +1,15 @@
 {
   self,
   pkgs,
+  config,
   lib,
   ...
-}: {
-  programs.fish.loginShellInit = lib.mkAfter ''
+}: let
+  inherit (lib) mkIf mkAfter;
+in {
+  programs.fish.loginShellInit = mkIf (config.programs.fastfetch.enable && config.programs.fish.enable) (mkAfter ''
     test "$TERM_PROGRAM" = "WezTerm"; and fastfetch
-  '';
+  '');
 
   programs.fastfetch = {
     enable = true;
