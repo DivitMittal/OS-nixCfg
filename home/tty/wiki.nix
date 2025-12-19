@@ -1,4 +1,14 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  home.packages = lib.attrsets.attrValues {
+    cheatsheet = pkgs.writeShellScriptBin "cht" ''
+      curl -ssL "https://cheat.sh/$*" | ${pkgs.bat}/bin/bat
+    '';
+  };
+
   programs.wiki-tui = {
     enable = true;
     package = pkgs.wiki-tui;
@@ -9,10 +19,6 @@
         scroll_up = "up";
       };
     };
-  };
-
-  programs.fish.functions = {
-    cht = "curl -ssL https://cheat.sh/$argv | ${pkgs.bat}/bin/bat";
   };
 
   programs.tealdeer = {

@@ -8,10 +8,8 @@
       (pkgs)
       uv #pipx
       ;
-  };
-
-  ## pip
-  programs.fish.shellAliases = {
-    pip-uninstall-all = "pip3 freeze | cut -d='@' -f1 | xargs pip3 uninstall -y";
+    pip-uninstall-all = pkgs.writeShellScriptBin "pip-uninstall-all" ''
+      pip3 freeze | cut -d='@' -f1 | xargs pip3 uninstall -y
+    '';
   };
 }
