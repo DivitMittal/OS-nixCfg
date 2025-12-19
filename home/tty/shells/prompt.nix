@@ -6,7 +6,6 @@
   inherit (lib) mkAfter;
 in {
   programs.bash.initExtra = mkAfter ''
-    ## Prompt
     if [ "`id -u`" -eq 0 ]; then # ckeck for root user
       PS1="\[\e[1;31m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\w]> \[\e[0m\]"
     else
@@ -15,6 +14,10 @@ in {
   '';
 
   programs.zsh.initContent = mkAfter "PS1='%F{cyan}%~%f %# '";
+
+  home.sessionVariables = {
+    STARSHIP_LOG = "error";
+  };
 
   programs.starship = {
     enable = true;
