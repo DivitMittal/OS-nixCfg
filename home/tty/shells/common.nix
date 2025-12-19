@@ -10,7 +10,6 @@
     XDG_DATA_HOME = "${local}/share";
     BIN_HOME = "${local}/bin";
     LANG = "${config.home.language.base}";
-    EDITOR = "nvim";
     VISUAL = "${config.home.sessionVariables.EDITOR}";
   };
 
