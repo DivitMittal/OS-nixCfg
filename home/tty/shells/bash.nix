@@ -1,7 +1,6 @@
 {config, ...}: {
   programs.bash = {
     enable = true;
-    enableCompletion = true;
 
     sessionVariables.BADOTDIR = "${config.xdg.configHome}/bash";
     historyControl = ["ignoreboth"];

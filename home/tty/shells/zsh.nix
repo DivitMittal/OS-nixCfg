@@ -28,7 +28,6 @@
       };
     };
 
-    enableCompletion = true;
     autosuggestion.enable = false;
     syntaxHighlighting.enable = false;
     antidote = {
@@ -41,7 +40,6 @@
           "jeffreytse/zsh-vi-mode"
 
           # Add core plugins that make Zsh a bit more like Fish
-          "zsh-users/zsh-completions path:src kind:fpath"
           "zsh-users/zsh-autosuggestions"
           "zsh-users/zsh-history-substring-search"
           "zdharma-continuum/fast-syntax-highlighting"

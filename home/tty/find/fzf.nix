@@ -44,15 +44,6 @@ in {
           hash = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
         };
       }
-      {
-        name = "fifc";
-        src = pkgs.fetchFromGitHub {
-          owner = "gazorby";
-          repo = "fifc";
-          rev = "main";
-          hash = "sha256-Ynb0Yd5EMoz7tXwqF8NNKqCGbzTZn/CwLsZRQXIAVp4=";
-        };
-      }
     ];
 
     interactiveShellInit = ''
@@ -62,13 +53,6 @@ in {
       set -gx fzf_preview_dir_cmd ${pkgs.eza}/bin/eza ${eza_opts}
       set -gx fzf_preview_file_cmd ${pkgs.bat}/bin/bat
       set -gx fzf_diff_highlighter ${pkgs.delta}/bin/delta ${delta_opts}
-
-      ## fifc plugin
-      set -gx fifc_editor ${config.home.sessionVariables.VISUAL}
-      set -gx fifc_fd_opts ${fd_opts}
-      set -gx fifc_eza_opts ${eza_opts}
     '';
   };
-
-  programs.zsh.antidote.plugins = ["Aloxaf/fzf-tab"];
 }

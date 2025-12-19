@@ -93,11 +93,11 @@
     "OS-nixCfg_3": {
       "flake": false,
       "locked": {
-        "lastModified": 1764337415,
-        "narHash": "sha256-THDrP3gP+aRvIg0XngKKwCz8x5PdjzfsI0dVkTcU3HI=",
+        "lastModified": 1765442157,
+        "narHash": "sha256-aMXz4QIhlNVay5kIt6bwExOcHaDSoeF0oMKYI1jOIn8=",
         "owner": "DivitMittal",
         "repo": "OS-nixCfg",
-        "rev": "101e0dc17aea96d6d85edd17bfc31474b94a7b84",
+        "rev": "0d376b521d205062ff5fbd85aaed81b91d344baa",
         "type": "github"
       },
       "original": {
@@ -109,11 +109,11 @@
     "TLTR": {
       "flake": false,
       "locked": {
-        "lastModified": 1763986818,
-        "narHash": "sha256-y7P4/r3m7gH8hEpqEfSHbN7f6S3LUUEa4MVGRsN/e9g=",
+        "lastModified": 1766076000,
+        "narHash": "sha256-RKeZ8lnJjI4Z/LU8dT07AcVQx/3jSAdSX/je1eqoCsE=",
         "owner": "DivitMittal",
         "repo": "TLTR",
-        "rev": "cf6d184ef92914fe3ef70b13bf063bd624ffb95f",
+        "rev": "28cce3ab0030f321c5de102d96d074e9eb8270fa",
         "type": "github"
       },
       "original": {
@@ -125,11 +125,11 @@
     "TermEmulator-Cfg": {
       "flake": false,
       "locked": {
-        "lastModified": 1765875158,
-        "narHash": "sha256-v0457TED82Qg7GLZkTlQfiX12mAhZu059HZFAF7OqSw=",
+        "lastModified": 1766042310,
+        "narHash": "sha256-l1uWqgvZyAhBRXrWG0rxRDUKa/1aORQacW3OfxfJTxI=",
         "owner": "DivitMittal",
         "repo": "TermEmulator-Cfg",
-        "rev": "89bc51729977260932e457f38aaccc95130bcb50",
+        "rev": "7fcc84d561f57be22063011cee571958a15a5b12",
         "type": "github"
       },
       "original": {
@@ -840,11 +840,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764506978,
-        "narHash": "sha256-XP+m4jm78pJe1VFH0PK9f1Y1QcNqEDvHnlGzdzTUq4Q=",
+        "lastModified": 1766052182,
+        "narHash": "sha256-K/ByHCENUbi7eP/n8iFPxNc63mTSA/3b+504EguIU7I=",
         "owner": "DivitMittal",
         "repo": "hammerspoon-nix",
-        "rev": "6476e9324abb8e4db7e37ff4de3cb151ab8d2e8e",
+        "rev": "bac25a48353afeb6836d9a1d951c098900d2501a",
         "type": "github"
       },
       "original": {
