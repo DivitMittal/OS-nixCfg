@@ -29,5 +29,12 @@
       inherit class;
       additionalModules = [./tty];
     };
+
+    M1 = mkHost {
+      hostName = "M1";
+      system = "aarch64-linux";
+      inherit class;
+      additionalModules = [./tty];
+    };
   };
 }

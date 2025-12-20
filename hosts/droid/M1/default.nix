@@ -1,16 +1,19 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: {
-  imports = lib.custom.scanPaths ./.;
-
   environment.packages = lib.attrsets.attrValues {
     inherit
       (pkgs)
       dash
+      home-manager
       ;
   };
+
+  # Make home-manager use the flake's home-manager
+  nix.registry.home-manager.flake = inputs.home-manager;
 
   user = rec {
     uid = 10660;
