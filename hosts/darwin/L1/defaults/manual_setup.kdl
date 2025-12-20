@@ -1,52 +1,67 @@
-Battery {
-  low-power-mode never
-  Battery-Health {
-    optimized-battery-charging OFF
-    manage-battery-longevity OFF
+battery {
+  low-power-mode "never"
+  battery-health {
+    optimized-battery-charging false
+    manage-battery-longevity false
   }
-  Options {
-    slightly-dim-display-on-battery OFF
-    automatic-graphics-switching OFF
+  options {
+    slightly-dim-display-on-battery false
+    automatic-graphics-switching false
   }
 }
-Accessibility {
-  Vision {
-    Display {
-      Display-Contrast "0.5"
-      Text {
+accessibility {
+  vision {
+    zoom {
+      use-keyboard-shortcuts-to-zoom true
+      zoom-style "picture-in-picture"
+      advanced {
+        zoomed-images-moves "to keep pointer centered"
+      }
+    }
+    display {
+      display-contrast "0.5"
+      text {
         text-size "16pt"
       }
-      Pointer {
-        shake-mouse-pointer-to-locate OFF
+      pointer {
+        shake-mouse-pointer-to-locate false
       }
     }
   }
 }
-Appearance {
-  Windows {
-    tint-window-background-with-wallpaper-color OFF
+appearance {
+  windows {
+    tint-window-background-with-wallpaper-color false
   }
   click-in-the-scroll-bar-to "Jump to that spot that's clicked"
 }
-Display {
+display {
   scaling "2048x1280"
-  automatic-brightness ON
-  true-tone OFF
+  automatic-brightness true
+  true-tone false
 }
-Siri {
-  Siri OFF
+siri {
+  siri false
 }
-Spotlight {
-  Results-from-apps {
-    turn-everything OFF
+spotlight {
+  results-from-apps {
+    turn-everything false
   }
-  Results-from-system {
-    turn-everything OFF
-    apps ON
+  results-from-system {
+    turn-everything false
+    apps true
   }
 }
-Keyboard {
-  adjust-keyboard-brightness-in-low-light OFF
-  keyboard-shortcuts customize
+keyboard {
+  adjust-keyboard-brightness-in-low-light false
+  keyboard-shortcuts {
+    accessibility {
+      zoom {
+        toggle-zoom "hyper+z"
+        zoom-in "opt+cmd+shift+="
+        zoom-out "opt+cmd+-"
+      }
+    }
+  }
 }
 
