@@ -55,7 +55,7 @@
       curl
       vim
       git
-      utillinux
+      util-linux
       tzdata
       hostname
       openssh

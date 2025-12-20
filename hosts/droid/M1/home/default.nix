@@ -10,7 +10,7 @@
       inherit self;
       inherit inputs;
       inherit hostPlatform;
-      # lib is propogated automatically
+      # lib is propogated by default
     };
     backupFileExtension = ".bak";
     useGlobalPkgs = true;

@@ -1,13 +1,14 @@
 {
   pkgs,
   inputs,
+  hostPlatform,
   ...
 }: {
   programs.github-copilot = let
     pnpmCommand = "${pkgs.pnpm}/bin/pnpm";
   in {
     enable = true;
-    package = inputs.nix-ai-tools.packages.${pkgs.system}.copilot-cli;
+    package = inputs.nix-ai-tools.packages.${hostPlatform.system}.copilot-cli;
 
     mcpServers = {
       ## modelcontextprotocol

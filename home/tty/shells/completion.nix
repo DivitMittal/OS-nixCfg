@@ -29,7 +29,7 @@ in {
       ])
     ];
 
-    initExtra = mkMerge [
+    initContent = mkMerge [
       (mkIf config.programs.carapace.enable ''
         # Zsh-specific carapace configuration
         export CARAPACE_MERGEFLAGS=1      # Merge flags to single tag group (zsh default)
