@@ -1,19 +1,24 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: let
-  inherit (lib) mkAfter;
+  inherit (lib) mkAfter mkIf;
 in {
-  programs.bash.initExtra = mkAfter ''
-    if [ "`id -u`" -eq 0 ]; then # ckeck for root user
-      PS1="\[\e[1;31m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\w]> \[\e[0m\]"
-    else
-      PS1="\[\e[1m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\w]> \[\e[0m\]"
-    fi
-  '';
+  programs.bash = mkIf config.programs.bash.enable {
+    initExtra = mkAfter ''
+      if [ "`id -u`" -eq 0 ]; then # ckeck for root user
+        PS1="\[\e[1;31m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\w]> \[\e[0m\]"
+      else
+        PS1="\[\e[1m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\w]> \[\e[0m\]"
+      fi
+    '';
+  };
 
-  programs.zsh.initContent = mkAfter "PS1='%F{cyan}%~%f %# '";
+  programs.zsh = mkIf config.programs.zsh.enable {
+    initContent = mkAfter "PS1='%F{cyan}%~%f %# '";
+  };
 
   home.sessionVariables = {
     STARSHIP_LOG = "error";
@@ -23,7 +28,7 @@ in {
     enable = true;
     package = pkgs.starship;
 
-    enableFishIntegration = true;
+    enableFishIntegration = config.programs.fish.enable;
     enableZshIntegration = false;
     enableBashIntegration = false;
     enableNushellIntegration = false;

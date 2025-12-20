@@ -1,10 +1,17 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
+  inherit (lib) mkIf;
+in {
   programs.mods = {
     enable = true;
     package = pkgs.mods;
 
     enableBashIntegration = false;
-    enableFishIntegration = true;
+    enableFishIntegration = config.programs.fish.enable;
     # Disable automatic Zsh integration - loading it manually after compinit
     enableZshIntegration = false;
 
@@ -67,7 +74,9 @@
   };
 
   # Manual Zsh integration - loaded after compinit to avoid "command not found: compdef" error
-  programs.zsh.initContent = ''
-    source <(${pkgs.mods}/bin/mods completion zsh)
-  '';
+  programs.zsh = mkIf config.programs.zsh.enable {
+    initContent = ''
+      source <(${pkgs.mods}/bin/mods completion zsh)
+    '';
+  };
 }

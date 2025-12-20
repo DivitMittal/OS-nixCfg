@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: {
   home.packages = lib.attrsets.attrValues {
@@ -20,8 +21,8 @@
     enable = true;
     package = pkgs.pay-respects;
 
-    enableFishIntegration = true;
-    enableZshIntegration = true;
+    enableFishIntegration = config.programs.fish.enable;
+    enableZshIntegration = config.programs.zsh.enable;
     enableBashIntegration = false;
     enableNushellIntegration = false;
   };
@@ -30,8 +31,8 @@
     enable = true;
     package = pkgs.eza;
 
-    enableFishIntegration = true;
-    enableZshIntegration = true;
+    enableFishIntegration = config.programs.fish.enable;
+    enableZshIntegration = config.programs.zsh.enable;
     enableBashIntegration = false;
     enableNushellIntegration = false;
     git = true;

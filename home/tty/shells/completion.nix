@@ -70,8 +70,8 @@ in {
     package = pkgs.carapace;
 
     enableBashIntegration = false;
-    enableZshIntegration = true;
-    enableFishIntegration = true;
+    enableZshIntegration = config.programs.zsh.enable;
+    enableFishIntegration = config.programs.fish.enable;
     enableNushellIntegration = false;
   };
 }

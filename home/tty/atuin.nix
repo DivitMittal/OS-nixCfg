@@ -1,10 +1,14 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   programs.atuin = {
     enable = true;
     package = pkgs.atuin;
 
-    enableFishIntegration = true;
-    enableZshIntegration = true;
+    enableFishIntegration = config.programs.fish.enable;
+    enableZshIntegration = config.programs.zsh.enable;
     enableBashIntegration = false;
     enableNushellIntegration = false;
 

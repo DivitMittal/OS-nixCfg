@@ -7,6 +7,7 @@
   eza_opts = lib.strings.concatStringsSep " " config.programs.eza.extraOptions;
   fd_opts = lib.strings.concatStringsSep " " ["--hidden"];
   delta_opts = lib.strings.concatStringsSep " " ["--paging=never"];
+  inherit (lib) mkIf;
 in {
   programs.fzf = {
     enable = true;
@@ -33,7 +34,7 @@ in {
     ];
   };
 
-  programs.fish = {
+  programs.fish = mkIf config.programs.fish.enable {
     plugins = [
       {
         name = "fzf";

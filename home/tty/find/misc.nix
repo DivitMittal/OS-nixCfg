@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: {
   home.packages = lib.attrsets.attrValues {
@@ -20,8 +21,8 @@
     enable = true;
     package = pkgs.zoxide;
 
-    enableFishIntegration = true;
-    enableZshIntegration = true;
+    enableFishIntegration = config.programs.fish.enable;
+    enableZshIntegration = config.programs.zsh.enable;
     enableBashIntegration = false;
     enableNushellIntegration = false;
     options = ["--cmd cd"];
@@ -47,7 +48,7 @@
     enable = true;
     package = pkgs.television;
     enableBashIntegration = false;
-    enableZshIntegration = true;
-    enableFishIntegration = true;
+    enableZshIntegration = config.programs.zsh.enable;
+    enableFishIntegration = config.programs.fish.enable;
   };
 }
