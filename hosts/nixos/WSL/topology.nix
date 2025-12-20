@@ -17,12 +17,5 @@ _: {
         ];
       };
     };
-
-    services = {
-      ssh = {
-        name = "SSH Server";
-        port = 22;
-      };
-    };
   };
 }
