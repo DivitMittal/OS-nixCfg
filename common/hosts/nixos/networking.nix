@@ -1,8 +1,4 @@
-{
-  lib,
-  config,
-  ...
-}: {
+{lib, ...}: {
   networking = {
     nameservers = lib.mkDefault [
       # Cloudflare DNS
@@ -15,9 +11,6 @@
       enable = false;
     };
   };
-  users.users = {
-    "${config.hostSpec.username}" = {
-      isNormalUser = true;
-    };
-  };
+  networking.wireless.enable = lib.mkForce false; # wpa_supplicant
+  networking.networkmanager.enable = true;
 }
