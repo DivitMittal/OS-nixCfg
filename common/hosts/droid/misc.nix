@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   system.stateVersion = "24.05";
@@ -9,23 +10,6 @@
 
   environment.etcBackupExtension = ".bak";
   environment.motd = "";
-
-  ## Termux settings
-  android-integration = {
-    am.enable = true;
-    termux-open.enable = true;
-    termux-open-url.enable = true;
-    termux-reload-settings.enable = true;
-    termux-setup-storage.enable = true;
-  };
-  terminal = {
-    colors = {
-      background = "#000000";
-      foreground = "#FFFFFF";
-      cursor = "#FF0000";
-    };
-    font = "${pkgs.nerd-fonts.caskaydia-cove}/share/fonts/truetype/NerdFonts/CaskaydiaCoveNerdFontMono-Regular.ttf";
-  };
 
   environment.packages = lib.attrsets.attrValues {
     inherit
@@ -59,7 +43,12 @@
       tzdata
       hostname
       openssh
+      ## Nix
+      home-manager
       ;
   };
   environment.extraOutputsToInstall = ["info"]; # "doc" "devdoc"
+
+  # Make home-manager use the flake's home-manager
+  nix.registry.home-manager.flake = inputs.home-manager;
 }
