@@ -10,7 +10,6 @@ home/
 ├── comms/        # Email, IRC, RSS
 ├── dev/          # Development (JS, Python, cloud)
 ├── gui/          # GUI apps, desktop managers
-├── keyboard/     # Kanata keyboard config
 ├── media/        # Media players
 ├── tools/        # Utilities, productivity
 ├── tty/          # Terminal tools (shells, editors, multiplexers, VCS)

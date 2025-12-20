@@ -9,6 +9,7 @@ common/
 ├── all/          # Universal configs for all platforms
 ├── home/         # Common home-manager configs
 └── hosts/        # Common host/system configs
+    ├── all/      # Universal host configs
     ├── darwin/   # macOS-specific
     ├── nixos/    # NixOS-specific
     └── droid/    # nix-on-droid-specific
