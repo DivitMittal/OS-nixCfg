@@ -9,7 +9,7 @@
       inputs.actions-nix.flakeModules.default
     ];
 
-  _module.args = {
+  _module.args = rec {
     common-on = rec {
       push = {
         branches = ["master"];
@@ -40,15 +40,7 @@
       contents = "write";
       id-token = "write";
     };
-    common-actions = [
-      {
-        name = "Checkout repo";
-        uses = "actions/checkout@main";
-        "with" = {
-          fetch-depth = 1;
-          persist-credentials = false;
-        };
-      }
+    part-actions = [
       {
         name = "Set env var";
         run = "echo \"OS_NIXCFG=$(pwd)\" 1>> \"$GITHUB_ENV\"";
@@ -74,6 +66,30 @@
         };
       }
     ];
+    common-actions =
+      [
+        {
+          name = "Checkout repo";
+          uses = "actions/checkout@main";
+          "with" = {
+            fetch-depth = 1;
+            persist-credentials = false;
+          };
+        }
+      ]
+      ++ part-actions;
+    common-actions-cred =
+      [
+        {
+          name = "Checkout repo";
+          uses = "actions/checkout@main";
+          "with" = {
+            fetch-depth = 1;
+            persist-credentials = true;
+          };
+        }
+      ]
+      ++ part-actions;
   };
 
   flake.actions-nix = {

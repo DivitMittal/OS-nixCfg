@@ -1,6 +1,6 @@
 {
   common-permissions,
-  common-actions,
+  common-actions-cred,
   environment,
   ...
 }: {
@@ -24,7 +24,7 @@
       permissions = common-permissions;
       inherit environment;
       steps =
-        common-actions
+        common-actions-cred
         ++ [
           {
             name = "Build topology visualization";
