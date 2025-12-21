@@ -10,10 +10,10 @@ hosts/
 │   └── L1/       # x86_64-darwin workstation
 ├── nixos/         # NixOS systems
 │   ├── L2/       # x86_64-linux desktop
-│   ├── WSL/      # x86_64-linux WSL2
-│   └── iso/      # ISO builds
-└── droid/         # Android (nix-on-droid)
-    └── M1/
+│   └── WSL/      # x86_64-linux WSL2
+├── droid/         # Android (nix-on-droid)
+│   └── M1/
+└── iso/           # ISO builds
 ```
 
 ## Host Directory Layout

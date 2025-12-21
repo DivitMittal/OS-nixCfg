@@ -12,7 +12,8 @@ common/
     ├── all/      # Universal host configs
     ├── darwin/   # macOS-specific
     ├── nixos/    # NixOS-specific
-    └── droid/    # nix-on-droid-specific
+    ├── droid/    # nix-on-droid-specific
+    └── iso/      # ISO build-specific
 ```
 
 ## Override Hierarchy

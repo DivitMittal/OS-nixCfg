@@ -84,14 +84,29 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
 │   ├── all
 │   ├── home
 │   ├── hosts
+│   │   ├── all
+│   │   ├── darwin
+│   │   ├── droid
+│   │   ├── iso
+│   │   └── nixos
 │   └── README.md
 ├── flake
 │   ├── actions
+│   │   ├── darwin-build.nix
+│   │   ├── default.nix
+│   │   ├── flake-check.nix
+│   │   ├── flake-lock-update.nix
+│   │   ├── home-build.nix
+│   │   ├── nixos-build.nix
+│   │   └── topology-build.nix
 │   ├── topology
+│   │   ├── default.nix
+│   │   └── global.nix
 │   ├── checks.nix
 │   ├── default.nix
 │   ├── devshells.nix
 │   ├── formatters.nix
+│   ├── iso-packages.nix
 │   ├── mkHost.nix
 │   └── README.md
 ├── home
@@ -107,8 +122,16 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
 │   └── README.md
 ├── hosts
 │   ├── darwin
+│   │   ├── L1
+│   │   └── default.nix
 │   ├── droid
+│   │   ├── M1
+│   │   └── default.nix
+│   ├── iso
 │   ├── nixos
+│   │   ├── L2
+│   │   ├── WSL
+│   │   └── default.nix
 │   ├── default.nix
 │   └── README.md
 ├── lib
@@ -150,8 +173,6 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
 ├── README.md
 ├── SECURITY.md
 └── shell.nix
-
-38 directories, 43 files
 ```
 
 ## 📊 Home-Manager Profile Graph
