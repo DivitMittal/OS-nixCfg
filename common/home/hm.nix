@@ -5,13 +5,14 @@
 }: {
   programs.home-manager.enable = true; # home-manager standalone
 
+  home.stateVersion = lib.mkDefault "25.05";
+
   home = {
     username = lib.mkDefault config.hostSpec.username;
     homeDirectory = lib.mkDefault config.hostSpec.home;
     preferXdgDirectories = true;
     enableNixpkgsReleaseCheck = true;
     language.base = "en_US.UTF-8";
-    stateVersion = lib.mkDefault "25.05";
   };
 
   ## home-manager manual

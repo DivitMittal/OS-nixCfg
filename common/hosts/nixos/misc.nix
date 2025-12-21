@@ -5,6 +5,8 @@
 }: let
   inherit (lib) mkDefault;
 in {
+  system.stateVersion = mkDefault "24.11";
+
   # Enable building aarch64 packages for nix-on-droid deployment
   # Uses QEMU user-mode emulation via binfmt_misc
   boot.binfmt.emulatedSystems = mkDefault ["aarch64-linux"];
@@ -16,6 +18,4 @@ in {
       isNormalUser = true;
     };
   };
-
-  system.stateVersion = "24.11";
 }
