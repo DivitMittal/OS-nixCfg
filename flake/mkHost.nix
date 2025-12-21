@@ -18,6 +18,7 @@
         darwin = inputs.nix-darwin.lib.darwinSystem;
         droid = inputs.nix-on-droid.lib.nixOnDroidConfiguration;
         home = inputs.home-manager.lib.homeManagerConfiguration;
+        iso = lib.nixosSystem;
       };
       inherit (ctx.pkgs.stdenvNoCC) hostPlatform;
       pkgs = ctx.pkgs.extend (
@@ -38,13 +39,16 @@
         commonDir = self + "/common";
       in
         [{hostSpec = {inherit hostName;};}]
-        ++ lib.lists.optionals (class == "darwin" || class == "nixos") [
+        ++ lib.lists.optionals (class == "darwin" || class == "nixos" || class == "iso") [
           (commonDir + "/all")
           (commonDir + "/hosts/all")
         ]
-        ++ lib.lists.optionals (class == "darwin" || class == "nixos" || class == "droid") [
+        ++ lib.lists.optionals (class == "darwin" || class == "nixos" || class == "droid" || class == "iso") [
           (commonDir + "/hosts/${class}")
           (self + "/hosts/${class}/${hostName}")
+        ]
+        ++ lib.lists.optionals (class == "iso") [
+          (commonDir + "/hosts/nixos")
         ]
         ++ lib.lists.optionals (class == "home") [
           (commonDir + "/all")
@@ -60,7 +64,7 @@
     in
       configGenerator.${class} (lib.attrsets.mergeAttrsList [
         {inherit pkgs modules;}
-        (lib.attrsets.optionalAttrs (class == "nixos" || class == "darwin") {inherit specialArgs lib;})
+        (lib.attrsets.optionalAttrs (class == "nixos" || class == "darwin" || class == "iso") {inherit specialArgs lib;})
         (
           lib.attrsets.optionalAttrs (class == "home") (lib.attrsets.mergeAttrsList [
             {
@@ -77,7 +81,6 @@
         (
           lib.attrsets.optionalAttrs (class == "droid") {
             extraSpecialArgs = specialArgs // {inherit lib;};
-            home-manager-path = inputs.home-manager.outPath;
           }
         )
       ]));
