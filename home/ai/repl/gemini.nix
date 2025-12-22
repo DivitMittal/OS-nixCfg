@@ -6,12 +6,38 @@
   programs.gemini-cli = {
     enable = true;
     package = pkgs.ai.gemini-cli;
-    defaultModel = "gemini-2.5-pro";
+    defaultModel = "gemini-3-pro-preview";
     settings = {
-      selectedAuthType = "gemini-api-key";
-      theme = "ANSI";
-      preferredEditor = "${config.home.sessionVariables.EDITOR}";
-      vimMode = true;
+      general = {
+        preferredEditor = "${config.home.sessionVariables.EDITOR}";
+        vimMode = true;
+        previewFeatures = true;
+        disableAutoUpdate = true;
+        enablePromptCompletion = true;
+      };
+      security = {
+        auth = {
+          selectedType = "gemini-api-key";
+        };
+      };
+      ui = {
+        theme = "ANSI";
+        showStatusInTitle = true;
+        footer = {
+          hideContextPercentage = false;
+        };
+        showModelInfoInChat = true;
+        showCitations = true;
+        showMemoryUsage = true;
+      };
+      context = {
+        loadMemoryFromIncludeDirectories = true;
+      };
+      tools = {
+        shell = {
+          showColor = true;
+        };
+      };
       mcpServers = let
         pnpmCommand = "${pkgs.pnpm}/bin/pnpm";
         # uvCommand = "${pkgs.uv}/bin/uvx";
