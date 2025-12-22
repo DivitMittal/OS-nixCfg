@@ -103,32 +103,13 @@
           "Edit"
           "Write"
 
+          ## MCPs
           ## Filesystem MCP
-          "mcp__filesystem__list_directory"
-          "mcp__filesystem__edit_file"
-          "mcp__filesystem__write_file"
-          "mcp__filesystem__read_text_file"
-          "mcp__filesystem__read_multiple_files"
-          "mcp__filesystem__create_directory"
-          "mcp__filesystem__directory_tree"
-
+          "mcp__filesystem__*"
           ## Serena MCP
-          "mcp__serena__activate_project"
-          "mcp__serena__onboarding"
-          "mcp__serena__find_file"
-          "mcp__serena__check_onboarding_performed"
-          "mcp__serena__write_memory"
-          "mcp__serena__list_dir"
-          "mcp__serena__find_symbol"
-          "mcp__serena__insert_after_symbol"
-          "mcp__serena__get_symbols_overview"
-          "mcp__serena__replace_symbol_body"
-          "mcp__serena__search_for_pattern"
-
+          "mcp__serena__*"
           ## Octocode MCP
-          "mcp__octocode__githubViewRepoStructure"
-          "mcp__octocode__githubGetFileContent"
-          "mcp__octocode__githubSearchCode"
+          "mcp__octocode__*"
         ];
         ask = [
           "Bash(git push:*)"
