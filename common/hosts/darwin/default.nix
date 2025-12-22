@@ -1,11 +1,3 @@
-{
-  self,
-  lib,
-  ...
-}: {
-  imports =
-    (lib.custom.scanPaths ./.)
-    ++ [
-      self.outputs.darwinModules.default
-    ];
+{lib, ...}: {
+  imports = lib.custom.scanPaths ./.;
 }

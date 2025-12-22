@@ -4,7 +4,7 @@
   withSystem,
   self,
   ...
-} @ args: let
+}: let
   mkCfg = {
     hostName,
     class,
@@ -13,74 +13,70 @@
     extraSpecialArgs ? {},
   }:
     withSystem system (ctx: let
-      configGenerator = {
+      configGenerator = rec {
         nixos = lib.nixosSystem;
         darwin = inputs.nix-darwin.lib.darwinSystem;
         droid = inputs.nix-on-droid.lib.nixOnDroidConfiguration;
         home = inputs.home-manager.lib.homeManagerConfiguration;
-        iso = lib.nixosSystem;
+        iso = nixos;
       };
       inherit (ctx.pkgs.stdenvNoCC) hostPlatform;
+      inherit (lib.attrsets) optionalAttrs mergeAttrsList;
       pkgs = ctx.pkgs.extend (
         self: super:
-          lib.attrsets.mergeAttrsList [
-            (args.self.outputs.overlays.pkgs-nixos self super)
-            (inputs.nur.overlays.default self super)
-            (lib.attrsets.optionalAttrs hostPlatform.isDarwin (
-              args.self.outputs.overlays.pkgs-darwin self super
-            ))
-            (lib.attrsets.optionalAttrs (class == "droid") (
-              inputs.nix-on-droid.overlays.default self super
-            ))
+          mergeAttrsList [
+            {
+              master = inputs.nixpkgs-master.legacyPackages.${hostPlatform.system};
+              nixosStable = inputs.nixpkgs-nixos.legacyPackages.${hostPlatform.system};
+            }
+            (optionalAttrs hostPlatform.isDarwin {
+              darwinStable = inputs.nixpkgs-darwin.legacyPackages.${hostPlatform.system};
+            })
+            (
+              optionalAttrs (class == "home") (mergeAttrsList [
+                {
+                  llm-agents = inputs.llm-agents.packages.${hostPlatform.system};
+                }
+                (inputs.nur.overlays.default self super)
+                (optionalAttrs hostPlatform.isDarwin (inputs.brew-nix.overlays.default self super))
+              ])
+            )
+            (optionalAttrs (class == "droid") (inputs.nix-on-droid.overlays.default self super))
           ]
       );
       specialArgs = {inherit self inputs hostPlatform;} // extraSpecialArgs;
       modules = let
         commonDir = self + "/common";
+        inherit (lib.lists) optionals;
       in
         [{hostSpec = {inherit hostName;};}]
-        ++ lib.lists.optionals (class == "darwin" || class == "nixos" || class == "iso") [
-          (commonDir + "/all")
-          (commonDir + "/hosts/all")
+        ++ optionals (class != "droid") [(commonDir + "/all")]
+        ++ optionals (class == "droid") [(commonDir + "/all/hostSpec.nix")]
+        ++ optionals (class != "home" && class != "droid") [(commonDir + "/hosts/all")]
+        ++ optionals (class == "home") [
+          (commonDir + "/home")
+          self.outputs.homeManagerModules.default
         ]
-        ++ lib.lists.optionals (class == "darwin" || class == "nixos" || class == "droid" || class == "iso") [
+        ++ optionals (class != "home") [
           (commonDir + "/hosts/${class}")
           (self + "/hosts/${class}/${hostName}")
         ]
-        ++ lib.lists.optionals (class == "iso") [
-          (commonDir + "/hosts/nixos")
-        ]
-        ++ lib.lists.optionals (class == "home") [
-          (commonDir + "/all")
-          (commonDir + "/home")
-        ]
-        ++ lib.lists.optionals (class == "droid") [
-          (commonDir + "/all/hostSpec.nix")
-        ]
-        ++ lib.lists.optionals (class == "nixos") [
+        ++ optionals (class == "iso") [(commonDir + "/hosts/nixos")]
+        ++ optionals (class == "nixos") [
           inputs.nix-topology.nixosModules.default
+        ]
+        ++ optionals (class == "darwin") [
+          self.outputs.darwinModules.default
         ]
         ++ additionalModules;
     in
-      configGenerator.${class} (lib.attrsets.mergeAttrsList [
+      configGenerator.${class} (mergeAttrsList [
         {inherit pkgs modules;}
-        (lib.attrsets.optionalAttrs (class == "nixos" || class == "darwin" || class == "iso") {inherit specialArgs lib;})
+        (optionalAttrs (class != "droid") {inherit lib;})
+        (optionalAttrs (class != "droid" && class != "home") {inherit specialArgs;})
         (
-          lib.attrsets.optionalAttrs (class == "home") (lib.attrsets.mergeAttrsList [
-            {
-              inherit lib;
-              extraSpecialArgs = specialArgs;
-            }
-            (
-              lib.attrsets.optionalAttrs hostPlatform.isDarwin {
-                pkgs = pkgs.extend (self: super: (inputs.brew-nix.overlays.default self super));
-              }
-            )
-          ])
-        )
-        (
-          lib.attrsets.optionalAttrs (class == "droid") {
-            extraSpecialArgs = specialArgs // {inherit lib;};
+          optionalAttrs (class == "home" || class == "droid") {
+            extraSpecialArgs = specialArgs;
           }
         )
       ]));
