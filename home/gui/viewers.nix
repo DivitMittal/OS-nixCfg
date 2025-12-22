@@ -39,13 +39,17 @@
     ''
   );
 in {
+  # Calibre ebook management
+  programs.calibre = {
+    enable = true;
+    package =
+      if hostPlatform.isDarwin
+      then pkgs.brewCasks.calibre
+      else pkgs.calibre;
+  };
+
   home.packages =
     lib.attrsets.attrValues {
-      calibre =
-        if hostPlatform.isDarwin
-        then pkgs.brewCasks.calibre
-        else pkgs.calibre;
-
       # Office files (e.g., .docx, .xlsx, .pptx) editors/viewer
       onlyoffice =
         if hostPlatform.isDarwin
