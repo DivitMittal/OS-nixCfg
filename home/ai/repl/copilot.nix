@@ -3,7 +3,9 @@
     pnpmCommand = "${pkgs.pnpm}/bin/pnpm";
   in {
     enable = true;
-    package = pkgs.ai.copilot-cli;
+    package = pkgs.writeShellScriptBin "copilot" ''
+      exec ${pkgs.ai.copilot-cli}/bin/copilot --enable-all-github-mcp-tools --banner "$@"
+    '';
 
     mcpServers = {
       ## modelcontextprotocol
