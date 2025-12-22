@@ -7,6 +7,43 @@
 }: let
   remotesPath = "${config.home.homeDirectory}/Remotes";
 
+  # Cloud storage mount options (Google Drive, Dropbox, etc.)
+  # Optimized for write-heavy usage with aggressive caching
+  cloudMountOpts = ''
+    --vfs-cache-max-size 50G \
+    --vfs-cache-max-age 48h \
+    --dir-cache-time 5m \
+    --poll-interval 1m \
+    --vfs-read-chunk-size 1M \
+    --buffer-size 32M \
+    --vfs-read-ahead 128M \
+    --vfs-write-back 1m \
+    --attr-timeout 1s \
+    --no-modtime \
+    --vfs-cache-mode full \
+    --log-level ERROR \
+    --no-unicode-normalization=false
+  '';
+
+  # FTP mount options
+  # Lighter caching since FTP has lower latency than cloud APIs
+  # Shorter timeouts for fresher directory listings
+  # No write-back delay - FTP handles writes directly
+  ftpMountOpts = ''
+    --vfs-cache-max-size 5G \
+    --vfs-cache-max-age 1h \
+    --dir-cache-time 30s \
+    --poll-interval 30s \
+    --vfs-read-chunk-size 512K \
+    --buffer-size 16M \
+    --vfs-read-ahead 32M \
+    --vfs-write-back 0s \
+    --attr-timeout 1s \
+    --vfs-cache-mode writes \
+    --log-level ERROR \
+    --ftp-concurrency 4
+  '';
+
   mkRcloneMountScript = remoteName:
     pkgs.writeShellScriptBin remoteName ''
       #!/usr/bin/env bash
@@ -41,43 +78,21 @@
       # Trap SIGINT and SIGTERM
       trap cleanup SIGINT SIGTERM
 
-      # Fine-tune options as needed, but here's the gist of what we're passing
-      # Note that I set these option values because I'm a write-heavy user.
-      # --vfs-cache-mode full
-      # This enables full caching of files, which is beneficial for frequently accessed and modified files like markdown and docx documents.
-      # --vfs-cache-max-age 24h
-      # Keeps cached files for 24 hours, allowing quick access to recently modified documents.
-      # --dir-cache-time 5m
-      # Reduces directory caching time to 5 minutes, ensuring you see updated directory listings more frequently.
-      # --poll-interval 1m
-      # Checks for remote changes every minute, useful for syncing modifications quickly.
-      # --vfs-read-chunk-size 1M
-      # Sets a smaller read chunk size, which can be more efficient for smaller text-based files.
-      # --buffer-size 32M
-      # Increases the buffer size to improve performance when reading/writing files.
-      # --vfs-read-ahead 128M
-      # Enables read-ahead caching to improve performance when reading files sequentially.
-      # --vfs-write-back 5s
-      # Reduces write-back time to 5 seconds, ensuring modifications are synced to the remote more quickly.
-      # --attr-timeout 1s
-      # Reduces attribute caching time, ensuring you see the latest file attributes more frequently.
-      # --no-modtime
-      # Disables modification time checks, which can speed up operations on frequently modified files.
-      rclone mount \
-        --vfs-cache-max-size 50G \
-        --vfs-cache-max-age 48h \
-        --dir-cache-time 5m \
-        --poll-interval 1m \
-        --vfs-read-chunk-size 1M \
-        --buffer-size 32M \
-        --vfs-read-ahead 128M \
-        --vfs-write-back 1m \
-        --attr-timeout 1s \
-        --no-modtime \
-        --vfs-cache-mode full \
-        --log-level ERROR \
-        --no-unicode-normalization=false \
-        "${remoteName}:" "${remotesPath}/${remoteName}"
+      # Detect remote type and select appropriate mount options
+      REMOTE_TYPE=$(rclone config show "${remoteName}" 2>/dev/null | grep "^type" | cut -d'=' -f2 | tr -d ' ')
+
+      case "$REMOTE_TYPE" in
+        ftp|sftp)
+          echo "Detected FTP/SFTP remote, using lightweight cache settings"
+          MOUNT_OPTS="${ftpMountOpts}"
+          ;;
+        *)
+          echo "Detected cloud remote ($REMOTE_TYPE), using full cache settings"
+          MOUNT_OPTS="${cloudMountOpts}"
+          ;;
+      esac
+
+      rclone mount $MOUNT_OPTS "${remoteName}:" "${remotesPath}/${remoteName}"
     '';
 in {
   imports = [
