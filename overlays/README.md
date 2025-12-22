@@ -6,39 +6,32 @@ Nix package overlays modifying/extending nixpkgs.
 
 ```
 overlays/
-├── default.nix       # Main overlay composition
-└── nixpkgs.nix       # Package modifications
+├── default.nix       # Main overlay composition (flake-parts module)
+└── custom.nix        # Custom package overlays
 ```
 
 ## Exports
 
-- `default` - Combined overlays
-- `pkgs-master` - nixpkgs master branch
-- `pkgs-nixos` - NixOS stable
-- `pkgs-darwin` - macOS stable
-- `custom` - Custom packages from `../pkgs/`
+The `custom` overlay provides:
 
-## Basic Overlay
+- `customDarwin` - macOS-specific packages from `../pkgs/darwin/`
+- `customPypi` - Python packages from `../pkgs/pypi/`
+- `custom` - General custom packages from `../pkgs/custom/`
 
-```nix
-final: prev: {
-  # Modify existing
-  myPackage = prev.myPackage.overrideAttrs (old: {
-    version = "2.0.0";
-  });
+All packages are loaded recursively using `packagesFromDirectoryRecursive`.
 
-  # Add new
-  myNewPackage = final.callPackage ../pkgs/my-new-package {};
-}
-```
+## Implementation
+
+Custom packages are defined in `custom.nix` using `packagesFromDirectoryRecursive` for automatic discovery.
 
 ## Usage
 
-Auto-applied to all systems. Access via:
+Auto-applied to all systems. Access custom packages via:
 
 ```nix
-pkgs.myPackage
-pkgs.pkgs-master.neovim
+pkgs.customDarwin.myMacPackage
+pkgs.customPypi.myPythonPackage
+pkgs.custom.myGeneralPackage
 ```
 
 Use overlays for system-wide changes; use host configs for host-specific packages.
