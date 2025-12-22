@@ -8,4 +8,9 @@
       exec ${pkgs.pnpm}/bin/pnpm dlx dl-librescore@latest "$@"
     '';
   };
+
+  programs.tidalcycles = {
+    enable = true;
+    supercolliderPackage = pkgs.brewCasks.supercollider;
+  };
 }

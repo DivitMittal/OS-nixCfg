@@ -7,16 +7,10 @@
 }: let
   cfg = config.programs.tidalcycles;
 
-  # SuperCollider path varies by platform
-  # On macOS: installed via brewCasks to ~/Applications
-  # On Linux: installed via nixpkgs
   scPath =
     if hostPlatform.isDarwin
-    then "${pkgs.brewCasks.supercollider}/Applications/SuperCollider.app/Contents/MacOS/sclang"
-    else "${pkgs.supercollider}/bin/sclang";
-
-  # SuperCollider is only available in nixpkgs on Linux
-  supercolliderAvailable = hostPlatform.isLinux;
+    then "${cfg.supercolliderPackage}/Applications/SuperCollider.app/Contents/MacOS/sclang"
+    else "${cfg.supercolliderPackage}/bin/sclang";
 
   # SuperCollider script for installing SuperDirt
   installScript = pkgs.writeText "install-superdirt.scd" ''
@@ -38,6 +32,11 @@
         s.waitForBoot {
           ~dirt = SuperDirt(2, s);
           ~dirt.loadSoundFiles;
+
+          // Load additional sample packs from ~/.local/share/SuperCollider/samples-extra
+          ~dirt.loadSoundFiles(PathName(Platform.userAppSupportDir +/+ "samples-extra/*").absolutePath);
+          "Loaded samples from ~/.local/share/SuperCollider/samples-extra".postln;
+
           ~dirt.start(57120, 0 ! 12);
           "SuperDirt started on port 57120".postln;
         };
@@ -213,6 +212,8 @@ in {
 
     package = lib.mkPackageOption pkgs.haskellPackages "tidal" {nullable = true;};
 
+    supercolliderPackage = lib.mkPackageOption pkgs "supercollider" {};
+
     installHelperScripts = lib.mkOption {
       type = lib.types.bool;
       default = true;
@@ -230,9 +231,7 @@ in {
       type = lib.types.bool;
       default = true;
       description = ''
-        Install SuperCollider.
-        On Linux, this installs from nixpkgs.
-        On macOS, this installs via brewCasks.
+        Install SuperCollider from the configured supercolliderPackage.
       '';
     };
   };
@@ -245,11 +244,8 @@ in {
       // (lib.optionalAttrs cfg.installHelperScripts {
         inherit install-superdirt start-superdirt tidal-repl install-sc3-plugins sclang;
       })
-      // (lib.optionalAttrs (cfg.installSupercollider && supercolliderAvailable) {
-        inherit (pkgs) supercollider;
-      })
-      // (lib.optionalAttrs (cfg.installSupercollider && hostPlatform.isDarwin) {
-        inherit (pkgs.brewCasks) supercollider;
+      // (lib.optionalAttrs cfg.installSupercollider {
+        supercollider = cfg.supercolliderPackage;
       })
     );
   };
