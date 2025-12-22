@@ -1,14 +1,9 @@
-{
-  pkgs,
-  inputs,
-  hostPlatform,
-  ...
-}: {
+{pkgs, ...}: {
   programs.github-copilot = let
     pnpmCommand = "${pkgs.pnpm}/bin/pnpm";
   in {
     enable = true;
-    package = inputs.nix-ai-tools.packages.${hostPlatform.system}.copilot-cli;
+    package = pkgs.ai.copilot-cli;
 
     mcpServers = {
       ## modelcontextprotocol
@@ -32,11 +27,11 @@
         type = "http";
         url = "https://mcp.deepwiki.com/mcp";
       };
-      octocode = {
-        type = "local";
-        command = pnpmCommand;
-        args = ["dlx" "octocode-mcp@latest"];
-      };
+      # octocode = {
+      #   type = "local";
+      #   command = pnpmCommand;
+      #   args = ["dlx" "octocode-mcp@latest"];
+      # };
       ddg = {
         type = "local";
         command = pnpmCommand;

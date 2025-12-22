@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   programs.crush = {
-    enable = true;
+    enable = false;
     package = pkgs.ai.crush;
 
     settings = {
