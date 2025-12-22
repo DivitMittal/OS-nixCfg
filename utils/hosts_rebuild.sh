@@ -26,7 +26,7 @@ if [[ $os == "Darwin" ]]; then
   green "====== REBUILDING & SWITCHING (DARWIN) ======"
   # Test if there's no darwin-rebuild, then use nix build and then run it
   if ! which darwin-rebuild &>/dev/null; then
-    nix build --show-trace .#darwinConfigurations."$HOST".system
+    nix build --show-trace --accept-flake-config .#darwinConfigurations."$HOST".system
     sudo ./result/sw/bin/darwin-rebuild $switch_args
   else
     echo $switch_args
