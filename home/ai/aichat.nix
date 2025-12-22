@@ -19,11 +19,6 @@
       clients = [
         {
           type = "openai-compatible";
-          name = "openrouter";
-          api_base = "https://openrouter.ai/api/v1";
-        }
-        {
-          type = "openai-compatible";
           name = "groq";
           api_base = "https://api.groq.com/openai/v1";
           # api_key = ""; # Using environment variables instead
@@ -57,6 +52,11 @@
               };
             };
           };
+        }
+        {
+          type = "openai-compatible";
+          name = "openrouter";
+          api_base = "https://openrouter.ai/api/v1";
         }
       ];
     };
