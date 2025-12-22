@@ -107,7 +107,7 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
 │   ├── devshells.nix
 │   ├── formatters.nix
 │   ├── iso-packages.nix
-│   ├── mkHost.nix
+│   ├── mkCfg.nix
 │   └── README.md
 ├── home
 │   ├── ai

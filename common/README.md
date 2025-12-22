@@ -25,4 +25,4 @@ common/
 
 ## Usage
 
-Common configs are automatically imported by `mkHost` builder. Place widely applicable settings here; host-specific configs belong in `hosts/`.
+Common configs are automatically imported by `mkCfg` builder. Place widely applicable settings here; host-specific configs belong in `hosts/`.

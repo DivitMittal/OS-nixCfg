@@ -7,7 +7,7 @@ Flake-parts modules defining flake outputs.
 - **devshells.nix** - Development environment (`nix develop`)
 - **formatters.nix** - Code formatting (`nix fmt`: alejandra, deadnix, statix)
 - **checks.nix** - Pre-commit hooks
-- **mkHost.nix** - Universal host builder (nixos/darwin/droid/home)
+- **mkCfg.nix** - Universal host builder (nixos/darwin/droid/home)
 - **iso-packages.nix** - ISO build packages
 - **topology/** - Infrastructure visualization (nix-topology)
   - default.nix - Topology module exports

@@ -1,18 +1,18 @@
 {
   inputs,
-  mkHost,
+  mkCfg,
   ...
 }: {
   flake.nixosConfigurations = let
     class = "nixos";
   in {
-    WSL = mkHost {
+    WSL = mkCfg {
       inherit class;
       hostName = "WSL";
       system = "x86_64-linux";
       additionalModules = [inputs.nixos-wsl.nixosModules.default];
     };
-    L2 = mkHost {
+    L2 = mkCfg {
       inherit class;
       hostName = "L2";
       system = "x86_64-linux";

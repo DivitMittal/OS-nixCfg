@@ -5,7 +5,7 @@
   self,
   ...
 } @ args: let
-  mkHost = {
+  mkCfg = {
     hostName,
     class,
     system,
@@ -86,6 +86,6 @@
       ]));
 in {
   _module.args = {
-    inherit mkHost;
+    inherit mkCfg;
   };
 }

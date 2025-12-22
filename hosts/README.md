@@ -34,7 +34,7 @@ All `.nix` files auto-imported via `lib.custom.scanPaths`.
 
 1. Create `hosts/{platform}/{hostname}/`
 2. Add `default.nix` with config
-3. Register in `hosts/{platform}/default.nix` using `mkHost`
+3. Register in `hosts/{platform}/default.nix` using `mkCfg`
 
 ## Rebuild
 

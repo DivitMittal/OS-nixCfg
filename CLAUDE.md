@@ -41,7 +41,7 @@ This is a **multi-platform Nix flake** supporting macOS (nix-darwin), Linux (Nix
 
 **Host Configuration System**:
 
-- `flake/mkHost.nix` defines a universal host builder function
+- `flake/mkCfg.nix` defines a universal host builder function
 - Supports 4 classes: `nixos`, `darwin`, `droid`, `home`
 - Automatically includes appropriate common modules based on class
 - Each host gets its own directory under `hosts/{platform}/{hostname}/`
