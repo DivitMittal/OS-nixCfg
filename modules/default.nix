@@ -9,6 +9,7 @@
     ov = builtins.import ./home/ov.nix;
     spicetify-cli = builtins.import ./home/spicetify-cli.nix;
     spotifyd = builtins.import ./home/spotifyd.nix;
+    tidalcycles = builtins.import ./home/tidalcycles.nix;
     warpd = builtins.import ./home/warpd.nix;
     wiki-tui = builtins.import ./home/wiki-tui.nix;
   };

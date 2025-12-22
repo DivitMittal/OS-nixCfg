@@ -1,9 +1,12 @@
 {
-  pkgs,
+  config,
   lib,
+  pkgs,
   hostPlatform,
   ...
 }: let
+  cfg = config.programs.tidalcycles;
+
   # SuperCollider path varies by platform
   # On macOS: installed via brewCasks to ~/Applications
   # On Linux: installed via nixpkgs
@@ -100,7 +103,6 @@
     ${lib.optionalString hostPlatform.isDarwin ''
       if [ ! -f "${scPath}" ]; then
         echo "ERROR: SuperCollider not found at ${scPath}"
-        echo "Please rebuild your home-manager config to install SuperCollider via brewCasks"
         echo "Run: hms"
         exit 1
       fi
@@ -115,7 +117,6 @@
     ${lib.optionalString hostPlatform.isDarwin ''
       if [ ! -f "${scPath}" ]; then
         echo "ERROR: SuperCollider not found at ${scPath}"
-        echo "Please rebuild your home-manager config to install SuperCollider via brewCasks"
         echo "Run: hms"
         exit 1
       fi
@@ -201,23 +202,55 @@
     echo ""
     ${pkgs.haskellPackages.ghcWithPackages (p: [p.tidal])}/bin/ghci -ghci-script ${tidal-boot}
   '';
-in {
-  home.packages = lib.attrsets.attrValues (
-    {
-      inherit (pkgs.haskellPackages) tidal;
-      inherit install-superdirt start-superdirt tidal-repl install-sc3-plugins;
 
-      # sclang wrapper for SuperCollider
-      sclang = pkgs.writeShellScriptBin "sclang" ''
-        exec ${scPath} "$@"
+  # sclang wrapper for SuperCollider
+  sclang = pkgs.writeShellScriptBin "sclang" ''
+    exec ${scPath} "$@"
+  '';
+in {
+  options.programs.tidalcycles = {
+    enable = lib.mkEnableOption "TidalCycles live coding environment";
+
+    package = lib.mkPackageOption pkgs.haskellPackages "tidal" {nullable = true;};
+
+    installHelperScripts = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = ''
+        Install helper scripts for managing TidalCycles:
+        - install-superdirt: Install SuperDirt quarks in SuperCollider
+        - start-superdirt: Start SuperDirt audio engine
+        - tidal-repl: Launch TidalCycles REPL
+        - install-sc3-plugins: Install SC3-Plugins (macOS only)
+        - sclang: SuperCollider language wrapper
       '';
-    }
-    # Add SuperCollider - Linux via nixpkgs, macOS via brewCasks
-    // lib.optionalAttrs supercolliderAvailable {
-      inherit (pkgs) supercollider;
-    }
-    // lib.optionalAttrs hostPlatform.isDarwin {
-      inherit (pkgs.brewCasks) supercollider;
-    }
-  );
+    };
+
+    installSupercollider = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = ''
+        Install SuperCollider.
+        On Linux, this installs from nixpkgs.
+        On macOS, this installs via brewCasks.
+      '';
+    };
+  };
+
+  config = lib.mkIf cfg.enable {
+    home.packages = lib.attrsets.attrValues (
+      (lib.optionalAttrs (cfg.package != null) {
+        inherit (pkgs.haskellPackages) tidal;
+      })
+      // (lib.optionalAttrs cfg.installHelperScripts {
+        inherit install-superdirt start-superdirt tidal-repl install-sc3-plugins sclang;
+      })
+      // (lib.optionalAttrs (cfg.installSupercollider && supercolliderAvailable) {
+        inherit (pkgs) supercollider;
+      })
+      // (lib.optionalAttrs (cfg.installSupercollider && hostPlatform.isDarwin) {
+        inherit (pkgs.brewCasks) supercollider;
+      })
+    );
+  };
 }
