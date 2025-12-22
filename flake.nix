@@ -28,11 +28,7 @@
             warnUndeclaredOptions = mkDefault true;
           };
           overlays = lib.attrsets.attrValues {
-            inherit
-              (self.outputs.overlays)
-              default
-              pkgs-master
-              ;
+            inherit (self.outputs.overlays) default;
           };
         };
       };
