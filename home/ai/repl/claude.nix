@@ -4,22 +4,25 @@
   ...
 }: {
   home.packages = lib.attrsets.attrValues {
-    ccusage = pkgs.writeShellScriptBin "ccusage" ''
-      exec ${pkgs.pnpm}/bin/pnpm dlx ccusage@latest "$@"
-    '';
-    claude-code-router = pkgs.writeShellScriptBin "ccr" ''
-      exec ${pkgs.pnpm}/bin/pnpm dlx @musistudio/claude-code-router "$@"
-    '';
+    # ccusage = pkgs.writeShellScriptBin "ccusage" ''
+    #   exec ${pkgs.pnpm}/bin/pnpm dlx ccusage@latest "$@"
+    # '';
+    inherit (pkgs.ai) ccusage;
+    # claude-code-router = pkgs.writeShellScriptBin "ccr" ''
+    #   exec ${pkgs.pnpm}/bin/pnpm dlx @musistudio/claude-code-router "$@"
+    # '';
+    inherit (pkgs.ai) claude-code-router;
+    inherit (pkgs.ai) ccstatusline;
   };
-
   programs.claude-code = let
     pnpmCommand = "${pkgs.pnpm}/bin/pnpm";
     # uvCommand = "${pkgs.uv}/bin/uvx";
+    # claude-code = pkgs.writeShellScriptBin "claude" ''
+    #   exec ${pkgs.pnpm}/bin/pnpm dlx @anthropic-ai/claude-code "$@"
+    # '';
   in {
     enable = true;
-    package = pkgs.writeShellScriptBin "claude" ''
-      exec ${pkgs.pnpm}/bin/pnpm dlx @anthropic-ai/claude-code "$@"
-    '';
+    package = pkgs.ai.claude-code;
 
     mcpServers = {
       ## modelcontextprotocol
@@ -140,7 +143,7 @@
         #disableBypassPermissionsMode = "disable";
       };
       statusLine = {
-        command = "${pnpmCommand} dlx ccstatusline@latest";
+        command = "${pkgs.ai.ccstatusline}/bin/ccstatusline";
         padding = 0;
         type = "command";
       };

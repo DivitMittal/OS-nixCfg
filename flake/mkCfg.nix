@@ -35,7 +35,7 @@
             (
               optionalAttrs (class == "home") (mergeAttrsList [
                 {
-                  llm-agents = inputs.llm-agents.packages.${hostPlatform.system};
+                  ai = inputs.llm-agents.packages.${hostPlatform.system};
                 }
                 (inputs.nur.overlays.default self super)
                 (optionalAttrs hostPlatform.isDarwin (inputs.brew-nix.overlays.default self super))

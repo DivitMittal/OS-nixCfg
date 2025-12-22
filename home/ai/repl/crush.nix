@@ -1,12 +1,7 @@
-{
-  pkgs,
-  inputs,
-  hostPlatform,
-  ...
-}: {
+{pkgs, ...}: {
   programs.crush = {
-    enable = false;
-    package = inputs.nix-ai-tools.packages.${hostPlatform.system}.crush;
+    enable = true;
+    package = pkgs.ai.crush;
 
     settings = {
       permissions = {

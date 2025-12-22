@@ -1,12 +1,7 @@
-{
-  inputs,
-  hostPlatform,
-  ...
-}: {
+{pkgs, ...}: {
   programs.opencode = {
     enable = true;
-    package = inputs.nix-ai-tools.packages.${hostPlatform.system}.opencode;
-
+    package = pkgs.ai.opencode;
     # Use central MCP configuration from programs.mcp
     enableMcpIntegration = true;
 
@@ -41,9 +36,6 @@
           extensions = ["nix"];
         };
       };
-
-      # MCP servers now managed centrally via programs.mcp
-      # Tool-specific overrides can still be added here if needed
     };
   };
 }
