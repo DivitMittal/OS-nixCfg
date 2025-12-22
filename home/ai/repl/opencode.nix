@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   ohMyOpencodeConfig = {
     "$schema" = "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json";
     google_auth = false;
@@ -22,45 +18,9 @@
     };
   };
 in {
-  home.packages = lib.attrsets.attrValues {
-    inherit (pkgs.custom) gowa;
-  };
-
-  programs.mcp = {
-    enable = true;
-    servers = {
-      filesystem = {
-        command = "${pkgs.pnpm}/bin/pnpm";
-        args = ["dlx" "@modelcontextprotocol/server-filesystem"];
-      };
-      sequential-thinking = {
-        command = "${pkgs.pnpm}/bin/pnpm";
-        args = ["dlx" "@modelcontextprotocol/server-sequential-thinking"];
-      };
-      memory = {
-        command = "${pkgs.pnpm}/bin/pnpm";
-        args = ["dlx" "@modelcontextprotocol/server-memory"];
-      };
-
-      # Third-party MCP servers
-      deepwiki = {
-        url = "https://mcp.deepwiki.com/mcp";
-      };
-      octocode = {
-        command = "${pkgs.pnpm}/bin/pnpm";
-        args = ["dlx" "octocode-mcp@latest"];
-      };
-      ddg = {
-        command = "${pkgs.pnpm}/bin/pnpm";
-        args = ["dlx" "duckduckgo-mcp-server"];
-      };
-    };
-  };
-
   programs.opencode = {
     enable = true;
     package = pkgs.ai.opencode;
-    # Use central MCP configuration from programs.mcp
     enableMcpIntegration = false;
 
     rules = ''
@@ -85,6 +45,40 @@ in {
         "oh-my-opencode"
         "opencode-antigravity-auth@1.1.2"
       ];
+
+      mcp = {
+        filesystem = {
+          type = "local";
+          command = ["${pkgs.pnpm}/bin/pnpm" "dlx" "@modelcontextprotocol/server-filesystem"];
+          enabled = true;
+        };
+        sequential-thinking = {
+          type = "local";
+          command = ["${pkgs.pnpm}/bin/pnpm" "dlx" "@modelcontextprotocol/server-sequential-thinking"];
+          enabled = true;
+        };
+        memory = {
+          type = "local";
+          command = ["${pkgs.pnpm}/bin/pnpm" "dlx" "@modelcontextprotocol/server-memory"];
+          enabled = true;
+        };
+
+        ## Third-party MCP servers
+        octocode = {
+          type = "local";
+          command = ["${pkgs.pnpm}/bin/pnpm" "dlx" "octocode-mcp@latest"];
+          enabled = true;
+        };
+        ## Inherit support in oh-my-opencode via context7 & websearch MCPs
+        # deepwiki = {
+        #   url = "https://mcp.deepwiki.com/mcp";
+        # };
+        # ddg = {
+        #   type = "local";
+        #   command = ["${pkgs.pnpm}/bin/pnpm" "dlx" "duckduckgo-mcp-server"];
+        #   enabled = true;
+        # };
+      };
 
       provider = {
         google = {
