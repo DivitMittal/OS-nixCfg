@@ -29,13 +29,11 @@ in {
         "https://divitmittal.cachix.org"
         "https://nix-community.cachix.org"
         "https://nix-on-droid.cachix.org"
-        "https://cache.lix.systems"
       ];
       trusted-public-keys = [
         "divitmittal.cachix.org-1:Fx7nQrvET1RKTTrxQHMDP/Relbu072af/MFG4BYvpjw="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "nix-on-droid.cachix.org-1:56snoMJTXmE7wm+67YySRoTY64Zkivk9RT4QaKYgpkE="
-        "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
       ];
 
       trusted-users = ["${config.hostSpec.username}"];

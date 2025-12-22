@@ -1,5 +1,6 @@
 {
   description = "OS-nixCfg flake";
+
   outputs = {nixpkgs, ...} @ inputs: let
     inherit (inputs.flake-parts.lib) mkFlake;
     specialArgs.lib = nixpkgs.lib.extend (_: super: {
@@ -310,5 +311,22 @@
         flake-parts.follows = "flake-parts";
       };
     };
+  };
+
+  # These caches only contain binaries for packages used by this config,
+  # so they're scoped to the flake rather than polluting global nix settings.
+  nixConfig = {
+    extra-substituters = [
+      "https://yazi.cachix.org"
+      "https://wezterm.cachix.org"
+      "https://cache.lix.systems"
+      "https://cache.numtide.com"
+    ];
+    extra-trusted-public-keys = [
+      "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
+      "wezterm.cachix.org-1:kAbhjYUC9qvblTE+s7S+kl5XM1zVa4skO+E/1IDWdH0="
+      "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+    ];
   };
 }
