@@ -127,23 +127,60 @@ in {
         Additional raw JSON configuration that will be merged with the structured options.
       '';
     };
+
+    commands = lib.mkOption {
+      type = lib.types.attrsOf lib.types.str;
+      default = {};
+      example = lib.literalExpression ''
+        {
+          commit = '''
+            ---
+            allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*)
+            description: Create a git commit with proper message
+            ---
+            ## Context
+
+            - Current git status: !`git status`
+            - Current git diff: !`git diff HEAD`
+            - Recent commits: !`git log --oneline -5`
+
+            ## Task
+
+            Based on the changes above, create a single atomic git commit with a descriptive message.
+          ''';
+        }
+      '';
+      description = ''
+        Custom commands for GitHub Copilot CLI.
+        Each command is a string containing YAML frontmatter and markdown content.
+      '';
+    };
   };
 
   config = lib.mkIf cfg.enable {
-    home = {
-      packages = lib.mkIf (cfg.package != null) [cfg.package];
+    home =
+      {
+        packages = lib.mkIf (cfg.package != null) [cfg.package];
 
-      # MCP servers configuration at ~/.config/.copilot/mcp-config.json
-      file."${config.xdg.configHome}/.copilot/mcp-config.json" = lib.mkIf (cfg.mcpServers != {}) {
-        source = jsonFormat.generate "copilot-mcp-config.json" {
-          mcpServers = lib.mapAttrs (_: server: lib.filterAttrs (_: v: v != null) server) cfg.mcpServers;
+        # MCP servers configuration at ~/.config/.copilot/mcp-config.json
+        file."${config.xdg.configHome}/.copilot/mcp-config.json" = lib.mkIf (cfg.mcpServers != {}) {
+          source = jsonFormat.generate "copilot-mcp-config.json" {
+            mcpServers = lib.mapAttrs (_: server: lib.filterAttrs (_: v: v != null) server) cfg.mcpServers;
+          };
         };
-      };
 
-      # General settings at ~/.config/.copilot/config.json
-      file."${config.xdg.configHome}/.copilot/config.json" = lib.mkIf (cfg.settings != {} || cfg.extraConfig != {}) {
-        source = jsonFormat.generate "copilot-config.json" (lib.recursiveUpdate cfg.extraConfig cfg.settings);
+        # General settings at ~/.config/.copilot/config.json
+        file."${config.xdg.configHome}/.copilot/config.json" = lib.mkIf (cfg.settings != {} || cfg.extraConfig != {}) {
+          source = jsonFormat.generate "copilot-config.json" (lib.recursiveUpdate cfg.extraConfig cfg.settings);
+        };
+      }
+      // lib.optionalAttrs (cfg.commands != {}) {
+        # Custom commands at ~/.config/.copilot/commands/
+        file = lib.mapAttrs' (name: content:
+          lib.nameValuePair "${config.xdg.configHome}/.copilot/commands/${name}.md" {
+            text = content;
+          })
+        cfg.commands;
       };
-    };
   };
 }

@@ -156,6 +156,7 @@
         ## Task
 
         Based on the changes above, create a single atomic git commit with a descriptive message.
+        The commit message MUST follow Conventional Commits syntax: `type(scope): description`
       '';
       fix-issue = ''
         ---

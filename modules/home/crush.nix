@@ -135,24 +135,61 @@ in {
         Defines which tools are allowed to be used by the assistant.
       '';
     };
+
+    commands = lib.mkOption {
+      type = lib.types.attrsOf lib.types.str;
+      default = {};
+      example = lib.literalExpression ''
+        {
+          commit = '''
+            ---
+            allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*)
+            description: Create a git commit with proper message
+            ---
+            ## Context
+
+            - Current git status: !`git status`
+            - Current git diff: !`git diff HEAD`
+            - Recent commits: !`git log --oneline -5`
+
+            ## Task
+
+            Based on the changes above, create a single atomic git commit with a descriptive message.
+          ''';
+        }
+      '';
+      description = ''
+        Custom commands for crush.
+        Each command is a string containing YAML frontmatter and markdown content.
+      '';
+    };
   };
 
   config = lib.mkIf cfg.enable {
-    home = {
-      packages = lib.mkIf (cfg.package != null) [cfg.package];
+    home =
+      {
+        packages = lib.mkIf (cfg.package != null) [cfg.package];
 
-      file."${config.xdg.configHome}/crush/crush.json" = {
-        source = jsonFormat.generate "crush-config.json" (
-          lib.recursiveUpdate cfg.settings (
-            lib.filterAttrs (_: v: v != null && v != {}) {
-              "$schema" = cfg.schema;
-              inherit (cfg) lsp;
-              inherit (cfg) mcp;
-              inherit (cfg) permissions;
-            }
-          )
-        );
+        file."${config.xdg.configHome}/crush/crush.json" = {
+          source = jsonFormat.generate "crush-config.json" (
+            lib.recursiveUpdate cfg.settings (
+              lib.filterAttrs (_: v: v != null && v != {}) {
+                "$schema" = cfg.schema;
+                inherit (cfg) lsp;
+                inherit (cfg) mcp;
+                inherit (cfg) permissions;
+              }
+            )
+          );
+        };
+      }
+      // lib.optionalAttrs (cfg.commands != {}) {
+        # Custom commands at ~/.config/crush/commands/
+        file = lib.mapAttrs' (name: content:
+          lib.nameValuePair "${config.xdg.configHome}/crush/commands/${name}.md" {
+            text = content;
+          })
+        cfg.commands;
       };
-    };
   };
 }

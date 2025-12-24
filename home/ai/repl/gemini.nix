@@ -81,6 +81,21 @@
     };
 
     commands = {
+      commit = {
+        description = "Create a git commit with proper message";
+        prompt = ''
+          ## Context
+
+          - Current git status: !`git status`
+          - Current git diff: !`git diff HEAD`
+          - Recent commits: !`git log --oneline -5`
+
+          ## Task
+
+          Based on the changes above, create a single atomic git commit with a descriptive message.
+          The commit message MUST follow Conventional Commits syntax: `type(scope): description`
+        '';
+      };
       fix-issue = {
         description = "Fix GitHub issue following coding standards";
         prompt = " You are a senior software engineer. Your task is to fix the following GitHub issue in a codebase, adhering to best practices and coding standards.";
