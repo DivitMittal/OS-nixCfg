@@ -15,8 +15,13 @@
     }: {
       systems = builtins.import inputs.systems;
       perSystem = {system, ...}: {
-        #pkgs = inputs.nixpkgs.legacyPackages.${system}; # memoized
-        ## non-memoized pkgs
+        # Note: We use non-memoized pkgs here instead of the memoized version
+        # (inputs.nixpkgs.legacyPackages.${system}) because we need to apply
+        # custom config options and overlays. While this means pkgs is re-evaluated
+        # for each system, it's necessary to get our custom configuration.
+        # The memoized version would not include our overlays and config settings.
+        #
+        # Trade-off: Slightly longer evaluation time vs. ability to customize pkgs
         _module.args.pkgs = builtins.import nixpkgs {
           inherit system;
           config = let

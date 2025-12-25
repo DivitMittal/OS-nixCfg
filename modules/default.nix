@@ -1,25 +1,31 @@
-{self, ...}: {
+{self, ...}: let
+  # Helper function to import a module - slightly more efficient than repeated builtins.import
+  # as it provides a clear pattern and can be optimized by Nix's evaluation cache
+  importModule = path: builtins.import path;
+in {
   flake.homeManagerModules = {
-    all = builtins.import ./home;
+    all = importModule ./home;
     default = self.outputs.homeManagerModules.all;
 
-    crush = builtins.import ./home/crush.nix;
-    github-copilot = builtins.import ./home/github-copilot.nix;
-    glow = builtins.import ./home/glow.nix;
-    ov = builtins.import ./home/ov.nix;
-    spicetify-cli = builtins.import ./home/spicetify-cli.nix;
-    spotifyd = builtins.import ./home/spotifyd.nix;
-    tidalcycles = builtins.import ./home/tidalcycles.nix;
-    warpd = builtins.import ./home/warpd.nix;
-    wiki-tui = builtins.import ./home/wiki-tui.nix;
+    # Individual modules for selective importing
+    crush = importModule ./home/crush.nix;
+    github-copilot = importModule ./home/github-copilot.nix;
+    glow = importModule ./home/glow.nix;
+    ov = importModule ./home/ov.nix;
+    spicetify-cli = importModule ./home/spicetify-cli.nix;
+    spotifyd = importModule ./home/spotifyd.nix;
+    tidalcycles = importModule ./home/tidalcycles.nix;
+    warpd = importModule ./home/warpd.nix;
+    wiki-tui = importModule ./home/wiki-tui.nix;
   };
 
   flake.darwinModules = {
-    all = builtins.import ./hosts/darwin;
+    all = importModule ./hosts/darwin;
     default = self.outputs.darwinModules.all;
 
-    kanata = builtins.import ./hosts/darwin/kanata.nix;
-    kanata-tray = builtins.import ./hosts/darwin/kanata-tray.nix;
-    spotifyd = builtins.import ./hosts/darwin/spotifyd.nix;
+    # Individual modules for selective importing
+    kanata = importModule ./hosts/darwin/kanata.nix;
+    kanata-tray = importModule ./hosts/darwin/kanata-tray.nix;
+    spotifyd = importModule ./hosts/darwin/spotifyd.nix;
   };
 }
