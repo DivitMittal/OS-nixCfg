@@ -6,7 +6,7 @@ in {
   flake.overlays = {
     # Named overlays for selective use
     inherit (custom-overlays) custom;
-    
+
     # Default overlay includes all custom packages
     # Consumers can choose to use specific overlays or the default
     default = custom-overlays.custom;

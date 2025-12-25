@@ -1,6 +1,7 @@
 {self, ...}: let
-  # Helper function to import a module - slightly more efficient than repeated builtins.import
-  # as it provides a clear pattern and can be optimized by Nix's evaluation cache
+  # Helper function to import a module for consistency across all imports.
+  # This provides a single point of change if the import pattern needs to be modified
+  # in the future, and makes the code more maintainable.
   importModule = path: builtins.import path;
 in {
   flake.homeManagerModules = {
