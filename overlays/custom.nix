@@ -3,7 +3,7 @@ _: {
   # 
   # Performance note: packagesFromDirectoryRecursive is efficient as it:
   # 1. Lazily evaluates packages (only builds what's actually used)
-  # 2. Caches the directory structure scan
+  # 2. Uses Nix's evaluation cache for directory structure scans
   # 3. Properly handles dependencies between packages
   #
   # The packages are organized by platform/type:
