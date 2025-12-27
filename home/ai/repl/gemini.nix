@@ -17,7 +17,7 @@
       };
       security = {
         auth = {
-          selectedType = "gemini-api-key";
+          selectedType = "oauth-personal";
         };
       };
       ui = {
