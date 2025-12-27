@@ -1,6 +1,6 @@
 _: {
   # Custom overlay that provides additional packages from local directories
-  # 
+  #
   # Performance note: packagesFromDirectoryRecursive is efficient as it:
   # 1. Lazily evaluates packages (only builds what's actually used)
   # 2. Uses Nix's evaluation cache for directory structure scans
