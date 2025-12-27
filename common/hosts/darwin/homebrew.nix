@@ -6,7 +6,18 @@
 }: {
   imports = [inputs.nix-homebrew.darwinModules.nix-homebrew];
 
-  environment.variables.HOMEBREW_NO_ENV_HINTS = "1";
+  environment.variables = {
+    HOMEBREW_NO_ENV_HINTS = "1";
+    # Fix SSL certificate verification for Homebrew
+    SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
+    GIT_SSL_CAINFO = "/etc/ssl/certs/ca-certificates.crt";
+  };
+
+  # Create system-level gitconfig to fix SSL for all git instances (including Homebrew's)
+  environment.etc."gitconfig".text = ''
+    [http]
+      sslCAInfo = /etc/ssl/certs/ca-certificates.crt
+  '';
 
   homebrew = {
     enable = true;

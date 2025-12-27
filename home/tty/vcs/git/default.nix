@@ -96,6 +96,9 @@ in {
         color = {
           ui = "auto";
         };
+        http = {
+          sslCAInfo = "/etc/ssl/certs/ca-certificates.crt";
+        };
       };
     };
 
