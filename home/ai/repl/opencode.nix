@@ -38,8 +38,8 @@ in {
     settings = {
       autoupdate = false;
       autoshare = false;
+
       theme = "system";
-      instructions = ["CLAUDE.md"];
 
       plugin = [
         "oh-my-opencode"
@@ -198,16 +198,85 @@ in {
       };
 
       lsp = {
+        # Custom LSPs (not built-in to OpenCode)
         nix = {
           command = ["nixd"];
-          extensions = ["nix"];
+          extensions = [".nix"];
+        };
+        html = {
+          command = ["vscode-html-language-server" "--stdio"];
+          extensions = [".html" ".htm"];
+        };
+        css = {
+          command = ["vscode-css-language-server" "--stdio"];
+          extensions = [".css" ".scss" ".less"];
+        };
+        json = {
+          command = ["vscode-json-language-server" "--stdio"];
+          extensions = [".json" ".jsonc"];
+        };
+        svelte = {
+          command = ["svelteserver" "--stdio"];
+          extensions = [".svelte"];
+        };
+        emmet = {
+          command = ["emmet-language-server" "--stdio"];
+          extensions = [".html" ".css" ".jsx" ".tsx" ".vue"];
+        };
+        haskell = {
+          command = ["haskell-language-server-wrapper" "--lsp"];
+          extensions = [".hs" ".lhs"];
+        };
+        python = {
+          command = ["pylsp"];
+          extensions = [".py" ".pyi"];
+        };
+        lua = {
+          command = ["lua-language-server"];
+          extensions = [".lua"];
+        };
+        yaml = {
+          command = ["yaml-language-server" "--stdio"];
+          extensions = [".yaml" ".yml"];
         };
       };
 
       formatter = {
         nix = {
           command = ["alejandra"];
-          extensions = ["nix"];
+          extensions = [".nix"];
+        };
+        lua = {
+          command = ["stylua" "-"];
+          extensions = [".lua"];
+        };
+        c-cpp = {
+          command = ["clang-format"];
+          extensions = [".c" ".cpp" ".cc" ".cxx" ".h" ".hpp"];
+        };
+        web = {
+          command = ["prettier" "--stdin-filepath" "file.ts"];
+          extensions = [".html" ".css" ".js" ".jsx" ".ts" ".tsx" ".json" ".md" ".yaml" ".yml"];
+        };
+        python = {
+          command = ["black" "-"];
+          extensions = [".py"];
+        };
+        shell = {
+          command = ["shfmt"];
+          extensions = [".sh" ".bash"];
+        };
+        fish = {
+          command = ["fish_indent"];
+          extensions = [".fish"];
+        };
+        haskell = {
+          command = ["ormolu"];
+          extensions = [".hs" ".lhs"];
+        };
+        swift = {
+          command = ["swift-format"];
+          extensions = [".swift"];
         };
       };
     };
@@ -232,6 +301,6 @@ in {
     };
   };
 
-  # Generate oh-my-opencode.json from Nix attrset using XDG
+  ## oh-my-opencode
   xdg.configFile."opencode/oh-my-opencode.json".text = builtins.toJSON ohMyOpencodeConfig;
 }
