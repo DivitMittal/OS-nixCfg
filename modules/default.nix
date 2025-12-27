@@ -3,6 +3,7 @@
     all = builtins.import ./home;
     default = self.outputs.homeManagerModules.all;
 
+    # Individual modules for selective importing
     crush = builtins.import ./home/crush.nix;
     github-copilot = builtins.import ./home/github-copilot.nix;
     glow = builtins.import ./home/glow.nix;
@@ -18,6 +19,7 @@
     all = builtins.import ./hosts/darwin;
     default = self.outputs.darwinModules.all;
 
+    # Individual modules for selective importing
     kanata = builtins.import ./hosts/darwin/kanata.nix;
     kanata-tray = builtins.import ./hosts/darwin/kanata-tray.nix;
     spotifyd = builtins.import ./hosts/darwin/spotifyd.nix;
