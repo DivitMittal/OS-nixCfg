@@ -1537,6 +1537,22 @@
         "type": "github"
       }
     },
+    "pkms": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1766425255,
+        "narHash": "sha256-WKPDlG3oIRx4Qo99nBzOI+vJap9j2EcJepapY04yFlI=",
+        "owner": "DivitMittal",
+        "repo": "pkms",
+        "rev": "4b7e5a49f4f641814fec5fb178b14086c5554a79",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DivitMittal",
+        "repo": "pkms",
+        "type": "github"
+      }
+    },
     "ragenix": {
       "inputs": {
         "agenix": [
@@ -1604,6 +1620,7 @@
         "nixpkgs-nixos": "nixpkgs-nixos",
         "nur": "nur",
         "nvchad4nix": "nvchad4nix",
+        "pkms": "pkms",
         "ragenix": "ragenix",
         "systems": "systems_6",
         "treefmt-nix": "treefmt-nix_3",

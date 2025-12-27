@@ -1,26 +1,11 @@
 {
   pkgs,
   config,
+  inputs,
   ...
 }: let
   enable = true;
-  templates =
-    (
-      pkgs.fetchFromGitHub {
-        owner = "DivitMittal";
-        repo = "PKMS";
-        rev = "3aae3aff4d9cd25a356b615fc47d5ef664fb3390";
-        hash = "sha256-eDcri0T5pV8f2GsTBBySoYkmUc8DASpW+tsInBLaino=";
-      }
-    )
-    + "/etc/zk/templates";
 in {
-  xdg.configFile."zk/templates" = {
-    inherit enable;
-    source = templates;
-    recursive = true;
-  };
-
   programs.zk = {
     inherit enable;
     package = pkgs.zk;
@@ -28,7 +13,7 @@ in {
     settings = {
       note = {
         language = "en";
-        template = "${config.xdg.configHome}/zk/templates/default.md";
+        template = "${inputs.pkms}/etc/zk/templates/default.md";
         default-title = "Untitled";
         filename = "{{id}}";
         extension = "md";
@@ -52,7 +37,7 @@ in {
         daily = {
           paths = ["journal"];
           note = {
-            template = "${config.xdg.configHome}/zk/templates/daily.md";
+            template = "${inputs.pkms}/etc/zk/templates/daily.md";
             filename = "{{format-date now '%Y-%m-%d'}}";
             extension = "md";
           };

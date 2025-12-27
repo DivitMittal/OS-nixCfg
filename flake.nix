@@ -316,6 +316,10 @@
         flake-parts.follows = "flake-parts";
       };
     };
+    pkms = {
+      url = "github:DivitMittal/pkms";
+      flake = false;
+    };
   };
 
   # These caches only contain binaries for packages used by this config,
