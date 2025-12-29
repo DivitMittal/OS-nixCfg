@@ -27,6 +27,7 @@
       inherit
         (pkgs)
         nix
+        nix-direnv
         home-manager
         git
         openssh
