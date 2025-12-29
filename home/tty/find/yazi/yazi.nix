@@ -16,7 +16,7 @@
   open.rules = [
     ## Directory
     {
-      name = "*/";
+      url = "*/";
       use = ["open" "reveal" "look"];
     }
     ## Empty file
@@ -26,7 +26,7 @@
     }
     ## HTML Documents
     {
-      name = "*.{html,htm}";
+      url = "*.{html,htm}";
       use = ["firefox" "chrome" "open" "edit" "editVS" "reveal"];
     }
     ## Code
@@ -61,32 +61,32 @@
     }
     ## Ebook Documents
     {
-      name = "*.{epub,mobi,azw,azw3,fb2,lrf,pdb,cbz,cbr}";
+      url = "*.{epub,mobi,azw,azw3,fb2,lrf,pdb,cbz,cbr}";
       use = ["ebook-viewer" "open" "reveal"];
     }
     ## Office Documents - Spreadsheets
     {
-      name = "*.{xlsx,xls,ods}";
+      url = "*.{xlsx,xls,ods}";
       use = ["excel" "libreoffice" "onlyoffice" "reveal"];
     }
     ## Office Documents - Word
     {
-      name = "*.{docx,odt}";
+      url = "*.{docx,odt}";
       use = ["doxx" "word" "libreoffice" "onlyoffice" "reveal"];
     }
     ## Office Documents - Presentations
     {
-      name = "*.{pptx,ppt,odp}";
+      url = "*.{pptx,ppt,odp}";
       use = ["libreoffice" "onlyoffice" "reveal"];
     }
     ## Ableton Live Files
     {
-      name = "*.{als,alp,adg,adv,agr,amxd}";
+      url = "*.{als,alp,adg,adv,agr,amxd}";
       use = ["ableton" "reveal"];
     }
     ## MIDI Files
     {
-      name = "*.{mid,midi}";
+      url = "*.{mid,midi}";
       use = ["guitarpro" "musescore" "ableton" "reveal"];
     }
     ## archives
@@ -124,7 +124,7 @@
     }
     ## fallback for all other files
     {
-      name = "*";
+      url = "*";
       use = ["edit" "open" "reveal" "look"];
     }
   ];
@@ -498,7 +498,7 @@
     spotters = [
       ## Directory
       {
-        name = "*/";
+        url = "*/";
         run = "folder";
       }
       ## Code
@@ -526,7 +526,7 @@
       }
       ## File Fallback
       {
-        name = "*";
+        url = "*";
         run = "file";
       }
     ];
@@ -562,14 +562,14 @@
         })
         archiveMimes;
 
-      # Archive previewers (name-based)
-      archiveNames = ["*.{AppImage,appimage}" "*.{img,fat,ext,ext2,ext3,ext4,squashfs,ntfs,hfs,hfsx}"];
-      archiveNamePreviewers =
-        map (name: {
-          inherit name;
+      # Archive previewers (url-based)
+      archiveUrls = ["*.{AppImage,appimage}" "*.{img,fat,ext,ext2,ext3,ext4,squashfs,ntfs,hfs,hfsx}"];
+      archiveUrlPreviewers =
+        map (url: {
+          inherit url;
           run = "archive";
         })
-        archiveNames;
+        archiveUrls;
 
       # Font previewers
       fontMimes = ["font/*" "application/ms-opentype"];
@@ -583,7 +583,7 @@
       [
         ## Directories
         {
-          name = "*/";
+          url = "*/";
           run = "folder";
           sync = true;
         }
@@ -624,7 +624,7 @@
         }
       ]
       ++ archiveMimePreviewers
-      ++ archiveNamePreviewers
+      ++ archiveUrlPreviewers
       ++ fontPreviewers;
 
     prepend_previewers = let
@@ -642,7 +642,7 @@
       markitdownPatterns = ["*.csv" "*.tsv" "*.{xlsx,xls,ods}" "*.{docx,odt}" "*.{pptx,ppt,odp}" "*.{html,htm}" "*.xml" "*.epub" "*.ipynb"];
       markitdownPreviewers =
         map (pattern: {
-          name = pattern;
+          url = pattern;
           run = markitdownCmd;
         })
         markitdownPatterns;
@@ -661,7 +661,7 @@
       ++ [
         ## Other
         {
-          name = "*.md";
+          url = "*.md";
           run = "piper -- CLICOLOR_FORCE=1 ${pkgs.glow}/bin/glow --style ${glowStyle} -w=$w \"$1\"";
         }
       ];
@@ -669,20 +669,20 @@
     append_previewers = [
       ## fallback for all other files
       {
-        name = "*";
+        url = "*";
         run = "piper -- ${pkgs.hexyl}/bin/hexyl --border=none --terminal-width=$w \"$1\"";
       }
     ];
 
     prepend_fetchers = [
       {
-        name = "*";
+        url = "*";
         id = "git";
         run = "git";
         prio = "low";
       }
       {
-        name = "*/";
+        url = "*/";
         id = "git";
         run = "git";
         prio = "low";
