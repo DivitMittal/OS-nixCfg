@@ -7,19 +7,7 @@
     enable = true;
     package =
       if hostPlatform.isDarwin
-      then
-        (pkgs.spotify-player.override {
-          withImage = true;
-          withFuzzy = true;
-          withAudioBackend = "rodio";
-          withDaemon = true;
-          withStreaming = true;
-          withSixel = false;
-          withNotify = false;
-          withMediaControl = false;
-        }).overrideAttrs (_oldAttrs: {
-          buildNoDefaultFeatures = true;
-        })
+      then pkgs.custom.spotify-player
       else pkgs.spotify-player;
 
     settings = {
