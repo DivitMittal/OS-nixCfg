@@ -26,7 +26,7 @@ function yellow() {
 # Build switch arguments
 # Usage: build_switch_args [trace]
 function build_switch_args() {
-  local args="-v --impure --accept-flake-config"
+  local args="-v --impure"
   if [[ -n ${1-} && $1 == "trace" ]]; then
     args="$args --show-trace"
   fi

@@ -21,7 +21,7 @@
   ...
 }: {
   default = pkgs.mkShell {
-    NIX_CONFIG = "extra-experimental-features = nix-command flakes";
+    NIX_CONFIG = "extra-experimental-features = nix-command flakes\naccept-flake-config = true";
 
     nativeBuildInputs = lib.attrsets.attrValues {
       inherit
@@ -29,6 +29,7 @@
         nix
         home-manager
         git
+        openssh
         ;
     };
   };

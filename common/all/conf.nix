@@ -13,6 +13,7 @@ in {
 
     settings = {
       experimental-features = ["nix-command" "flakes"];
+      accept-flake-config = mkDefault true;
 
       # Enable building aarch64 packages for nix-on-droid deployment
       # Uses Rosetta 2 (Apple Silicon), QEMU (Intel Mac/Linux)
