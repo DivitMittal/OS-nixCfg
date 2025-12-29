@@ -24,7 +24,7 @@ in {
     getPlugin = src: pluginName: {${pluginName} = src + "/${pluginName}.yazi";};
   in {
     enable = true;
-    package = pkgs.yazi;
+    package = pkgs.custom.yazi-bin;
 
     enableFishIntegration = false;
     enableZshIntegration = false;
@@ -33,7 +33,7 @@ in {
 
     initLua = ./init.lua;
     settings = import ./yazi.nix {inherit pkgs;};
-    keymap = builtins.import ./keymap.nix;
+    keymap = import ./keymap.nix;
     theme = {
       flavor = {
         dark = "dracula";
