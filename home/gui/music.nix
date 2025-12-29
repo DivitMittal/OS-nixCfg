@@ -32,7 +32,7 @@
         }).overrideAttrs (oldAttrs: {
           src = pkgs.fetchurl {
             url = lib.lists.head oldAttrs.src.urls;
-            hash = "sha256-/UkeIyYx3K0QVYxHgBmvG9Dr/EqFJrnLAJf92gHH3lM=";
+            hash = "sha256-a4ZKlDvQS8tIUr4B6QKLiKZvXTmzBzLIIgIXRalYC+A=";
           };
         })
       else pkgs.spotify;

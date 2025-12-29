@@ -5,7 +5,10 @@
 }: {
   programs.gemini-cli = {
     enable = true;
-    package = pkgs.ai.gemini-cli;
+    package = pkgs.writeShellScriptBin "gemini" ''
+      exec ${pkgs.pnpm}/bin/pnpm dlx @google/gemini-cli "$@"
+    '';
+    # package = pkgs.ai.gemini-cli;
     defaultModel = "gemini-3-pro-preview";
     settings = {
       general = {
