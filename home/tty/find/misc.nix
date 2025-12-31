@@ -46,9 +46,19 @@
 
   programs.television = {
     enable = true;
-    package = pkgs.television;
+    # Wrap television to use bash as default shell for shell-specific commands
+    package = pkgs.symlinkJoin {
+      name = "television-wrapped";
+      paths = [pkgs.television];
+      buildInputs = [pkgs.makeWrapper];
+      postBuild = ''
+        wrapProgram $out/bin/tv \
+          --set SHELL ${pkgs.bash}/bin/bash
+      '';
+    };
+    # Disable all shell integrations to avoid keybinding conflicts with atuin (ctrl-r) and file completion (ctrl+t)
     enableBashIntegration = false;
-    enableZshIntegration = config.programs.zsh.enable;
-    enableFishIntegration = config.programs.fish.enable;
+    enableZshIntegration = false;
+    enableFishIntegration = false;
   };
 }
