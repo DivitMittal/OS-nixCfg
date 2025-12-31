@@ -270,7 +270,8 @@
 
     ## Keyboard
     kanata-tray = {
-      url = "github:rszyma/kanata-tray";
+      # url = "github:rszyma/kanata-tray";
+      url = "github:DivitMittal/kanata-tray/fix/nix-hostplatform-system";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     TLTR = {
