@@ -46,116 +46,101 @@
 
 ## Contents
 
-- [📜 Overview](#-overview)
-- [📁 Project Structure](#-project-structure)
-- [📊 Home Manager Profile Graph](#-home-manager-profile-graph)
-- [🗺️ Network Topology](#️-network-topology)
-- [❄️Flake Inputs](#flake-inputs)
-- [🔒 Secrets Management](#-secrets-management)
-- [🔗 Related Repositories](#-related-repositories)
+- [Overview](#overview)
+- [Project Structure](#project-structure)
+- [Home Manager Profile Graph](#home-manager-profile-graph)
+- [Network Topology](#network-topology)
+- [Flake Inputs](#flake-inputs)
+- [Secrets Management](#secrets-management)
+- [Related Repositories](#related-repositories)
 
 ---
 
-## 📜 Overview
+## Overview
 
 This repository contains primarily [nix](https://github.com/nixos/nix) configurations, leveraging [Nix Flakes](https://nixos.wiki/wiki/Flakes), [Home Manager](https://github.com/nix-community/home-manager), and system-specific modules ([NixOS](https://nixos.org/), [nix-darwin](https://github.com/LnL7/nix-darwin), [nix-on-droid](https://github.com/nix-community/nix-on-droid)) to achieve a purely declarative, reproducible, and consistent environment across multiple OSes on multiple hosts for multiple users:
 
-- 🍎 **macOS** (via `nix-darwin`)
-- 🤖 **Android** (via `nix-on-droid`)
-- 🐧 **\*nix (NixOS)** (including WSL via `NixOS-WSL`)
+- **macOS** (via `nix-darwin`)
+- **Android** (via `nix-on-droid`)
+- **\*nix (NixOS)** (including WSL via `NixOS-WSL`)
 
-## 📁 Project Structure
+## Project Structure
 
 The repository is organized using [flake-parts](https://github.com/hercules-ci/flake-parts) for better modularity.
 
 ```
 .
-├── .claude
+├── .claude/                  # Claude AI assistant configuration
+│   ├── commands/
+│   │   └── openspec/
+│   ├── .mcp.json
+│   ├── CLAUDE.md
 │   └── settings.json
-├── .github
-│   ├── workflows
+├── .github/                  # GitHub Actions workflows & funding
+│   ├── workflows/
 │   └── FUNDING.yml
-├── assets
-│   ├── topology
+├── assets/                   # Images and visual assets
+│   ├── topology/
+│   │   ├── main.svg
+│   │   └── network.svg
 │   ├── home_graph.png
 │   ├── qezta.gif
 │   └── qezta.png
-├── common
-│   ├── all
-│   ├── home
-│   ├── hosts
-│   │   ├── all
-│   │   ├── darwin
-│   │   ├── droid
-│   │   ├── iso
-│   │   └── nixos
-│   └── README.md
-├── flake
-│   ├── actions
-│   │   ├── darwin-build.nix
-│   │   ├── default.nix
-│   │   ├── flake-check.nix
-│   │   ├── flake-lock-update.nix
-│   │   ├── home-build.nix
-│   │   ├── nixos-build.nix
-│   │   └── topology-build.nix
-│   ├── topology
-│   │   ├── default.nix
-│   │   └── global.nix
+├── common/                   # Shared configurations across all platforms
+│   ├── all/                  # Common to all configurations
+│   ├── home/                 # Common home-manager configurations
+│   └── hosts/                # Common host configurations
+│       ├── all/
+│       ├── darwin/
+│       ├── droid/
+│       ├── iso/
+│       └── nixos/
+├── flake/                    # Flake-parts module definitions
+│   ├── actions/              # GitHub Actions definitions
+│   ├── topology/             # Network topology configuration
 │   ├── checks.nix
-│   ├── default.nix
 │   ├── devshells.nix
 │   ├── formatters.nix
 │   ├── iso-packages.nix
-│   ├── mkCfg.nix
-│   └── README.md
-├── home
-│   ├── ai
-│   ├── comms
-│   ├── dev
-│   ├── gui
-│   ├── media
-│   ├── tools
-│   ├── tty
-│   ├── web
-│   ├── default.nix
-│   └── README.md
-├── hosts
-│   ├── darwin
-│   │   ├── L1
-│   │   └── default.nix
-│   ├── droid
-│   │   ├── M1
-│   │   └── default.nix
-│   ├── iso
-│   ├── nixos
-│   │   ├── L2
-│   │   ├── WSL
-│   │   └── default.nix
-│   ├── default.nix
-│   └── README.md
-├── lib
-│   ├── custom.nix
-│   ├── default.nix
-│   └── README.md
-├── modules
-│   ├── home
-│   ├── hosts
-│   ├── default.nix
-│   └── README.md
-├── overlays
-│   ├── default.nix
-│   ├── nixpkgs.nix
-│   └── README.md
-├── pkgs
-│   ├── custom
-│   ├── darwin
-│   ├── pypi
-│   └── README.md
-├── templates
-│   ├── vanilla
-│   └── default.nix
-├── utils
+│   └── mkCfg.nix             # Universal host builder
+├── home/                     # Home-manager modules by category
+│   ├── ai/                   # AI tools and configurations
+│   ├── comms/                # Communication (email, IRC, newsboat)
+│   ├── dev/                  # Development tools (JS, Python, cloud)
+│   ├── gui/                  # GUI applications and desktop managers
+│   ├── media/                # Media tools (image, video, music)
+│   ├── tools/                # Utilities (privacy, productivity, keyboard)
+│   ├── tty/                  # Terminal tools (editors, shells, multiplexers)
+│   └── web/                  # Web browsers and related tools
+├── hosts/                    # Platform-specific host configurations
+│   ├── darwin/               # macOS hosts (nix-darwin)
+│   │   └── L1/
+│   ├── droid/                # Android hosts (nix-on-droid)
+│   │   └── M1/
+│   ├── iso/                  # ISO configurations
+│   │   ├── iso/
+│   │   └── t2-iso/
+│   └── nixos/                # NixOS hosts
+│       ├── L2/
+│       └── WSL/
+├── lib/                      # Custom Nix utility functions
+│   └── custom.nix
+├── modules/                  # Custom NixOS/home-manager modules
+│   ├── home/
+│   └── hosts/
+│       └── darwin/
+├── openspec/                 # OpenSpec project documentation
+│   ├── AGENTS.md
+│   └── project.md
+├── overlays/                 # Nix package overlays
+│   └── custom.nix
+├── pkgs/                     # Custom package derivations
+│   ├── custom/
+│   ├── darwin/
+│   └── pypi/
+├── templates/                # Nix flake templates
+│   └── vanilla/
+├── utils/                    # Build and rebuild scripts
 │   ├── common.sh
 │   ├── home_rebuild.sh
 │   └── hosts_rebuild.sh
@@ -163,25 +148,23 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
 ├── .envrc
 ├── .gitattributes
 ├── .gitignore
-├── .mcp.json
-├── .pre-commit-config.yaml
-├── CLAUDE.md
+├── AGENTS.md                 # AI agent instructions
 ├── CODEOWNERS
 ├── flake.lock
-├── flake.nix
+├── flake.nix                 # Main flake entry point
 ├── LICENSE
 ├── README.md
 ├── SECURITY.md
 └── shell.nix
 ```
 
-## 📊 Home-Manager Profile Graph
+## Home Manager Profile Graph
 
 This dependency graph visualizes the dependencies of the Home-Manager profile configuration:
 
 ![Home Manager Profile Dependency Graph](./assets/home_graph.png)
 
-## 🗺️ Network Topology
+## Network Topology
 
 The network topology visualizations are automatically generated using [nix-topology](https://github.com/oddlama/nix-topology) and provide a comprehensive view of the infrastructure setup across all hosts and networks.
 
@@ -199,7 +182,7 @@ Focused visualization of network segments and connectivity:
 
 > **Note**: These topology diagrams are automatically built and updated via GitHub Actions whenever topology configurations.
 
-## ❄️Flake Inputs
+## Flake Inputs
 
 This flake relies on several external inputs to manage dependencies and configurations:
 
@@ -234,7 +217,7 @@ This flake relies on several external inputs to manage dependencies and configur
 
 _(See `flake.nix` for the complete list and specific sources/versions)_
 
-## 🔒 Secrets Management
+## Secrets Management
 
 Secrets (API keys, passwords, sensitive configurations) are managed via [agenix](https://github.com/ryantm/agenix) or specificaly [ragenix](https://github.com/yaxitech/ragenix).
 
@@ -245,7 +228,7 @@ Secrets (API keys, passwords, sensitive configurations) are managed via [agenix]
 
 ⚠️ **Building this configuration requires access to the private `DivitMittal/OS-nixCfg-secrets` repo and the corresponding [age](https://github.com/FiloSottile/age) private `ssh` key.**
 
-## 🔗 Related Repositories
+## Related Repositories
 
 - `DivitMittal/OS-nixCfg-secrets`: (Private) Contains encrypted secrets managed by `agenix` & `ragenix`.
 - [DivitMittal/Vim-Cfg](https://github.com/DivitMittal/Vim-Cfg): Pure lua standalone Neovim configuration, deployed via `nix4nvchad`.
