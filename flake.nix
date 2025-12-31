@@ -4,7 +4,7 @@
   outputs = {nixpkgs, ...} @ inputs: let
     inherit (inputs.flake-parts.lib) mkFlake;
     specialArgs.lib = nixpkgs.lib.extend (_: super: {
-      custom = builtins.import ./lib/custom.nix {lib = super;};
+      custom = import ./lib/custom.nix {lib = super;};
     });
   in
     mkFlake {inherit inputs specialArgs;} ({
@@ -13,7 +13,7 @@
       self,
       ...
     }: {
-      systems = builtins.import inputs.systems;
+      systems = import inputs.systems;
       perSystem = {system, ...}: {
         # Note: We use non-memoized pkgs here instead of the memoized version
         # (inputs.nixpkgs.legacyPackages.${system}) because we need to apply
@@ -22,7 +22,7 @@
         # The memoized version would not include our overlays and config settings.
         #
         # Trade-off: Slightly longer evaluation time vs. ability to customize pkgs
-        _module.args.pkgs = builtins.import nixpkgs {
+        _module.args.pkgs = import nixpkgs {
           inherit system;
           config = let
             inherit (lib) mkDefault;

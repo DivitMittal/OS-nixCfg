@@ -12,7 +12,7 @@
     enable = true;
     package = pkgs.nixosStable.aerc;
 
-    extraBinds = builtins.import ./binds.nix;
+    extraBinds = import ./binds.nix;
     extraConfig = {
       general = {
         unsafe-accounts-conf = true;

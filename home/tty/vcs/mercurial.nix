@@ -10,6 +10,6 @@
     userName = config.hostSpec.userFullName;
     userEmail = config.hostSpec.email.dev;
 
-    ignores = builtins.import ./common/ignore.nix;
+    ignores = import ./common/ignore.nix;
   };
 }

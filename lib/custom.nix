@@ -7,8 +7,8 @@
   # so multiple calls with the same path don't re-read the directory.
   #
   # Returns: List of absolute paths like [ /path/to/dir/module1.nix /path/to/dir/subdir ]
-  scanPaths = path: let
-    entries = builtins.readDir path;
+  scanPaths = _path: let
+    entries = builtins.readDir _path;
     filteredEntries =
       lib.attrsets.filterAttrs (
         name: type:
@@ -16,5 +16,5 @@
       )
       entries;
   in
-    lib.lists.map (name: path + "/${name}") (lib.attrsets.attrNames filteredEntries);
+    lib.lists.map (name: _path + "/${name}") (lib.attrsets.attrNames filteredEntries);
 }

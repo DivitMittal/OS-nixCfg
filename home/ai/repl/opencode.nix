@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   ohMyOpencodeConfig = {
     "$schema" = "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json";
     google_auth = false;
@@ -326,5 +330,5 @@ in {
   };
 
   ## oh-my-opencode
-  xdg.configFile."opencode/oh-my-opencode.json".text = builtins.toJSON ohMyOpencodeConfig;
+  xdg.configFile."opencode/oh-my-opencode.json".text = lib.generators.toJSON ohMyOpencodeConfig;
 }

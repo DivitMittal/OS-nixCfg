@@ -3,10 +3,10 @@
 
   outputs = inputs: let
     inherit (inputs.flake-parts.lib) mkFlake;
-    specialArgs.customLib = builtins.import (inputs.OS-nixCfg + "/lib/custom.nix") {inherit (inputs.nixpkgs) lib;};
+    specialArgs.customLib = import (inputs.OS-nixCfg + "/lib/custom.nix") {inherit (inputs.nixpkgs) lib;};
   in
     mkFlake {inherit inputs specialArgs;} ({inputs, ...}: {
-      systems = builtins.import inputs.systems;
+      systems = import inputs.systems;
       imports = [./flake];
     });
 
