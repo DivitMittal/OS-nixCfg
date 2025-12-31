@@ -45,11 +45,11 @@ in {
         google = {
           api-key-env = "GEMINI_API_KEY";
           models = {
-            "gemini-2.5-flash" = {
+            "gemini-3-flash-preview" = {
               aliases = ["gemini-flash"];
               max-input-chars = 392000;
             };
-            "gemini-2.5-pro" = {
+            "gemini-3-pro-preview" = {
               aliases = ["gemini-pro"];
               max-input-chars = 392000;
             };

@@ -22,8 +22,6 @@
         command = "${pkgs.pnpm}/bin/pnpm";
         args = ["dlx" "@modelcontextprotocol/server-memory"];
       };
-
-      # Third-party MCP servers
       deepwiki = {
         url = "https://mcp.deepwiki.com/mcp";
       };
