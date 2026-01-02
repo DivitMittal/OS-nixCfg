@@ -290,22 +290,11 @@
       };
     };
 
-    ## Misc.
+    ## AI/LLM Tools
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
       inputs = {
         treefmt-nix.follows = "treefmt-nix";
-      };
-    };
-    yazi-plugins = {
-      url = "github:yazi-rs/plugins";
-      flake = false;
-    };
-    leetcode-tui = {
-      url = "github:akarsh1995/leetcode-tui";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
       };
     };
     aicommit2 = {
@@ -315,6 +304,19 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
+      };
+    };
+
+    ## Misc.
+    yazi-plugins = {
+      url = "github:yazi-rs/plugins";
+      flake = false;
+    };
+    leetcode-tui = {
+      url = "github:akarsh1995/leetcode-tui";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
       };
     };
     pkms = {
