@@ -7,6 +7,5 @@
       type = "command";
     };
     theme = "dark";
-    #outputStyle = "Explanatory";
   };
 }
