@@ -24,7 +24,7 @@ in {
     getPlugin = src: pluginName: {${pluginName} = src + "/${pluginName}.yazi";};
   in {
     enable = true;
-    package = pkgs.custom.yazi-bin;
+    package = pkgs.yazi;
 
     enableFishIntegration = false;
     enableZshIntegration = false;
