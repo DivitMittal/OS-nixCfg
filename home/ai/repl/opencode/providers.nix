@@ -1,5 +1,6 @@
 _: {
   programs.opencode.settings.provider = {
+    # Google Gemini models (via Antigravity)
     google = {
       models = {
         gemini-3-pro-high = {
