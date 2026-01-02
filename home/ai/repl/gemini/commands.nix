@@ -36,9 +36,5 @@ _: {
         - Maintain logical ordering (dependencies first)
       '';
     };
-    fix-issue = {
-      description = "Fix GitHub issue following coding standards";
-      prompt = " You are a senior software engineer. Your task is to fix the following GitHub issue in a codebase, adhering to best practices and coding standards.";
-    };
   };
 }
