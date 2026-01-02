@@ -5,15 +5,15 @@ _: let
     agents = {
       # Sisyphus - Main orchestration agent (use Copilot Claude Sonnet)
       Sisyphus = {
-        model = "github-copilot/claude-sonnet-4-5";
+        model = "github-copilot/claude-opus-4.5";
       };
       # Planner-Sisyphus - Planning agent (use Copilot Claude Sonnet)
       Planner-Sisyphus = {
-        model = "github-copilot/claude-sonnet-4-5";
+        model = "github-copilot/claude-sonnet-4.5";
       };
       # Oracle - Expert advisor (use Copilot Claude Opus for highest quality)
       oracle = {
-        model = "github-copilot/claude-opus-4-5";
+        model = "github-copilot/claude-opus-4.5";
       };
       # Frontend engineer (use Gemini for visual/UI work)
       frontend-ui-ux-engineer = {
@@ -29,7 +29,7 @@ _: let
       };
       # Explore agent - codebase search (use Copilot Claude Sonnet)
       explore = {
-        model = "github-copilot/claude-sonnet-4-5";
+        model = "github-copilot/claude-sonnet-4.5";
       };
       # Librarian - external docs search (use Gemini for speed/cost)
       librarian = {
