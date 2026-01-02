@@ -34,9 +34,9 @@ in {
       command = pnpmCommand;
       args = ["dlx" "octocode-mcp@latest"];
     };
-    # ddg = {
+    # exa = {
     #   command = pnpmCommand;
-    #   args = ["dlx" "duckduckgo-mcp-server"];
+    #   args = ["dlx" "exa-mcp-server"];
     # };
   };
 }

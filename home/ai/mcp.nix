@@ -10,17 +10,9 @@
   programs.mcp = {
     enable = true;
     servers = {
-      filesystem = {
-        command = "${pkgs.pnpm}/bin/pnpm";
-        args = ["dlx" "@modelcontextprotocol/server-filesystem"];
-      };
       sequential-thinking = {
         command = "${pkgs.pnpm}/bin/pnpm";
         args = ["dlx" "@modelcontextprotocol/server-sequential-thinking"];
-      };
-      memory = {
-        command = "${pkgs.pnpm}/bin/pnpm";
-        args = ["dlx" "@modelcontextprotocol/server-memory"];
       };
       deepwiki = {
         url = "https://mcp.deepwiki.com/mcp";
@@ -29,10 +21,20 @@
         command = "${pkgs.pnpm}/bin/pnpm";
         args = ["dlx" "octocode-mcp@latest"];
       };
-      ddg = {
+      exa = {
         command = "${pkgs.pnpm}/bin/pnpm";
-        args = ["dlx" "duckduckgo-mcp-server"];
+        args = ["dlx" "exa-mcp-server"];
       };
+      ## Dated
+      # filesystem = {
+      #   command = "${pkgs.pnpm}/bin/pnpm";
+      #   args = ["dlx" "@modelcontextprotocol/server-filesystem"];
+      # };
+      # memory = {
+      #   command = "${pkgs.pnpm}/bin/pnpm";
+      #   args = ["dlx" "@modelcontextprotocol/server-memory"];
+      # };
+      ## Project-dependent
       # playwright = {
       #   command = "${pkgs.pnpm}/bin/pnpm";
       #   args = ["dlx" "@playwright/mcp"];

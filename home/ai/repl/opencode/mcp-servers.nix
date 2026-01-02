@@ -26,9 +26,9 @@
     # deepwiki = {
     #   url = "https://mcp.deepwiki.com/mcp";
     # };
-    # ddg = {
+    # exa = {
     #   type = "local";
-    #   command = ["${pkgs.pnpm}/bin/pnpm" "dlx" "duckduckgo-mcp-server"];
+    #   command = ["${pkgs.pnpm}/bin/pnpm" "dlx" "exa-mcp-server"];
     #   enabled = true;
     # };
   };

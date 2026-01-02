@@ -28,10 +28,10 @@ in {
     #   command = pnpmCommand;
     #   args = ["dlx" "octocode-mcp@latest"];
     # };
-    ddg = {
+    exa = {
       type = "local";
       command = pnpmCommand;
-      args = ["dlx" "duckduckgo-mcp-server"];
+      args = ["dlx" "exa-mcp-server"];
     };
   };
 }
