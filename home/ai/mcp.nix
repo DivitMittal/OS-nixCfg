@@ -25,7 +25,6 @@
         command = "${pkgs.pnpm}/bin/pnpm";
         args = ["dlx" "exa-mcp-server"];
       };
-      ## Dated
       # filesystem = {
       #   command = "${pkgs.pnpm}/bin/pnpm";
       #   args = ["dlx" "@modelcontextprotocol/server-filesystem"];
@@ -34,7 +33,6 @@
       #   command = "${pkgs.pnpm}/bin/pnpm";
       #   args = ["dlx" "@modelcontextprotocol/server-memory"];
       # };
-      ## Project-dependent
       # playwright = {
       #   command = "${pkgs.pnpm}/bin/pnpm";
       #   args = ["dlx" "@playwright/mcp"];

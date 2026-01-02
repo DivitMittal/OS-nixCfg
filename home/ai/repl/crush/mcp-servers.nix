@@ -3,34 +3,11 @@
   # uvCommand = "${pkgs.uv}/bin/uvx";
 in {
   programs.crush.settings.mcp = {
-    ## modelcontextprotocol
-    filesystem = {
-      type = "stdio";
-      command = pnpmCommand;
-      args = ["dlx" "@modelcontextprotocol/server-filesystem"];
-    };
     sequential-thinking = {
       type = "stdio";
       command = pnpmCommand;
       args = ["dlx" "@modelcontextprotocol/server-sequential-thinking"];
     };
-    memory = {
-      type = "stdio";
-      command = pnpmCommand;
-      args = ["dlx" "@modelcontextprotocol/server-memory"];
-    };
-    ## Microsoft
-    # playwright = {
-    #   type = "stdio";
-    #   command = pnpmCommand;
-    #   args = ["dlx" "@playwright/mcp"];
-    # };
-    # markitdown = {
-    #   type = "stdio";
-    #   command = uvCommand;
-    #   args = ["markitdown-mcp"];
-    # };
-    ## third-party
     deepwiki = {
       type = "http";
       url = "https://mcp.deepwiki.com/mcp";
