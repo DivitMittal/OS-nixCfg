@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{lib, ...}: {
   home.packages = lib.attrsets.attrValues {
     # openhands = pkgs.writeShellScriptBin "openhands" ''
     #   exec ${pkgs.uv}/bin/uv tool run --python 3.12 --from openhands-ai openhands "$@"
@@ -19,13 +15,5 @@
     #   #   #forge
     #   #   #cursor-agent
     #   #   #groq-code-cli
-    #   ## Spec-driven tools
-    #   #spec-kit
-    #   ## Misc
-    #   #openskills
-    #   ;
-    openspec = pkgs.writeShellScriptBin "openspec" ''
-      exec ${pkgs.uv}/bin/uv tool run @fission-ai/openspec@latest "$@"
-    '';
   };
 }
