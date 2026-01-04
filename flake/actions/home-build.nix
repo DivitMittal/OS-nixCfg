@@ -50,7 +50,8 @@
               git config --global user.name "GitHub Actions Bot"
               git config --global user.email bot@github.com
               git add .
-              git commit -m "chore: update home-manager dependency graph"
+              git commit -m "chore: update home-manager dependency graph" || echo "No changes to commit"
+              git pull --rebase origin master
               git push origin master
             '';
             env = {

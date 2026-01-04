@@ -141,11 +141,11 @@
     "Vim-Cfg": {
       "flake": false,
       "locked": {
-        "lastModified": 1767354483,
-        "narHash": "sha256-mrXWDtTwz/iFBgtI/XYtUMcc8Hm0zS6eDnV77k3S+UE=",
+        "lastModified": 1767516789,
+        "narHash": "sha256-gHK8B/BJATDoE68TjUYG8pRhN7ThLOFtVOZ1P7SdLAc=",
         "owner": "DivitMittal",
         "repo": "Vim-Cfg",
-        "rev": "e5d7df1984828d6dde35701f6c57e7cbffdc9bf1",
+        "rev": "d4abf4a8e45b85e54dccd63cf9b2ce0837318da6",
         "type": "github"
       },
       "original": {
