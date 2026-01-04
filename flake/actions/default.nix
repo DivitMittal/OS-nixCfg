@@ -40,7 +40,7 @@
       contents = "write";
       id-token = "write";
     };
-    part-actions = [
+    common-post-actions = [
       {
         name = "Set env var";
         run = "echo \"OS_NIXCFG=$(pwd)\" 1>> \"$GITHUB_ENV\"";
@@ -77,7 +77,7 @@
           };
         }
       ]
-      ++ part-actions;
+      ++ common-post-actions;
     common-actions-cred =
       [
         {
@@ -89,7 +89,7 @@
           };
         }
       ]
-      ++ part-actions;
+      ++ common-post-actions;
   };
 
   flake.actions-nix = {

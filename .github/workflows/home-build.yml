@@ -16,7 +16,7 @@ jobs:
       uses: actions/checkout@main
       with:
         fetch-depth: 1
-        persist-credentials: false
+        persist-credentials: true
     - name: Set env var
       run: echo "OS_NIXCFG=$(pwd)" 1>> "$GITHUB_ENV"
     - uses: DeterminateSystems/nix-installer-action@v21
