@@ -41,10 +41,6 @@
       id-token = "write";
     };
     common-post-actions = [
-      {
-        name = "Set env var";
-        run = "echo \"OS_NIXCFG=$(pwd)\" 1>> \"$GITHUB_ENV\"";
-      }
       inputs.actions-nix.lib.steps.DeterminateSystemsNixInstallerAction
       {
         name = "Magic Nix Cache(Use Github Actions Cache)";
