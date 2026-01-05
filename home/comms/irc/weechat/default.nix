@@ -2,15 +2,10 @@
   pkgs,
   config,
   lib,
+  self,
   ...
 }: let
-  OS_NIXCFG = let
-    temp = builtins.getEnv "OS_NIXCFG"; # impure
-  in
-    if temp == ""
-    then throw "Environment variable $OS_NIXCFG must be set"
-    else temp;
-  weechatConfSourceDir = "${OS_NIXCFG}/home/comms/irc/weechat/conf";
+  weechatConfSourceDir = "${self}/home/comms/irc/weechat/conf";
   weechatConfEntries = builtins.readDir weechatConfSourceDir;
   weechatConfNames = lib.attrsets.attrNames weechatConfEntries;
   dynamicWeechatFiles = lib.attrsets.listToAttrs (

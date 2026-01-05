@@ -17,8 +17,6 @@ jobs:
       with:
         fetch-depth: 1
         persist-credentials: false
-    - name: Set env var
-      run: echo "OS_NIXCFG=$(pwd)" 1>> "$GITHUB_ENV"
     - uses: DeterminateSystems/nix-installer-action@v21
     - name: Magic Nix Cache(Use Github Actions Cache)
       uses: DeterminateSystems/magic-nix-cache-action@main
