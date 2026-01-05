@@ -31,7 +31,7 @@ jobs:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - name: Build topology visualization
       run: nix -vL build --accept-flake-config .#topology.x86_64-linux.config.output
-        --impure --show-trace
+        --show-trace
     - name: Create assets directory for topology
       run: mkdir -p ./assets/topology
     - name: Copy topology SVGs to assets

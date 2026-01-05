@@ -30,7 +30,7 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - name: Run nix flake check
-      run: nix -vL flake check --impure --all-systems --no-build
+      run: nix -vL flake check --all-systems --no-build
     timeout-minutes: 90
 'on':
   pull_request:

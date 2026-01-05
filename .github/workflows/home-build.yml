@@ -31,7 +31,7 @@ jobs:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - name: Builds a home-manager configuration
       run: nix build --accept-flake-config .#homeConfigurations.L1.activationPackage
-        --impure --show-trace
+        --show-trace
     - name: Generate home-manager dependency graph
       run: nix -vL run github:craigmbooth/nix-visualize -- --verbose --output ./assets/home_graph.png
         ./result

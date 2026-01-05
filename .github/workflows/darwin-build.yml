@@ -31,7 +31,7 @@ jobs:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - name: Builds a nix-darwin configuration
       run: nix -vL build --accept-flake-config .#darwinConfigurations.L1.config.system.build.toplevel
-        --impure --show-trace
+        --show-trace
     timeout-minutes: 90
 'on':
   pull_request:

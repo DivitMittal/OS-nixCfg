@@ -31,7 +31,7 @@ jobs:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - name: Builds a nixos configuration
       run: nix -vL build --accept-flake-config .#nixosConfigurations.WSL.config.system.build.toplevel
-        --impure --show-trace
+        --show-trace
     timeout-minutes: 90
 'on':
   pull_request:
