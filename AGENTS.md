@@ -26,15 +26,23 @@ Keep this managed block so 'openspec update' can refresh the instructions.
 
 **Key rebuild commands** (available in devshell):
 
-- `hms` - Rebuild & switch home-manager configuration
-- `hmst` - Rebuild & switch home-manager with traces
-- `hts` - Rebuild & switch host configuration (nix-darwin/nixos/nix-on-droid)
-- `htst` - Rebuild & switch host configuration with traces
+- `hms [flags]` - Rebuild & switch home-manager configuration (accepts flags like `-v`, `--show-trace`, `--impure`)
+- `hts [flags]` - Rebuild & switch host configuration (nix-darwin/nixos/nix-on-droid, accepts flags)
 
 **Direct script usage**:
 
-- `./utils/home_rebuild.sh` - Rebuild home-manager config
-- `./utils/hosts_rebuild.sh` - Rebuild system config (detects OS automatically)
+- `./utils/home_rebuild.sh [flags]` - Rebuild home-manager config (pass flags as arguments)
+- `./utils/hosts_rebuild.sh [flags]` - Rebuild system config (pass flags as arguments)
+
+**Example usage**:
+
+```bash
+# With verbose output and trace
+hms -v --show-trace
+
+# For debugging impure builds (if needed)
+hms --impure --show-trace
+```
 
 **Formatting & Linting**:
 
