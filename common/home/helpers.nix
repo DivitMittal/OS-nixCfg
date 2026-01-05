@@ -80,7 +80,7 @@
   programs.man = {
     enable = true;
     package = pkgs.man;
-    generateCaches = true;
+    generateCaches = false; # Cache generation disabled to reduce rebuild time (used for whatis/apropos commands)
   };
   programs.info.enable = true;
   home.extraOutputsToInstall = ["info"]; # "doc" "devdoc"
