@@ -24,12 +24,9 @@ function yellow() {
 }
 
 # Build switch arguments
-# Usage: build_switch_args [trace]
+# Usage: build_switch_args [additional_flags...]
 function build_switch_args() {
-  local args="-v --impure"
-  if [[ -n ${1-} && $1 == "trace" ]]; then
-    args="$args --show-trace"
-  fi
+  local args="$*"
   args="$args --flake .#$(hostname) switch"
   echo "$args"
 }

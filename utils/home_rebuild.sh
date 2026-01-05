@@ -13,7 +13,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/common.sh"
 
 # Build switch arguments
-switch_args=$(build_switch_args "${1-}")
+switch_args=$(build_switch_args "$@")
 
 green "====== REBUILDING & SWITCHING (HOME) ======"
 
