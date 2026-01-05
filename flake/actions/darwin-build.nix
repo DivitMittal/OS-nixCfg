@@ -39,7 +39,7 @@
         ++ [
           {
             name = "Builds a nix-darwin configuration";
-            run = "nix -vL build --accept-flake-config .#darwinConfigurations.L1.config.system.build.toplevel --impure --show-trace";
+            run = "nix -vL build --accept-flake-config .#darwinConfigurations.L1.config.system.build.toplevel --show-trace";
           }
         ];
     };

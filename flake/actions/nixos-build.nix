@@ -38,7 +38,7 @@
         ++ [
           {
             name = "Builds a nixos configuration";
-            run = "nix -vL build --accept-flake-config .#nixosConfigurations.WSL.config.system.build.toplevel --impure --show-trace";
+            run = "nix -vL build --accept-flake-config .#nixosConfigurations.WSL.config.system.build.toplevel --show-trace";
           }
         ];
     };
