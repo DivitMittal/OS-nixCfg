@@ -10,7 +10,6 @@
     ov = import ./home/ov.nix;
     spicetify-cli = import ./home/spicetify-cli.nix;
     spotifyd = import ./home/spotifyd.nix;
-    tidalcycles = import ./home/tidalcycles.nix;
     warpd = import ./home/warpd.nix;
     wiki-tui = import ./home/wiki-tui.nix;
   };

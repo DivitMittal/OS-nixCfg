@@ -187,6 +187,20 @@
       };
     };
 
+    ## TidalCycles
+    tidalcycles-nix = {
+      url = "path:/Users/div/Projects/tidalcycles-nix";
+      #url = "github:DivitMittal/tidalcycles-nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        systems.follows = "systems";
+        devshell.follows = "devshell";
+        treefmt-nix.follows = "treefmt-nix";
+        git-hooks.follows = "git-hooks";
+      };
+    };
+
     ### Infra
     deploy-rs = {
       url = "github:serokell/deploy-rs";

@@ -141,11 +141,11 @@
     "Vim-Cfg": {
       "flake": false,
       "locked": {
-        "lastModified": 1767516789,
-        "narHash": "sha256-gHK8B/BJATDoE68TjUYG8pRhN7ThLOFtVOZ1P7SdLAc=",
+        "lastModified": 1767589571,
+        "narHash": "sha256-bftbrAB3p0UQo2VSkWqHAm3NZoHGC0BqA2l8m+aPXL4=",
         "owner": "DivitMittal",
         "repo": "Vim-Cfg",
-        "rev": "d4abf4a8e45b85e54dccd63cf9b2ce0837318da6",
+        "rev": "7a96444a536395ed740d761e734890e6b2a50358",
         "type": "github"
       },
       "original": {
@@ -1694,6 +1694,7 @@
         "pkms": "pkms",
         "ragenix": "ragenix",
         "systems": "systems_7",
+        "tidalcycles-nix": "tidalcycles-nix",
         "treefmt-nix": "treefmt-nix_4",
         "yazi-plugins": "yazi-plugins"
       }
@@ -1859,6 +1860,38 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
+      }
+    },
+    "tidalcycles-nix": {
+      "inputs": {
+        "devshell": [
+          "devshell"
+        ],
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "git-hooks": [
+          "git-hooks"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ],
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1767727625,
+        "narHash": "sha256-s9qzXIl1Re116WhbpsAbWkafcMFOscxZcvHnMYwpTg0=",
+        "path": "/Users/div/Projects/tidalcycles-nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "/Users/div/Projects/tidalcycles-nix",
+        "type": "path"
       }
     },
     "treefmt-nix": {
