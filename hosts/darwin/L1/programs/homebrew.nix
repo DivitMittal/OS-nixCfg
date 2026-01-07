@@ -46,7 +46,7 @@
       ## General
       #"Texty" = 1538996043;
       #"Tuner" = 1597107926;
-      "PerplexityAI" = 6714467650;
+      #"PerplexityAI" = 6714467650;
       "Mirror" = 1502839586;
 
       ## Safari Extensions
