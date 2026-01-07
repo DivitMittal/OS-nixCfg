@@ -16,6 +16,7 @@
       #thunderbird # Email client
       #brilliant # Screen Anotation Tool
       ;
+    handy = pkgs.brewCasks.handy.override {variation = "tahoe";};
     #browseros = pkgs.brewCasks.browseros.override {variation = "tahoe";};
     inherit
       (pkgs.customDarwin)
