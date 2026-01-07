@@ -1864,6 +1864,9 @@
     },
     "tidalcycles-nix": {
       "inputs": {
+        "actions-nix": [
+          "actions-nix"
+        ],
         "devshell": [
           "devshell"
         ],
@@ -1884,14 +1887,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1767727625,
-        "narHash": "sha256-s9qzXIl1Re116WhbpsAbWkafcMFOscxZcvHnMYwpTg0=",
-        "path": "/Users/div/Projects/tidalcycles-nix",
-        "type": "path"
+        "lastModified": 1767776792,
+        "narHash": "sha256-ob9bFpDTuujgHR+ZLeGBDV7pxCkp0FMwRlpEpL1YHiI=",
+        "owner": "DivitMittal",
+        "repo": "tidalcycles-nix",
+        "rev": "af11ecc4757f1db803b9e0ed4f523f1eaf993958",
+        "type": "github"
       },
       "original": {
-        "path": "/Users/div/Projects/tidalcycles-nix",
-        "type": "path"
+        "owner": "DivitMittal",
+        "repo": "tidalcycles-nix",
+        "type": "github"
       }
     },
     "treefmt-nix": {

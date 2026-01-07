@@ -189,8 +189,7 @@
 
     ## TidalCycles
     tidalcycles-nix = {
-      url = "path:/Users/div/Projects/tidalcycles-nix";
-      #url = "github:DivitMittal/tidalcycles-nix";
+      url = "github:DivitMittal/tidalcycles-nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
@@ -198,6 +197,7 @@
         devshell.follows = "devshell";
         treefmt-nix.follows = "treefmt-nix";
         git-hooks.follows = "git-hooks";
+        actions-nix.follows = "actions-nix";
       };
     };
 
