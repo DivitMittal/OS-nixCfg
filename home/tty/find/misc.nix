@@ -60,5 +60,34 @@
     enableBashIntegration = false;
     enableZshIntegration = false;
     enableFishIntegration = false;
+
+    channels = {
+      brew = {
+        metadata = {
+          name = "brew";
+          description = "Search and preview Homebrew packages";
+          requirements = ["brew" "jq"];
+        };
+        source.command = "(brew formulae; brew casks) | sort";
+        preview = {
+          command = ''
+            brew info --json=v2 '{0}' | jq -r '
+              if (.casks | length) > 0 then
+                .casks[0] | "\u001b[1;36m# \(.token):\(.version)\u001b[0m\n\(.desc // "")\n\u001b[1mType:\u001b[0m Cask\n\u001b[1mStatus:\u001b[0m \(if .installed then "Installed" else "Not installed" end)"
+              else
+                .formulae[0] | "\u001b[1;36m# \(.name):\(.versions.stable)\u001b[0m\n\(.desc // "")\n\u001b[1mType:\u001b[0m Formula\n\u001b[1mStatus:\u001b[0m \(if (.installed | length) > 0 then "Installed" else "Not installed" end)"
+              end
+            '
+          '';
+          ansi = true;
+        };
+        keybindings.enter = "actions:open";
+        actions.open = {
+          description = "Open the selected package's homepage";
+          command = "brew home '{0}'";
+          mode = "execute";
+        };
+      };
+    };
   };
 }
