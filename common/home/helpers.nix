@@ -46,9 +46,10 @@
   programs.direnv = {
     enable = true;
     package = pkgs.direnv;
-    enableBashIntegration = false; # handled by direnv-instant
-    enableZshIntegration = false; # handled by direnv-instant
-    # enableFishIntegration = false;
+    # handled by direnv-instant
+    enableBashIntegration = false;
+    enableZshIntegration = false;
+    enableFishIntegration = false;
     enableNushellIntegration = false;
 
     nix-direnv = {
@@ -61,8 +62,9 @@
     enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
+    enableFishIntegration = true;
     settings = {
-      mux_delay = 1;
+      mux_delay = 10; # delay in seconds before starting the multiplexer
     };
   };
 
