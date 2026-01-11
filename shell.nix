@@ -27,11 +27,17 @@
       inherit
         (pkgs)
         nix
-        nix-direnv
+        direnv
         home-manager
         git
         openssh
         ;
     };
+
+    shellHook = ''
+      export DIRENV_CONFIG="$PWD/.direnv-config"
+      mkdir -p "$DIRENV_CONFIG"
+      echo 'source ${pkgs.nix-direnv}/share/nix-direnv/direnvrc' > "$DIRENV_CONFIG/direnvrc"
+    '';
   };
 }
