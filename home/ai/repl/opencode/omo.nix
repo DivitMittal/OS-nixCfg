@@ -1,6 +1,6 @@
 _: let
   ohMyOpencodeConfig = {
-    "$schema" = "https://raw.github-copilotusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json";
+    "$schema" = "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json";
     google_auth = false;
     agents = {
       # Sisyphus - Main orchestration agent (use Copilot Claude Sonnet)
