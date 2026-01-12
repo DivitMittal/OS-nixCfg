@@ -5,6 +5,7 @@ _: {
     ];
     casks = [
       "fuse-t" #"macfuse"
+      "veracrypt-fuse-t"
     ];
   };
 

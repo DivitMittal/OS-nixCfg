@@ -11,7 +11,6 @@
       cotp # TOTP TUI
       #skate # key-value store
       ;
-    inherit (pkgs.custom) agevault;
   };
 
   programs.gpg = {
