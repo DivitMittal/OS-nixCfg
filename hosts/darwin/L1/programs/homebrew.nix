@@ -30,14 +30,14 @@
       "blackhole-2ch"
 
       ## macOS specific
-      # "lulu"
+      #"lulu"
       #"monolingual"
       #"knockknock"
     ];
 
     brews = [
       ## mas
-      "mas"
+      #"mas"
       ## Development
       #"libomp" # Multiprogramming
     ];
@@ -45,9 +45,7 @@
     masApps = {
       ## General
       #"Texty" = 1538996043;
-      #"Tuner" = 1597107926;
       #"PerplexityAI" = 6714467650;
-      "Mirror" = 1502839586;
 
       ## Safari Extensions
       #"Ghostery" = 6504861501;

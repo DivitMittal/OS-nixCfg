@@ -17,13 +17,11 @@
       #brilliant # Screen Anotation Tool
       ;
     handy = pkgs.brewCasks.handy.override {variation = "tahoe";};
-    #browseros = pkgs.brewCasks.browseros.override {variation = "tahoe";};
     inherit
       (pkgs.customDarwin)
       hot-bin # CPU temperature monitor for menubar
       menubar-dock-bin # macOS dock in menubar
       MultiSoundChanger-bin # aggregate-output volume control in menubar
-      #LosslessSwitcher-bin # Lossless audio toggle in menubar
       LibreScore-bin # Music notation ripper
       ;
 
