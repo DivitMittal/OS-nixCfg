@@ -17,7 +17,8 @@ jobs:
       with:
         fetch-depth: 1
         persist-credentials: false
-    - uses: DeterminateSystems/nix-installer-action@v21
+    - name: Install Nix
+      uses: nixbuild/nix-quick-install-action@master
     - name: Magic Nix Cache(Use Github Actions Cache)
       uses: DeterminateSystems/magic-nix-cache-action@main
     - name: Configure to use personal binary cache @ Cachix

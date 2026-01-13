@@ -41,7 +41,10 @@
       id-token = "write";
     };
     common-post-actions = [
-      inputs.actions-nix.lib.steps.DeterminateSystemsNixInstallerAction
+      {
+        name = "Install Nix";
+        uses = "nixbuild/nix-quick-install-action@master";
+      }
       {
         name = "Magic Nix Cache(Use Github Actions Cache)";
         uses = "DeterminateSystems/magic-nix-cache-action@main";
