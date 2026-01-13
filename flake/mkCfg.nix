@@ -72,11 +72,16 @@
     in
       configGenerator.${class} (mergeAttrsList [
         {inherit pkgs modules;}
-        (optionalAttrs (class != "droid") {inherit lib;})
         (optionalAttrs (class != "droid" && class != "home") {inherit specialArgs;})
+        (optionalAttrs (class != "droid") {inherit lib;})
         (
-          optionalAttrs (class == "home" || class == "droid") {
+          optionalAttrs (class == "home") {
             extraSpecialArgs = specialArgs;
+          }
+        )
+        (
+          optionalAttrs (class == "droid") {
+            extraSpecialArgs = specialArgs // {inherit lib;};
           }
         )
       ]));
