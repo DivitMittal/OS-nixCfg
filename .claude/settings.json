@@ -1,6 +1,4 @@
 {
-  "enabledMcpjsonServers": ["serena", "nixos"],
-  "enableAllProjectMcpServers": true,
   "permissions": {
     "allow": [
       "Bash(nix flake check:*)",
@@ -10,5 +8,7 @@
     ],
     "deny": [],
     "ask": []
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": ["serena", "nixos"]
 }
