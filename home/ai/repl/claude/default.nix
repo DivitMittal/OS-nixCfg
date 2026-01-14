@@ -6,14 +6,17 @@
   imports = lib.custom.scanPaths ./.;
 
   home.packages = lib.attrsets.attrValues {
+    ## CCUsage
     # ccusage = pkgs.writeShellScriptBin "ccusage" ''
     #   exec ${pkgs.pnpm}/bin/pnpm dlx ccusage@latest "$@"
     # '';
     inherit (pkgs.ai) ccusage;
-    # claude-code-router = pkgs.writeShellScriptBin "ccr" ''
-    #   exec ${pkgs.pnpm}/bin/pnpm dlx @musistudio/claude-code-router "$@"
-    # '';
-    inherit (pkgs.ai) claude-code-router;
+    ## Claude Code Router
+    claude-code-router = pkgs.writeShellScriptBin "ccr" ''
+      exec ${pkgs.pnpm}/bin/pnpm dlx @musistudio/claude-code-router "$@"
+    '';
+    # inherit (pkgs.ai) claude-code-router;
+    ## CCStatusLine
     inherit (pkgs.ai) ccstatusline;
   };
 
