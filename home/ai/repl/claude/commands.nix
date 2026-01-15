@@ -180,13 +180,23 @@ _: {
       ## Forbidden Patterns
 
       ### Comments
-      - No decorative comment blocks (`# ===`, `# ---`, `# ***`)
-      - No section banners or ASCII art headers
-      - No comments restating what code obviously does (`# increment counter` above `i += 1`)
-      - No comments explaining every line or block
-      - No "TODO: implement" placeholders unless specifically requested
-      - No comments like `# Main entry point`, `# Helper function`, `# Utility method`
-      - Comments only where genuinely non-obvious or for complex business logic
+      **REMOVE** (obvious/decorative):
+      - Decorative blocks (`# ===`, `# ---`, `# ***`)
+      - ASCII art headers or section banners
+      - Comments restating what code obviously does (`# increment i` above `i += 1`)
+      - Generic labels (`# Main entry point`, `# Helper function`, `# Utility method`)
+      - Comments repeating variable/function names in prose form
+      - "TODO: implement" placeholders unless specifically requested
+
+      **KEEP** (adds value):
+      - Technical explanations of WHY not WHAT (`# offset by 1 to skip header row`)
+      - Non-obvious edge cases (`# nil check: upstream API returns null on 404`)
+      - Performance/algorithm notes (`# O(n log n) - sorted for binary search`)
+      - Caveats or gotchas (`# WARN: not thread-safe, caller must hold lock`)
+      - Brief clarifications for dense/tricky logic
+      - References to specs, tickets, or external docs
+
+      Comments should be terse and technical. When in doubt, keep the comment if it explains something non-obvious from the code itself.
 
       ### Naming
       - No overly verbose names (`user_authentication_service_handler_manager`)
@@ -229,7 +239,7 @@ _: {
 
       ## Refactoring Checklist
 
-      1. Strip decorative/redundant comments
+      1. Strip decorative/obvious comments (keep technical ones that add value)
       2. Shorten verbose variable/function names
       3. Inline trivial helper functions
       4. Remove unnecessary abstraction layers
