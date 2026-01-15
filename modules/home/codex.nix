@@ -28,7 +28,7 @@ in {
 
         Each attribute defines a skill. The attribute name becomes the skill directory name,
         and the value is the SKILL.md content with YAML frontmatter.
-        Skills are stored in {file}`~/.codex/skills/<name>/SKILL.md`.
+        Skills are stored in {file}`$XDG_CONFIG_HOME/codex/skills/<name>/SKILL.md`.
 
         See <https://github.com/openai/codex> for skill format documentation.
       '';
@@ -54,23 +54,23 @@ in {
 
         Each attribute defines a custom prompt. The attribute name becomes the prompt filename,
         and the value is the prompt content with optional YAML frontmatter.
-        Prompts are stored in {file}`~/.codex/prompts/<name>.md`.
+        Prompts are stored in {file}`$XDG_CONFIG_HOME/codex/prompts/<name>.md`.
       '';
     };
   };
 
   config = mkIf cfg.enable {
-    home.file = lib.mkMerge [
+    xdg.configFile = lib.mkMerge [
       # Skills: each skill gets its own directory with SKILL.md
       (lib.mapAttrs' (name: content:
-        lib.nameValuePair ".codex/skills/${name}/SKILL.md" {
+        lib.nameValuePair "codex/skills/${name}/SKILL.md" {
           text = content;
         })
       cfg.skills)
 
       # Prompts: each prompt is a markdown file
       (lib.mapAttrs' (name: content:
-        lib.nameValuePair ".codex/prompts/${name}.md" {
+        lib.nameValuePair "codex/prompts/${name}.md" {
           text = content;
         })
       cfg.prompts)
