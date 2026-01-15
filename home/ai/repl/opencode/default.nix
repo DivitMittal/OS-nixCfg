@@ -31,6 +31,13 @@ in {
       autoshare = false;
       theme = "system";
 
+      ## oh-my-opencode inherits from claude-code:
+      ## - mcp
+      ## - commands
+      ## - skills
+      ## - agents
+      ## - hooks
+      ## - plugins
       plugin = [
         "oh-my-opencode"
         "opencode-antigravity-auth@1.1.2"
