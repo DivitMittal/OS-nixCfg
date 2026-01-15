@@ -5,18 +5,18 @@
 }:
 buildGoModule rec {
   pname = "go-whatsapp-web-multidevice";
-  version = "7.7.0";
+  version = "7.11.1";
 
   src = fetchFromGitHub {
     owner = "aldinokemal";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-oVi0ibFEXEALGHk0IONrMSwPFMhFuJ80vSsL3dL1dd0=";
+    hash = "sha256-/J7sby566iK4DlnddCygSGwYb+bROM84UUNQDKuFpWQ=";
   };
 
   sourceRoot = "${src.name}/src";
 
-  vendorHash = "sha256-Im+UEV1klTRoQjiWcO8V9XG3zwU/siY0vIKW3Nz+bR0=";
+  vendorHash = "sha256-O8M2wYqHj3JWNjreMfrytdO3akp+TLnm1GFe/B/YkMg=";
 
   ldflags = ["-s" "-w" "-X github.com/aldinokemal/go-whatsapp-web-multidevice/config.AppVersion=${version}"];
 

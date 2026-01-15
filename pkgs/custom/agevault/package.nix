@@ -3,15 +3,15 @@
   buildGoModule,
   fetchFromGitHub,
 }:
-buildGoModule {
+buildGoModule rec {
   pname = "agevault";
-  version = "unstable-2024-11-30";
+  version = "1.1.1";
 
   src = fetchFromGitHub {
     owner = "ndavd";
     repo = "agevault";
-    rev = "main";
-    hash = "sha256-Rqh/PVWB2qj3PPz+UwIznRrjJw529dpLnTqIOdxvOTU=";
+    rev = "v${version}";
+    hash = "sha256-f7t/hzBfZi3OJtYPM4n5bDhm+LcceinDUZIpVsSSl/s=";
   };
 
   vendorHash = "sha256-jiSYg4+RLzezW1D1kWxmNoEn0rlbXRzU3BsK16aP0tw=";
