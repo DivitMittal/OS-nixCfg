@@ -155,7 +155,7 @@ _: {
       ## Task
 
       Refactor $ARGUMENTS to improve:
-      - Readability and maintainability
+      - Maintainability
       - Remove duplication
       - Simplify complex logic
       - Improve naming
