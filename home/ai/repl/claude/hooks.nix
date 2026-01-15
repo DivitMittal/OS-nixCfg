@@ -103,7 +103,7 @@ _: {
             type = "command";
             command = ''
               #!/usr/bin/env bash
-              osascript -e 'display notification "Claude session ended" with title "Claude Code"' 2>/dev/null || true
+              osascript -e 'display notification "AI task complete, awaiting response" with title "AI Assistant"' 2>/dev/null || true
             '';
           }
         ];
