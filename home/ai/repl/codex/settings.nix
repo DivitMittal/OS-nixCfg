@@ -2,42 +2,26 @@ _: {
   programs.codex.settings = {
     # ===== Core Model Settings =====
     model = "gpt-5.2-codex";
-    model_provider = "openai";
-    model_context_window = 128000;
-    model_auto_compact_token_limit = 100000;
-    tool_output_token_limit = 10000;
 
     # GPT-5 specific settings
     model_reasoning_effort = "medium";
-    model_reasoning_summary = "auto";
+    model_reasoning_summary = "detailed";
     model_verbosity = "medium";
-
-    # ===== Security & Approvals =====
-    approval_policy = "on-request";
-    sandbox_mode = "workspace-write";
-
-    sandbox_workspace_write = {
-      network_access = true;
-      exclude_tmpdir_env_var = false;
-      exclude_slash_tmp = false;
-    };
-
-    # ===== History =====
-    history = {
-      persistence = "save-all";
-      max_bytes = 10485760; # 10MB
-    };
 
     # ===== TUI =====
     tui = {
       notifications = true;
       animations = true;
     };
+    check_for_update_on_startup = false;
+    cli_auth_credentials_store = "file";
+    feedback.enabled = false;
 
     # ===== Features =====
     features = {
       shell_snapshot = true;
       web_search_request = true;
+      tui2 = true;
     };
 
     # ===== Profiles =====
@@ -60,6 +44,16 @@ _: {
           network_access = true;
         };
       };
+    };
+
+    # ===== Security & Approvals =====
+    approval_policy = "on-request";
+    sandbox_mode = "workspace-write";
+
+    sandbox_workspace_write = {
+      network_access = true;
+      exclude_tmpdir_env_var = false;
+      exclude_slash_tmp = false;
     };
   };
 }
