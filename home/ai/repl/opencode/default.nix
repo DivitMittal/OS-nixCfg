@@ -5,6 +5,10 @@
 }: {
   imports = lib.custom.scanPaths ./.;
 
+  home.packages = lib.attrsets.attrValues {
+    inherit (pkgs.ai) ccusage-opencode;
+  };
+
   programs.opencode = {
     enable = true;
     package = pkgs.writeShellScriptBin "opencode" ''
