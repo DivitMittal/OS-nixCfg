@@ -24,6 +24,7 @@
       MultiSoundChanger-bin # aggregate-output volume control in menubar
       LibreScore-bin # Music notation ripper
       iris # Webcam mirror
+      #codexbar-bin # AI usage limits in menubar
       #LosslessSwitcher-bin # Lossless audio toggle in menubar
       ;
 
