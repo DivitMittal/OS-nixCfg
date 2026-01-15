@@ -18,7 +18,7 @@ in {
       exec ${pkgs.pnpm}/bin/pnpm dlx @openai/codex "$@"
     '';
   in {
-    enable = true;
+    enable = false;
     inherit package;
   };
 }
