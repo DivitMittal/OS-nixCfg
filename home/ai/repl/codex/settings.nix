@@ -17,6 +17,7 @@ _: {
     cli_auth_credentials_store = "file";
     feedback.enabled = false;
     project_doc_fallback_filenames = ["CLAUDE.md"];
+    startup_timeout_sec = "60";
 
     # ===== Features =====
     features = {
