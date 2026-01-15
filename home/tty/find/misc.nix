@@ -88,6 +88,46 @@
           mode = "execute";
         };
       };
+
+      npm = {
+        metadata = {
+          name = "npm";
+          description = "Search and preview installed npm packages";
+          requirements = ["npm" "jq"];
+        };
+        source.command = "npm list -g --depth=0 --json 2>/dev/null | jq -r '.dependencies // {} | keys[]' | sort";
+        preview = {
+          command = ''
+            npm view '{0}' --json 2>/dev/null | jq -r '"\u001b[1;36m# \(.name):\(.version)\u001b[0m\n\(.description // "")\n\n\u001b[1mHomepage:\u001b[0m \(.homepage // "N/A")\n\u001b[1mLicense:\u001b[0m \(.license // "N/A")\n\u001b[1mKeywords:\u001b[0m \((.keywords // []) | join(", "))"'
+          '';
+          ansi = true;
+        };
+        keybindings.enter = "actions:open";
+        actions.open = {
+          description = "Open the selected package's homepage";
+          command = "npm view '{0}' homepage | xargs open";
+          mode = "execute";
+        };
+      };
+
+      pip = {
+        metadata = {
+          name = "pip";
+          description = "Search and preview installed pip packages";
+          requirements = ["pip" "jq"];
+        };
+        source.command = "pip list --format=json 2>/dev/null | jq -r '.[].name' | sort";
+        preview = {
+          command = "pip show '{0}'";
+          ansi = false;
+        };
+        keybindings.enter = "actions:open";
+        actions.open = {
+          description = "Open the selected package's homepage";
+          command = "pip show '{0}' | grep 'Home-page:' | awk '{print $2}' | xargs open";
+          mode = "execute";
+        };
+      };
     };
   };
 }
