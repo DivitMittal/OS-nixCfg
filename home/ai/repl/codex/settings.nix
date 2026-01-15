@@ -28,6 +28,12 @@ _: {
     profile = "default";
 
     profiles = {
+      default = {
+        model = "gpt-5.2-codex";
+        approval_policy = "on-request";
+        sandbox_mode = "workspace-write";
+      };
+
       conservative = {
         model = "gpt-5.2-codex";
         approval_policy = "untrusted";
