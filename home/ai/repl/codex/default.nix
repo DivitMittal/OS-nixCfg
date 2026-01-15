@@ -13,12 +13,9 @@ in {
   });
 
   programs.codex = let
-    # package = pkgs.ai.codex;
-    package = pkgs.writeShellScriptBin "codex" ''
-      exec ${pkgs.pnpm}/bin/pnpm dlx @openai/codex "$@"
-    '';
+    package = pkgs.ai.codex;
   in {
-    enable = false;
+    enable = true;
     inherit package;
   };
 }
