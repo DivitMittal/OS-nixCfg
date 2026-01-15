@@ -6,7 +6,7 @@
   imports = lib.custom.scanPaths ./.;
 
   programs.gemini-cli = {
-    enable = true;
+    enable = false;
     package = pkgs.writeShellScriptBin "gemini" ''
       exec ${pkgs.pnpm}/bin/pnpm dlx @google/gemini-cli "$@"
     '';

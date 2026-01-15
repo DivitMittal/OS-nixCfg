@@ -1,16 +1,19 @@
 {
   pkgs,
   lib,
+  config,
   ...
-}: {
+}: let
+  inherit (lib) mkIf;
+in {
   imports = lib.custom.scanPaths ./.;
 
-  home.packages = lib.attrsets.attrValues {
+  home.packages = mkIf config.programs.opencode.enable (lib.attrsets.attrValues {
     inherit (pkgs.ai) ccusage-opencode;
     ocx = pkgs.writeShellScriptBin "ocx" ''
       exec ${pkgs.pnpm}/bin/pnpm dlx ocx "$@"
     '';
-  };
+  });
 
   programs.opencode = let
     package = pkgs.writeShellScriptBin "opencode" ''
