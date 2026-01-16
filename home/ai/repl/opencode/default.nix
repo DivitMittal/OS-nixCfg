@@ -29,7 +29,6 @@ in {
     settings = {
       autoupdate = false;
       autoshare = false;
-      theme = "system";
 
       ## oh-my-opencode inherits from claude-code:
       ## - mcp
@@ -40,7 +39,7 @@ in {
       ## - plugins
       plugin = [
         "oh-my-opencode"
-        "opencode-antigravity-auth@1.1.2"
+        "opencode-antigravity-auth@beta"
       ];
     };
   };
