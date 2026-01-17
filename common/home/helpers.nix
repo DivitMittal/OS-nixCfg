@@ -46,10 +46,9 @@
   programs.direnv = {
     enable = true;
     package = pkgs.direnv;
-    # handled by direnv-instant
-    enableBashIntegration = false;
-    enableZshIntegration = false;
-    enableFishIntegration = false;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    enableFishIntegration = true;
     enableNushellIntegration = false;
 
     nix-direnv = {
@@ -59,7 +58,7 @@
   };
 
   programs.direnv-instant = {
-    enable = true;
+    enable = false;
     enableBashIntegration = true;
     enableZshIntegration = true;
     enableFishIntegration = true;
