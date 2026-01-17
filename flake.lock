@@ -1881,11 +1881,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768042446,
-        "narHash": "sha256-wVMooQORZfZ1uoBU3PEZafruX3uqwwkfLhSJ9EF5hC0=",
+        "lastModified": 1768655668,
+        "narHash": "sha256-J+1Qv0vApQPluGzDDHvMPRApJ2Uj15CQPUdYPqhRjaw=",
         "owner": "DivitMittal",
         "repo": "tidalcycles-nix",
-        "rev": "b9e1bec1ab9ec09697373b7d502d657ec2803c95",
+        "rev": "0c98e2772774e3650becdc34e40c19fee9476db0",
         "type": "github"
       },
       "original": {
