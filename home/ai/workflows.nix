@@ -20,6 +20,10 @@
 
     ## Memory System (Issue Tracker)
     inherit (pkgs) beads;
+    bead = pkgs.writeShellScriptBin "bd" ''
+      exec ${pkgs.pnpm}/bin/pnpm dlx @beads/bd "$@"
+    '';
+
     inherit (pkgs.custom) bv-bin;
   };
 }

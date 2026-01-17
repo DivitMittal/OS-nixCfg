@@ -35,7 +35,10 @@
           persist-credentials = false;
         };
       }
-      inputs.actions-nix.lib.steps.DeterminateSystemsNixInstallerAction
+      {
+        name = "Install Nix";
+        uses = "nixbuild/nix-quick-install-action@master";
+      }
       {
         name = "Magic Nix Cache(Use GitHub Actions Cache)";
         uses = "DeterminateSystems/magic-nix-cache-action@main";
