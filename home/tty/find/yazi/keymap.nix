@@ -496,11 +496,6 @@
         on = ["<C-d>"];
         run = "plugin diff";
       }
-      {
-        desc = "Run Lazygit";
-        on = ["g" "l"];
-        run = "plugin lazygit";
-      }
     ];
   };
 
