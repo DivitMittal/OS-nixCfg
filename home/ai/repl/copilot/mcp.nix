@@ -11,11 +11,6 @@ in {
       type = "http";
       url = "https://mcp.deepwiki.com/mcp";
     };
-    # octocode = {
-    #   type = "local";
-    #   command = pnpmCommand;
-    #   args = ["dlx" "octocode-mcp@latest"];
-    # };
     exa = {
       type = "local";
       command = pnpmCommand;
