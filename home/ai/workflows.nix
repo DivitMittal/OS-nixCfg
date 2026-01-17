@@ -14,11 +14,11 @@
     '';
 
     ## Ralph Wiggum
-    ralph = pkgs.writeShellScriptBin "ralph" ''
-      exec ${pkgs.uv}/bin/uv tool --from ralph-orchestrator run ralph "$@"
+    ralph-tui = pkgs.writeShellScriptBin "ralph-tui" ''
+      exec ${pkgs.pnpm}/bin/pnpm dlx ralph-tui "$@"
     '';
 
-    ## Memory System
+    ## Memory System (Issue Tracker)
     inherit (pkgs) beads;
     inherit (pkgs.custom) bv-bin;
   };
