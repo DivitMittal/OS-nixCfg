@@ -10,9 +10,6 @@ in {
 
   home.packages = mkIf config.programs.opencode.enable (lib.attrsets.attrValues {
     inherit (pkgs.ai) ccusage-opencode;
-    ocx = pkgs.writeShellScriptBin "ocx" ''
-      exec ${pkgs.pnpm}/bin/pnpm dlx ocx "$@"
-    '';
   });
 
   programs.opencode = let
