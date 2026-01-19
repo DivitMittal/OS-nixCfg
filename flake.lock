@@ -241,6 +241,7 @@
         "git-hooks": [
           "git-hooks"
         ],
+        "home-manager": "home-manager",
         "llm-agents": "llm-agents",
         "nixpkgs": [
           "nixpkgs"
@@ -253,11 +254,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768833816,
-        "narHash": "sha256-d/J7Hrvj2lqws0agnpVZKxv33Nrbju6rRaFvXqDWAHY=",
+        "lastModified": 1768846663,
+        "narHash": "sha256-AK35JUTuL5cOMNvg49HNbrSRq3QmG4T+TZ3lQ/0+N6E=",
         "owner": "DivitMittal",
         "repo": "ai-nixCfg",
-        "rev": "5b4696fbbb657e3df7daf956f02c4eeb729c359b",
+        "rev": "9aa0b61e4a841dfa3e48347666e8c2ca5335d71c",
         "type": "github"
       },
       "original": {
@@ -938,6 +939,27 @@
       }
     },
     "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "ai-nixCfg",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1768834561,
+        "narHash": "sha256-rVLXAvdzj5FEkDgZ6CIrzeSZHDQopYie+vD1rzigO0o=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "8968092456edd0429a5a5e5de5d178e190f89698",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "home-manager_2": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -1710,7 +1732,7 @@
         "flake-utils": "flake-utils",
         "git-hooks": "git-hooks",
         "hammerspoon-nix": "hammerspoon-nix",
-        "home-manager": "home-manager",
+        "home-manager": "home-manager_2",
         "kanata-tray": "kanata-tray",
         "leetcode-tui": "leetcode-tui",
         "mac-app-util": "mac-app-util",
