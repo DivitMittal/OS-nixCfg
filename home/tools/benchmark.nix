@@ -8,6 +8,5 @@
       (pkgs)
       ttyper
       ;
-    # gittype = pkgs.custom.gittype-bin;
   };
 }
