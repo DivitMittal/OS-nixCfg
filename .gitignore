@@ -13,8 +13,6 @@ result-*
 .pre-commit-config.yaml
 
 ## Tools
+.serena/
 .vscode/
-.crush/
-.aider*
-.serena*
 *local.json
