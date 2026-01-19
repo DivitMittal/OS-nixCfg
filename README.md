@@ -103,7 +103,6 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
 │   ├── iso-packages.nix
 │   └── mkCfg.nix             # Universal host builder
 ├── home/                     # Home-manager modules by category
-│   ├── ai/                   # AI tools and configurations
 │   ├── comms/                # Communication (email, IRC, newsboat)
 │   ├── dev/                  # Development tools (JS, Python, cloud)
 │   ├── gui/                  # GUI applications and desktop managers
@@ -134,9 +133,8 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
 ├── overlays/                 # Nix package overlays
 │   └── custom.nix
 ├── pkgs/                     # Custom package derivations
-│   ├── custom/
-│   ├── darwin/
-│   └── pypi/
+│   ├── custom/               # Custom derivations
+│   └── darwin/               # macOS-specific packages
 ├── templates/                # Nix flake templates
 │   └── vanilla/
 ├── utils/                    # Build and rebuild scripts
@@ -194,6 +192,7 @@ Secrets (API keys, passwords, sensitive configurations) are managed via [agenix]
 
 ## Related Repositories
 
+- [DivitMittal/ai-nixCfg](https://github.com/DivitMittal/ai-nixCfg): AI/LLM tool configurations extracted for modularity (CLI tools, cloud services, MCP servers, REPL configurations).
 - `DivitMittal/OS-nixCfg-secrets`: (Private) Contains encrypted secrets managed by `agenix` & `ragenix`.
 - [DivitMittal/Vim-Cfg](https://github.com/DivitMittal/Vim-Cfg): Pure lua standalone Neovim configuration, deployed via `nix4nvchad`.
 - [DivitMittal/Emacs-Cfg](https://github.com/DivitMittal/Emacs-Cfg): An elisp doomemacs configuration, used as an input via `nix-doom-emacs-unstraightened`.
