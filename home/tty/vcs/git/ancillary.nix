@@ -132,6 +132,30 @@
           executeShellCommand = "!";
         };
       };
+
+      customCommands = [
+        {
+          key = "<c-l>";
+          context = "files";
+          command = "lumen draft | tee >(pbcopy)";
+          loadingText = "Generating message...";
+          outupt = "popup";
+        }
+        {
+          key = "<c-k>";
+          context = "files";
+          command = ''lumen draft -c {{.Form.Context | quote}} | tee >(pbcopy)'';
+          loadingText = "Generating message...";
+          outupt = "popup";
+          prompts = [
+            {
+              type = "input";
+              title = "Context";
+              key = "Context";
+            }
+          ];
+        }
+      ];
     };
   };
 }
