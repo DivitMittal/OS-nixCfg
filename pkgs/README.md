@@ -8,7 +8,6 @@ Custom package definitions not in nixpkgs.
 pkgs/
 ├── custom/       # Custom derivations
 ├── darwin/       # macOS-specific packages
-└── pypi/         # Python packages
 ```
 
 ## Package Types
@@ -17,7 +16,6 @@ pkgs/
 - Custom/patched versions
 - Binary packages
 - Platform-specific apps
-- Language packages (PyPI, etc.)
 
 ## Basic Package
 

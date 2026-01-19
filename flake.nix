@@ -187,6 +187,21 @@
       };
     };
 
+    ## AI
+    ai-nixCfg = {
+      #url = "path:/Users/div/Projects/ai-nixCfg";
+      url = "github:DivitMittal/ai-nixCfg";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        systems.follows = "systems";
+        devshell.follows = "devshell";
+        treefmt-nix.follows = "treefmt-nix";
+        git-hooks.follows = "git-hooks";
+        actions-nix.follows = "actions-nix";
+      };
+    };
+
     ## TidalCycles
     tidalcycles-nix = {
       url = "github:DivitMittal/tidalcycles-nix";
@@ -299,23 +314,6 @@
       inputs = {
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
-      };
-    };
-
-    ## AI/LLM Tools
-    llm-agents = {
-      url = "github:numtide/llm-agents.nix";
-      inputs = {
-        treefmt-nix.follows = "treefmt-nix";
-      };
-    };
-    aicommit2 = {
-      #url = "path:/Users/div/Projects/Forks/aicommit2";
-      #url = "github:DivitMittal/aicommit2/update-fix-pnpm-err";
-      url = "github:tak-bro/aicommit2";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
       };
     };
 

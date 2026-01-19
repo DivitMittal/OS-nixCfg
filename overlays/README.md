@@ -15,7 +15,6 @@ overlays/
 The `custom` overlay provides:
 
 - `customDarwin` - macOS-specific packages from `../pkgs/darwin/`
-- `customPypi` - Python packages from `../pkgs/pypi/`
 - `custom` - General custom packages from `../pkgs/custom/`
 
 All packages are loaded recursively using `packagesFromDirectoryRecursive`.
@@ -30,7 +29,6 @@ Auto-applied to all systems. Access custom packages via:
 
 ```nix
 pkgs.customDarwin.myMacPackage
-pkgs.customPypi.myPythonPackage
 pkgs.custom.myGeneralPackage
 ```
 
