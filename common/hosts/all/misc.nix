@@ -25,7 +25,6 @@
       bc
       gnugrep
       inetutils
-      gnused
       gawk
       which
       gzip
@@ -37,9 +36,11 @@
       gnumake
       groff
       indent
-      diffutils
-      findutils
-      uutils-coreutils-noprefix #uutils-diffutils uutils-findutils
+      ## uutils
+      uutils-sed # gnused
+      uutils-coreutils-noprefix
+      uutils-diffutils # diffutils
+      uutils-findutils # findutils
       ## Others
       zip
       unzip
