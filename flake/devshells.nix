@@ -59,10 +59,12 @@
             name = "apps-backup";
             help = "Backup installed applications";
             command = ''
-              [ -d "${self}/hosts/darwin/$(hostname)/programs/bak" ] || { echo "Backup directory doesn't exist"; exit 1; }
-              FILE="${self}/hosts/darwin/$(hostname)/programs/bak/apps_$(date +%b%y).txt"
-              /usr/bin/env ls /Applications/ 1> $FILE
-              /usr/bin/env ls "$HOME/Applications/Home Manager Apps/" 1>> $FILE
+              REPO_DIR="''${DEVSHELL_ROOT:-$PWD}"
+              BAK_DIR="$REPO_DIR/hosts/darwin/$(hostname)/programs/bak"
+              [ -d "$BAK_DIR" ] || { echo "Backup directory doesn't exist: $BAK_DIR"; exit 1; }
+              FILE="$BAK_DIR/apps_$(date +%b%y).txt"
+              /usr/bin/env ls /Applications/ 1> "$FILE"
+              /usr/bin/env ls "$HOME/Applications/Home Manager Apps/" 1>> "$FILE"
             '';
             category = "misc";
           })
