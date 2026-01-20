@@ -24,17 +24,17 @@
       then pkgs.brewCasks.musescore
       else pkgs.musescore;
 
-    spotify =
-      if hostPlatform.isDarwin
-      then
-        (pkgs.brewCasks.spotify.override {
-          variation = "tahoe";
-        }).overrideAttrs (oldAttrs: {
-          src = pkgs.fetchurl {
-            url = lib.lists.head oldAttrs.src.urls;
-            hash = "sha256-a4ZKlDvQS8tIUr4B6QKLiKZvXTmzBzLIIgIXRalYC+A=";
-          };
-        })
-      else pkgs.spotify;
+    # spotify =
+    #   if hostPlatform.isDarwin
+    #   then
+    #     (pkgs.brewCasks.spotify.override {
+    #       variation = "tahoe";
+    #     }).overrideAttrs (oldAttrs: {
+    #       src = pkgs.fetchurl {
+    #         url = lib.lists.head oldAttrs.src.urls;
+    #         hash = "sha256-a4ZKlDvQS8tIUr4B6QKLiKZvXTmzBzLIIgIXRalYC+A=";
+    #       };
+    #     })
+    #   else pkgs.spotify;
   };
 }

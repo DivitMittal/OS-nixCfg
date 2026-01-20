@@ -22,9 +22,8 @@
       hot-bin # CPU temperature monitor for menubar
       menubar-dock-bin # macOS dock in menubar
       MultiSoundChanger-bin # aggregate-output volume control in menubar
-      LibreScore-bin # Music notation ripper
+      #LibreScore-bin # Music notation ripper
       iris # Webcam mirror
-      #codexbar-bin # AI usage limits in menubar
       #LosslessSwitcher-bin # Lossless audio toggle in menubar
       ;
 

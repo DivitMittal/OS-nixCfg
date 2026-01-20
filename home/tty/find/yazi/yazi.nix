@@ -67,7 +67,7 @@
     ## Office Documents - Spreadsheets
     {
       url = "*.{xlsx,xls,ods}";
-      use = ["excel" "libreoffice" "onlyoffice" "reveal"];
+      use = ["onlyoffice" "libreoffice" "excel" "reveal"];
     }
     ## Office Documents - Word
     {
