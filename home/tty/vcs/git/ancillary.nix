@@ -110,6 +110,11 @@ in {
 
       update.method = "never";
 
+      os = {
+        shell = "${pkgs.bash}/bin/bash";
+        shellArg = "-c";
+      };
+
       keybinding = {
         universal = {
           prevItem = "<up>";
@@ -145,16 +150,16 @@ in {
         {
           key = "<c-l>";
           context = "files";
-          command = "lumen draft | tee /dev/tty | ${clipboardCmd}";
+          command = ''bash -c "lumen draft | tee >(${clipboardCmd})"'';
           loadingText = "Generating message...";
-          outupt = "popup";
+          output = "popup";
         }
         {
           key = "<c-k>";
           context = "files";
-          command = "lumen draft -c {{.Form.Context | quote}} | tee /dev/tty | ${clipboardCmd}";
+          command = ''bash -c "lumen draft -c {{.Form.Context | quote}} | tee >(${clipboardCmd})"'';
           loadingText = "Generating message...";
-          outupt = "popup";
+          output = "popup";
           prompts = [
             {
               type = "input";
