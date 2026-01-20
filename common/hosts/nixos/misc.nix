@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   inherit (lib) mkDefault;
@@ -17,5 +18,13 @@ in {
     "${config.hostSpec.username}" = {
       isNormalUser = true;
     };
+  };
+
+  environment.systemPackages = lib.attrsets.attrValues {
+    inherit
+      (pkgs)
+      bluez # bluetooth protocol
+      wl-clipboard
+      ;
   };
 }

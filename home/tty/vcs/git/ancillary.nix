@@ -2,8 +2,16 @@
   pkgs,
   config,
   lib,
+  hostPlatform,
   ...
-}: {
+}: let
+  clipboardCmd =
+    if hostPlatform.isDarwin
+    then "pbcopy"
+    else if hostPlatform.isLinux
+    then "${pkgs.wl-clipboard}/bin/wl-copy"
+    else "cat >/dev/null";
+in {
   home.packages = lib.attrsets.attrValues {
     inherit
       (pkgs)
@@ -137,14 +145,14 @@
         {
           key = "<c-l>";
           context = "files";
-          command = "lumen draft | tee >(pbcopy)";
+          command = "lumen draft | tee /dev/tty | ${clipboardCmd}";
           loadingText = "Generating message...";
           outupt = "popup";
         }
         {
           key = "<c-k>";
           context = "files";
-          command = ''lumen draft -c {{.Form.Context | quote}} | tee >(pbcopy)'';
+          command = "lumen draft -c {{.Form.Context | quote}} | tee /dev/tty | ${clipboardCmd}";
           loadingText = "Generating message...";
           outupt = "popup";
           prompts = [
