@@ -1,90 +1,81 @@
-## Development Commands
+# PROJECT KNOWLEDGE BASE
 
-**Entry point**: Use `nix develop` or `nix-shell` to enter development environment with all tools.
+## OVERVIEW
 
-**Key rebuild commands** (available in devshell):
+Multi-platform Nix flake (flake-parts) covering darwin, NixOS/WSL, nix-on-droid, and standalone home-manager. Universal builder `mkCfg` wires common modules, platform layers, and host overrides; heavy auto-import via `lib.custom.scanPaths`.
 
-- `hms [flags]` - Rebuild & switch home-manager configuration (accepts flags like `-v`, `--show-trace`, `--impure`)
-- `hts [flags]` - Rebuild & switch host configuration (nix-darwin/nixos/nix-on-droid, accepts flags)
+## STRUCTURE
 
-**Direct script usage**:
-
-- `./utils/home_rebuild.sh [flags]` - Rebuild home-manager config (pass flags as arguments)
-- `./utils/hosts_rebuild.sh [flags]` - Rebuild system config (pass flags as arguments)
-
-**Example usage**:
-
-```bash
-# With verbose output and trace
-hms -v --show-trace
-
-# For debugging impure builds (if needed)
-hms --impure --show-trace
+```
+./
+├── flake/            # flake-parts modules, mkCfg, actions, topology, devshells, formatters, checks
+├── hosts/            # platform hosts (darwin, nixos, droid, iso, wsl)
+├── home/             # home-manager modules by domain (tty/gui/tools/media/comms/dev/web)
+├── common/           # shared layers (all, home, hosts/{all,darwin,droid,iso,nixos})
+├── modules/          # reusable HM & darwin modules
+├── overlays/         # custom package overlays (custom, customDarwin)
+├── pkgs/             # derivations (custom + darwin binaries)
+├── utils/            # rebuild scripts + shared shell helpers
+├── openspec/         # project docs
+└── assets/           # topology and diagrams
 ```
 
-**Formatting & Linting**:
+## WHERE TO LOOK
 
-- `nix fmt` - Format all nix files using treefmt (alejandra, deadnix, statix)
-- Pre-commit hooks are set up to run formatting automatically
+| Task              | Location                                     | Notes                                                    |
+| ----------------- | -------------------------------------------- | -------------------------------------------------------- |
+| Build/CI          | .github/workflows, flake/actions             | Cachix + magic-nix-cache; per-platform builds            |
+| Host add/modify   | flake/mkCfg.nix, hosts/\*                    | mkCfg class switch; scanPaths auto-import                |
+| Home modules      | home/\*, common/home                         | Drop-in via scanPaths; platform subdirs under gui/       |
+| Packages/overlays | overlays/custom.nix, pkgs/\*                 | packagesFromDirectoryRecursive; darwin binaries separate |
+| Scripts           | utils/\*.sh                                  | Shared functions in common.sh; tags successful builds    |
+| Secrets           | common/all/hostSpec.nix (from private input) | Needs OS-nixCfg-secrets + SSH key                        |
 
-**Build & Check**:
+## CODE MAP (key files)
 
-- `nix flake check` - Verify flake configuration
-- Individual configs can be built without switching using `nix build`
+| Symbol/File | Type        | Location                | Role                                                     |
+| ----------- | ----------- | ----------------------- | -------------------------------------------------------- |
+| flake.nix   | flake entry | flake.nix               | Defines inputs (17+), perSystem, imports major dirs      |
+| mkCfg       | function    | flake/mkCfg.nix         | Universal builder for classes nixos/darwin/droid/home    |
+| scanPaths   | helper      | lib/custom.nix          | Auto-imports modules in dir (excludes default.nix)       |
+| hostSpec    | data        | common/all/hostSpec.nix | User/host identity pulled from secrets input             |
+| devshell    | config      | flake/devshells.nix     | Provides hms/hts, LSPs, formatters                       |
+| overlays    | overlay     | overlays/custom.nix     | Exposes pkgs.custom/customDarwin via recursive discovery |
 
-## Architecture Overview
+## CONVENTIONS
 
-This is a **multi-platform Nix flake** supporting macOS (nix-darwin), Linux (NixOS), Android (nix-on-droid), and standalone home-manager configs.
+- Auto-import everywhere: `imports = lib.custom.scanPaths ./.;` (implicit module discovery).
+- Flake-parts mkFlake; pkgs not memoized to keep overlays flexible.
+- allowUnfree=true; allowUnsupportedSystem=false.
+- Nullable package options common in modules (mkPackageOption nullable=true).
+- Separate macOS binaries in pkgs/darwin; cross-platform in pkgs/custom.
 
-**Core Structure**:
+## ANTI-PATTERNS (project-specific)
 
-- `flake.nix` - Main flake entry point using flake-parts for modular organization
-- `flake/` - Flake module definitions (devshells, formatters, checks, host builder)
-- `hosts/` - Platform-specific host configurations (darwin/nixos/droid)
-- `home/` - Home-manager modules organized by category (dev/gui/tty/tools/etc)
-- `common/` - Shared configurations across all platforms
-- `lib/custom.nix` - Custom utility functions like `scanPaths`
+- Do NOT edit WeeChat configs by hand (warnings in home/comms/irc/weechat/conf/\*).
+- tmux.conf.local: obey DO NOT markers (no TPM lines, don’t write below markers).
+- Shell.nix exists only for bootstrap; prefer flake devshell.
 
-**Host Configuration System**:
+## UNIQUE STYLES
 
-- `flake/mkCfg.nix` defines a universal host builder function
-- Supports 4 classes: `nixos`, `darwin`, `droid`, `home`
-- Automatically includes appropriate common modules based on class
-- Each host gets its own directory under `hosts/{platform}/{hostname}/`
+- Universal mkCfg for four classes; layered common → platform → host → user.
+- Network topology auto-generated (flake/topology, assets/topology/\*, workflow topology-build).
+- AI tooling directories (.claude, .serena) at root; openspec docs separate.
 
-**Home-Manager Organization**:
-Home modules are categorized by function:
+## COMMANDS
 
-- `comms/` - Communication (email, IRC, newsboat)
-- `dev/` - Development tools (JS, Python, cloud)
-- `gui/` - GUI applications and desktop managers
-- `tty/` - Terminal tools (editors, shells, multiplexers, VCS)
-- `tools/` - Utilities (AI tools, privacy, productivity)
-- `web/` - Web browsers and related tools
+```bash
+nix develop               # enter devshell (hms/hts available)
+hms -v --show-trace       # rebuild/switch home-manager
+hts -v --show-trace       # rebuild/switch host (nixos/darwin/droid)
+nix fmt                   # treefmt (alejandra, deadnix, statix, prettier, shfmt)
+nix flake check           # full flake checks
+./utils/home_rebuild.sh   # home rebuild wrapper
+./utils/hosts_rebuild.sh  # host rebuild wrapper
+```
 
-**Secrets Management**:
+## NOTES
 
-- Uses agenix/ragenix for encrypted secrets
-- Private repo `OS-nixCfg-secrets` contains encrypted files
-- Requires SSH key access to build configurations with secrets
-
-**Custom Packages**:
-
-- `pkgs/` contains custom derivations, organized by platform
-- `overlays/` provides package overlays including NUR integration
-
-**Key Dependencies**:
-
-- Core: nixpkgs-unstable, home-manager, flake-parts
-- Platform: nix-darwin, nixos-wsl, nix-on-droid
-- External configs: Vim-Cfg, Emacs-Cfg, firefox-nixCfg (separate repos)
-- Tools: hammerspoon-nix, kanata-tray, yazi-plugins
-
-## Important Notes
-
-- Repository uses `flake-parts` for modular flake organization
-- All platforms share common configurations where possible
-- Host-specific configs live in `hosts/{platform}/{hostname}/`
-- Development environment provides consistent tooling across platforms
-- Automatic tagging of successful builds with timestamps
-- Pre-commit hooks enforce code formatting and quality
+- Secrets required: private input `OS-nixCfg-secrets` + age key at `${HOME}/.ssh/agenix/id_ed25519`.
+- CI uses Cachix (divitmittal) + Determinate magic-nix-cache.
+- Top complexity hotspots: home/tty/find/yazi/{yazi.nix,keymap.nix}, macOS defaults, starship prompt.
