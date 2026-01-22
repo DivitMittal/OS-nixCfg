@@ -103,7 +103,7 @@ in {
     };
 
     attributes = import ./attributes.nix;
-    ignores = import ./../common/ignore.nix;
+    ignores = import ../ignore.nix;
   };
 
   programs.delta = {
