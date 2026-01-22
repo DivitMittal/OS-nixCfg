@@ -25,8 +25,6 @@ in {
         clang-tools
         ## Collection
         vscode-langservers-extracted
-        ## Markdown
-        markdown-oxide
         ;
       ## Shell
       inherit (pkgs.nodePackages) bash-language-server;
@@ -48,10 +46,10 @@ in {
   };
   programs.zsh.zsh-abbr.abbreviations.nv = mkIf config.programs.zsh.enable "nvim";
 
-  programs.neovim = {
-    enable = false;
-    package = pkgs.neovim-unwrapped;
-
-    defaultEditor = true; # Sets the EDITOR sessionVariable
-  };
+  # programs.neovim = {
+  #   enable = false;
+  #   package = pkgs.neovim-unwrapped;
+  #
+  #   defaultEditor = true; # Sets the EDITOR sessionVariable
+  # };
 }
