@@ -50,7 +50,7 @@
           description = "Search and preview npm registry packages";
           requirements = ["curl" "jq"];
         };
-        source.command = "for i in 0 250 500 750 1000 1250 1500 1750 2000; do curl -s \"https://registry.npmjs.org/-/v1/search?size=250&from=$i&popularity=1.0\"; done | jq -rs '[.[].objects[].package.name] | unique | .[]' | sort";
+        source.command = "for i in 0 250 500 750 1000 1250 1500 1750 2000; do curl -s \"https://registry.npmjs.org/-/v1/search?size=250&from=$i&popularity=1.0\"; done | jq -rs '[.[]?.objects[]?.package.name // empty] | unique | .[]' | sort";
         preview = {
           command = ''
             npm view '{0}' --json 2>/dev/null | jq -r '"\u001b[1;36m# \(.name):\(.version)\u001b[0m\n\(.description // "")\n\n\u001b[1mHomepage:\u001b[0m \(.homepage // "N/A")\n\u001b[1mLicense:\u001b[0m \(.license // "N/A")\n\u001b[1mKeywords:\u001b[0m \((.keywords // []) | join(", "))"'
