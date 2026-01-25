@@ -8,7 +8,7 @@
     enable = true;
     package =
       if hostPlatform.isDarwin
-      then pkgs.brewCasks.chromium
+      then pkgs.google-chrome
       else pkgs.chromium;
 
     commandLineArgs = [
