@@ -1,3 +1,7 @@
-{lib, ...}: {
-  imports = lib.custom.scanPaths ./.;
+_: {
+  imports = [
+    ./git
+    ./mercurial.nix
+    ./jujutsu.nix
+  ];
 }
