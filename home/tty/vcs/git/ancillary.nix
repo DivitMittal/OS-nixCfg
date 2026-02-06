@@ -46,7 +46,7 @@ in {
         gh-skyline
         gh-contribs # gh-cal
         ## Misc
-        gh-copilot
+        github-copilot-cli
         gh-screensaver
         gh-markdown-preview
         gh-actions-cache
