@@ -84,6 +84,9 @@ in {
         fetch = {
           prune = true;
         };
+        pull = {
+          rebase = true;
+        };
         grep = {
           lineNumber = true;
         };
