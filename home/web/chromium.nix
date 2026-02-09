@@ -8,7 +8,7 @@
     enable = true;
     package =
       if hostPlatform.isDarwin
-      then pkgs.google-chrome
+      then (pkgs.brewCasks.google-chrome.override {variation = "tahoe";})
       else pkgs.chromium;
 
     commandLineArgs = [

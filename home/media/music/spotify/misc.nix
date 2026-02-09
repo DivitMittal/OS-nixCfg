@@ -5,7 +5,7 @@
 }: {
   home.packages = lib.attrsets.attrValues {
     inherit
-      (pkgs)
+      (pkgs.nixosStable)
       spotdl
       ;
   };

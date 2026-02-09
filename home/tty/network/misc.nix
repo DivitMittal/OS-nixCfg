@@ -12,11 +12,14 @@
         speedtest-go # speedtest cli
         bandwhich # bandwidth usage
         xh #httpie # http API client
-        termscp # scp, ftp client
         gping # graphical ping alt
         doggo #dig # dns lookup
         croc # file transfer
         ttyd # terminal sharing over web
+        ;
+      inherit
+        (pkgs.nixosStable)
+        termscp # scp, ftp client
         ;
     }
     ++ lib.optionals hostPlatform.isLinux [
