@@ -6,13 +6,13 @@
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "mole";
-  version = "1.21.0";
+  version = "1.25.0";
 
   src = fetchFromGitHub {
     owner = "tw93";
     repo = "Mole";
     rev = "V${finalAttrs.version}";
-    hash = "sha256-HAKlivpOIpQ6vtEmyiFT33j4LzXahAqQGA3DwrU2bis=";
+    hash = "sha256-THZHQUE3l1G4U6eoY4/CPt7auyqs0eGP8+uHFpZrfNs=";
   };
 
   dontBuild = true; # No need to build, all scripts are in the source

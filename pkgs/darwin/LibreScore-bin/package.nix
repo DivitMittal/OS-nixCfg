@@ -8,11 +8,11 @@
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "LibreScore";
-  version = "6.0.20";
+  version = "6.0.21";
 
   src = fetchurl {
     url = "https://github.com/LibreScore/app-librescore/releases/download/v${finalAttrs.version}/LibreScore.dmg";
-    hash = "sha256-Jt4GhuAhWJQrQbMEGxGeH8AhIBE6JfdjfhEKTTlFDo8=";
+    hash = "sha256-jmvGI0/xD8wNcRlwEi4Atb7TaeJ5xq3MAxLIDWmTllg=";
   };
 
   nativeBuildInputs = [_7zz makeWrapper];
