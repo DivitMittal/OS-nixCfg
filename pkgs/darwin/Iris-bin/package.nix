@@ -6,13 +6,13 @@
   ...
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
-  pname = "iris";
-  version = "0.2.0-hotkey";
+  pname = "Iris";
+  version = "0.1.4";
 
   src = fetchzip {
     extension = "zip";
-    url = "https://github.com/DivitMittal/Iris/releases/download/v${finalAttrs.version}/Iris-v${finalAttrs.version}.zip";
-    hash = "sha256-ZHXw2+Fpm6+cXo01oNrXa7iQW4HMmic3KkVrD50a1hA=";
+    url = "https://github.com/ahmetb/Iris/releases/download/v${finalAttrs.version}/Iris-v${finalAttrs.version}.zip";
+    hash = "sha256-4x7D/D5G2ZVJjabdNGTwZoFoT9hMrKb9PSEDfwdkQKA=";
   };
 
   nativeBuildInputs = [makeWrapper];
@@ -30,11 +30,10 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   '';
 
   meta = {
-    description = "Webcam mirror window for macOS with hotkey toggle";
-    homepage = "https://github.com/DivitMittal/Iris";
+    description = "Webcam mirror window for macOS";
+    homepage = "https://github.com/ahmetb/Iris";
     license = lib.licenses.mit;
     platforms = lib.platforms.darwin;
-    maintainers = with lib.maintainers; [DivitMittal];
     sourceProvenance = with lib.sourceTypes; [binaryNativeCode];
   };
 })
