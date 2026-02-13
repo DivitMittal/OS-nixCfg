@@ -1,14 +1,7 @@
-{
-  pkgs,
-  hostPlatform,
-  ...
-}: {
+{pkgs, ...}: {
   programs.newsboat = {
     enable = true;
-    package =
-      if hostPlatform.isDarwin
-      then pkgs.darwinStable.newsboat
-      else pkgs.nixosStable.newsboat;
+    package = pkgs.stable.newsboat;
 
     autoReload = true;
     browser = "open";

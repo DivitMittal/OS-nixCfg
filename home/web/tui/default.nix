@@ -16,7 +16,7 @@
 
   programs.chawan = {
     enable = true;
-    package = pkgs.chawan;
+    package = pkgs.stable.chawan;
 
     settings = {
       buffer = {

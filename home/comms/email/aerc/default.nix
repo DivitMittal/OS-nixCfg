@@ -10,7 +10,7 @@
 
   programs.aerc = {
     enable = true;
-    package = pkgs.nixosStable.aerc;
+    package = pkgs.aerc;
 
     extraBinds = import ./binds.nix;
     extraConfig = {
