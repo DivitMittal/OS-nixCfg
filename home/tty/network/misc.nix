@@ -2,6 +2,7 @@
   pkgs,
   lib,
   hostPlatform,
+  inputs,
   ...
 }: {
   home.packages =
@@ -17,10 +18,7 @@
         croc # file transfer
         ttyd # terminal sharing over web
         ;
-      inherit
-        (pkgs.nixosStable)
-        termscp # scp, ftp client
-        ;
+      inherit (inputs.nixpkgs-2505.legacyPackages.${hostPlatform.system}) termscp; # scp, ftp client
     }
     ++ lib.optionals hostPlatform.isLinux [
       pkgs.bluetui

@@ -27,11 +27,11 @@
           mergeAttrsList [
             {
               master = inputs.nixpkgs-master.legacyPackages.${hostPlatform.system};
-              nixosStable = inputs.nixpkgs-nixos.legacyPackages.${hostPlatform.system};
+              stable = inputs.nixpkgs-stable.legacyPackages.${hostPlatform.system};
             }
-            (optionalAttrs hostPlatform.isDarwin {
-              darwinStable = inputs.nixpkgs-darwin.legacyPackages.${hostPlatform.system};
-            })
+            # (optionalAttrs hostPlatform.isDarwin {
+            #   darwinStable = inputs.nixpkgs-darwin.legacyPackages.${hostPlatform.system};
+            # })
             (
               optionalAttrs (class == "home") (mergeAttrsList [
                 (inputs.nur.overlays.default self super)

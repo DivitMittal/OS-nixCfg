@@ -54,8 +54,9 @@
     #nixpkgs-staging.url = "github:nixos/nixpkgs/staging";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.05-darwin";
-    nixpkgs-nixos.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-2505.url = "github:nixos/nixpkgs/nixos-25.05";
+    #nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
     ## Nix User Repository (NUR)
     nur = {
       url = "github:nix-community/NUR";
