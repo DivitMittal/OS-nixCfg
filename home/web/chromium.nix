@@ -8,10 +8,10 @@
     enable = true;
     package =
       if hostPlatform.isDarwin
-      then (pkgs.brewCasks.google-chrome.override {variation = "tahoe";})
+      then pkgs.brewCasks.ungoogled-chromium.override {variation = "tahoe";}
       else pkgs.chromium;
 
-    commandLineArgs = [
+    commandLineArgs = lib.optionals (!hostPlatform.isDarwin) [
       "--ignore-gpu-blocklist"
       "--enable-gpu-rasterization"
       "--enable-parallel-downloading"
