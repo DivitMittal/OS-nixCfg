@@ -21,10 +21,10 @@
 
   homebrew = {
     enable = true;
-    brewPrefix =
+    prefix =
       if hostPlatform.isAarch
-      then "/opt/homebrew/bin"
-      else "/usr/local/bin";
+      then "/opt/homebrew"
+      else "/usr/local";
     global.autoUpdate = false;
     onActivation = {
       autoUpdate = true;
