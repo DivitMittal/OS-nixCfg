@@ -30,6 +30,7 @@ in {
     enableZshIntegration = false;
     enableBashIntegration = false;
     enableNushellIntegration = false;
+    shellWrapperName = "y";
 
     initLua = ./init.lua;
     settings = import ./yazi.nix {inherit pkgs;};
