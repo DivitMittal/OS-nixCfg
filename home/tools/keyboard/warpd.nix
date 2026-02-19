@@ -3,45 +3,82 @@
     enable = true;
     package = pkgs.customDarwin.warpd;
     settings = {
-      # Movement keys (Colemak home row)
-      left = "h";
-      down = ",";
-      up = "e";
-      right = ".";
+      ## Normal mode movement
+      left = "n";
+      down = "e";
+      up = "u";
+      right = "i";
 
-      # Speed control
+      ## Speed
       speed = 220;
-      acceleration = 1;
+      max_speed = 1600;
+      acceleration = 700;
+      decelerator_speed = 50;
 
-      # Cursor appearance
+      ## Scrolling (capitalised counterparts of the movement keys)
+      scroll_down = "M";
+      scroll_up = "J";
+      scroll_left = "T";
+      scroll_right = "R";
+
+      ## Cursor appearance
       cursor_color = "#ff0000";
+      cursor_size = 7;
+      indicator = "topright";
+      indicator_color = "#ff0000";
+      indicator_size = 12;
 
-      # Mouse buttons
-      buttons = "l m y";
+      ## Mouse buttons (t=left, comma=middle, g=right)
+      buttons = "t , g";
 
-      # Grid configuration (2x2 grid)
+      ## In-normal-mode actions (defaults kept unless they conflict)
+      # drag = "v";          # toggle drag/visual mode
+      # copy = "y";
+      # copy_and_exit = "c";
+      # paste = "p";
+      # accelerator = "a";
+      # decelerator = "d";
+      hint = "x"; # activate hint (was f in old config; x is unambiguous)
+      hint2 = "X"; # two-pass hint
+      smart_hint = "f"; # smart/element-based hints
+      grid = "g";
+      screen = "s";
+      history = ";";
+
+      ## Grid mode (2×2)
       grid_nr = 2;
       grid_nc = 2;
-      # (reading order: top-left, top-right, bottom-left, bottom-right)
-      grid_keys = "n e h ,";
 
-      # Hint configuration
+      # Grid overlay navigation mirrors normal mode movement (grid mode is separate)
+      grid_left = "n";
+      grid_down = "e";
+      grid_up = "u";
+      grid_right = "i";
+      grid_cut_left = "N";
+      grid_cut_down = "E";
+      grid_cut_up = "U";
+      grid_cut_right = "I";
+
+      # Quadrant selection: physical QWAS cluster (Colemak: q/w/a/r) — avoids n/e/u/i
+      # reading order: top-left, top-right, bottom-left, bottom-right
+      grid_keys = "q w a r";
+
+      ## Hint configuration (Colemak home-row biased character set)
       hint_chars = "arstneidhopgwyf";
-      hint_bgcolor = "#000000"; # Black background
-      hint_fgcolor = "#00ff00"; # Bright green foreground
+      hint_bgcolor = "#000000";
+      hint_fgcolor = "#00ff00";
+      hint_size = 20;
 
-      # Two-shot hint mode
-      # Must have at least hint2_grid_size^2 = 9 characters
+      ## Two-shot hint mode (≥ hint2_grid_size² = 9 chars required)
       hint2_chars = "arstneiodhpgwyfbvcxzqjklm";
       hint2_gap_size = 5;
+      hint2_grid_size = 3;
 
-      # Mode switching from within normal mode
-      hint = "f";
-      hint2 = "F";
+      ## Screen selection (Colemak home row)
+      screen_chars = "arstdhneio";
 
-      # Scrolling in normal mode
-      scroll_down = "t";
-      scroll_up = "p";
+      ## Smart hint mode
+      smart_hint_mode = "alphabet";
     };
   };
 }
