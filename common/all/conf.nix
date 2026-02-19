@@ -8,7 +8,7 @@
 in {
   nix = {
     enable = true;
-    package = mkDefault pkgs.lix; # test lix, alt to CppNix
+    package = mkDefault pkgs.nixVersions.latest;
     checkConfig = mkDefault true;
 
     settings = {

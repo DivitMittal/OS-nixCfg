@@ -342,13 +342,13 @@
     extra-substituters = [
       "https://yazi.cachix.org"
       "https://wezterm.cachix.org"
-      "https://cache.lix.systems"
+      #"https://cache.lix.systems"
       "https://cache.numtide.com"
     ];
     extra-trusted-public-keys = [
       "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
       "wezterm.cachix.org-1:kAbhjYUC9qvblTE+s7S+kl5XM1zVa4skO+E/1IDWdH0="
-      "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
+      #"cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
       "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
     ];
   };
