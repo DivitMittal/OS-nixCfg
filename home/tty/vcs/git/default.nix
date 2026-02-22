@@ -63,45 +63,42 @@ in {
         clean-U-dr = "clean -d -x f -n";
         clean-U = "clean -d -x -f";
       };
-      extraConfig = {
-        core = {
-          autocrlf = "false";
-          eol = "lf";
-          ignorecase = true;
-          filemode = false;
-          editor = "${config.home.sessionVariables.VISUAL}";
-          excludesfile = "${config.xdg.configHome}/git/ignore";
-          symlinks = true;
-        };
-
-        push = {
-          default = "simple";
-          followTags = true;
-        };
-        init = {
-          defaultBranch = "main";
-        };
-        fetch = {
-          prune = true;
-        };
-        pull = {
-          rebase = true;
-        };
-        grep = {
-          lineNumber = true;
-        };
-        help = {
-          autocorrect = "1";
-        };
-        merge = {
-          conflictstyle = "diff3";
-        };
-        color = {
-          ui = "auto";
-        };
-        http = {
-          sslCAInfo = "/etc/ssl/certs/ca-certificates.crt";
-        };
+      core = {
+        autocrlf = "false";
+        eol = "lf";
+        ignorecase = true;
+        filemode = false;
+        editor = "${config.home.sessionVariables.VISUAL}";
+        excludesfile = "${config.xdg.configHome}/git/ignore";
+        symlinks = true;
+      };
+      push = {
+        default = "simple";
+        followTags = true;
+      };
+      init = {
+        defaultBranch = "main";
+      };
+      fetch = {
+        prune = true;
+      };
+      pull = {
+        rebase = true;
+      };
+      grep = {
+        lineNumber = true;
+      };
+      help = {
+        autocorrect = "1";
+      };
+      merge = {
+        conflictstyle = "diff3";
+      };
+      color = {
+        ui = "auto";
+      };
+      http = {
+        sslCAInfo = "/etc/ssl/certs/ca-certificates.crt";
       };
     };
 
