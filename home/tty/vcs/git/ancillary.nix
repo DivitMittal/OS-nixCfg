@@ -69,6 +69,7 @@ in {
   };
 
   home.shellAliases.lg = "${pkgs.lazygit}/bin/lazygit";
+  home.shellAliases.lwt = "${pkgs.lazyworktree}/bin/lazyworktree";
   programs.lazygit = {
     enable = true;
     package = pkgs.lazygit;
@@ -169,6 +170,18 @@ in {
           ];
         }
       ];
+    };
+  };
+
+  programs.lazyworktree = {
+    enable = true;
+    package = pkgs.lazyworktree;
+    # Configuration settings for lazyworktree
+    # See: https://github.com/chmouel/lazyworktree?tab=readme-ov-file#global-configuration-yaml
+    settings = {
+      editor = "${config.home.sessionVariables.EDITOR}";
+      shell = "${pkgs.bash}/bin/bash";
+      pager = "${config.home.sessionVariables.PAGER}";
     };
   };
 }
