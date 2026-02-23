@@ -52,11 +52,21 @@
       then pkgs.brewCasks.whatsapp
       else null;
 
-    # inherit
-    #   (pkgs)
-    #   #discord #discordo
-    #   #telegram-desktop
-    #   #element-desktop
-    #   ;
+    discord =
+      if hostPlatform.isDarwin
+      then pkgs.brewCasks.discord
+      else pkgs.discord;
+
+    betterdiscord =
+      if hostPlatform.isDarwin
+      then pkgs.customDarwin.BetterDiscord-bin
+      else pkgs.betterdiscord-installer;
+
+    inherit
+      (pkgs)
+      discordo
+      #telegram-desktop
+      #element-desktop
+      ;
   };
 }
