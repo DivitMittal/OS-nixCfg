@@ -2,9 +2,18 @@
   config,
   hostPlatform,
   inputs,
+  lib,
+  pkgs,
   ...
 }: {
   imports = [inputs.nix-homebrew.darwinModules.nix-homebrew];
+
+  environment.systemPackages = lib.attrsets.attrValues {
+    inherit
+      (pkgs.customDarwin)
+      zerobrew-bin
+      ;
+  };
 
   environment.variables = {
     HOMEBREW_NO_ENV_HINTS = "1";
