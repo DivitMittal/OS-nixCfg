@@ -8,6 +8,7 @@
       inherit
         (pkgs)
         lolcat
+        clock-rs
         ;
       figlet = pkgs.python313Packages.pyfiglet;
     }
