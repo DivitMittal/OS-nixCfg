@@ -4,6 +4,7 @@
     default = self.outputs.homeManagerModules.all;
 
     # Individual modules for selective importing
+    discordo = import ./home/discordo.nix;
     glow = import ./home/glow.nix;
     ov = import ./home/ov.nix;
     spicetify-cli = import ./home/spicetify-cli.nix;
