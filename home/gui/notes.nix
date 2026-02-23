@@ -30,7 +30,7 @@ in {
   };
 
   programs.obsidian = {
-    enable = false;
+    enable = true;
     package =
       if hostPlatform.isDarwin
       then pkgs.brewCasks.obsidian
