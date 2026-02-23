@@ -12,7 +12,7 @@
         exif # metadata
         ;
       bgrm = pkgs.writeShellScriptBin "bgrm" ''
-        exec ${pkgs.uv}/bin/uv tool run --python 3.11 --with "numpy<2" backgroundremover "$@"
+        UV_NO_BUILD=1 exec ${pkgs.uv}/bin/uv tool run --python 3.11 --with "numpy<2" backgroundremover "$@"
       '';
       negate = pkgs.writeShellScriptBin "negate" ''
         set -e
