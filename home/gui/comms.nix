@@ -62,11 +62,14 @@
       then pkgs.customDarwin.BetterDiscord-bin
       else pkgs.betterdiscord-installer;
 
-    inherit
-      (pkgs)
-      discordo
-      #telegram-desktop
-      #element-desktop
-      ;
+    telegram =
+      if hostPlatform.isDarwin
+      then pkgs.brewCasks.telegram
+      else pkgs.telegram-desktop;
+
+    matrix =
+      if hostPlatform.isDarwin
+      then pkgs.brewCasks.element
+      else pkgs.element-desktop;
   };
 }
