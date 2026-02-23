@@ -6,14 +6,20 @@
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "mole";
-  version = "1.25.0";
+  version = "1.27.0";
 
   src = fetchFromGitHub {
     owner = "tw93";
     repo = "Mole";
     rev = "V${finalAttrs.version}";
-    hash = "sha256-THZHQUE3l1G4U6eoY4/CPt7auyqs0eGP8+uHFpZrfNs=";
+    hash = "sha256-7a5oQfJJIESjit+gl7FrbkT5wptxBhhWuTLCpULlQ6w=";
   };
+
+  # Fix bash arithmetic bug: ((var++)) returns exit code 1 when var=0
+  # which causes early exit with set -e. Using : $((var++)) always succeeds.
+  postPatch = ''
+    find . -name '*.sh' -exec sed -i 's/((\([a-z_]*\)++))/: $((\1++))/g' {} +
+  '';
 
   dontBuild = true; # No need to build, all scripts are in the source
 
