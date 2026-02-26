@@ -1,13 +1,12 @@
 {
   lib,
   pkgs,
+  inputs,
+  hostPlatform,
   ...
 }: {
   home.packages = lib.attrsets.attrValues {
-    inherit
-      (pkgs.custom)
-      tgt # Telegram TUI
-      ;
+    telegram-tui = inputs.tgt.packages.${hostPlatform.system}.default;
     inherit
       (pkgs)
       gomuks # Matrix client TUI

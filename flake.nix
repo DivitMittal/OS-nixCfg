@@ -330,6 +330,12 @@
         flake-utils.follows = "flake-utils";
       };
     };
+    tgt = {
+      url = "github:FedericoBruzzone/tgt";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
     pkms = {
       url = "github:DivitMittal/pkms";
       flake = false;

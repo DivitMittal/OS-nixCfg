@@ -1810,6 +1810,7 @@
         "pkms": "pkms",
         "ragenix": "ragenix",
         "systems": "systems_8",
+        "tgt": "tgt",
         "tidalcycles-nix": "tidalcycles-nix",
         "treefmt-nix": "treefmt-nix_5",
         "yazi-plugins": "yazi-plugins"
@@ -2007,6 +2008,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tgt": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1771914108,
+        "narHash": "sha256-ofVtDUOlvPcW4B5+vol62ZoXbSqUJ+awZbhHrwhiDVE=",
+        "owner": "FedericoBruzzone",
+        "repo": "tgt",
+        "rev": "7fc3d1fdb1479cd30390d7689ee09b273101d099",
+        "type": "github"
+      },
+      "original": {
+        "owner": "FedericoBruzzone",
+        "repo": "tgt",
         "type": "github"
       }
     },

@@ -71,5 +71,6 @@
       if hostPlatform.isDarwin
       then pkgs.brewCasks.element
       else pkgs.element-desktop;
+    #else null;
   };
 }
