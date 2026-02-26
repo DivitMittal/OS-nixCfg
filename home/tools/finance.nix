@@ -9,6 +9,10 @@
       tickrs
       cointop
       ;
+    inherit
+      (pkgs.custom)
+      option-analysis
+      ;
 
     hisaab = pkgs.writeShellScriptBin "hisaab" ''
       if [ $# -eq 1 ]; then
