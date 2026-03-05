@@ -1,8 +1,39 @@
 #!/usr/bin/env bash
-## Disabling unwanted services on macOS Big Sur (11), macOS Monterey (12), macOS Ventura (13), macOS Sonoma (14) and macOS Sequoia (15)
-## Disabling SIP is required  ("csrutil disable" from Terminal in Recovery)
-## Modifications are written in /private/var/db/com.apple.xpc.launchd/ disabled.plist, disabled.501.plist
-## To revert, delete /private/var/db/com.apple.xpc.launchd/ disabled.plist and disabled.501.plist and reboot; sudo rm -r /private/var/db/com.apple.xpc.launchd/*
+################################################################################
+# daemon_buster.sh - Disable unwanted macOS services for privacy and performance
+################################################################################
+#
+# SUPPORTED VERSIONS:
+#   macOS Big Sur (11), Monterey (12), Ventura (13), Sonoma (14),
+#   Sequoia (15), Tahoe (26)
+#
+# REQUIREMENTS:
+#   - SIP (System Integrity Protection) must be disabled
+#   - Run: "csrutil disable" from Terminal in Recovery Mode
+#
+# HOW IT WORKS:
+#   1. bootout: Immediately stops the service (no reboot required)
+#   2. disable: Adds service to disabled plist (persists across reboots)
+#
+# STORAGE LOCATIONS:
+#   Disabled services are recorded in:
+#   - /private/var/db/com.apple.xpc.launchd/disabled.plist (system)
+#   - /private/var/db/com.apple.xpc.launchd/disabled.501.plist (user 501)
+#
+# TO REVERT ALL CHANGES:
+#   sudo rm -r /private/var/db/com.apple.xpc.launchd/*
+#   Then reboot.
+#
+# SERVICE DOMAINS:
+#   - gui/501: User agents (post-login, UID 501 = first user)
+#   - system: System-wide daemons (root)
+#   - user/205: Pre-login user agents (UID 205 = _locationd)
+#
+# WARNING:
+#   Disabling certain services may break functionality. Review each service
+#   before uncommenting. Commented services (#) are kept for reference.
+#
+################################################################################
 
 ## User (post-login)
 declare -a TODISABLE
@@ -29,6 +60,14 @@ TODISABLE+=(
   'com.apple.geoanalyticsd'
   ## Collects diagnostics and usage data related to user input.
   'com.apple.inputanalyticsd'
+  ## [Tahoe+] User-level analytics collection agent.
+  'com.apple.analyticsagent'
+  ## [Tahoe+] Collects usage metrics for system telemetry.
+  'com.apple.metrickitd'
+  ## [Tahoe+] Differential privacy data collection.
+  'com.apple.dprivacyd'
+  ## [Tahoe+] Web browsing privacy/tracking protection daemon.
+  'com.apple.webprivacyd'
 
   ### Apple Pay & Wallet
   ## Manages Apple Pay and Wallet services.
@@ -49,9 +88,8 @@ TODISABLE+=(
   'com.apple.remindd'
 
   ### Continuity & Handoff (Sidecar, Rapport)
-  ## Enables Phone Call Handoff, Universal Clipboard, and other continuity features between Apple devices.
-  'com.apple.rapportd'
-  ## User-specific agent for continuity features like Handoff.
+  ## User-specific agent for continuity features like Handoff, Universal Clipboard.
+  ## NOTE: com.apple.rapportd moved to system-only in Tahoe (26).
   'com.apple.rapportd-user'
   ## Enables AirDrop, Handoff, Instant Hotspot, Shared Computers, and Remote Disc features.
   'com.apple.sharingd'
@@ -81,6 +119,7 @@ TODISABLE+=(
   'com.apple.icloud.findmydeviced.findmydevice-user-agent'
   ## User agent for the "Find My" network's offline finding capabilities.
   'com.apple.icloud.searchpartyuseragent'
+  ## Locates devices using the Find My network.
   'com.apple.findmy.findmylocateagent'
 
   ### Game Center
@@ -101,10 +140,13 @@ TODISABLE+=(
   ## Syncs various system and application settings via iCloud.
   'com.apple.CloudSettingsSyncAgent'
   ## Manages and displays notifications from iCloud.
-  'com.apple.iCloudNotificationAgent'
+  ## NOTE: Required for Apple 2FA popups to appear.
+  #'com.apple.iCloudNotificationAgent'
+  ## Handles iCloud Mail synchronization and notifications.
   'com.apple.icloudmailagent'
   ## Handles user-facing notifications related to iCloud accounts.
-  'com.apple.iCloudUserNotifications'
+  ## NOTE: Required for Apple 2FA popups to appear.
+  #'com.apple.iCloudUserNotifications'
   ## Manages iCloud Music Library, subscription status, and play activity.
   #'com.apple.itunescloudd'
   ## Manages the backup and syncing of encrypted Protected Cloud Storage (PCS) keys to CloudKit.
@@ -113,16 +155,16 @@ TODISABLE+=(
   'com.apple.security.cloudkeychainproxy3'
 
   ### iMessage & FaceTime
+  ## NOTE: Keep enabled if using iMessage or FaceTime.
   ## Core agent for the iMessage and FaceTime services.
-  'com.apple.imagent'
+  #'com.apple.imagent'
   ## Automatically deletes old iMessage history.
-  'com.apple.imautomatichistorydeletionagent'
+  #'com.apple.imautomatichistorydeletionagent'
   ## Manages file transfers for iMessage and other IM services.
-  'com.apple.imtransferagent'
+  #'com.apple.imtransferagent'
 
-  ### Intelligence & Proactive (Siri, Spotlight, Suggestions, etc.)
-  ## Turns off metadata services entirely (used by Finder, Spotlight, etc.).
-  'com.apple.metadata.mds'
+  ### Intelligence & Proactive (Siri, Spotlight, Suggestions, Apple Intelligence)
+  ## NOTE: com.apple.metadata.mds moved to system daemons section.
   ## Execution service for Siri.
   'com.apple.assistant_service'
   ## The main daemon for Siri.
@@ -130,7 +172,10 @@ TODISABLE+=(
   ## Handles Natural Language Understanding tasks for Siri and other internal Apple teams.
   'com.apple.assistant_cdmd'
   ## Coordinates the execution and synchronization of shortcuts from the Shortcuts app.
+  ## NOTE: Uncomment to disable Shortcuts app functionality.
   #'com.apple.siriactionsd'
+  ## [Tahoe+] Manages call intelligence for phone/FaceTime analysis.
+  'com.apple.callintelligenced'
   ## The main agent for handling Siri activation and invocation.
   'com.apple.Siri.agent'
   ## Provides inference and suggestions for Siri.
@@ -141,6 +186,7 @@ TODISABLE+=(
   'com.apple.siriknowledged'
   ## Handles the training of Siri's Text-to-Speech models.
   'com.apple.SiriTTSTrainingAgent'
+  ## Stores contextual data for proactive intelligence features.
   'com.apple.ContextStoreAgent'
   ## Powers personalized system experiences by learning user habits.
   'com.apple.duetexpertd'
@@ -167,6 +213,25 @@ TODISABLE+=(
   ## Processes user content (e.g., emails, messages) to detect contacts, events, and other entities.
   'com.apple.suggestd'
 
+  ### Apple Intelligence (Tahoe+ / macOS 26+)
+  ## [Tahoe+] Private Cloud Compute - processes Apple Intelligence requests on Apple servers.
+  ## WARNING: Disabling breaks Apple Intelligence features.
+  'com.apple.privatecloudcomputed'
+  ## [Tahoe+] Orchestrates Apple Intelligence task execution.
+  'com.apple.intelligencetasksd'
+  ## [Tahoe+] Routes intelligence requests to appropriate handlers.
+  'com.apple.intelligentroutingd'
+  ## [Tahoe+] Proactive intelligence and suggestions daemon.
+  'com.apple.proactived'
+  ## [Tahoe+] Tracks proactive events for predictive features.
+  'com.apple.proactiveeventtrackerd'
+  ## [Tahoe+] Spotlight knowledge graph - powers semantic search.
+  'com.apple.spotlightknowledged'
+  ## [Tahoe+] Imports data into Spotlight knowledge graph.
+  'com.apple.spotlightknowledged.importer'
+  ## [Tahoe+] Updates Spotlight knowledge graph indices.
+  'com.apple.spotlightknowledged.updater'
+
   ### Location & Maps
   ## Manages authorization prompts for applications requesting location access.
   'com.apple.CoreLocationAgent'
@@ -174,7 +239,9 @@ TODISABLE+=(
   'com.apple.geodMachServiceBridge'
   ## Manages push notifications and other services for the Maps application.
   'com.apple.Maps.pushdaemon'
+  ## Syncs Maps data (favorites, guides, etc.) across devices.
   'com.apple.Maps.mapssyncd'
+  ## Manages destination suggestions and recent locations in Maps.
   'com.apple.maps.destinationd'
   ## Provides "Time to Leave" alerts for calendar events based on location and traffic.
   'com.apple.navd'
@@ -233,7 +300,7 @@ TODISABLE+=(
   'com.apple.telephonyutilities.callservicesd'
   ## Powers widgets and their connections to the widget center.
   'com.apple.chronod'
-
+  ## Handles data replication between devices/services.
   'com.apple.replicatord'
   ## Manages notifications and actions for items that require user follow-up.
   'com.apple.followupd'
@@ -243,6 +310,7 @@ TODISABLE+=(
   'com.apple.TMHelperAgent'
 
   ### Trial & Beta
+  ## Manages participation in Apple's trial/beta programs (user-level).
   'com.apple.triald'
 
   ### TV & Video
@@ -255,7 +323,8 @@ TODISABLE+=(
   ## Provides weather data and services for the Weather app and widgets.
   'com.apple.weatherd'
 
-  ## Apple Spell
+  ### Spell Check
+  ## Provides spell-checking services system-wide.
   'com.apple.applespell'
 )
 for agent in "${TODISABLE[@]}"; do
@@ -276,6 +345,12 @@ TODISABLE+=(
   'com.apple.ecosystemanalyticsd'
   ## Collects and reports analytics related to Wi-Fi performance and reliability.
   'com.apple.wifianalyticsd'
+  ## [Tahoe+] OS-level analytics helper daemon.
+  'com.apple.osanalytics.osanalyticshelper'
+  ## [Tahoe+] Performance and power metrics collection.
+  'com.apple.perfpowermetricd'
+  ## [Tahoe+] System-level differential privacy daemon.
+  'com.apple.dprivacyd'
 
   ### Biome
   ## Executes the Biome operation graph, part of a system for user activity prediction.
@@ -290,8 +365,7 @@ TODISABLE+=(
   'com.apple.familycontrols'
 
   ### Find My
-  ## The main process for the "Find My Mac" feature.
-  'com.apple.findmymacd'
+  ## NOTE: com.apple.findmymacd removed in Tahoe (26).
   ## A messenger process for the "Find My Mac" feature.
   'com.apple.findmymacmessenger'
   ## Manages the local "Find My" beaconing for offline finding.
@@ -313,15 +387,23 @@ TODISABLE+=(
   ## Obtains the device's geographic location and manages authorization for apps that request it.
   'com.apple.locationd'
 
+  ### Spotlight & Metadata
+  ## Turns off Spotlight metadata indexing services entirely.
+  ## WARNING: Disabling breaks Finder search, Spotlight, and many apps.
+  'com.apple.metadata.mds'
+
   ### Machine Learning & Proactive
   ## Central daemon for CoreDuet, which tracks user activity for proactive suggestions.
   'com.apple.coreduetd'
   ## Manages machine learning (ML) models and handles requests for their execution.
   'com.apple.modelmanagerd'
+  ## [Tahoe+] Stores context data for intelligence features.
+  'com.apple.contextstored'
+  ## [Tahoe+] Manages ML model catalog and versioning.
+  'com.apple.modelcatalogd'
 
   ### MDM (Mobile Device Management)
-  ## Assists in installing client Device Enrollment profiles for managed devices (MDM).
-  'com.apple.ManagedClient.cloudconfigurationd'
+  ## NOTE: com.apple.ManagedClient.cloudconfigurationd removed in Tahoe (26).
 
   ### Networking
   ## A stateless DHCPv6 server used by the Internet Sharing service.
