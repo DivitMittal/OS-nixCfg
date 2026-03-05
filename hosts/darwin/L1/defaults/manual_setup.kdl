@@ -19,7 +19,7 @@ accessibility {
       }
     }
     display {
-      display-contrast "0.5"
+      display-contrast "0.7"
       text {
         text-size "16pt"
       }
