@@ -331,10 +331,8 @@
       };
     };
     tgt = {
+      # Don't follow nixpkgs - tgt uses apple-sdk_12 which was removed in newer nixpkgs
       url = "github:FedericoBruzzone/tgt";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
     };
     pkms = {
       url = "github:DivitMittal/pkms";
