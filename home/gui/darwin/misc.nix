@@ -16,17 +16,19 @@
       #thunderbird # Email client
       #brilliant # Screen Anotation Tool
       ;
-    handy = pkgs.brewCasks.handy.override {variation = "tahoe";};
     inherit
       (pkgs.customDarwin)
       Hot-bin # CPU temperature monitor for menubar
       menubar-dock-bin # macOS dock in menubar
-      MultiSoundChanger-bin # aggregate-output volume control in menubar
+      #MultiSoundChanger-bin # aggregate-output volume control in menubar
       #LibreScore-bin # Music notation ripper
       Iris-bin # Webcam mirror
+      Pearcleaner-bin
       #LosslessSwitcher-bin # Lossless audio toggle in menubar
       ;
 
+    ## AI Tools
+    handy = pkgs.brewCasks.handy.override {variation = "tahoe";};
     # claude-desktop = pkgs.brewCasks.claude.overrideAttrs (oldAttrs: {
     #   installPhase =
     #     oldAttrs.installPhase
