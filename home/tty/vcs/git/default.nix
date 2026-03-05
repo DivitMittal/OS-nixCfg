@@ -6,7 +6,10 @@
 }: let
   inherit (lib) mkIf;
 in {
-  imports = [./ancillary.nix];
+  imports = [
+    ./scripts
+    ./ancillary.nix
+  ];
 
   home.sessionVariables.GIT_HOSTING = mkIf config.programs.git.enable "git@github.com:${config.programs.git.settings.user.name}";
 
