@@ -28,6 +28,7 @@
       # -H: search hidden files/directories
       # -t d: only directories
       # -x: execute command for each result
+      # shellcheck disable=SC2016
       fd -H -t d '^\.git$' "$TARGET_DIR" -x sh -c '
         repo_dir=$(dirname "{}")
         echo "================================================"
