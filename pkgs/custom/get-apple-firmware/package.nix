@@ -5,7 +5,7 @@
 }:
 stdenvNoCC.mkDerivation (final: {
   pname = "get-apple-firmware";
-  version = "0fdb8b37d662eb00c9f0ea8a3a655206a483355c";
+  version = "2eff99d377aa7aad181aad4796b0184c73630f3b";
 
   src = fetchurl {
     url = "https://raw.github.com/t2linux/wiki/${final.version}/docs/tools/firmware.sh";

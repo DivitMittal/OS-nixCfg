@@ -13,7 +13,7 @@ rustPlatform.buildRustPackage {
   src = fetchFromGitHub {
     owner = "harsh-vardhhan";
     repo = "option-analysis";
-    rev = "master";
+    rev = "a5f67d3a92aafb253b386d1d63b9255d122c3436";
     hash = "sha256-QOWZOvW9bqzFxZkUaWB0+sUVruhq7rFlttAq3EcDLa4=";
   };
 

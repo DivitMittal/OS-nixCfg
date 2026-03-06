@@ -8,11 +8,11 @@
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "LosslessSwitcher";
-  version = "2.0-beta2";
+  version = "2.0";
   src = fetchzip {
     extension = "zip";
-    url = "https://github.com/vincentneo/${finalAttrs.pname}/releases/download/${finalAttrs.version}/${finalAttrs.pname}2-b2.app.zip";
-    hash = "sha256-a59UxVVmSV0AIw86MghCL6p19q2WxYORqaY4hgdXTU0=";
+    url = "https://github.com/vincentneo/${finalAttrs.pname}/releases/download/${finalAttrs.version}/${finalAttrs.pname}2.app.zip";
+    hash = "sha256-vyzWG5r6GgyqekkbJcyyzBLwnbO5gxwNgUhUCD3Oroo=";
   };
 
   nativeBuildInputs = [unzip makeWrapper];
