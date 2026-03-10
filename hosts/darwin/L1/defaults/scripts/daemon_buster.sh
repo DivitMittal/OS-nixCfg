@@ -139,32 +139,43 @@ TODISABLE+=(
   'com.apple.cloudphotod'
   ## Syncs various system and application settings via iCloud.
   'com.apple.CloudSettingsSyncAgent'
+  ## Handles iCloud Mail synchronization and notifications.
+  'com.apple.icloudmailagent'
   ## Manages and displays notifications from iCloud.
   ## NOTE: Required for Apple 2FA popups to appear.
   #'com.apple.iCloudNotificationAgent'
-  ## Handles iCloud Mail synchronization and notifications.
-  'com.apple.icloudmailagent'
   ## Handles user-facing notifications related to iCloud accounts.
   ## NOTE: Required for Apple 2FA popups to appear.
   #'com.apple.iCloudUserNotifications'
-  ## Manages iCloud Music Library, subscription status, and play activity.
-  #'com.apple.itunescloudd'
   ## Manages the backup and syncing of encrypted Protected Cloud Storage (PCS) keys to CloudKit.
   'com.apple.protectedcloudstorage.protectedcloudkeysyncing'
   ## A proxy agent involved in syncing the iCloud Keychain.
   'com.apple.security.cloudkeychainproxy3'
 
+  ### Apple Music
+  ## Manages iCloud Music Library, subscription status, and play activity.
+  #'com.apple.itunescloudd'
+
   ### iMessage & FaceTime
-  ## NOTE: Keep enabled if using iMessage or FaceTime.
   ## Core agent for the iMessage and FaceTime services.
   #'com.apple.imagent'
   ## Automatically deletes old iMessage history.
   #'com.apple.imautomatichistorydeletionagent'
   ## Manages file transfers for iMessage and other IM services.
   #'com.apple.imtransferagent'
+  ## FaceTime Only
+  ## Manages audio and video conferencing, including camera access.
+  #'com.apple.avconferenced'
+  ## A helper process for accessing call history.
+  #'com.apple.CallHistoryPluginHelper'
+  ## The system daemon responsible for maintaining the state of phone calls.
+  #'com.apple.telephonyutilities.callservicesd'
+  ## Manages telephony services, including cellular calls and data.
+  #'com.apple.CommCenter-osx'
 
   ### Intelligence & Proactive (Siri, Spotlight, Suggestions, Apple Intelligence)
-  ## NOTE: com.apple.metadata.mds moved to system daemons section.
+  ## Shortcuts App
+  #'com.apple.siriactionsd'
   ## Execution service for Siri.
   'com.apple.assistant_service'
   ## The main daemon for Siri.
@@ -172,8 +183,6 @@ TODISABLE+=(
   ## Handles Natural Language Understanding tasks for Siri and other internal Apple teams.
   'com.apple.assistant_cdmd'
   ## Coordinates the execution and synchronization of shortcuts from the Shortcuts app.
-  ## NOTE: Uncomment to disable Shortcuts app functionality.
-  #'com.apple.siriactionsd'
   ## [Tahoe+] Manages call intelligence for phone/FaceTime analysis.
   'com.apple.callintelligenced'
   ## The main agent for handling Siri activation and invocation.
@@ -284,20 +293,12 @@ TODISABLE+=(
   #'com.apple.SSInvitationAgent'
 
   ### System Services
-  ## Manages audio and video conferencing, including camera access.
-  'com.apple.avconferenced'
-  ## A helper process for accessing call history.
-  'com.apple.CallHistoryPluginHelper'
-  ## Manages telephony services, including cellular calls and data.
-  'com.apple.CommCenter-osx'
   ## Provides speech recognition services to applications.
   'com.apple.corespeechd'
   ## Handles synchronization for calendar and contacts data.
   'com.apple.dataaccess.dataaccessd'
   ## Displays help content in applications.
   'com.apple.helpd'
-  ## The system daemon responsible for maintaining the state of phone calls.
-  'com.apple.telephonyutilities.callservicesd'
   ## Powers widgets and their connections to the widget center.
   'com.apple.chronod'
   ## Handles data replication between devices/services.
