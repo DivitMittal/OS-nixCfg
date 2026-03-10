@@ -15,14 +15,11 @@
     #       };
     #     }))
     #   else null;
-    # reaper =
-    #   if hostPlatform.isDarwin
-    #   then pkgs.brewCasks.reaper
-    #   else pkgs.reaper;
     musescore =
       if hostPlatform.isDarwin
       then pkgs.brewCasks.musescore
       else pkgs.musescore;
+    inherit (pkgs.custom) reaper-bin;
 
     spotify =
       if hostPlatform.isDarwin
