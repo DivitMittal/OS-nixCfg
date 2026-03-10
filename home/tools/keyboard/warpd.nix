@@ -31,25 +31,28 @@
       ## Mouse buttons (t=left, comma=middle, g=right)
       buttons = "t , g";
 
+      ## Global actions (prepend: Alt+Meta)
+      hint = "x"; # activate hint
+      smart_hint = "f"; # smart/element-based hints
+      hint2 = "X"; # two-pass hint
+      grid = "g";
+      screen = "s";
+      normal = "q";
+      history = ";";
+
       ## In-normal-mode actions (defaults kept unless they conflict)
-      # drag = "v";          # toggle drag/visual mode
+      # drag = "v";          ## visual mode
       # copy = "y";
       # copy_and_exit = "c";
       # paste = "p";
       # accelerator = "a";
       # decelerator = "d";
-      hint = "x"; # activate hint (was f in old config; x is unambiguous)
-      hint2 = "X"; # two-pass hint
-      smart_hint = "f"; # smart/element-based hints
-      grid = "g";
-      screen = "s";
-      history = ";";
 
+      ### Grid configuration
       ## Grid mode (2×2)
       grid_nr = 2;
       grid_nc = 2;
-
-      # Grid overlay navigation mirrors normal mode movement (grid mode is separate)
+      ## Navigation
       grid_left = "n";
       grid_down = "e";
       grid_up = "u";
@@ -58,25 +61,21 @@
       grid_cut_down = "E";
       grid_cut_up = "U";
       grid_cut_right = "I";
-
-      # Quadrant selection: physical QWAS cluster (Colemak: q/w/a/r) — avoids n/e/u/i
-      # reading order: top-left, top-right, bottom-left, bottom-right
+      ## reading order: top-left, top-right, bottom-left, bottom-right
       grid_keys = "q w a r";
 
-      ## Hint configuration (Colemak home-row biased character set)
+      ### Hint configuration
+      ## Colemak home-row biased character set
       hint_chars = "arstneidhopgwyf";
       hint_bgcolor = "#000000";
       hint_fgcolor = "#00ff00";
       hint_size = 20;
-
       ## Two-shot hint mode (≥ hint2_grid_size² = 9 chars required)
       hint2_chars = "arstneiodhpgwyfbvcxzqjklm";
       hint2_gap_size = 5;
       hint2_grid_size = 3;
-
       ## Screen selection (Colemak home row)
       screen_chars = "arstdhneio";
-
       ## Smart hint mode
       smart_hint_mode = "alphabet";
     };
