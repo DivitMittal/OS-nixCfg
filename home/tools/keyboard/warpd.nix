@@ -16,10 +16,10 @@
       decelerator_speed = 50;
 
       ## Scrolling (capitalised counterparts of the movement keys)
-      scroll_down = "M";
-      scroll_up = "J";
-      scroll_left = "T";
-      scroll_right = "R";
+      scroll_down = "m";
+      scroll_up = "j";
+      scroll_left = "J";
+      scroll_right = "M";
 
       ## Cursor appearance
       cursor_color = "#ff0000";
