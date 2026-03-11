@@ -190,7 +190,7 @@
 
     ## AI
     ai-nixCfg = {
-      #url = "path:/Users/div/Projects/ai-nixCfg";
+      #url = "path:/Users/div/Projects/Cfgs/ai-nixCfg";
       url = "github:DivitMittal/ai-nixCfg";
       inputs = {
         nixpkgs.follows = "nixpkgs";
