@@ -142,11 +142,9 @@ TODISABLE+=(
   ## Handles iCloud Mail synchronization and notifications.
   'com.apple.icloudmailagent'
   ## Manages and displays notifications from iCloud.
-  ## NOTE: Required for Apple 2FA popups to appear.
-  #'com.apple.iCloudNotificationAgent'
+  'com.apple.iCloudNotificationAgent'
   ## Handles user-facing notifications related to iCloud accounts.
-  ## NOTE: Required for Apple 2FA popups to appear.
-  #'com.apple.iCloudUserNotifications'
+  'com.apple.iCloudUserNotifications'
   ## Manages the backup and syncing of encrypted Protected Cloud Storage (PCS) keys to CloudKit.
   'com.apple.protectedcloudstorage.protectedcloudkeysyncing'
   ## A proxy agent involved in syncing the iCloud Keychain.
