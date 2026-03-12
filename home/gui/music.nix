@@ -25,6 +25,12 @@
     if hostPlatform.isDarwin
     then "dylib"
     else "so";
+
+  ## nixpkgs reaper-sws-extension darwin.nix has an unpack bug; use custom derivation
+  swsPkg =
+    if hostPlatform.isDarwin
+    then pkgs.customDarwin.reaper-sws-extension
+    else pkgs.reaper-sws-extension;
 in {
   home.packages = lib.attrsets.attrValues {
     # au-lab =
@@ -48,7 +54,8 @@ in {
     inherit (pkgs.custom) reaper-bin;
 
     ## Reaper Extensions
-    inherit (pkgs) reaper-sws-extension reaper-reapack-extension;
+    reaper-sws-extension = swsPkg;
+    inherit (pkgs) reaper-reapack-extension;
 
     # spotify =
     #   if hostPlatform.isDarwin
@@ -65,7 +72,7 @@ in {
   };
 
   home.file = {
-    "${pluginsDir}/reaper_sws-${swsArch}.${ext}".source = "${pkgs.reaper-sws-extension}/UserPlugins/reaper_sws-${swsArch}.${ext}";
+    "${pluginsDir}/reaper_sws-${swsArch}.${ext}".source = "${swsPkg}/UserPlugins/reaper_sws-${swsArch}.${ext}";
 
     "${pluginsDir}/reaper_reapack-${swsArch}.${ext}".source = "${pkgs.reaper-reapack-extension}/UserPlugins/reaper_reapack-${swsArch}.${ext}";
   };
