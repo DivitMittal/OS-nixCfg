@@ -1,11 +1,3 @@
-{
-  lib,
-  inputs,
-  ...
-}: {
-  imports =
-    (lib.custom.scanPaths ./.)
-    ++ [
-      inputs.ai-nixCfg.homeManagerConfigurations.default
-    ];
+{lib, ...}: {
+  imports = lib.custom.scanPaths ./.;
 }
