@@ -78,7 +78,7 @@
       yabai -m rule --add app="^WebStorm$"    opacity=0.97
       yabai -m rule --add app="^Notion$"      opacity=0.97
       yabai -m rule --add app="^Obsidian$"    opacity=0.97
-      yabai -m rule --add app="^Ableton$"     opacity=0.97
+      yabai -m rule --add app="^REAPER$"      opacity=0.97
       yabai -m rule --add app="^Finder$"      opacity=0.97
     '';
   };

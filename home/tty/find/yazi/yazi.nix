@@ -84,6 +84,11 @@
       url = "*.{als,alp,adg,adv,agr,amxd}";
       use = ["ableton" "reveal"];
     }
+    ## Reaper Project Files
+    {
+      url = "*.{rpp,rpp-bak}";
+      use = ["reaper" "reveal"];
+    }
     ## MIDI Files
     {
       url = "*.{mid,midi}";
@@ -400,6 +405,20 @@
         for = "windows";
         desc = "Ableton Live";
         run = "start \"\" \"Ableton Live 12 Suite.exe\" \"%*\"";
+        orphan = true;
+      }
+    ];
+    reaper = [
+      {
+        for = "macos";
+        desc = "Reaper";
+        run = "open -a 'REAPER' \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "windows";
+        desc = "Reaper";
+        run = "start \"\" \"reaper.exe\" \"%*\"";
         orphan = true;
       }
     ];
