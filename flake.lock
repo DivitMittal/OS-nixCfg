@@ -254,11 +254,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773342139,
-        "narHash": "sha256-w4KXWqxun/wgHdm1L/74+9yUuNlBVzkAGq/Gsx61mEk=",
+        "lastModified": 1773346191,
+        "narHash": "sha256-HrNKTQfxbBt0RaJPX/5QoMy4rI3McETIDs4hpCaD9QE=",
         "owner": "DivitMittal",
         "repo": "ai-nixCfg",
-        "rev": "3f58383e90053ba6f20e95738b6422358c75f8ce",
+        "rev": "f74f1af4e719b03c28ec011207a8d8de7e5d9241",
         "type": "github"
       },
       "original": {

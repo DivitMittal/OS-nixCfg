@@ -57,7 +57,7 @@
     }
     {
       mime = "application/pdf";
-      use = ["zathura" "reveal" "look"];
+      use = ["sioyek" "zathura" "reveal" "look"];
     }
     ## Ebook Documents
     {
@@ -232,6 +232,20 @@
         for = "macos";
         desc = "QuickLook";
         run = "qlmanage -p \"$@\"";
+      }
+    ];
+    sioyek = [
+      {
+        for = "linux";
+        desc = "Sioyek PDF Viewer";
+        run = "sioyek \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "macos";
+        desc = "Sioyek PDF Viewer";
+        run = "sioyek \"$@\"";
+        orphan = true;
       }
     ];
     zathura = [
