@@ -1,0 +1,45 @@
+{
+  stdenvNoCC,
+  fetchurl,
+  lib,
+  ...
+}: let
+  version = "1.2.5";
+  arch =
+    if stdenvNoCC.hostPlatform.system == "aarch64-darwin"
+    then "arm64"
+    else "x86_64";
+
+  plugin = fetchurl {
+    url = "https://github.com/cfillion/reapack/releases/download/v${version}/reaper_reapack-${arch}.dylib";
+    hash =
+      {
+        x86_64-darwin = "sha256-slLzjIWpEzOn4GAcRwb6WdJSVExuQK0cVgHgd7qM4oE=";
+        aarch64-darwin = "sha256-eFKEUuTUWE4Wp/vWVrvTbK78U6TicvRXSWggVAH2Og4=";
+      }.${
+        stdenvNoCC.hostPlatform.system
+      };
+  };
+in
+  stdenvNoCC.mkDerivation {
+    pname = "reaper-reapack-extension";
+    inherit version;
+
+    # fetchurl outputs are single files — skip the default unpack phase entirely
+    dontUnpack = true;
+
+    installPhase = ''
+      runHook preInstall
+      install -D ${plugin} "$out/UserPlugins/reaper_reapack-${arch}.dylib"
+      runHook postInstall
+    '';
+
+    meta = {
+      description = "Package manager for REAPER";
+      homepage = "https://reapack.com/";
+      license = with lib.licenses; [lgpl3Plus gpl3Plus];
+      platforms = ["x86_64-darwin" "aarch64-darwin"];
+      sourceProvenance = with lib.sourceTypes; [binaryNativeCode];
+      maintainers = with lib.maintainers; [DivitMittal];
+    };
+  }

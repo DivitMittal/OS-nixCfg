@@ -7,12 +7,12 @@
     [
       ./emulators
       ./ide
+      ./music
       ./comms.nix
-      ./music.nix
+      ./misc.nix
       ./notes.nix
       ./video.nix
       ./viewers.nix
-      ./misc.nix
     ]
     ++ lib.lists.optionals hostPlatform.isDarwin [
       ./darwin
