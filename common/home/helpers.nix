@@ -45,7 +45,10 @@
 
   programs.direnv = {
     enable = true;
-    package = pkgs.direnv;
+    # Fix build failure: new nixpkgs passes -linkmode=external but CGO is disabled
+    package = pkgs.direnv.overrideAttrs (old: {
+      env = (old.env or {}) // {CGO_ENABLED = "1";};
+    });
     enableBashIntegration = true;
     enableZshIntegration = true;
     enableFishIntegration = true;
