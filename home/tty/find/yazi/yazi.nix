@@ -665,8 +665,8 @@
       glamourStyles = pkgs.fetchFromGitHub {
         owner = "charmbracelet";
         repo = "glamour";
-        rev = "0af1a2d9bc9e9d52422b26440fe218c69f9afbdd";
-        hash = "sha256-ZnkYUVtpGGfZHOKx3I4mnMYaXGiMoSNuviz+ooENmbc=";
+        rev = "253da61fcb275fcd28296956ffae5f7d98ff618d";
+        hash = "sha256-Zxj4lKpI6XBilKqyfQJflb7VRU90J0H/udl7pXPL6QE=";
       };
       glowStyle = "${glamourStyles}/styles/pink.json";
 

@@ -8,7 +8,7 @@
       owner = "muttmua";
       repo = "mutt";
       rev = "master";
-      hash = "sha256-qiujvWDOTv2fa9Go4Txxy681v7eogZPQcoooCuaAArM=";
+      hash = "sha256-GiN1WjHzTICFOFCEqb39MWGu3EfxE4uvgN7hpjdpfrI=";
     };
   in {
     enable = false;
