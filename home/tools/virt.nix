@@ -31,11 +31,14 @@
   home.packages = lib.attrsets.attrValues {
     inherit
       (pkgs)
-      ## container management
+      ### container management
+      ## docker
       docker
       lazydocker
+      ## kubernetes
       kubectl
-      ## virtualization
+      k9s
+      ### virtualization
       #virt-manager libvirt qemu
       ;
   };
