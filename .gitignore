@@ -15,4 +15,5 @@ result-*
 ## Tools
 .serena/
 .vscode/
+.wrangler/
 *local.json
