@@ -6,27 +6,27 @@
   fetchurl,
   ...
 }: let
-  version = "1.29.0";
+  version = "1.31.0";
 
   binaries = {
     aarch64-darwin = {
       analyze = fetchurl {
         url = "https://github.com/tw93/Mole/releases/download/V${version}/analyze-darwin-arm64";
-        hash = "sha256-h+auKcjxyEx1denWBLgEa+L2XBT7SdvmrAroleNvc3k=";
+        hash = "sha256-LRg9Pn07DNdJ/Bn2hJqnOqRDnczUgCfl+1xTbMG/5DA=";
       };
       status = fetchurl {
         url = "https://github.com/tw93/Mole/releases/download/V${version}/status-darwin-arm64";
-        hash = "sha256-a1v8bziqT5q7/WT0tLsHiyjEe1SsokKu5eyUou9aaTY=";
+        hash = "sha256-eAVY30y+xUBM9EJzVq/3v34s6uXZp3JMYrjpbkYBXJQ=";
       };
     };
     x86_64-darwin = {
       analyze = fetchurl {
         url = "https://github.com/tw93/Mole/releases/download/V${version}/analyze-darwin-amd64";
-        hash = "sha256-mVGI61YeChSFZY20fXcuNUrErSFUlSKFTuzh0MhVAvU=";
+        hash = "sha256-ywQGtgx4eQ+6Gmvho8/kl16Fjyw3jdQpdTqL02jobGE=";
       };
       status = fetchurl {
         url = "https://github.com/tw93/Mole/releases/download/V${version}/status-darwin-amd64";
-        hash = "sha256-p5uqGf6Qkbc9v6zwrBbiEZNClXK7KVHQONpOjKTDYhA=";
+        hash = "sha256-3ZOIFaKXmVMR6aTBKnT9pI+Gm8pz/lf5m4FaepsYIyI=";
       };
     };
   };
@@ -41,7 +41,7 @@ in
       owner = "tw93";
       repo = "Mole";
       rev = "V${version}";
-      hash = "sha256-pnV7xZ49dZhdh6uVMGILwTsKg2hnlFRxe4U2w4zdEag=";
+      hash = "sha256-dalmW3W/seGZreSWuYP7JN/nMUbs3WyDHzKU83EveeY=";
     };
 
     # Fix bash arithmetic bug: ((var++)) returns exit code 1 when var=0

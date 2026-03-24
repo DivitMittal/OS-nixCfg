@@ -7,12 +7,12 @@
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "Iris";
-  version = "0.1.4";
+  version = "0.1.5";
 
   src = fetchzip {
     extension = "zip";
     url = "https://github.com/ahmetb/Iris/releases/download/v${finalAttrs.version}/Iris-v${finalAttrs.version}.zip";
-    hash = "sha256-4x7D/D5G2ZVJjabdNGTwZoFoT9hMrKb9PSEDfwdkQKA=";
+    hash = "sha256-kGQWoWKCiWt8q1q/1Ce+UQWFpwR2zI7AHrUOiHUeP/s=";
   };
 
   nativeBuildInputs = [makeWrapper];

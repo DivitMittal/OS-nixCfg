@@ -3,7 +3,7 @@
   stdenvNoCC,
   fetchurl,
 }: let
-  version = "0.1.2";
+  version = "0.2.1";
   archSuffix =
     {
       aarch64-darwin = "arm64";
@@ -14,12 +14,12 @@
     };
   hashes = {
     zb = {
-      aarch64-darwin = "sha256-nBIEkj4q06AXbvCujklxDgwpNSEthGp98lvCkHKwJfo=";
-      x86_64-darwin = "sha256-qUbVTmRzC1Lu2lBoup/o5pwZrkypOaUriKVYfabPOgM=";
+      aarch64-darwin = "sha256-3ss9uE+XBI1VRVs0yppSolyIuJydfWL1nhMFALot8yM=";
+      x86_64-darwin = "sha256-vGvJ4koxLCjGjuNI+0VVsQmJgh9cB1nu1zX5gB0SNow=";
     };
     zbx = {
-      aarch64-darwin = "sha256-jjApD1QHRwQ92u/2jup/9iDFmFQL+TfSMxWpOddsy30=";
-      x86_64-darwin = "sha256-RwylQ31r9BKb2XzVeIbRcZnBqQYvbd9mBkCiD6wZNVk=";
+      aarch64-darwin = "sha256-u5SxJz/8LxHPdIo4GUlHPGzeWwDTEo8XQ9TAsGryGXw=";
+      x86_64-darwin = "sha256-uge/oEFDRAACrO/ffCvIJJoBtcyMskJvtrniXKa9hAI=";
     };
   };
   platform = stdenvNoCC.hostPlatform.system;
