@@ -49,38 +49,8 @@ jobs:
         git commit -m "chore: update home-manager dependency graph" || echo "No changes to commit"
         git pull --rebase origin master
         git push origin master
-    timeout-minutes: 120
+    timeout-minutes: 150
 'on':
-  pull_request:
-    branches:
-    - master
-    paths-ignore:
-    - '**/*.md'
-    - '**/*.adoc'
-    - '**/*.jpeg'
-    - '**/*.jpg'
-    - '**/*.png'
-    - '**/*.svg'
-    - .github/**
-    - .git*
-    - assets/**
-    - common/hosts/**
-    - hosts/**
-    - modules/hosts/**
   push:
-    branches:
-    - master
-    paths-ignore:
-    - '**/*.md'
-    - '**/*.adoc'
-    - '**/*.jpeg'
-    - '**/*.jpg'
-    - '**/*.png'
-    - '**/*.svg'
-    - .github/**
-    - .git*
-    - assets/**
-    - common/hosts/**
-    - hosts/**
-    - modules/hosts/**
-  workflow_dispatch: {}
+    tags:
+    - '*'
