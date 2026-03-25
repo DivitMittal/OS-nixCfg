@@ -8,11 +8,11 @@
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "LiveWallpaper";
-  version = "2.1";
+  version = "2.2";
 
   src = fetchurl {
     url = "https://github.com/thusvill/LiveWallpaperMacOS/releases/download/V${finalAttrs.version}/LiveWallpaper.dmg";
-    hash = "sha256-r8EgYmatQOtjT3oBx5VZN7kGwjHTobKhWA+5VYbBtc4=";
+    hash = "sha256-PU5UhPH2sk3aGT0RyR7ghNY8WLnzFSVdGC7CV2Q587k=";
   };
 
   nativeBuildInputs = [_7zz makeWrapper];

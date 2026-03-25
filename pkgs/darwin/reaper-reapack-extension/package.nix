@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  version = "1.2.5";
+  version = "1.2.6";
   arch =
     if stdenvNoCC.hostPlatform.system == "aarch64-darwin"
     then "arm64"
@@ -14,8 +14,8 @@
     url = "https://github.com/cfillion/reapack/releases/download/v${version}/reaper_reapack-${arch}.dylib";
     hash =
       {
-        x86_64-darwin = "sha256-slLzjIWpEzOn4GAcRwb6WdJSVExuQK0cVgHgd7qM4oE=";
-        aarch64-darwin = "sha256-eFKEUuTUWE4Wp/vWVrvTbK78U6TicvRXSWggVAH2Og4=";
+        x86_64-darwin = "sha256-SLJhl042ZxOEypAqOz1aYUF49Asb63wTjHQUEOpdfZ4=";
+        aarch64-darwin = "sha256-x2cPOy5AW5A31JsZQaTYw3Yv/zJs7MDFisT67KFx8Hs=";
       }.${
         stdenvNoCC.hostPlatform.system
       };
