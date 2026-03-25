@@ -16,6 +16,7 @@ in {
     inherit
       (pkgs)
       transcrypt
+      git-filter-repo
       ;
 
     gen-gitignore = pkgs.writeShellScriptBin "gen-gitignore" ''
