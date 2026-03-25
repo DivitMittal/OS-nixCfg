@@ -1,32 +1,16 @@
 {
-  common-on,
   common-permissions,
   common-actions-cred,
   environment,
   ...
 }: {
   flake.actions-nix.workflows.".github/workflows/home-build.yml" = {
-    on =
-      common-on
-      // rec {
-        push = {
-          branches = ["master"];
-          paths-ignore =
-            common-on.push.paths-ignore
-            ++ [
-              ## common
-              "common/hosts/**"
-              ## configuration
-              "hosts/**"
-              ## modules
-              "modules/hosts/**"
-            ];
-        };
-        pull_request = push;
-      };
+    on = {
+      push.tags = ["*"];
+    };
     jobs.build-home-manager-and-graph = {
       runs-on = "macos-15-intel";
-      timeout-minutes = 120;
+      timeout-minutes = 150;
       permissions = common-permissions;
       inherit environment;
       steps =
