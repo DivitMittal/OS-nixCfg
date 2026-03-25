@@ -201,6 +201,7 @@ Secrets (API keys, passwords, sensitive configurations) are managed via [agenix]
 - [DivitMittal/firefox-nixCfg](https://github.com/DivitMittal/firefox-nixCfg): A personal nix home-manager module/configurations for firefox.
 - [DivitMittal/tidalcycles-nix](https://github.com/DivitMittal/tidalcycles-nix): A nix flake for TidalCycles live coding environment.
 - [DivitMittal/TermEmulator-Cfg](https://github.com/DivitMittal/TermEmulator-Cfg): Terminal emulator configuration.
+- [DivitMittal/ghOrg-terraform](https://github.com/DivitMittal/ghOrg-terraform): Terraform configurations for managing the GitHub organization infrastructure.
 
 <div align="right">
 
