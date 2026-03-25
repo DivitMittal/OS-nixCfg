@@ -10,36 +10,36 @@
   pipewire,
   ...
 }: let
-  version = "7.64";
+  version = "7.66";
   verShort = builtins.replaceStrings ["."] [""] version;
 
   sources =
     lib.attrsets.optionalAttrs stdenvNoCC.hostPlatform.isLinux {
       x86_64-linux = {
         url = "https://www.reaper.fm/files/7.x/reaper${verShort}_linux_x86_64.tar.xz";
-        hash = "sha256-mw2m/lTMDbg1gS2g998eNbAo9xb3GZ4zIvMRRNDz85k=";
+        hash = "sha256-GMNtVql069snZzvaUrw0SEygbbnafS20HSzLdQDC6yU=";
       };
       i686-linux = {
         url = "https://www.reaper.fm/files/7.x/reaper${verShort}_linux_i686.tar.xz";
-        hash = "sha256-ao0I4XH6SMkaNvaCqidl0RrpKJDNxvZV6dHHcg8Svpw=";
+        hash = "sha256-eXG7Zds+hFBFMyjovdpLmLNRkxMIfExQw0xcKTuo21Q=";
       };
       aarch64-linux = {
         url = "https://www.reaper.fm/files/7.x/reaper${verShort}_linux_aarch64.tar.xz";
-        hash = "sha256-C5pQfztoC3+HcQeNbG2Tbe63PTWfTGHvNOlIhiVgDp4=";
+        hash = "sha256-imoVxmC9oPzcl8dDtrs93/ADEB9NQFCThHZlxb8FIac=";
       };
       armv7l-linux = {
         url = "https://www.reaper.fm/files/7.x/reaper${verShort}_linux_armv7l.tar.xz";
-        hash = "sha256-q1Cuu9nlqDu2utOBy0o1H1XoiS7FPC84ADbfQO2AUKs=";
+        hash = "sha256-vP+pyjgMNovVDFitTlmPpghWRIubWgWfWpADGU28SsY=";
       };
     }
     // lib.attrsets.optionalAttrs stdenvNoCC.hostPlatform.isDarwin {
       x86_64-darwin = {
         url = "https://www.reaper.fm/files/7.x/reaper${verShort}_universal.dmg";
-        hash = "sha256-S8FbuvCO7+uB0N7gFTYFDYOq2SllWgfAykUDumxMWvs=";
+        hash = "sha256-I+nZtcOhzlrX0xLJBxB6DE1ZtYNgMRHuutOW6MVZuMc=";
       };
       aarch64-darwin = {
         url = "https://www.reaper.fm/files/7.x/reaper${verShort}_universal.dmg";
-        hash = "sha256-S8FbuvCO7+uB0N7gFTYFDYOq2SllWgfAykUDumxMWvs=";
+        hash = "sha256-I+nZtcOhzlrX0xLJBxB6DE1ZtYNgMRHuutOW6MVZuMc=";
       };
     };
 
