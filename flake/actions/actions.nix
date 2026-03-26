@@ -1,13 +1,7 @@
-{
-  inputs,
-  lib,
-  ...
-}: {
-  imports =
-    (lib.custom.scanPaths ./.)
-    ++ [
-      inputs.actions-nix.flakeModules.default
-    ];
+{inputs, ...}: {
+  imports = [
+    inputs.actions-nix.flakeModules.default
+  ];
 
   _module.args = rec {
     common-on = rec {

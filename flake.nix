@@ -3,9 +3,7 @@
 
   outputs = {nixpkgs, ...} @ inputs: let
     inherit (inputs.flake-parts.lib) mkFlake;
-    specialArgs.lib = nixpkgs.lib.extend (_: super: {
-      custom = import ./lib/custom.nix {lib = super;};
-    });
+    specialArgs.lib = nixpkgs.lib;
   in
     mkFlake {inherit inputs specialArgs;} ({
       inputs,
@@ -67,6 +65,9 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ## import-tree
+    import-tree.url = "github:vic/import-tree";
 
     ## flake helpers
     systems.url = "github:nix-systems/default";

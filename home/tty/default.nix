@@ -1,10 +1,6 @@
-{
-  lib,
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   imports =
-    (lib.custom.scanPaths ./.)
+    [(inputs.import-tree.matchNot ".*/default\\.nix" ./.)]
     ++ [
       inputs.ai-nixCfg.homeManagerConfigurations.default
     ];

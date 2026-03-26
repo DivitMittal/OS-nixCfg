@@ -256,11 +256,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774379668,
-        "narHash": "sha256-zI8FKn5xGlImbkmLJx3ajGdok/GIMnem2SNnPJplW2o=",
+        "lastModified": 1774448687,
+        "narHash": "sha256-cJ7eK4s15yD9Z5nVNaXH62UJqfLPRsDwuGXOYZ6e/mc=",
         "owner": "DivitMittal",
         "repo": "ai-nixCfg",
-        "rev": "4f876de13dcaf01f6f7af0215c5fbd77e6cb06a5",
+        "rev": "3301de425f647bc3f1dd6f97b54012c5846f2248",
         "type": "github"
       },
       "original": {
@@ -618,11 +618,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774192105,
-        "narHash": "sha256-PWouUg9wGJIbT6sH6TejjiaUu8p46LWT+VjGlPR+fmQ=",
+        "lastModified": 1774426534,
+        "narHash": "sha256-9ZdgM/SceWFAlF2RGeZPiwtrs3G0ebh+WcB9iy87bBY=",
         "owner": "DivitMittal",
         "repo": "firefox-nixCfg",
-        "rev": "c269cd1ae24673012d715475e2b051cce296c97a",
+        "rev": "737dd425c1002292441f4d77ffd5d2d7ae82cbc1",
         "type": "github"
       },
       "original": {
@@ -1026,11 +1026,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774212270,
-        "narHash": "sha256-m1eoNC7LlhU58R6Hlh7RSpc+k089LOZ+1hfhl4RAHns=",
+        "lastModified": 1774447556,
+        "narHash": "sha256-Ht2mVS4xOjzTLa+vkVzeBCvE9CwkMZHgAhLDH4djux8=",
         "owner": "DivitMittal",
         "repo": "hammerspoon-nix",
-        "rev": "4c659e9c6072cda13eacf8f9ffcfa9441e04130a",
+        "rev": "7add5203ee995844d78bb83ed889ecf1713b26f7",
         "type": "github"
       },
       "original": {
@@ -1102,6 +1102,21 @@
         "owner": "vic",
         "repo": "import-tree",
         "rev": "3c23749d8013ec6daa1d7255057590e9ca726646",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vic",
+        "repo": "import-tree",
+        "type": "github"
+      }
+    },
+    "import-tree_3": {
+      "locked": {
+        "lastModified": 1773693634,
+        "narHash": "sha256-BtZ2dtkBdSUnFPPFc+n0kcMbgaTxzFNPv2iaO326Ffg=",
+        "owner": "vic",
+        "repo": "import-tree",
+        "rev": "c41e7d58045f9057880b0d85e1152d6a4430dbf1",
         "type": "github"
       },
       "original": {
@@ -1958,6 +1973,7 @@
         "git-hooks": "git-hooks",
         "hammerspoon-nix": "hammerspoon-nix",
         "home-manager": "home-manager_2",
+        "import-tree": "import-tree_3",
         "kanata-tray": "kanata-tray",
         "leetcode-tui": "leetcode-tui",
         "mac-app-util": "mac-app-util",

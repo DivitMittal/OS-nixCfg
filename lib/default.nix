@@ -1,3 +1,1 @@
-{lib, ...}: {
-  flake.lib = lib.custom;
-}
+_: {}

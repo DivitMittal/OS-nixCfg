@@ -3,15 +3,15 @@
 
   outputs = inputs: let
     inherit (inputs.flake-parts.lib) mkFlake;
-    specialArgs.customLib = import (inputs.OS-nixCfg + "/lib/custom.nix") {inherit (inputs.nixpkgs) lib;};
   in
-    mkFlake {inherit inputs specialArgs;} ({inputs, ...}: {
+    mkFlake {inherit inputs;} ({inputs, ...}: {
       systems = import inputs.systems;
       imports = [./flake];
     });
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    import-tree.url = "github:vic/import-tree";
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
     devshell = {
@@ -33,10 +33,6 @@
         flake-parts.follows = "flake-parts";
         git-hooks.follows = "git-hooks";
       };
-    };
-    OS-nixCfg = {
-      url = "github:DivitMittal/OS-nixCfg";
-      flake = false;
     };
   };
 }

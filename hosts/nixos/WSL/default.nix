@@ -1,9 +1,9 @@
 {
   config,
-  lib,
+  inputs,
   ...
 }: {
-  imports = lib.custom.scanPaths ./.;
+  imports = [(inputs.import-tree.matchNot ".*/default\\.nix" ./.)];
 
   networking.nameservers = [];
   wsl = {

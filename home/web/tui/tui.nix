@@ -1,10 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
-  imports = lib.custom.scanPaths ./.;
-
+{pkgs, ...}: {
   # home.packages = lib.attrsets.attrValues {
   #   inherit
   #     (pkgs)
