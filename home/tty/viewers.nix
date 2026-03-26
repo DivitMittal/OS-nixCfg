@@ -18,6 +18,7 @@
       doxx # docx
       pandoc # various docs
       ouch # archives
+      unar # archives (extract)
       hexyl # binary & misc.
       poppler # PDFs
       ;
