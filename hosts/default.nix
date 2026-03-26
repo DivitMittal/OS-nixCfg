@@ -1,3 +1,8 @@
-{inputs, ...}: {
-  imports = [(inputs.import-tree.matchNot ".*/default\\.nix" ./.)];
+_: {
+  imports = [
+    ./darwin/darwin.nix
+    ./nixos/nixos.nix
+    ./droid/droid.nix
+    ./iso/iso-configs.nix
+  ];
 }
