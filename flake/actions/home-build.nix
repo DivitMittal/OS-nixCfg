@@ -6,7 +6,7 @@
 }: {
   flake.actions-nix.workflows.".github/workflows/home-build.yml" = {
     on = {
-      push.tags = ["*"];
+      push.tags = ["home*"];
     };
     jobs.build-home-manager-and-graph = {
       runs-on = "macos-15-intel";
