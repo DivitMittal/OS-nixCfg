@@ -1,18 +1,62 @@
 {
   inputs,
   lib,
+  self,
   ...
 }: {
-  perSystem = {
-    pkgs,
-    system,
-    ...
-  }: let
-    ## Drop into a shell with a pre-built closure of packages in PATH
-    mkEnvApp = name: packages: let
+  perSystem = {pkgs, ...}: let
+    inherit (pkgs.stdenvNoCC) hostPlatform;
+
+    homeDir =
+      if hostPlatform.isDarwin
+      then "/Users/div"
+      else "/home/div";
+
+    ## Defines the hostSpec option type inline, replacing common/all/hostSpec.nix
+    ## (which pulls from the private secrets input). Values are hardcoded stubs —
+    ## sufficient for package enumeration; secret-backed config files won't activate.
+    hostSpecStub = {lib, ...}: {
+      options.hostSpec = with lib; {
+        username = mkOption {type = types.str;};
+        userFullName = mkOption {type = types.str;};
+        handle = mkOption {type = types.str;};
+        home = mkOption {type = types.str;};
+        hostName = mkOption {type = types.str;};
+        email = {
+          dev = mkOption {type = types.str;};
+          personal = mkOption {type = types.str;};
+        };
+      };
+      config.hostSpec = {
+        username = "div";
+        userFullName = "Divit Mittal";
+        handle = "DivitMittal";
+        home = homeDir;
+        hostName = "env";
+        email = {
+          dev = "div@env.local";
+          personal = "div@env.local";
+        };
+      };
+    };
+
+    ## Evaluate a home-manager config directly in perSystem, bypassing withSystem
+    ## to avoid the circular dependency that mkCfg introduces.
+    mkEnvApp = name: additionalModules: let
+      cfg = inputs.home-manager.lib.homeManagerConfiguration {
+        inherit pkgs lib;
+        extraSpecialArgs = {inherit inputs self hostPlatform;};
+        modules =
+          [
+            hostSpecStub
+            (self + "/common/home") # hm.nix, helpers.nix, age.nix, conf.nix
+            self.outputs.homeManagerModules.default
+          ]
+          ++ additionalModules;
+      };
       env = pkgs.buildEnv {
         name = "${name}-env";
-        paths = packages;
+        paths = lib.filter (p: p != null) cfg.config.home.packages;
         pathsToLink = ["/bin" "/share"];
         ignoreCollisions = true;
       };
@@ -23,113 +67,17 @@
         exec "''${SHELL:-${pkgs.bashInteractive}/bin/bash}"
       '');
     };
-
-    ## Core TTY toolchain — shells, editors, multiplexers, navigation, vcs
-    ttyPackages = lib.attrsets.attrValues {
-      inherit
-        (pkgs)
-        ## Shells
-        fish
-        zsh
-        ## Editors
-        neovim
-        vim
-        ## Multiplexers
-        tmux
-        zellij
-        ## Navigation / history
-        atuin
-        fzf
-        zoxide
-        carapace
-        pay-respects
-        television
-        ## File tools
-        bat
-        eza
-        fd
-        ripgrep
-        ripgrep-all
-        ## VCS
-        git
-        gh
-        lazygit
-        jujutsu
-        git-lfs
-        delta
-        ## Monitoring
-        btop
-        ## File manager
-        yazi
-        ## Prompt & fetch
-        starship
-        fastfetch
-        ## Help / docs
-        tealdeer
-        glow
-        ## Network
-        aria2
-        curl
-        ## Data
-        jq
-        ;
-    };
-
-    ## AI toolchain — tty + AI CLIs + ai-nixCfg custom packages
-    aiPackages =
-      ttyPackages
-      ++ lib.attrsets.attrValues {
-        inherit
-          (pkgs)
-          claude-code
-          aichat
-          mods
-          fabric-ai
-          llm
-          geminicommit
-          ;
-      }
-      ++ lib.attrValues (inputs.ai-nixCfg.packages.${system} or {});
-
-    ## Linux desktop — tty + Wayland compositor stack
-    desktopPackages =
-      ttyPackages
-      ++ lib.attrsets.attrValues {
-        inherit
-          (pkgs)
-          ## Wayland compositor
-          niri
-          ## Wayland utilities
-          wayland-utils
-          wl-clipboard
-          xwayland-satellite
-          ## Notifications
-          dunst
-          libnotify
-          ## Screenshot / screen recording
-          grim
-          slurp
-          wf-recorder
-          ## App launcher
-          fuzzel
-          ## Status bar
-          waybar
-          ## Screen locker
-          swaylock
-          ## Misc Wayland tools
-          wlr-randr
-          kanshi
-          ;
-      };
   in {
     apps =
       {
-        tty = mkEnvApp "tty" ttyPackages;
-        ai = mkEnvApp "ai" aiPackages;
+        tty = mkEnvApp "tty" [(self + "/home/tty")];
       }
       ## Desktop is Linux-only — compositor stack doesn't exist on Darwin
-      // lib.optionalAttrs pkgs.stdenvNoCC.hostPlatform.isLinux {
-        desktop = mkEnvApp "desktop" desktopPackages;
+      // lib.optionalAttrs hostPlatform.isLinux {
+        desktop = mkEnvApp "desktop" [
+          (self + "/home/tty")
+          (self + "/home/gui/linux")
+        ];
       };
   };
 }

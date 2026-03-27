@@ -1,5 +1,6 @@
 _: {
   imports = [
+    ./apps.nix
     ./checks.nix
     ./devshells.nix
     ./formatters.nix
