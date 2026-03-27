@@ -60,4 +60,4 @@ jobs:
 'on':
   push:
     tags:
-    - iso-v*
+    - iso*
