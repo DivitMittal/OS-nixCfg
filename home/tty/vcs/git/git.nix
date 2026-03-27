@@ -6,11 +6,6 @@
 }: let
   inherit (lib) mkIf;
 in {
-  imports = [
-    ./scripts
-    ./ancillary.nix
-  ];
-
   home.sessionVariables.GIT_HOSTING = mkIf config.programs.git.enable "git@github.com:${config.programs.git.settings.user.name}";
 
   programs.fish.shellAbbrs = mkIf (config.programs.fish.enable && config.programs.git.enable) {
