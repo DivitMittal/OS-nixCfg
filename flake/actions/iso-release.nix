@@ -6,7 +6,7 @@
   flake.actions-nix.workflows.".github/workflows/iso-release.yml" = {
     on = {
       push = {
-        tags = ["iso-v*"];
+        tags = ["iso*"];
       };
     };
     jobs.build-and-release-iso = {
