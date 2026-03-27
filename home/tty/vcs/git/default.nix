@@ -105,8 +105,8 @@ in {
       };
     };
 
-    attributes = import ./attributes.nix;
-    ignores = import ../ignore.nix;
+    attributes = import ./_attributes.nix;
+    ignores = import ../_ignore.nix;
   };
 
   programs.delta = {

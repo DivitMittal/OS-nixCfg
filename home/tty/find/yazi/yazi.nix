@@ -1,4 +1,4 @@
-{pkgs}: {
+{pkgs, ...}: {
   log.enabled = false;
 
   mgr = {
