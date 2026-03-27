@@ -60,11 +60,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1774192021,
-        "narHash": "sha256-3wDbxNIZSKkJU/3KahWqqgjQUYATVfT04Je2tmU/5oU=",
+        "lastModified": 1774607937,
+        "narHash": "sha256-ko0PTF1tRnbOveP0ZCSaASpIAOqXI0paoLwHBJbjg+Q=",
         "ref": "master",
-        "rev": "32cacffaaba7a0dcb08e61fe65b63c8ad48393a8",
-        "revCount": 147,
+        "rev": "904fbadbcb8c0cfedb20e30929bbe15814b3e3a1",
+        "revCount": 149,
         "type": "git",
         "url": "ssh://git@github.com/DivitMittal/OS-nixCfg-secrets.git"
       },
@@ -256,11 +256,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774448687,
-        "narHash": "sha256-cJ7eK4s15yD9Z5nVNaXH62UJqfLPRsDwuGXOYZ6e/mc=",
+        "lastModified": 1774609262,
+        "narHash": "sha256-GHV9qyraTT10vPPeu1Rt0Ozb17B4JdeDNitHVj3VSi4=",
         "owner": "DivitMittal",
         "repo": "ai-nixCfg",
-        "rev": "3301de425f647bc3f1dd6f97b54012c5846f2248",
+        "rev": "c7e6a1949183cc9ab5b6930daaf85749ef288765",
         "type": "github"
       },
       "original": {
