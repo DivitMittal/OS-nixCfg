@@ -37,13 +37,12 @@
         };
       };
       imports = [
-        ./flake
-        ./home
-        ./hosts
-        ./lib
-        ./modules
-        ./overlays
-        ./templates
+        (inputs.import-tree ./flake)
+        ./home/home.nix
+        ./hosts/hosts.nix
+        ./modules/modules.nix
+        ./overlays/overlays.nix
+        ./templates/templates.nix
       ];
     });
 

@@ -1,7 +1,5 @@
 {inputs, ...}: {
-  imports =
-    [(inputs.import-tree.matchNot ".*/actions\\.nix" ./.)]
-    ++ [inputs.actions-nix.flakeModules.default];
+  imports = [inputs.actions-nix.flakeModules.default];
 
   _module.args = rec {
     common-on = rec {
