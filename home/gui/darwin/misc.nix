@@ -30,13 +30,13 @@
 
     ## AI Tools
     handy = pkgs.brewCasks.handy.override {variation = "tahoe";};
-    # claude-desktop = pkgs.brewCasks.claude.overrideAttrs (oldAttrs: {
-    #   installPhase =
-    #     oldAttrs.installPhase
-    #     + ''
-    #       # Clean bin due to collision with claude-code
-    #       rm -rf $out/bin
-    #     '';
-    # });
+    claude-desktop = pkgs.brewCasks.claude.overrideAttrs (oldAttrs: {
+      installPhase =
+        oldAttrs.installPhase
+        + ''
+          # Clean bin due to collision with claude-code
+          rm -rf $out/bin
+        '';
+    });
   };
 }
