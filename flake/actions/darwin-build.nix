@@ -1,36 +1,13 @@
 {
-  common-on,
   common-permissions,
   common-actions,
   environment,
   ...
 }: {
   flake.actions-nix.workflows.".github/workflows/darwin-build.yml" = {
-    on =
-      common-on
-      // rec {
-        push = {
-          branches = ["master"];
-          tags = ["host*"];
-          paths-ignore =
-            common-on.push.paths-ignore
-            ++ [
-              ## common
-              "common/home/**"
-              "common/hosts/droid/**"
-              "common/hosts/nixos/**"
-              ## configuration
-              "home/**"
-              "hosts/droid/**"
-              "hosts/nixos/**"
-              ## modules
-              "modules/home/**"
-              "modules/hosts/droid/**"
-              "modules/hosts/nixos/**"
-            ];
-        };
-        pull_request = push;
-      };
+    on = {
+      push.tags = ["host*"];
+    };
     jobs.build-nix-darwin-configuration = {
       runs-on = "macos-15-intel";
       permissions = common-permissions;

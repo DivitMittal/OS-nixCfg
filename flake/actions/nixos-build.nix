@@ -1,36 +1,13 @@
 {
-  common-on,
   common-permissions,
   environment,
   common-actions,
   ...
 }: {
   flake.actions-nix.workflows.".github/workflows/nixos-build.yml" = {
-    on =
-      common-on
-      // rec {
-        push = {
-          branches = ["master"];
-          tags = ["host*"];
-          paths-ignore =
-            common-on.push.paths-ignore
-            ++ [
-              ## common
-              "common/home/**"
-              "common/hosts/droid/**"
-              "common/hosts/darwin/**"
-              ## configuration
-              "home/**"
-              "hosts/droid/**"
-              "hosts/darwin/**"
-              ## modules
-              "modules/home/**"
-              "modules/hosts/droid/**"
-              "modules/hosts/darwin/**"
-            ];
-        };
-        pull_request = push;
-      };
+    on = {
+      push.tags = ["host*"];
+    };
     jobs.build-nixos-configuration = {
       permissions = common-permissions;
       inherit environment;
