@@ -1969,26 +1969,6 @@
         "type": "github"
       }
     },
-    "quickshell": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1774422996,
-        "narHash": "sha256-mWjBJIbiMPCpljAQDk8RYf+92/lYZ5npHe2r2SJ+QWc=",
-        "owner": "outfoxxed",
-        "repo": "quickshell",
-        "rev": "08058326f04e9b5e55c903b3702405a8d3556ac6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "outfoxxed",
-        "repo": "quickshell",
-        "type": "github"
-      }
-    },
     "ragenix": {
       "inputs": {
         "agenix": [
@@ -2058,7 +2038,6 @@
         "nur": "nur",
         "nvchad4nix": "nvchad4nix",
         "pkms": "pkms",
-        "quickshell": "quickshell",
         "ragenix": "ragenix",
         "systems": "systems_10",
         "tgt": "tgt",
