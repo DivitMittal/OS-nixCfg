@@ -13,12 +13,12 @@
       xlsSupport = true;
       inherit (pkgs.custom) libxls;
     };
+    ouch = pkgs.ouch.override {enableUnfree = true;}; # archives (with RAR support)
     inherit
       (pkgs)
       doxx # docx
       pandoc # various docs
-      ouch # archives
-      unar # archives (extract)
+      # unar # archives (extract) -- ouch now handles RAR via enableUnfree
       hexyl # binary & misc.
       poppler # PDFs
       ;
