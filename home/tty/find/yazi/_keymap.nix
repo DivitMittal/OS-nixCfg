@@ -647,48 +647,6 @@
     ];
   };
 
-  completion = {
-    keymap = [
-      {
-        desc = "Cancel completion";
-        on = ["<Esc>"];
-        run = "close";
-      }
-      {
-        desc = "Submit the completion";
-        on = ["<Tab>"];
-        run = "close --submit";
-      }
-      {
-        desc = "Submit the completion and input";
-        on = ["<Enter>"];
-        run = ["close --submit" "close_input --submit"];
-      }
-      {
-        desc = "Move cursor up";
-        on = ["<Up>"];
-        run = "arrow -1";
-      }
-      {
-        desc = "Move cursor down";
-        on = ["<Down>"];
-        run = "arrow 1";
-      }
-      {
-        desc = "Open help";
-        on = ["~"];
-        run = "help";
-      }
-    ];
-    append_keymap = [
-      {
-        desc = "Open help";
-        on = ["?"];
-        run = "help";
-      }
-    ];
-  };
-
   tasks = {
     keymap = [
       {

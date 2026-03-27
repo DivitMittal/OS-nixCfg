@@ -12,7 +12,7 @@
     enable = true;
     package = pkgs.aerc;
 
-    extraBinds = import ./binds.nix;
+    extraBinds = import ./_binds.nix;
     extraConfig = {
       general = {
         unsafe-accounts-conf = true;

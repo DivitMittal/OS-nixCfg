@@ -33,8 +33,8 @@ in {
     shellWrapperName = "y";
 
     initLua = ./init.lua;
-    settings = import ./yazi.nix {inherit pkgs;};
-    keymap = import ./keymap.nix;
+    settings = import ./_yazi.nix {inherit pkgs;};
+    keymap = import ./_keymap.nix;
     theme = {
       flavor = {
         dark = "dracula";
