@@ -57,6 +57,8 @@ jobs:
     - modules/home/**
     - modules/hosts/droid/**
     - modules/hosts/nixos/**
+    tags:
+    - host*
   push:
     branches:
     - master
@@ -79,4 +81,6 @@ jobs:
     - modules/home/**
     - modules/hosts/droid/**
     - modules/hosts/nixos/**
+    tags:
+    - host*
   workflow_dispatch: {}

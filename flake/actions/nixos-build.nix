@@ -11,6 +11,7 @@
       // rec {
         push = {
           branches = ["master"];
+          tags = ["host*"];
           paths-ignore =
             common-on.push.paths-ignore
             ++ [
