@@ -2,44 +2,44 @@
 
 set -euo pipefail
 
-echo "Enabling Wacom services..."
+# Loads Wacom services for the current session only.
+# Does NOT persist across reboots — run wacom-disable when done to keep
+# the disabled state clean (launchd won't auto-start these at next login).
+
+UID_CURRENT="$(id -u)"
+
+echo "Enabling Wacom services (session only)..."
 
 ## User (post-login)
-declare -a TOENABLE_USER
-TOENABLE_USER+=(
+USER_AGENTS=(
   'com.wacom.DataStoreMgr'
   'com.wacom.wacomtablet'
 )
-for agent in "${TOENABLE_USER[@]}"; do
-  launchctl enable gui/501/"${agent}"
-  if launchctl bootstrap gui/501 "/Library/LaunchAgents/${agent}.plist" &>/dev/null; then
+for agent in "${USER_AGENTS[@]}"; do
+  if launchctl bootstrap gui/"${UID_CURRENT}" "/Library/LaunchAgents/${agent}.plist" 2>/dev/null; then
     echo "Bootstrap(User): ${agent}"
   else
     echo "Already running(User): ${agent}"
   fi
 done
 
-# Special case for IOManager
-launchctl enable gui/501/Wacom_IOManager
-if launchctl bootstrap gui/501 /Library/LaunchAgents/com.wacom.IOManager.plist &>/dev/null; then
-  echo "Bootstrap(User): com.wacom.IOManager"
+# IOManager label inside the plist is Wacom_IOManager, but the file is com.wacom.IOManager.plist
+if launchctl bootstrap gui/"${UID_CURRENT}" /Library/LaunchAgents/com.wacom.IOManager.plist 2>/dev/null; then
+  echo "Bootstrap(User): Wacom_IOManager"
 else
-  echo "Already running(User): com.wacom.IOManager"
+  echo "Already running(User): Wacom_IOManager"
 fi
 
-
 ## System
-declare -a TOENABLE_SYSTEM
-TOENABLE_SYSTEM+=(
+SYSTEM_DAEMONS=(
   'com.wacom.UpdateHelper'
 )
-for daemon in "${TOENABLE_SYSTEM[@]}"; do
-  sudo launchctl enable system/"${daemon}"
-  if sudo launchctl bootstrap system "/Library/LaunchDaemons/${daemon}.plist" &>/dev/null; then
+for daemon in "${SYSTEM_DAEMONS[@]}"; do
+  if sudo launchctl bootstrap system "/Library/LaunchDaemons/${daemon}.plist" 2>/dev/null; then
     echo "Bootstrap(System): ${daemon}"
   else
     echo "Already running(System): ${daemon}"
   fi
 done
 
-echo "Wacom services enabled."
+echo "Wacom services loaded. Run wacom-disable when done to prevent autostart on next boot."

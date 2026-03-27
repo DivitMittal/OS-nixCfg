@@ -2,31 +2,35 @@
 
 set -euo pipefail
 
+# Stops Wacom services and marks them disabled in the launchd database.
+# Persists across reboots — services will NOT auto-start at next login/boot
+# unless wacom-enable is explicitly run again.
+
+UID_CURRENT="$(id -u)"
+
 echo "Disabling Wacom services..."
 
 ## User (post-login)
-declare -a TODISABLE_USER
-TODISABLE_USER+=(
+USER_AGENTS=(
   'com.wacom.DataStoreMgr'
   'com.wacom.wacomtablet'
   'Wacom_IOManager'
 )
-for agent in "${TODISABLE_USER[@]}"; do
-  if launchctl bootout gui/501/"${agent}" &>/dev/null; then
+for agent in "${USER_AGENTS[@]}"; do
+  if launchctl bootout gui/"${UID_CURRENT}"/"${agent}" 2>/dev/null; then
     echo "Bootout(User): ${agent}"
   else
     echo "Already stopped(User): ${agent}"
   fi
-  launchctl disable gui/501/"${agent}"
+  launchctl disable gui/"${UID_CURRENT}"/"${agent}"
 done
 
 ## System
-declare -a TODISABLE_SYSTEM
-TODISABLE_SYSTEM+=(
+SYSTEM_DAEMONS=(
   'com.wacom.UpdateHelper'
 )
-for daemon in "${TODISABLE_SYSTEM[@]}"; do
-  if sudo launchctl bootout system/"${daemon}" &>/dev/null; then
+for daemon in "${SYSTEM_DAEMONS[@]}"; do
+  if sudo launchctl bootout system/"${daemon}" 2>/dev/null; then
     echo "Bootout(System): ${daemon}"
   else
     echo "Already stopped(System): ${daemon}"
@@ -34,4 +38,4 @@ for daemon in "${TODISABLE_SYSTEM[@]}"; do
   sudo launchctl disable system/"${daemon}"
 done
 
-echo "Wacom services disabled."
+echo "Wacom services disabled and will not autostart on next boot."
