@@ -47,6 +47,7 @@
 ## Contents
 
 - [Overview](#overview)
+- [Quick Start](#quick-start)
 - [Project Structure](#project-structure)
 - [Home Manager Profile Graph](#home-manager-profile-graph)
 - [Network Topology](#network-topology)
@@ -62,6 +63,22 @@ This repository contains primarily [nix](https://github.com/nixos/nix) configura
 - **macOS** (via `nix-darwin`)
 - **Android** (via `nix-on-droid`)
 - **\*nix (NixOS)** (including WSL via `NixOS-WSL`)
+
+## Quick Start
+
+Drop into a pre-built shell environment without cloning or installing anything:
+
+| Command                                        | Environment                                                            | Platform   |
+| ---------------------------------------------- | ---------------------------------------------------------------------- | ---------- |
+| `nix run github:DivitMittal/OS-nixCfg#tty`     | Full TTY toolchain (shells, editors, multiplexers, VCS, file tools, …) | all        |
+| `nix run github:DivitMittal/OS-nixCfg#desktop` | TTY + Wayland compositor stack (niri, waybar, dunst, …)                | Linux only |
+
+Each command drops you into `$SHELL` with the environment's packages prepended to `PATH`. No activation, no home-manager switch — ephemeral by design.
+
+> The TTY environment already includes the AI toolchain via [ai-nixCfg](https://github.com/DivitMittal/ai-nixCfg).
+> For an AI-only shell use `nix run github:DivitMittal/ai-nixCfg#ai`.
+
+---
 
 ## Project Structure
 
