@@ -6,10 +6,18 @@
       rev = "master";
       hash = "sha256-GiN1WjHzTICFOFCEqb39MWGu3EfxE4uvgN7hpjdpfrI=";
     };
-    # Patch the empty microsoft client_id in the registrations dict.
-    # Thunderbird's production Microsoft OAuth2 client ID (public, uses PKCE — no secret needed):
+    # Patch the empty client_id/client_secret fields in the registrations dict.
+    #
+    # Microsoft: Thunderbird's production app ID (public, uses PKCE — no secret needed):
     #   https://hg.mozilla.org/comm-central/file/tip/mailnews/base/src/OAuth2Providers.sys.mjs
     #   microsoft365ProductionAppId = "9e5f94bc-e8a4-4e73-b8be-63364c29d753"
+    #
+    # Google: confidential client — requires both client_id AND client_secret.
+    #   Unlike Microsoft/PKCE, Google does not support public clients without a secret.
+    #   Register a Desktop app at https://console.cloud.google.com → APIs & Services → Credentials
+    #   Enable: Gmail API. Set GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET before building.
+    googleClientId = builtins.getEnv "GOOGLE_CLIENT_ID";
+    googleClientSecret = builtins.getEnv "GOOGLE_CLIENT_SECRET";
     patchedScript = pkgs.runCommand "mutt_oauth2_patched.py" {} ''
             ${pkgs.python3}/bin/python3 - <<PYEOF
       import re
@@ -21,6 +29,22 @@
       content = re.sub(
           r"('microsoft'[^}]*?'client_id':\s*)'[^']*'",
           r"\g<1>'9e5f94bc-e8a4-4e73-b8be-63364c29d753'",
+          content,
+          flags=re.DOTALL
+      )
+
+      # Patch Google client_id and client_secret with personal GCP credentials.
+      # Also fix the deprecated OOB redirect_uri — localhostauthcode flow overrides
+      # it at runtime (line ~187), but set a sane default for authcode flow too.
+      content = re.sub(
+          r"('google'[^}]*?'client_id':\s*)'[^']*'",
+          r"\g<1>'${googleClientId}'",
+          content,
+          flags=re.DOTALL
+      )
+      content = re.sub(
+          r"('google'[^}]*?'client_secret':\s*)'[^']*'",
+          r"\g<1>'${googleClientSecret}'",
           content,
           flags=re.DOTALL
       )
@@ -44,7 +68,8 @@
   in [
     # Usage (one-time per account):
     #   oauth2 ~/.local/share/oauth2/<email> --authorize
-    #   Prompts: registration → microsoft | flow → localhostauthcode or devicecode
+    #   Microsoft: registration → microsoft | flow → localhostauthcode or devicecode
+    #   Google:    registration → google    | flow → localhostauthcode
     (pkgs.writeShellScriptBin "oauth2" ''
       exec ${pkgs.python3}/bin/python3 ${patchedScript} "$@"
     '')
