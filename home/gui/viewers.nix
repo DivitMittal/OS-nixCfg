@@ -67,6 +67,11 @@ in {
           })
         else pkgs.libreoffice;
 
+      gimp =
+        if hostPlatform.isDarwin
+        then pkgs.brewCasks.gimp
+        else pkgs.gimp;
+
       microsoft-excel =
         if hostPlatform.isDarwin
         then
