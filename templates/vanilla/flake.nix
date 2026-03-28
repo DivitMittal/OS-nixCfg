@@ -3,8 +3,9 @@
 
   outputs = inputs: let
     inherit (inputs.flake-parts.lib) mkFlake;
+    specialArgs.customLib.scanPaths = path: (inputs.import-tree path).files;
   in
-    mkFlake {inherit inputs;} ({inputs, ...}: {
+    mkFlake {inherit inputs specialArgs;} ({inputs, ...}: {
       systems = import inputs.systems;
       imports = [./flake];
     });
