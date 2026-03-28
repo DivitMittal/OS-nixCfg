@@ -1,10 +1,4 @@
-{
-  config,
-  inputs,
-  ...
-}: {
-  imports = [(inputs.import-tree.matchNot ".*/default\\.nix" ./.)];
-
+{config, ...}: {
   networking.nameservers = [];
   wsl = {
     enable = true;

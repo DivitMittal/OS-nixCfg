@@ -38,8 +38,8 @@
       };
       imports = [
         (inputs.import-tree ./flake)
-        ./home/home.nix
-        ./hosts/hosts.nix
+        ./home/setup.nix
+        ./hosts/setup.nix
         ./modules/modules.nix
         ./overlays/overlays.nix
         ./templates/templates.nix

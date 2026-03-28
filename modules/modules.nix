@@ -1,6 +1,10 @@
-{self, ...}: {
+{
+  self,
+  inputs,
+  ...
+}: {
   flake.homeManagerModules = {
-    all = import ./home;
+    all = inputs.import-tree (self + "/modules/home");
     default = self.outputs.homeManagerModules.all;
 
     # Individual modules for selective importing
@@ -14,7 +18,7 @@
   };
 
   flake.darwinModules = {
-    all = import ./hosts/darwin;
+    all = inputs.import-tree (self + "/modules/hosts/darwin");
     default = self.outputs.darwinModules.all;
 
     # Individual modules for selective importing
