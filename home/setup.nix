@@ -8,13 +8,13 @@
   flake.homeConfigurations = let
     class = "home";
     fullModules =
-      (inputs.import-tree ./tty)
+      [(inputs.import-tree ./tty)]
       ++ [./gui/gui.nix]
-      ++ (inputs.import-tree ./dev)
-      ++ (inputs.import-tree ./comms)
-      ++ (inputs.import-tree ./tools)
-      ++ (inputs.import-tree ./web)
-      ++ (inputs.import-tree ./media);
+      ++ [(inputs.import-tree ./dev)]
+      ++ [(inputs.import-tree ./comms)]
+      ++ [(inputs.import-tree ./tools)]
+      ++ [(inputs.import-tree ./web)]
+      ++ [(inputs.import-tree ./media)];
   in {
     L1 = mkCfg {
       hostName = "L1";
@@ -34,14 +34,14 @@
       hostName = "WSL";
       system = "x86_64-linux";
       inherit class;
-      additionalModules = inputs.import-tree ./tty;
+      additionalModules = [(inputs.import-tree ./tty)];
     };
 
     M1 = mkCfg {
       hostName = "M1";
       system = "aarch64-linux";
       inherit class;
-      additionalModules = inputs.import-tree ./tty;
+      additionalModules = [(inputs.import-tree ./tty)];
     };
   };
 }

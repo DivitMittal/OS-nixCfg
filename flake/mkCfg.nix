@@ -47,22 +47,22 @@
         inherit (lib.lists) optionals;
       in
         [{hostSpec = {inherit hostName;};}]
-        ++ optionals (class != "droid") (inputs.import-tree (commonDir + "/all"))
+        ++ optionals (class != "droid") [(inputs.import-tree (commonDir + "/all"))]
         ++ optionals (class == "droid") [(commonDir + "/all/hostSpec.nix")]
-        ++ optionals (class != "home" && class != "droid") (inputs.import-tree (commonDir + "/hosts/all"))
-        ++ optionals (class == "home") (
+        ++ optionals (class != "home" && class != "droid") [(inputs.import-tree (commonDir + "/hosts/all"))]
+        ++ optionals (class == "home") [
           (inputs.import-tree (commonDir + "/home"))
-          ++ self.outputs.homeManagerModules.default
-        )
-        ++ optionals (class != "home") (
+          self.outputs.homeManagerModules.default
+        ]
+        ++ optionals (class != "home") [
           (inputs.import-tree (commonDir + "/hosts/${class}"))
-          ++ (inputs.import-tree (self + "/hosts/${class}/${hostName}"))
-        )
-        ++ optionals (class == "iso") (inputs.import-tree (commonDir + "/hosts/nixos"))
+          (inputs.import-tree (self + "/hosts/${class}/${hostName}"))
+        ]
+        ++ optionals (class == "iso") [(inputs.import-tree (commonDir + "/hosts/nixos"))]
         ++ optionals (class == "nixos") [
           inputs.nix-topology.nixosModules.default
         ]
-        ++ optionals (class == "darwin") self.outputs.darwinModules.default
+        ++ optionals (class == "darwin") [self.outputs.darwinModules.default]
         ++ additionalModules;
     in
       configGenerator.${class} (mergeAttrsList [
