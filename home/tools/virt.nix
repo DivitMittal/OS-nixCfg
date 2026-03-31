@@ -1,11 +1,13 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: {
   # Enable colima as a service with docker runtime
   services.colima = {
     enable = true;
+    colimaHomeDir = "${config.xdg.configHome}/colima";
     coreutilsPackage = pkgs.uutils-coreutils;
     profiles.default = {
       isActive = true;
