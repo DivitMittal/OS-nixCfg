@@ -38,11 +38,11 @@
       };
       imports = [
         (inputs.import-tree ./flake)
-        ./home/setup.nix
-        ./hosts/setup.nix
-        ./modules/modules.nix
-        ./overlays/overlays.nix
-        ./templates/templates.nix
+        ./home
+        ./hosts
+        ./modules
+        ./overlays
+        ./templates
       ];
     });
 
