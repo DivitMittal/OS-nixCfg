@@ -69,7 +69,7 @@ in {
 
       gimp =
         if hostPlatform.isDarwin
-        then pkgs.brewCasks.gimp
+        then pkgs.brewCasks.gimp.override {variation = "tahoe";}
         else pkgs.gimp;
 
       microsoft-excel =
