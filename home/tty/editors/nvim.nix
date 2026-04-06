@@ -13,7 +13,7 @@ in {
     enable = true;
     extraPackages = lib.attrsets.attrValues {
       ## General
-      inherit (pkgs.nodePackages) prettier;
+      inherit (pkgs) prettier;
       inherit
         (pkgs)
         ## Lua
@@ -27,7 +27,7 @@ in {
         vscode-langservers-extracted
         ;
       ## Shell
-      inherit (pkgs.nodePackages) bash-language-server;
+      inherit (pkgs) bash-language-server;
       inherit (pkgs) shfmt;
       ## Python
       python = pkgs.python3.withPackages (ps:
