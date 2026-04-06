@@ -8,7 +8,7 @@
     owner = "muttmua";
     repo = "mutt";
     rev = "master";
-    hash = "sha256-GiN1WjHzTICFOFCEqb39MWGu3EfxE4uvgN7hpjdpfrI=";
+    hash = "sha256-z3J5iI7AW0bQCn1XR77DD5jsei/eB6TFiHhDPdAFakM=";
   };
   # Patch the empty client_id/client_secret fields in the registrations dict.
   #
@@ -90,7 +90,7 @@ in {
       end
     '';
     bash.initExtra = lib.mkIf config.programs.bash.enable posixInit;
-    zsh.initExtra = lib.mkIf config.programs.zsh.enable posixInit;
+    zsh.initContent = lib.mkIf config.programs.zsh.enable posixInit;
   };
 
   home.packages = [
