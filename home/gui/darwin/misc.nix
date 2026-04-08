@@ -25,7 +25,7 @@
       Iris-bin # Webcam mirror
       Pearcleaner-bin
       #LosslessSwitcher-bin # Lossless audio toggle in menubar
-      LiveWallpaper-bin
+      SakuraWallpaper # Live wallpaper for macOS
       ;
 
     ## AI Tools
