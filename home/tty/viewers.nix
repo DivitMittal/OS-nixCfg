@@ -18,7 +18,6 @@
       (pkgs)
       doxx # docx
       pandoc # various docs
-      # unar # archives (extract) -- ouch now handles RAR via enableUnfree
       hexyl # binary & misc.
       poppler # PDFs
       ;
@@ -32,6 +31,7 @@
     euporie = pkgs.writeScriptBin "euporie" ''
       exec ${pkgs.uv}/bin/uv tool run --from euporie euporie "$@"
     '';
+    ## Office -> Markdown
     markitdown = pkgs.writeScriptBin "markitdown" ''
       exec ${pkgs.uv}/bin/uv tool run markitdown[all] "$@"
     '';

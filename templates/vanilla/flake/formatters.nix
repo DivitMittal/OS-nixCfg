@@ -17,6 +17,8 @@
       alejandra.enable = true;
       deadnix.enable = true;
       statix.enable = true;
+      ## Markdown
+      mdformat.enable = true;
     };
   };
 }

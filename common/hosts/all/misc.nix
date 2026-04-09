@@ -28,7 +28,6 @@
       gawk
       which
       gzip
-      gnutar
       wget
       gnupatch
       gnupg
@@ -37,8 +36,9 @@
       groff
       indent
       ## uutils
+      uutils-tar # gnutar
       uutils-sed # gnused
-      uutils-coreutils-noprefix
+      uutils-coreutils-noprefix # coreutils
       uutils-diffutils # diffutils
       uutils-findutils # findutils
       ## Others

@@ -31,13 +31,10 @@
 
       ## macOS specific
       #"lulu"
-      #"monolingual"
       #"knockknock"
     ];
 
     brews = [
-      ## mas
-      #"mas"
       ## Development
       #"libomp" # Multiprogramming
     ];
@@ -45,12 +42,12 @@
     masApps = {
       ## General
       #"Texty" = 1538996043;
-      #"PerplexityAI" = 6714467650;
+      "PerplexityAI" = 6714467650;
 
       ## Safari Extensions
-      #"Ghostery" = 6504861501;
-      #"SuperAgent" = 1568262835;
-      #"Vimkey" = 1585682577;
+      "Ghostery" = 6504861501;
+      "SuperAgent" = 1568262835;
+      "Vimkey" = 1585682577;
     };
   };
 }

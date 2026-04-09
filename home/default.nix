@@ -8,8 +8,10 @@
   flake.homeConfigurations = let
     class = "home";
     fullModules =
-      [(inputs.import-tree ./tty)]
-      ++ [./gui/gui.nix]
+      [
+        (inputs.import-tree ./tty)
+      ]
+      ++ [./gui/setup.nix]
       ++ [(inputs.import-tree ./dev)]
       ++ [(inputs.import-tree ./comms)]
       ++ [(inputs.import-tree ./tools)]

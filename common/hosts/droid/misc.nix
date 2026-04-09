@@ -21,7 +21,6 @@
       gawk
       which
       gzip
-      gnutar
       wget
       gnupatch
       gnupg
@@ -30,19 +29,22 @@
       groff
       indent
       ## uutils
+      uutils-tar # gnutar
       uutils-sed # gnused
+      uutils-hostname # hostname
+      uutils-login # login
+      uutils-procps # procps
       uutils-coreutils-noprefix # coreutils
       uutils-diffutils # diffutils
       uutils-findutils # findutils
+      uutils-util-linux # util-linux
       ## Others
       zip
       unzip
       curl
       vim
       git
-      util-linux
       tzdata
-      hostname
       openssh
       ## Nix
       home-manager
