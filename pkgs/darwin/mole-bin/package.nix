@@ -2,11 +2,11 @@
   lib,
   stdenvNoCC,
   stdenv,
-  fetchFromGitHub,
   fetchurl,
+  sources,
   ...
 }: let
-  version = "1.31.0";
+  version = lib.removePrefix "V" sources.mole.version;
 
   binaries = {
     aarch64-darwin = {
@@ -37,12 +37,7 @@ in
     pname = "mole";
     inherit version;
 
-    src = fetchFromGitHub {
-      owner = "tw93";
-      repo = "Mole";
-      rev = "V${version}";
-      hash = "sha256-dalmW3W/seGZreSWuYP7JN/nMUbs3WyDHzKU83EveeY=";
-    };
+    inherit (sources.mole) src;
 
     # Fix bash arithmetic bug: ((var++)) returns exit code 1 when var=0
     # which causes early exit with set -e. Using : $((var++)) always succeeds.

@@ -2,19 +2,14 @@
   lib,
   stdenv,
   swiftPackages,
-  fetchFromGitHub,
+  sources,
   apple-sdk,
 }:
 stdenv.mkDerivation rec {
   pname = "SakuraWallpaper";
-  version = "0.1.0";
+  version = lib.removePrefix "v" sources.SakuraWallpaper.version;
 
-  src = fetchFromGitHub {
-    owner = "yueseqaz";
-    repo = "SakuraWallpaper";
-    rev = "7d4ed563da42e8eac8627ffc7991a24ae6691902";
-    hash = "sha256-9c6VnNNKByrsAjO38TYMlZOlHkk/ZxkzKLXrHBtpu58=";
-  };
+  inherit (sources.SakuraWallpaper) src;
 
   nativeBuildInputs = [swiftPackages.swift];
   buildInputs = [apple-sdk];

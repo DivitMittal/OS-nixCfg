@@ -1,18 +1,13 @@
 {
   lib,
   buildGoModule,
-  fetchFromGitHub,
+  sources,
 }:
-buildGoModule rec {
+buildGoModule {
   pname = "agevault";
-  version = "1.1.1";
+  version = lib.removePrefix "v" sources.agevault.version;
 
-  src = fetchFromGitHub {
-    owner = "ndavd";
-    repo = "agevault";
-    rev = "v${version}";
-    hash = "sha256-f7t/hzBfZi3OJtYPM4n5bDhm+LcceinDUZIpVsSSl/s=";
-  };
+  inherit (sources.agevault) src;
 
   vendorHash = "sha256-jiSYg4+RLzezW1D1kWxmNoEn0rlbXRzU3BsK16aP0tw=";
 

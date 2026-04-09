@@ -1,19 +1,14 @@
 {
   lib,
   stdenvNoCC,
-  fetchzip,
+  sources,
   unzip,
   makeWrapper,
   ...
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "Hot";
-  version = "1.9.4";
-  src = fetchzip {
-    extension = "zip";
-    url = "https://github.com/macmade/${finalAttrs.pname}/releases/download/${finalAttrs.version}/${finalAttrs.pname}.zip";
-    hash = "sha256-OWE3ECP3xZjHj30y7M37jfRNfQoUy+MYTaUsQrg+dLo=";
-  };
+  inherit (sources.Hot) version src;
 
   nativeBuildInputs = [unzip makeWrapper];
 

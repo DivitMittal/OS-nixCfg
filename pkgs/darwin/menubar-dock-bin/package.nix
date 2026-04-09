@@ -1,19 +1,14 @@
 {
   stdenvNoCC,
-  fetchzip,
   lib,
+  sources,
   makeWrapper,
   unzip,
   ...
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "Menu Bar Dock";
-  version = "4.6";
-  src = fetchzip {
-    extension = "zip";
-    url = "https://github.com/EthanSK/Menu-Bar-Dock/releases/download/${finalAttrs.version}/Menu.Bar.Dock.app.zip";
-    hash = "sha256-QHOBIZ5HqPZ/iINr/1/E51OIMVhbNBGDhBGC6O+8k0E=";
-  };
+  inherit (sources.menubar-dock) version src;
 
   nativeBuildInputs = [unzip makeWrapper];
 

@@ -1,7 +1,7 @@
 {
   lib,
   rustPlatform,
-  fetchFromGitHub,
+  sources,
   pkg-config,
   cmake,
   openssl,
@@ -23,14 +23,9 @@
 }:
 rustPlatform.buildRustPackage {
   pname = "spotify-player";
-  version = "0.22.1";
+  version = lib.removePrefix "v" sources.spotify-player.version;
 
-  src = fetchFromGitHub {
-    owner = "aome510";
-    repo = "spotify-player";
-    rev = "v0.22.1";
-    hash = "sha256-fULVQMVF+fDVNXj/qbwjBIG1EHfdlG/gTY+NJTWbwdk=";
-  };
+  inherit (sources.spotify-player) src;
 
   cargoHash = "sha256-12ccf5LT2XAq1SmcG6RnpECDS89ZJ/21MYp8dtBUnL8=";
 

@@ -1,20 +1,14 @@
 {
   lib,
   stdenvNoCC,
-  fetchzip,
+  sources,
   unzip,
   makeWrapper,
   ...
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "Pearcleaner";
-  version = "5.4.3";
-  src = fetchzip {
-    extension = "zip";
-    url = "https://github.com/alienator88/${finalAttrs.pname}/releases/download/${finalAttrs.version}/${finalAttrs.pname}.zip";
-    stripRoot = false;
-    hash = "sha256-Afnd0EaNosuhD8oP1Q/HVzaCWQAvNBIeoDbKKpTY//4=";
-  };
+  inherit (sources.Pearcleaner) version src;
 
   nativeBuildInputs = [unzip makeWrapper];
 

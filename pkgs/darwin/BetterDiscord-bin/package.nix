@@ -1,19 +1,14 @@
 {
   stdenvNoCC,
-  fetchurl,
   lib,
+  sources,
   makeWrapper,
   unzip,
   ...
 }:
 stdenvNoCC.mkDerivation (_finalAttrs: {
   pname = "betterdiscord";
-  version = "1.3.0";
-
-  src = fetchurl {
-    url = "https://github.com/BetterDiscord/Installer/releases/download/v${_finalAttrs.version}/BetterDiscord-Mac.zip";
-    hash = "sha256-hb3XtE+WJPd0CvTSZoLyFzDEemQ/3gCfKtdmr6GTVrg=";
-  };
+  inherit (sources.BetterDiscord) version src;
 
   nativeBuildInputs = [unzip makeWrapper];
 

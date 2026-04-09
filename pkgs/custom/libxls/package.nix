@@ -1,17 +1,13 @@
 {
   lib,
   stdenv,
-  fetchurl,
+  sources,
 }:
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
   pname = "libxls";
-  version = "1.6.3";
-
+  # src.prefix = "v" in nvfetcher.toml strips the "v" — version is bare (e.g. "1.6.3")
   # Use release tarball instead of GitHub source - includes pre-generated configure
-  src = fetchurl {
-    url = "https://github.com/libxls/libxls/releases/download/v${version}/libxls-${version}.tar.gz";
-    hash = "sha256-svuDbqC1JTo1L7XKVXQuKfBvlPlCHFuO7M7y5dQ/Yiw=";
-  };
+  inherit (sources.libxls) version src;
 
   enableParallelBuilding = true;
 

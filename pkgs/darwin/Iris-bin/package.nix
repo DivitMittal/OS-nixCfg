@@ -1,19 +1,13 @@
 {
   stdenvNoCC,
-  fetchzip,
   lib,
+  sources,
   makeWrapper,
   ...
 }:
-stdenvNoCC.mkDerivation (finalAttrs: {
+stdenvNoCC.mkDerivation (_finalAttrs: {
   pname = "Iris";
-  version = "0.1.5";
-
-  src = fetchzip {
-    extension = "zip";
-    url = "https://github.com/ahmetb/Iris/releases/download/v${finalAttrs.version}/Iris-v${finalAttrs.version}.zip";
-    hash = "sha256-kGQWoWKCiWt8q1q/1Ce+UQWFpwR2zI7AHrUOiHUeP/s=";
-  };
+  inherit (sources.Iris) version src;
 
   nativeBuildInputs = [makeWrapper];
 

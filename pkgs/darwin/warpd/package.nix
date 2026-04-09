@@ -1,18 +1,13 @@
 {
   lib,
   stdenv,
-  fetchFromGitHub,
+  sources,
 }:
 stdenv.mkDerivation rec {
   pname = "warpd";
-  version = "2.2.0";
+  version = lib.removePrefix "v" sources.warpd.version;
 
-  src = fetchFromGitHub {
-    owner = "atuan26";
-    repo = "warpd";
-    rev = "v${version}";
-    hash = "sha256-ngWQdGKvHxng0C1LlmYHMWjcH4mzgrEFr6DvEa6LdUE=";
-  };
+  inherit (sources.warpd) src;
 
   postPatch = ''
     # Fix duplicate symbol error (global size_t nr_boxes; in macos.h included by multiple TUs)

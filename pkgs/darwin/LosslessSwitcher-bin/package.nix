@@ -1,19 +1,14 @@
 {
   stdenvNoCC,
-  fetchzip,
   lib,
+  sources,
   makeWrapper,
   unzip,
   ...
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "LosslessSwitcher";
-  version = "2.0";
-  src = fetchzip {
-    extension = "zip";
-    url = "https://github.com/vincentneo/${finalAttrs.pname}/releases/download/${finalAttrs.version}/${finalAttrs.pname}2.app.zip";
-    hash = "sha256-vyzWG5r6GgyqekkbJcyyzBLwnbO5gxwNgUhUCD3Oroo=";
-  };
+  inherit (sources.LosslessSwitcher) version src;
 
   nativeBuildInputs = [unzip makeWrapper];
 

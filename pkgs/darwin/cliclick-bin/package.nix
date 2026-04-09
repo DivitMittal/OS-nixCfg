@@ -1,18 +1,12 @@
 {
   lib,
   stdenvNoCC,
-  fetchzip,
+  sources,
   unzip,
 }:
-stdenvNoCC.mkDerivation (finalAttrs: {
+stdenvNoCC.mkDerivation (_finalAttrs: {
   pname = "cliclick";
-  version = "5.1";
-
-  src = fetchzip {
-    extension = "zip";
-    url = "https://github.com/BlueM/${finalAttrs.pname}/releases/download/${finalAttrs.version}/${finalAttrs.pname}.zip";
-    hash = "sha256-rkrzSwFZ9ZQs68F2jFIIQ+VbgnRfZLBv5tNxBwh5WM8=";
-  };
+  inherit (sources.cliclick) version src;
 
   nativeBuildInputs = [unzip];
 

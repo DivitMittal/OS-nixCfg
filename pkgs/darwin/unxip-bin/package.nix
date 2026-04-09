@@ -1,16 +1,11 @@
 {
   lib,
   stdenvNoCC,
-  fetchurl,
+  sources,
 }:
-stdenvNoCC.mkDerivation (finalAttrs: {
+stdenvNoCC.mkDerivation (_finalAttrs: {
   pname = "unxip";
-  version = "3.3";
-
-  src = fetchurl {
-    url = "https://github.com/saagarjha/unxip/releases/download/v${finalAttrs.version}/unxip";
-    hash = "sha256-R12///1w4GcV+Wa4eI+N02dy8zCzNg/272/x/M0vFP4=";
-  };
+  inherit (sources.unxip) version src;
 
   dontUnpack = true;
   dontFixup = true;

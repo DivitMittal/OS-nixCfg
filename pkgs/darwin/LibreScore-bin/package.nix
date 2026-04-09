@@ -1,19 +1,14 @@
 {
   stdenvNoCC,
-  fetchurl,
   lib,
+  sources,
   makeWrapper,
   _7zz,
   ...
 }:
-stdenvNoCC.mkDerivation (finalAttrs: {
+stdenvNoCC.mkDerivation (_finalAttrs: {
   pname = "LibreScore";
-  version = "6.0.22";
-
-  src = fetchurl {
-    url = "https://github.com/LibreScore/app-librescore/releases/download/v${finalAttrs.version}/LibreScore.dmg";
-    hash = "sha256-FVooTBCPaE8chR8YOjiQFi8L9G7anHICrufYDQjIh08=";
-  };
+  inherit (sources.LibreScore) version src;
 
   nativeBuildInputs = [_7zz makeWrapper];
 
