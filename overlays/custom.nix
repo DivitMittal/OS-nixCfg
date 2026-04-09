@@ -9,13 +9,15 @@ _: {
   # The packages are organized by platform/type:
   # - customDarwin: macOS-specific packages
   # - custom: General custom packages for all platforms
-  custom = self: super: {
+  custom = self: super: let
+    sources = super.callPackage ../pkgs/_sources/generated.nix {};
+  in {
     customDarwin = super.lib.packagesFromDirectoryRecursive {
-      callPackage = super.lib.customisation.callPackageWith self;
+      callPackage = super.lib.customisation.callPackageWith (self // {inherit sources;});
       directory = ../pkgs/darwin;
     };
     custom = super.lib.packagesFromDirectoryRecursive {
-      callPackage = super.lib.customisation.callPackageWith self;
+      callPackage = super.lib.customisation.callPackageWith (self // {inherit sources;});
       directory = ../pkgs/custom;
     };
   };

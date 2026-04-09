@@ -34,6 +34,7 @@
               shfmt
               ### Nix Tools
               # nix-visualize # (handled by GitHub Actions CI workflow)
+              nvfetcher
               ;
           }
           ++ [
@@ -52,6 +53,30 @@
           help = "Rebuilds & switches the host configuration (pass flags like -v --show-trace --impure)";
           command = "${self}/utils/hosts_rebuild.sh \"$@\"";
           category = "hosts";
+        }
+        {
+          name = "pkgs-update";
+          help = "Update all custom package sources (pkgs/_sources/generated.nix) via nvfetcher";
+          command = ''
+            GH_TOKEN=$(gh auth token 2>/dev/null)
+            if [ -z "$GH_TOKEN" ]; then
+              echo "Warning: no GitHub token found, you may hit rate limits. Run: gh auth login"
+              nix run nixpkgs#nvfetcher -- build \
+                -c "''${DEVSHELL_ROOT}/pkgs/nvfetcher.toml" \
+                -o "''${DEVSHELL_ROOT}/pkgs/_sources" \
+                "$@"
+            else
+              KEYFILE=$(mktemp /tmp/nvfetcher-key-XXXXXX.toml)
+              echo -e "[keys]\ngithub = \"$GH_TOKEN\"" > "$KEYFILE"
+              trap "rm -f $KEYFILE" EXIT
+              nix run nixpkgs#nvfetcher -- build \
+                -c "''${DEVSHELL_ROOT}/pkgs/nvfetcher.toml" \
+                -o "''${DEVSHELL_ROOT}/pkgs/_sources" \
+                -k "$KEYFILE" \
+                "$@"
+            fi
+          '';
+          category = "packages";
         }
         (lib.mkIf
           pkgs.stdenvNoCC.hostPlatform.isDarwin

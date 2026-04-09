@@ -1,0 +1,157 @@
+# nvfetcher.toml – package source tracking for pkgs/
+# Run: nix run nixpkgs#nvfetcher -- build -c pkgs/nvfetcher.toml -o pkgs/_sources
+#
+# Version convention:
+#   - src.github uses the latest GitHub release tag verbatim (e.g. "v0.23.0", "V1.33.0")
+#   - In package.nix, strip the prefix: lib.removePrefix "v" (or "V") src.version
+#   - fetch.url packages: $ver is the raw tag (including any v/V prefix)
+#   - Exception: libxls uses src.prefix = "v" because the tarball filename omits the "v"
+
+# ============================================================
+# Source (fetchFromGitHub) packages
+# nvfetcher manages: version + src sha256
+# Still manual: cargoHash, vendorHash, build-specific flags
+# ============================================================
+
+[spotify-player]
+src.github = "aome510/spotify-player"
+fetch.github = "aome510/spotify-player"
+
+[agevault]
+src.github = "ndavd/agevault"
+fetch.github = "ndavd/agevault"
+
+[dmgwiz]
+src.github = "citruz/dmgwiz"
+fetch.github = "citruz/dmgwiz"
+
+[warpd]
+src.github = "atuan26/warpd"
+fetch.github = "atuan26/warpd"
+
+[SakuraWallpaper]
+src.github = "yueseqaz/SakuraWallpaper"
+fetch.github = "yueseqaz/SakuraWallpaper"
+
+[mole]
+src.github = "tw93/Mole"
+fetch.github = "tw93/Mole"
+# Version has "V" prefix (e.g. "V1.33.0"); in package.nix use: lib.removePrefix "V" src.version
+# Multi-arch binary hashes (arm64/amd64) still need manual update after running nvfetcher
+
+# ============================================================
+# Binary download packages (fetchurl) – fully managed by nvfetcher
+# $ver = raw tag string (may include leading v/V)
+# ============================================================
+
+[BetterDiscord]
+src.github = "BetterDiscord/Installer"
+fetch.url = "https://github.com/BetterDiscord/Installer/releases/download/$ver/BetterDiscord-Mac.zip"
+
+[cliclick]
+src.github = "BlueM/cliclick"
+fetch.url = "https://github.com/BlueM/cliclick/releases/download/$ver/cliclick.zip"
+
+[Hot]
+src.github = "macmade/Hot"
+fetch.url = "https://github.com/macmade/Hot/releases/download/$ver/Hot.zip"
+
+[Iris]
+src.github = "ahmetb/Iris"
+fetch.url = "https://github.com/ahmetb/Iris/releases/download/$ver/Iris-$ver.zip"
+
+[LibreScore]
+src.github = "LibreScore/app-librescore"
+fetch.url = "https://github.com/LibreScore/app-librescore/releases/download/$ver/LibreScore.dmg"
+
+[LiveWallpaper]
+src.github = "thusvill/LiveWallpaperMacOS"
+# Tag format: "V2.2" (capital V) – $ver = "V2.2"
+fetch.url = "https://github.com/thusvill/LiveWallpaperMacOS/releases/download/$ver/LiveWallpaper.dmg"
+
+[LosslessSwitcher]
+src.github = "vincentneo/LosslessSwitcher"
+fetch.url = "https://github.com/vincentneo/LosslessSwitcher/releases/download/$ver/LosslessSwitcher2.app.zip"
+
+[menubar-dock]
+src.github = "EthanSK/Menu-Bar-Dock"
+fetch.url = "https://github.com/EthanSK/Menu-Bar-Dock/releases/download/$ver/Menu.Bar.Dock.app.zip"
+
+[MultiSoundChanger]
+src.github = "aonez/MultiSoundChanger"
+# Version tag: "1.0.1-BetterDisplay" (no v prefix, compound string – preserved as-is)
+fetch.url = "https://github.com/aonez/MultiSoundChanger/releases/download/$ver/MultiSoundChanger+BetterDisplay.zip"
+
+[nomacs]
+src.github = "nomacs/nomacs"
+# Tag has no prefix: "3.22.0" – $ver = "3.22.0"
+fetch.url = "https://github.com/nomacs/nomacs/releases/download/$ver/nomacs-$ver-macOS-x86_64.zip"
+
+[Pearcleaner]
+src.github = "alienator88/Pearcleaner"
+fetch.url = "https://github.com/alienator88/Pearcleaner/releases/download/$ver/Pearcleaner.zip"
+
+[unxip]
+src.github = "saagarjha/unxip"
+fetch.url = "https://github.com/saagarjha/unxip/releases/download/$ver/unxip"
+
+[libxls]
+src.github = "libxls/libxls"
+src.prefix = "v"
+# Tag "v1.6.3" → version "1.6.3"; tarball filename uses version without "v"
+fetch.url = "https://github.com/libxls/libxls/releases/download/v$ver/libxls-$ver.tar.gz"
+
+# ============================================================
+# Multi-arch binary packages – per-arch nvfetcher entries
+# src.prefix = "v" since URLs need bare version in the directory path for these
+# ============================================================
+
+[reapack-arm64]
+src.github = "cfillion/reapack"
+src.prefix = "v"
+fetch.url = "https://github.com/cfillion/reapack/releases/download/v$ver/reaper_reapack-arm64.dylib"
+
+[reapack-x86_64]
+src.github = "cfillion/reapack"
+src.prefix = "v"
+fetch.url = "https://github.com/cfillion/reapack/releases/download/v$ver/reaper_reapack-x86_64.dylib"
+
+[reaper-sws-arm64]
+src.github = "reaper-oss/sws"
+src.prefix = "v"
+fetch.url = "https://github.com/reaper-oss/sws/releases/download/v$ver/reaper_sws-arm64.dylib"
+
+[reaper-sws-x86_64]
+src.github = "reaper-oss/sws"
+src.prefix = "v"
+fetch.url = "https://github.com/reaper-oss/sws/releases/download/v$ver/reaper_sws-x86_64.dylib"
+
+[reaper-sws-python64]
+src.github = "reaper-oss/sws"
+src.prefix = "v"
+fetch.url = "https://github.com/reaper-oss/sws/releases/download/v$ver/sws_python64.py"
+
+[reaper-sws-python32]
+src.github = "reaper-oss/sws"
+src.prefix = "v"
+fetch.url = "https://github.com/reaper-oss/sws/releases/download/v$ver/sws_python32.py"
+
+[zerobrew-zb-aarch64]
+src.github = "lucasgelfond/zerobrew"
+src.prefix = "v"
+fetch.url = "https://github.com/lucasgelfond/zerobrew/releases/download/v$ver/zb-darwin-arm64"
+
+[zerobrew-zbx-aarch64]
+src.github = "lucasgelfond/zerobrew"
+src.prefix = "v"
+fetch.url = "https://github.com/lucasgelfond/zerobrew/releases/download/v$ver/zbx-darwin-arm64"
+
+[zerobrew-zb-x86_64]
+src.github = "lucasgelfond/zerobrew"
+src.prefix = "v"
+fetch.url = "https://github.com/lucasgelfond/zerobrew/releases/download/v$ver/zb-darwin-x64"
+
+[zerobrew-zbx-x86_64]
+src.github = "lucasgelfond/zerobrew"
+src.prefix = "v"
+fetch.url = "https://github.com/lucasgelfond/zerobrew/releases/download/v$ver/zbx-darwin-x64"
