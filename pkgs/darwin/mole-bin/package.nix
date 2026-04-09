@@ -22,11 +22,11 @@
     x86_64-darwin = {
       analyze = fetchurl {
         url = "https://github.com/tw93/Mole/releases/download/V${version}/analyze-darwin-amd64";
-        hash = "sha256-ywQGtgx4eQ+6Gmvho8/kl16Fjyw3jdQpdTqL02jobGE=";
+        hash = "sha256-p477ZwtuTG0eJhAsa6okVGDVvDaL0KPReo4lvB7TEFU=";
       };
       status = fetchurl {
         url = "https://github.com/tw93/Mole/releases/download/V${version}/status-darwin-amd64";
-        hash = "sha256-3ZOIFaKXmVMR6aTBKnT9pI+Gm8pz/lf5m4FaepsYIyI=";
+        hash = "sha256-Rv+gm3c25CKAYBcwCd/rN7UG/1BaW4q3r9WcTSBJCuc=";
       };
     };
   };

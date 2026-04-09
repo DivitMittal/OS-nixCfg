@@ -2,6 +2,7 @@
   stdenvNoCC,
   lib,
   sources,
+  unzip,
   makeWrapper,
   ...
 }:
@@ -9,7 +10,7 @@ stdenvNoCC.mkDerivation (_finalAttrs: {
   pname = "Iris";
   inherit (sources.Iris) version src;
 
-  nativeBuildInputs = [makeWrapper];
+  nativeBuildInputs = [unzip makeWrapper];
 
   installPhase = ''
     runHook preInstall
