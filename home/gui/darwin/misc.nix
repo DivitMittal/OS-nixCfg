@@ -6,15 +6,15 @@
   home.packages = lib.attrsets.attrValues {
     inherit
       (pkgs.brewCasks)
-      # alt-tab # Alt-Tab replacement
-      dockdoor # Alt-Tab replacement
-      #gswitch # MUX switcher (use pmset instead)
-      #bluesnooze # turns bluetooth off when asleep
       spaceman # spaces in menubar for macOS
+      dockdoor # Alt-Tab replacement
+      thunderbird # Email client
+      #alt-tab # Alt-Tab replacement (using dockdoor instead)
+      #gswitch # MUX switcher (using pmset instead)
+      #bluesnooze # turns bluetooth off when asleep
       #aldente # Battery Management
-      #licecap # Screen GIF Capture
+      #licecap # Screen GIF capture for showcasing
       #keycastr # Keystroke visualizer
-      #thunderbird # Email client
       #brilliant # Screen Anotation Tool
       ;
     inherit
@@ -24,7 +24,7 @@
       #MultiSoundChanger-bin # aggregate-output volume control in menubar
       #LibreScore-bin # Music notation ripper
       Iris-bin # Webcam mirror
-      Pearcleaner-bin
+      Pearcleaner-bin # macOS all-in-one cleaner
       #LosslessSwitcher-bin # Lossless audio toggle in menubar
       SakuraWallpaper # Live wallpaper for macOS
       ;
