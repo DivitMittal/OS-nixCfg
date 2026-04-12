@@ -21,12 +21,12 @@
       (pkgs.customDarwin)
       Hot-bin # CPU temperature monitor for menubar
       menubar-dock-bin # macOS dock in menubar
+      Pearcleaner-bin # macOS all-in-one cleaner
+      SakuraWallpaper # Live wallpaper for macOS
       #MultiSoundChanger-bin # aggregate-output volume control in menubar
       #LibreScore-bin # Music notation ripper
-      Iris-bin # Webcam mirror
-      Pearcleaner-bin # macOS all-in-one cleaner
+      #Iris-bin # Webcam mirror
       #LosslessSwitcher-bin # Lossless audio toggle in menubar
-      SakuraWallpaper # Live wallpaper for macOS
       ;
 
     ## AI Tools
