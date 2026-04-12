@@ -6,7 +6,8 @@
   home.packages = lib.attrsets.attrValues {
     inherit
       (pkgs.brewCasks)
-      alt-tab # Alt-Tab replacement
+      # alt-tab # Alt-Tab replacement
+      dockdoor # Alt-Tab replacement
       #gswitch # MUX switcher (use pmset instead)
       #bluesnooze # turns bluetooth off when asleep
       spaceman # spaces in menubar for macOS
