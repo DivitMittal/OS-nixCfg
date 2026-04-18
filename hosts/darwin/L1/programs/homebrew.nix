@@ -35,6 +35,8 @@
     ];
 
     brews = [
+      ## General
+      "openssl"
       ## Development
       #"libomp" # Multiprogramming
     ];
