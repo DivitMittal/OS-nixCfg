@@ -241,12 +241,12 @@
       "name": null,
       "owner": "tw93",
       "repo": "Mole",
-      "rev": "V1.36.3",
-      "sha256": "sha256-X9qS4pMcDdRciuq0MnVYGj8Qf+YZ0W+l5g+t30F3Uxs=",
+      "rev": "V1.38.1",
+      "sha256": "sha256-HL56RBJbzhelQeW/RwTqbvJPHQGzRLyCPjWVCUQGyIQ=",
       "sparseCheckout": [],
       "type": "github"
     },
-    "version": "V1.36.3"
+    "version": "V1.38.1"
   },
   "reapack-arm64": {
     "cargoLock": null,
@@ -454,5 +454,65 @@
       "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.2.1/zbx-darwin-x64"
     },
     "version": "0.2.1"
+  },
+  "yazi-bin-aarch64-darwin": {
+    "cargoLock": null,
+    "date": null,
+    "extract": null,
+    "name": "yazi-bin-aarch64-darwin",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-er1xcl4v4nvtA2vsv2znn6F5ZOtoSR00GQARyUuMfKg=",
+      "type": "url",
+      "url": "https://github.com/sxyazi/yazi/releases/download/v26.5.6/yazi-aarch64-apple-darwin.zip"
+    },
+    "version": "v26.5.6"
+  },
+  "yazi-bin-x86_64-darwin": {
+    "cargoLock": null,
+    "date": null,
+    "extract": null,
+    "name": "yazi-bin-x86_64-darwin",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-aEYGb5ksFojY7HdDGjq1P17yaAGfzvhuVkm4wnAQho0=",
+      "type": "url",
+      "url": "https://github.com/sxyazi/yazi/releases/download/v26.5.6/yazi-x86_64-apple-darwin.zip"
+    },
+    "version": "v26.5.6"
+  },
+  "yazi-bin-aarch64-linux": {
+    "cargoLock": null,
+    "date": null,
+    "extract": null,
+    "name": "yazi-bin-aarch64-linux",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-w4sHlh5/xMdlA/0PShtL0LN5qZg1uBjNiZsDFcco4eE=",
+      "type": "url",
+      "url": "https://github.com/sxyazi/yazi/releases/download/v26.5.6/yazi-aarch64-unknown-linux-gnu.zip"
+    },
+    "version": "v26.5.6"
+  },
+  "yazi-bin-x86_64-linux": {
+    "cargoLock": null,
+    "date": null,
+    "extract": null,
+    "name": "yazi-bin-x86_64-linux",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-HJCW8Kg7gQLBlDhfZEze/5PMgmlCYWPJ0DMEHr1Te9I=",
+      "type": "url",
+      "url": "https://github.com/sxyazi/yazi/releases/download/v26.5.6/yazi-x86_64-unknown-linux-gnu.zip"
+    },
+    "version": "v26.5.6"
   }
 }

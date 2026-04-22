@@ -726,12 +726,14 @@
         url = "*";
         id = "git";
         run = "git";
+        group = "git";
         prio = "low";
       }
       {
         url = "*/";
         id = "git";
         run = "git";
+        group = "git";
         prio = "low";
       }
     ];
