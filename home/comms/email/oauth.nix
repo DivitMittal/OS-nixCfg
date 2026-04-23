@@ -8,7 +8,7 @@
     owner = "muttmua";
     repo = "mutt";
     rev = "master";
-    hash = "sha256-AhhHa8qoSpAxO8WeDtUQ88IaPDT2oMDprrKh7VYPxTA=";
+    hash = "sha256-7ebsFRyMwT4hahNBoB5XC0s0RSdjWLwa62zLqN4Efzo=";
   };
   # Patch the empty client_id/client_secret fields in the registrations dict.
   #
