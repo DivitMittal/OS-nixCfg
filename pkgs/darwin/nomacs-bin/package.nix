@@ -8,11 +8,11 @@
 }:
 stdenvNoCC.mkDerivation (_finalAttrs: {
   pname = "nomacs";
-  version = "3.22.0";
+  version = "3.22.1";
 
   src = fetchurl {
-    url = "https://github.com/nomacs/nomacs/releases/download/3.22.0/nomacs-3.22.0-macOS-x86_64.zip";
-    hash = "sha256-iKNLHdkgtdP2bdpGbwVXEvmXtODA7OT7Go/2DWhWGo0=";
+    url = "https://github.com/nomacs/nomacs/releases/download/3.22.1/nomacs-3.22.1-8f3dff6f-macOS-15.7.5-x86_64-quazip-qt6.zip";
+    hash = "sha256-hSHYQvXNuyuhikzMcGd61Tk5KdVJw3Za2wyBkT74sVo=";
   };
 
   nativeBuildInputs = [unzip makeWrapper];

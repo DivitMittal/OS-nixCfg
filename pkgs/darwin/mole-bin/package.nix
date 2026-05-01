@@ -12,21 +12,21 @@
     aarch64-darwin = {
       analyze = fetchurl {
         url = "https://github.com/tw93/Mole/releases/download/V${version}/analyze-darwin-arm64";
-        hash = "sha256-LRg9Pn07DNdJ/Bn2hJqnOqRDnczUgCfl+1xTbMG/5DA=";
+        hash = "sha256-6OU0dX2v3ZaQMuRhlGYqqgJzxGaS8++FdNJbef7z7wY=";
       };
       status = fetchurl {
         url = "https://github.com/tw93/Mole/releases/download/V${version}/status-darwin-arm64";
-        hash = "sha256-eAVY30y+xUBM9EJzVq/3v34s6uXZp3JMYrjpbkYBXJQ=";
+        hash = "sha256-MJaZ0B9CaQ0zUkblrTtbyBikYewh9xm6BAAY7o9yYPw=";
       };
     };
     x86_64-darwin = {
       analyze = fetchurl {
         url = "https://github.com/tw93/Mole/releases/download/V${version}/analyze-darwin-amd64";
-        hash = "sha256-p477ZwtuTG0eJhAsa6okVGDVvDaL0KPReo4lvB7TEFU=";
+        hash = "sha256-gDxauL+6OeJnI0cjGlSbS4tLqDcRcG6v8VE0CHVzJ+Y=";
       };
       status = fetchurl {
         url = "https://github.com/tw93/Mole/releases/download/V${version}/status-darwin-amd64";
-        hash = "sha256-Rv+gm3c25CKAYBcwCd/rN7UG/1BaW4q3r9WcTSBJCuc=";
+        hash = "sha256-b/FEAaXlmatpCBbFJCm9sXsUE0gCDX6kwyIjwVq0FKU=";
       };
     };
   };

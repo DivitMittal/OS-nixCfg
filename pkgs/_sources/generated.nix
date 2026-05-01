@@ -21,26 +21,26 @@
   };
   Iris = {
     pname = "Iris";
-    version = "v0.1.5";
+    version = "v0.2.1";
     src = fetchurl {
-      url = "https://github.com/ahmetb/Iris/releases/download/v0.1.5/Iris-v0.1.5.zip";
-      sha256 = "sha256-ELFcvAi7QLdDy72CvrkfK+l2kmTSyIiZZ16OmwLpj+Y=";
+      url = "https://github.com/ahmetb/Iris/releases/download/v0.2.1/Iris-v0.2.1.zip";
+      sha256 = "sha256-JZoKDwPCc0PXQpCyY8oe77XZymQ7NTMgWf0Kr+IE26o=";
     };
   };
   LibreScore = {
     pname = "LibreScore";
-    version = "v6.0.22";
+    version = "v6.0.23";
     src = fetchurl {
-      url = "https://github.com/LibreScore/app-librescore/releases/download/v6.0.22/LibreScore.dmg";
-      sha256 = "sha256-FVooTBCPaE8chR8YOjiQFi8L9G7anHICrufYDQjIh08=";
+      url = "https://github.com/LibreScore/app-librescore/releases/download/v6.0.23/LibreScore.dmg";
+      sha256 = "sha256-8/LqQL2dTsAYy3aIhzhlgw3BRIut6P0XduqucbPoB8Y=";
     };
   };
   LiveWallpaper = {
     pname = "LiveWallpaper";
-    version = "V2.2";
+    version = "V2.3";
     src = fetchurl {
-      url = "https://github.com/thusvill/LiveWallpaperMacOS/releases/download/V2.2/LiveWallpaper.dmg";
-      sha256 = "sha256-PU5UhPH2sk3aGT0RyR7ghNY8WLnzFSVdGC7CV2Q587k=";
+      url = "https://github.com/thusvill/LiveWallpaperMacOS/releases/download/V2.3/LiveWallpaper.dmg";
+      sha256 = "sha256-GW6tSVCrRo8Dx/s6gyRjsWC0dxFIw8J28GBSqrnfaIo=";
     };
   };
   LosslessSwitcher = {
@@ -69,13 +69,13 @@
   };
   SakuraWallpaper = {
     pname = "SakuraWallpaper";
-    version = "v1.0.0";
+    version = "v1.0.1";
     src = fetchFromGitHub {
       owner = "yueseqaz";
       repo = "SakuraWallpaper";
-      rev = "v1.0.0";
+      rev = "v1.0.1";
       fetchSubmodules = false;
-      sha256 = "sha256-9c6VnNNKByrsAjO38TYMlZOlHkk/ZxkzKLXrHBtpu58=";
+      sha256 = "sha256-c+TfuKiypWf8iVqSgeNyGyOQoVM1/R289pFMGNgvQuk=";
     };
   };
   agevault = {
@@ -126,21 +126,13 @@
   };
   mole = {
     pname = "mole";
-    version = "V1.33.0";
+    version = "V1.36.3";
     src = fetchFromGitHub {
       owner = "tw93";
       repo = "Mole";
-      rev = "V1.33.0";
+      rev = "V1.36.3";
       fetchSubmodules = false;
-      sha256 = "sha256-IQcnwpwzabRLznqSin73OI7G7Jw1OjXX2JBIPFkquas=";
-    };
-  };
-  nomacs = {
-    pname = "nomacs";
-    version = "3.22.0";
-    src = fetchurl {
-      url = "https://github.com/nomacs/nomacs/releases/download/3.22.0/nomacs-3.22.0-macOS-x86_64.zip";
-      sha256 = "sha256-iKNLHdkgtdP2bdpGbwVXEvmXtODA7OT7Go/2DWhWGo0=";
+      sha256 = "sha256-X9qS4pMcDdRciuq0MnVYGj8Qf+YZ0W+l5g+t30F3Uxs=";
     };
   };
   reapack-arm64 = {

@@ -82,10 +82,6 @@ src.github = "aonez/MultiSoundChanger"
 # Version tag: "1.0.1-BetterDisplay" (no v prefix, compound string – preserved as-is)
 fetch.url = "https://github.com/aonez/MultiSoundChanger/releases/download/$ver/MultiSoundChanger+BetterDisplay.zip"
 
-[nomacs]
-src.github = "nomacs/nomacs"
-# Tag has no prefix: "3.22.0" – $ver = "3.22.0"
-fetch.url = "https://github.com/nomacs/nomacs/releases/download/$ver/nomacs-$ver-macOS-x86_64.zip"
 
 [Pearcleaner]
 src.github = "alienator88/Pearcleaner"

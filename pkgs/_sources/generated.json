@@ -38,11 +38,11 @@
     "pinned": false,
     "src": {
       "name": null,
-      "sha256": "sha256-ELFcvAi7QLdDy72CvrkfK+l2kmTSyIiZZ16OmwLpj+Y=",
+      "sha256": "sha256-JZoKDwPCc0PXQpCyY8oe77XZymQ7NTMgWf0Kr+IE26o=",
       "type": "url",
-      "url": "https://github.com/ahmetb/Iris/releases/download/v0.1.5/Iris-v0.1.5.zip"
+      "url": "https://github.com/ahmetb/Iris/releases/download/v0.2.1/Iris-v0.2.1.zip"
     },
-    "version": "v0.1.5"
+    "version": "v0.2.1"
   },
   "LibreScore": {
     "cargoLock": null,
@@ -53,11 +53,11 @@
     "pinned": false,
     "src": {
       "name": null,
-      "sha256": "sha256-FVooTBCPaE8chR8YOjiQFi8L9G7anHICrufYDQjIh08=",
+      "sha256": "sha256-8/LqQL2dTsAYy3aIhzhlgw3BRIut6P0XduqucbPoB8Y=",
       "type": "url",
-      "url": "https://github.com/LibreScore/app-librescore/releases/download/v6.0.22/LibreScore.dmg"
+      "url": "https://github.com/LibreScore/app-librescore/releases/download/v6.0.23/LibreScore.dmg"
     },
-    "version": "v6.0.22"
+    "version": "v6.0.23"
   },
   "LiveWallpaper": {
     "cargoLock": null,
@@ -68,11 +68,11 @@
     "pinned": false,
     "src": {
       "name": null,
-      "sha256": "sha256-PU5UhPH2sk3aGT0RyR7ghNY8WLnzFSVdGC7CV2Q587k=",
+      "sha256": "sha256-GW6tSVCrRo8Dx/s6gyRjsWC0dxFIw8J28GBSqrnfaIo=",
       "type": "url",
-      "url": "https://github.com/thusvill/LiveWallpaperMacOS/releases/download/V2.2/LiveWallpaper.dmg"
+      "url": "https://github.com/thusvill/LiveWallpaperMacOS/releases/download/V2.3/LiveWallpaper.dmg"
     },
-    "version": "V2.2"
+    "version": "V2.3"
   },
   "LosslessSwitcher": {
     "cargoLock": null,
@@ -133,12 +133,12 @@
       "name": null,
       "owner": "yueseqaz",
       "repo": "SakuraWallpaper",
-      "rev": "v1.0.0",
-      "sha256": "sha256-9c6VnNNKByrsAjO38TYMlZOlHkk/ZxkzKLXrHBtpu58=",
+      "rev": "v1.0.1",
+      "sha256": "sha256-c+TfuKiypWf8iVqSgeNyGyOQoVM1/R289pFMGNgvQuk=",
       "sparseCheckout": [],
       "type": "github"
     },
-    "version": "v1.0.0"
+    "version": "v1.0.1"
   },
   "agevault": {
     "cargoLock": null,
@@ -241,27 +241,12 @@
       "name": null,
       "owner": "tw93",
       "repo": "Mole",
-      "rev": "V1.33.0",
-      "sha256": "sha256-IQcnwpwzabRLznqSin73OI7G7Jw1OjXX2JBIPFkquas=",
+      "rev": "V1.36.3",
+      "sha256": "sha256-X9qS4pMcDdRciuq0MnVYGj8Qf+YZ0W+l5g+t30F3Uxs=",
       "sparseCheckout": [],
       "type": "github"
     },
-    "version": "V1.33.0"
-  },
-  "nomacs": {
-    "cargoLock": null,
-    "date": null,
-    "extract": null,
-    "name": "nomacs",
-    "passthru": null,
-    "pinned": false,
-    "src": {
-      "name": null,
-      "sha256": "sha256-iKNLHdkgtdP2bdpGbwVXEvmXtODA7OT7Go/2DWhWGo0=",
-      "type": "url",
-      "url": "https://github.com/nomacs/nomacs/releases/download/3.22.0/nomacs-3.22.0-macOS-x86_64.zip"
-    },
-    "version": "3.22.0"
+    "version": "V1.36.3"
   },
   "reapack-arm64": {
     "cargoLock": null,
