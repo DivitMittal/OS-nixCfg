@@ -24,6 +24,7 @@ in {
     inherit
       (pkgs)
       bluez # bluetooth protocol
+      clang
       wl-clipboard
       ;
   };
