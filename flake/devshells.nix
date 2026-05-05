@@ -58,20 +58,21 @@
           name = "pkgs-update";
           help = "Update all custom package sources (pkgs/_sources/generated.nix) via nvfetcher";
           command = ''
+            REPO_ROOT="''${DEVSHELL_ROOT:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
             GH_TOKEN=$(gh auth token 2>/dev/null)
             if [ -z "$GH_TOKEN" ]; then
               echo "Warning: no GitHub token found, you may hit rate limits. Run: gh auth login"
               nix run nixpkgs#nvfetcher -- build \
-                -c "''${DEVSHELL_ROOT}/pkgs/nvfetcher.toml" \
-                -o "''${DEVSHELL_ROOT}/pkgs/_sources" \
+                -c "$REPO_ROOT/pkgs/nvfetcher.toml" \
+                -o "$REPO_ROOT/pkgs/_sources" \
                 "$@"
             else
               KEYFILE=$(mktemp /tmp/nvfetcher-key-XXXXXX.toml)
               echo -e "[keys]\ngithub = \"$GH_TOKEN\"" > "$KEYFILE"
               trap "rm -f $KEYFILE" EXIT
               nix run nixpkgs#nvfetcher -- build \
-                -c "''${DEVSHELL_ROOT}/pkgs/nvfetcher.toml" \
-                -o "''${DEVSHELL_ROOT}/pkgs/_sources" \
+                -c "$REPO_ROOT/pkgs/nvfetcher.toml" \
+                -o "$REPO_ROOT/pkgs/_sources" \
                 -k "$KEYFILE" \
                 "$@"
             fi
