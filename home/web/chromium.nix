@@ -6,10 +6,7 @@
 }: {
   programs.chromium = {
     enable = true;
-    package =
-      if hostPlatform.isDarwin
-      then pkgs.brewCasks.ungoogled-chromium.override {variation = "tahoe";}
-      else pkgs.chromium;
+    package = pkgs.google-chrome;
 
     commandLineArgs = lib.optionals (!hostPlatform.isDarwin) [
       "--ignore-gpu-blocklist"
