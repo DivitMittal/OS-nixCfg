@@ -77,7 +77,7 @@
     ## Office Documents - Presentations
     {
       url = "*.{pptx,ppt,odp}";
-      use = ["libreoffice" "onlyoffice" "reveal"];
+      use = ["powerpoint" "libreoffice" "onlyoffice" "reveal"];
     }
     ## Ableton Live Files
     {
@@ -325,6 +325,20 @@
         for = "windows";
         desc = "Microsoft Word";
         run = "start \"\" \"winword.exe\" \"%*\"";
+        orphan = true;
+      }
+    ];
+    powerpoint = [
+      {
+        for = "macos";
+        desc = "Microsoft PowerPoint";
+        run = "open -a 'Microsoft PowerPoint' \"$@\"";
+        orphan = true;
+      }
+      {
+        for = "windows";
+        desc = "Microsoft PowerPoint";
+        run = "start \"\" \"powerpnt.exe\" \"%*\"";
         orphan = true;
       }
     ];

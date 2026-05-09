@@ -145,6 +145,43 @@ in {
               '';
           })
         else null;
+
+      microsoft-powerpoint =
+        if hostPlatform.isDarwin
+        then
+          pkgs.brewCasks.microsoft-powerpoint.overrideAttrs (oldAttrs: {
+            installPhase =
+              oldAttrs.installPhase
+              + ''
+                # Clean Resources
+                echo "Removing entire Resources directory from microsoft-powerpoint installation..."
+                local resource_dir="$out/Resources"
+
+                if [ -d "$resource_dir" ]; then
+                  echo "Found directory '$resource_dir' and removing it..."
+                  rm -rf "$resource_dir"
+                else
+                  echo "Warning: Resources directory '$resource_dir' not found. It may have been removed already or path is wrong." >&2
+                fi
+                echo "Finished cleanup (removed Resources) for microsoft-powerpoint."
+
+                # Remove shared components to avoid collision with other Office apps
+                echo "Removing shared licensing helper from microsoft-powerpoint..."
+                local helper_dir="$out/Library/PrivilegedHelperTools"
+                if [ -d "$helper_dir" ]; then
+                  rm -rf "$helper_dir"
+                  echo "Removed PrivilegedHelperTools directory."
+                fi
+
+                echo "Removing Microsoft AutoUpdate app from microsoft-powerpoint..."
+                local autoupdate_app="$out/Applications/Microsoft AutoUpdate.app"
+                if [ -d "$autoupdate_app" ]; then
+                  rm -rf "$autoupdate_app"
+                  echo "Removed Microsoft AutoUpdate.app"
+                fi
+              '';
+          })
+        else null;
     }
     ++ calibreWrappers
     ++ sofficeWrapper;
