@@ -108,6 +108,14 @@
       sha256 = "sha256-8iuucOOLKd9WoFEFwn5xP1ZZ2C1GAQeyVO6mSdDYb8Y=";
     };
   };
+  get-apple-firmware = {
+    pname = "get-apple-firmware";
+    version = "68114441fb74a6985565feb5255b1037ca8d17e8";
+    src = fetchurl {
+      url = "https://raw.githubusercontent.com/t2linux/wiki/68114441fb74a6985565feb5255b1037ca8d17e8/docs/tools/firmware.sh";
+      sha256 = "sha256-wcHYqiW7XwieRszQ2XOPwTv714T0maqSRGbGkPBZlh4=";
+    };
+  };
   libxls = {
     pname = "libxls";
     version = "1.6.3";
@@ -122,6 +130,17 @@
     src = fetchurl {
       url = "https://github.com/EthanSK/Menu-Bar-Dock/releases/download/4.6/Menu.Bar.Dock.app.zip";
       sha256 = "sha256-bRV65XDf5CsvTZcse7sHE18KDHpOMnWPrUUoH9tcWl0=";
+    };
+  };
+  option-analysis = {
+    pname = "option-analysis";
+    version = "eea826be99bec4ef9af98cb69778621c10e27a7d";
+    src = fetchFromGitHub {
+      owner = "harsh-vardhhan";
+      repo = "option-analysis";
+      rev = "eea826be99bec4ef9af98cb69778621c10e27a7d";
+      fetchSubmodules = false;
+      sha256 = "sha256-qz7fpJQAZrARJDU6OrxUTB6ExhjcbBGkQb8ir4jFdUI=";
     };
   };
   mole = {
