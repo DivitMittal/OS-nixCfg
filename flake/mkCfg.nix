@@ -61,6 +61,7 @@
         ++ optionals (class == "iso") [(inputs.import-tree (commonDir + "/hosts/nixos"))]
         ++ optionals (class == "nixos") [
           inputs.nix-topology.nixosModules.default
+          inputs.disko.nixosModules.disko
         ]
         ++ optionals (class == "darwin") [self.outputs.darwinModules.default]
         ++ additionalModules;

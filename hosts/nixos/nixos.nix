@@ -17,5 +17,10 @@
       hostName = "L2";
       system = "x86_64-linux";
     };
+    T2 = mkCfg {
+      inherit class;
+      hostName = "T2";
+      system = "x86_64-linux";
+    };
   };
 }
