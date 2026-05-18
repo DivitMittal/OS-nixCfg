@@ -227,6 +227,10 @@
       };
     };
     ## NixOS
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-wsl = {
       url = "github:nix-community/nixos-wsl/main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -287,8 +291,8 @@
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew"; # Bootstrapping homebrew
     brew-nix = {
       #url = "github:DivitMittal/brew-nix/cask-variation";
-      url = "github:BatteredBunny/brew-nix";
-      #url = "path:/Users/div/Projects/Forks/brew-nix";
+      #url = "github:BatteredBunny/brew-nix";
+      url = "path:/Users/div/Developer/Forks/brew-nix";
       inputs = {
         brew-api.follows = "brew-api";
         nix-darwin.follows = "nix-darwin";
