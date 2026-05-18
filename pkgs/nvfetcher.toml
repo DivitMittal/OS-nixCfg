@@ -43,7 +43,7 @@ fetch.github = "atuan26/warpd"
 
 [SakuraWallpaper]
 src.github = "yueseqaz/SakuraWallpaper"
-fetch.github = "yueseqaz/SakuraWallpaper"
+fetch.url = "https://github.com/yueseqaz/SakuraWallpaper/releases/download/$ver/SakuraWallpaper.dmg"
 
 [mole]
 src.github = "tw93/Mole"

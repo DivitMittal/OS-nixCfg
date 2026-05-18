@@ -70,12 +70,9 @@
   SakuraWallpaper = {
     pname = "SakuraWallpaper";
     version = "v1.0.1";
-    src = fetchFromGitHub {
-      owner = "yueseqaz";
-      repo = "SakuraWallpaper";
-      rev = "v1.0.1";
-      fetchSubmodules = false;
-      sha256 = "sha256-c+TfuKiypWf8iVqSgeNyGyOQoVM1/R289pFMGNgvQuk=";
+    src = fetchurl {
+      url = "https://github.com/yueseqaz/SakuraWallpaper/releases/download/v1.0.1/SakuraWallpaper.dmg";
+      sha256 = "sha256-s2DiMoApYn5N6BKxDMxbYpeCIWsnlaKT70j60su4oUA=";
     };
   };
   agevault = {
