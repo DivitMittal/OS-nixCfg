@@ -11,14 +11,6 @@
       sha256 = "sha256-hb3XtE+WJPd0CvTSZoLyFzDEemQ/3gCfKtdmr6GTVrg=";
     };
   };
-  Hot = {
-    pname = "Hot";
-    version = "1.9.4";
-    src = fetchurl {
-      url = "https://github.com/macmade/Hot/releases/download/1.9.4/Hot.zip";
-      sha256 = "sha256-5PbM92Bmc+5hGHC/sdTMi+hqUIBY24+btc9B6ZftYco=";
-    };
-  };
   Iris = {
     pname = "Iris";
     version = "v0.2.1";
@@ -59,14 +51,6 @@
       sha256 = "sha256-iY6V48247mNEgQ73QTZ5RJBsiNEji0bTVt8q43BIfJo=";
     };
   };
-  Pearcleaner = {
-    pname = "Pearcleaner";
-    version = "5.4.3";
-    src = fetchurl {
-      url = "https://github.com/alienator88/Pearcleaner/releases/download/5.4.3/Pearcleaner.zip";
-      sha256 = "sha256-FtBGPb5wgrPE+FE493bBTk6ikuJbhrdv/gmvQwb7MLI=";
-    };
-  };
   SakuraWallpaper = {
     pname = "SakuraWallpaper";
     version = "v1.0.1";
@@ -92,6 +76,28 @@
     src = fetchurl {
       url = "https://github.com/BlueM/cliclick/releases/download/5.1/cliclick.zip";
       sha256 = "sha256-cQkQ/S2t5qO1iJWUv8AZ59TCvu4J/Xd1A+ceqCrMkbw=";
+    };
+  };
+  MacKernelSDK = {
+    pname = "MacKernelSDK";
+    version = "7af1933c27aefcbdf4809ee44478829aad30f9c1";
+    src = fetchFromGitHub {
+      owner = "acidanthera";
+      repo = "MacKernelSDK";
+      rev = "7af1933c27aefcbdf4809ee44478829aad30f9c1";
+      fetchSubmodules = false;
+      sha256 = "sha256-hnbBi5YA32B3Ts5Uk40CmRSaOvn76F80HCzzNM0DpzQ=";
+    };
+  };
+  VoltageShift = {
+    pname = "VoltageShift";
+    version = "4fef84ffe10b7e79c4d6efa043e7873820590bd0";
+    src = fetchFromGitHub {
+      owner = "asepms92";
+      repo = "VoltageShift";
+      rev = "4fef84ffe10b7e79c4d6efa043e7873820590bd0";
+      fetchSubmodules = false;
+      sha256 = "sha256-GKWBEuuq/vPquGx4vYUI2uEf3uXEo+6uJrDVYnfYg3Q=";
     };
   };
   dmgwiz = {

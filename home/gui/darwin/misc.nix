@@ -9,6 +9,8 @@
       spaceman # spaces in menubar for macOS
       dockdoor # Alt-Tab replacement
       thunderbird # Email client
+      pearcleaner # macOS all-in-one cleaner
+      hot # CPU temperature monitor for menubar
       #alt-tab # Alt-Tab replacement (using dockdoor instead)
       #gswitch # MUX switcher (using pmset instead)
       #bluesnooze # turns bluetooth off when asleep
@@ -19,10 +21,9 @@
       ;
     inherit
       (pkgs.customDarwin)
-      Hot-bin # CPU temperature monitor for menubar
       menubar-dock-bin # macOS dock in menubar
-      Pearcleaner-bin # macOS all-in-one cleaner
       SakuraWallpaper # Live wallpaper for macOS
+      VoltageShift # CPU undervolting kext + CLI for Intel Macs
       #MultiSoundChanger-bin # aggregate-output volume control in menubar
       #LibreScore-bin # Music notation ripper
       #Iris-bin # Webcam mirror

@@ -14,6 +14,16 @@
 # ============================================================
 
 # Branch-tracked (no release tags): src.git + src.branch → version = latest commit SHA
+[VoltageShift]
+src.git = "https://github.com/asepms92/VoltageShift.git"
+src.branch = "master"
+fetch.github = "asepms92/VoltageShift"
+
+[MacKernelSDK]
+src.git = "https://github.com/acidanthera/MacKernelSDK.git"
+src.branch = "master"
+fetch.github = "acidanthera/MacKernelSDK"
+
 [option-analysis]
 src.git = "https://github.com/harsh-vardhhan/option-analysis.git"
 src.branch = "master"
@@ -64,10 +74,6 @@ fetch.url = "https://github.com/BetterDiscord/Installer/releases/download/$ver/B
 src.github = "BlueM/cliclick"
 fetch.url = "https://github.com/BlueM/cliclick/releases/download/$ver/cliclick.zip"
 
-[Hot]
-src.github = "macmade/Hot"
-fetch.url = "https://github.com/macmade/Hot/releases/download/$ver/Hot.zip"
-
 [Iris]
 src.github = "ahmetb/Iris"
 fetch.url = "https://github.com/ahmetb/Iris/releases/download/$ver/Iris-$ver.zip"
@@ -94,10 +100,6 @@ src.github = "aonez/MultiSoundChanger"
 # Version tag: "1.0.1-BetterDisplay" (no v prefix, compound string – preserved as-is)
 fetch.url = "https://github.com/aonez/MultiSoundChanger/releases/download/$ver/MultiSoundChanger+BetterDisplay.zip"
 
-
-[Pearcleaner]
-src.github = "alienator88/Pearcleaner"
-fetch.url = "https://github.com/alienator88/Pearcleaner/releases/download/$ver/Pearcleaner.zip"
 
 [unxip]
 src.github = "saagarjha/unxip"
