@@ -22,7 +22,7 @@
       };
       inherit (ctx.pkgs.stdenvNoCC) hostPlatform;
       inherit (lib.attrsets) optionalAttrs mergeAttrsList;
-      pkgs = ctx.pkgs.extend (
+      pkgs' = ctx.pkgs.extend (
         self: super:
           mergeAttrsList [
             {
@@ -41,6 +41,18 @@
             (optionalAttrs (class == "droid") (inputs.nix-on-droid.overlays.default self super))
           ]
       );
+      pkgs = pkgs';
+      # Re-extend lib with pkgs now available, partially applying it into the helpers
+      # so call sites don't need to pass pkgs explicitly.
+      lib' = lib.extend (_: prev: {
+        custom =
+          prev.custom
+          // {
+            mkZbxBin = prev.custom.mkZbxBin pkgs;
+            mkUvxBin = prev.custom.mkUvxBin pkgs;
+            mkPnpmDlxBin = prev.custom.mkPnpmDlxBin pkgs;
+          };
+      });
       specialArgs = {inherit self inputs hostPlatform;} // extraSpecialArgs;
       modules = let
         commonDir = self + "/common";
@@ -69,7 +81,7 @@
       configGenerator.${class} (mergeAttrsList [
         {inherit pkgs modules;}
         (optionalAttrs (class != "droid" && class != "home") {inherit specialArgs;})
-        (optionalAttrs (class != "droid") {inherit lib;})
+        (optionalAttrs (class != "droid") {lib = lib';})
         (
           optionalAttrs (class == "home") {
             extraSpecialArgs = specialArgs;
@@ -77,7 +89,7 @@
         )
         (
           optionalAttrs (class == "droid") {
-            extraSpecialArgs = specialArgs // {inherit lib;};
+            extraSpecialArgs = specialArgs // {lib = lib';};
           }
         )
       ]));

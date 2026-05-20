@@ -3,7 +3,9 @@
 
   outputs = {nixpkgs, ...} @ inputs: let
     inherit (inputs.flake-parts.lib) mkFlake;
-    specialArgs.lib = nixpkgs.lib;
+    specialArgs.lib = nixpkgs.lib.extend (final: _: {
+      custom = import ./lib/custom.nix {lib = final;};
+    });
   in
     mkFlake {inherit inputs specialArgs;} ({
       inputs,
