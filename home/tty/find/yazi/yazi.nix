@@ -3,6 +3,7 @@
   lib,
   inputs,
   config,
+  hostPlatform,
   ...
 }: let
   inherit (lib) mkIf;
@@ -24,7 +25,10 @@ in {
     getPlugin = src: pluginName: {${pluginName} = src + "/${pluginName}.yazi";};
   in {
     enable = true;
-    package = pkgs.custom.yazi-bin;
+    package =
+      if hostPlatform.isDarwin
+      then lib.custom.mkZbxBin "yazi"
+      else pkgs.yazi;
 
     enableFishIntegration = false;
     enableZshIntegration = false;

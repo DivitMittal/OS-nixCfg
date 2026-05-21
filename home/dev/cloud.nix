@@ -19,8 +19,6 @@
     ## cloud-platforms-cli
     #gcp = pkgs.google-cloud-sdk;
 
-    wrangler = pkgs.writeShellScriptBin "wrangler" ''
-      exec pnpm dlx wrangler@latest "$@"
-    '';
+    wrangler = lib.custom.mkPnpmDlxBin "wrangler" "wrangler@latest";
   };
 }

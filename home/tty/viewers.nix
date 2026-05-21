@@ -22,18 +22,10 @@
       poppler # PDFs
       ;
     ## Euporie (Jupyter client)
-    euporie-notebook = pkgs.writeScriptBin "euporie-notebook" ''
-      exec ${pkgs.uv}/bin/uv tool run --from euporie euporie-notebook "$@"
-    '';
-    euporie-preview = pkgs.writeScriptBin "euporie-preview" ''
-      exec ${pkgs.uv}/bin/uv tool run --from euporie euporie-preview "$@"
-    '';
-    euporie = pkgs.writeScriptBin "euporie" ''
-      exec ${pkgs.uv}/bin/uv tool run --from euporie euporie "$@"
-    '';
+    euporie-notebook = lib.custom.mkUvxBin "euporie-notebook" "--from euporie euporie-notebook";
+    euporie-preview = lib.custom.mkUvxBin "euporie-preview" "--from euporie euporie-preview";
+    euporie = lib.custom.mkUvxBin "euporie" "--from euporie euporie";
     ## Office -> Markdown
-    markitdown = pkgs.writeScriptBin "markitdown" ''
-      exec ${pkgs.uv}/bin/uv tool run markitdown[all] "$@"
-    '';
+    markitdown = lib.custom.mkUvxBin "markitdown" "markitdown[all]";
   };
 }

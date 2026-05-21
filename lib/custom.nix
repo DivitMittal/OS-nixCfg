@@ -1,4 +1,25 @@
 {lib, ...}: {
+  # Creates a $out/bin/<formula> that runs a Homebrew formula ephemerally via zerobrew.
+  # Darwin-only: pkgs.customDarwin must be present.
+  mkZbxBin = pkgs: formula:
+    pkgs.writeShellScriptBin formula ''
+      exec ${pkgs.customDarwin.zerobrew-bin}/bin/zbx ${formula} "$@"
+    '';
+
+  # Creates a $out/bin/<name> that ephemerally runs a Python tool via `uv tool run`.
+  # Equivalent to `uvx <args>`. Uses pkgs.uv from nixpkgs.
+  mkUvxBin = pkgs: name: args:
+    pkgs.writeShellScriptBin name ''
+      exec ${pkgs.uv}/bin/uv tool run ${args} "$@"
+    '';
+
+  # Creates a $out/bin/<name> that ephemerally runs a JS package via `pnpm dlx`.
+  # Uses pkgs.pnpm from nixpkgs.
+  mkPnpmDlxBin = pkgs: name: pkg:
+    pkgs.writeShellScriptBin name ''
+      exec ${pkgs.pnpm}/bin/pnpm dlx ${pkg} "$@"
+    '';
+
   ## Intro: Scans a directory and returns a list of paths to all Nix modules (directories or .nix files)
   ## excluding the default.nix file in the scanned directory itself.
   ## Performance note: This function calls builtins.readDir which is evaluated at parse time.

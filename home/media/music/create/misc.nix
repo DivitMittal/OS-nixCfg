@@ -9,9 +9,7 @@
   ];
 
   home.packages = lib.attrsets.attrValues {
-    librescore = pkgs.writeShellScriptBin "dl-librescore" ''
-      exec ${pkgs.pnpm}/bin/pnpm dlx dl-librescore@latest "$@"
-    '';
+    librescore = lib.custom.mkPnpmDlxBin "dl-librescore" "dl-librescore@latest";
   };
 
   programs.tidalcycles = {
