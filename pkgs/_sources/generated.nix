@@ -146,17 +146,6 @@
       sha256 = "sha256-qz7fpJQAZrARJDU6OrxUTB6ExhjcbBGkQb8ir4jFdUI=";
     };
   };
-  mole = {
-    pname = "mole";
-    version = "V1.38.1";
-    src = fetchFromGitHub {
-      owner = "tw93";
-      repo = "Mole";
-      rev = "V1.38.1";
-      fetchSubmodules = false;
-      sha256 = "sha256-HL56RBJbzhelQeW/RwTqbvJPHQGzRLyCPjWVCUQGyIQ=";
-    };
-  };
   reapack-arm64 = {
     pname = "reapack-arm64";
     version = "1.2.6";
@@ -216,14 +205,6 @@
       sha256 = "sha256-LjQGCE4xbD3+k78827u346/qhC6D8vrhyUq6c+8eWSw=";
     };
   };
-  unxip = {
-    pname = "unxip";
-    version = "v3.3";
-    src = fetchurl {
-      url = "https://github.com/saagarjha/unxip/releases/download/v3.3/unxip";
-      sha256 = "sha256-R12///1w4GcV+Wa4eI+N02dy8zCzNg/272/x/M0vFP4=";
-    };
-  };
   warpd = {
     pname = "warpd";
     version = "v2.2.0";
@@ -265,38 +246,6 @@
     src = fetchurl {
       url = "https://github.com/lucasgelfond/zerobrew/releases/download/v0.2.1/zbx-darwin-x64";
       sha256 = "sha256-uge/oEFDRAACrO/ffCvIJJoBtcyMskJvtrniXKa9hAI=";
-    };
-  };
-  yazi-bin-aarch64-darwin = {
-    pname = "yazi-bin-aarch64-darwin";
-    version = "v26.5.6";
-    src = fetchurl {
-      url = "https://github.com/sxyazi/yazi/releases/download/v26.5.6/yazi-aarch64-apple-darwin.zip";
-      sha256 = "sha256-er1xcl4v4nvtA2vsv2znn6F5ZOtoSR00GQARyUuMfKg=";
-    };
-  };
-  yazi-bin-x86_64-darwin = {
-    pname = "yazi-bin-x86_64-darwin";
-    version = "v26.5.6";
-    src = fetchurl {
-      url = "https://github.com/sxyazi/yazi/releases/download/v26.5.6/yazi-x86_64-apple-darwin.zip";
-      sha256 = "sha256-aEYGb5ksFojY7HdDGjq1P17yaAGfzvhuVkm4wnAQho0=";
-    };
-  };
-  yazi-bin-aarch64-linux = {
-    pname = "yazi-bin-aarch64-linux";
-    version = "v26.5.6";
-    src = fetchurl {
-      url = "https://github.com/sxyazi/yazi/releases/download/v26.5.6/yazi-aarch64-unknown-linux-gnu.zip";
-      sha256 = "sha256-w4sHlh5/xMdlA/0PShtL0LN5qZg1uBjNiZsDFcco4eE=";
-    };
-  };
-  yazi-bin-x86_64-linux = {
-    pname = "yazi-bin-x86_64-linux";
-    version = "v26.5.6";
-    src = fetchurl {
-      url = "https://github.com/sxyazi/yazi/releases/download/v26.5.6/yazi-x86_64-unknown-linux-gnu.zip";
-      sha256 = "sha256-HJCW8Kg7gQLBlDhfZEze/5PMgmlCYWPJ0DMEHr1Te9I=";
     };
   };
 }

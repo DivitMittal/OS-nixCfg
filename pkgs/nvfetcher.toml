@@ -55,12 +55,6 @@ fetch.github = "atuan26/warpd"
 src.github = "yueseqaz/SakuraWallpaper"
 fetch.url = "https://github.com/yueseqaz/SakuraWallpaper/releases/download/$ver/SakuraWallpaper.dmg"
 
-[mole]
-src.github = "tw93/Mole"
-fetch.github = "tw93/Mole"
-# Version has "V" prefix (e.g. "V1.33.0"); in package.nix use: lib.removePrefix "V" src.version
-# Multi-arch binary hashes (arm64/amd64) still need manual update after running nvfetcher
-
 # ============================================================
 # Binary download packages (fetchurl) – fully managed by nvfetcher
 # $ver = raw tag string (may include leading v/V)
@@ -70,10 +64,6 @@ fetch.github = "tw93/Mole"
 src.github = "BetterDiscord/Installer"
 fetch.url = "https://github.com/BetterDiscord/Installer/releases/download/$ver/BetterDiscord-Mac.zip"
 
-[cliclick]
-src.github = "BlueM/cliclick"
-fetch.url = "https://github.com/BlueM/cliclick/releases/download/$ver/cliclick.zip"
-
 [Iris]
 src.github = "ahmetb/Iris"
 fetch.url = "https://github.com/ahmetb/Iris/releases/download/$ver/Iris-$ver.zip"
@@ -81,11 +71,6 @@ fetch.url = "https://github.com/ahmetb/Iris/releases/download/$ver/Iris-$ver.zip
 [LibreScore]
 src.github = "LibreScore/app-librescore"
 fetch.url = "https://github.com/LibreScore/app-librescore/releases/download/$ver/LibreScore.dmg"
-
-[LiveWallpaper]
-src.github = "thusvill/LiveWallpaperMacOS"
-# Tag format: "V2.2" (capital V) – $ver = "V2.2"
-fetch.url = "https://github.com/thusvill/LiveWallpaperMacOS/releases/download/$ver/LiveWallpaper.dmg"
 
 [LosslessSwitcher]
 src.github = "vincentneo/LosslessSwitcher"
@@ -99,11 +84,6 @@ fetch.url = "https://github.com/EthanSK/Menu-Bar-Dock/releases/download/$ver/Men
 src.github = "aonez/MultiSoundChanger"
 # Version tag: "1.0.1-BetterDisplay" (no v prefix, compound string – preserved as-is)
 fetch.url = "https://github.com/aonez/MultiSoundChanger/releases/download/$ver/MultiSoundChanger+BetterDisplay.zip"
-
-
-[unxip]
-src.github = "saagarjha/unxip"
-fetch.url = "https://github.com/saagarjha/unxip/releases/download/$ver/unxip"
 
 [libxls]
 src.github = "libxls/libxls"
@@ -165,20 +145,3 @@ fetch.url = "https://github.com/lucasgelfond/zerobrew/releases/download/v$ver/zb
 src.github = "lucasgelfond/zerobrew"
 src.prefix = "v"
 fetch.url = "https://github.com/lucasgelfond/zerobrew/releases/download/v$ver/zbx-darwin-x64"
-
-# yazi-bin: $ver = raw tag (e.g. "v26.5.6") – no src.prefix needed
-[yazi-bin-aarch64-darwin]
-src.github = "sxyazi/yazi"
-fetch.url = "https://github.com/sxyazi/yazi/releases/download/$ver/yazi-aarch64-apple-darwin.zip"
-
-[yazi-bin-x86_64-darwin]
-src.github = "sxyazi/yazi"
-fetch.url = "https://github.com/sxyazi/yazi/releases/download/$ver/yazi-x86_64-apple-darwin.zip"
-
-[yazi-bin-aarch64-linux]
-src.github = "sxyazi/yazi"
-fetch.url = "https://github.com/sxyazi/yazi/releases/download/$ver/yazi-aarch64-unknown-linux-gnu.zip"
-
-[yazi-bin-x86_64-linux]
-src.github = "sxyazi/yazi"
-fetch.url = "https://github.com/sxyazi/yazi/releases/download/$ver/yazi-x86_64-unknown-linux-gnu.zip"
