@@ -8,7 +8,6 @@
       (pkgs.brewCasks)
       spaceman # spaces in menubar for macOS
       dockdoor # Alt-Tab replacement
-      thunderbird # Email client
       pearcleaner # macOS all-in-one cleaner
       hot # CPU temperature monitor for menubar
       #alt-tab # Alt-Tab replacement (using dockdoor instead)
