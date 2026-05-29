@@ -5,7 +5,7 @@
   inputs,
   ...
 }: let
-  remotesPath = "${config.home.homeDirectory}/Remotes";
+  remotesPath = "${config.home.homeDirectory}/mnt";
 
   # Cloud storage mount options (Google Drive, Dropbox, etc.)
   # Optimized for write-heavy usage with aggressive caching
