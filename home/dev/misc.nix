@@ -10,6 +10,7 @@
       inherit
         (pkgs)
         ## Android
+        adbfs-rootless
         android-tools
         scrcpy
         ## General
