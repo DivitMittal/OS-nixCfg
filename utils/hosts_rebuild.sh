@@ -1,47 +1,40 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2086
 #
-# This script is used to rebuild the system configuration for the current host.
+# Rebuild & switch the host (NixOS / nix-darwin / nix-on-droid) configuration.
+# Assumes the platform rebuild tool is already installed — run
+# ./utils/bootstrap.sh once on a fresh machine to get there.
 #
-# SC2086 is ignored because we purposefully pass some values as a set of arguments, so we want the splitting to happen
+# SC2086 is ignored because we purposefully word-split $switch_args.
 
-# Get the directory of this script
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-# Source common functions
 # shellcheck source=./common.sh
 source "$SCRIPT_DIR/common.sh"
 
-# Build switch arguments
 switch_args=$(build_switch_args "$@")
-
 os=$(uname -s)
-if [[ $os == "Darwin" ]]; then
-  ## Darwin bootstrapping
-  if ! which git &>/dev/null; then
-    green "====== Installing Command-line tools for Xcode ======"
-    xcode-select --install
-  fi
 
+if [[ $os == "Darwin" ]]; then
+  if ! command -v darwin-rebuild &>/dev/null; then
+    red "darwin-rebuild not found."
+    yellow "Run ./utils/bootstrap.sh once to install it."
+    exit 1
+  fi
   green "====== REBUILDING & SWITCHING (DARWIN) ======"
-  # Test if there's no darwin-rebuild, then use nix build and then run it
-  if ! which darwin-rebuild &>/dev/null; then
-    nix build --show-trace --accept-flake-config .#darwinConfigurations."$HOST".system
-    sudo ./result/sw/bin/darwin-rebuild $switch_args
-  else
-    echo $switch_args
-    sudo darwin-rebuild $switch_args
-  fi
+  echo $switch_args
+  sudo darwin-rebuild $switch_args
+elif command -v nix-on-droid &>/dev/null; then
+  green "====== REBUILDING & SWITCHING (DROID) ======"
+  echo $switch_args
+  nix-on-droid $switch_args
+elif command -v nixos-rebuild &>/dev/null; then
+  green "====== REBUILDING & SWITCHING (NIXOS) ======"
+  echo $switch_args
+  sudo nixos-rebuild $switch_args
 else
-  if which nix-on-droid &>/dev/null; then
-    green "====== REBUILDING & SWITCHING (DROID) ======"
-    echo $switch_args
-    nix-on-droid $switch_args
-  else
-    green "====== REBUILDING & SWITCHING (NIXOS) ======"
-    echo $switch_args
-    sudo nixos-rebuild $switch_args
-  fi
+  red "No rebuild tool found (darwin-rebuild / nixos-rebuild / nix-on-droid)."
+  yellow "Run ./utils/bootstrap.sh once to install one."
+  exit 1
 fi
 
 # shellcheck disable=SC2181

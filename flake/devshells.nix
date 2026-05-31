@@ -43,6 +43,12 @@
       };
       commands = [
         {
+          name = "bootstrap";
+          help = "First-time setup for this machine; pass 'host' (default) or 'home'";
+          command = "${self}/utils/bootstrap.sh \"$@\"";
+          category = "bootstrap";
+        }
+        {
           name = "hms";
           help = "Rebuilds & switches the home-manager configuration (pass flags like -v --show-trace --impure)";
           command = "${self}/utils/home_rebuild.sh \"$@\"";
