@@ -259,6 +259,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ## Theming — cyberpunk palette wired via lib/palette.nix
+    stylix = {
+      url = "github:danth/stylix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nur.follows = "nur";
+        systems.follows = "systems";
+      };
+    };
+
     ## Home-Manager
     home-manager = {
       url = "github:nix-community/home-manager";
