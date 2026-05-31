@@ -48,7 +48,9 @@
 
 - [Overview](#overview)
 - [Quick Start](#quick-start)
+- [Architecture](#architecture)
 - [Project Structure](#project-structure)
+- [Theme Pipeline](#theme-pipeline)
 - [Home Manager Profile Graph](#home-manager-profile-graph)
 - [Network Topology](#network-topology)
 - [Secrets Management](#secrets-management)
@@ -77,6 +79,52 @@ Each command drops you into `$SHELL` with the environment's packages prepended t
 
 > The TTY environment already includes the AI toolchain via [ai-nixCfg](https://github.com/DivitMittal/ai-nixCfg).
 > For an AI-only shell use `nix run github:DivitMittal/ai-nixCfg#ai`.
+
+---
+
+## Architecture
+
+Every host — NixOS, nix-darwin, nix-on-droid, ISO, or standalone home-manager — is built by a single universal function `mkCfg` (`flake/mkCfg.nix`). It dispatches by `class` to the right configuration builder, then composes a layered module bundle: universal defaults from `common/all/`, platform defaults from `common/hosts/<class>/`, host-specific overrides from `hosts/<class>/<name>/`, and (for home-manager configs) user-domain modules from `home/<domain>/`.
+
+```mermaid
+flowchart LR
+  subgraph inputs["Flake inputs"]
+    direction TB
+    np[nixpkgs]
+    hm[home-manager]
+    nd[nix-darwin]
+    nod[nix-on-droid]
+    sty[stylix]
+    sec["OS-nixCfg-secrets<br/>(private)"]
+    more["…+15 more"]
+  end
+
+  subgraph layers["Module layers"]
+    direction TB
+    L1["<b>common/all/</b><br/>shared by every config"]
+    L2["<b>common/hosts/&lt;class&gt;/</b><br/>platform defaults"]
+    L3["<b>hosts/&lt;class&gt;/&lt;name&gt;/</b><br/>per-host overrides"]
+    L4["<b>home/&lt;domain&gt;/</b><br/>home-manager modules"]
+    L1 --> L2 --> L3
+    L1 --> L4
+  end
+
+  mkCfg(["<b>flake/mkCfg.nix</b><br/>universal builder"])
+
+  subgraph outs["Flake outputs"]
+    direction TB
+    O1[nixosConfigurations]
+    O2[darwinConfigurations]
+    O3[nixOnDroidConfigurations]
+    O4[homeConfigurations]
+  end
+
+  inputs --> mkCfg
+  layers --> mkCfg
+  mkCfg --> outs
+```
+
+`mkCfg` is class-driven; each class picks a different system builder and a different slice of modules. See [`flake/README.md`](./flake/README.md) for the dispatch flowchart and [`common/README.md`](./common/README.md) for the override hierarchy.
 
 ---
 
@@ -171,6 +219,29 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
 ├── SECURITY.md
 └── shell.nix
 ```
+
+## Theme Pipeline
+
+A single source-of-truth palette (`lib/palette.nix`) — pitch-black background, neon cyan/magenta accents, soft white-blue foreground — feeds every themed surface in the repo. Stylix consumes it at three layers (home-manager / NixOS / nix-darwin) and theming-aware modules pull from it directly.
+
+```mermaid
+flowchart LR
+  palette[("<b>lib/palette.nix</b><br/>16-color base16 +<br/>fonts + opacity + wallpaper")]
+
+  palette --> sHome["common/home/stylix.nix"]
+  palette --> sNixos["common/hosts/nixos/stylix.nix"]
+  palette --> sDarwin["common/hosts/darwin/stylix.nix"]
+  palette --> noctalia["home/gui/linux/noctalia.nix"]
+  palette --> wezterm["home/gui/emulators/wezterm.nix"]
+
+  sHome --> aHome["bat · btop · fzf · gtk · qt<br/>firefox · helix · fish · mako<br/>dunst · niri · …all stylix targets"]
+  sNixos --> aNixos["TTY console · GDM/SDDM<br/>plymouth · system GTK"]
+  sDarwin --> aDarwin["nix-darwin system bits"]
+  noctalia --> aNoctalia["noctalia-shell<br/>(Wayland desktop shell)"]
+  wezterm --> aWezterm["generated cyberpunk.toml<br/>consumed by TermEmulator-Cfg"]
+```
+
+See [`lib/README.md`](./lib/README.md) for the palette structure and how to retune it.
 
 ## Home Manager Profile Graph
 
