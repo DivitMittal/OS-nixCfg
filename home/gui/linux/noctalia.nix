@@ -1,16 +1,26 @@
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: let
+  palette = import ../../../lib/palette.nix {inherit pkgs;};
+
+  # Map noctalia's Material slots onto our shared base16 cyberpunk palette.
+  # noctalia does not have a stylix target, so we hand-feed it the same hexes
+  # stylix sees — keeps the desktop shell visually in sync with everything else.
+  hex = name: "#${palette.base16Scheme.${name}}";
+in {
   imports = [inputs.noctalia.homeModules.default];
 
   programs.noctalia-shell = {
     enable = true;
-    # Auto-start with the graphical Wayland session
     systemd.enable = true;
 
     settings = {
       bar = {
         position = "top";
         floating = true;
-        backgroundOpacity = 0.9;
+        backgroundOpacity = palette.opacity.popups;
       };
       general = {
         animationSpeed = 1.0;
@@ -23,11 +33,11 @@
     };
 
     colors = {
-      mPrimary = "#00ffe7"; # neon cyan
-      mSurface = "#0d0d1a"; # deep dark navy
-      mSurfaceVariant = "#1a1a2e"; # dark blue-black
-      mOnSurface = "#e0e0ff"; # soft white-blue
-      mOnSurfaceVariant = "#ff2d78"; # hot magenta
+      mPrimary = hex "base0C"; # neon cyan          (was #00ffe7)
+      mSurface = hex "base00"; # pitch black        (was noctalia #0d0d1a)
+      mSurfaceVariant = hex "base02"; # dark blue-black     (was #1a1a2e)
+      mOnSurface = hex "base05"; # soft white-blue    (was #e0e0ff)
+      mOnSurfaceVariant = hex "base0E"; # hot magenta        (was #ff2d78)
     };
   };
 }

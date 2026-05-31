@@ -4,19 +4,11 @@
     package = pkgs.btop;
 
     settings = {
-      #* Name of a btop++/bpytop/bashtop formatted ".theme" file, "Default" and "TTY" for builtin themes.;
-      #* Themes should be placed in "../share/btop/themes" relative to binary or "$HOME/.config/btop/themes";
-      color_theme = "TTY";
-
-      #* If the theme set background should be shown, set to false if you want terminal background transparency.;
-      theme_background = false;
-
-      #* Sets if 24-bit truecolor should be used, will convert 24-bit colors to 256 color (6x6x6 color cube) if false.;
+      # Theme is supplied by stylix.targets.btop (see common/home/stylix.nix).
+      # The background is transparent so the terminal opacity from stylix bleeds
+      # through; truecolor is required to see the neon palette properly.
       truecolor = true;
-
-      #* Set to true to force tty mode regardless if a real tty has been detected or not.;
-      #* Will force 16-color mode and TTY theme, set all graph symbols to "tty" and swap out other non tty friendly symbols.;
-      force_tty = true;
+      force_tty = false;
 
       #* Define presets for the layout of the boxes. Preset 0 is always all boxes shown with default settings. Max 9 presets.;
       #* Format: "box_name:P:G,box_name:P:G" P=(0 or 1) for alternate positions, G=graph symbol to use for box.;
@@ -28,15 +20,12 @@
       #* Conflicting keys for h:"help" and k:"kill" is accessible while holding shift.;
       vim_keys = false;
 
-      #* Rounded corners on boxes, is ignored if TTY mode is ON.;
-      rounded_corners = false;
+      # Rounded corners on boxes.
+      rounded_corners = true;
 
-      #* Default symbols to use for graph creation, "braille", "block" or "tty".;
-      #* "braille" offers the highest resolution but might not be included in all fonts.;
-      #* "block" has half the resolution of braille but uses more common characters.;
-      #* "tty" uses only 3 different symbols but will work with most fonts and should work in a real TTY.;
-      #* Note that "tty" only has half the horizontal resolution of the other two, so will show a shorter historical view.;
-      graph_symbol = "tty";
+      # CaskaydiaCove Nerd Font (system-wide) supports braille, so use the
+      # highest-resolution graph symbols.
+      graph_symbol = "braille";
 
       # Graph symbol to use for graphs in cpu box, "default", "braille", "block" or "tty".;
       graph_symbol_cpu = "default";
