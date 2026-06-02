@@ -94,6 +94,12 @@
             '';
             category = "misc";
           })
+        {
+          name = "observe";
+          help = "Launch the local observability stack (Prometheus + Loki + Tempo + Grafana + Alertmanager + OTEL + Blackbox + node_exporter)";
+          command = "nix run \"${self}#observability\" -- \"$@\"";
+          category = "observability";
+        }
       ];
     };
   };
