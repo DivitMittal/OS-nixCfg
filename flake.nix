@@ -1,5 +1,5 @@
 {
-  description = "OS-nixCfg flake";
+  description = "OS-nixCfg's flake";
 
   outputs = {nixpkgs, ...} @ inputs: let
     inherit (inputs.flake-parts.lib) mkFlake;
@@ -299,8 +299,17 @@
         actions-nix.follows = "actions-nix";
       };
     };
-    ## macOS GUI .app bundles
+    ## Declarative homebrew setup
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew"; # Bootstrapping homebrew
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+
     brew-nix = {
       #url = "github:DivitMittal/brew-nix/cask-variation";
       #url = "github:BatteredBunny/brew-nix";
@@ -315,8 +324,10 @@
       url = "github:batteredbunny/brew-api";
       flake = false;
     };
+    ## Trampolines for GUI .app bundles
     mac-app-util = {
-      url = "github:hraban/mac-app-util";
+      url = "github:mcflis/mac-app-util/fix/missing-icons";
+      #url = "github:hraban/mac-app-util";
       inputs = {
         #nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
@@ -327,7 +338,7 @@
     ## Keyboard
     kanata-tray = {
       url = "github:rszyma/kanata-tray";
-      # url = "github:DivitMittal/kanata-tray/fix/nix-hostplatform-system";
+      #url = "github:DivitMittal/kanata-tray/fix/nix-hostplatform-system";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     TLTR = {
@@ -357,7 +368,7 @@
       };
     };
     tgt = {
-      # Don't follow nixpkgs - tgt uses apple-sdk_12 which was removed in newer nixpkgs
+      ## Don't follow nixpkgs - tgt uses apple-sdk_12 which was removed in newer nixpkgs
       url = "github:FedericoBruzzone/tgt";
     };
     pkms = {
@@ -366,20 +377,20 @@
     };
   };
 
-  # These caches only contain binaries for packages used by this config,
-  # so they're scoped to the flake rather than polluting global nix settings.
+  ## These caches only contain binaries for packages used by this config,
+  ## so they're scoped to the flake rather than polluting global nix settings.
   nixConfig = {
     extra-substituters = [
       "https://yazi.cachix.org"
       "https://wezterm.cachix.org"
-      #"https://cache.lix.systems"
       "https://cache.numtide.com"
+      #"https://cache.lix.systems"
     ];
     extra-trusted-public-keys = [
       "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
       "wezterm.cachix.org-1:kAbhjYUC9qvblTE+s7S+kl5XM1zVa4skO+E/1IDWdH0="
-      #"cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
       "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+      #"cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
     ];
   };
 }

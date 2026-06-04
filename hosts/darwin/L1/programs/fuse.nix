@@ -9,9 +9,9 @@ _: {
     ];
   };
 
-  # Create symlink for fuse-t compatibility with sshfs
-  # fuse-t is installed via homebrew as a drop-in replacement for macfuse
-  # but sshfs looks for libfuse.2.dylib, so we create a symlink
+  ## Create symlink for fuse-t compatibility with sshfs
+  ## fuse-t is installed via homebrew as a drop-in replacement for macfuse
+  ## but sshfs looks for libfuse.2.dylib, so we create a symlink
   system.activationScripts.extraActivation.text = ''
     # Check if fuse-t library exists and create symlink if needed
     FUSE_T_LIB="/usr/local/lib/libfuse-t.dylib"

@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   environment.systemPackages = [
     (pkgs.writeShellScriptBin "brew-ultimate" ''
       echo "Running brew update..."
@@ -21,9 +25,7 @@
   ];
 
   homebrew = {
-    # taps = [
-    #   #"homebrew/services"
-    # ];
+    taps = builtins.attrNames config.nix-homebrew.taps;
 
     casks = [
       "cloudflare-warp"
@@ -31,14 +33,14 @@
 
       ## macOS specific
       #"lulu"
-      #"knockknock"
+      "knockknock"
     ];
 
     brews = [
       ## General
       "openssl"
       ## Development
-      #"libomp" # Multiprogramming
+      #"libomp" ## Multiprogramming
     ];
 
     masApps = {

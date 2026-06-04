@@ -17,12 +17,12 @@
 
   environment.variables = {
     HOMEBREW_NO_ENV_HINTS = "1";
-    # Fix SSL certificate verification for Homebrew
+    ## Fix SSL certificate verification for Homebrew
     SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
     GIT_SSL_CAINFO = "/etc/ssl/certs/ca-certificates.crt";
   };
 
-  # Create system-level gitconfig to fix SSL for all git instances (including Homebrew's)
+  ## Create system-level gitconfig to fix SSL for all git instances (including Homebrew's)
   environment.etc."gitconfig".text = ''
     [http]
       sslCAInfo = /etc/ssl/certs/ca-certificates.crt
@@ -53,6 +53,10 @@
       then true
       else false;
     user = config.hostSpec.username;
+    taps = {
+      "homebrew/homebrew-core" = inputs.homebrew-core;
+      "homebrew/homebrew-cask" = inputs.homebrew-cask;
+    };
     mutableTaps = true;
     autoMigrate = true;
   };
