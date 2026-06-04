@@ -12,7 +12,7 @@ in {
     enable = true;
     package = pkgs.infat;
 
-    autoActivate = true;
+    autoActivate.enable = true;
 
     settings = {
       # Extension-based associations are disabled: macOS on this version resolves
