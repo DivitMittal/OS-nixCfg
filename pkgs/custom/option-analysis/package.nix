@@ -10,7 +10,7 @@ rustPlatform.buildRustPackage {
   inherit (sources.option-analysis) pname src;
   version = "0.1.0";
 
-  cargoHash = "sha256-bIP40cfMNrekqXotKzfMZSb+sfoQQ0ybiLBBrrU8vUQ=";
+  cargoHash = "sha256-vgsQ3dIb6A2BwrB19wbfq5iovrK+bFOlOmjexM+3eQg=";
 
   nativeBuildInputs = [
     pkg-config
