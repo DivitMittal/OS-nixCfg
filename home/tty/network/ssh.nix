@@ -15,22 +15,22 @@ in {
 
     enableDefaultConfig = false;
 
-    matchBlocks = {
+    settings = {
       "10.254.200.59" = {
-        user = "nix-on-droid";
-        port = 8022;
-        identityFile = "${sshDir}/nix-on-droid/ssh_host_rsa_key";
+        User = "nix-on-droid";
+        Port = 8022;
+        IdentityFile = "${sshDir}/nix-on-droid/ssh_host_rsa_key";
       };
       "github.com" = {
-        identityFile = "${sshDir}/github/id_ed25519";
+        IdentityFile = "${sshDir}/github/id_ed25519";
       };
       "hf.co" = {
-        identityFile = "${sshDir}/hf/hf";
+        IdentityFile = "${sshDir}/hf/hf";
       };
       "*" = {
-        compression = false;
-        addKeysToAgent = "yes";
-        hashKnownHosts = false;
+        Compression = false;
+        AddKeysToAgent = "yes";
+        HashKnownHosts = false;
       };
     };
   };
