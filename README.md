@@ -134,90 +134,18 @@ The repository is organized using [flake-parts](https://github.com/hercules-ci/f
 
 ```
 .
-├── .claude/                  # Claude AI assistant configuration
-│   ├── commands/
-│   │   └── openspec/
-│   ├── .mcp.json
-│   ├── CLAUDE.md
-│   └── settings.json
-├── .github/                  # GitHub Actions workflows & funding
-│   ├── workflows/
-│   └── FUNDING.yml
-├── assets/                   # Images and visual assets
-│   ├── topology/
-│   │   ├── main.svg
-│   │   └── network.svg
-│   ├── home_graph.png
-│   ├── qezta.gif
-│   └── qezta.png
-├── common/                   # Shared configurations across all platforms
-│   ├── all/                  # Common to all configurations
-│   ├── home/                 # Common home-manager configurations
-│   └── hosts/                # Common host configurations
-│       ├── all/
-│       ├── darwin/
-│       ├── droid/
-│       ├── iso/
-│       └── nixos/
-├── flake/                    # Flake-parts module definitions
-│   ├── actions/              # GitHub Actions definitions
-│   ├── topology/             # Network topology configuration
-│   ├── checks.nix
-│   ├── devshells.nix
-│   ├── formatters.nix
-│   ├── iso-packages.nix
-│   └── mkCfg.nix             # Universal host builder
-├── home/                     # Home-manager modules by category
-│   ├── comms/                # Communication (email, IRC, newsboat)
-│   ├── dev/                  # Development tools (JS, Python, cloud)
-│   ├── gui/                  # GUI applications and desktop managers
-│   ├── media/                # Media tools (image, video, music)
-│   ├── tools/                # Utilities (privacy, productivity, keyboard)
-│   ├── tty/                  # Terminal tools (editors, shells, multiplexers)
-│   └── web/                  # Web browsers and related tools
-├── hosts/                    # Platform-specific host configurations
-│   ├── darwin/               # macOS hosts (nix-darwin)
-│   │   └── L1/
-│   ├── droid/                # Android hosts (nix-on-droid)
-│   │   └── M1/
-│   ├── iso/                  # ISO configurations
-│   │   ├── iso/
-│   │   └── t2-iso/
-│   └── nixos/                # NixOS hosts
-│       ├── L2/
-│       └── WSL/
-├── lib/                      # Custom Nix utility functions
-│   └── custom.nix
-├── modules/                  # Custom NixOS/home-manager modules
-│   ├── home/
-│   └── hosts/
-│       └── darwin/
-├── openspec/                 # OpenSpec project documentation
-│   ├── AGENTS.md
-│   └── project.md
-├── overlays/                 # Nix package overlays
-│   └── custom.nix
-├── pkgs/                     # Custom package derivations
-│   ├── custom/               # Custom derivations
-│   └── darwin/               # macOS-specific packages
-├── templates/                # Nix flake templates
-│   └── vanilla/
-├── utils/                    # Build and rebuild scripts
-│   ├── common.sh
-│   ├── home_rebuild.sh
-│   └── hosts_rebuild.sh
-├── .editorconfig
-├── .envrc
-├── .gitattributes
-├── .gitignore
-├── AGENTS.md                 # AI agent instructions
-├── CODEOWNERS
-├── flake.lock
-├── flake.nix                 # Main flake entry point
-├── LICENSE
-├── README.md
-├── SECURITY.md
-└── shell.nix
+├── flake/      # flake-parts modules — mkCfg, devshells, checks, actions, topology
+├── common/     # shared layers: all/, home/, hosts/{all,darwin,droid,iso,nixos}/
+├── hosts/      # per-host overrides: darwin/L1, nixos/{L2,T2,WSL}, droid/M1, iso/
+├── home/       # home-manager modules by domain: tty/ gui/ tools/ media/ comms/ dev/ web/
+├── modules/    # reusable NixOS/HM/darwin modules
+├── overlays/   # nixpkgs overlays (custom, customDarwin)
+├── pkgs/       # derivations: custom/ and darwin/
+├── lib/        # custom Nix utility functions (palette, scanPaths, …)
+├── utils/      # rebuild wrapper scripts
+├── templates/  # flake templates (vanilla)
+├── assets/     # topology SVGs, wallpapers, profile graph
+└── flake.nix   # entry point — inputs, nixConfig, flake-parts wiring
 ```
 
 ## Theme Pipeline

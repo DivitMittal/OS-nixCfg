@@ -6,7 +6,6 @@ Home-manager modules organized by category.
 
 ```
 home/
-├── ai/           # AI/ML tools
 ├── comms/        # Email, IRC, RSS
 ├── dev/          # Development (JS, Python, cloud)
 ├── gui/          # GUI apps, desktop managers

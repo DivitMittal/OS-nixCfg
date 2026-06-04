@@ -38,14 +38,13 @@ The pkgs handed to each config is extended with `master` / `stable` channels (an
 
 ## Contents
 
+- **apps.nix** - Runnable flake app outputs (`tty`, `desktop` shells)
+- **checks.nix** - Pre-commit hooks
 - **devshells.nix** - Development environment (`nix develop`)
 - **formatters.nix** - Code formatting (`nix fmt`: alejandra, deadnix, statix)
-- **checks.nix** - Pre-commit hooks
-- **mkCfg.nix** - Universal host builder (nixos/darwin/droid/home)
 - **iso-packages.nix** - ISO build packages
-- **topology/** - Infrastructure visualization (nix-topology)
-  - default.nix - Topology module exports
-  - global.nix - Global topology definitions
+- **mkCfg.nix** - Universal host builder (nixos/darwin/droid/home)
+- **topology.nix** - Infrastructure visualization (nix-topology)
 - **actions/** - GitHub Actions workflows
   - default.nix - Actions module exports
   - darwin-build.nix - macOS build actions

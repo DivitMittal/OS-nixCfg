@@ -10,6 +10,7 @@ hosts/
 │   └── L1/       # x86_64-darwin workstation
 ├── nixos/         # NixOS systems
 │   ├── L2/       # x86_64-linux desktop
+│   ├── T2/       # x86_64-linux T2 MacBook (Apple T2 chip)
 │   └── WSL/      # x86_64-linux WSL2
 ├── droid/         # Android (nix-on-droid)
 │   └── M1/
