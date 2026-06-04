@@ -2,23 +2,25 @@
   lib,
   stdenvNoCC,
   sources,
-  _7zz,
 }:
 stdenvNoCC.mkDerivation {
   inherit (sources.SakuraWallpaper) pname src;
   version = lib.removePrefix "v" sources.SakuraWallpaper.version;
 
-  nativeBuildInputs = [_7zz];
+  unpackPhase = ''
+    MOUNTDIR=$(mktemp -d)
+    /usr/bin/hdiutil attach -readonly -nobrowse -mountpoint "$MOUNTDIR" $src
+    cp -R "$MOUNTDIR/SakuraWallpaper.app" .
+    /usr/bin/hdiutil detach "$MOUNTDIR"
+  '';
 
-  unpackPhase = ''7zz x -snld $src'';
-
-  sourceRoot = "SakuraWallpaper.app";
+  sourceRoot = ".";
 
   installPhase = ''
     runHook preInstall
 
-    mkdir -p "$out/Applications/SakuraWallpaper.app"
-    cp -R . "$out/Applications/SakuraWallpaper.app"
+    mkdir -p "$out/Applications"
+    cp -R SakuraWallpaper.app "$out/Applications/"
 
     runHook postInstall
   '';
