@@ -4,11 +4,12 @@
 {
   inputs,
   pkgs,
+  config,
   ...
 }: let
   palette = import ../../lib/palette.nix {inherit pkgs;};
 in {
-  imports = [inputs.stylix.homeManagerModules.stylix];
+  imports = [inputs.stylix.homeModules.stylix];
 
   stylix = {
     enable = true;
@@ -16,4 +17,11 @@ in {
     inherit (palette) polarity base16Scheme opacity fonts;
     image = palette.wallpaper;
   };
+
+  # gtk.gtk4.theme default changed in 26.05; keep legacy behaviour until stateVersion bumps.
+  gtk.gtk4.theme = config.gtk.theme;
+
+  # sioyek uses RGB 0.0-1.0 color format; stylix generates hex which is incompatible.
+  # The custom colors in home/gui/viewers.nix are intentional — disable stylix's target.
+  stylix.targets.sioyek.enable = false;
 }
