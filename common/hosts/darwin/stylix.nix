@@ -14,6 +14,9 @@ in {
   stylix = {
     enable = true;
     autoEnable = true;
+    # Stylix release.nix is ahead of nix-darwin's label (26.11 vs 26.05);
+    # no actual API mismatch — silence the spurious warning.
+    enableReleaseChecks = false;
     inherit (palette) polarity base16Scheme opacity fonts;
     image = palette.wallpaper;
   };
