@@ -66,6 +66,27 @@
               R2_BUCKET = "\${{ secrets.R2_BUCKET }}";
             };
           }
+          {
+            # Requires binfmt_misc + QEMU on the runner, or a native aarch64 builder.
+            # Register emulation: nix.settings.extra-platforms = ["aarch64-linux"];
+            name = "Build as-iso";
+            run = "nix -vL build --accept-flake-config .#nixosConfigurations.as-iso.config.system.build.isoImage --show-trace -o result-as-iso";
+          }
+          {
+            name = "Upload as-iso to Cloudflare R2";
+            run = ''
+              ISO_FILE=$(find result-as-iso/iso -name "*.iso" | head -1)
+              ISO_NAME=$(basename "$ISO_FILE")
+              aws s3 cp "$ISO_FILE" "s3://$R2_BUCKET/''${GITHUB_REF_NAME}/$ISO_NAME" \
+                --endpoint-url "https://''${R2_ACCOUNT_ID}.r2.cloudflarestorage.com"
+            '';
+            env = {
+              AWS_ACCESS_KEY_ID = "\${{ secrets.R2_ACCESS_KEY_ID }}";
+              AWS_SECRET_ACCESS_KEY = "\${{ secrets.R2_SECRET_ACCESS_KEY }}";
+              R2_ACCOUNT_ID = "\${{ secrets.R2_ACCOUNT_ID }}";
+              R2_BUCKET = "\${{ secrets.R2_BUCKET }}";
+            };
+          }
         ];
     };
   };
