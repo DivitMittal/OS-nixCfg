@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  hostPlatform,
   ...
 }: {
   home.packages = lib.attrsets.attrValues (
@@ -11,6 +12,7 @@
         dockdoor # Alt-Tab replacement
         pearcleaner # macOS all-in-one cleaner
         hot # CPU temperature monitor for menubar
+        linearmouse # mouse/trackpad customization
         #alt-tab # Alt-Tab replacement (using dockdoor instead)
         #gswitch # MUX switcher (using pmset instead)
         #bluesnooze # turns bluetooth off when asleep
@@ -29,7 +31,7 @@
         #LosslessSwitcher-bin # Lossless audio toggle in menubar
         ;
     }
-    // lib.optionalAttrs pkgs.stdenv.hostPlatform.isx86_64 {
+    // lib.optionalAttrs hostPlatform.isx86_64 {
       VoltageShift = pkgs.customDarwin.VoltageShift; # Intel-only undervolting CLI
     }
   );
