@@ -171,8 +171,18 @@
 
     ## Terminal Emulator
     TermEmulator-Cfg = {
+      #url = "path:/Users/div/Projects/Cfgs/TermEmulator-Cfg";
       url = "github:DivitMittal/TermEmulator-Cfg";
-      flake = false;
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        systems.follows = "systems";
+        devshell.follows = "devshell";
+        treefmt-nix.follows = "treefmt-nix";
+        git-hooks.follows = "git-hooks";
+        actions-nix.follows = "actions-nix";
+        import-tree.follows = "import-tree";
+      };
     };
 
     ## Firefox
