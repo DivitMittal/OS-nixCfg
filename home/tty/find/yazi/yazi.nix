@@ -25,10 +25,7 @@ in {
     getPlugin = src: pluginName: {${pluginName} = src + "/${pluginName}.yazi";};
   in {
     enable = true;
-    package =
-      if hostPlatform.isDarwin
-      then lib.custom.mkZbxBin "yazi"
-      else pkgs.yazi;
+    package = inputs.yazi.packages.${hostPlatform.system}.yazi;
 
     enableFishIntegration = false;
     enableZshIntegration = false;
