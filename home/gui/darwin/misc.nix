@@ -28,17 +28,6 @@
         #Iris-bin # Webcam mirror
         #LosslessSwitcher-bin # Lossless audio toggle in menubar
         ;
-
-      ## AI Tools
-      handy = pkgs.brewCasks.handy.override {variation = "tahoe";};
-      claude-desktop = pkgs.brewCasks.claude.overrideAttrs (oldAttrs: {
-        installPhase =
-          oldAttrs.installPhase
-          + ''
-            # Clean bin due to collision with claude-code
-            rm -rf $out/bin
-          '';
-      });
     }
     // lib.optionalAttrs pkgs.stdenv.hostPlatform.isx86_64 {
       VoltageShift = pkgs.customDarwin.VoltageShift; # Intel-only undervolting CLI
