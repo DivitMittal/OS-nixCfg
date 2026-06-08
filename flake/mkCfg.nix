@@ -65,6 +65,7 @@
         ++ optionals (class == "home") [
           (inputs.import-tree (commonDir + "/home"))
           self.outputs.homeManagerModules.default
+          inputs.spicetify-nix.homeManagerModules.default
         ]
         ++ optionals (class != "home") [
           (inputs.import-tree (commonDir + "/hosts/${class}"))

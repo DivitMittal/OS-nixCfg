@@ -11,7 +11,6 @@
     discordo = import ./home/discordo.nix;
     glow = import ./home/glow.nix;
     ov = import ./home/ov.nix;
-    spicetify-cli = import ./home/spicetify-cli.nix;
     spotifyd = import ./home/spotifyd.nix;
     warpd = import ./home/warpd.nix;
     wiki-tui = import ./home/wiki-tui.nix;
