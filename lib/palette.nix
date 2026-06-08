@@ -1,8 +1,8 @@
 # Source-of-truth visual identity for OS-nixCfg.
 #
 # A custom base16 scheme: cyberpunk neon accents on pure pitch-black background.
-# Derived from the existing noctalia palette (home/gui/linux/noctalia.nix), with
-# the background hardened from noctalia's deep navy (#0d0d1a) to true #000000.
+# Originally derived from the (now-removed) noctalia palette, with the background
+# hardened from its deep navy (#0d0d1a) to true #000000.
 # Semi-transparency is delegated to the terminal via stylix.opacity.terminal so
 # the underlying wallpaper / blur shows through.
 #
@@ -10,7 +10,6 @@
 #   - common/home/stylix.nix           (home-manager)
 #   - common/hosts/nixos/stylix.nix    (NixOS system)
 #   - common/hosts/darwin/stylix.nix   (nix-darwin)
-#   - home/gui/linux/noctalia.nix      (noctalia shell, palette only)
 {pkgs}: rec {
   # 16-color base16 palette.
   # base08–0F follow base16 conventions:

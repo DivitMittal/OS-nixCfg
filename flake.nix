@@ -267,18 +267,6 @@
       };
     };
 
-    ### Linux GUI
-    ## Wayland Compositor
-    niri-flake = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    ## Desktop Shell
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     ## Theming — cyberpunk palette wired via lib/palette.nix
     stylix = {
       url = "github:danth/stylix";
