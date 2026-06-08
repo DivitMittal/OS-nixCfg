@@ -73,7 +73,7 @@ Drop into a pre-built shell environment without cloning or installing anything:
 | Command                                        | Environment                                                            | Platform   |
 | ---------------------------------------------- | ---------------------------------------------------------------------- | ---------- |
 | `nix run github:DivitMittal/OS-nixCfg#tty`     | Full TTY toolchain (shells, editors, multiplexers, VCS, file tools, …) | all        |
-| `nix run github:DivitMittal/OS-nixCfg#desktop` | TTY + Wayland compositor stack (niri, waybar, dunst, …)                | Linux only |
+| `nix run github:DivitMittal/OS-nixCfg#desktop` | TTY + Wayland compositor stack (sway, swaybar, mako, …)                | Linux only |
 
 Each command drops you into `$SHELL` with the environment's packages prepended to `PATH`. No activation, no home-manager switch — ephemeral by design.
 
@@ -159,13 +159,11 @@ flowchart LR
   palette --> sHome["common/home/stylix.nix"]
   palette --> sNixos["common/hosts/nixos/stylix.nix"]
   palette --> sDarwin["common/hosts/darwin/stylix.nix"]
-  palette --> noctalia["home/gui/linux/noctalia.nix"]
   palette --> wezterm["home/gui/emulators/wezterm.nix"]
 
-  sHome --> aHome["bat · btop · fzf · gtk · qt<br/>firefox · helix · fish · mako<br/>dunst · niri · …all stylix targets"]
+  sHome --> aHome["bat · btop · fzf · gtk · qt<br/>firefox · helix · fish · mako<br/>sway · swaybar · i3status-rust<br/>swaylock · …all stylix targets"]
   sNixos --> aNixos["TTY console · GDM/SDDM<br/>plymouth · system GTK"]
   sDarwin --> aDarwin["nix-darwin system bits"]
-  noctalia --> aNoctalia["noctalia-shell<br/>(Wayland desktop shell)"]
   wezterm --> aWezterm["generated cyberpunk.toml<br/>consumed by TermEmulator-Cfg"]
 ```
 
