@@ -52,15 +52,10 @@
       then pkgs.brewCasks.whatsapp
       else null;
 
-    discord =
+    vesktop =
       if hostPlatform.isDarwin
-      then pkgs.brewCasks.discord
-      else pkgs.discord;
-
-    betterdiscord =
-      if hostPlatform.isDarwin
-      then pkgs.customDarwin.BetterDiscord-bin
-      else pkgs.betterdiscord-installer;
+      then pkgs.brewCasks.vesktop
+      else pkgs.vesktop;
 
     telegram =
       if hostPlatform.isDarwin

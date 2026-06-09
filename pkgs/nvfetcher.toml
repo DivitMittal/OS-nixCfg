@@ -60,10 +60,6 @@ fetch.url = "https://github.com/yueseqaz/SakuraWallpaper/releases/download/$ver/
 # $ver = raw tag string (may include leading v/V)
 # ============================================================
 
-[BetterDiscord]
-src.github = "BetterDiscord/Installer"
-fetch.url = "https://github.com/BetterDiscord/Installer/releases/download/$ver/BetterDiscord-Mac.zip"
-
 [Iris]
 src.github = "ahmetb/Iris"
 fetch.url = "https://github.com/ahmetb/Iris/releases/download/$ver/Iris-$ver.zip"

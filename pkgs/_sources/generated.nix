@@ -3,14 +3,6 @@
   fetchurl,
   fetchFromGitHub,
 }: {
-  BetterDiscord = {
-    pname = "BetterDiscord";
-    version = "v1.3.0";
-    src = fetchurl {
-      url = "https://github.com/BetterDiscord/Installer/releases/download/v1.3.0/BetterDiscord-Mac.zip";
-      sha256 = "sha256-hb3XtE+WJPd0CvTSZoLyFzDEemQ/3gCfKtdmr6GTVrg=";
-    };
-  };
   Iris = {
     pname = "Iris";
     version = "v0.2.1";
