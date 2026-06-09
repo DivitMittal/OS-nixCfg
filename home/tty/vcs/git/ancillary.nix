@@ -30,6 +30,115 @@ in {
       templates=$(IFS=,; echo "$*")
       ${pkgs.curl}/bin/curl -sL "https://www.gitignore.io/api/$templates"
     '';
+
+    merge-flake-lock-prs = pkgs.writeShellApplication {
+      name = "merge-flake-lock-prs";
+      runtimeInputs = with pkgs; [gh jq];
+      text = ''
+        # Sweep flake.lock update PRs across one or more GitHub owners (users or
+        # orgs): assign, approve, merge, and delete the source branch.
+        #
+        # These PRs are opened by the update-flake-lock action (see
+        # .github/workflows/flake-lock-update.yml) and only ever touch flake.lock,
+        # so they're safe to merge unattended. Matching the exact title AND a bot
+        # author is what keeps the sweep safe — human PRs are never touched.
+        #
+        # Usage: merge-flake-lock-prs [--dry-run] [--assignee LOGIN] [OWNER...]
+
+        PR_TITLE="flake.lock: Update"
+        ASSIGNEE="DivitMittal"
+        DRY_RUN=false
+        OWNERS=()
+        DEFAULT_OWNERS=(DivitMittal Qezta)
+
+        while [ $# -gt 0 ]; do
+          case "$1" in
+          --dry-run)
+            DRY_RUN=true
+            shift
+            ;;
+          --assignee)
+            [ $# -ge 2 ] || {
+              echo "error: --assignee needs a value" >&2
+              exit 1
+            }
+            ASSIGNEE="$2"
+            shift 2
+            ;;
+          -h | --help)
+            echo "Usage: merge-flake-lock-prs [--dry-run] [--assignee LOGIN] [OWNER...]"
+            exit 0
+            ;;
+          -*)
+            echo "error: unknown flag: $1" >&2
+            exit 1
+            ;;
+          *)
+            OWNERS+=("$1")
+            shift
+            ;;
+          esac
+        done
+
+        [ ''${#OWNERS[@]} -gt 0 ] || OWNERS=("''${DEFAULT_OWNERS[@]}")
+
+        gh auth status >/dev/null 2>&1 || {
+          echo "error: gh is not authenticated (run: gh auth login)" >&2
+          exit 1
+        }
+
+        # Run a command, or just print it when in dry-run mode.
+        run() {
+          if [ "$DRY_RUN" = true ]; then
+            echo "  [dry-run] $*"
+          else
+            "$@"
+          fi
+        }
+
+        processed=0
+        failed=0
+
+        for owner in "''${OWNERS[@]}"; do
+          echo "==> Scanning owner: $owner"
+
+          # Find open flake.lock PRs, then re-filter locally on exact title AND
+          # bot author so a human PR can never slip through a loose search match.
+          mapfile -t prs < <(
+            gh search prs "$PR_TITLE" \
+              --owner "$owner" --state open --match title \
+              --json repository,number,title,author --limit 200 |
+              jq -r --arg t "$PR_TITLE" \
+                '.[] | select(.title == $t and .author.type == "Bot")
+                     | "\(.repository.nameWithOwner)\t\(.number)"'
+          )
+
+          if [ ''${#prs[@]} -eq 0 ]; then
+            echo "    (no matching flake.lock PRs)"
+            continue
+          fi
+
+          for entry in "''${prs[@]}"; do
+            repo="''${entry%%$'\t'*}"
+            num="''${entry##*$'\t'}"
+            echo "--- $repo #$num"
+
+            if ! run gh pr edit "$num" --repo "$repo" --add-assignee "$ASSIGNEE" ||
+              ! run gh pr review "$num" --repo "$repo" --approve ||
+              ! run gh pr merge "$num" --repo "$repo" --merge --delete-branch; then
+              echo "    FAILED on $repo #$num — left open for manual review" >&2
+              failed=$((failed + 1))
+              continue
+            fi
+            processed=$((processed + 1))
+          done
+        done
+
+        echo
+        echo "Done. processed=$processed failed=$failed"
+        [ "$failed" -eq 0 ]
+      '';
+    };
   };
 
   programs.gh = {
@@ -70,7 +179,6 @@ in {
   };
 
   home.shellAliases.lg = "${pkgs.lazygit}/bin/lazygit";
-  home.shellAliases.lwt = "${pkgs.lazyworktree}/bin/lazyworktree";
   programs.lazygit = {
     enable = true;
     package = pkgs.lazygit;
@@ -174,6 +282,7 @@ in {
     };
   };
 
+  home.shellAliases.lwt = "${pkgs.lazyworktree}/bin/lazyworktree";
   programs.lazyworktree = {
     enable = true;
     package = pkgs.lazyworktree;
