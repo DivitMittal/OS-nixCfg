@@ -53,9 +53,9 @@ flowchart LR
   sN --> tN["TTY console · GDM/SDDM<br/>plymouth · system GTK"]
   sD --> tD["nix-darwin system bits"]
   noc --> tNoc["noctalia-shell<br/>(Wayland desktop)"]
-  wez --> tWez["wezterm color scheme<br/>via TermEmulator-Cfg"]
+  wez --> tWez["wezterm color scheme<br/>via term-nixCfg"]
 ```
 
 ### Retuning the palette
 
-Change a hex in `palette.nix` and rebuild — every consumer downstream updates. The one out-of-tree consumer is `TermEmulator-Cfg/wezterm/options.lua`, which references the scheme by name (`config.color_scheme = "cyberpunk"`) and only needs editing if `window_background_opacity` should mirror a changed `opacity.terminal`.
+Change a hex in `palette.nix` and rebuild — every consumer downstream updates. The one out-of-tree consumer is `term-nixCfg/wezterm/options.lua`, which references the scheme by name (`config.color_scheme = "cyberpunk"`) and only needs editing if `window_background_opacity` should mirror a changed `opacity.terminal`.

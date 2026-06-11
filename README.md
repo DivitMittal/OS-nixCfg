@@ -164,7 +164,7 @@ flowchart LR
   sHome --> aHome["bat · btop · fzf · gtk · qt<br/>firefox · helix · fish · mako<br/>sway · swaybar · i3status-rust<br/>swaylock · …all stylix targets"]
   sNixos --> aNixos["TTY console · GDM/SDDM<br/>plymouth · system GTK"]
   sDarwin --> aDarwin["nix-darwin system bits"]
-  wezterm --> aWezterm["generated cyberpunk.toml<br/>consumed by TermEmulator-Cfg"]
+  wezterm --> aWezterm["generated cyberpunk.toml<br/>consumed by term-nixCfg"]
 ```
 
 See [`lib/README.md`](./lib/README.md) for the palette structure and how to retune it.
@@ -214,7 +214,7 @@ Secrets (API keys, passwords, sensitive configurations) are managed via [agenix]
 - [DivitMittal/hammerspoon-nix](https://github.com/DivitMittal/hammerspoon-nix): A nix home-manager module for hammerspoon & my hammerspoon lua configuration.
 - [DivitMittal/firefox-nixCfg](https://github.com/DivitMittal/firefox-nixCfg): A personal nix home-manager module/configurations for firefox.
 - [DivitMittal/tidalcycles-nix](https://github.com/DivitMittal/tidalcycles-nix): A nix flake for TidalCycles live coding environment.
-- [DivitMittal/TermEmulator-Cfg](https://github.com/DivitMittal/TermEmulator-Cfg): Terminal emulator configuration.
+- [DivitMittal/term-nixCfg](https://github.com/DivitMittal/term-nixCfg): Terminal emulator configuration.
 - [DivitMittal/ghOrg-terraform](https://github.com/DivitMittal/ghOrg-terraform): Terraform configurations for managing the GitHub organization infrastructure.
 
 <div align="right">

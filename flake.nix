@@ -170,9 +170,9 @@
     };
 
     ## Terminal Emulator
-    TermEmulator-Cfg = {
-      #url = "path:/Users/div/Projects/Cfgs/TermEmulator-Cfg";
-      url = "github:DivitMittal/TermEmulator-Cfg";
+    term-nixCfg = {
+      #url = "path:/Users/div/Projects/Cfgs/term-nixCfg";
+      url = "github:DivitMittal/term-nixCfg";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
