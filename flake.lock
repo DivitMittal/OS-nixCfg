@@ -338,14 +338,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1778984972,
-        "narHash": "sha256-eiDHtD+oEeWh3+7VPCHpJ+iLAP5Bb+IMaABbA1M1yTo=",
-        "path": "/Users/div/Developer/Forks/brew-nix",
-        "type": "path"
+        "lastModified": 1780306103,
+        "narHash": "sha256-si58gIStHng+T+AE430vrXzg0r4BJWtnxzwqAKYhEFw=",
+        "owner": "BatteredBunny",
+        "repo": "brew-nix",
+        "rev": "d40695006e0313d131c668d926d92c0fcd737e2a",
+        "type": "github"
       },
       "original": {
-        "path": "/Users/div/Developer/Forks/brew-nix",
-        "type": "path"
+        "owner": "BatteredBunny",
+        "repo": "brew-nix",
+        "type": "github"
       }
     },
     "brew-src": {

@@ -319,9 +319,9 @@
     };
 
     brew-nix = {
+      url = "github:BatteredBunny/brew-nix";
       #url = "github:DivitMittal/brew-nix/cask-variation";
-      #url = "github:BatteredBunny/brew-nix";
-      url = "path:/Users/div/Developer/Forks/brew-nix";
+      #url = "path:/Users/div/Developer/Forks/brew-nix";
       inputs = {
         brew-api.follows = "brew-api";
         nix-darwin.follows = "nix-darwin";
