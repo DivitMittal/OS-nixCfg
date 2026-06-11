@@ -1,6 +1,6 @@
 {inputs, ...}: {
   imports = [
-    inputs.ai-nixCfg.homeManagerModules.default
-    inputs.TermEmulator-Cfg.homeManagerModules.default
+    inputs.ai-nixCfg.homeManagerConfigurations.Cfg
+    inputs.TermEmulator-Cfg.homeManagerConfigurations.Cfg
   ];
 }
