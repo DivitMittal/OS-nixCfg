@@ -25,7 +25,6 @@ in {
       (pkgs)
       bluez # bluetooth protocol
       clang
-      wl-clipboard
       ;
   };
 }
