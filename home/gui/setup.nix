@@ -5,8 +5,7 @@
   ...
 }: {
   imports =
-    [(inputs.import-tree ./emulators)]
-    ++ [(inputs.import-tree ./ide)]
+    [(inputs.import-tree ./ide)]
     ++ [(inputs.import-tree ./music)]
     ++ [
       ./comms.nix
