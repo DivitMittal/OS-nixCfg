@@ -36,7 +36,10 @@
       hostName = "WSL";
       system = "x86_64-linux";
       inherit class;
-      additionalModules = [(inputs.import-tree ./tty)];
+      additionalModules = [
+        (inputs.import-tree ./tty)
+        (inputs.import-tree ./dev)
+      ];
     };
 
     colima = mkCfg {
