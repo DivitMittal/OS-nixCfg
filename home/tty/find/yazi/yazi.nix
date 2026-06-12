@@ -34,7 +34,7 @@ in {
     shellWrapperName = "y";
 
     initLua = ./init.lua;
-    settings = import ./_yazi.nix {inherit pkgs;};
+    settings = import ./_yazi.nix {inherit pkgs lib config hostPlatform;};
     keymap = import ./_keymap.nix;
     theme = {
       flavor = {
