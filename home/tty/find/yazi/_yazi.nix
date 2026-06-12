@@ -1,4 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  config,
+  hostPlatform,
+  ...
+}: let
+  has = attr: config.programs.${attr}.enable or false;
+in {
   log.enabled = false;
 
   mgr = {
@@ -45,7 +53,7 @@
     ## Media
     {
       mime = "image/*";
-      use = ["nomacs" "open" "reveal" "look"];
+      use = lib.optionals hostPlatform.isDarwin ["nomacs"] ++ ["open" "reveal" "look"];
     }
     {
       mime = "video/*";
@@ -57,12 +65,16 @@
     }
     {
       mime = "application/pdf";
-      use = ["sioyek" "zathura" "reveal" "look"];
+      use =
+        lib.optionals (has "sioyek") ["sioyek"]
+        ++ lib.optionals (has "zathura") ["zathura"]
+        ++ lib.optionals hostPlatform.isDarwin ["preview"]
+        ++ ["reveal" "look"];
     }
     ## Ebook Documents
     {
       url = "*.{epub,mobi,azw,azw3,fb2,lrf,pdb,cbz,cbr}";
-      use = ["ebook-viewer" "open" "reveal"];
+      use = lib.optionals (has "calibre") ["ebook-viewer"] ++ ["open" "reveal"];
     }
     ## Office Documents - Spreadsheets
     {
@@ -134,377 +146,371 @@
     }
   ];
 
-  opener = {
-    edit = [
-      {
-        for = "unix";
-        desc = "Edit via $EDITOR";
-        run = "$EDITOR \"$@\"";
-        block = true;
-      }
-      {
-        for = "windows";
-        desc = "Edit via $EDITOR";
-        run = "%EDITOR% \"%*\"";
-        orphan = true;
-        block = true;
-      }
-    ];
-    editVS = [
-      {
-        for = "unix";
-        desc = "Edit via VSCode";
-        run = "code \"$@\"";
-        block = true;
-      }
-      {
-        for = "windows";
-        desc = "Edit via VSCode";
-        run = "code \"%*\"";
-        orphan = true;
-      }
-    ];
-    open = [
-      {
-        for = "linux";
-        desc = "Default Open";
-        run = "xdg-open \"$@\"";
-      }
-      {
-        for = "macos";
-        desc = "Default Open";
-        run = "open \"$@\"";
-      }
-      {
-        for = "windows";
-        desc = "Default Open";
-        run = "start \"\" \"%1\"";
-        orphan = true;
-      }
-    ];
-    extract = [
-      {
-        for = "unix";
-        desc = "Extract Here";
-        run = "ouch d \"$1\"";
-      }
-      {
-        for = "windows";
-        desc = "Extract Here";
-        run = "ouch d \"%1\"";
-      }
-    ];
-    play = [
-      {
-        for = "linux";
-        desc = "Play via mpv";
-        run = "mpv --force-window \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "macos";
-        desc = "Play via mpv";
-        run = "stolendata-mpv --force-window \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "windows";
-        desc = "Play via mpv";
-        run = "mpv --force-window \"%1\"";
-        orphan = true;
-      }
-    ];
-    reveal = [
-      {
-        for = "macos";
-        desc = "Finder reveal";
-        run = "open -R \"$1\"";
-      }
-      {
-        for = "windows";
-        desc = "Explorer reveal";
-        run = "explorer /select, \"%1\"";
-        orphan = true;
-      }
-    ];
-    look = [
-      {
-        for = "macos";
-        desc = "QuickLook";
-        run = "qlmanage -p \"$@\"";
-      }
-    ];
-    sioyek = [
-      {
-        for = "linux";
-        desc = "Sioyek PDF Viewer";
-        run = "sioyek \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "macos";
-        desc = "Sioyek PDF Viewer";
-        run = "sioyek \"$@\"";
-        orphan = true;
-      }
-    ];
-    zathura = [
-      {
-        for = "unix";
-        desc = "Zathura PDF Viewer";
-        run = "zathura \"$@\"";
-      }
-      {
-        for = "windows";
-        desc = "Zathura PDF Viewer";
-        run = "zathura \"%1\"";
-      }
-    ];
-    ebook-viewer = [
-      {
-        for = "linux";
-        desc = "Calibre Ebook Viewer";
-        run = "ebook-viewer \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "macos";
-        desc = "Calibre Ebook Viewer";
-        run = "ebook-viewer \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "windows";
-        desc = "Calibre Ebook Viewer";
-        run = "ebook-viewer \"%*\"";
-        orphan = true;
-      }
-    ];
-    onlyoffice = [
-      {
-        for = "linux";
-        desc = "OnlyOffice";
-        run = "onlyoffice-desktopeditors \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "macos";
-        desc = "OnlyOffice";
-        run = "open -a 'ONLYOFFICE' \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "windows";
-        desc = "OnlyOffice";
-        run = "start \"\" \"ONLYOFFICE Desktop Editors.exe\" \"%*\"";
-        orphan = true;
-      }
-    ];
-    excel = [
-      {
-        for = "macos";
-        desc = "Microsoft Excel";
-        run = "open -a 'Microsoft Excel' \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "windows";
-        desc = "Microsoft Excel";
-        run = "start \"\" \"excel.exe\" \"%*\"";
-        orphan = true;
-      }
-    ];
-    word = [
-      {
-        for = "macos";
-        desc = "Microsoft Word";
-        run = "open -a 'Microsoft Word' \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "windows";
-        desc = "Microsoft Word";
-        run = "start \"\" \"winword.exe\" \"%*\"";
-        orphan = true;
-      }
-    ];
-    powerpoint = [
-      {
-        for = "macos";
-        desc = "Microsoft PowerPoint";
-        run = "open -a 'Microsoft PowerPoint' \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "windows";
-        desc = "Microsoft PowerPoint";
-        run = "start \"\" \"powerpnt.exe\" \"%*\"";
-        orphan = true;
-      }
-    ];
-    doxx = [
-      {
-        for = "unix";
-        desc = "Doxx TUI Word Viewer";
-        run = "${pkgs.doxx}/bin/doxx \"$@\"";
-        block = true;
-      }
-      {
-        for = "macos";
-        desc = "Doxx TUI Word Viewer";
-        run = "${pkgs.doxx}/bin/doxx \"$@\"";
-        block = true;
-      }
-      {
-        for = "windows";
-        desc = "Doxx TUI Word Viewer";
-        run = "doxx \"%*\"";
-        block = true;
-      }
-    ];
-    libreoffice = [
-      {
-        for = "linux";
-        desc = "LibreOffice";
-        run = "libreoffice \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "macos";
-        desc = "LibreOffice";
-        run = "open -a 'LibreOffice' \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "windows";
-        desc = "LibreOffice";
-        run = "start \"\" \"soffice.exe\" \"%*\"";
-        orphan = true;
-      }
-    ];
-    chrome = [
-      {
-        for = "linux";
-        desc = "Google Chrome";
-        run = "google-chrome \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "macos";
-        desc = "Google Chrome";
-        run = "open -a 'Google Chrome' \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "windows";
-        desc = "Google Chrome";
-        run = "start \"\" \"chrome.exe\" \"%*\"";
-        orphan = true;
-      }
-    ];
-    firefox = [
-      {
-        for = "linux";
-        desc = "Mozilla Firefox";
-        run = "firefox \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "macos";
-        desc = "Mozilla Firefox";
-        run = "open -a 'Firefox' \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "windows";
-        desc = "Mozilla Firefox";
-        run = "start \"\" \"firefox.exe\" \"%*\"";
-        orphan = true;
-      }
-    ];
-    ableton = [
-      {
-        for = "macos";
-        desc = "Ableton Live";
-        run = "open -a 'Ableton Live 12 Suite' \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "windows";
-        desc = "Ableton Live";
-        run = "start \"\" \"Ableton Live 12 Suite.exe\" \"%*\"";
-        orphan = true;
-      }
-    ];
-    reaper = [
-      {
-        for = "macos";
-        desc = "Reaper";
-        run = "open -a 'REAPER' \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "windows";
-        desc = "Reaper";
-        run = "start \"\" \"reaper.exe\" \"%*\"";
-        orphan = true;
-      }
-    ];
-    guitarpro = [
-      {
-        for = "macos";
-        desc = "Guitar Pro 8";
-        run = "open -a 'Guitar Pro 8' \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "windows";
-        desc = "Guitar Pro 8";
-        run = "start \"\" \"GuitarPro8.exe\" \"%*\"";
-        orphan = true;
-      }
-    ];
-    musescore = [
-      {
-        for = "linux";
-        desc = "MuseScore";
-        run = "musescore \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "macos";
-        desc = "MuseScore";
-        run = "open -a 'MuseScore 4' \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "windows";
-        desc = "MuseScore";
-        run = "start \"\" \"MuseScore4.exe\" \"%*\"";
-        orphan = true;
-      }
-    ];
-    nomacs = [
-      {
-        for = "linux";
-        desc = "nomacs Image Viewer";
-        run = "nomacs \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "macos";
-        desc = "nomacs Image Viewer";
-        run = "nomacs \"$@\"";
-        orphan = true;
-      }
-      {
-        for = "windows";
-        desc = "nomacs Image Viewer";
-        run = "nomacs \"%*\"";
-        orphan = true;
-      }
-    ];
-  };
+  opener =
+    {
+      edit = [
+        {
+          for = "unix";
+          desc = "Edit via $EDITOR";
+          run = "$EDITOR \"$@\"";
+          block = true;
+        }
+        {
+          for = "windows";
+          desc = "Edit via $EDITOR";
+          run = "%EDITOR% \"%*\"";
+          orphan = true;
+          block = true;
+        }
+      ];
+      editVS = [
+        {
+          for = "unix";
+          desc = "Edit via VSCode";
+          run = "code \"$@\"";
+          block = true;
+        }
+        {
+          for = "windows";
+          desc = "Edit via VSCode";
+          run = "code \"%*\"";
+          orphan = true;
+        }
+      ];
+      open = [
+        {
+          for = "linux";
+          desc = "Default Open";
+          run = "xdg-open \"$@\"";
+        }
+        {
+          for = "macos";
+          desc = "Default Open";
+          run = "open \"$@\"";
+        }
+        {
+          for = "windows";
+          desc = "Default Open";
+          run = "start \"\" \"%1\"";
+          orphan = true;
+        }
+      ];
+      extract = [
+        {
+          for = "unix";
+          desc = "Extract Here";
+          run = "ouch d \"$1\"";
+        }
+        {
+          for = "windows";
+          desc = "Extract Here";
+          run = "ouch d \"%1\"";
+        }
+      ];
+      play = [
+        {
+          for = "linux";
+          desc = "Play via mpv";
+          run = "mpv --force-window \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "macos";
+          desc = "Play via mpv";
+          run = "stolendata-mpv --force-window \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "windows";
+          desc = "Play via mpv";
+          run = "mpv --force-window \"%1\"";
+          orphan = true;
+        }
+      ];
+      reveal = [
+        {
+          for = "macos";
+          desc = "Finder reveal";
+          run = "open -R \"$1\"";
+        }
+        {
+          for = "windows";
+          desc = "Explorer reveal";
+          run = "explorer /select, \"%1\"";
+          orphan = true;
+        }
+      ];
+      look = [
+        {
+          for = "macos";
+          desc = "QuickLook";
+          run = "qlmanage -p \"$@\"";
+        }
+      ];
+      onlyoffice = [
+        {
+          for = "linux";
+          desc = "OnlyOffice";
+          run = "onlyoffice-desktopeditors \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "macos";
+          desc = "OnlyOffice";
+          run = "open -a 'ONLYOFFICE' \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "windows";
+          desc = "OnlyOffice";
+          run = "start \"\" \"ONLYOFFICE Desktop Editors.exe\" \"%*\"";
+          orphan = true;
+        }
+      ];
+      excel = [
+        {
+          for = "macos";
+          desc = "Microsoft Excel";
+          run = "open -a 'Microsoft Excel' \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "windows";
+          desc = "Microsoft Excel";
+          run = "start \"\" \"excel.exe\" \"%*\"";
+          orphan = true;
+        }
+      ];
+      word = [
+        {
+          for = "macos";
+          desc = "Microsoft Word";
+          run = "open -a 'Microsoft Word' \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "windows";
+          desc = "Microsoft Word";
+          run = "start \"\" \"winword.exe\" \"%*\"";
+          orphan = true;
+        }
+      ];
+      powerpoint = [
+        {
+          for = "macos";
+          desc = "Microsoft PowerPoint";
+          run = "open -a 'Microsoft PowerPoint' \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "windows";
+          desc = "Microsoft PowerPoint";
+          run = "start \"\" \"powerpnt.exe\" \"%*\"";
+          orphan = true;
+        }
+      ];
+      doxx = [
+        {
+          for = "unix";
+          desc = "Doxx TUI Word Viewer";
+          run = "${pkgs.doxx}/bin/doxx \"$@\"";
+          block = true;
+        }
+        {
+          for = "macos";
+          desc = "Doxx TUI Word Viewer";
+          run = "${pkgs.doxx}/bin/doxx \"$@\"";
+          block = true;
+        }
+        {
+          for = "windows";
+          desc = "Doxx TUI Word Viewer";
+          run = "doxx \"%*\"";
+          block = true;
+        }
+      ];
+      libreoffice = [
+        {
+          for = "linux";
+          desc = "LibreOffice";
+          run = "libreoffice \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "macos";
+          desc = "LibreOffice";
+          run = "open -a 'LibreOffice' \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "windows";
+          desc = "LibreOffice";
+          run = "start \"\" \"soffice.exe\" \"%*\"";
+          orphan = true;
+        }
+      ];
+      chrome = [
+        {
+          for = "linux";
+          desc = "Google Chrome";
+          run = "google-chrome \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "macos";
+          desc = "Google Chrome";
+          run = "open -a 'Google Chrome' \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "windows";
+          desc = "Google Chrome";
+          run = "start \"\" \"chrome.exe\" \"%*\"";
+          orphan = true;
+        }
+      ];
+      firefox = [
+        {
+          for = "linux";
+          desc = "Mozilla Firefox";
+          run = "firefox \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "macos";
+          desc = "Mozilla Firefox";
+          run = "open -a 'Firefox' \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "windows";
+          desc = "Mozilla Firefox";
+          run = "start \"\" \"firefox.exe\" \"%*\"";
+          orphan = true;
+        }
+      ];
+      ableton = [
+        {
+          for = "macos";
+          desc = "Ableton Live";
+          run = "open -a 'Ableton Live 12 Suite' \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "windows";
+          desc = "Ableton Live";
+          run = "start \"\" \"Ableton Live 12 Suite.exe\" \"%*\"";
+          orphan = true;
+        }
+      ];
+      reaper = [
+        {
+          for = "macos";
+          desc = "Reaper";
+          run = "open -a 'REAPER' \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "windows";
+          desc = "Reaper";
+          run = "start \"\" \"reaper.exe\" \"%*\"";
+          orphan = true;
+        }
+      ];
+      guitarpro = [
+        {
+          for = "macos";
+          desc = "Guitar Pro 8";
+          run = "open -a 'Guitar Pro 8' \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "windows";
+          desc = "Guitar Pro 8";
+          run = "start \"\" \"GuitarPro8.exe\" \"%*\"";
+          orphan = true;
+        }
+      ];
+      musescore = [
+        {
+          for = "linux";
+          desc = "MuseScore";
+          run = "musescore \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "macos";
+          desc = "MuseScore";
+          run = "open -a 'MuseScore 4' \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "windows";
+          desc = "MuseScore";
+          run = "start \"\" \"MuseScore4.exe\" \"%*\"";
+          orphan = true;
+        }
+      ];
+    }
+    // lib.optionalAttrs (has "sioyek") {
+      sioyek = [
+        {
+          for = "linux";
+          desc = "Sioyek PDF Viewer";
+          run = "sioyek \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "macos";
+          desc = "Sioyek PDF Viewer";
+          run = "sioyek \"$@\"";
+          orphan = true;
+        }
+      ];
+    }
+    // lib.optionalAttrs (has "zathura") {
+      zathura = [
+        {
+          for = "unix";
+          desc = "Zathura PDF Viewer";
+          run = "zathura \"$@\"";
+        }
+      ];
+    }
+    // lib.optionalAttrs (has "calibre") {
+      ebook-viewer = [
+        {
+          for = "linux";
+          desc = "Calibre Ebook Viewer";
+          run = "ebook-viewer \"$@\"";
+          orphan = true;
+        }
+        {
+          for = "macos";
+          desc = "Calibre Ebook Viewer";
+          run = "ebook-viewer \"$@\"";
+          orphan = true;
+        }
+      ];
+    }
+    // lib.optionalAttrs hostPlatform.isDarwin {
+      preview = [
+        {
+          for = "macos";
+          desc = "Preview";
+          run = "open -a 'Preview' \"$@\"";
+          orphan = true;
+        }
+      ];
+      nomacs = [
+        {
+          for = "macos";
+          desc = "nomacs Image Viewer";
+          run = "nomacs \"$@\"";
+          orphan = true;
+        }
+      ];
+    };
 
   plugin = {
     preloaders = [
