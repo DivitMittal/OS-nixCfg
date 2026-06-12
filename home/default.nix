@@ -39,6 +39,26 @@
       additionalModules = [(inputs.import-tree ./tty)];
     };
 
+    colima = mkCfg {
+      hostName = "colima";
+      system = "x86_64-linux";
+      inherit class;
+      additionalModules = [
+        (inputs.import-tree ./tty)
+        (inputs.import-tree ./dev)
+      ];
+    };
+
+    colima-arm = mkCfg {
+      hostName = "colima";
+      system = "aarch64-linux";
+      inherit class;
+      additionalModules = [
+        (inputs.import-tree ./tty)
+        (inputs.import-tree ./dev)
+      ];
+    };
+
     M1 = mkCfg {
       hostName = "M1";
       system = "aarch64-linux";
