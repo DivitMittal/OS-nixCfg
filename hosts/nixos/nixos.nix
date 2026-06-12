@@ -12,6 +12,16 @@
       system = "x86_64-linux";
       additionalModules = [inputs.nixos-wsl.nixosModules.default];
     };
+    colima = mkCfg {
+      inherit class;
+      hostName = "colima";
+      system = "x86_64-linux";
+    };
+    colima-arm = mkCfg {
+      inherit class;
+      hostName = "colima";
+      system = "aarch64-linux";
+    };
     L2 = mkCfg {
       inherit class;
       hostName = "L2";
