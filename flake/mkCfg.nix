@@ -53,7 +53,13 @@
             mkPnpmDlxBin = prev.custom.mkPnpmDlxBin pkgs;
           };
       });
-      specialArgs = {inherit self inputs hostPlatform;} // extraSpecialArgs;
+      palette = import (self + "/lib/palette.nix") {inherit pkgs;};
+      specialArgs =
+        {
+          inherit self inputs hostPlatform;
+          inherit (palette) base16Scheme;
+        }
+        // extraSpecialArgs;
       modules = let
         commonDir = self + "/common";
         inherit (lib.lists) optionals;
