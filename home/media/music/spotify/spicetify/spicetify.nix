@@ -1,14 +1,15 @@
 {
-  pkgs,
+  lib,
   inputs,
+  hostPlatform,
   ...
 }: let
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${hostPlatform.system};
 in {
   programs.spicetify = {
     enable = true;
 
-    theme = spicePkgs.themes.default;
+    theme = lib.mkForce spicePkgs.themes.default;
 
     enabledCustomApps = with spicePkgs.apps; [
       marketplace
