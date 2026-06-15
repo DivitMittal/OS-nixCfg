@@ -1,10 +1,10 @@
 _: {
   topology.self = {
-    hardware.info = "NixOS VM - Colima/Lima on L1 (macOS)";
+    hardware.info = "NixOS VM - Colima/Lima (x86_64) on L1 (macOS)";
 
     interfaces = {
       eth0 = {
-        network = "colima";
+        network = "colima-x86";
         type = "virtual";
         virtual = true;
         physicalConnections = [
