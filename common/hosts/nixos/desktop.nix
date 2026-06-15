@@ -2,17 +2,15 @@
 # PAM, XDG portals, and dconf.
 #
 # This lives in common/hosts/nixos (applied to every nixos host, including WSL and the ISOs),
-# so it is gated to the hosts that actually run the graphical session. Today that is only L2 —
-# the sole host with a graphical home-manager config (see home/default.nix). WSL/M1 home
-# configs are tty-only and T2/AS have no graphical home config, so a greeter there would be
-# broken. Add a host to this list when it gains a graphical home config.
+# so it is gated to the hosts that actually run the graphical session.
+# WSL/M1/colima home configs are tty-only, so a greeter there would be broken.
 {
   pkgs,
   lib,
   config,
   ...
 }:
-lib.mkIf (lib.elem config.hostSpec.hostName ["L2"]) {
+lib.mkIf (lib.elem config.hostSpec.hostName ["L2" "T2" "ASL1N"]) {
   # greetd + agreety (greetd's built-in TUI greeter). Launch Sway through a login shell so the
   # user's nix profile (which provides the home-manager-built sway) is on PATH at exec time.
   services.greetd = {

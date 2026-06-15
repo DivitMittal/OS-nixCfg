@@ -6,6 +6,8 @@
 }: let
   inherit (lib) mkDefault;
 in {
+  programs.nix-ld.enable = true;
+
   system.stateVersion = mkDefault "26.05";
 
   # Enable building aarch64 packages for nix-on-droid deployment
