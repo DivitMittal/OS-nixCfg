@@ -207,6 +207,7 @@ Secrets (API keys, passwords, sensitive configurations) are managed via [agenix]
 ## Related Repositories
 
 - [DivitMittal/ai-nixCfg](https://github.com/DivitMittal/ai-nixCfg): AI/LLM tool configurations extracted for modularity (CLI tools, cloud services, MCP servers, REPL configurations).
+- [DivitMittal/playbooks-4-windows](https://github.com/DivitMittal/playbooks-4-windows): Ansible IaC for the Windows 11 boot on the x86_64 MacBook (triple-boot partner of L1 & T2); manages Scoop/Winget/MSYS2 packages, registry, and dotfiles.
 - `DivitMittal/OS-nixCfg-secrets`: (Private) Contains encrypted secrets managed by `agenix` & `ragenix`.
 - [DivitMittal/Vim-Cfg](https://github.com/DivitMittal/Vim-Cfg): Pure lua standalone Neovim configuration, deployed via `nix4nvchad`.
 - [DivitMittal/Emacs-Cfg](https://github.com/DivitMittal/Emacs-Cfg): An elisp doomemacs configuration, used as an input via `nix-doom-emacs-unstraightened`.
