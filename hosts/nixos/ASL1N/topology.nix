@@ -1,6 +1,6 @@
 _: {
   topology.self = {
-    hardware.info = "NixOS on Apple Silicon (Asahi Linux)";
+    hardware.info = "NixOS Asahi (aarch64) - dual-boot with ASL1 (macOS) on Apple Silicon";
 
     interfaces = {
       wlan0 = {

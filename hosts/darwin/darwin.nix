@@ -7,5 +7,10 @@
       hostName = "L1";
       system = "x86_64-darwin";
     };
+    ASL1 = mkCfg {
+      inherit class;
+      hostName = "ASL1";
+      system = "aarch64-darwin";
+    };
   };
 }

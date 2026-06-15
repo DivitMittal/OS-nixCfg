@@ -21,6 +21,23 @@
       inherit class;
       hostName = "colima";
       system = "aarch64-linux";
+      additionalModules = [
+        {
+          # Override topology for the ARM variant: runs on AS-darwin, not L1
+          topology.self = {
+            hardware.info = "NixOS VM - Colima/Lima (aarch64) on ASL1 (Apple Silicon macOS)";
+            interfaces.eth0 = {
+              network = "colima-arm";
+              physicalConnections = [
+                {
+                  node = "ASL1";
+                  interface = "col0";
+                }
+              ];
+            };
+          };
+        }
+      ];
     };
     L2 = mkCfg {
       inherit class;
@@ -32,9 +49,9 @@
       hostName = "T2";
       system = "x86_64-linux";
     };
-    AS = mkCfg {
+    ASL1N = mkCfg {
       inherit class;
-      hostName = "AS";
+      hostName = "ASL1N";
       system = "aarch64-linux";
     };
   };
