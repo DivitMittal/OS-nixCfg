@@ -27,7 +27,7 @@ function yellow() {
 # Usage: build_switch_args [additional_flags...]
 function build_switch_args() {
   local args="$*"
-  args="$args --flake .#$(hostname) switch"
+  args="$args --keep-going --flake .#$(hostname) switch"
   echo "$args"
 }
 
