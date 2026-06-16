@@ -10,6 +10,7 @@ in {
     enable = true;
 
     theme = lib.mkForce spicePkgs.themes.default;
+    colorScheme = lib.mkForce "Base";
 
     enabledCustomApps = with spicePkgs.apps; [
       marketplace

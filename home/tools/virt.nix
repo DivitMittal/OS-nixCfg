@@ -42,9 +42,14 @@
       lazydocker
       ## kubernetes
       kubectl
-      k9s
       ### virtualization
       #virt-manager libvirt qemu
       ;
+
+    ## kubernetes
+    # k9s 0.51.0 tests write to /tmp which the Nix sandbox forbids
+    # (permission denied in TestEnsureBenchmarkCfg/TestSkinFileFromName/
+    # TestK9sReload); skip the check phase to build.
+    k9s = pkgs.k9s.overrideAttrs (_: {doCheck = false;});
   };
 }
