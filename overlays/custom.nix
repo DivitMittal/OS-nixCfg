@@ -20,5 +20,17 @@ _: {
       callPackage = super.lib.customisation.callPackageWith (self // {inherit sources;});
       directory = ../pkgs/custom;
     };
+    # nixpkgs infat misses AppKit linkage — NSWorkspace is AppKit, not Foundation.
+    # Upstream fix: add `env.NIX_LDFLAGS = "-framework AppKit"` to pkgs/by-name/in/infat/package.nix
+    infat = super.infat.overrideAttrs (old: {
+      env =
+        (old.env or {})
+        // super.lib.optionalAttrs super.stdenv.hostPlatform.isDarwin {
+          NIX_LDFLAGS = toString [
+            "-framework"
+            "AppKit"
+          ];
+        };
+    });
   };
 }
