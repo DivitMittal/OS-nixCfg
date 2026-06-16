@@ -106,12 +106,13 @@
             };
           };
 
-          # Windows 11 boot on the x86_64 MacBook (triple-boot partner of L1 & T2)
-          # Managed by https://github.com/DivitMittal/playbooks-4-windows (Ansible IaC)
+          # Windows 11 boot on the x86_64 MacBook (triple-boot partner of L1 & T2) — user: div
+          # Packages + system settings: https://github.com/DivitMittal/playbooks-4-windows (Ansible)
+          # TTY dotfiles (starship, fastfetch, git attrs): WSL home-manager → /mnt/c/Users/div/
           nodes.windows-host = {
-            name = "Windows Host";
+            name = "Windows Host (L1)";
             deviceType = "device";
-            hardware.info = "Windows 11 (Ansible IaC) - triple-boot with L1 (macOS) & T2 (NixOS) on same x86_64 hardware";
+            hardware.info = "Windows 11 - triple-boot with L1 (macOS) & T2 (NixOS) — user: div | pkgs+settings: Ansible | TTY dotfiles: WSL home-manager";
             interfaces.wlan0 = {
               network = "home";
               type = "wifi";
@@ -126,6 +127,24 @@
               network = "wsl";
               type = "virtual";
               virtual = true;
+            };
+          };
+
+          # Windows 11 boot on the x86_64 machine (dual-boot partner of L2 NixOS) — user: vanee
+          # Managed by https://github.com/DivitMittal/playbooks-4-windows (Ansible IaC)
+          nodes.L2-windows = {
+            name = "Windows (L2)";
+            deviceType = "device";
+            hardware.info = "Windows 11 (Ansible IaC) - dual-boot with L2 NixOS on x86_64 hardware — user: vanee";
+            interfaces.wlan0 = {
+              network = "home";
+              type = "wifi";
+              physicalConnections = [
+                {
+                  node = "router";
+                  interface = "wlan";
+                }
+              ];
             };
           };
 
