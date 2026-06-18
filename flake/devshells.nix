@@ -10,7 +10,21 @@
     pkgs,
     config,
     ...
-  }: {
+  }: let
+    myFlakeInputs = lib.concatStringsSep " " [
+      "OS-nixCfg-secrets"
+      "Vim-Cfg"
+      "Emacs-Cfg"
+      "term-nixCfg"
+      "firefox-nixCfg"
+      "ai-nixCfg"
+      "tidalcycles-nix"
+      "hammerspoon-nix"
+      "brew-nix"
+      "TLTR"
+      "PKMS"
+    ];
+  in {
     devshells.default = {
       devshell = rec {
         name = "OS-nixCfg";
@@ -84,6 +98,18 @@
             fi
           '';
           category = "packages";
+        }
+        {
+          name = "nfu";
+          help = "Update all flake inputs, including nixpkgs (triggers full rebuild chain)";
+          command = "nix flake update \"$@\"";
+          category = "nix";
+        }
+        {
+          name = "nfu-mine";
+          help = "Update only DivitMittal-authored inputs — skips nixpkgs to avoid rebuild chain";
+          command = "nix flake update ${myFlakeInputs}";
+          category = "nix";
         }
         (lib.mkIf
           pkgs.stdenvNoCC.hostPlatform.isDarwin
