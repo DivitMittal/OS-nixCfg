@@ -80,7 +80,7 @@
       {
         desc = "Toggle the current selection state";
         on = ["<Space>"];
-        run = ["toggle --state=none" "arrow 1"];
+        run = ["toggle" "arrow 1"];
       }
       {
         desc = "Enter visual mode (selection mode)";
@@ -90,12 +90,12 @@
       {
         desc = "Select all files";
         on = ["<C-a>"];
-        run = "toggle_all --state=true";
+        run = "toggle_all --state=on";
       }
       {
         desc = "Inverse selection of all files";
         on = ["<C-r>"];
-        run = "toggle_all --state=none";
+        run = "toggle_all";
       }
       {
         desc = "Open the selected files";
@@ -233,22 +233,22 @@
       {
         desc = "Sort by modified time";
         on = ["b" "m"];
-        run = "sort modified --dir-first";
+        run = "sort mtime --dir-first";
       }
       {
         desc = "Sort by modified time (reverse)";
         on = ["b" "M"];
-        run = "sort modified --reverse --dir-first";
+        run = "sort mtime --reverse --dir-first";
       }
       {
         desc = "Sort by created time";
         on = ["b" "c"];
-        run = "sort created --dir-first";
+        run = "sort btime --dir-first";
       }
       {
         desc = "Sort by created time (reverse)";
         on = ["b" "C"];
-        run = "sort created --reverse --dir-first";
+        run = "sort btime --reverse --dir-first";
       }
       {
         desc = "Sort by extension";
@@ -376,17 +376,17 @@
       {
         desc = "Search files by name using fd";
         on = ["s"];
-        run = "search fd";
+        run = "search --via=fd";
       }
       {
         desc = "Search files by content using ripgrep";
         on = ["S"];
-        run = "search rg";
+        run = "search --via=rg";
       }
       {
         desc = "Cancel the ongoing search";
         on = ["<C-s>"];
-        run = "search none";
+        run = "escape --search";
       }
       # find
       {
@@ -443,7 +443,7 @@
       {
         desc = "Show the tasks manager";
         on = ["w"];
-        run = "tasks_show";
+        run = "tasks:show";
       }
       {
         desc = "Open help";
