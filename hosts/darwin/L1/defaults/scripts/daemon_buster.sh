@@ -68,6 +68,8 @@ TODISABLE+=(
   'com.apple.dprivacyd'
   ## [Tahoe+] Web browsing privacy/tracking protection daemon.
   'com.apple.webprivacyd'
+  ## Collects user feedback and sends anonymized diagnostic reports to Apple.
+  'com.apple.feedbackd'
 
   ### Apple Pay & Wallet
   ## Manages Apple Pay and Wallet services.
@@ -88,15 +90,20 @@ TODISABLE+=(
   'com.apple.remindd'
 
   ### Continuity & Handoff (Sidecar, Rapport)
-  ## User-specific agent for continuity features like Handoff, Universal Clipboard.
-  ## NOTE: com.apple.rapportd moved to system-only in Tahoe (26).
+  ## Legacy user-only variant of rapportd (pre-Tahoe); kept for older-macOS compatibility.
   'com.apple.rapportd-user'
+  ## [Tahoe+] rapportd itself now also runs in gui/501; disable here to cover user session.
+  'com.apple.rapportd'
+  ## UI helper for Rapport features (AirDrop, Handoff status in menu bar).
+  'com.apple.RapportUIAgent'
   ## Enables AirDrop, Handoff, Instant Hotspot, Shared Computers, and Remote Disc features.
   'com.apple.sharingd'
   ## Relays Human Interface Device (HID) events for Sidecar, allowing input from an iPad.
   'com.apple.sidecar-hid-relay'
   ## The main relay service for Sidecar, managing the virtual display connection.
   'com.apple.sidecar-relay'
+  ## Manages connectivity, notifications, and data sync with a paired Apple Watch.
+  'com.apple.companiond'
 
   ### Family Sharing & Screen Time
   ## Manages Family Sharing information and status.
@@ -121,6 +128,8 @@ TODISABLE+=(
   'com.apple.icloud.searchpartyuseragent'
   ## Locates devices using the Find My network.
   'com.apple.findmy.findmylocateagent'
+  ## [Tahoe+] Find My Mac messenger also runs in gui/501; disable here alongside system entry.
+  'com.apple.findmymacmessenger'
 
   ### Game Center
   ## The central daemon for Game Center services.
@@ -149,6 +158,10 @@ TODISABLE+=(
   'com.apple.protectedcloudstorage.protectedcloudkeysyncing'
   ## A proxy agent involved in syncing the iCloud Keychain.
   'com.apple.security.cloudkeychainproxy3'
+  ## Maintains a persistent keep-alive connection to Apple's Always-On Services (iCloud).
+  'com.apple.AOSHeartbeat'
+  ## Routes push notifications and syncs data via Apple's Always-On Services infrastructure.
+  'com.apple.AOSPushRelay'
 
   ### Apple Music
   ## Manages iCloud Music Library, subscription status, and play activity.
@@ -219,6 +232,10 @@ TODISABLE+=(
   'com.apple.routined'
   ## Processes user content (e.g., emails, messages) to detect contacts, events, and other entities.
   'com.apple.suggestd'
+  ## [Tahoe+] Applies on-device NLP to extract structured meaning and entities from text.
+  'com.apple.textunderstandingd'
+  ## [Tahoe+] Links on-device content across apps to surface intelligence and suggestions.
+  'com.apple.synapse.contentlinkingd'
 
   ### Apple Intelligence (Tahoe+ / macOS 26+)
   ## [Tahoe+] Private Cloud Compute - processes Apple Intelligence requests on Apple servers.
@@ -238,8 +255,12 @@ TODISABLE+=(
   'com.apple.spotlightknowledged.importer'
   ## [Tahoe+] Updates Spotlight knowledge graph indices.
   'com.apple.spotlightknowledged.updater'
+  ## [Tahoe+] Records and indexes screen activity for Replay intelligence features.
+  'com.apple.replayd'
 
   ### Location & Maps
+  ## [Tahoe+] geod also runs in gui/501 on Tahoe; disable here alongside user/205 entry.
+  'com.apple.geod'
   ## Manages authorization prompts for applications requesting location access.
   'com.apple.CoreLocationAgent'
   ## A bridge for services using the GeoServices framework.
@@ -262,6 +283,16 @@ TODISABLE+=(
   'com.apple.photoanalysisd'
   ## The main agent for managing the user's photo library.
   'com.apple.photolibraryd'
+  ## Identifies music tracks via audio fingerprinting (Shazam integration).
+  'com.apple.shazamd'
+  ## Fetches scores, schedules, and content for the Apple Sports app.
+  'com.apple.sportsd'
+  ## Tracks user engagement with Apple Media Services content (analytics).
+  'com.apple.amsengagementd'
+  ## Manages locally cached Apple Media Services (AMS) content.
+  'com.apple.amsondevicestoraged'
+  ## Manages system-wide sticker packs and Memoji assets.
+  'com.apple.stickersd'
 
   ### MDM (Mobile Device Management)
   ## Handles device enrollment and notifications for managed devices (MDM).
@@ -311,6 +342,8 @@ TODISABLE+=(
   ### Trial & Beta
   ## Manages participation in Apple's trial/beta programs (user-level).
   'com.apple.triald'
+  ## Handles enrollment in Apple's beta software programs.
+  'com.apple.betaenrollmentagent'
 
   ### TV & Video
   ## Manages video subscriptions and provides analytics for the TV app.
@@ -321,6 +354,10 @@ TODISABLE+=(
   ### Weather
   ## Provides weather data and services for the Weather app and widgets.
   'com.apple.weatherd'
+
+  ### Social
+  ## Integrates social-graph data from Contacts for intelligence and proactive suggestions.
+  'com.apple.sociallayerd'
 
   ### Spell Check
   ## Provides spell-checking services system-wide.
@@ -351,6 +388,10 @@ TODISABLE+=(
   ## [Tahoe+] System-level differential privacy daemon.
   'com.apple.dprivacyd'
 
+  ### Advertising
+  ## Manages the device's Advertising Identifier (IDFA) for App Tracking Transparency.
+  'com.apple.adid'
+
   ### Biome
   ## Executes the Biome operation graph, part of a system for user activity prediction.
   'com.apple.biomed'
@@ -364,9 +405,10 @@ TODISABLE+=(
   'com.apple.familycontrols'
 
   ### Find My
-  ## NOTE: com.apple.findmymacd removed in Tahoe (26).
-  ## A messenger process for the "Find My Mac" feature.
+  ## A messenger process for the "Find My Mac" feature (also targeted in gui/501).
   'com.apple.findmymacmessenger'
+  ## The primary Find My Mac daemon (NOTE: present on Tahoe 26+, loaded from launchd cache).
+  'com.apple.findmymacd'
   ## Manages the local "Find My" beaconing for offline finding.
   'com.apple.findmy.findmybeaconingd'
   ## The primary daemon for the "Find My Mac" feature via iCloud.
@@ -400,6 +442,12 @@ TODISABLE+=(
   'com.apple.contextstored'
   ## [Tahoe+] Manages ML model catalog and versioning.
   'com.apple.modelcatalogd'
+  ## [Tahoe+] Coordinates Apple Intelligence model inference across domains (multiverse).
+  'com.apple.multiversed'
+  ## [Tahoe+] Predicts OS resource needs to pre-warm services and improve responsiveness.
+  'com.apple.ospredictiond'
+  ## [Tahoe+] Centaur ML inference daemon for on-device prediction and intelligence.
+  'com.apple.centaurid'
 
   ### MDM (Mobile Device Management)
   ## NOTE: com.apple.ManagedClient.cloudconfigurationd removed in Tahoe (26).
@@ -435,7 +483,8 @@ done
 TODISABLE=()
 TODISABLE+=(
   ### Apple
-  ## Provides geolocation services to applications and other system processes.
+  ## Provides geolocation services pre-login (UID 205 = _locationd).
+  ## NOTE: On Tahoe (26+) geod also runs in gui/501; see Location & Maps in user section.
   'com.apple.geod'
 )
 for agent in "${TODISABLE[@]}"; do
