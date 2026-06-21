@@ -3,7 +3,10 @@ version: 1.0.0
 description: Multi-platform Nix flake (darwin, NixOS/WSL, nix-on-droid, home-manager) with universal mkCfg builder
 author: DivitMittal
 license: MIT
-target: all
+target:
+  - claude
+  - codex
+  - opencode
 type: instructions
 
 dependencies:

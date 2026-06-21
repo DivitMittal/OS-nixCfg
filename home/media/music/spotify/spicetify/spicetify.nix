@@ -1,6 +1,7 @@
 {
   inputs,
   hostPlatform,
+  lib,
   ...
 }: let
   spicePkgs = inputs.spicetify-nix.legacyPackages.${hostPlatform.system};
@@ -10,8 +11,8 @@ in {
   programs.spicetify = {
     enable = true;
 
-    theme = spicePkgs.themes.text;
-    colorScheme = "Spotify";
+    theme = lib.mkForce spicePkgs.themes.text;
+    colorScheme = lib.mkForce "Spotify";
 
     enabledExtensions = with spicePkgs.extensions; [
       keyboardShortcut
