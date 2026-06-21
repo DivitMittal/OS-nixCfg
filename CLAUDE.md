@@ -1,7 +1,10 @@
----
-description: Project-wide knowledge base for the OS-nixCfg multi-platform Nix flake
-applyTo: "**"
----
+# CLAUDE.md
+
+<!-- Build ID: d968149b5eca -->
+
+# Project Standards
+
+## Files matching `**`
 
 # PROJECT KNOWLEDGE BASE
 
