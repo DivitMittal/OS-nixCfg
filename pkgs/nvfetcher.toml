@@ -52,8 +52,11 @@ src.github = "atuan26/warpd"
 fetch.github = "atuan26/warpd"
 
 [SakuraWallpaper]
-src.github = "yueseqaz/SakuraWallpaper"
-fetch.url = "https://github.com/yueseqaz/SakuraWallpaper/releases/download/$ver/SakuraWallpaper.dmg"
+# Track upstream main because the universal DMG is published to the moving
+# `latest` release, while the current semver release asset is arm64-only.
+src.git = "https://github.com/yueseqaz/SakuraWallpaper.git"
+src.branch = "main"
+fetch.url = "https://github.com/yueseqaz/SakuraWallpaper/releases/download/latest/SakuraWallpaper.dmg"
 
 # ============================================================
 # Binary download packages (fetchurl) – fully managed by nvfetcher

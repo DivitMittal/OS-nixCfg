@@ -4,8 +4,7 @@
   sources,
 }:
 stdenvNoCC.mkDerivation {
-  inherit (sources.SakuraWallpaper) pname src;
-  version = lib.removePrefix "v" sources.SakuraWallpaper.version;
+  inherit (sources.SakuraWallpaper) pname version src;
 
   unpackPhase = ''
     MOUNTDIR=$(mktemp -d)

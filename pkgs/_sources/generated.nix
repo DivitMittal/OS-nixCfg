@@ -45,11 +45,12 @@
   };
   SakuraWallpaper = {
     pname = "SakuraWallpaper";
-    version = "v1.0.1";
+    version = "1ec6c63f82e5826d7a2da529ebc40726357dd82c";
     src = fetchurl {
-      url = "https://github.com/yueseqaz/SakuraWallpaper/releases/download/v1.0.1/SakuraWallpaper.dmg";
-      sha256 = "sha256-s2DiMoApYn5N6BKxDMxbYpeCIWsnlaKT70j60su4oUA=";
+      url = "https://github.com/yueseqaz/SakuraWallpaper/releases/download/latest/SakuraWallpaper.dmg";
+      sha256 = "sha256-dOJjMWY5OARLuo55Bv4R0vU9AK9LhO8HMNtL/DC473Q=";
     };
+    date = "2026-05-21";
   };
   agevault = {
     pname = "agevault";

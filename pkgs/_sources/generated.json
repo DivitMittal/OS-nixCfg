@@ -121,24 +121,18 @@
   },
   "SakuraWallpaper": {
     "cargoLock": null,
-    "date": null,
+    "date": "2026-05-21",
     "extract": null,
     "name": "SakuraWallpaper",
     "passthru": null,
     "pinned": false,
     "src": {
-      "deepClone": false,
-      "fetchSubmodules": false,
-      "leaveDotGit": false,
       "name": null,
-      "owner": "yueseqaz",
-      "repo": "SakuraWallpaper",
-      "rev": "v1.0.1",
-      "sha256": "sha256-c+TfuKiypWf8iVqSgeNyGyOQoVM1/R289pFMGNgvQuk=",
-      "sparseCheckout": [],
-      "type": "github"
+      "sha256": "sha256-dOJjMWY5OARLuo55Bv4R0vU9AK9LhO8HMNtL/DC473Q=",
+      "type": "url",
+      "url": "https://github.com/yueseqaz/SakuraWallpaper/releases/download/latest/SakuraWallpaper.dmg"
     },
-    "version": "v1.0.1"
+    "version": "1ec6c63f82e5826d7a2da529ebc40726357dd82c"
   },
   "agevault": {
     "cargoLock": null,
