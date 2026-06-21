@@ -1,0 +1,38 @@
+lockfile_version: "1"
+generated_at: "2026-06-21T18:01:07.564331+00:00"
+dependencies: []
+mcp_servers:
+  - nixos
+  - serena
+mcp_configs:
+  nixos:
+    name: nixos
+    transport: stdio
+    args:
+      - mcp-nixos
+    registry: false
+    command: uvx
+  serena:
+    name: serena
+    transport: stdio
+    args:
+      - --from
+      - git+https://github.com/oraios/serena
+      - serena
+      - start-mcp-server
+      - --context
+      - claude-code
+      - --project
+      - ~/OS-nixCfg
+    registry: false
+    command: uvx
+local_deployed_files:
+  - .claude/rules/flake.md
+  - .claude/rules/home-tty.md
+  - .claude/rules/hosts-darwin.md
+  - .claude/rules/project-knowledge.md
+local_deployed_file_hashes:
+  .claude/rules/flake.md: sha256:8600be9e196ee2b1d62ae1c37c7d2e88cf7d35b12e0968fbceb6ea9ef9894607
+  .claude/rules/home-tty.md: sha256:8b50f5f944f1aedbd33586bce455e26ac1696ffae90462578d6b29a78d9486de
+  .claude/rules/hosts-darwin.md: sha256:04f8f30bc40528a158e5fc712cc53111811688bd90e1dcc5795bcb9d6eb1ed68
+  .claude/rules/project-knowledge.md: sha256:526c0aa976ddfc138a0b6d6bc36664cc650cd96117965ef396582a4eb5f2688c
