@@ -13,7 +13,7 @@ in {
     settings = {
       note = {
         language = "en";
-        template = "${inputs.pkms}/etc/zk/templates/default.md";
+        template = "${inputs.PKMS}/etc/zk/templates/default.md";
         default-title = "Untitled";
         filename = "{{id}}";
         extension = "md";
@@ -37,7 +37,7 @@ in {
         daily = {
           paths = ["journal"];
           note = {
-            template = "${inputs.pkms}/etc/zk/templates/daily.md";
+            template = "${inputs.PKMS}/etc/zk/templates/daily.md";
             filename = "{{format-date now '%Y-%m-%d'}}";
             extension = "md";
           };
