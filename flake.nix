@@ -130,8 +130,8 @@
       };
     };
     OS-nixCfg-secrets = {
-      url = "git+ssh://git@github.com/DivitMittal/OS-nixCfg-secrets.git?ref=master";
-      #url = "path:/Users/div/Projects/OS-nixCfg-secrets";
+      #url = "git+ssh://git@github.com/DivitMittal/OS-nixCfg-secrets.git?ref=master";
+      url = "path:/Users/div/Projects/Cfgs/OS-nixCfg-secrets";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";
@@ -146,7 +146,7 @@
     ## Editors
     Vim-Cfg = {
       url = "github:DivitMittal/Vim-Cfg";
-      #url = "path:/Users/div/Projects/Vim-Cfg";
+      #url = "path:/Users/div/Projects/Cfgs/Vim-Cfg";
       flake = false;
     };
     nvchad4nix = {
@@ -158,7 +158,7 @@
     };
     Emacs-Cfg = {
       url = "github:DivitMittal/emacs-cfg";
-      #url = "path:/Users/div/Projects/Emacs-Cfg";
+      #url = "path:/Users/div/Projects/Cfgs/Emacs-Cfg";
       flake = false;
     };
     nix-doom-emacs-unstraightened = {
@@ -171,8 +171,8 @@
 
     ## Terminal Emulator
     term-nixCfg = {
-      #url = "path:/Users/div/Projects/Cfgs/term-nixCfg";
-      url = "github:DivitMittal/term-nixCfg";
+      url = "path:/Users/div/Projects/Cfgs/term-nixCfg";
+      #url = "github:DivitMittal/term-nixCfg";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
@@ -187,8 +187,8 @@
 
     ## Firefox
     firefox-nixCfg = {
-      #url = "path:/Users/div/Projects/firefox-nixCfg";
-      url = "github:DivitMittal/firefox-nixCfg";
+      url = "path:/Users/div/Projects/Cfgs/firefox-nixCfg";
+      #url = "github:DivitMittal/firefox-nixCfg";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
@@ -202,8 +202,8 @@
 
     ## AI
     ai-nixCfg = {
-      #url = "path:/Users/div/Projects/Cfgs/ai-nixCfg";
-      url = "github:DivitMittal/ai-nixCfg";
+      url = "path:/Users/div/Projects/Cfgs/ai-nixCfg";
+      #url = "github:DivitMittal/ai-nixCfg";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
@@ -218,6 +218,10 @@
     ## Spicetify
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    spotatui = {
+      url = "github:LargeModGames/spotatui";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -266,6 +270,23 @@
         home-manager.follows = "home-manager";
       };
     };
+    android-kvm = {
+      url = "path:/Users/div/Projects/Keyboard/android-kvm";
+      #url = "github:DivitMittal/android-kvm";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+        flake-parts.follows = "flake-parts";
+        devshell.follows = "devshell";
+        treefmt-nix.follows = "treefmt-nix";
+        import-tree.follows = "import-tree";
+      };
+    };
+
+    lan-mouse = {
+      url = "github:feschber/lan-mouse";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     ## Theming — cyberpunk palette wired via lib/palette.nix
     stylix = {
@@ -295,8 +316,8 @@
     };
     ## Hammerspoon
     hammerspoon-nix = {
-      url = "github:DivitMittal/hammerspoon-nix";
-      #url = "path:/Users/div/Projects/hammerspoon-nix";
+      #url = "github:DivitMittal/hammerspoon-nix";
+      url = "path:/Users/div/Projects/Cfgs/hammerspoon-nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
@@ -319,9 +340,9 @@
     };
 
     brew-nix = {
-      url = "github:BatteredBunny/brew-nix";
+      #url = "github:BatteredBunny/brew-nix";
       #url = "github:DivitMittal/brew-nix/cask-variation";
-      #url = "path:/Users/div/Developer/Forks/brew-nix";
+      url = "path:/Users/div/Developer/Forks/brew-nix";
       inputs = {
         brew-api.follows = "brew-api";
         nix-darwin.follows = "nix-darwin";
@@ -383,8 +404,8 @@
       ## Don't follow nixpkgs - tgt uses apple-sdk_12 which was removed in newer nixpkgs
       url = "github:FedericoBruzzone/tgt";
     };
-    pkms = {
-      url = "github:DivitMittal/pkms";
+    PKMS = {
+      url = "github:DivitMittal/PKMS";
       flake = false;
     };
   };
