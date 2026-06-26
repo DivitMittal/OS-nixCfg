@@ -9,6 +9,13 @@
 
   networking = {
     knownNetworkServices = ["Wi-Fi"];
+    # Block Spotify's auto-updater to preserve spicetify patches
+    hosts = {
+      "0.0.0.0" = [
+        "upgrade.scdn.co"
+        "upgrade-clientmanifest.scdn.co"
+      ];
+    };
     dns = [
       ## Cloudflare DNS
       # IPv4
