@@ -32,6 +32,4 @@
 
   # QEMU guest agent — VM lifecycle events and graceful shutdown from the host
   services.qemuGuest.enable = true;
-
-  system.stateVersion = "26.05";
 }

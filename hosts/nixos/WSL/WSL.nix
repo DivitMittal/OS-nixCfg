@@ -22,5 +22,4 @@
       user.default = "${config.wsl.defaultUser}";
     };
   };
-  system.stateVersion = "26.05";
 }
