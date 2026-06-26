@@ -1,12 +1,18 @@
 {
   inputs,
   lib,
+  pkgs,
   ...
 }: {
   imports = [inputs.lan-mouse.homeManagerModules.default];
 
   programs.lan-mouse = {
     enable = true;
+    package = inputs.lan-mouse.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (_: {
+      buildInputs = [];
+      cargoBuildFlags = ["--no-default-features"];
+      cargoTestFlags = ["--no-default-features"];
+    });
     systemd = true;
     launchd = true;
     settings = {
