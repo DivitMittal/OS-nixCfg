@@ -24,6 +24,11 @@ src.git = "https://github.com/acidanthera/MacKernelSDK.git"
 src.branch = "master"
 fetch.github = "acidanthera/MacKernelSDK"
 
+[mutt]
+src.git = "https://github.com/muttmua/mutt.git"
+src.branch = "master"
+fetch.github = "muttmua/mutt"
+
 [option-analysis]
 src.git = "https://github.com/harsh-vardhhan/option-analysis.git"
 src.branch = "master"
@@ -81,7 +86,7 @@ fetch.url = "https://github.com/vincentneo/LosslessSwitcher/releases/download/$v
 
 [menubar-dock]
 src.github = "EthanSK/Menu-Bar-Dock"
-fetch.url = "https://github.com/EthanSK/Menu-Bar-Dock/releases/download/$ver/Menu.Bar.Dock.app.zip"
+fetch.url = "https://github.com/EthanSK/Menu-Bar-Dock/releases/download/$ver/Menu-Bar-Dock-$ver.zip"
 
 [MultiSoundChanger]
 src.github = "aonez/MultiSoundChanger"

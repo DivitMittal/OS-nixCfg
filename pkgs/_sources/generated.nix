@@ -109,11 +109,23 @@
   };
   menubar-dock = {
     pname = "menubar-dock";
-    version = "4.6";
+    version = "v4.7.8";
     src = fetchurl {
-      url = "https://github.com/EthanSK/Menu-Bar-Dock/releases/download/4.6/Menu.Bar.Dock.app.zip";
-      sha256 = "sha256-bRV65XDf5CsvTZcse7sHE18KDHpOMnWPrUUoH9tcWl0=";
+      url = "https://github.com/EthanSK/Menu-Bar-Dock/releases/download/v4.7.8/Menu-Bar-Dock-v4.7.8.zip";
+      sha256 = "sha256-T0njW17XCwoL0WPmv7CkdhCZkRNFfvSNi7TI49kbXu0=";
     };
+  };
+  mutt = {
+    pname = "mutt";
+    version = "8f98537fe05c458fe0552cf8c49305fa466c44dc";
+    src = fetchFromGitHub {
+      owner = "muttmua";
+      repo = "mutt";
+      rev = "8f98537fe05c458fe0552cf8c49305fa466c44dc";
+      fetchSubmodules = false;
+      sha256 = "sha256-RdkLIgjTtztmrvkHinpcweHFP6GrY3ZdNy922Z2oUx4=";
+    };
+    date = "2026-06-23";
   };
   option-analysis = {
     pname = "option-analysis";
@@ -210,34 +222,34 @@
   };
   zerobrew-zb-aarch64 = {
     pname = "zerobrew-zb-aarch64";
-    version = "0.2.1";
+    version = "0.3.2";
     src = fetchurl {
-      url = "https://github.com/lucasgelfond/zerobrew/releases/download/v0.2.1/zb-darwin-arm64";
-      sha256 = "sha256-3ss9uE+XBI1VRVs0yppSolyIuJydfWL1nhMFALot8yM=";
+      url = "https://github.com/lucasgelfond/zerobrew/releases/download/v0.3.2/zb-darwin-arm64";
+      sha256 = "sha256-YfflR1vFAmnBiqRaWZ6L/u3+9ZdAdFzH2stQ9xth11s=";
     };
   };
   zerobrew-zb-x86_64 = {
     pname = "zerobrew-zb-x86_64";
-    version = "0.2.1";
+    version = "0.3.2";
     src = fetchurl {
-      url = "https://github.com/lucasgelfond/zerobrew/releases/download/v0.2.1/zb-darwin-x64";
-      sha256 = "sha256-vGvJ4koxLCjGjuNI+0VVsQmJgh9cB1nu1zX5gB0SNow=";
+      url = "https://github.com/lucasgelfond/zerobrew/releases/download/v0.3.2/zb-darwin-x64";
+      sha256 = "sha256-stpkqgW9eBdwWDnun1iZsOqxVUFnRVzLhQ6FEKpDtBM=";
     };
   };
   zerobrew-zbx-aarch64 = {
     pname = "zerobrew-zbx-aarch64";
-    version = "0.2.1";
+    version = "0.3.2";
     src = fetchurl {
-      url = "https://github.com/lucasgelfond/zerobrew/releases/download/v0.2.1/zbx-darwin-arm64";
-      sha256 = "sha256-u5SxJz/8LxHPdIo4GUlHPGzeWwDTEo8XQ9TAsGryGXw=";
+      url = "https://github.com/lucasgelfond/zerobrew/releases/download/v0.3.2/zbx-darwin-arm64";
+      sha256 = "sha256-NbiJDkH3pyfl4Jg0ABEi0l2LDHdyewoMvW1QZBR81iw=";
     };
   };
   zerobrew-zbx-x86_64 = {
     pname = "zerobrew-zbx-x86_64";
-    version = "0.2.1";
+    version = "0.3.2";
     src = fetchurl {
-      url = "https://github.com/lucasgelfond/zerobrew/releases/download/v0.2.1/zbx-darwin-x64";
-      sha256 = "sha256-uge/oEFDRAACrO/ffCvIJJoBtcyMskJvtrniXKa9hAI=";
+      url = "https://github.com/lucasgelfond/zerobrew/releases/download/v0.3.2/zbx-darwin-x64";
+      sha256 = "sha256-foIIGS5062IfSdrtJRu/VMmuib2mv9m9MlIURVtzyNA=";
     };
   };
 }

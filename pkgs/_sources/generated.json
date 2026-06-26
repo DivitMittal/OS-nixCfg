@@ -197,11 +197,32 @@
     "pinned": false,
     "src": {
       "name": null,
-      "sha256": "sha256-bRV65XDf5CsvTZcse7sHE18KDHpOMnWPrUUoH9tcWl0=",
+      "sha256": "sha256-T0njW17XCwoL0WPmv7CkdhCZkRNFfvSNi7TI49kbXu0=",
       "type": "url",
-      "url": "https://github.com/EthanSK/Menu-Bar-Dock/releases/download/4.6/Menu.Bar.Dock.app.zip"
+      "url": "https://github.com/EthanSK/Menu-Bar-Dock/releases/download/v4.7.8/Menu-Bar-Dock-v4.7.8.zip"
     },
-    "version": "4.6"
+    "version": "v4.7.8"
+  },
+  "mutt": {
+    "cargoLock": null,
+    "date": "2026-06-23",
+    "extract": null,
+    "name": "mutt",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "deepClone": false,
+      "fetchSubmodules": false,
+      "leaveDotGit": false,
+      "name": null,
+      "owner": "muttmua",
+      "repo": "mutt",
+      "rev": "8f98537fe05c458fe0552cf8c49305fa466c44dc",
+      "sha256": "sha256-RdkLIgjTtztmrvkHinpcweHFP6GrY3ZdNy922Z2oUx4=",
+      "sparseCheckout": [],
+      "type": "github"
+    },
+    "version": "8f98537fe05c458fe0552cf8c49305fa466c44dc"
   },
   "option-analysis": {
     "cargoLock": null,
@@ -386,11 +407,11 @@
     "pinned": false,
     "src": {
       "name": null,
-      "sha256": "sha256-3ss9uE+XBI1VRVs0yppSolyIuJydfWL1nhMFALot8yM=",
+      "sha256": "sha256-YfflR1vFAmnBiqRaWZ6L/u3+9ZdAdFzH2stQ9xth11s=",
       "type": "url",
-      "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.2.1/zb-darwin-arm64"
+      "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.3.2/zb-darwin-arm64"
     },
-    "version": "0.2.1"
+    "version": "0.3.2"
   },
   "zerobrew-zb-x86_64": {
     "cargoLock": null,
@@ -401,11 +422,11 @@
     "pinned": false,
     "src": {
       "name": null,
-      "sha256": "sha256-vGvJ4koxLCjGjuNI+0VVsQmJgh9cB1nu1zX5gB0SNow=",
+      "sha256": "sha256-stpkqgW9eBdwWDnun1iZsOqxVUFnRVzLhQ6FEKpDtBM=",
       "type": "url",
-      "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.2.1/zb-darwin-x64"
+      "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.3.2/zb-darwin-x64"
     },
-    "version": "0.2.1"
+    "version": "0.3.2"
   },
   "zerobrew-zbx-aarch64": {
     "cargoLock": null,
@@ -416,11 +437,11 @@
     "pinned": false,
     "src": {
       "name": null,
-      "sha256": "sha256-u5SxJz/8LxHPdIo4GUlHPGzeWwDTEo8XQ9TAsGryGXw=",
+      "sha256": "sha256-NbiJDkH3pyfl4Jg0ABEi0l2LDHdyewoMvW1QZBR81iw=",
       "type": "url",
-      "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.2.1/zbx-darwin-arm64"
+      "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.3.2/zbx-darwin-arm64"
     },
-    "version": "0.2.1"
+    "version": "0.3.2"
   },
   "zerobrew-zbx-x86_64": {
     "cargoLock": null,
@@ -431,10 +452,10 @@
     "pinned": false,
     "src": {
       "name": null,
-      "sha256": "sha256-uge/oEFDRAACrO/ffCvIJJoBtcyMskJvtrniXKa9hAI=",
+      "sha256": "sha256-foIIGS5062IfSdrtJRu/VMmuib2mv9m9MlIURVtzyNA=",
       "type": "url",
-      "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.2.1/zbx-darwin-x64"
+      "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.3.2/zbx-darwin-x64"
     },
-    "version": "0.2.1"
+    "version": "0.3.2"
   }
 }
