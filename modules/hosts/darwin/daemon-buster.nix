@@ -144,6 +144,7 @@
         "com.apple.sidecar-relay" # Sidecar display/session relay.
         "com.apple.sidecar-display-agent" # Sidecar display session agent.
         "com.apple.remotecompositorclientd" # Remote compositor client for Sidecar display.
+        "com.apple.MirrorDisplays" # AirPlay/display mirroring UI and session agent.
         "com.apple.companiond" # Apple Watch/iPhone companion device coordination.
         "com.apple.cmio.ContinuityCaptureAgent" # Continuity Camera: iPhone as webcam.
         "com.apple.cmio.LaunchCMIOUserExtensionsAgent" # Loads CMIO camera extensions (Continuity Camera path).
