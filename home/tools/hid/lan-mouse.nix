@@ -1,14 +1,14 @@
 {
   inputs,
   lib,
-  pkgs,
+  hostPlatform,
   ...
 }: {
   imports = [inputs.lan-mouse.homeManagerModules.default];
 
   programs.lan-mouse = {
     enable = true;
-    package = inputs.lan-mouse.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (_: {
+    package = inputs.lan-mouse.packages.${hostPlatform.system}.default.overrideAttrs (_: {
       buildInputs = [];
       cargoBuildFlags = ["--no-default-features"];
       cargoTestFlags = ["--no-default-features"];
@@ -17,7 +17,7 @@
     launchd = true;
     settings = {
       port = 4242;
-      release_bind = ["KeyLeftCtrl" "KeyEsc"];
+      release_bind = ["KeyLeftCtrl" "KeyLeftShift" "KeyEsc"];
       clients = [
         {
           position = "top";
