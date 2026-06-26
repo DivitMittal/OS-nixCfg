@@ -1,34 +1,4 @@
 {
-  "BetterDiscord": {
-    "cargoLock": null,
-    "date": null,
-    "extract": null,
-    "name": "BetterDiscord",
-    "passthru": null,
-    "pinned": false,
-    "src": {
-      "name": null,
-      "sha256": "sha256-hb3XtE+WJPd0CvTSZoLyFzDEemQ/3gCfKtdmr6GTVrg=",
-      "type": "url",
-      "url": "https://github.com/BetterDiscord/Installer/releases/download/v1.3.0/BetterDiscord-Mac.zip"
-    },
-    "version": "v1.3.0"
-  },
-  "Hot": {
-    "cargoLock": null,
-    "date": null,
-    "extract": null,
-    "name": "Hot",
-    "passthru": null,
-    "pinned": false,
-    "src": {
-      "name": null,
-      "sha256": "sha256-5PbM92Bmc+5hGHC/sdTMi+hqUIBY24+btc9B6ZftYco=",
-      "type": "url",
-      "url": "https://github.com/macmade/Hot/releases/download/1.9.4/Hot.zip"
-    },
-    "version": "1.9.4"
-  },
   "Iris": {
     "cargoLock": null,
     "date": null,
@@ -59,21 +29,6 @@
     },
     "version": "v6.0.23"
   },
-  "LiveWallpaper": {
-    "cargoLock": null,
-    "date": null,
-    "extract": null,
-    "name": "LiveWallpaper",
-    "passthru": null,
-    "pinned": false,
-    "src": {
-      "name": null,
-      "sha256": "sha256-GW6tSVCrRo8Dx/s6gyRjsWC0dxFIw8J28GBSqrnfaIo=",
-      "type": "url",
-      "url": "https://github.com/thusvill/LiveWallpaperMacOS/releases/download/V2.3/LiveWallpaper.dmg"
-    },
-    "version": "V2.3"
-  },
   "LosslessSwitcher": {
     "cargoLock": null,
     "date": null,
@@ -88,6 +43,27 @@
       "url": "https://github.com/vincentneo/LosslessSwitcher/releases/download/2.0/LosslessSwitcher2.app.zip"
     },
     "version": "2.0"
+  },
+  "MacKernelSDK": {
+    "cargoLock": null,
+    "date": "2026-06-19",
+    "extract": null,
+    "name": "MacKernelSDK",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "deepClone": false,
+      "fetchSubmodules": false,
+      "leaveDotGit": false,
+      "name": null,
+      "owner": "acidanthera",
+      "repo": "MacKernelSDK",
+      "rev": "05094e5e88cec7caedbfb35e8449ed0db94bf95b",
+      "sha256": "sha256-5ZtiNjYrriqgNGCeHseASzxpDxQ6wXNoagx0/uOS+yE=",
+      "sparseCheckout": [],
+      "type": "github"
+    },
+    "version": "05094e5e88cec7caedbfb35e8449ed0db94bf95b"
   },
   "MultiSoundChanger": {
     "cargoLock": null,
@@ -104,21 +80,6 @@
     },
     "version": "1.0.1-BetterDisplay"
   },
-  "Pearcleaner": {
-    "cargoLock": null,
-    "date": null,
-    "extract": null,
-    "name": "Pearcleaner",
-    "passthru": null,
-    "pinned": false,
-    "src": {
-      "name": null,
-      "sha256": "sha256-FtBGPb5wgrPE+FE493bBTk6ikuJbhrdv/gmvQwb7MLI=",
-      "type": "url",
-      "url": "https://github.com/alienator88/Pearcleaner/releases/download/5.4.3/Pearcleaner.zip"
-    },
-    "version": "5.4.3"
-  },
   "SakuraWallpaper": {
     "cargoLock": null,
     "date": "2026-05-21",
@@ -133,6 +94,27 @@
       "url": "https://github.com/yueseqaz/SakuraWallpaper/releases/download/latest/SakuraWallpaper.dmg"
     },
     "version": "1ec6c63f82e5826d7a2da529ebc40726357dd82c"
+  },
+  "VoltageShift": {
+    "cargoLock": null,
+    "date": "2025-09-19",
+    "extract": null,
+    "name": "VoltageShift",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "deepClone": false,
+      "fetchSubmodules": false,
+      "leaveDotGit": false,
+      "name": null,
+      "owner": "asepms92",
+      "repo": "VoltageShift",
+      "rev": "4fef84ffe10b7e79c4d6efa043e7873820590bd0",
+      "sha256": "sha256-GKWBEuuq/vPquGx4vYUI2uEf3uXEo+6uJrDVYnfYg3Q=",
+      "sparseCheckout": [],
+      "type": "github"
+    },
+    "version": "4fef84ffe10b7e79c4d6efa043e7873820590bd0"
   },
   "agevault": {
     "cargoLock": null,
@@ -155,21 +137,6 @@
     },
     "version": "v1.1.1"
   },
-  "cliclick": {
-    "cargoLock": null,
-    "date": null,
-    "extract": null,
-    "name": "cliclick",
-    "passthru": null,
-    "pinned": false,
-    "src": {
-      "name": null,
-      "sha256": "sha256-cQkQ/S2t5qO1iJWUv8AZ59TCvu4J/Xd1A+ceqCrMkbw=",
-      "type": "url",
-      "url": "https://github.com/BlueM/cliclick/releases/download/5.1/cliclick.zip"
-    },
-    "version": "5.1"
-  },
   "dmgwiz": {
     "cargoLock": null,
     "date": null,
@@ -190,6 +157,21 @@
       "type": "github"
     },
     "version": "v1.1.0"
+  },
+  "get-apple-firmware": {
+    "cargoLock": null,
+    "date": "2026-06-21",
+    "extract": null,
+    "name": "get-apple-firmware",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-wcHYqiW7XwieRszQ2XOPwTv714T0maqSRGbGkPBZlh4=",
+      "type": "url",
+      "url": "https://raw.githubusercontent.com/t2linux/wiki/da3091c6cbf91ce022e62d8895e9c3b766a14dbf/docs/tools/firmware.sh"
+    },
+    "version": "da3091c6cbf91ce022e62d8895e9c3b766a14dbf"
   },
   "libxls": {
     "cargoLock": null,
@@ -221,11 +203,11 @@
     },
     "version": "4.6"
   },
-  "mole": {
+  "option-analysis": {
     "cargoLock": null,
-    "date": null,
+    "date": "2026-06-07",
     "extract": null,
-    "name": "mole",
+    "name": "option-analysis",
     "passthru": null,
     "pinned": false,
     "src": {
@@ -233,14 +215,14 @@
       "fetchSubmodules": false,
       "leaveDotGit": false,
       "name": null,
-      "owner": "tw93",
-      "repo": "Mole",
-      "rev": "V1.38.1",
-      "sha256": "sha256-HL56RBJbzhelQeW/RwTqbvJPHQGzRLyCPjWVCUQGyIQ=",
+      "owner": "harsh-vardhhan",
+      "repo": "option-analysis",
+      "rev": "57f3b1eec9705f2a9f01758b4c9c50f22ea97453",
+      "sha256": "sha256-kG5Gf67FRtsxUMWJLw10zjdgKB+aC16iZs8kIDKdKmc=",
       "sparseCheckout": [],
       "type": "github"
     },
-    "version": "V1.38.1"
+    "version": "57f3b1eec9705f2a9f01758b4c9c50f22ea97453"
   },
   "reapack-arm64": {
     "cargoLock": null,
@@ -353,20 +335,26 @@
     },
     "version": "v0.23.0"
   },
-  "unxip": {
+  "tccutil": {
     "cargoLock": null,
     "date": null,
     "extract": null,
-    "name": "unxip",
+    "name": "tccutil",
     "passthru": null,
     "pinned": false,
     "src": {
+      "deepClone": false,
+      "fetchSubmodules": false,
+      "leaveDotGit": false,
       "name": null,
-      "sha256": "sha256-R12///1w4GcV+Wa4eI+N02dy8zCzNg/272/x/M0vFP4=",
-      "type": "url",
-      "url": "https://github.com/saagarjha/unxip/releases/download/v3.3/unxip"
+      "owner": "jacobsalmela",
+      "repo": "tccutil",
+      "rev": "v1.5.1",
+      "sha256": "sha256-gb67xM8daBA03Oq8XCkLdNcPjx5qymz0U859gRaHofs=",
+      "sparseCheckout": [],
+      "type": "github"
     },
-    "version": "v3.3"
+    "version": "v1.5.1"
   },
   "warpd": {
     "cargoLock": null,
@@ -448,65 +436,5 @@
       "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.2.1/zbx-darwin-x64"
     },
     "version": "0.2.1"
-  },
-  "yazi-bin-aarch64-darwin": {
-    "cargoLock": null,
-    "date": null,
-    "extract": null,
-    "name": "yazi-bin-aarch64-darwin",
-    "passthru": null,
-    "pinned": false,
-    "src": {
-      "name": null,
-      "sha256": "sha256-er1xcl4v4nvtA2vsv2znn6F5ZOtoSR00GQARyUuMfKg=",
-      "type": "url",
-      "url": "https://github.com/sxyazi/yazi/releases/download/v26.5.6/yazi-aarch64-apple-darwin.zip"
-    },
-    "version": "v26.5.6"
-  },
-  "yazi-bin-x86_64-darwin": {
-    "cargoLock": null,
-    "date": null,
-    "extract": null,
-    "name": "yazi-bin-x86_64-darwin",
-    "passthru": null,
-    "pinned": false,
-    "src": {
-      "name": null,
-      "sha256": "sha256-aEYGb5ksFojY7HdDGjq1P17yaAGfzvhuVkm4wnAQho0=",
-      "type": "url",
-      "url": "https://github.com/sxyazi/yazi/releases/download/v26.5.6/yazi-x86_64-apple-darwin.zip"
-    },
-    "version": "v26.5.6"
-  },
-  "yazi-bin-aarch64-linux": {
-    "cargoLock": null,
-    "date": null,
-    "extract": null,
-    "name": "yazi-bin-aarch64-linux",
-    "passthru": null,
-    "pinned": false,
-    "src": {
-      "name": null,
-      "sha256": "sha256-w4sHlh5/xMdlA/0PShtL0LN5qZg1uBjNiZsDFcco4eE=",
-      "type": "url",
-      "url": "https://github.com/sxyazi/yazi/releases/download/v26.5.6/yazi-aarch64-unknown-linux-gnu.zip"
-    },
-    "version": "v26.5.6"
-  },
-  "yazi-bin-x86_64-linux": {
-    "cargoLock": null,
-    "date": null,
-    "extract": null,
-    "name": "yazi-bin-x86_64-linux",
-    "passthru": null,
-    "pinned": false,
-    "src": {
-      "name": null,
-      "sha256": "sha256-HJCW8Kg7gQLBlDhfZEze/5PMgmlCYWPJ0DMEHr1Te9I=",
-      "type": "url",
-      "url": "https://github.com/sxyazi/yazi/releases/download/v26.5.6/yazi-x86_64-unknown-linux-gnu.zip"
-    },
-    "version": "v26.5.6"
   }
 }

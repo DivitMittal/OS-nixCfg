@@ -40,5 +40,9 @@
       (pkgs)
       blueutil # bluetooth cli
       ;
+    inherit
+      (pkgs.customDarwin)
+      tccutil # macOS TCC/privacy permissions cli
+      ;
   };
 }

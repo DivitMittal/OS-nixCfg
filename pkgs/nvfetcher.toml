@@ -47,6 +47,10 @@ fetch.github = "ndavd/agevault"
 src.github = "citruz/dmgwiz"
 fetch.github = "citruz/dmgwiz"
 
+[tccutil]
+src.github = "jacobsalmela/tccutil"
+fetch.github = "jacobsalmela/tccutil"
+
 [warpd]
 src.github = "atuan26/warpd"
 fetch.github = "atuan26/warpd"

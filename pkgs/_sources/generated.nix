@@ -19,14 +19,6 @@
       sha256 = "sha256-8/LqQL2dTsAYy3aIhzhlgw3BRIut6P0XduqucbPoB8Y=";
     };
   };
-  LiveWallpaper = {
-    pname = "LiveWallpaper";
-    version = "V2.3";
-    src = fetchurl {
-      url = "https://github.com/thusvill/LiveWallpaperMacOS/releases/download/V2.3/LiveWallpaper.dmg";
-      sha256 = "sha256-GW6tSVCrRo8Dx/s6gyRjsWC0dxFIw8J28GBSqrnfaIo=";
-    };
-  };
   LosslessSwitcher = {
     pname = "LosslessSwitcher";
     version = "2.0";
@@ -34,6 +26,18 @@
       url = "https://github.com/vincentneo/LosslessSwitcher/releases/download/2.0/LosslessSwitcher2.app.zip";
       sha256 = "sha256-vyzWG5r6GgyqekkbJcyyzBLwnbO5gxwNgUhUCD3Oroo=";
     };
+  };
+  MacKernelSDK = {
+    pname = "MacKernelSDK";
+    version = "05094e5e88cec7caedbfb35e8449ed0db94bf95b";
+    src = fetchFromGitHub {
+      owner = "acidanthera";
+      repo = "MacKernelSDK";
+      rev = "05094e5e88cec7caedbfb35e8449ed0db94bf95b";
+      fetchSubmodules = false;
+      sha256 = "sha256-5ZtiNjYrriqgNGCeHseASzxpDxQ6wXNoagx0/uOS+yE=";
+    };
+    date = "2026-06-19";
   };
   MultiSoundChanger = {
     pname = "MultiSoundChanger";
@@ -52,36 +56,6 @@
     };
     date = "2026-05-21";
   };
-  agevault = {
-    pname = "agevault";
-    version = "v1.1.1";
-    src = fetchFromGitHub {
-      owner = "ndavd";
-      repo = "agevault";
-      rev = "v1.1.1";
-      fetchSubmodules = false;
-      sha256 = "sha256-f7t/hzBfZi3OJtYPM4n5bDhm+LcceinDUZIpVsSSl/s=";
-    };
-  };
-  cliclick = {
-    pname = "cliclick";
-    version = "5.1";
-    src = fetchurl {
-      url = "https://github.com/BlueM/cliclick/releases/download/5.1/cliclick.zip";
-      sha256 = "sha256-cQkQ/S2t5qO1iJWUv8AZ59TCvu4J/Xd1A+ceqCrMkbw=";
-    };
-  };
-  MacKernelSDK = {
-    pname = "MacKernelSDK";
-    version = "7af1933c27aefcbdf4809ee44478829aad30f9c1";
-    src = fetchFromGitHub {
-      owner = "acidanthera";
-      repo = "MacKernelSDK";
-      rev = "7af1933c27aefcbdf4809ee44478829aad30f9c1";
-      fetchSubmodules = false;
-      sha256 = "sha256-hnbBi5YA32B3Ts5Uk40CmRSaOvn76F80HCzzNM0DpzQ=";
-    };
-  };
   VoltageShift = {
     pname = "VoltageShift";
     version = "4fef84ffe10b7e79c4d6efa043e7873820590bd0";
@@ -91,6 +65,18 @@
       rev = "4fef84ffe10b7e79c4d6efa043e7873820590bd0";
       fetchSubmodules = false;
       sha256 = "sha256-GKWBEuuq/vPquGx4vYUI2uEf3uXEo+6uJrDVYnfYg3Q=";
+    };
+    date = "2025-09-19";
+  };
+  agevault = {
+    pname = "agevault";
+    version = "v1.1.1";
+    src = fetchFromGitHub {
+      owner = "ndavd";
+      repo = "agevault";
+      rev = "v1.1.1";
+      fetchSubmodules = false;
+      sha256 = "sha256-f7t/hzBfZi3OJtYPM4n5bDhm+LcceinDUZIpVsSSl/s=";
     };
   };
   dmgwiz = {
@@ -106,11 +92,12 @@
   };
   get-apple-firmware = {
     pname = "get-apple-firmware";
-    version = "68114441fb74a6985565feb5255b1037ca8d17e8";
+    version = "da3091c6cbf91ce022e62d8895e9c3b766a14dbf";
     src = fetchurl {
-      url = "https://raw.githubusercontent.com/t2linux/wiki/68114441fb74a6985565feb5255b1037ca8d17e8/docs/tools/firmware.sh";
+      url = "https://raw.githubusercontent.com/t2linux/wiki/da3091c6cbf91ce022e62d8895e9c3b766a14dbf/docs/tools/firmware.sh";
       sha256 = "sha256-wcHYqiW7XwieRszQ2XOPwTv714T0maqSRGbGkPBZlh4=";
     };
+    date = "2026-06-21";
   };
   libxls = {
     pname = "libxls";
@@ -130,14 +117,15 @@
   };
   option-analysis = {
     pname = "option-analysis";
-    version = "eea826be99bec4ef9af98cb69778621c10e27a7d";
+    version = "57f3b1eec9705f2a9f01758b4c9c50f22ea97453";
     src = fetchFromGitHub {
       owner = "harsh-vardhhan";
       repo = "option-analysis";
-      rev = "eea826be99bec4ef9af98cb69778621c10e27a7d";
+      rev = "57f3b1eec9705f2a9f01758b4c9c50f22ea97453";
       fetchSubmodules = false;
-      sha256 = "sha256-qz7fpJQAZrARJDU6OrxUTB6ExhjcbBGkQb8ir4jFdUI=";
+      sha256 = "sha256-kG5Gf67FRtsxUMWJLw10zjdgKB+aC16iZs8kIDKdKmc=";
     };
+    date = "2026-06-07";
   };
   reapack-arm64 = {
     pname = "reapack-arm64";
@@ -196,6 +184,17 @@
       rev = "v0.23.0";
       fetchSubmodules = false;
       sha256 = "sha256-LjQGCE4xbD3+k78827u346/qhC6D8vrhyUq6c+8eWSw=";
+    };
+  };
+  tccutil = {
+    pname = "tccutil";
+    version = "v1.5.1";
+    src = fetchFromGitHub {
+      owner = "jacobsalmela";
+      repo = "tccutil";
+      rev = "v1.5.1";
+      fetchSubmodules = false;
+      sha256 = "sha256-gb67xM8daBA03Oq8XCkLdNcPjx5qymz0U859gRaHofs=";
     };
   };
   warpd = {
