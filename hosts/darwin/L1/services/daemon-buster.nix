@@ -6,6 +6,7 @@ _: {
       accessibility = true;
       ads = true;
       advertising = true;
+      assetCache = true;
       analytics = true;
       appleIntelligence = true;
       applePay = true;
@@ -15,7 +16,10 @@ _: {
       contacts = true;
       continuity = true;
       diagnosticUpload = true;
+      exchange = true;
       familyScreenTime = true;
+      internetAccounts = true;
+      focus = true;
       findMy = true;
       gameCenter = true;
       handwriting = true;
@@ -23,10 +27,13 @@ _: {
       icloud = true;
       iMessage = true;
       location = true;
+      mail = true;
       mdm = true;
+      mobileDevice = true;
       media = true;
       mediaPlayer = true;
       mlRuntime = true;
+      nearbyInteraction = true;
       networking = true;
       news = true;
       podcasts = true;
@@ -40,6 +47,7 @@ _: {
       spotlight = true;
       spellCheck = true;
       systemServices = true;
+      telephony = true;
       timeMachine = true;
       translation = true;
       trial = true;

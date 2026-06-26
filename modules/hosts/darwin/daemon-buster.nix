@@ -24,6 +24,11 @@
 
     advertising.system = ["com.apple.adid"]; # System advertising identifier service.
 
+    assetCache.system = [
+      "com.apple.AssetCache.builtin" # Content Caching server (shares downloads with local devices).
+      "com.apple.AssetCacheTetheratorService" # Tethered caching over USB for iOS devices.
+    ];
+
     analytics = {
       user = [
         "com.apple.geoanalyticsd" # Location/geography analytics collection.
@@ -82,6 +87,8 @@
         "com.apple.spotlightknowledged" # Semantic knowledge graph powering Apple Intelligence and enhanced Spotlight suggestions; lives in CoreSpotlight.framework but its primary role is AI inference — basic file search (mds) works without it.
         "com.apple.spotlightknowledged.importer" # Imports content into the Apple Intelligence knowledge graph.
         "com.apple.spotlightknowledged.updater" # Incrementally updates the Apple Intelligence knowledge graph.
+        "com.apple.siriactionsd" # Siri Actions integration for third-party shortcuts.
+        "com.apple.milod" # On-device ML inference host.
       ];
       system = [
         "com.apple.coreduetd" # Cross-app activity database used by suggestions and handoff-like features.
@@ -135,10 +142,19 @@
         "com.apple.sharingd" # AirDrop, Handoff, Universal Clipboard, and sharing services.
         "com.apple.sidecar-hid-relay" # Sidecar input relay from iPad.
         "com.apple.sidecar-relay" # Sidecar display/session relay.
+        "com.apple.sidecar-display-agent" # Sidecar display session agent.
+        "com.apple.remotecompositorclientd" # Remote compositor client for Sidecar display.
         "com.apple.companiond" # Apple Watch/iPhone companion device coordination.
         "com.apple.cmio.ContinuityCaptureAgent" # Continuity Camera: iPhone as webcam.
+        "com.apple.cmio.LaunchCMIOUserExtensionsAgent" # Loads CMIO camera extensions (Continuity Camera path).
+        "com.apple.BTServer.cloudpairing" # Bluetooth cloud pairing (syncs BT device pairings via iCloud).
+        "com.apple.cdpd" # Connected Device Platform: cross-device activity and ecosystem sync.
+        "com.apple.ecosystemagent" # User-facing Apple ecosystem coordination agent.
       ];
-      system = ["com.apple.rapportd"]; # System Rapport service for nearby-device discovery.
+      system = [
+        "com.apple.rapportd" # System Rapport service for nearby-device discovery.
+        "com.apple.ecosystemd" # System Apple ecosystem services daemon.
+      ];
     };
 
     diagnosticUpload.system = [
@@ -147,6 +163,13 @@
       "com.apple.tracd" # System trace collection daemon.
       "com.apple.pcapd" # Packet-capture helper used by diagnostics/sysdiagnose.
     ];
+
+    exchange.user = [
+      "com.apple.exchange.exchangesyncd" # Exchange/ActiveSync calendar, contacts, and mail background sync.
+      "com.apple.notes.exchangenotesd" # Notes sync via Exchange account.
+    ];
+
+    internetAccounts.user = ["com.apple.accountsd"]; # Internet Accounts daemon (Google, Exchange, Yahoo credential/sync broker).
 
     familyScreenTime = {
       user = [
@@ -219,6 +242,8 @@
         "com.apple.AOSHeartbeat" # Apple Online Services heartbeat for iCloud account presence.
         "com.apple.AOSPushRelay" # Apple Online Services push relay for iCloud updates.
         "com.apple.replicatord" # Device-to-device data replication routed through iCloud infrastructure.
+        "com.apple.bird" # iCloud Drive file provider daemon.
+        "com.apple.syncdefaultsd" # Syncs NSUserDefaults across devices via iCloud.
       ];
       system = ["com.apple.cloudd"]; # System CloudKit/iCloud daemon.
     };
@@ -246,6 +271,8 @@
       "com.apple.CommCenter-osx" # Cellular/SMS/telephony continuity backend; broader than iMessage.
     ];
 
+    mail.user = ["com.apple.email.maild"]; # Mail.app background fetch/push daemon.
+
     location = {
       user = [
         "com.apple.geod" # Geocoding/location lookup; also runs in gui/501 on Tahoe 26+.
@@ -261,6 +288,14 @@
     };
 
     mdm.user = ["com.apple.ManagedClientAgent.enrollagent"]; # MDM enrollment agent.
+
+    mobileDevice.user = [
+      "com.apple.mobiledeviceupdater" # Updates firmware on connected iOS/iPadOS devices.
+      "com.apple.MobileAccessoryUpdater.fudHelperAgent" # Firmware update helper for MFi accessories.
+      "com.apple.mobilerepaird" # Self-repair/diagnostics agent for connected mobile devices.
+      "com.apple.ptpcamerad" # PTP camera import from connected iOS devices.
+      "com.apple.CoreDevice.remotepairingd" # Remote device pairing for Xcode/Instruments over the network.
+    ];
 
     media.user = [
       "com.apple.mediaanalysisd" # Photos/video visual analysis and memories/object detection.
@@ -311,6 +346,8 @@
       ];
     };
 
+    nearbyInteraction.system = ["com.apple.nearbyd"]; # Nearby device discovery and interaction; requires multiple Apple devices.
+
     news.user = [
       "com.apple.newsd" # Apple News background sync/notifications.
       "com.apple.tipsd" # Apple Tips content/notifications.
@@ -324,10 +361,16 @@
       "com.apple.quicklook.ThumbnailsAgent" # Finder thumbnail generation; disabling leaves generic icons/previews.
     ];
 
-    remoteDesktop.user = [
-      "com.apple.RemoteDesktop.agent" # Apple Remote Desktop client agent.
-      "com.apple.RemoteManagementAgent" # Remote Management/ARD user agent.
-    ];
+    remoteDesktop = {
+      user = [
+        "com.apple.RemoteDesktop.agent" # Apple Remote Desktop client agent.
+        "com.apple.RemoteManagementAgent" # Remote Management/ARD user agent.
+      ];
+      system = [
+        "com.apple.remotemanagementd" # System Remote Management / ARD daemon.
+        "com.apple.remoted" # Remote control protocol daemon.
+      ];
+    };
 
     safari.user = [
       "com.apple.Safari.History" # Safari history database service.
@@ -363,9 +406,18 @@
 
     shortcuts.user = ["com.apple.WorkflowKit.ShortcutsViewService"]; # Shortcuts app/workflow view service.
 
+    # Focus modes (DND) and Live Activities / Dynamic Island widgets.
+    focus.user = [
+      "com.apple.donotdisturbd" # Focus / Do Not Disturb mode enforcement and scheduling.
+      "com.apple.liveactivitiesd" # Live Activities runtime (lock screen / Dynamic Island widgets).
+      "com.apple.StatusKitAgent" # Status Kit agent powering Live Activities updates.
+    ];
+
     systemServices.user = [
       "com.apple.helpd" # In-app help viewer (macOS Help books and guided tours).
       "com.apple.chronod" # Widget runtime and widget-centre connectivity.
+      "com.apple.recentsd" # Recent items tracking (Finder recent files/apps).
+      "com.apple.SoftwareUpdateNotificationManager" # macOS software update notification agent.
     ];
 
     social.user = ["com.apple.sociallayerd"]; # Social/share-sheet account integration.
@@ -399,7 +451,10 @@
       "com.apple.watchlistd" # Apple TV watchlist/up-next sync.
     ];
 
-    weather.user = ["com.apple.weatherd"]; # Weather data/notification service.
+    weather.user = [
+      "com.apple.weatherd" # Weather data/notification service.
+      "com.apple.weather.menu" # Weather menu bar agent.
+    ];
   };
 
   # ── Domain helpers ────────────────────────────────────────────────────────────
