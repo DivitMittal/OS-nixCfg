@@ -8,7 +8,6 @@
     {
       inherit
         (pkgs.brewCasks)
-        spaceman # spaces in menubar for macOS
         dockdoor # Alt-Tab replacement
         pearcleaner # macOS all-in-one cleaner
         hot # CPU temperature monitor for menubar
@@ -24,6 +23,7 @@
         ;
       inherit
         (pkgs.customDarwin)
+        Spaceman-bin # spaces in menubar for macOS (ruittenb fork)
         menubar-dock-bin # macOS dock in menubar
         SakuraWallpaper # Live wallpaper for macOS
         #MultiSoundChanger-bin # aggregate-output volume control in menubar

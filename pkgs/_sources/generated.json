@@ -95,6 +95,21 @@
     },
     "version": "1ec6c63f82e5826d7a2da529ebc40726357dd82c"
   },
+  "Spaceman": {
+    "cargoLock": null,
+    "date": null,
+    "extract": null,
+    "name": "Spaceman",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-BRUagzpa3YBzLVkDTxHIq8XPIhIuwErKcudXAkkEV24=",
+      "type": "url",
+      "url": "https://github.com/ruittenb/Spaceman/releases/download/v1.23.4/Spaceman-1.23.4.dmg"
+    },
+    "version": "1.23.4"
+  },
   "VoltageShift": {
     "cargoLock": null,
     "date": "2025-09-19",

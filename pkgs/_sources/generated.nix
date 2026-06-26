@@ -56,6 +56,14 @@
     };
     date = "2026-05-21";
   };
+  Spaceman = {
+    pname = "Spaceman";
+    version = "1.23.4";
+    src = fetchurl {
+      url = "https://github.com/ruittenb/Spaceman/releases/download/v1.23.4/Spaceman-1.23.4.dmg";
+      sha256 = "sha256-BRUagzpa3YBzLVkDTxHIq8XPIhIuwErKcudXAkkEV24=";
+    };
+  };
   VoltageShift = {
     pname = "VoltageShift";
     version = "4fef84ffe10b7e79c4d6efa043e7873820590bd0";
