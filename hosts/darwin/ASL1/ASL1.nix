@@ -1,7 +1,7 @@
 # Apple Silicon Darwin — mirrors L1 service layout
 # TODO: extract shared darwin services to common/hosts/darwin/ when configs diverge
 _: {
-  system.stateVersion = 4;
+  system.stateVersion = 6;
 
   imports = [
     ../L1/defaults/defaultsPrefs.nix

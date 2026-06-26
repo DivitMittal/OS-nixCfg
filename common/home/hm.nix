@@ -5,7 +5,7 @@
 }: {
   programs.home-manager.enable = true; # home-manager standalone
 
-  home.stateVersion = lib.mkDefault "25.05";
+  home.stateVersion = lib.mkDefault "26.05";
 
   home = {
     username = lib.mkDefault config.hostSpec.username;
