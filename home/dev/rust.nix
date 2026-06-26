@@ -8,6 +8,7 @@
     inherit
       (pkgs)
       cargo
+      rustc
       ;
   };
   home.sessionPath = lib.mkAfter ["${config.home.homeDirectory}/.cargo/bin"];
