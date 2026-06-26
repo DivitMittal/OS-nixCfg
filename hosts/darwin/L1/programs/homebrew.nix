@@ -32,13 +32,12 @@
       "blackhole-2ch"
 
       ## macOS specific
-      #"lulu"
+      "lulu"
       "knockknock"
     ];
 
     brews = [
       ## General
-      "openssl"
       ## Development
       #"libomp" ## Multiprogramming
     ];
