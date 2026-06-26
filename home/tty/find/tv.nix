@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: let
+  c = config.lib.stylix.colors.withHashtag;
+in {
   programs.television = {
     enable = true;
     # Wrap television to use bash as default shell for shell-specific commands
@@ -15,6 +21,30 @@
     enableBashIntegration = false;
     enableZshIntegration = false;
     enableFishIntegration = false;
+
+    settings.ui.theme = "noctalia-cyberpunk";
+
+    themes.noctalia-cyberpunk = {
+      border_fg = c.base03;
+      text_fg = c.base05;
+      dimmed_text_fg = c.base03;
+      input_text_fg = c.base0C;
+      result_count_fg = c.base09;
+      result_name_fg = c.base0D;
+      result_line_number_fg = c.base03;
+      result_value_fg = c.base05;
+      selection_fg = c.base07;
+      selection_bg = c.base02;
+      match_fg = c.base0B;
+      preview_title_fg = c.base0C;
+      channel_mode_fg = c.base00;
+      channel_mode_bg = c.base0B;
+      remote_control_mode_fg = c.base00;
+      remote_control_mode_bg = c.base0A;
+      action_picker_mode_fg = c.base00;
+      action_picker_mode_bg = c.base0F;
+      send_to_channel_mode_fg = c.base0C;
+    };
 
     channels = {
       brew = {
