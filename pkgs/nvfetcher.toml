@@ -48,6 +48,10 @@ fetch.github = "aome510/spotify-player"
 src.github = "ndavd/agevault"
 fetch.github = "ndavd/agevault"
 
+[ccs-bar]
+src.github = "kaitranntt/ccs"
+fetch.github = "kaitranntt/ccs"
+
 [dmgwiz]
 src.github = "citruz/dmgwiz"
 fetch.github = "citruz/dmgwiz"
@@ -139,6 +143,16 @@ fetch.url = "https://github.com/reaper-oss/sws/releases/download/v$ver/sws_pytho
 src.github = "reaper-oss/sws"
 src.prefix = "v"
 fetch.url = "https://github.com/reaper-oss/sws/releases/download/v$ver/sws_python32.py"
+
+[launchdeck-aarch64]
+src.github = "sderosiaux/launchdeck"
+src.prefix = "v"
+fetch.url = "https://github.com/sderosiaux/launchdeck/releases/download/v$ver/launchdeck-aarch64-apple-darwin.tar.gz"
+
+[launchdeck-x86_64]
+src.github = "sderosiaux/launchdeck"
+src.prefix = "v"
+fetch.url = "https://github.com/sderosiaux/launchdeck/releases/download/v$ver/launchdeck-x86_64-apple-darwin.tar.gz"
 
 [zerobrew-zb-aarch64]
 src.github = "lucasgelfond/zerobrew"

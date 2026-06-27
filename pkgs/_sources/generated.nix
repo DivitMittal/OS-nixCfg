@@ -87,6 +87,17 @@
       sha256 = "sha256-f7t/hzBfZi3OJtYPM4n5bDhm+LcceinDUZIpVsSSl/s=";
     };
   };
+  ccs-bar = {
+    pname = "ccs-bar";
+    version = "v8.6.1";
+    src = fetchFromGitHub {
+      owner = "kaitranntt";
+      repo = "ccs";
+      rev = "v8.6.1";
+      fetchSubmodules = false;
+      sha256 = "sha256-w+KGuAu4Y+zdjYg4s7eV9VVAlcpXkrnD3y+Zvussj3E=";
+    };
+  };
   dmgwiz = {
     pname = "dmgwiz";
     version = "v1.1.0";
@@ -106,6 +117,22 @@
       sha256 = "sha256-wcHYqiW7XwieRszQ2XOPwTv714T0maqSRGbGkPBZlh4=";
     };
     date = "2026-06-21";
+  };
+  launchdeck-aarch64 = {
+    pname = "launchdeck-aarch64";
+    version = "0.1.3";
+    src = fetchurl {
+      url = "https://github.com/sderosiaux/launchdeck/releases/download/v0.1.3/launchdeck-aarch64-apple-darwin.tar.gz";
+      sha256 = "sha256-/h0/+DAxnki09aw4lm/+4nAsxgletSor2E+G4CU3POA=";
+    };
+  };
+  launchdeck-x86_64 = {
+    pname = "launchdeck-x86_64";
+    version = "0.1.3";
+    src = fetchurl {
+      url = "https://github.com/sderosiaux/launchdeck/releases/download/v0.1.3/launchdeck-x86_64-apple-darwin.tar.gz";
+      sha256 = "sha256-BfhQue0/kRa6Exuyz5lfQa1dSAd9/X5AXW7AneN1yhc=";
+    };
   };
   libxls = {
     pname = "libxls";

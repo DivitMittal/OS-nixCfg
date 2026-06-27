@@ -23,6 +23,7 @@
         ;
       inherit
         (pkgs.customDarwin)
+        ccs-bar # CCS menu bar client — quota, cost and tier
         Spaceman-bin # spaces in menubar for macOS (ruittenb fork)
         menubar-dock-bin # macOS dock in menubar
         SakuraWallpaper # Live wallpaper for macOS
