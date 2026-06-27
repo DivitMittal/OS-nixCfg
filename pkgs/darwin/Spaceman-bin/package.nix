@@ -13,7 +13,7 @@ stdenvNoCC.mkDerivation (_finalAttrs: {
 
   unpackPhase = ''7zz x -snld $src'';
 
-  sourceRoot = "Spaceman.app";
+  sourceRoot = "Spaceman Installer/Spaceman.app";
 
   installPhase = ''
     runHook preInstall
