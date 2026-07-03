@@ -12,6 +12,7 @@
         hot # CPU temperature monitor for menubar
         linearmouse # mouse/trackpad customization
         music-decoy # prevent macOS Music from auto-launching on media keys
+        finetune # audio fine-tuning and volume control
         #gswitch # MUX switcher (using pmset instead)
         #bluesnooze # turns bluetooth off when asleep
         #aldente # Battery Management
