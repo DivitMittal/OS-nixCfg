@@ -41,6 +41,7 @@
       uutils-coreutils-noprefix # coreutils
       uutils-diffutils # diffutils
       uutils-findutils # findutils
+      uutils-procps # procps
       ## Others
       zip
       unzip
