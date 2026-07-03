@@ -1,13 +1,13 @@
 {
   inputs,
-  pkgs,
+  hostPlatform,
   ...
 }: {
   imports = [inputs.android-kvm.homeManagerModules.android-kvm];
 
   programs.android-kvm = {
     enable = true;
-    package = inputs.android-kvm.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    package = inputs.android-kvm.packages.${hostPlatform.system}.default;
     settings = {
       android-edge = "right";
       activation-pixels = 24;

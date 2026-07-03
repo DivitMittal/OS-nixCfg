@@ -20,6 +20,7 @@
       "ai-nixCfg"
       "tidalcycles-nix"
       "hammerspoon-nix"
+      "android-kvm"
       "brew-nix"
       "TLTR"
       "PKMS"
