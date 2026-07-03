@@ -196,7 +196,7 @@
   },
   "get-apple-firmware": {
     "cargoLock": null,
-    "date": "2026-06-21",
+    "date": "2026-06-28",
     "extract": null,
     "name": "get-apple-firmware",
     "passthru": null,
@@ -205,9 +205,9 @@
       "name": null,
       "sha256": "sha256-wcHYqiW7XwieRszQ2XOPwTv714T0maqSRGbGkPBZlh4=",
       "type": "url",
-      "url": "https://raw.githubusercontent.com/t2linux/wiki/da3091c6cbf91ce022e62d8895e9c3b766a14dbf/docs/tools/firmware.sh"
+      "url": "https://raw.githubusercontent.com/t2linux/wiki/3dba3ec8dd3e44ce63ea08d138faa8c6f50d94e6/docs/tools/firmware.sh"
     },
-    "version": "da3091c6cbf91ce022e62d8895e9c3b766a14dbf"
+    "version": "3dba3ec8dd3e44ce63ea08d138faa8c6f50d94e6"
   },
   "launchdeck-aarch64": {
     "cargoLock": null,

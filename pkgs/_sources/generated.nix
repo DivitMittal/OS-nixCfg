@@ -111,12 +111,12 @@
   };
   get-apple-firmware = {
     pname = "get-apple-firmware";
-    version = "da3091c6cbf91ce022e62d8895e9c3b766a14dbf";
+    version = "3dba3ec8dd3e44ce63ea08d138faa8c6f50d94e6";
     src = fetchurl {
-      url = "https://raw.githubusercontent.com/t2linux/wiki/da3091c6cbf91ce022e62d8895e9c3b766a14dbf/docs/tools/firmware.sh";
+      url = "https://raw.githubusercontent.com/t2linux/wiki/3dba3ec8dd3e44ce63ea08d138faa8c6f50d94e6/docs/tools/firmware.sh";
       sha256 = "sha256-wcHYqiW7XwieRszQ2XOPwTv714T0maqSRGbGkPBZlh4=";
     };
-    date = "2026-06-21";
+    date = "2026-06-28";
   };
   launchdeck-aarch64 = {
     pname = "launchdeck-aarch64";
