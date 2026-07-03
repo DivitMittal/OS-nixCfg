@@ -104,11 +104,11 @@
     "pinned": false,
     "src": {
       "name": null,
-      "sha256": "sha256-BRUagzpa3YBzLVkDTxHIq8XPIhIuwErKcudXAkkEV24=",
+      "sha256": "sha256-NO69eFVIzu/WNETE6k9HxV3p+/xyZ6+1b0M+hcJnqxE=",
       "type": "url",
-      "url": "https://github.com/ruittenb/Spaceman/releases/download/v1.23.4/Spaceman-1.23.4.dmg"
+      "url": "https://github.com/ruittenb/Spaceman/releases/download/v1.23.5/Spaceman-1.23.5.dmg"
     },
-    "version": "1.23.4"
+    "version": "1.23.5"
   },
   "VoltageShift": {
     "cargoLock": null,
@@ -166,12 +166,12 @@
       "name": null,
       "owner": "kaitranntt",
       "repo": "ccs",
-      "rev": "v8.6.1",
-      "sha256": "sha256-w+KGuAu4Y+zdjYg4s7eV9VVAlcpXkrnD3y+Zvussj3E=",
+      "rev": "v8.7.0",
+      "sha256": "sha256-RufZ4Vnutz91vp9oftPOAKpXP6n0gm0EJTTNloczvRs=",
       "sparseCheckout": [],
       "type": "github"
     },
-    "version": "v8.6.1"
+    "version": "v8.7.0"
   },
   "dmgwiz": {
     "cargoLock": null,
@@ -271,7 +271,7 @@
   },
   "mutt": {
     "cargoLock": null,
-    "date": "2026-06-23",
+    "date": "2026-07-03",
     "extract": null,
     "name": "mutt",
     "passthru": null,
@@ -283,12 +283,12 @@
       "name": null,
       "owner": "muttmua",
       "repo": "mutt",
-      "rev": "8f98537fe05c458fe0552cf8c49305fa466c44dc",
-      "sha256": "sha256-RdkLIgjTtztmrvkHinpcweHFP6GrY3ZdNy922Z2oUx4=",
+      "rev": "b998501ae340043536765e9ee71689d317b81430",
+      "sha256": "sha256-oHsn4XAI1TilU1Zw36GBKR7XyS7WnQlG6LpB4OrObV4=",
       "sparseCheckout": [],
       "type": "github"
     },
-    "version": "8f98537fe05c458fe0552cf8c49305fa466c44dc"
+    "version": "b998501ae340043536765e9ee71689d317b81430"
   },
   "option-analysis": {
     "cargoLock": null,
@@ -401,6 +401,27 @@
     },
     "version": "2.14.0.7"
   },
+  "smcFanControl": {
+    "cargoLock": null,
+    "date": "2022-12-03",
+    "extract": null,
+    "name": "smcFanControl",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "deepClone": false,
+      "fetchSubmodules": false,
+      "leaveDotGit": false,
+      "name": null,
+      "owner": "hholtmann",
+      "repo": "smcFanControl",
+      "rev": "e1bd672bcd2d72eddff9b6da7b9cae38e35c4206",
+      "sha256": "sha256-Ma1+E/i6LTvKpSRu2uASAC/EAsYM+cIWInWBzH4MkPw=",
+      "sparseCheckout": [],
+      "type": "github"
+    },
+    "version": "e1bd672bcd2d72eddff9b6da7b9cae38e35c4206"
+  },
   "spotify-player": {
     "cargoLock": null,
     "date": null,
@@ -415,12 +436,12 @@
       "name": null,
       "owner": "aome510",
       "repo": "spotify-player",
-      "rev": "v0.23.0",
-      "sha256": "sha256-LjQGCE4xbD3+k78827u346/qhC6D8vrhyUq6c+8eWSw=",
+      "rev": "v0.24.0",
+      "sha256": "sha256-SxzQdQOg+KS6jXJNifVkehR91g6gTHBYgyxfXx9WWI8=",
       "sparseCheckout": [],
       "type": "github"
     },
-    "version": "v0.23.0"
+    "version": "v0.24.0"
   },
   "tccutil": {
     "cargoLock": null,

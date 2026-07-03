@@ -19,6 +19,11 @@ src.git = "https://github.com/asepms92/VoltageShift.git"
 src.branch = "master"
 fetch.github = "asepms92/VoltageShift"
 
+[smcFanControl]
+src.git = "https://github.com/hholtmann/smcFanControl.git"
+src.branch = "master"
+fetch.github = "hholtmann/smcFanControl"
+
 [MacKernelSDK]
 src.git = "https://github.com/acidanthera/MacKernelSDK.git"
 src.branch = "master"

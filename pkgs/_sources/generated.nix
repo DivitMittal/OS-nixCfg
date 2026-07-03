@@ -58,10 +58,10 @@
   };
   Spaceman = {
     pname = "Spaceman";
-    version = "1.23.4";
+    version = "1.23.5";
     src = fetchurl {
-      url = "https://github.com/ruittenb/Spaceman/releases/download/v1.23.4/Spaceman-1.23.4.dmg";
-      sha256 = "sha256-BRUagzpa3YBzLVkDTxHIq8XPIhIuwErKcudXAkkEV24=";
+      url = "https://github.com/ruittenb/Spaceman/releases/download/v1.23.5/Spaceman-1.23.5.dmg";
+      sha256 = "sha256-NO69eFVIzu/WNETE6k9HxV3p+/xyZ6+1b0M+hcJnqxE=";
     };
   };
   VoltageShift = {
@@ -89,13 +89,13 @@
   };
   ccs-bar = {
     pname = "ccs-bar";
-    version = "v8.6.1";
+    version = "v8.7.0";
     src = fetchFromGitHub {
       owner = "kaitranntt";
       repo = "ccs";
-      rev = "v8.6.1";
+      rev = "v8.7.0";
       fetchSubmodules = false;
-      sha256 = "sha256-w+KGuAu4Y+zdjYg4s7eV9VVAlcpXkrnD3y+Zvussj3E=";
+      sha256 = "sha256-RufZ4Vnutz91vp9oftPOAKpXP6n0gm0EJTTNloczvRs=";
     };
   };
   dmgwiz = {
@@ -152,15 +152,15 @@
   };
   mutt = {
     pname = "mutt";
-    version = "8f98537fe05c458fe0552cf8c49305fa466c44dc";
+    version = "b998501ae340043536765e9ee71689d317b81430";
     src = fetchFromGitHub {
       owner = "muttmua";
       repo = "mutt";
-      rev = "8f98537fe05c458fe0552cf8c49305fa466c44dc";
+      rev = "b998501ae340043536765e9ee71689d317b81430";
       fetchSubmodules = false;
-      sha256 = "sha256-RdkLIgjTtztmrvkHinpcweHFP6GrY3ZdNy922Z2oUx4=";
+      sha256 = "sha256-oHsn4XAI1TilU1Zw36GBKR7XyS7WnQlG6LpB4OrObV4=";
     };
-    date = "2026-06-23";
+    date = "2026-07-03";
   };
   option-analysis = {
     pname = "option-analysis";
@@ -222,15 +222,27 @@
       sha256 = "sha256-c0enRIXFN+dMDdxTQ3hFv0almTF0dfrSHILNigJp2Js=";
     };
   };
+  smcFanControl = {
+    pname = "smcFanControl";
+    version = "e1bd672bcd2d72eddff9b6da7b9cae38e35c4206";
+    src = fetchFromGitHub {
+      owner = "hholtmann";
+      repo = "smcFanControl";
+      rev = "e1bd672bcd2d72eddff9b6da7b9cae38e35c4206";
+      fetchSubmodules = false;
+      sha256 = "sha256-Ma1+E/i6LTvKpSRu2uASAC/EAsYM+cIWInWBzH4MkPw=";
+    };
+    date = "2022-12-03";
+  };
   spotify-player = {
     pname = "spotify-player";
-    version = "v0.23.0";
+    version = "v0.24.0";
     src = fetchFromGitHub {
       owner = "aome510";
       repo = "spotify-player";
-      rev = "v0.23.0";
+      rev = "v0.24.0";
       fetchSubmodules = false;
-      sha256 = "sha256-LjQGCE4xbD3+k78827u346/qhC6D8vrhyUq6c+8eWSw=";
+      sha256 = "sha256-SxzQdQOg+KS6jXJNifVkehR91g6gTHBYgyxfXx9WWI8=";
     };
   };
   tccutil = {

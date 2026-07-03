@@ -33,6 +33,7 @@
     }
     // lib.optionalAttrs hostPlatform.isx86_64 {
       VoltageShift = pkgs.customDarwin.VoltageShift; # Intel-only undervolting CLI
+      smc = pkgs.customDarwin.smc; # Intel-only SMC fan/temp reading CLI
     }
   );
 }
