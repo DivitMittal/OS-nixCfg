@@ -271,7 +271,7 @@
       };
     };
     android-kvm = {
-      url = "path:/Users/div/Projects/Keyboard/android-kvm";
+      url = "path:/Users/div/Projects/hid/android-kvm";
       #url = "github:DivitMittal/android-kvm";
       inputs = {
         nixpkgs.follows = "nixpkgs";
