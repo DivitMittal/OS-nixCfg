@@ -1,7 +1,6 @@
 {
   lib,
   stdenv,
-  swift,
   sources,
 }:
 stdenv.mkDerivation {
@@ -12,12 +11,18 @@ stdenv.mkDerivation {
   # ccs is a monorepo; the bar app lives under macos-bar/
   postUnpack = "sourceRoot=$sourceRoot/macos-bar";
 
-  nativeBuildInputs = [swift];
-
+  # Builds with the system Xcode toolchain: the nix apple-sdk has no `swift`
+  # binary, and the darwin stdenv exports DEVELOPER_DIR + SDKROOT at the nix
+  # apple-sdk store path — an SDK built for an older Swift than Xcode's
+  # compiler, so swiftc aborts ("this SDK is not supported by the compiler").
+  # We drop both so xcode-select/xcrun resolve the real Xcode, then disable
+  # SwiftPM's sandbox-exec (the nix build user cannot apply it: EPERM).
   buildPhase = ''
     runHook preBuild
     export HOME=$TMPDIR
-    swift build -c release --product CCSBar
+    unset DEVELOPER_DIR SDKROOT
+    export DEVELOPER_DIR="$(/usr/bin/xcode-select -p)"
+    /usr/bin/xcrun swift build -c release --disable-sandbox --product CCSBar
     runHook postBuild
   '';
 
