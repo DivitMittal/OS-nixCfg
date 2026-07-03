@@ -5,24 +5,20 @@
   inputs,
   ...
 }: {
-  home.packages =
-    lib.attrsets.attrValues {
-      inherit
-        (pkgs)
-        nmap # network scanner
-        speedtest-go # speedtest cli
-        bandwhich # bandwidth usage
-        xh #httpie # http API client
-        gping # graphical ping alt
-        doggo #dig # dns lookup
-        croc # file transfer
-        ttyd # terminal sharing over web
-        ;
-      inherit (inputs.nixpkgs-2505.legacyPackages.${hostPlatform.system}) termscp; # scp, ftp client
-    }
-    ++ lib.optionals hostPlatform.isLinux [
-      pkgs.bluetui
-    ];
+  home.packages = lib.attrsets.attrValues {
+    inherit
+      (pkgs)
+      nmap # network scanner
+      speedtest-go # speedtest cli
+      bandwhich # bandwidth usage
+      xh #httpie # http API client
+      gping # graphical ping alt
+      doggo #dig # dns lookup
+      croc # file transfer
+      ttyd # terminal sharing over web
+      ;
+    inherit (inputs.nixpkgs-2505.legacyPackages.${hostPlatform.system}) termscp; # scp, ftp client
+  };
 
   programs.aria2 = {
     enable = true;
