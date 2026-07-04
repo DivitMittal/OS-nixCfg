@@ -256,6 +256,38 @@
       sha256 = "sha256-gb67xM8daBA03Oq8XCkLdNcPjx5qymz0U859gRaHofs=";
     };
   };
+  uniclipboard-cli-aarch64-darwin = {
+    pname = "uniclipboard-cli-aarch64-darwin";
+    version = "0.18.0";
+    src = fetchurl {
+      url = "https://github.com/UniClipboard/UniClipboard/releases/download/v0.18.0/uniclipboard-cli-0.18.0-aarch64-apple-darwin.tar.gz";
+      sha256 = "sha256-lKmVRwQUB5xGybR7x2LbeOk8qOBaXEzsKqVZi7cjNn0=";
+    };
+  };
+  uniclipboard-cli-aarch64-linux = {
+    pname = "uniclipboard-cli-aarch64-linux";
+    version = "0.18.0";
+    src = fetchurl {
+      url = "https://github.com/UniClipboard/UniClipboard/releases/download/v0.18.0/uniclipboard-cli-0.18.0-aarch64-unknown-linux-musl.tar.gz";
+      sha256 = "sha256-yoXNmKilJsg3cJA8m5XC61mfrX42iWYXNRCupdm4VO8=";
+    };
+  };
+  uniclipboard-cli-x86_64-darwin = {
+    pname = "uniclipboard-cli-x86_64-darwin";
+    version = "0.18.0";
+    src = fetchurl {
+      url = "https://github.com/UniClipboard/UniClipboard/releases/download/v0.18.0/uniclipboard-cli-0.18.0-x86_64-apple-darwin.tar.gz";
+      sha256 = "sha256-AnYKUEXSI5xpV/rerUhslUHDQvIt9IgSOKJnbtrpi48=";
+    };
+  };
+  uniclipboard-cli-x86_64-linux = {
+    pname = "uniclipboard-cli-x86_64-linux";
+    version = "0.18.0";
+    src = fetchurl {
+      url = "https://github.com/UniClipboard/UniClipboard/releases/download/v0.18.0/uniclipboard-cli-0.18.0-x86_64-unknown-linux-musl.tar.gz";
+      sha256 = "sha256-Tn/49x/tWCabsr2E9kJ7qCld5ObMzTGAJtGbQU0q71g=";
+    };
+  };
   warpd = {
     pname = "warpd";
     version = "v2.2.0";

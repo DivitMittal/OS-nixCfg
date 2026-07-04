@@ -159,6 +159,26 @@ src.github = "sderosiaux/launchdeck"
 src.prefix = "v"
 fetch.url = "https://github.com/sderosiaux/launchdeck/releases/download/v$ver/launchdeck-x86_64-apple-darwin.tar.gz"
 
+[uniclipboard-cli-aarch64-darwin]
+src.github = "UniClipboard/UniClipboard"
+src.prefix = "v"
+fetch.url = "https://github.com/UniClipboard/UniClipboard/releases/download/v$ver/uniclipboard-cli-$ver-aarch64-apple-darwin.tar.gz"
+
+[uniclipboard-cli-x86_64-darwin]
+src.github = "UniClipboard/UniClipboard"
+src.prefix = "v"
+fetch.url = "https://github.com/UniClipboard/UniClipboard/releases/download/v$ver/uniclipboard-cli-$ver-x86_64-apple-darwin.tar.gz"
+
+[uniclipboard-cli-aarch64-linux]
+src.github = "UniClipboard/UniClipboard"
+src.prefix = "v"
+fetch.url = "https://github.com/UniClipboard/UniClipboard/releases/download/v$ver/uniclipboard-cli-$ver-aarch64-unknown-linux-musl.tar.gz"
+
+[uniclipboard-cli-x86_64-linux]
+src.github = "UniClipboard/UniClipboard"
+src.prefix = "v"
+fetch.url = "https://github.com/UniClipboard/UniClipboard/releases/download/v$ver/uniclipboard-cli-$ver-x86_64-unknown-linux-musl.tar.gz"
+
 [zerobrew-zb-aarch64]
 src.github = "lucasgelfond/zerobrew"
 src.prefix = "v"
