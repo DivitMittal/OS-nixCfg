@@ -9,13 +9,6 @@
 
   networking = {
     knownNetworkServices = ["Wi-Fi"];
-    # Block Spotify's auto-updater to preserve spicetify patches
-    hosts = {
-      "0.0.0.0" = [
-        "upgrade.scdn.co"
-        "upgrade-clientmanifest.scdn.co"
-      ];
-    };
     dns = [
       ## Cloudflare DNS
       # IPv4
@@ -27,6 +20,25 @@
     ];
     computerName = "${config.networking.hostName}";
   };
+
+  # Block Spotify's auto-updater to preserve spicetify patches.
+  # nix-darwin has no `networking.hosts` (that's NixOS-only) and taking over
+  # /etc/hosts via `environment.etc.hosts` aborts activation unless its current
+  # hash is whitelisted, so apply the block with an idempotent activation script.
+  system.activationScripts.spicetifyHosts.text = ''
+    # Remove any previously applied block, then (re)append the current one.
+    if [ -f /etc/hosts ]; then
+      tmp="$(mktemp)"
+      grep -v \
+        -e "upgrade.scdn.co" \
+        -e "upgrade-clientmanifest.scdn.co" \
+        -e "# nix-darwin:spicetify-auto-update" \
+        /etc/hosts > "$tmp" || true
+      cat "$tmp" > /etc/hosts
+      rm -f "$tmp"
+    fi
+    printf "\n# nix-darwin:spicetify-auto-update block\n0.0.0.0 upgrade.scdn.co\n0.0.0.0 upgrade-clientmanifest.scdn.co\n" >> /etc/hosts
+  '';
 
   #environment.darwinConfig = self + "/hosts/darwin/${config.networking.hostName}/default.nix"; # non-flake feature(adds darwin to $NIX_PATH)
   system.primaryUser = "${config.hostSpec.username}";
