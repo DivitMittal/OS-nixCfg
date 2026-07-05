@@ -25,7 +25,7 @@
         ccs-bar # CCS menu bar client — quota, cost and tier
         Spaceman-bin # spaces in menubar for macOS (ruittenb fork)
         menubar-dock-bin # macOS dock in menubar
-        SakuraWallpaper # Live wallpaper for macOS
+        LiveWallpaperMacOS-bin # Live wallpaper for macOS
         #MultiSoundChanger-bin # aggregate-output volume control in menubar
         #LibreScore-bin # Music notation ripper
         #Iris-bin # Webcam mirror

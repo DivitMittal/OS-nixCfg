@@ -19,6 +19,14 @@
       sha256 = "sha256-8/LqQL2dTsAYy3aIhzhlgw3BRIut6P0XduqucbPoB8Y=";
     };
   };
+  LiveWallpaperMacOS = {
+    pname = "LiveWallpaperMacOS";
+    version = "V2.3";
+    src = fetchurl {
+      url = "https://github.com/thusvill/LiveWallpaperMacOS/releases/download/V2.3/LiveWallpaper.dmg";
+      sha256 = "sha256-GW6tSVCrRo8Dx/s6gyRjsWC0dxFIw8J28GBSqrnfaIo=";
+    };
+  };
   LosslessSwitcher = {
     pname = "LosslessSwitcher";
     version = "2.0";
@@ -46,15 +54,6 @@
       url = "https://github.com/aonez/MultiSoundChanger/releases/download/1.0.1-BetterDisplay/MultiSoundChanger+BetterDisplay.zip";
       sha256 = "sha256-iY6V48247mNEgQ73QTZ5RJBsiNEji0bTVt8q43BIfJo=";
     };
-  };
-  SakuraWallpaper = {
-    pname = "SakuraWallpaper";
-    version = "1ec6c63f82e5826d7a2da529ebc40726357dd82c";
-    src = fetchurl {
-      url = "https://github.com/yueseqaz/SakuraWallpaper/releases/download/latest/SakuraWallpaper.dmg";
-      sha256 = "sha256-dOJjMWY5OARLuo55Bv4R0vU9AK9LhO8HMNtL/DC473Q=";
-    };
-    date = "2026-05-21";
   };
   Spaceman = {
     pname = "Spaceman";

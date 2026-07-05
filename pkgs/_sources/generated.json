@@ -29,6 +29,21 @@
     },
     "version": "v6.0.23"
   },
+  "LiveWallpaperMacOS": {
+    "cargoLock": null,
+    "date": null,
+    "extract": null,
+    "name": "LiveWallpaperMacOS",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-GW6tSVCrRo8Dx/s6gyRjsWC0dxFIw8J28GBSqrnfaIo=",
+      "type": "url",
+      "url": "https://github.com/thusvill/LiveWallpaperMacOS/releases/download/V2.3/LiveWallpaper.dmg"
+    },
+    "version": "V2.3"
+  },
   "LosslessSwitcher": {
     "cargoLock": null,
     "date": null,
@@ -79,21 +94,6 @@
       "url": "https://github.com/aonez/MultiSoundChanger/releases/download/1.0.1-BetterDisplay/MultiSoundChanger+BetterDisplay.zip"
     },
     "version": "1.0.1-BetterDisplay"
-  },
-  "SakuraWallpaper": {
-    "cargoLock": null,
-    "date": "2026-05-21",
-    "extract": null,
-    "name": "SakuraWallpaper",
-    "passthru": null,
-    "pinned": false,
-    "src": {
-      "name": null,
-      "sha256": "sha256-dOJjMWY5OARLuo55Bv4R0vU9AK9LhO8HMNtL/DC473Q=",
-      "type": "url",
-      "url": "https://github.com/yueseqaz/SakuraWallpaper/releases/download/latest/SakuraWallpaper.dmg"
-    },
-    "version": "1ec6c63f82e5826d7a2da529ebc40726357dd82c"
   },
   "Spaceman": {
     "cargoLock": null,
