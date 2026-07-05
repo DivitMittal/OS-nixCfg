@@ -1,6 +1,7 @@
 {
   inputs,
   hostPlatform,
+  pkgs,
   ...
 }: {
   imports = [inputs.android-kvm.homeManagerModules.android-kvm];
@@ -19,7 +20,7 @@
       control-port = 0;
 
       scrcpy = {
-        binary = "scrcpy";
+        binary = "${pkgs.scrcpy}/bin/scrcpy";
         audio-enabled = true;
         audio-buffer-ms = 200;
         extra-args = [];
