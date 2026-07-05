@@ -41,7 +41,7 @@
       uutils-coreutils-noprefix # coreutils
       uutils-diffutils # diffutils
       uutils-findutils # findutils
-      uutils-procps # procps
+      uutils-procps # procps (systemdLibs stripped on darwin via overlays/custom.nix)
       ## Others
       zip
       unzip
