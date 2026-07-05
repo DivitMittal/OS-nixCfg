@@ -6,6 +6,12 @@
 stdenv.mkDerivation {
   inherit (sources.smcFanControl) pname src version;
 
+  postPatch = ''
+    substituteInPlace smc-command/smc.c \
+      --replace-fail 'sprintf(val->key, key);' 'snprintf(val->key, sizeof(val->key), "%s", key);' \
+      --replace-fail 'sprintf(val.key, key);' 'snprintf(val.key, sizeof(val.key), "%s", key);'
+  '';
+
   buildPhase = ''
     runHook preBuild
 
