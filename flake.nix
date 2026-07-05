@@ -309,11 +309,6 @@
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ## Paneru window manager
-    paneru = {
-      url = "github:karinushka/paneru";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     ## Hammerspoon
     hammerspoon-nix = {
       #url = "github:DivitMittal/hammerspoon-nix";
