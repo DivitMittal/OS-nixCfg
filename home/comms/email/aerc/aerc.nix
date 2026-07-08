@@ -20,7 +20,8 @@
       };
 
       ui = {
-        styleset-name = "nord";
+        # styleset-name is set by stylix (common/home/stylix.nix) to its
+        # generated "stylix" theme; defining both here conflicts.
         index-columns = "name<17,flags>4,subject<*,date<20";
         sidebar-width = 30;
         mouse-enabled = true;
