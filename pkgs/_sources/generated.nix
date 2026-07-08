@@ -151,15 +151,15 @@
   };
   mutt = {
     pname = "mutt";
-    version = "b998501ae340043536765e9ee71689d317b81430";
+    version = "023a3689633c5cc2112f9667f90ca4614e6ba52c";
     src = fetchFromGitHub {
       owner = "muttmua";
       repo = "mutt";
-      rev = "b998501ae340043536765e9ee71689d317b81430";
+      rev = "023a3689633c5cc2112f9667f90ca4614e6ba52c";
       fetchSubmodules = false;
-      sha256 = "sha256-oHsn4XAI1TilU1Zw36GBKR7XyS7WnQlG6LpB4OrObV4=";
+      sha256 = "sha256-WEeh5LMJJdkgMHCgcNvM9RE5+KdAFZ3Q0KrAKkKLRIw=";
     };
-    date = "2026-07-03";
+    date = "2026-07-07";
   };
   option-analysis = {
     pname = "option-analysis";

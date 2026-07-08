@@ -271,7 +271,7 @@
   },
   "mutt": {
     "cargoLock": null,
-    "date": "2026-07-03",
+    "date": "2026-07-07",
     "extract": null,
     "name": "mutt",
     "passthru": null,
@@ -283,12 +283,12 @@
       "name": null,
       "owner": "muttmua",
       "repo": "mutt",
-      "rev": "b998501ae340043536765e9ee71689d317b81430",
-      "sha256": "sha256-oHsn4XAI1TilU1Zw36GBKR7XyS7WnQlG6LpB4OrObV4=",
+      "rev": "023a3689633c5cc2112f9667f90ca4614e6ba52c",
+      "sha256": "sha256-WEeh5LMJJdkgMHCgcNvM9RE5+KdAFZ3Q0KrAKkKLRIw=",
       "sparseCheckout": [],
       "type": "github"
     },
-    "version": "b998501ae340043536765e9ee71689d317b81430"
+    "version": "023a3689633c5cc2112f9667f90ca4614e6ba52c"
   },
   "option-analysis": {
     "cargoLock": null,
@@ -463,6 +463,66 @@
       "type": "github"
     },
     "version": "v1.5.1"
+  },
+  "uniclipboard-cli-aarch64-darwin": {
+    "cargoLock": null,
+    "date": null,
+    "extract": null,
+    "name": "uniclipboard-cli-aarch64-darwin",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-lKmVRwQUB5xGybR7x2LbeOk8qOBaXEzsKqVZi7cjNn0=",
+      "type": "url",
+      "url": "https://github.com/UniClipboard/UniClipboard/releases/download/v0.18.0/uniclipboard-cli-0.18.0-aarch64-apple-darwin.tar.gz"
+    },
+    "version": "0.18.0"
+  },
+  "uniclipboard-cli-aarch64-linux": {
+    "cargoLock": null,
+    "date": null,
+    "extract": null,
+    "name": "uniclipboard-cli-aarch64-linux",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-yoXNmKilJsg3cJA8m5XC61mfrX42iWYXNRCupdm4VO8=",
+      "type": "url",
+      "url": "https://github.com/UniClipboard/UniClipboard/releases/download/v0.18.0/uniclipboard-cli-0.18.0-aarch64-unknown-linux-musl.tar.gz"
+    },
+    "version": "0.18.0"
+  },
+  "uniclipboard-cli-x86_64-darwin": {
+    "cargoLock": null,
+    "date": null,
+    "extract": null,
+    "name": "uniclipboard-cli-x86_64-darwin",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-AnYKUEXSI5xpV/rerUhslUHDQvIt9IgSOKJnbtrpi48=",
+      "type": "url",
+      "url": "https://github.com/UniClipboard/UniClipboard/releases/download/v0.18.0/uniclipboard-cli-0.18.0-x86_64-apple-darwin.tar.gz"
+    },
+    "version": "0.18.0"
+  },
+  "uniclipboard-cli-x86_64-linux": {
+    "cargoLock": null,
+    "date": null,
+    "extract": null,
+    "name": "uniclipboard-cli-x86_64-linux",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-Tn/49x/tWCabsr2E9kJ7qCld5ObMzTGAJtGbQU0q71g=",
+      "type": "url",
+      "url": "https://github.com/UniClipboard/UniClipboard/releases/download/v0.18.0/uniclipboard-cli-0.18.0-x86_64-unknown-linux-musl.tar.gz"
+    },
+    "version": "0.18.0"
   },
   "warpd": {
     "cargoLock": null,
