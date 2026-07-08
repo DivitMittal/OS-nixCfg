@@ -67,5 +67,10 @@
       then pkgs.brewCasks.element
       else pkgs.element-desktop;
     #else null;
+
+    rustdesk =
+      if hostPlatform.isDarwin
+      then pkgs.brewCasks.rustdesk
+      else pkgs.rustdesk;
   };
 }
