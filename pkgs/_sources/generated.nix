@@ -11,14 +11,6 @@
       sha256 = "sha256-JZoKDwPCc0PXQpCyY8oe77XZymQ7NTMgWf0Kr+IE26o=";
     };
   };
-  LibreScore = {
-    pname = "LibreScore";
-    version = "v6.0.23";
-    src = fetchurl {
-      url = "https://github.com/LibreScore/app-librescore/releases/download/v6.0.23/LibreScore.dmg";
-      sha256 = "sha256-8/LqQL2dTsAYy3aIhzhlgw3BRIut6P0XduqucbPoB8Y=";
-    };
-  };
   LiveWallpaperMacOS = {
     pname = "LiveWallpaperMacOS";
     version = "V2.3";

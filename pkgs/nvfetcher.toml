@@ -82,10 +82,6 @@ fetch.url = "https://github.com/thusvill/LiveWallpaperMacOS/releases/download/$v
 src.github = "ahmetb/Iris"
 fetch.url = "https://github.com/ahmetb/Iris/releases/download/$ver/Iris-$ver.zip"
 
-[LibreScore]
-src.github = "LibreScore/app-librescore"
-fetch.url = "https://github.com/LibreScore/app-librescore/releases/download/$ver/LibreScore.dmg"
-
 [Spaceman]
 src.github = "ruittenb/Spaceman"
 src.prefix = "v"

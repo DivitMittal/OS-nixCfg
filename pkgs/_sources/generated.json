@@ -14,21 +14,6 @@
     },
     "version": "v0.2.1"
   },
-  "LibreScore": {
-    "cargoLock": null,
-    "date": null,
-    "extract": null,
-    "name": "LibreScore",
-    "passthru": null,
-    "pinned": false,
-    "src": {
-      "name": null,
-      "sha256": "sha256-8/LqQL2dTsAYy3aIhzhlgw3BRIut6P0XduqucbPoB8Y=",
-      "type": "url",
-      "url": "https://github.com/LibreScore/app-librescore/releases/download/v6.0.23/LibreScore.dmg"
-    },
-    "version": "v6.0.23"
-  },
   "LiveWallpaperMacOS": {
     "cargoLock": null,
     "date": null,

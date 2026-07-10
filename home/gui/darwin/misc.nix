@@ -27,7 +27,6 @@
         menubar-dock-bin # macOS dock in menubar
         LiveWallpaperMacOS-bin # Live wallpaper for macOS
         #MultiSoundChanger-bin # aggregate-output volume control in menubar
-        #LibreScore-bin # Music notation ripper
         #Iris-bin # Webcam mirror
         #LosslessSwitcher-bin # Lossless audio toggle in menubar
         ;
