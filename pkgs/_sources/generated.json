@@ -181,7 +181,7 @@
   },
   "get-apple-firmware": {
     "cargoLock": null,
-    "date": "2026-06-28",
+    "date": "2026-07-09",
     "extract": null,
     "name": "get-apple-firmware",
     "passthru": null,
@@ -190,9 +190,9 @@
       "name": null,
       "sha256": "sha256-wcHYqiW7XwieRszQ2XOPwTv714T0maqSRGbGkPBZlh4=",
       "type": "url",
-      "url": "https://raw.githubusercontent.com/t2linux/wiki/3dba3ec8dd3e44ce63ea08d138faa8c6f50d94e6/docs/tools/firmware.sh"
+      "url": "https://raw.githubusercontent.com/t2linux/wiki/0a2646959c9c12584794df85233cb4baf7c0420f/docs/tools/firmware.sh"
     },
-    "version": "3dba3ec8dd3e44ce63ea08d138faa8c6f50d94e6"
+    "version": "0a2646959c9c12584794df85233cb4baf7c0420f"
   },
   "launchdeck-aarch64": {
     "cargoLock": null,
@@ -247,12 +247,18 @@
     "passthru": null,
     "pinned": false,
     "src": {
+      "deepClone": false,
+      "fetchSubmodules": false,
+      "leaveDotGit": false,
       "name": null,
-      "sha256": "sha256-T0njW17XCwoL0WPmv7CkdhCZkRNFfvSNi7TI49kbXu0=",
-      "type": "url",
-      "url": "https://github.com/EthanSK/Menu-Bar-Dock/releases/download/v4.7.8/Menu-Bar-Dock-v4.7.8.zip"
+      "owner": "joaquinpiedracueva",
+      "repo": "menubar-dock",
+      "rev": "v1.0.0",
+      "sha256": "sha256-EA0FllpEhcp2VxVLMVqLCpmlvt0F+xnuKzMsaMXzfDw=",
+      "sparseCheckout": [],
+      "type": "github"
     },
-    "version": "v4.7.8"
+    "version": "v1.0.0"
   },
   "mutt": {
     "cargoLock": null,

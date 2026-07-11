@@ -102,12 +102,12 @@
   };
   get-apple-firmware = {
     pname = "get-apple-firmware";
-    version = "3dba3ec8dd3e44ce63ea08d138faa8c6f50d94e6";
+    version = "0a2646959c9c12584794df85233cb4baf7c0420f";
     src = fetchurl {
-      url = "https://raw.githubusercontent.com/t2linux/wiki/3dba3ec8dd3e44ce63ea08d138faa8c6f50d94e6/docs/tools/firmware.sh";
+      url = "https://raw.githubusercontent.com/t2linux/wiki/0a2646959c9c12584794df85233cb4baf7c0420f/docs/tools/firmware.sh";
       sha256 = "sha256-wcHYqiW7XwieRszQ2XOPwTv714T0maqSRGbGkPBZlh4=";
     };
-    date = "2026-06-28";
+    date = "2026-07-09";
   };
   launchdeck-aarch64 = {
     pname = "launchdeck-aarch64";
@@ -135,10 +135,13 @@
   };
   menubar-dock = {
     pname = "menubar-dock";
-    version = "v4.7.8";
-    src = fetchurl {
-      url = "https://github.com/EthanSK/Menu-Bar-Dock/releases/download/v4.7.8/Menu-Bar-Dock-v4.7.8.zip";
-      sha256 = "sha256-T0njW17XCwoL0WPmv7CkdhCZkRNFfvSNi7TI49kbXu0=";
+    version = "v1.0.0";
+    src = fetchFromGitHub {
+      owner = "joaquinpiedracueva";
+      repo = "menubar-dock";
+      rev = "v1.0.0";
+      fetchSubmodules = false;
+      sha256 = "sha256-EA0FllpEhcp2VxVLMVqLCpmlvt0F+xnuKzMsaMXzfDw=";
     };
   };
   mutt = {

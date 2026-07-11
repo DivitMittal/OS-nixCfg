@@ -24,7 +24,7 @@
         (pkgs.customDarwin)
         ccs-bar # CCS menu bar client — quota, cost and tier
         Spaceman-bin # spaces in menubar for macOS (ruittenb fork)
-        menubar-dock-bin # macOS dock in menubar
+        menubar-dock # macOS dock in menubar
         LiveWallpaperMacOS-bin # Live wallpaper for macOS
         #MultiSoundChanger-bin # aggregate-output volume control in menubar
         #Iris-bin # Webcam mirror
