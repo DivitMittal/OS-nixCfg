@@ -9,7 +9,6 @@
       #calcurse
       gcalcli
       #calcure
-      tuxedo
       ;
   };
 }
