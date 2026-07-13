@@ -1,6 +1,9 @@
-_: {
+{pkgs, ...}: {
+  home.sessionVariables.PAGER = "${pkgs.less}/bin/less";
+
   programs.less = {
     enable = true;
+    package = pkgs.less;
 
     config = ''
       #command
