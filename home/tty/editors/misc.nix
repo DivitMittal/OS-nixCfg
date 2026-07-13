@@ -3,6 +3,8 @@
   lib,
   ...
 }: {
+  home.sessionVariables.EDITOR = "nvim";
+
   home.shellAliases = {
     ed = "${pkgs.ed}/bin/ed -v -p ':'";
   };
