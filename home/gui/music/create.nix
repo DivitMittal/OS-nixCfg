@@ -1,9 +1,10 @@
 {
   pkgs,
   hostPlatform,
+  lib,
   ...
 }: {
-  home.packages = [
+  home.packages = lib.attrsets.attrValues {
     # au-lab =
     #   if hostPlatform.isDarwin
     #   then
@@ -16,23 +17,9 @@
     #   else null;
 
     ## Musescore Score Editor
-    (
+    musescore =
       if hostPlatform.isDarwin
       then pkgs.brewCasks.musescore
-      else pkgs.musescore
-    )
-
-    # spotify =
-    #   if hostPlatform.isDarwin
-    #   then
-    #     (pkgs.brewCasks.spotify.override {
-    #       variation = "tahoe";
-    #     }).overrideAttrs (oldAttrs: {
-    #       src = pkgs.fetchurl {
-    #         url = lib.lists.head oldAttrs.src.urls;
-    #         hash = "sha256-4Lm4g0gAQ3EA7Sj2wDTbjEXRxcNoGWHLvdEx/57nry4=";
-    #       };
-    #     })
-    #   else pkgs.spotify;
-  ];
+      else pkgs.musescore;
+  };
 }
