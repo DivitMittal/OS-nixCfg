@@ -42,11 +42,6 @@
         }))
       else null;
 
-    localsend =
-      if hostPlatform.isDarwin
-      then pkgs.brewCasks.localsend
-      else pkgs.localsend;
-
     whatsapp =
       if hostPlatform.isDarwin
       then pkgs.brewCasks.whatsapp
@@ -66,7 +61,6 @@
       if hostPlatform.isDarwin
       then pkgs.brewCasks.element
       else pkgs.element-desktop;
-    #else null;
 
     rustdesk =
       if hostPlatform.isDarwin
