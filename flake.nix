@@ -31,7 +31,17 @@
             allowBroken = mkDefault false;
             allowUnsupportedSystem = mkDefault false;
             checkMeta = mkDefault false;
-            warnUndeclaredOptions = mkDefault true;
+            # warnUndeclaredOptions is intentionally left at its nixpkgs default
+            # (false). Turning it on produces permanent false-positive noise:
+            # `permittedInsecurePackages` is read by check-meta.nix but never
+            # declared in nixpkgs' schema, and `_undeclared` itself gets
+            # re-emitted by the freeformType merge on every evaluation where
+            # any undeclared option exists.
+            #
+            # libolm (used by gomuks Matrix TUI client) is deprecated upstream
+            # and marked insecure in nixpkgs. gomuks has not migrated away.
+            # Allow the affected version until gomuks is replaced.
+            permittedInsecurePackages = mkDefault ["olm-3.2.16"];
           };
           overlays = lib.attrsets.attrValues {
             inherit (self.outputs.overlays) default;

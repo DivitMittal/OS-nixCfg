@@ -1,10 +1,16 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  hostPlatform,
+  inputs,
+  ...
+}: {
   home.packages = lib.attrsets.attrValues {
-    # telegram-tui = inputs.tgt.packages.${hostPlatform.system}.default;
-    # inherit
-    #   (pkgs)
-    #   gomuks # Matrix client TUI
-    #   ;
+    telegram-tui = inputs.tgt.packages.${hostPlatform.system}.default;
+    inherit
+      (pkgs)
+      gomuks # Matrix client TUI
+      ;
   };
 
   programs.discordo = {
