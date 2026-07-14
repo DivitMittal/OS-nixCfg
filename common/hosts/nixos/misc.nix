@@ -25,7 +25,6 @@ in {
   environment.systemPackages = lib.attrsets.attrValues {
     inherit
       (pkgs)
-      bluez # bluetooth protocol
       clang
       ;
   };
