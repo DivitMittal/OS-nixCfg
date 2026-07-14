@@ -30,5 +30,8 @@ apm_modules/
 .mcp.json
 opencode.json
 AGENTS.md
+**/AGENTS.md
 CLAUDE.md
+**/CLAUDE.md
 GEMINI.md
+**/GEMINI.md
