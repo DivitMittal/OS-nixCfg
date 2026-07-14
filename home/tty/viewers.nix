@@ -21,10 +21,6 @@
       hexyl # binary & misc.
       poppler # PDFs
       ;
-    ## Euporie (Jupyter client)
-    euporie-notebook = lib.custom.mkUvxBin "euporie-notebook" "--from euporie euporie-notebook";
-    euporie-preview = lib.custom.mkUvxBin "euporie-preview" "--from euporie euporie-preview";
-    euporie = lib.custom.mkUvxBin "euporie" "--from euporie euporie";
     ## Office -> Markdown
     markitdown = lib.custom.mkUvxBin "markitdown" "markitdown[all]";
   };
