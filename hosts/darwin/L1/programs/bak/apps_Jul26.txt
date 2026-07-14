@@ -1,0 +1,76 @@
+Air Music Technology
+Akai Professional - MPK mini mk3 - Software Center.app
+Akai Professional MPK Mini III Program Editor.app
+AlDente.app
+Ample Sound
+AmpliTube 5.app
+Aurora DSP
+BFDPlayer.app
+BetterDisplay.app
+Capo.app
+Cloudflare WARP.app
+Essential Keyboards.app
+Guitar Pro 8.app
+IK Product Manager.app
+KnockKnock.app
+LuLu.app
+MPC Beats.app
+Maono Link.app
+MeldaProduction
+Native Access.app
+Native Instruments
+Nix Apps
+Safari.app
+Swar Dashboard.app
+Utilities
+VeraCrypt.app
+Wacom Tablet.localized
+Wispr Flow.app
+Xcode-26.6.0.app
+djay Pro.app
+fuse-t.app
+iStat Menus.app
+inMusic Software Center.app
+CCS Bar.app
+ChatGPT.app
+Claude.app
+Element.app
+FineTune.app
+Firefox.app
+GIMP.app
+Google Chrome.app
+Hammerspoon.app
+Handy.app
+Hot.app
+LibreOffice.app
+LinearMouse.app
+LiveWallpaper.app
+LocalSend.app
+MenuBarDock.app
+Microsoft Excel.app
+Microsoft OneNote.app
+Microsoft Outlook.app
+Mullvad VPN.app
+MuseScore 4.app
+Music Decoy.app
+Notion.app
+ONLYOFFICE.app
+Obsidian.app
+Pearcleaner.app
+REAPER.app
+Raycast.app
+RustDesk.app
+Spaceman.app
+Spotify.app
+SuperCollider.app
+Tailscale.app
+Telegram.app
+Thunderbird.app
+Vesktop.app
+Visual Studio Code.app
+WezTerm-macos-20240203-110809-5046fc22
+WhatsApp.app
+calibre.app
+mpv.app
+nomacs.app
+sioyek.app
