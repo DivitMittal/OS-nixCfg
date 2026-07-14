@@ -293,6 +293,29 @@
       sha256 = "sha256-ngWQdGKvHxng0C1LlmYHMWjcH4mzgrEFr6DvEa6LdUE=";
     };
   };
+  yara-rules = {
+    pname = "yara-rules";
+    version = "0f93570194a80d2f2032869055808b0ddcdfb360";
+    src = fetchFromGitHub {
+      owner = "Yara-Rules";
+      repo = "rules";
+      rev = "0f93570194a80d2f2032869055808b0ddcdfb360";
+      fetchSubmodules = false;
+      sha256 = "sha256-AtyRHS3mbemHXErpRONUOWVyVDkVKw96uluzKz5t8K4=";
+    };
+    date = "2022-04-12";
+  };
+  clamav-unofficial-sigs = {
+    pname = "clamav-unofficial-sigs";
+    version = "948a1fb84c15a71910456561cec384a978b13412";
+    src = fetchFromGitHub {
+      owner = "extremeshok";
+      repo = "clamav-unofficial-sigs";
+      rev = "948a1fb84c15a71910456561cec384a978b13412";
+      fetchSubmodules = false;
+      sha256 = "sha256-RpAHJ+l5Ro+2p6CvmLjwlvYouBnJhdg34oYZOYhR6Bk=";
+    };
+  };
   zerobrew-zb-aarch64 = {
     pname = "zerobrew-zb-aarch64";
     version = "0.3.2";

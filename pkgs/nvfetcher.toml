@@ -39,6 +39,16 @@ src.git = "https://github.com/harsh-vardhhan/option-analysis.git"
 src.branch = "master"
 fetch.github = "harsh-vardhhan/option-analysis"
 
+[yara-rules]
+src.git = "https://github.com/Yara-Rules/rules.git"
+src.branch = "master"
+fetch.github = "Yara-Rules/rules"
+
+[clamav-unofficial-sigs]
+src.git = "https://github.com/extremeshok/clamav-unofficial-sigs.git"
+src.branch = "master"
+fetch.github = "extremeshok/clamav-unofficial-sigs"
+
 # Single-file fetch tracking latest master commit of t2linux/wiki
 [get-apple-firmware]
 src.git = "https://github.com/t2linux/wiki.git"

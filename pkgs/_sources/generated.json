@@ -536,6 +536,27 @@
     },
     "version": "v2.2.0"
   },
+  "yara-rules": {
+    "cargoLock": null,
+    "date": "2022-04-12",
+    "extract": null,
+    "name": "yara-rules",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "deepClone": false,
+      "fetchSubmodules": false,
+      "leaveDotGit": false,
+      "name": null,
+      "owner": "Yara-Rules",
+      "repo": "rules",
+      "rev": "0f93570194a80d2f2032869055808b0ddcdfb360",
+      "sha256": "sha256-AtyRHS3mbemHXErpRONUOWVyVDkVKw96uluzKz5t8K4=",
+      "sparseCheckout": [],
+      "type": "github"
+    },
+    "version": "0f93570194a80d2f2032869055808b0ddcdfb360"
+  },
   "zerobrew-zb-aarch64": {
     "cargoLock": null,
     "date": null,
