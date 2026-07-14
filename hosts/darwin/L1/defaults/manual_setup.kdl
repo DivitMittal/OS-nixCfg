@@ -10,16 +10,7 @@ battery {
   }
 }
 accessibility {
-  vision {
-    zoom {
-      use-keyboard-shortcuts-to-zoom true
-      zoom-style "picture-in-picture"
-      advanced {
-        zoomed-images-moves "to keep pointer centered"
-      }
-    }
     display {
-      display-contrast "0.7"
       text {
         text-size "16pt"
       }
@@ -36,8 +27,6 @@ appearance {
   click-in-the-scroll-bar-to "Jump to that spot that's clicked"
 }
 display {
-  scaling "2048x1280"
-  automatic-brightness true
   true-tone false
 }
 siri {
@@ -54,14 +43,5 @@ spotlight {
 }
 keyboard {
   adjust-keyboard-brightness-in-low-light false
-  keyboard-shortcuts {
-    accessibility {
-      zoom {
-        toggle-zoom "hyper+z"
-        zoom-in "opt+cmd+shift+="
-        zoom-out "opt+cmd+-"
-      }
-    }
-  }
 }
 
