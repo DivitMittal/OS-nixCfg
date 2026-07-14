@@ -1,9 +1,9 @@
 _: {
   imports = [
-    ./darwin/darwin.nix
-    ./nixos/nixos.nix
-    ./droid/droid.nix
-    ./iso/iso-configs.nix
+    ./darwin/enum.nix
+    ./nixos/enum.nix
+    ./droid/enum.nix
+    ./iso/enum.nix
     ./deploy.nix
   ];
 }
