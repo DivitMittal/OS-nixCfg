@@ -343,6 +343,10 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    macos-fuse-t-cask = {
+      url = "github:macos-fuse-t/homebrew-cask";
+      flake = false;
+    };
 
     brew-nix = {
       #url = "github:BatteredBunny/brew-nix";
