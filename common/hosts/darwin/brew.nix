@@ -13,6 +13,25 @@
       (pkgs.customDarwin)
       zerobrew-bin
       ;
+
+    brew-ultimate = pkgs.writeShellScriptBin "brew-ultimate" ''
+      echo "Running brew update..."
+      brew update
+
+      echo "Running brew upgrade..."
+      brew upgrade
+
+      echo "Running brew autoremove..."
+      brew autoremove
+
+      echo "Running brew cleanup..."
+      brew cleanup -s --prune=0
+
+      echo "Removing brew cache..."
+      rm -rf "$(brew --cache)"
+
+      echo "Brew maintenance complete!"
+    '';
   };
 
   environment.variables = {
@@ -30,6 +49,7 @@
 
   homebrew = {
     enable = true;
+    taps = builtins.attrNames config.nix-homebrew.taps;
     prefix =
       if hostPlatform.isAarch
       then "/opt/homebrew"
@@ -56,7 +76,6 @@
     taps = {
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
-      "macos-fuse-t/homebrew-cask" = inputs.macos-fuse-t-cask;
     };
     mutableTaps = true;
     autoMigrate = true;
