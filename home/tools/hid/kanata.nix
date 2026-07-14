@@ -9,6 +9,7 @@ in {
 
   home.packages = [
     pkgs.customDarwin.kanata-tray-daemon
+    pkgs.kanata-with-cmd
   ];
 
   programs.kanata-tray = {
