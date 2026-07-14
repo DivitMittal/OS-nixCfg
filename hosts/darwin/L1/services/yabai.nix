@@ -24,7 +24,15 @@
 # yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 # sudo yabai --load-sa
 ##############################################################################
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  yabaiBin = "${config.services.yabai.package}/bin/yabai";
+  tcc = "${pkgs.customDarwin.tccutil}/bin/tccutil";
+in {
   services.yabai = {
     enable = true;
     package = pkgs.yabai;
@@ -82,4 +90,26 @@
       yabai -m rule --add app="^Finder$"      opacity=0.97
     '';
   };
+
+  # Pre-grant Accessibility to the current yabai store path so a rebuild
+  # (which moves yabai to a new /nix/store/<hash>) does NOT re-trigger the
+  # System Settings toggle. Targets the SYSTEM TCC.db (writable as root here
+  # because yabai's scripting addition already requires SIP filesystem
+  # protection off). Idempotent + best-effort: never fails the build.
+  # Uses the predefined `postActivation` slot (mkForce) because nix-darwin's
+  # renderer silently drops custom-named activation scripts.
+  system.activationScripts.postActivation.text = lib.mkForce ''
+    echo ">> yabai: syncing Accessibility TCC grant for current binary path..."
+    if [ ! -x "${tcc}" ]; then
+      echo "   tccutil missing; skipping TCC automation." >&2
+    elif ! "${tcc}" --list -s kTCCServiceAccessibility >/dev/null 2>&1; then
+      # tccutil's digest_check refuses unknown TCC.db schemas — expected on
+      # macOS 26 (Darwin 25), where v1.5.1 only allowlists through Sonoma.
+      echo "   tccutil cannot open this macOS's TCC.db (schema unrecognized)." >&2
+      echo "   Grant Accessibility manually once, or patch tccutil — see plan." >&2
+    else
+      "${tcc}" -i "${yabaiBin}" -s kTCCServiceAccessibility >/dev/null 2>&1 || true
+      "${tcc}" -e "${yabaiBin}" -s kTCCServiceAccessibility >/dev/null 2>&1 || true
+    fi
+  '';
 }

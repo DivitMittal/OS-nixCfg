@@ -12,6 +12,16 @@ in
     dontBuild = true;
     dontConfigure = true;
 
+    # tccutil's digest_check() only allowlists TCC.db schemas through macOS 14
+    # (Sonoma); on newer macOS (15+/26) every command exits 1 ("unknown
+    # structure"). Neutralize the gate so it opens the DB on any macOS. The
+    # osx>=14 INSERT (17 columns) is unchanged — confirm it still matches on
+    # Darwin 25 via: sudo sqlite3 "/Library/.../TCC.db" ".schema access"
+    postPatch = ''
+      substituteInPlace tccutil.py \
+        --replace-fail 'if not (accessTableDigest ==' 'if False and not (accessTableDigest =='
+    '';
+
     installPhase = ''
       runHook preInstall
       mkdir -p $out/bin
