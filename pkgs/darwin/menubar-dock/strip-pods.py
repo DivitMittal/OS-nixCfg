@@ -69,15 +69,26 @@ def patch_pbxproj(path):
     )
 
     # Inject SUPPORTED_PLATFORMS = macosx; into every buildSettings block.
+    # Also force LD = $(DT_TOOLCHAIN_DIR)/usr/bin/clang++ so xcodebuild routes
+    # linking through clang's driver. Xcode 26's default LD is `ld` invoked
+    # directly with clang-driver flags like `-fobjc-link-runtime`, which Apple
+    # `ld` rejects with `unknown options`. clang's driver translates those
+    # flags into the right ld invocations.
     def patch_settings_block(match):
         block = match.group(0)
-        if "SUPPORTED_PLATFORMS" in block:
-            return block
-        return block.replace(
-            "buildSettings = {",
-            "buildSettings = {\n\t\t\t\tSUPPORTED_PLATFORMS = macosx;",
-            1,
-        )
+        if "SUPPORTED_PLATFORMS" not in block:
+            block = block.replace(
+                "buildSettings = {",
+                "buildSettings = {\n\t\t\t\tSUPPORTED_PLATFORMS = macosx;",
+                1,
+            )
+        if "LD = " not in block:
+            block = block.replace(
+                "buildSettings = {",
+                'buildSettings = {\n\t\t\t\tLD = "$(DT_TOOLCHAIN_DIR)/usr/bin/clang++";',
+                1,
+            )
+        return block
 
     s = re.sub(r"buildSettings = \{[^}]*\};", patch_settings_block, s, flags=re.DOTALL)
 
