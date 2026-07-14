@@ -34,6 +34,7 @@
       ## macOS specific
       "lulu"
       "knockknock"
+      "wispr-flow"
     ];
 
     brews = [

@@ -36,7 +36,7 @@
       else "/usr/local";
     global.autoUpdate = false;
     onActivation = {
-      autoUpdate = true;
+      autoUpdate = false;
       upgrade = true;
       cleanup = "zap";
       extraFlags = ["--verbose"];
@@ -56,6 +56,7 @@
     taps = {
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
+      "macos-fuse-t/homebrew-cask" = inputs.macos-fuse-t-cask;
     };
     mutableTaps = true;
     autoMigrate = true;
