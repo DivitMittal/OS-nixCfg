@@ -4,5 +4,6 @@ _: {
     ./nixos/nixos.nix
     ./droid/droid.nix
     ./iso/iso-configs.nix
+    ./deploy.nix
   ];
 }

@@ -50,6 +50,8 @@
               ### Nix Tools
               # nix-visualize # (handled by GitHub Actions CI workflow)
               nvfetcher
+              ### Android Tools
+              android-tools
               ;
           }
           ++ [
@@ -73,6 +75,60 @@
           name = "hts";
           help = "Rebuilds & switches the host configuration (pass flags like -v --show-trace --impure)";
           command = "${self}/utils/hosts_rebuild.sh \"$@\"";
+          category = "hosts";
+        }
+        {
+          name = "m1-adb-forward";
+          help = "Forward local SSH port 18022 to M1 nix-on-droid sshd over ADB";
+          command = ''
+            set -eu
+
+            authorized_devices=$(adb devices | sed '1d' | awk '$2 == "device" {print $1}')
+            adb_target=""
+
+            if [ -n "''${ANDROID_SERIAL:-}" ]; then
+              if ! printf '%s\n' "$authorized_devices" | grep -Fxq "$ANDROID_SERIAL"; then
+                echo "ANDROID_SERIAL=$ANDROID_SERIAL is not an authorized ADB device." >&2
+                adb devices >&2
+                exit 1
+              fi
+              adb_target="-s $ANDROID_SERIAL"
+            else
+              device_count=$(printf '%s\n' "$authorized_devices" | grep -c . || true)
+              if [ "$device_count" -eq 0 ]; then
+                echo "No authorized ADB devices found." >&2
+                adb devices >&2
+                exit 1
+              elif [ "$device_count" -gt 1 ]; then
+                echo "Multiple authorized ADB devices found; set ANDROID_SERIAL to select M1." >&2
+                adb devices >&2
+                exit 1
+              fi
+            fi
+
+            adb $adb_target forward tcp:18022 tcp:8022
+            echo "Forwarded local tcp:18022 to M1 tcp:8022 over ADB."
+            echo "Next: ssh M1-adb true"
+            echo "Then: deploy .#M1-adb --dry-activate"
+          '';
+          category = "hosts";
+        }
+        {
+          name = "m1-adb-unforward";
+          help = "Remove the M1 ADB SSH port forward";
+          command = "adb forward --remove tcp:18022";
+          category = "hosts";
+        }
+        {
+          name = "deploy-m1-adb";
+          help = "Forward M1 SSH over ADB, verify SSH, then deploy .#M1-adb";
+          command = ''
+            set -eu
+
+            m1-adb-forward
+            ssh M1-adb true
+            deploy .#M1-adb "$@"
+          '';
           category = "hosts";
         }
         {

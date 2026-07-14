@@ -21,6 +21,14 @@ in {
         Port = 8022;
         IdentityFile = "${sshDir}/nix-on-droid/ssh_host_rsa_key";
       };
+      "M1-adb" = {
+        HostName = "127.0.0.1";
+        User = "nix-on-droid";
+        Port = 18022;
+        IdentityFile = "${sshDir}/nix-on-droid/ssh_host_rsa_key";
+        HostKeyAlias = "M1-adb";
+        CheckHostIP = "no";
+      };
       "github.com" = {
         IdentityFile = "${sshDir}/github/id_ed25519";
       };
