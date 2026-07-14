@@ -2,9 +2,14 @@
   inputs,
   lib,
   hostPlatform,
+  pkgs,
   ...
 }: {
   imports = [inputs.lan-mouse.homeManagerModules.default];
+
+  home.packages = [
+    pkgs.custom.uniclipboard-cli-bin
+  ];
 
   programs.lan-mouse = {
     enable = true;
