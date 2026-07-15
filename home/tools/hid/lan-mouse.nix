@@ -20,8 +20,17 @@
     });
     systemd = true;
     launchd = true;
-    # Keep the local config mutable for runtime-authorized fingerprints.
-    settings = {};
+    settings = {
+      port = 4242;
+      release_bind = ["KeyLeftCtrl" "KeyLeftShift" "KeyEsc"];
+      clients = [
+        {
+          position = "top";
+          ips = ["192.168.77.2"];
+          port = 4242;
+        }
+      ];
+    };
   };
 
   # Service defined but not auto-started — start manually via systemctl/launchctl
