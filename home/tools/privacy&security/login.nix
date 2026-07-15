@@ -5,12 +5,12 @@
   lib,
   ...
 }: let
-  bwEnable = false;
+  enable = false;
 in {
-  home.packages = lib.lists.optionals bwEnable [pkgs.bitwarden-cli] ++ [pkgs.cotp];
+  home.packages = lib.lists.optionals enable [pkgs.bitwarden-cli] ++ [pkgs.cotp];
 
   programs.rbw = {
-    inherit bwEnable;
+    inherit enable;
     package = pkgs.rbw;
 
     settings = {
