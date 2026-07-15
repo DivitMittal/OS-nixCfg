@@ -221,7 +221,6 @@
         "hermes-agent-hm": "hermes-agent-hm",
         "home-manager": "home-manager",
         "import-tree": "import-tree_2",
-        "kolu": "kolu",
         "llm-agents": "llm-agents",
         "lumen": "lumen",
         "nix-openclaw": "nix-openclaw",
@@ -241,8 +240,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1783770347,
-        "narHash": "sha256-pHMLtrVt19f3ZjYC+qEW25gqLIJeVaP88h0f9M9SITo=",
+        "lastModified": 1784086471,
+        "narHash": "sha256-Y6tTEvEaM0FsBQx+XkrsIDWtAlIv/+tjL8vgSwzCDCQ=",
         "path": "/Users/div/Projects/Cfgs/ai-nixCfg",
         "type": "path"
       },
@@ -1637,21 +1636,6 @@
       }
     },
     "kolu": {
-      "locked": {
-        "lastModified": 1783208204,
-        "narHash": "sha256-7ciCE8lB2TB/j0FDLNfSJbJAnxAYg1+CfgaJh1gt/1U=",
-        "owner": "juspay",
-        "repo": "kolu",
-        "rev": "20a346c38c3ef6d6ed8c532d9a071e85d2f2bb24",
-        "type": "github"
-      },
-      "original": {
-        "owner": "juspay",
-        "repo": "kolu",
-        "type": "github"
-      }
-    },
-    "kolu_2": {
       "locked": {
         "lastModified": 1783818371,
         "narHash": "sha256-fa8BZ+9dGIOkDHKqD6Z4pZ2fWiGMO6qOZsTfibj5jCM=",
@@ -3230,7 +3214,7 @@
         "import-tree": [
           "import-tree"
         ],
-        "kolu": "kolu_2",
+        "kolu": "kolu",
         "nixpkgs": [
           "nixpkgs"
         ],
