@@ -30,10 +30,14 @@
   # `clamd` yourself (e.g. via a systemd/launchd user service).
   #
   # What this module installs:
-  #   clamav                 — engine. Provides `clambc`, `clamconf`,
-  #                            `clamdtop`, `sigtool` (and the raw
-  #                            `freshclam`/`clamscan`/`clamdscan`/`clamd`
-  #                            binaries, which the wrappers below shadow).
+  #   clamav (slim)          — engine copy with `freshclam`/`clamd`/
+  #                            `clamscan`/`clamdscan` stripped, so its
+  #                            bin/ doesn't collide with the wrappers.
+  #                            Provides `clambc`, `clamconf`, `clamdtop`,
+  #                            `sigtool` plus the shared libs.
+  #                            Wrappers below exec the full `pkgs.clamav`
+  #                            binary directly, so the slim copy is only
+  #                            for PATH exposure.
   #   clamav-unofficial-sigs  — third-party signature updater
   #                            (Sanesecurity, MalwarePatrol, URLhaus, …).
   #                            Lives in `pkgs/custom`.
@@ -113,14 +117,28 @@
     echo "ClamAV: bootstrapping signature DB at $DATA/db ..."
     exec ${freshclam}/bin/freshclam
   '';
+
+  # `pkgs.clamav` ships all eight binaries; our wrappers shadow four
+  # (`freshclam`, `clamd`, `clamscan`, `clamdscan`) with per-user configs.
+  # home-manager builds its PATH via `pkgs.buildEnv` without
+  # `ignoreCollisions`, so we can't ship both into `home.packages`.
+  # Build a slim copy that drops just the four colliding binaries —
+  # keeps `clambc`, `clamconf`, `clamdtop`, `sigtool`, and the libs
+  # available on PATH. Wrappers still `exec ${pkgs.clamav}/bin/${tool}`
+  # directly, so they don't depend on this slim copy at runtime.
+  clamavEngine = pkgs.runCommand "clamav-engine" {} ''
+    mkdir -p "$out"
+    cp -R ${pkgs.clamav}/. "$out/"
+    chmod -R u+w "$out"
+    for bin in freshclam clamd clamscan clamdscan; do
+      rm -f "$out/bin/$bin"
+    done
+  '';
 in {
-  # Wrappers listed LAST so they win in the home profile (later entries
-  # in `home.packages` shadow earlier ones with conflicting bin names).
   home.packages =
     [
-      # Upstream ClamAV: provides clambc, clamconf, clamdtop, sigtool,
-      # etc. Our wrappers below shadow freshclam/clamscan/clamdscan/clamd.
-      pkgs.clamav
+      # Upstream ClamAV minus the four binaries our wrappers shadow.
+      clamavEngine
       pkgs.custom.clamav-unofficial-sigs
       yaraScan
     ]
