@@ -49,10 +49,10 @@
   };
   Spaceman = {
     pname = "Spaceman";
-    version = "1.23.5";
+    version = "1.23.6";
     src = fetchurl {
-      url = "https://github.com/ruittenb/Spaceman/releases/download/v1.23.5/Spaceman-1.23.5.dmg";
-      sha256 = "sha256-NO69eFVIzu/WNETE6k9HxV3p+/xyZ6+1b0M+hcJnqxE=";
+      url = "https://github.com/ruittenb/Spaceman/releases/download/v1.23.6/Spaceman-1.23.6.dmg";
+      sha256 = "sha256-pdeGo99gW9oUTgvP2sv03JzmhjsgitmgoNre8bYQQTE=";
     };
   };
   VoltageShift = {
@@ -89,6 +89,18 @@
       sha256 = "sha256-RufZ4Vnutz91vp9oftPOAKpXP6n0gm0EJTTNloczvRs=";
     };
   };
+  clamav-unofficial-sigs = {
+    pname = "clamav-unofficial-sigs";
+    version = "948a1fb84c15a71910456561cec384a978b13412";
+    src = fetchFromGitHub {
+      owner = "extremeshok";
+      repo = "clamav-unofficial-sigs";
+      rev = "948a1fb84c15a71910456561cec384a978b13412";
+      fetchSubmodules = false;
+      sha256 = "sha256-RpAHJ+l5Ro+2p6CvmLjwlvYouBnJhdg34oYZOYhR6Bk=";
+    };
+    date = "2026-07-02";
+  };
   dmgwiz = {
     pname = "dmgwiz";
     version = "v1.1.0";
@@ -102,12 +114,12 @@
   };
   get-apple-firmware = {
     pname = "get-apple-firmware";
-    version = "0a2646959c9c12584794df85233cb4baf7c0420f";
+    version = "4d72025802564505d29ead86a54eefc7097f0da2";
     src = fetchurl {
-      url = "https://raw.githubusercontent.com/t2linux/wiki/0a2646959c9c12584794df85233cb4baf7c0420f/docs/tools/firmware.sh";
+      url = "https://raw.githubusercontent.com/t2linux/wiki/4d72025802564505d29ead86a54eefc7097f0da2/docs/tools/firmware.sh";
       sha256 = "sha256-wcHYqiW7XwieRszQ2XOPwTv714T0maqSRGbGkPBZlh4=";
     };
-    date = "2026-07-09";
+    date = "2026-07-14";
   };
   launchdeck-aarch64 = {
     pname = "launchdeck-aarch64";
@@ -146,15 +158,15 @@
   };
   mutt = {
     pname = "mutt";
-    version = "023a3689633c5cc2112f9667f90ca4614e6ba52c";
+    version = "409f49d4bdb028788d9ccd89449bdbfac0d832c6";
     src = fetchFromGitHub {
       owner = "muttmua";
       repo = "mutt";
-      rev = "023a3689633c5cc2112f9667f90ca4614e6ba52c";
+      rev = "409f49d4bdb028788d9ccd89449bdbfac0d832c6";
       fetchSubmodules = false;
-      sha256 = "sha256-WEeh5LMJJdkgMHCgcNvM9RE5+KdAFZ3Q0KrAKkKLRIw=";
+      sha256 = "sha256-N/91uMpbhcLzbLl6FARuJt8G7u6D+LkVG1n6hsa2E/Q=";
     };
-    date = "2026-07-07";
+    date = "2026-07-12";
   };
   option-analysis = {
     pname = "option-analysis";
@@ -304,17 +316,6 @@
       sha256 = "sha256-AtyRHS3mbemHXErpRONUOWVyVDkVKw96uluzKz5t8K4=";
     };
     date = "2022-04-12";
-  };
-  clamav-unofficial-sigs = {
-    pname = "clamav-unofficial-sigs";
-    version = "948a1fb84c15a71910456561cec384a978b13412";
-    src = fetchFromGitHub {
-      owner = "extremeshok";
-      repo = "clamav-unofficial-sigs";
-      rev = "948a1fb84c15a71910456561cec384a978b13412";
-      fetchSubmodules = false;
-      sha256 = "sha256-RpAHJ+l5Ro+2p6CvmLjwlvYouBnJhdg34oYZOYhR6Bk=";
-    };
   };
   zerobrew-zb-aarch64 = {
     pname = "zerobrew-zb-aarch64";

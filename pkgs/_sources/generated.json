@@ -89,11 +89,11 @@
     "pinned": false,
     "src": {
       "name": null,
-      "sha256": "sha256-NO69eFVIzu/WNETE6k9HxV3p+/xyZ6+1b0M+hcJnqxE=",
+      "sha256": "sha256-pdeGo99gW9oUTgvP2sv03JzmhjsgitmgoNre8bYQQTE=",
       "type": "url",
-      "url": "https://github.com/ruittenb/Spaceman/releases/download/v1.23.5/Spaceman-1.23.5.dmg"
+      "url": "https://github.com/ruittenb/Spaceman/releases/download/v1.23.6/Spaceman-1.23.6.dmg"
     },
-    "version": "1.23.5"
+    "version": "1.23.6"
   },
   "VoltageShift": {
     "cargoLock": null,
@@ -158,6 +158,27 @@
     },
     "version": "v8.7.0"
   },
+  "clamav-unofficial-sigs": {
+    "cargoLock": null,
+    "date": "2026-07-02",
+    "extract": null,
+    "name": "clamav-unofficial-sigs",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "deepClone": false,
+      "fetchSubmodules": false,
+      "leaveDotGit": false,
+      "name": null,
+      "owner": "extremeshok",
+      "repo": "clamav-unofficial-sigs",
+      "rev": "948a1fb84c15a71910456561cec384a978b13412",
+      "sha256": "sha256-RpAHJ+l5Ro+2p6CvmLjwlvYouBnJhdg34oYZOYhR6Bk=",
+      "sparseCheckout": [],
+      "type": "github"
+    },
+    "version": "948a1fb84c15a71910456561cec384a978b13412"
+  },
   "dmgwiz": {
     "cargoLock": null,
     "date": null,
@@ -181,7 +202,7 @@
   },
   "get-apple-firmware": {
     "cargoLock": null,
-    "date": "2026-07-09",
+    "date": "2026-07-14",
     "extract": null,
     "name": "get-apple-firmware",
     "passthru": null,
@@ -190,9 +211,9 @@
       "name": null,
       "sha256": "sha256-wcHYqiW7XwieRszQ2XOPwTv714T0maqSRGbGkPBZlh4=",
       "type": "url",
-      "url": "https://raw.githubusercontent.com/t2linux/wiki/0a2646959c9c12584794df85233cb4baf7c0420f/docs/tools/firmware.sh"
+      "url": "https://raw.githubusercontent.com/t2linux/wiki/4d72025802564505d29ead86a54eefc7097f0da2/docs/tools/firmware.sh"
     },
-    "version": "0a2646959c9c12584794df85233cb4baf7c0420f"
+    "version": "4d72025802564505d29ead86a54eefc7097f0da2"
   },
   "launchdeck-aarch64": {
     "cargoLock": null,
@@ -262,7 +283,7 @@
   },
   "mutt": {
     "cargoLock": null,
-    "date": "2026-07-07",
+    "date": "2026-07-12",
     "extract": null,
     "name": "mutt",
     "passthru": null,
@@ -274,12 +295,12 @@
       "name": null,
       "owner": "muttmua",
       "repo": "mutt",
-      "rev": "023a3689633c5cc2112f9667f90ca4614e6ba52c",
-      "sha256": "sha256-WEeh5LMJJdkgMHCgcNvM9RE5+KdAFZ3Q0KrAKkKLRIw=",
+      "rev": "409f49d4bdb028788d9ccd89449bdbfac0d832c6",
+      "sha256": "sha256-N/91uMpbhcLzbLl6FARuJt8G7u6D+LkVG1n6hsa2E/Q=",
       "sparseCheckout": [],
       "type": "github"
     },
-    "version": "023a3689633c5cc2112f9667f90ca4614e6ba52c"
+    "version": "409f49d4bdb028788d9ccd89449bdbfac0d832c6"
   },
   "option-analysis": {
     "cargoLock": null,

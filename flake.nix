@@ -350,8 +350,8 @@
 
     brew-nix = {
       #url = "github:BatteredBunny/brew-nix";
-      #url = "github:DivitMittal/brew-nix/cask-variation";
-      url = "path:/Users/div/Developer/Forks/brew-nix";
+      url = "github:DivitMittal/brew-nix/fix/7zip-26-dangerous-links";
+      #url = "path:/Users/div/Developer/Forks/brew-nix";
       inputs = {
         brew-api.follows = "brew-api";
         nix-darwin.follows = "nix-darwin";
