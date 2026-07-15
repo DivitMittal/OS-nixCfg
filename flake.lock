@@ -1651,6 +1651,21 @@
         "type": "github"
       }
     },
+    "kolu_2": {
+      "locked": {
+        "lastModified": 1783818371,
+        "narHash": "sha256-fa8BZ+9dGIOkDHKqD6Z4pZ2fWiGMO6qOZsTfibj5jCM=",
+        "owner": "juspay",
+        "repo": "kolu",
+        "rev": "10070a6629c089f0f7dbe6bcc606808bad22cd9e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "juspay",
+        "repo": "kolu",
+        "type": "github"
+      }
+    },
     "lan-mouse": {
       "inputs": {
         "nixpkgs": [
@@ -2271,6 +2286,22 @@
       "original": {
         "owner": "nixos",
         "ref": "nixos-25.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-stable_3": {
+      "locked": {
+        "lastModified": 1783788001,
+        "narHash": "sha256-ldd//kQFtHfGWLQd6deNXB6GnN6uLmwjPG6GGx/2vTA=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "572a2c2b6faebd71246e3162e4217d7ca63a9300",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-26.05-darwin",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -3199,9 +3230,11 @@
         "import-tree": [
           "import-tree"
         ],
+        "kolu": "kolu_2",
         "nixpkgs": [
           "nixpkgs"
         ],
+        "nixpkgs-stable": "nixpkgs-stable_3",
         "systems": [
           "systems"
         ],
@@ -3210,8 +3243,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1783769574,
-        "narHash": "sha256-x08RD8bCUPIosQjo16x/FcMwBtWMoW6Leb3QcbTdoJU=",
+        "lastModified": 1784081597,
+        "narHash": "sha256-6GvH0iiPi40bmWhir3jbdX63Te6xvtbw5yaEoFqDnvM=",
         "path": "/Users/div/Projects/Cfgs/term-nixCfg",
         "type": "path"
       },

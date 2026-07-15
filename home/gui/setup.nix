@@ -10,6 +10,7 @@
     ++ [
       ./comms.nix
       ./docs.nix
+      ./imports.nix
       ./lan.nix
       ./notes.nix
       ./office.nix
