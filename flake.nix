@@ -76,12 +76,12 @@
     ## Nix User Repository (NUR)
     nur = {
       url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs-2605";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     ## nixpkgs indexed
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs-2605";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ## import-tree
@@ -100,7 +100,7 @@
     direnv-instant = {
       url = "github:Mic92/direnv-instant";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
         treefmt-nix.follows = "treefmt-nix";
       };
@@ -133,7 +133,7 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
         darwin.follows = "nix-darwin";
         systems.follows = "systems";
@@ -143,14 +143,14 @@
       url = "github:yaxitech/ragenix";
       inputs = {
         agenix.follows = "agenix";
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
       };
     };
     OS-nixCfg-secrets = {
       #url = "git+ssh://git@github.com/DivitMittal/OS-nixCfg-secrets.git?ref=master";
       url = "path:/Users/div/Projects/Cfgs/OS-nixCfg-secrets";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";
         devshell.follows = "devshell";
         agenix.follows = "agenix";
@@ -169,7 +169,7 @@
     nvchad4nix = {
       url = "github:nix-community/nix4nvchad";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
         nvchad-starter.follows = "Vim-Cfg";
       };
     };
@@ -181,7 +181,7 @@
     nix-doom-emacs-unstraightened = {
       url = "github:marienz/nix-doom-emacs-unstraightened";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";
       };
     };
@@ -191,7 +191,7 @@
       url = "path:/Users/div/Projects/Cfgs/term-nixCfg";
       #url = "github:DivitMittal/term-nixCfg";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
         systems.follows = "systems";
         devshell.follows = "devshell";
@@ -207,7 +207,7 @@
       url = "path:/Users/div/Projects/Cfgs/firefox-nixCfg";
       #url = "github:DivitMittal/firefox-nixCfg";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
         systems.follows = "systems";
         devshell.follows = "devshell";
@@ -222,7 +222,7 @@
       url = "path:/Users/div/Projects/Cfgs/ai-nixCfg";
       #url = "github:DivitMittal/ai-nixCfg";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
         systems.follows = "systems";
         devshell.follows = "devshell";
@@ -235,18 +235,18 @@
     ## Spicetify
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs-2605";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     spotatui = {
       url = "github:LargeModGames/spotatui";
-      inputs.nixpkgs.follows = "nixpkgs-2605";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ## TidalCycles
     tidalcycles-nix = {
       url = "github:DivitMittal/tidalcycles-nix";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
         systems.follows = "systems";
         devshell.follows = "devshell";
@@ -260,7 +260,7 @@
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
         utils.follows = "flake-utils";
         flake-compat.follows = "flake-compat";
       };
@@ -268,22 +268,22 @@
     ## NixOS
     disko = {
       url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs-2605";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-wsl = {
       url = "github:nix-community/nixos-wsl/main";
-      inputs.nixpkgs.follows = "nixpkgs-2605";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     nixos-apple-silicon = {
       url = "github:nix-community/nixos-apple-silicon";
-      inputs.nixpkgs.follows = "nixpkgs-2605";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     ## Android
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
       };
     };
@@ -291,7 +291,7 @@
       url = "path:/Users/div/Projects/hid/android-kvm";
       #url = "github:DivitMittal/android-kvm";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";
         flake-parts.follows = "flake-parts";
         devshell.follows = "devshell";
@@ -302,14 +302,14 @@
 
     lan-mouse = {
       url = "github:feschber/lan-mouse";
-      inputs.nixpkgs.follows = "nixpkgs-2605";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ## Theming — cyberpunk palette wired via lib/palette.nix
     stylix = {
       url = "github:danth/stylix";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
         nur.follows = "nur";
         systems.follows = "systems";
       };
@@ -318,20 +318,20 @@
     ## Home-Manager
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-2605";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ### macOS
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs-2605";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     ## Hammerspoon
     hammerspoon-nix = {
       #url = "github:DivitMittal/hammerspoon-nix";
       url = "path:/Users/div/Projects/Cfgs/hammerspoon-nix";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
         systems.follows = "systems";
         devshell.follows = "devshell";
@@ -362,7 +362,7 @@
       inputs = {
         brew-api.follows = "brew-api";
         nix-darwin.follows = "nix-darwin";
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
       };
     };
     brew-api = {
@@ -374,7 +374,7 @@
       url = "github:mcflis/mac-app-util/fix/missing-icons";
       #url = "github:hraban/mac-app-util";
       inputs = {
-        #nixpkgs.follows = "nixpkgs-2605";
+        #nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
         systems.follows = "systems";
       };
@@ -384,7 +384,7 @@
     kanata-tray = {
       url = "github:rszyma/kanata-tray";
       #url = "github:DivitMittal/kanata-tray/fix/nix-hostplatform-system";
-      inputs.nixpkgs.follows = "nixpkgs-2605";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     TLTR = {
       url = "github:DivitMittal/TLTR";
@@ -396,14 +396,14 @@
       url = "github:oddlama/nix-topology";
       inputs = {
         flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
       };
     };
 
     ## Misc.
     yazi = {
       url = "github:sxyazi/yazi";
-      inputs.nixpkgs.follows = "nixpkgs-2605";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     yazi-plugins = {
       url = "github:yazi-rs/plugins";
@@ -412,7 +412,7 @@
     leetcode-tui = {
       url = "github:akarsh1995/leetcode-tui";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
       };
     };
