@@ -27,7 +27,7 @@
           mergeAttrsList [
             {
               master = inputs.nixpkgs-master.legacyPackages.${hostPlatform.system};
-              stable = inputs.nixpkgs-stable.legacyPackages.${hostPlatform.system};
+              stable = inputs."nixpkgs-2605".legacyPackages.${hostPlatform.system};
             }
             # (optionalAttrs hostPlatform.isDarwin {
             #   darwinStable = inputs.nixpkgs-darwin.legacyPackages.${hostPlatform.system};
