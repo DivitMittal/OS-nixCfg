@@ -91,6 +91,8 @@ in {
     '';
   };
 
+  launchd.daemons.yabai-sa.serviceConfig.KeepAlive = lib.mkForce true;
+
   # Pre-grant Accessibility to the current yabai store path so a rebuild
   # (which moves yabai to a new /nix/store/<hash>) does NOT re-trigger the
   # System Settings toggle. Targets the SYSTEM TCC.db (writable as root here
