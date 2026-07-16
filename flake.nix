@@ -110,20 +110,20 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     devshell = {
       url = "github:numtide/devshell";
-      inputs.nixpkgs.follows = "nixpkgs-2605";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs-2605";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs-2605";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     actions-nix = {
       url = "github:nialov/actions.nix";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
         git-hooks.follows = "git-hooks";
       };
