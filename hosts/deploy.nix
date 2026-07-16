@@ -62,6 +62,7 @@ in {
         user = "root";
         sshOpts = ["-p" "20041"];
         magicRollback = false;
+        remoteBuild = true;
         path =
           inputs.deploy-rs.lib.x86_64-linux.activate.nixos
           self.nixosConfigurations.VPS1;
@@ -75,6 +76,7 @@ in {
         sshUser = "root";
         user = "root";
         magicRollback = false;
+        remoteBuild = true;
         path =
           inputs.deploy-rs.lib.x86_64-linux.activate.nixos
           self.nixosConfigurations.VPS2;

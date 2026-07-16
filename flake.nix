@@ -3,6 +3,13 @@
 
   outputs = {nixpkgs, ...} @ inputs: let
     inherit (inputs.flake-parts.lib) mkFlake;
+    isX86Darwin = system: system == "x86_64-darwin";
+    # Per-system nixpkgs source — pick the 26.05-darwin branch on x86_64-darwin
+    # (the only system NixOS 26.11 dropped), else fall back to nixpkgs-unstable.
+    pkgsFor = system:
+      if isX86Darwin system
+      then inputs."nixpkgs-2605"
+      else nixpkgs;
     specialArgs.lib = nixpkgs.lib.extend (final: _: {
       custom = import ./lib/custom.nix {lib = final;};
     });
@@ -22,7 +29,7 @@
         # The memoized version would not include our overlays and config settings.
         #
         # Trade-off: Slightly longer evaluation time vs. ability to customize pkgs
-        _module.args.pkgs = import nixpkgs {
+        _module.args.pkgs = import (pkgsFor system) {
           inherit system;
           config = let
             inherit (lib) mkDefault;
@@ -63,18 +70,18 @@
     #nixpkgs-staging.url = "github:nixos/nixpkgs/staging";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    "nixpkgs-2605".url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
     nixpkgs-2505.url = "github:nixos/nixpkgs/nixos-25.05";
     #nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
     ## Nix User Repository (NUR)
     nur = {
       url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
     ## nixpkgs indexed
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
 
     ## import-tree
@@ -93,7 +100,7 @@
     direnv-instant = {
       url = "github:Mic92/direnv-instant";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         flake-parts.follows = "flake-parts";
         treefmt-nix.follows = "treefmt-nix";
       };
@@ -103,20 +110,20 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     devshell = {
       url = "github:numtide/devshell";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
     actions-nix = {
       url = "github:nialov/actions.nix";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         flake-parts.follows = "flake-parts";
         git-hooks.follows = "git-hooks";
       };
@@ -126,7 +133,7 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         home-manager.follows = "home-manager";
         darwin.follows = "nix-darwin";
         systems.follows = "systems";
@@ -136,14 +143,14 @@
       url = "github:yaxitech/ragenix";
       inputs = {
         agenix.follows = "agenix";
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
       };
     };
     OS-nixCfg-secrets = {
       #url = "git+ssh://git@github.com/DivitMittal/OS-nixCfg-secrets.git?ref=master";
       url = "path:/Users/div/Projects/Cfgs/OS-nixCfg-secrets";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         systems.follows = "systems";
         devshell.follows = "devshell";
         agenix.follows = "agenix";
@@ -162,7 +169,7 @@
     nvchad4nix = {
       url = "github:nix-community/nix4nvchad";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         nvchad-starter.follows = "Vim-Cfg";
       };
     };
@@ -174,7 +181,7 @@
     nix-doom-emacs-unstraightened = {
       url = "github:marienz/nix-doom-emacs-unstraightened";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         systems.follows = "systems";
       };
     };
@@ -184,7 +191,7 @@
       url = "path:/Users/div/Projects/Cfgs/term-nixCfg";
       #url = "github:DivitMittal/term-nixCfg";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         flake-parts.follows = "flake-parts";
         systems.follows = "systems";
         devshell.follows = "devshell";
@@ -200,7 +207,7 @@
       url = "path:/Users/div/Projects/Cfgs/firefox-nixCfg";
       #url = "github:DivitMittal/firefox-nixCfg";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         flake-parts.follows = "flake-parts";
         systems.follows = "systems";
         devshell.follows = "devshell";
@@ -215,7 +222,7 @@
       url = "path:/Users/div/Projects/Cfgs/ai-nixCfg";
       #url = "github:DivitMittal/ai-nixCfg";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         flake-parts.follows = "flake-parts";
         systems.follows = "systems";
         devshell.follows = "devshell";
@@ -228,18 +235,18 @@
     ## Spicetify
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
     spotatui = {
       url = "github:LargeModGames/spotatui";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
 
     ## TidalCycles
     tidalcycles-nix = {
       url = "github:DivitMittal/tidalcycles-nix";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         flake-parts.follows = "flake-parts";
         systems.follows = "systems";
         devshell.follows = "devshell";
@@ -253,7 +260,7 @@
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         utils.follows = "flake-utils";
         flake-compat.follows = "flake-compat";
       };
@@ -261,22 +268,22 @@
     ## NixOS
     disko = {
       url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
     nixos-wsl = {
       url = "github:nix-community/nixos-wsl/main";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     nixos-apple-silicon = {
       url = "github:nix-community/nixos-apple-silicon";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
     ## Android
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         home-manager.follows = "home-manager";
       };
     };
@@ -284,7 +291,7 @@
       url = "path:/Users/div/Projects/hid/android-kvm";
       #url = "github:DivitMittal/android-kvm";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         systems.follows = "systems";
         flake-parts.follows = "flake-parts";
         devshell.follows = "devshell";
@@ -295,14 +302,14 @@
 
     lan-mouse = {
       url = "github:feschber/lan-mouse";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
 
     ## Theming — cyberpunk palette wired via lib/palette.nix
     stylix = {
       url = "github:danth/stylix";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         nur.follows = "nur";
         systems.follows = "systems";
       };
@@ -311,20 +318,20 @@
     ## Home-Manager
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
 
     ### macOS
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
     ## Hammerspoon
     hammerspoon-nix = {
       #url = "github:DivitMittal/hammerspoon-nix";
       url = "path:/Users/div/Projects/Cfgs/hammerspoon-nix";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         flake-parts.follows = "flake-parts";
         systems.follows = "systems";
         devshell.follows = "devshell";
@@ -355,7 +362,7 @@
       inputs = {
         brew-api.follows = "brew-api";
         nix-darwin.follows = "nix-darwin";
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
       };
     };
     brew-api = {
@@ -367,7 +374,7 @@
       url = "github:mcflis/mac-app-util/fix/missing-icons";
       #url = "github:hraban/mac-app-util";
       inputs = {
-        #nixpkgs.follows = "nixpkgs";
+        #nixpkgs.follows = "nixpkgs-2605";
         flake-utils.follows = "flake-utils";
         systems.follows = "systems";
       };
@@ -377,7 +384,7 @@
     kanata-tray = {
       url = "github:rszyma/kanata-tray";
       #url = "github:DivitMittal/kanata-tray/fix/nix-hostplatform-system";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
     TLTR = {
       url = "github:DivitMittal/TLTR";
@@ -389,14 +396,14 @@
       url = "github:oddlama/nix-topology";
       inputs = {
         flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
       };
     };
 
     ## Misc.
     yazi = {
       url = "github:sxyazi/yazi";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
     yazi-plugins = {
       url = "github:yazi-rs/plugins";
@@ -405,7 +412,7 @@
     leetcode-tui = {
       url = "github:akarsh1995/leetcode-tui";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         flake-utils.follows = "flake-utils";
       };
     };

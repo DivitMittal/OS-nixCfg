@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  hostPlatform,
   pkgs,
   ...
 }: let
@@ -8,11 +9,11 @@
 in {
   programs.nix-ld.enable = true;
 
-  system.stateVersion = mkDefault "26.05";
+  system.stateVersion = mkDefault "26.11";
 
   # Enable building aarch64 packages for nix-on-droid deployment
   # Uses QEMU user-mode emulation via binfmt_misc
-  boot.binfmt.emulatedSystems = mkDefault ["aarch64-linux"];
+  boot.binfmt.emulatedSystems = mkDefault (lib.lists.optionals (hostPlatform.system != "aarch64-linux") ["aarch64-linux"]);
 
   nix.optimise.dates = mkDefault ["Sun 22:00"];
 

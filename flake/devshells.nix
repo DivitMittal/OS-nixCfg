@@ -50,6 +50,7 @@
               ### Nix Tools
               # nix-visualize # (handled by GitHub Actions CI workflow)
               nvfetcher
+              nixos-anywhere
               ### Android Tools
               android-tools
               ;
@@ -76,6 +77,12 @@
           help = "Rebuilds & switches the host configuration (pass flags like -v --show-trace --impure)";
           command = "${self}/utils/hosts_rebuild.sh \"$@\"";
           category = "hosts";
+        }
+        {
+          name = "bootstrap-nixos";
+          help = "Remote first-install bootstrap for any NixOS host with nixos-anywhere";
+          command = "${self}/utils/bootstrap_nixos.sh \"$@\"";
+          category = "bootstrap";
         }
         {
           name = "m1-adb-forward";

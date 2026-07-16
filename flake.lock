@@ -49,7 +49,7 @@
         ],
         "import-tree": "import-tree",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "ragenix": [
           "ragenix"
@@ -127,7 +127,7 @@
           "git-hooks"
         ],
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -182,7 +182,7 @@
           "home-manager"
         ],
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "systems": [
           "systems"
@@ -226,7 +226,7 @@
         "nix-openclaw": "nix-openclaw",
         "nix-steipete-tools": "nix-steipete-tools",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "pi-nix": "pi-nix",
         "sandnix": "sandnix",
@@ -289,7 +289,7 @@
           "import-tree"
         ],
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "systems": [
           "systems"
@@ -453,7 +453,7 @@
           "nix-darwin"
         ],
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -597,7 +597,7 @@
           "flake-compat"
         ],
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "utils": [
           "flake-utils"
@@ -620,7 +620,7 @@
     "devshell": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -643,7 +643,7 @@
           "flake-parts"
         ],
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "treefmt-nix": [
           "treefmt-nix"
@@ -666,7 +666,7 @@
     "disko": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -796,7 +796,7 @@
         ],
         "import-tree": "import-tree_4",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "nixpkgs-firefox-darwin": "nixpkgs-firefox-darwin",
         "nixpkgs-stable": "nixpkgs-stable",
@@ -1320,7 +1320,7 @@
       "inputs": {
         "flake-compat": "flake-compat_3",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -1392,7 +1392,7 @@
         ],
         "import-tree": "import-tree_5",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "systems": [
           "systems"
@@ -1460,7 +1460,7 @@
     "home-manager_2": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -1618,7 +1618,7 @@
       "inputs": {
         "flake-utils": "flake-utils_4",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -1653,7 +1653,7 @@
     "lan-mouse": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "rust-overlay": "rust-overlay"
       },
@@ -1677,7 +1677,7 @@
           "flake-utils"
         ],
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "rust-overlay": "rust-overlay_2"
       },
@@ -1788,7 +1788,7 @@
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -1811,7 +1811,7 @@
         "doomemacs-modules": "doomemacs-modules",
         "emacs-overlay": "emacs-overlay",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "systems": [
           "systems"
@@ -1900,7 +1900,7 @@
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -1924,7 +1924,7 @@
         ],
         "nix-formatter-pack": "nix-formatter-pack",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "nixpkgs-docs": "nixpkgs-docs",
         "nixpkgs-for-bootstrap": "nixpkgs-for-bootstrap",
@@ -2017,7 +2017,7 @@
           "flake-parts"
         ],
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -2038,7 +2038,7 @@
       "inputs": {
         "flake-compat": "flake-compat_5",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -2078,7 +2078,7 @@
       "inputs": {
         "flake-compat": "flake-compat_6",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -2124,6 +2124,22 @@
       "original": {
         "owner": "nixos",
         "ref": "nixos-25.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-2605": {
+      "locked": {
+        "lastModified": 1784182977,
+        "narHash": "sha256-Hy8zg2HEcsk4WqowQK3UKRXz1fdQM7Z2un3nSyLbJaQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "29c22b7761070f37c4c2b0dd6a8777f0bd43e268",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-26.05-darwin",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -2259,22 +2275,6 @@
       }
     },
     "nixpkgs-stable_2": {
-      "locked": {
-        "lastModified": 1782847189,
-        "narHash": "sha256-twXPFqFsrrY5r28Zh7Homgcp2gUMBgQ6WDS98Q/3xFI=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "b6018f87da91d19d0ab4cf979885689b469cdd41",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-25.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-stable_3": {
       "locked": {
         "lastModified": 1783788001,
         "narHash": "sha256-ldd//kQFtHfGWLQd6deNXB6GnN6uLmwjPG6GGx/2vTA=",
@@ -2495,7 +2495,7 @@
       "inputs": {
         "flake-parts": "flake-parts_8",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -2516,7 +2516,7 @@
       "inputs": {
         "flake-utils": "flake-utils_5",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "nvchad-starter": [
           "Vim-Cfg"
@@ -2690,7 +2690,7 @@
         "crane": "crane",
         "flake-utils": "flake-utils_6",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "rust-overlay": "rust-overlay_3"
       },
@@ -2751,8 +2751,8 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_9",
         "nixpkgs-2505": "nixpkgs-2505",
+        "nixpkgs-2605": "nixpkgs-2605",
         "nixpkgs-master": "nixpkgs-master",
-        "nixpkgs-stable": "nixpkgs-stable_2",
         "nur": "nur",
         "nvchad4nix": "nvchad4nix",
         "ragenix": "ragenix",
@@ -2903,7 +2903,7 @@
     "spicetify-nix": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "systems": "systems_9"
       },
@@ -2925,7 +2925,7 @@
       "inputs": {
         "flake-utils": "flake-utils_7",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -2952,7 +2952,7 @@
         "flake-parts": "flake-parts_9",
         "gnome-shell": "gnome-shell",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "nur": [
           "nur"
@@ -3216,9 +3216,9 @@
         ],
         "kolu": "kolu",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
-        "nixpkgs-stable": "nixpkgs-stable_3",
+        "nixpkgs-stable": "nixpkgs-stable_2",
         "systems": [
           "systems"
         ],
@@ -3271,7 +3271,7 @@
         ],
         "import-tree": "import-tree_7",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "systems": [
           "systems"
@@ -3463,7 +3463,7 @@
     "treefmt-nix_6": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -3536,7 +3536,7 @@
       "inputs": {
         "flake-utils": "flake-utils_8",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "rust-overlay": "rust-overlay_4"
       },

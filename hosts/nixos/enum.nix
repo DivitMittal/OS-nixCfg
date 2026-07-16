@@ -58,14 +58,23 @@
       inherit class;
       hostName = "VPS1";
       system = "x86_64-linux";
-      # First NixOS host to consume system-level agenix secrets (root/div password hashes)
-      additionalModules = [inputs.agenix.nixosModules.default];
+      # VPSes use system-level agenix for password hashes and Home Manager as
+      # part of the NixOS activation so bootstrap/deploy stays atomic.
+      additionalModules = [
+        inputs.agenix.nixosModules.default
+        inputs.home-manager.nixosModules.home-manager
+        ./profiles/headless-home.nix
+      ];
     };
     VPS2 = mkCfg {
       inherit class;
       hostName = "VPS2";
       system = "x86_64-linux";
-      additionalModules = [inputs.agenix.nixosModules.default];
+      additionalModules = [
+        inputs.agenix.nixosModules.default
+        inputs.home-manager.nixosModules.home-manager
+        ./profiles/headless-home.nix
+      ];
     };
   };
 }
