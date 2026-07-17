@@ -76,7 +76,7 @@ hts  # System rebuild
 
 Use `nixos-anywhere` for first install/reinstall of any NixOS host declared in
 `.#nixosConfigurations`. The devshell provides a thin safety wrapper named
-`bootstrap-nixos` that keeps host details explicit instead of baking provider
+`bootstrap-remote` that keeps host details explicit instead of baking provider
 endpoints into the script.
 
 Enter the devshell first:
@@ -88,21 +88,21 @@ nix develop
 Run non-destructive checks against a rescue/current Linux SSH target:
 
 ```bash
-bootstrap-nixos <host> --target root@203.0.113.10 --check
+bootstrap-remote <host> --target root@203.0.113.10 --check
 ```
 
 Then run the destructive install only after confirming the SSH target and checked
 disk are correct:
 
 ```bash
-bootstrap-nixos <host> --target root@203.0.113.10 --yes-destroy-disk
+bootstrap-remote <host> --target root@203.0.113.10 --yes-destroy-disk
 ```
 
 By default the wrapper checks `/dev/sda` before install. Override that when a
 host's disko layout targets a different device:
 
 ```bash
-bootstrap-nixos <host> --target root@203.0.113.10 --disk /dev/vda --check
+bootstrap-remote <host> --target root@203.0.113.10 --disk /dev/vda --check
 ```
 
 The wrapper evaluates `.#nixosConfigurations.<host>` locally, checks SSH access,
@@ -120,9 +120,9 @@ need system-level agenix at bootstrap. Never commit this private key.
 Useful options:
 
 ```bash
-bootstrap-nixos <host> --target root@203.0.113.10 --port 2222 --check
-bootstrap-nixos <host> --target root@203.0.113.10 --ssh-identity ~/.ssh/rescue --check
-bootstrap-nixos <host> --target root@203.0.113.10 --build-on auto --check
+bootstrap-remote <host> --target root@203.0.113.10 --port 2222 --check
+bootstrap-remote <host> --target root@203.0.113.10 --ssh-identity ~/.ssh/rescue --check
+bootstrap-remote <host> --target root@203.0.113.10 --build-on auto --check
 ```
 
 ### VPS Examples
@@ -138,11 +138,11 @@ bootstrap-nixos <host> --target root@203.0.113.10 --build-on auto --check
 Both current VPS disko layouts target `/dev/sda`.
 
 ```bash
-bootstrap-nixos VPS1 --target root@148.113.8.216 --port 20041 --check
-bootstrap-nixos VPS1 --target root@148.113.8.216 --port 20041 --yes-destroy-disk
+bootstrap-remote VPS1 --target root@148.113.8.216 --port 20041 --check
+bootstrap-remote VPS1 --target root@148.113.8.216 --port 20041 --yes-destroy-disk
 
-bootstrap-nixos VPS2 --target root@2a0e:97c0:3e3:34d::1 --check
-bootstrap-nixos VPS2 --target root@2a0e:97c0:3e3:34d::1 --yes-destroy-disk
+bootstrap-remote VPS2 --target root@2a0e:97c0:3e3:34d::1 --check
+bootstrap-remote VPS2 --target root@2a0e:97c0:3e3:34d::1 --yes-destroy-disk
 ```
 
 ### Steady-state deploys

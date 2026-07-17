@@ -1,8 +1,19 @@
 #!/usr/bin/env bash
-# Remote first-install bootstrap for NixOS hosts.
+# Remote first-install bootstrap for NixOS hosts via nixos-anywhere.
 #
 # This is intentionally separate from bootstrap.sh: it runs nixos-anywhere and
 # can destroy target disks. Use deploy-rs for steady-state changes after install.
+#
+# Hardened after a real wedge: a prior run looped forever on a post-kexec SSH
+# auth failure with nothing bounding it. So this wrapper (1) caps the whole
+# nixos-anywhere run with a timeout, (2) bypasses host-key checks (a fresh
+# install inherently trusts and wipes the target, and the host key changes
+# across kexec/reboot), (3) keeps the SSH control connection alive across long
+# remote builds, and (4) auto-confirms disk destruction when --yes-destroy-disk
+# is passed so the run is fully headless.
+#
+# The script is deliberately host-agnostic: no hostnames, IPs, or IPv6 logic.
+# All target specifics arrive via flags (--target, --port, --disk, ...).
 
 set -euo pipefail
 
@@ -10,11 +21,14 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=./common.sh
 source "$SCRIPT_DIR/common.sh"
 
+# Hard cap (minutes) so a wedged install aborts instead of looping forever.
+default_timeout_minutes=120
+
 usage() {
   cat <<'EOF'
 Usage:
-  bootstrap-nixos <host> --target <ssh-target> --check [options]
-  bootstrap-nixos <host> --target <ssh-target> --yes-destroy-disk [options]
+  bootstrap-remote <host> --target <ssh-target> --check [options]
+  bootstrap-remote <host> --target <ssh-target> --yes-destroy-disk [options]
 
 Arguments:
   <host>                  Host attr under .#nixosConfigurations.<host>.
@@ -22,7 +36,8 @@ Arguments:
 Options:
   --target <ssh-target>   SSH target for rescue/current Linux, e.g. root@203.0.113.10.
   --check                 Run local/remote preflight checks only; do not install.
-  --yes-destroy-disk      Confirm that nixos-anywhere may partition/format disks.
+  --yes-destroy-disk      Confirm nixos-anywhere may partition/format disks.
+                          Also exports DISKO_NO_CONFIRM=1 so the run is headless.
   --disk <path>           Block device to check before install; default: /dev/sda.
   --agenix-identity <path>
                           Copy this local private key to /var/lib/agenix/id_ed25519.
@@ -30,11 +45,18 @@ Options:
   --build-on <mode>       nixos-anywhere build mode: remote, local, or auto. Default: remote.
   --port <port>           SSH port.
   --ssh-identity <path>   SSH identity for reaching the rescue/current system.
-  --ssh-option <option>   Extra SSH option for both ssh and nixos-anywhere.
+  --ssh-option <KEY=VALUE>
+                          Extra SSH option appended to the built-in defaults.
+  --timeout-minutes <n>   Hard cap for the nixos-anywhere run. Default: 120.
   -h, --help              Show this help.
 
 Environment:
   AGENIX_IDENTITY_PATH    Default for --agenix-identity when set.
+
+SSH defaults (a fresh install trusts the target):
+  StrictHostKeyChecking=no, UserKnownHostsFile=/dev/null (host key changes across
+  kexec/reboot), plus keepalive ServerAliveInterval=15 / ServerAliveCountMax=240
+  to survive long remote builds.
 EOF
 }
 
@@ -49,6 +71,7 @@ build_on="remote"
 port=""
 ssh_identity=""
 ssh_options=()
+timeout_minutes="$default_timeout_minutes"
 
 require_value() {
   local option="$1"
@@ -108,6 +131,11 @@ while [[ $# -gt 0 ]]; do
     ssh_options+=("$2")
     shift
     ;;
+  --timeout-minutes)
+    require_value "$1" "${2:-}"
+    timeout_minutes="$2"
+    shift
+    ;;
   -h | --help)
     usage
     exit 0
@@ -137,7 +165,7 @@ fi
 
 if [[ -z $target ]]; then
   red "Missing --target <ssh-target>."
-  yellow "Example: bootstrap-nixos $host --target root@203.0.113.10 --check"
+  yellow "Example: bootstrap-remote $host --target root@203.0.113.10 --check"
   exit 1
 fi
 
@@ -162,42 +190,55 @@ remote | local | auto)
   ;;
 esac
 
+if ! [[ $timeout_minutes =~ ^[0-9]+$ ]] || ((timeout_minutes < 1)); then
+  red "Invalid --timeout-minutes value: $timeout_minutes"
+  yellow "Use a positive integer number of minutes."
+  exit 1
+fi
+
 if [[ $seed_agenix == true && -z $agenix_identity ]]; then
   agenix_identity="$HOME/.ssh/agenix/id_ed25519"
 fi
 
-ssh_args=(
-  -o BatchMode=yes
-  -o ConnectTimeout=10
-  -o StrictHostKeyChecking=accept-new
+# A fresh install trusts and wipes the target, so bypass host-key verification
+# (the key changes across kexec/reboot) and keep the connection alive for the
+# long remote build. User --ssh-option values are appended on top of these.
+base_ssh_options=(
+  StrictHostKeyChecking=no
+  UserKnownHostsFile=/dev/null
+  ServerAliveInterval=15
+  ServerAliveCountMax=240
+  ConnectTimeout=10
 )
+
+ssh_args=(-o BatchMode=yes)
+for opt in "${base_ssh_options[@]}" "${ssh_options[@]}"; do
+  ssh_args+=(-o "$opt")
+done
 if [[ -n $port ]]; then
   ssh_args+=(-p "$port")
 fi
 if [[ -n $ssh_identity ]]; then
   ssh_args+=(-i "$ssh_identity")
 fi
-for option in "${ssh_options[@]}"; do
-  ssh_args+=(-o "$option")
-done
 
 nixos_anywhere_args=(--flake ".#$host" --build-on "$build_on")
+for opt in "${base_ssh_options[@]}" "${ssh_options[@]}"; do
+  nixos_anywhere_args+=(--ssh-option "$opt")
+done
 if [[ -n $port ]]; then
   nixos_anywhere_args+=(-p "$port")
 fi
 if [[ -n $ssh_identity ]]; then
   nixos_anywhere_args+=(-i "$ssh_identity")
 fi
-for option in "${ssh_options[@]}"; do
-  nixos_anywhere_args+=(--ssh-option "$option")
-done
 
 run_preflight_checks() {
   green "====== NIXOS REMOTE BOOTSTRAP PREFLIGHT ($host) ======"
 
   if [[ ! -f "$PWD/flake.nix" ]]; then
     red "No flake.nix in current directory ($PWD)."
-    yellow "cd into the OS-nixCfg repo root before running bootstrap-nixos."
+    yellow "cd into the OS-nixCfg repo root before running bootstrap-remote."
     exit 1
   fi
   green "Repository root: $PWD"
@@ -210,7 +251,7 @@ run_preflight_checks() {
 
   if ! command -v nixos-anywhere >/dev/null 2>&1; then
     red "nixos-anywhere is not available on PATH."
-    yellow "Enter the project devshell first: nix develop"
+    yellow "Enter the project devshell first (nix develop) or run via: nix shell nixpkgs#nixos-anywhere -c bash $0 ..."
     exit 1
   fi
   green "nixos-anywhere: $(nixos-anywhere --version 2>/dev/null || command -v nixos-anywhere)"
@@ -230,7 +271,12 @@ run_preflight_checks() {
   nix eval --raw --show-trace --accept-flake-config ".#nixosConfigurations.$host.config.system.build.toplevel.drvPath" >/dev/null
 
   green "Checking SSH connectivity: $target"
-  ssh "${ssh_args[@]}" "$target" true
+  local remote_hostname
+  remote_hostname="$(ssh "${ssh_args[@]}" "$target" 'hostname')"
+  green "SSH OK; remote hostname: $remote_hostname"
+  if [[ $remote_hostname == "nixos-installer" || $remote_hostname == "nixos" ]]; then
+    yellow "Target is already a kexec-installer; nixos-anywhere will skip kexec and go straight to disko/install."
+  fi
 
   green "Checking target disk exists: $target_disk"
   ssh "${ssh_args[@]}" "$target" "test -b '$target_disk'"
@@ -238,10 +284,11 @@ run_preflight_checks() {
 
 run_install() {
   local extra_files=""
+  local cleanup=()
 
   if [[ $seed_agenix == true ]]; then
     extra_files="$(mktemp -d)"
-    trap 'rm -rf "$extra_files"' EXIT
+    cleanup+=("$extra_files")
     install -D -m 0600 "$agenix_identity" "$extra_files/var/lib/agenix/id_ed25519"
     nixos_anywhere_args+=(--extra-files "$extra_files")
   fi
@@ -250,10 +297,36 @@ run_install() {
   yellow "This may partition/format disks according to the selected NixOS configuration."
   yellow "Preflight checked target disk: $target_disk."
 
-  nixos-anywhere \
-    "${nixos_anywhere_args[@]}" \
-    "$target"
+  # --yes-destroy-disk is the user's explicit confirmation; headless-confirm disk
+  # destruction so no interactive prompt can wedge the run.
+  if [[ $destroy_confirmed == true ]]; then
+    export DISKO_NO_CONFIRM=1
+  fi
+
+  # Bound the run so an auth/reconnect hiccup cannot loop forever (prior wedge).
+  if command -v timeout >/dev/null 2>&1; then
+    timeout -s TERM -k 60s "${timeout_minutes}m" \
+      nixos-anywhere "${nixos_anywhere_args[@]}" "$target"
+  else
+    yellow "GNU 'timeout' not found on PATH — running unbounded (install coreutils to enable the hard cap)."
+    nixos-anywhere "${nixos_anywhere_args[@]}" "$target"
+  fi
+
+  # Clean up seeded agenix temp dirs only on success (on failure, leave them for inspection).
+  for d in "${cleanup[@]}"; do
+    rm -rf "$d"
+  done
 }
+
+on_error() {
+  local rc=$?
+  red "bootstrap-remote FAILED for $host (exit $rc)."
+  if [[ $rc -eq 124 ]]; then
+    red "Hit the ${timeout_minutes}m timeout — killed to avoid hanging forever."
+    yellow "Re-run once the target is reachable; an already-kexeced target skips the problematic kexec phase."
+  fi
+}
+trap on_error ERR
 
 run_preflight_checks
 
@@ -263,3 +336,4 @@ if [[ $check_only == true ]]; then
 fi
 
 run_install
+green "====== bootstrap-remote SUCCEEDED for $host ======"

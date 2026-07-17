@@ -79,9 +79,9 @@
           category = "hosts";
         }
         {
-          name = "bootstrap-nixos";
+          name = "bootstrap-remote";
           help = "Remote first-install bootstrap for any NixOS host with nixos-anywhere";
-          command = "${self}/utils/bootstrap_nixos.sh \"$@\"";
+          command = "${self}/utils/bootstrap_remote.sh \"$@\"";
           category = "bootstrap";
         }
         {
