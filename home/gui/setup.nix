@@ -10,7 +10,6 @@
     ++ [
       ./comms.nix
       ./docs.nix
-      ./imports.nix
       ./lan.nix
       ./notes.nix
       ./office.nix
@@ -18,5 +17,8 @@
       ./vpn.nix
     ]
     ++ lib.lists.optionals hostPlatform.isDarwin [(inputs.import-tree ./darwin)]
-    ++ lib.lists.optionals hostPlatform.isLinux [(inputs.import-tree ./linux)];
+    ++ lib.lists.optionals hostPlatform.isLinux [(inputs.import-tree ./linux)]
+    ++ [
+      inputs.term-nixCfg.homeManagerConfigurations.gui
+    ];
 }
