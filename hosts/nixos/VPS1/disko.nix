@@ -21,7 +21,7 @@ _: {
             size = "100%";
             content = {
               type = "filesystem";
-              format = "xfs";
+              format = "ext4";
               mountpoint = "/";
             };
           };
