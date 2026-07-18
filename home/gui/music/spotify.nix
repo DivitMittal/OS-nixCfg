@@ -42,7 +42,11 @@ in {
     programs.spicetify = mkIf (cfg.mode == "spicetify") {
       enable = true;
 
-      theme = lib.mkForce spicePkgs.themes.text;
+      theme = lib.mkForce (spicePkgs.themes.text
+        // {
+          # Disable every transition in the text theme — they're the main perf cost.
+          additionalCss = ":root { --border-transition: none !important; }";
+        });
       colorScheme = lib.mkForce "Spotify";
 
       enabledExtensions = with spicePkgs.extensions; [
@@ -59,9 +63,6 @@ in {
         lyricsPlus
         historyInSidebar
       ];
-
-      # Disable every transition in the text theme — they're the main perf cost.
-      additionalCss = ":root { --border-transition: none !important; }";
 
       experimentalFeatures = true;
     };
