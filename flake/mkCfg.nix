@@ -22,7 +22,7 @@
       };
       inherit (ctx.pkgs.stdenvNoCC) hostPlatform;
       inherit (lib.attrsets) optionalAttrs mergeAttrsList;
-      pkgs' = ctx.pkgs.extend (
+      pkgs = ctx.pkgs.extend (
         self: super:
           mergeAttrsList [
             {
@@ -41,7 +41,6 @@
             (optionalAttrs (class == "droid") (inputs.nix-on-droid.overlays.default self super))
           ]
       );
-      pkgs = pkgs';
       # Re-extend lib with pkgs now available, partially applying it into the helpers
       # so call sites don't need to pass pkgs explicitly.
       lib' = lib.extend (_: prev: {
