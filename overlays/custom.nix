@@ -32,14 +32,5 @@ _: {
           ];
         };
     });
-    # nixpkgs uutils-procps unconditionally adds systemd-minimal-libs to
-    # buildInputs, but upstream (uutils/procps) has no systemd dependency — it
-    # builds and runs on macOS without it. Strip the Linux-only lib on darwin so
-    # the full procps toolset (free, pgrep, pkill, ps, top, vmstat, w, watch, …)
-    # is available uniformly across platforms.
-    uutils-procps = super.uutils-procps.overrideAttrs (old:
-      super.lib.optionalAttrs super.stdenv.hostPlatform.isDarwin {
-        buildInputs = super.lib.filter (x: super.lib.getName x != "systemd-minimal-libs") (old.buildInputs or []);
-      });
   };
 }

@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  hostPlatform,
   ...
 }: {
   networking.hostName = config.hostSpec.hostName;
@@ -41,7 +42,6 @@
       uutils-coreutils-noprefix # coreutils
       uutils-diffutils # diffutils
       uutils-findutils # findutils
-      uutils-procps # procps (systemdLibs stripped on darwin via overlays/custom.nix)
       ## Others
       zip
       unzip
@@ -49,5 +49,16 @@
       vim
       git
       ;
+    # nixpkgs uutils-procps unconditionally adds systemd-minimal-libs to
+    # buildInputs, but upstream (uutils/procps) has no systemd dependency —
+    # it builds and runs on macOS without it. Strip the Linux-only lib on
+    # darwin so the full procps toolset (free, pgrep, pkill, ps, top,
+    # vmstat, w, watch, …) is available uniformly across platforms.
+    uutils-procps = pkgs.uutils-procps.overrideAttrs (
+      old:
+        lib.optionalAttrs hostPlatform.isDarwin {
+          buildInputs = lib.filter (x: lib.getName x != "systemd-minimal-libs") (old.buildInputs or []);
+        }
+    );
   };
 }
