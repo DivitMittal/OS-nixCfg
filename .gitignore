@@ -13,6 +13,7 @@ result-*
 .pre-commit-config.yaml
 
 ## Tools
+/tmp/
 .omo/
 .serena/
 .vscode/
