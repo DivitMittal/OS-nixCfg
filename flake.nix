@@ -3,13 +3,8 @@
 
   outputs = {nixpkgs, ...} @ inputs: let
     inherit (inputs.flake-parts.lib) mkFlake;
-    isX86Darwin = system: system == "x86_64-darwin";
     # Per-system nixpkgs source — pick the 26.05-darwin branch on x86_64-darwin
     # (the only system NixOS 26.11 dropped), else fall back to nixpkgs-unstable.
-    pkgsFor = system:
-      if isX86Darwin system
-      then inputs."nixpkgs-2605"
-      else nixpkgs;
     specialArgs.lib = nixpkgs.lib.extend (final: _: {
       custom = import ./lib/custom.nix {lib = final;};
     });
@@ -29,7 +24,7 @@
         # The memoized version would not include our overlays and config settings.
         #
         # Trade-off: Slightly longer evaluation time vs. ability to customize pkgs
-        _module.args.pkgs = import (pkgsFor system) {
+        _module.args.pkgs = import inputs.nixpkgs {
           inherit system;
           config = let
             inherit (lib) mkDefault;
@@ -46,8 +41,6 @@
             # any undeclared option exists.
             #
             # libolm (used by gomuks Matrix TUI client) is deprecated upstream
-            # and marked insecure in nixpkgs. gomuks has not migrated away.
-            # Allow the affected version until gomuks is replaced.
             permittedInsecurePackages = mkDefault ["olm-3.2.16"];
           };
           overlays = lib.attrsets.attrValues {
