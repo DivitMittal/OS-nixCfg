@@ -57,6 +57,10 @@ SSH defaults (a fresh install trusts the target):
   StrictHostKeyChecking=no, UserKnownHostsFile=/dev/null (host key changes across
   kexec/reboot), plus keepalive ServerAliveInterval=15 / ServerAliveCountMax=240
   to survive long remote builds.
+
+Notes:
+  Non-root SSH targets must have passwordless sudo; preflight checks sudo -n true
+  before nixos-anywhere is allowed to run.
 EOF
 }
 
@@ -196,6 +200,12 @@ if ! [[ $timeout_minutes =~ ^[0-9]+$ ]] || ((timeout_minutes < 1)); then
   exit 1
 fi
 
+if [[ ! $target_disk =~ ^/dev/[A-Za-z0-9._/:+=@-]+$ ]]; then
+  red "Unsafe --disk path: $target_disk"
+  yellow "Use an absolute /dev path without shell metacharacters or whitespace."
+  exit 1
+fi
+
 if [[ $seed_agenix == true && -z $agenix_identity ]]; then
   agenix_identity="$HOME/.ssh/agenix/id_ed25519"
 fi
@@ -232,6 +242,73 @@ fi
 if [[ -n $ssh_identity ]]; then
   nixos_anywhere_args+=(-i "$ssh_identity")
 fi
+
+remote_sudo=()
+
+normalize_arch() {
+  case "$1" in
+  x86_64 | amd64)
+    printf 'x86_64-linux'
+    ;;
+  aarch64 | arm64)
+    printf 'aarch64-linux'
+    ;;
+  *)
+    printf '%s' "$1"
+    ;;
+  esac
+}
+
+remote() {
+  ssh "${ssh_args[@]}" "$target" "$@"
+}
+
+remote_root() {
+  ssh "${ssh_args[@]}" "$target" "${remote_sudo[@]}" "$@"
+}
+
+check_target_user() {
+  local target_uid
+
+  target_uid="$(remote 'id -u')"
+  green "Remote UID: $target_uid"
+
+  if [[ $target_uid == "0" ]]; then
+    remote_sudo=()
+    return
+  fi
+
+  yellow "Remote target is non-root; requiring passwordless sudo."
+  remote 'sudo -n true'
+  remote_sudo=(sudo -n)
+}
+
+check_target_platform() {
+  local configured_system remote_machine remote_system
+
+  configured_system="$(nix eval --raw --show-trace --accept-flake-config ".#nixosConfigurations.$host.pkgs.stdenv.hostPlatform.system")"
+  remote_machine="$(remote 'uname -m')"
+  remote_system="$(normalize_arch "$remote_machine")"
+
+  green "Configured host platform: $configured_system"
+  green "Remote machine platform: $remote_machine ($remote_system)"
+
+  if [[ $configured_system != "$remote_system" ]]; then
+    red "Configured platform ($configured_system) does not match remote uname -m ($remote_machine)."
+    exit 1
+  fi
+}
+
+check_target_disk() {
+  green "Resolving target disk: $target_disk"
+  remote_root readlink -f "$target_disk"
+
+  green "Checking target disk exists: $target_disk"
+  remote_root test -b "$target_disk"
+
+  green "Target disk identity and size:"
+  remote_root lsblk -d -o NAME,PATH,MODEL,SERIAL,SIZE,TYPE "$target_disk"
+}
 
 run_preflight_checks() {
   green "====== NIXOS REMOTE BOOTSTRAP PREFLIGHT ($host) ======"
@@ -272,14 +349,15 @@ run_preflight_checks() {
 
   green "Checking SSH connectivity: $target"
   local remote_hostname
-  remote_hostname="$(ssh "${ssh_args[@]}" "$target" 'hostname')"
+  remote_hostname="$(remote 'hostname')"
   green "SSH OK; remote hostname: $remote_hostname"
   if [[ $remote_hostname == "nixos-installer" || $remote_hostname == "nixos" ]]; then
     yellow "Target is already a kexec-installer; nixos-anywhere will skip kexec and go straight to disko/install."
   fi
 
-  green "Checking target disk exists: $target_disk"
-  ssh "${ssh_args[@]}" "$target" "test -b '$target_disk'"
+  check_target_user
+  check_target_platform
+  check_target_disk
 }
 
 run_install() {
