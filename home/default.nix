@@ -21,6 +21,23 @@
       (inputs.import-tree ./tty)
       (inputs.import-tree ./dev)
     ];
+    headlessModules = [
+      {fonts.fontconfig.enable = false;}
+      ./tty/alt.nix
+      ./tty/atuin.nix
+      ./tty/btop.nix
+      ./tty/help.nix
+      ./tty/viewers.nix
+      ./tty/editors/editorconfig.nix
+      ./tty/editors/misc.nix
+      ./tty/editors/vim.nix
+      (inputs.import-tree ./tty/find)
+      ./tty/network/misc.nix
+      (inputs.import-tree ./tty/pagers)
+      (inputs.import-tree ./tty/shells)
+      (inputs.import-tree ./tty/vcs)
+      (inputs.import-tree ./dev)
+    ];
   in {
     # ── darwin ──────────────────────────────────────────────────────────────
     L1 = mkCfg {
@@ -78,6 +95,27 @@
       system = "aarch64-linux";
       inherit class;
       additionalModules = ttyDevModules;
+    };
+
+    VPS0 = mkCfg {
+      hostName = "VPS0";
+      system = "aarch64-linux";
+      inherit class;
+      additionalModules = headlessModules;
+    };
+
+    VPS1 = mkCfg {
+      hostName = "VPS1";
+      system = "x86_64-linux";
+      inherit class;
+      additionalModules = headlessModules;
+    };
+
+    VPS2 = mkCfg {
+      hostName = "VPS2";
+      system = "x86_64-linux";
+      inherit class;
+      additionalModules = headlessModules;
     };
 
     # ── droid ────────────────────────────────────────────────────────────────

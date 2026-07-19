@@ -35,12 +35,12 @@ Important existing integration points:
 
 - `flake/mkCfg.nix` appends `additionalModules` last, so Kernel Forge can deliberately override earlier host defaults.
 - `flake/mkCfg.nix` already exposes `pkgs.master` and `pkgs.stable`, useful for master/latest kernel selection and stable comparison.
-- `hosts/nixos/enum.nix` already uses `additionalModules` for explicit opt-in profiles, especially `hosts/nixos/profiles/headless-home.nix`.
+- `hosts/nixos/enum.nix` already uses `additionalModules` for explicit per-host opt-ins such as agenix modules.
 - `common/hosts/nixos/` is auto-imported for all NixOS hosts and ISOs; do not put aggressive Kernel Forge behavior there.
 - `overlays/custom.nix` and `pkgs/custom/` already support local package conventions.
 - Existing host hardware files already use NixOS kernel hooks like `boot.kernelModules`, `boot.initrd.availableKernelModules`, and `boot.extraModulePackages`.
 
-Current uncommitted/staged work exists around VPS bootstrap/deploy and `headless-home.nix`. Avoid trampling it. Start Kernel Forge from a dedicated branch after preserving or committing the current work as appropriate.
+Current uncommitted/staged work exists around VPS bootstrap/deploy. Avoid trampling it. Start Kernel Forge from a dedicated branch after preserving or committing the current work as appropriate.
 
 ## Branch and commit-history requirements
 

@@ -18,6 +18,7 @@ hosts/
 │   ├── T2/                     # x86_64-linux T2 MacBook
 │   ├── ASL1N/                  # aarch64-linux on ASL1
 │   ├── colima/                 # x86_64-linux VM
+│   ├── VPS0/                   # aarch64-linux Oracle A1 Flex VPS (Mumbai)
 │   ├── VPS1/                   # x86_64-linux VPS (Mumbai)
 │   ├── VPS2/                   # x86_64-linux VPS (Germany)
 │   └── WSL/                    # x86_64-linux WSL2
@@ -91,6 +92,14 @@ Run non-destructive checks against a rescue/current Linux SSH target:
 bootstrap-remote <host> --target root@203.0.113.10 --check
 ```
 
+Targets may be root or a regular user. Regular-user targets, such as Ubuntu's
+`ubuntu` cloud user, must have passwordless sudo because disk inspection and the
+final install need root privileges:
+
+```bash
+bootstrap-remote <host> --target ubuntu@203.0.113.10 --check
+```
+
 Then run the destructive install only after confirming the SSH target and checked
 disk are correct:
 
@@ -127,17 +136,27 @@ bootstrap-remote <host> --target root@203.0.113.10 --build-on auto --check
 
 ### VPS Examples
 
-`VPS1` and `VPS2` are already first-class NixOS hosts in this flake:
+`VPS0`, `VPS1`, and `VPS2` are first-class NixOS hosts in this flake:
 
+- `VPS0` is the Oracle Cloud VM.Standard.A1.Flex VPS in Mumbai. It is
+  `aarch64-linux`, boots via UEFI GRUB installed as removable media, uses OCI
+  DHCPv4 matched by MAC `02:00:17:05:eb:38`, and its disko layout targets the
+  stable OCI by-id path
+  `/dev/disk/by-id/scsi-36075f9bc9c73417586c6fd09a98be681`.
 - `VPS1` is the Mumbai KVM VPS. It uses static private IPv4
   `10.10.10.51/24` and is reached for deploys through public NAT at
   `148.113.8.216:20041`.
 - `VPS2` is the Germany KVM VPS. It is IPv6-only at
   `2a0e:97c0:3e3:34d::1/64` with gateway `fe80::1` on `eth0`.
 
-Both current VPS disko layouts target `/dev/sda`.
+`VPS1` and `VPS2` disko layouts target `/dev/sda`; `VPS0` targets its OCI by-id
+disk. For an Oracle Ubuntu image, bootstrap through the `ubuntu` user only after
+confirming passwordless sudo works.
 
 ```bash
+bootstrap-remote VPS0 --target ubuntu@80.225.249.202 --disk /dev/disk/by-id/scsi-36075f9bc9c73417586c6fd09a98be681 --check
+bootstrap-remote VPS0 --target ubuntu@80.225.249.202 --disk /dev/disk/by-id/scsi-36075f9bc9c73417586c6fd09a98be681 --yes-destroy-disk
+
 bootstrap-remote VPS1 --target root@148.113.8.216 --port 20041 --check
 bootstrap-remote VPS1 --target root@148.113.8.216 --port 20041 --yes-destroy-disk
 
@@ -147,13 +166,18 @@ bootstrap-remote VPS2 --target root@2a0e:97c0:3e3:34d::1 --yes-destroy-disk
 
 ### Steady-state deploys
 
-After bootstrap, use deploy-rs rather than `nixos-anywhere`:
+After bootstrap, use deploy-rs rather than `nixos-anywhere`. VPS system deploys
+are intentionally system-only; deploy Home Manager separately through the
+matching `*-home` node.
 
 ```bash
+nix eval --raw .#nixosConfigurations.VPS0.config.system.build.toplevel.drvPath
 nix eval --raw .#nixosConfigurations.VPS1.config.system.build.toplevel.drvPath
 nix eval --raw .#nixosConfigurations.VPS2.config.system.build.toplevel.drvPath
+deploy .#VPS0 --dry-activate
 deploy .#VPS1 --dry-activate
 deploy .#VPS2 --dry-activate
+deploy .#VPS0
 deploy .#VPS1
 deploy .#VPS2
 ```
@@ -166,7 +190,24 @@ and one host at a time for risky VPS changes.
 
 ### Home Manager on VPSes
 
-`VPS1` and `VPS2` embed Home Manager as part of the NixOS system activation via
-`hosts/nixos/profiles/headless-home.nix`. This keeps the terminal/dev user
-profile deployed atomically with the host and avoids separate standalone
-`homeConfigurations.VPS1` / `homeConfigurations.VPS2` deploy profiles.
+`VPS0`, `VPS1`, and `VPS2` expose standalone Home Manager configurations and
+remote deploy-rs nodes. Deploy the NixOS system first so the normal user, SSH
+keys, and agenix-backed passwords exist, then deploy the Home Manager profile as
+that user.
+
+```bash
+nix eval --raw .#homeConfigurations.VPS0.activationPackage.drvPath
+nix eval --raw .#homeConfigurations.VPS1.activationPackage.drvPath
+nix eval --raw .#homeConfigurations.VPS2.activationPackage.drvPath
+
+deploy .#VPS0-home --dry-activate
+deploy .#VPS1-home --dry-activate
+deploy .#VPS2-home --dry-activate
+deploy .#VPS0-home
+deploy .#VPS1-home
+deploy .#VPS2-home
+```
+
+Inside the devshell, `deploy-home VPS1 --dry-activate` is a shorthand for
+`deploy .#VPS1-home --dry-activate`. The local `hms` and `hts` commands still
+operate on the current machine's hostname and are not remote deploy wrappers.

@@ -89,6 +89,24 @@ in {
           category = "bootstrap";
         }
         {
+          name = "deploy-home";
+          help = "Deploy a remote standalone Home Manager profile: deploy-home VPS1 [deploy-rs flags]";
+          command = ''
+            set -eu
+
+            if [ "$#" -lt 1 ]; then
+              echo "usage: deploy-home <host> [deploy-rs flags...]" >&2
+              exit 2
+            fi
+
+            host="$1"
+            shift
+
+            deploy ".#''${host}-home" "$@"
+          '';
+          category = "home-manager";
+        }
+        {
           name = "m1-adb-forward";
           help = "Forward local SSH port 18022 to M1 nix-on-droid sshd over ADB";
           command = ''

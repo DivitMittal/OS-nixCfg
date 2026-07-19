@@ -12,10 +12,30 @@
   self,
   ...
 }: let
+  username = inputs.OS-nixCfg-secrets.user.username;
+
   activateNixOnDroid = configuration:
     inputs.deploy-rs.lib.aarch64-linux.activate.custom
     configuration.activationPackage
     "${configuration.activationPackage}/activate";
+
+  activateHome = system: configuration:
+    inputs.deploy-rs.lib.${system}.activate.home-manager configuration;
+
+  mkVpsHomeProfile = {
+    system,
+    configuration,
+    sshOpts ? [],
+  }: {
+    profiles.home = {
+      sshUser = username;
+      user = username;
+      inherit sshOpts;
+      magicRollback = false;
+      remoteBuild = true;
+      path = activateHome system configuration;
+    };
+  };
 in {
   flake.deploy.nodes = {
     # nix-on-droid device on the local network
@@ -51,6 +71,31 @@ in {
       };
     };
 
+    # Oracle Cloud A1 Flex VPS in Mumbai.
+    VPS0 = {
+      hostname = "80.225.249.202";
+      profiles.system = {
+        sshUser = "root";
+        user = "root";
+        magicRollback = false;
+        remoteBuild = true;
+        path =
+          inputs.deploy-rs.lib.aarch64-linux.activate.nixos
+          self.nixosConfigurations.VPS0;
+        sshOpts = ["-i" "/Users/div/.ssh/agenix/id_ed25519" "-o" "StrictHostKeyChecking=accept-new"];
+      };
+    };
+
+    "VPS0-home" =
+      {
+        hostname = "80.225.249.202";
+      }
+      // mkVpsHomeProfile {
+        system = "aarch64-linux";
+        configuration = self.homeConfigurations.VPS0;
+        sshOpts = ["-i" "/Users/div/.ssh/agenix/id_ed25519" "-o" "StrictHostKeyChecking=accept-new"];
+      };
+
     # Mumbai KVM VPS — deployed over the public NAT port
     # (public :20041 → internal :22). deploy-rs connects as root (key-only,
     # PermitRootLogin prohibit-password) and activates directly;
@@ -69,6 +114,16 @@ in {
       };
     };
 
+    "VPS1-home" =
+      {
+        hostname = "148.113.8.216";
+      }
+      // mkVpsHomeProfile {
+        system = "x86_64-linux";
+        configuration = self.homeConfigurations.VPS1;
+        sshOpts = ["-p" "20041"];
+      };
+
     # Germany IPv6-only KVM VPS for server/background workloads.
     VPS2 = {
       hostname = "2a0e:97c0:3e3:34d::1";
@@ -80,7 +135,18 @@ in {
         path =
           inputs.deploy-rs.lib.x86_64-linux.activate.nixos
           self.nixosConfigurations.VPS2;
+        sshOpts = ["-i" "/Users/div/.ssh/agenix/id_ed25519" "-o" "StrictHostKeyChecking=accept-new"];
       };
     };
+
+    "VPS2-home" =
+      {
+        hostname = "2a0e:97c0:3e3:34d::1";
+      }
+      // mkVpsHomeProfile {
+        system = "x86_64-linux";
+        configuration = self.homeConfigurations.VPS2;
+        sshOpts = ["-i" "/Users/div/.ssh/agenix/id_ed25519" "-o" "StrictHostKeyChecking=accept-new"];
+      };
   };
 }

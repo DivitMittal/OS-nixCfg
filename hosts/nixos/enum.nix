@@ -54,27 +54,24 @@
       hostName = "ASL1N";
       system = "aarch64-linux";
     };
+    VPS0 = mkCfg {
+      inherit class;
+      hostName = "VPS0";
+      system = "aarch64-linux";
+      # VPS Home Manager profiles deploy separately through deploy-rs `*-home` nodes.
+      additionalModules = [inputs.agenix.nixosModules.default];
+    };
     VPS1 = mkCfg {
       inherit class;
       hostName = "VPS1";
       system = "x86_64-linux";
-      # VPSes use system-level agenix for password hashes and Home Manager as
-      # part of the NixOS activation so bootstrap/deploy stays atomic.
-      additionalModules = [
-        inputs.agenix.nixosModules.default
-        inputs.home-manager.nixosModules.home-manager
-        ./profiles/headless-home.nix
-      ];
+      additionalModules = [inputs.agenix.nixosModules.default];
     };
     VPS2 = mkCfg {
       inherit class;
       hostName = "VPS2";
       system = "x86_64-linux";
-      additionalModules = [
-        inputs.agenix.nixosModules.default
-        inputs.home-manager.nixosModules.home-manager
-        ./profiles/headless-home.nix
-      ];
+      additionalModules = [inputs.agenix.nixosModules.default];
     };
   };
 }
