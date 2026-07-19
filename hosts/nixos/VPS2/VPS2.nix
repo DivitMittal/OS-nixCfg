@@ -55,6 +55,10 @@ in {
   age.identityPaths = ["/var/lib/agenix/id_ed25519"];
   age.secrets."users/div".file = secretsPath + "/users/div.age";
   age.secrets."users/root".file = secretsPath + "/users/root.age";
+  # Mullvad WG private key — decrypted at activation by ragenix, same path-input
+  # mechanism as users/*.age above (works under deploy-rs remoteBuild because
+  # deploy-rs archives the flake closure, including path inputs, to the remote).
+  age.secrets."mullvad".file = secretsPath + "/mullvad/wg-private.age";
 
   # --- Admin user (common layer creates `div`; grant sudo + SSH key + password) ---
   users.users.root = {
@@ -67,4 +71,25 @@ in {
     hashedPasswordFile = config.age.secrets."users/div".path;
   };
   security.sudo.enable = true;
+
+  # --- Mullvad VPN (split tunnel: IPv4 via Mullvad, IPv6 native on eth0) ---
+  # Gives VPS2 IPv4 egress so it can reach github.com (IPv4-only).
+  # Private key from agenix (age.secrets."mullvad" above) — never stored in the
+  # nix store as plaintext or committed to this repo.
+  # Relay: de-fra-wg-001 (Frankfurt). Address 10.64.205.203 derived from account
+  # 0901578829610741 (XOR formula) — verify vs UI.
+  networking.wg-quick.interfaces.mullvad = {
+    privateKeyFile = config.age.secrets."mullvad".path;
+    address = ["10.64.205.203/32"];
+    listenPort = 51820;
+    peers = [
+      {
+        publicKey = "HQHCrq4J6bSpdW1fI5hR/bvcrYa6HgGgwaa5ZY749ik=";
+        endpoint = "[2a03:1b20:6:f011::f001]:51820";
+        allowedIPs = ["0.0.0.0/0"];
+        persistentKeepalive = 25;
+      }
+    ];
+  };
+  networking.firewall.allowedUDPPorts = [51820];
 }
