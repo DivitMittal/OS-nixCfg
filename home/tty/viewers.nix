@@ -3,9 +3,13 @@
   lib,
   ...
 }: {
+  # arrow-cpp-23.0.0 is meta.broken across nixpkgs 26.05/unstable/master as
+  # of 2026-07-19, so the in-tree visidata fails on darwin. PyPI ships
+  # working cp312-macosx wheels (pyarrow bundles a healthy arrow-cpp), so
+  # substitute the uvx-installed binary for the nixpkgs package directly.
   programs.visidata = {
     enable = true;
-    package = pkgs.stable.visidata;
+    package = lib.custom.mkUvxBin "visidata" "visidata";
   };
 
   home.packages = lib.attrsets.attrValues {
