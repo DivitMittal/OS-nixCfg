@@ -1,23 +1,51 @@
 {
-  pkgs,
+  config,
   inputs,
+  lib,
+  pkgs,
   ...
-}: {
+}: let
+  inherit (lib) mkIf mkOption;
+  cfg = config.programs.doom-emacs;
+in {
   imports = [inputs.nix-doom-emacs-unstraightened.homeModule];
 
-  programs.doom-emacs = {
-    enable = true;
-    doomDir = inputs.Emacs-Cfg;
-    emacs = pkgs.emacs-nox;
+  options.programs.doom-emacs = {
+    # The nix-doom-emacs-unstraightened homeModule and the xdg.configFile
+    # symlink below both target ~/.config/doom — pick exactly one.
+    mode = mkOption {
+      type = lib.types.enum ["module" "symlink"];
+      default = "module";
+      description = ''
+        How to wire up Doom Emacs. `module` enables the
+        nix-doom-emacs-unstraightened homeModule, which installs Doom and
+        pins Emacs for you. `symlink` only links ~/.config/doom to
+        inputs.Emacs-Cfg, leaving installation and Emacs selection up to
+        something else.
+      '';
+    };
   };
 
-  # programs.emacs = {
-  #   enable = false;
-  #   package = pkgs.emacs-nox;
-  # };
-  # xdg.configFile."doom" = {
-  #   enable = false;
-  #   source = inputs.Emacs-Cfg;
-  #   recursive = true;
-  # };
+  config = {
+    programs.doom-emacs = {
+      # In `symlink` mode the module is dormant — no install, no doomDir
+      # write — so it doesn't fight the xdg.configFile symlink below.
+      enable = cfg.mode == "module";
+      doomDir = inputs.Emacs-Cfg;
+      emacs = pkgs.emacs-nox;
+    };
+
+    # nix-doom-emacs-unstraightened brings its own emacs in `module` mode;
+    # in `symlink` mode we're on our own, so install emacs ourselves.
+    programs.emacs = mkIf (cfg.mode == "symlink") {
+      enable = true;
+      package = pkgs.emacs-nox;
+    };
+
+    xdg.configFile."doom" = mkIf (cfg.mode == "symlink") {
+      enable = true;
+      source = inputs.Emacs-Cfg;
+      recursive = true;
+    };
+  };
 }
