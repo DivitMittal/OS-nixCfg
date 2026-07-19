@@ -3,7 +3,9 @@
   lib,
   self,
   ...
-}: {
+}: let
+  customLib = import ../lib/custom.nix {inherit lib;};
+in {
   imports = [inputs.devshell.flakeModule];
 
   perSystem = {
@@ -54,6 +56,8 @@
               ### Android Tools
               android-tools
               ;
+            ## AI context
+            apm = customLib.mkUvxBin pkgs "apm" "--from apm-cli apm";
           }
           ++ [
             inputs.deploy-rs.packages.${pkgs.stdenvNoCC.hostPlatform.system}.default # Deploy-rs for remote deployment
